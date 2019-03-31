@@ -1,0 +1,49 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\QuickGraph.dll = Libraries\QuickGraph.dll
+		Libraries\RibbonControlsLibrary.dll = Libraries\RibbonControlsLibrary.dll
+		Libraries\WPFExtensions.dll = Libraries\WPFExtensions.dll
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape", "src\GraphShape\GraphShape.csproj", "{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}"
+EndProject
+Project("{A019103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls", "src\GraphShape.Controls\GraphShape.Controls.csproj", "{90D874F2-486E-477E-93A9-FFA6FC92A2F4}"
+EndProject
+Project("{A119103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Sample", "src\GraphShape.Sample\GraphShape.Sample.csproj", "{E709850B-B4C1-4789-BC93-44C0CE01C44B}"
+EndProject
+Project("{A219103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Test", "src\GraphShape.Test\GraphShape.Test.csproj", "{125C0F86-EA89-B12B-AEDF-B83E2B9623AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5762C6B-C87B-28BB-C2A8-60B33343641D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5762C6B-C87B-28BB-C2A8-60B33343641D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5762C6B-C87B-28BB-C2A8-60B33343641D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5762C6B-C87B-28BB-C2A8-60B33343641D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125C0F86-EA89-B12B-AEDF-B83E2B9623AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125C0F86-EA89-B12B-AEDF-B83E2B9623AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125C0F86-EA89-B12B-AEDF-B83E2B9623AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125C0F86-EA89-B12B-AEDF-B83E2B9623AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D51F43F6-C27F-40EE-A4F2-CA21506D9B97}
+	EndGlobalSection
+EndGlobal
