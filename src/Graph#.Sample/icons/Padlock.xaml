@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<DrawingImage x:Key="Horizon_Image_Padlock">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<DrawingGroup.Children>
+					<GeometryDrawing Brush="#FF5E4A1C" Geometry="F1 M 295.907,141.231C 293.659,117.367 274.727,100.14 251.675,100.14C 228.312,100.14 212.969,118.061 210.167,141.524L 210.167,200.191L 265.443,204.027L 265.805,204.08L 296.051,210.855M 172.139,145.263C 175.059,96.6053 202.727,64.3173 250.812,64.3173C 293.867,64.3173 329.036,90.8053 335.068,135.993L 335.084,136.263L 335.084,219.596L 370.589,227.548C 371.431,227.737 372.357,228.852 372.349,229.665L 371.545,308.809L 371.585,312.044L 371.337,329.303L 371.408,346.336L 371.003,362.245L 371.081,378.607C 371.084,379.355 370.385,380.573 369.711,380.951L 325.947,405.369C 325.807,405.449 324.619,405.672 324.459,405.649L 214.112,390.82L 213.559,390.679L 133.76,359.524C 133.16,359.289 132.34,358.115 132.349,357.503L 134.369,215.263C 134.38,214.604 135.259,213.464 135.921,213.251L 172.137,201.649L 172.139,145.263 Z "/>
+					<GeometryDrawing Geometry="M 182.284,200.56L 264.609,206.275L 369.396,229.743L 367.879,379.193L 324.116,403.615L 213.771,388.784L 133.972,357.629L 135.993,215.389L 182.284,200.56 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-2.72219e-006,0.499999" EndPoint="0.999999,0.499999">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFEFD89A" Offset="0"/>
+									<GradientStop Color="#FFBC9A46" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 136.236,215.387L 216.077,239.355L 321.836,249.899L 369.139,230.24L 369.139,247.041L 322.341,266.156L 216.077,256.633L 135.999,232.057L 136.236,215.387 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="1.96347e-007,0.49999" EndPoint="0.999997,0.49999">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 135.748,249.707L 215.38,273.612L 321.14,284.156L 368.441,264.497L 368.633,280.579L 321.645,300.415L 215.38,290.891L 135.511,266.38L 135.748,249.707 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-1.04726e-006,0.499984" EndPoint="0.999998,0.499984">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 135.293,281.679L 215.38,305.72L 321.14,316.263L 368.441,296.604L 368.633,312.14L 321.645,332.521L 215.38,322.999L 135.076,296.964L 135.293,281.679 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-2.09063e-006,0.49998" EndPoint="0.999998,0.49998">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307678"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369217"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435883"/>
+									<GradientStop Color="#FFD8B864" Offset="0.728195"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784607"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835892"/>
+									<GradientStop Color="#FF876714" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 134.847,313.139L 213.513,337.583L 322.341,351.935L 368.629,329.249L 368.455,346.412L 323.859,368.669L 214.019,355.268L 134.627,328.56L 134.847,313.139 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-1.56499e-006,0.499993" EndPoint="0.999998,0.499993">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307678"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369217"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435883"/>
+									<GradientStop Color="#FFD8B864" Offset="0.728195"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784607"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835892"/>
+									<GradientStop Color="#FF876714" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 134.423,342.875L 211.841,371.432L 321.836,385.948L 368.295,362.165L 368.128,378.713L 367.184,379.263L 324.364,403.157L 269.191,395.743L 213.007,387.852L 134.229,356.479M 368.128,378.713L 367.184,379.263L 368.128,378.737L 368.128,378.713 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-6.51903e-007,0.499993" EndPoint="0.999998,0.499993">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307678"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369217"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435883"/>
+									<GradientStop Color="#FFD8B864" Offset="0.728195"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784607"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835892"/>
+									<GradientStop Color="#FF876714" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Brush="#FF5E4A1C" Geometry="M 171.393,216.157C 171.393,212.468 180.432,209.477 191.584,209.477C 202.735,209.477 211.775,212.468 211.775,216.157C 211.775,219.847 202.735,222.836 191.584,222.836C 180.432,222.836 171.393,219.847 171.393,216.157 Z "/>
+					<GeometryDrawing Brush="#FF5E4A1C" Geometry="M 293.976,232.983C 293.976,228.5 303.372,224.864 314.963,224.864C 326.552,224.864 335.948,228.5 335.948,232.983C 335.948,237.467 326.552,241.101 314.963,241.101C 303.372,241.101 293.976,237.467 293.976,232.983 Z "/>
+					<GeometryDrawing Geometry="F1 M 332.132,232.705C 332.192,232.86 332.224,233.017 332.227,233.177C 332.231,233.352 332.197,233.527 332.132,233.697C 331.148,236.079 323.887,237.996 315.061,238.14C 305.532,238.297 297.769,236.329 297.723,233.744L 297.528,141.232C 295.231,116.345 275.419,98.0827 251.011,98.0827C 226.027,98.0827 210.055,117.331 207.213,141.501L 207.213,214.359C 207.403,214.7 207.501,215.055 207.501,215.416C 207.501,218.589 199.884,221.164 190.487,221.164C 181.091,221.164 173.473,218.589 173.473,215.416C 173.473,215.055 173.572,214.7 173.76,214.359L 173.76,145.42C 176.635,97.5414 203.628,66.572 250.148,66.572C 292.071,66.572 326.248,92.2694 332.132,136.361L 332.132,232.705 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="3.94076e-006,0.500002" EndPoint="0.999997,0.500002">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 183.129,215.263C 183.129,213.892 184.06,147.999 184.06,147.999L 187.332,142.517L 190.605,156.069L 190.243,218.88C 186.861,219.033 184.491,217.828 183.129,215.263 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-5.51078e-005,0.500007" EndPoint="1.00002,0.500007">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 189.515,143.545C 189.515,143.545 194.969,120.211 209.56,106.659C 216.365,100.337 241.605,84.352 241.605,84.352C 220.833,87.0919 208.383,93.8907 200.628,103.041C 193.151,110.769 190.787,122.464 189.515,143.545 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-6.15147e-006,0.499999" EndPoint="1,0.499999">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307678"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369217"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435883"/>
+									<GradientStop Color="#FFD8B864" Offset="0.728195"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784607"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835892"/>
+									<GradientStop Color="#FF876714" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 307.195,237.571C 313.471,239.855 319.477,239.855 325.219,237.571L 325.945,144.231C 323.191,125.239 314.809,108.019 300.809,92.5733C 291.593,79.0334 276.237,71.776 258.377,73.54C 272.4,76.624 286.724,84.0813 293.696,96.532L 261.287,86.4066C 282.987,94.8173 296.04,106.671 300.445,116.785C 304.911,125.555 307.888,134.817 309.377,144.573L 307.195,237.571 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="4.06491e-006,0.5" EndPoint="1,0.5">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 305.377,111.112C 305.377,111.112 313.581,126.568 313.217,141.833C 312.855,157.097 313.945,237.913 313.945,237.913L 321.059,237.913L 321.059,140.12C 319.459,129.463 314.232,119.793 305.377,111.112 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="1.75149e-005,0.499997" EndPoint="0.999994,0.499997">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307678"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369217"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435883"/>
+									<GradientStop Color="#FFD8B864" Offset="0.728195"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784607"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835892"/>
+									<GradientStop Color="#FF876714" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 194.243,110.427C 208.091,93.4066 224.364,85.3987 241.605,84.352C 251.305,83.3626 268.632,88.3373 293.9,97.2187C 286.777,86.848 275.892,78.0426 262.377,74.9106C 254.173,72.856 245.547,71.4413 235.423,72.5133C 207.175,80.5827 197.516,94.7933 194.243,110.427 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="-4.8996e-006,0.500009" EndPoint="0.999998,0.500009">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFD8B864" Offset="0"/>
+									<GradientStop Color="#FFD8B864" Offset="0.307663"/>
+									<GradientStop Color="#FFEFD697" Offset="0.369202"/>
+									<GradientStop Color="#FFD8B864" Offset="0.435867"/>
+									<GradientStop Color="#FFD8B864" Offset="0.72818"/>
+									<GradientStop Color="#FFC8A852" Offset="0.784592"/>
+									<GradientStop Color="#FFD8B864" Offset="0.835876"/>
+									<GradientStop Color="#FF876714" Offset="0.999985"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+				</DrawingGroup.Children>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+</ResourceDictionary>

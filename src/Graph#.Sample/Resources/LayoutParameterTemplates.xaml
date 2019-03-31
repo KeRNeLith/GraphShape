@@ -1,0 +1,493 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Layout="clr-namespace:GraphSharp.Algorithms.Layout;assembly=GraphSharp"
+                    xmlns:SimpleFDPLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.FDP;assembly=GraphSharp"
+                    xmlns:SimpleHierarchicalLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.Hierarchical;assembly=GraphSharp"
+                    xmlns:SimpleTreeLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.Tree;assembly=GraphSharp"
+                    xmlns:OverlapRemoval="clr-namespace:GraphSharp.Algorithms.OverlapRemoval;assembly=GraphSharp">
+
+    <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type System:Enum}"
+                        x:Key="layoutDirectionEnum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="Layout:LayoutDirection" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type System:Enum}"
+                        x:Key="treeGenerationTypeEnum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="SimpleTreeLayout:SpanningTreeGeneration" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+    
+    <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type System:Enum}"
+                        x:Key="sugiyamaEdgeRoutingEnum">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="SimpleHierarchicalLayout:SugiyamaEdgeRoutings" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <!-- Fruchterman-Reingold datatemplate -->
+    <DataTemplate DataType="{x:Type SimpleFDPLayout:BoundedFRLayoutParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"><Run Text="Width" /></TextBlock>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <Slider Minimum="0"
+                        Maximum="1000"
+                        Value="{Binding Path=Width}"
+                        Width="100.000333333333"
+                        Height="22"
+                        x:Name="slider" />
+                <TextBlock Text="{Binding Path=Value, ElementName=slider, Mode=Default}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"><Run Text="Height" /></TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="1"
+                        Grid.Column="1">
+                <Slider Minimum="0"
+                        Maximum="1000"
+                        Value="{Binding Path=Height}"
+                        MinWidth="100"
+                        x:Name="slider1" />
+                <TextBlock Text="{Binding Path=Value, ElementName=slider1, Mode=Default}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2"><Run Text="K" /></TextBlock>
+            <TextBlock Text="{Binding Path=K}"
+                       Grid.Column="1"
+                       Grid.Row="2" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3"><Run Text="AttractionMultiplier" /></TextBlock>
+            <StackPanel Margin="0,0,20.853,3.96"
+                        Grid.RowSpan="1"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=AttractionMultiplier}"
+                        Width="100.000333333333"
+                        Height="22"
+                        x:Name="slider2" />
+                <TextBlock Text="{Binding Path=Value, ElementName=slider2, Mode=Default}"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="4"><Run Text="RepulsiveMultiplier" /></TextBlock>
+            <StackPanel Grid.Column="1"
+                        Grid.Row="4"
+                        Orientation="Horizontal">
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=RepulsiveMultiplier}"
+                        Width="100.000333333333"
+                        Height="22"
+                        x:Name="slider3" />
+                <TextBlock Text="{Binding Path=Value, ElementName=slider3, Mode=Default}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="5"><Run Text="IterationCount" /></TextBlock>
+            <TextBlock Text="{Binding Path=IterationCount}"
+                       Grid.Column="1"
+                       Grid.Row="5" />
+        </Grid>
+    </DataTemplate>
+
+    <!-- ComplexHierarchical DataTemplate -->
+    <DataTemplate DataType="{x:Type SimpleHierarchicalLayout:SugiyamaLayoutParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"><Run Text="Dirty Round" /></TextBlock>
+            <CheckBox IsChecked="{Binding Path=DirtyRound}"
+                      Grid.Column="1"
+                      Grid.Row="0" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"><Run Text="Horizontal Gap" /></TextBlock>
+            <TextBox Text="{Binding Path=HorizontalGap, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="1" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2"><Run Text="Vertical Gap" /></TextBlock>
+            <TextBox Text="{Binding Path=VerticalGap, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="2" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3"><Run Text="Phase1 Iteration Count" /></TextBlock>
+            <TextBox Text="{Binding Path=Phase1IterationCount, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="3" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="4"><Run Text="Phase2 Iteration Count" /></TextBlock>
+            <TextBox Text="{Binding Path=Phase2IterationCount, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="4" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="5"><Run Text="Minimize Hierarchical EdgeLong" /></TextBlock>
+            <CheckBox IsChecked="{Binding Path=MinimizeHierarchicalEdgeLong}"
+                      Grid.Column="1"
+                      Grid.Row="5" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="6"><Run Text="Position Calculation Method" /></TextBlock>
+            <!--<ComboBox ItemsSource="{Binding Source={StaticResource posCalcMethodEnum}}" SelectedValue="{Binding Path=PositionCalculationMethod}" Grid.Column="1" Grid.Row="6"/>-->
+        </Grid>
+    </DataTemplate>
+
+    <!-- ComplexHierarchical DataTemplate -->
+    <DataTemplate DataType="{x:Type SimpleHierarchicalLayout:EfficientSugiyamaLayoutParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"><Run Text="Layer gap" /></TextBlock>
+            <TextBox Text="{Binding Path=LayerDistance, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="0" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"><Run Text="Vertex gap" /></TextBlock>
+            <TextBox Text="{Binding Path=VertexDistance, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="1" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2"><Run Text="Position Mode" /></TextBlock>
+            <TextBox Text="{Binding Path=PositionMode, UpdateSourceTrigger=PropertyChanged}"
+                     Grid.Column="1"
+                     Grid.Row="2" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3"><Run Text="Minimize Edge Length" /></TextBlock>
+            <CheckBox IsChecked="{Binding Path=MinimizeEdgeLength, UpdateSourceTrigger=PropertyChanged}"
+                      Content="{Binding Path=MinimizeEdgeLength, UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Column="1"
+                      Grid.Row="3" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="4">Edge routing</TextBlock>
+            <ComboBox ItemsSource="{Binding Source={StaticResource sugiyamaEdgeRoutingEnum}}"
+                      SelectedValue="{Binding Path=EdgeRouting}"
+                      Grid.Column="1"
+                      Grid.Row="4" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="5"><Run Text="Optimize Width" /></TextBlock>
+            <CheckBox IsChecked="{Binding Path=OptimizeWidth, UpdateSourceTrigger=PropertyChanged}"
+                      Content="{Binding Path=OptimizeWidth, UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Column="1"
+                      Grid.Row="5" />
+        </Grid>
+    </DataTemplate>
+
+    <!-- Meyer's ISOMLayout -->
+    <DataTemplate DataType="{x:Type SimpleFDPLayout:ISOMLayoutParameters}">
+        <StackPanel>
+            <Grid  Width="Auto"
+                   Height="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"><Run Text="Width" /></TextBlock>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1"
+                            Grid.Row="0">
+                    <Slider Minimum="0"
+                            Maximum="1000"
+                            Value="{Binding Path=Width}"
+                            MinWidth="100" />
+                    <TextBox />
+                </StackPanel>
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="1"><Run Text="Height" /></TextBlock>
+                <Slider Minimum="0"
+                        Maximum="1000"
+                        Value="{Binding Path=Height}"
+                        Grid.Column="1"
+                        Grid.Row="1" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="2"><Run Text="MaxEpoch" /></TextBlock>
+                <TextBox Text="{Binding Path=MaxEpoch}"
+                         Grid.Column="1"
+                         Grid.Row="2" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="3"><Run Text="RadiusConstantTime" /></TextBlock>
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=RadiusConstantTime}"
+                        Grid.Column="1"
+                        Grid.Row="3" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="4"><Run Text="Radius" /></TextBlock>
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=Radius}"
+                        Grid.Column="1"
+                        Grid.Row="4" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="5"><Run Text="MinRadius" /></TextBlock>
+                <TextBox Text="{Binding Path=MinRadius}"
+                         Grid.Column="1"
+                         Grid.Row="5" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="6"><Run Text="Adaption" /></TextBlock>
+                <TextBox Text="{Binding Path=Adaption}"
+                         Grid.Column="1"
+                         Grid.Row="6" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="7"><Run Text="InitialAdaption" /></TextBlock>
+                <TextBox Text="{Binding Path=InitialAdaption}"
+                         Grid.Column="1"
+                         Grid.Row="7" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="8"><Run Text="MinAdaption" /></TextBlock>
+                <TextBox Text="{Binding Path=MinAdaption}"
+                         Grid.Column="1"
+                         Grid.Row="8" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="9"><Run Text="CoolingFactor" /></TextBlock>
+                <TextBox Text="{Binding Path=CoolingFactor}"
+                         Grid.Column="1"
+                         Grid.Row="9" />
+            </Grid>
+        </StackPanel>
+    </DataTemplate>
+
+    <!--LinLog Parameters-->
+    <DataTemplate DataType="{x:Type SimpleFDPLayout:LinLogLayoutParameters}">
+        <Grid  Width="Auto"
+               Height="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0">AttractionExponent</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=AttractionExponent}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=AttractionExponent}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1">RepulsiveExponent</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="1">
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=RepulsiveExponent}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=RepulsiveExponent}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2">GravitationMultiplier</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="2">
+                <Slider Minimum="0"
+                        Maximum="5"
+                        Value="{Binding Path=GravitationMultiplier}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=GravitationMultiplier}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3">IterationCount</TextBlock>
+            <Slider Minimum="0"
+                    Maximum="1000"
+                    Value="{Binding Path=IterationCount}"
+                    Grid.Column="1"
+                    Grid.Row="3" />
+        </Grid>
+    </DataTemplate>
+
+    <!--OverlapRemovalParameters-->
+    <DataTemplate DataType="{x:Type OverlapRemoval:OverlapRemovalParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0">Horizontal Gap</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                <Slider Minimum="0"
+                        Maximum="50"
+                        Value="{Binding Path=HorizontalGap}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=HorizontalGap}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1">Vertical Gap</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="1">
+                <Slider Minimum="0"
+                        Maximum="50"
+                        Value="{Binding Path=VerticalGap}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=VerticalGap}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <!--SimpleTreeLayoutParameters-->
+    <DataTemplate DataType="{x:Type SimpleTreeLayout:SimpleTreeLayoutParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0">Layer Gap</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                <Slider Minimum="0"
+                        Maximum="50"
+                        Value="{Binding Path=LayerGap}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=LayerGap}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1">Vertical Gap</TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="1">
+                <Slider Minimum="0"
+                        Maximum="50"
+                        Value="{Binding Path=VertexGap}"
+                        MinWidth="100" />
+                <TextBox Text="{Binding Path=VertexGap}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="2">Layout direciton</TextBlock>
+            <ComboBox ItemsSource="{Binding Source={StaticResource layoutDirectionEnum}}"
+                      SelectedValue="{Binding Path=Direction}"
+                      Grid.Column="1"
+                      Grid.Row="2" />
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="3">Tree Generation</TextBlock>
+            <ComboBox ItemsSource="{Binding Source={StaticResource treeGenerationTypeEnum}}"
+                      SelectedValue="{Binding Path=SpanningTreeGeneration}"
+                      Grid.Column="1"
+                      Grid.Row="3" />
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

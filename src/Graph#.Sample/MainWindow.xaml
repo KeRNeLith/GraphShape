@@ -1,0 +1,371 @@
+﻿<rb:RibbonWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:extconvertes="clr-namespace:WPFExtensions.Converters;assembly=WPFExtensions"
+                 xmlns:cmdbinding="clr-namespace:WPFExtensions.ViewModel.Commanding;assembly=WPFExtensions"
+                 xmlns:rb="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+                 xmlns:ext="clr-namespace:WPFExtensions.ViewModel.Commanding;assembly=WPFExtensions"
+                 xmlns:ViewModel="clr-namespace:GraphSharp.Sample.ViewModel"
+                 xmlns:Sample="clr-namespace:GraphSharp.Sample"
+                 xmlns:Controls="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
+                 xmlns:Converters="clr-namespace:GraphSharp.Sample.Converters"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+                 x:Class="GraphSharp.Sample.MainWindow"
+                 Title="Graph layout PoC"
+                 Background="White"
+                 WindowStartupLocation="CenterScreen"
+                 WindowState="Maximized"
+                 x:Name="root"
+                 ext:CommandSinkBinding.CommandSink="{Binding}"
+                 xmlns:WPFExtensions_Controls="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions">
+    <rb:RibbonWindow.Resources>
+
+        <ResourceDictionary>
+
+            <!-- //Ribbon Commands// -->
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/LayoutParameterTemplates.xaml" />
+                <ResourceDictionary Source="Resources/PocGraphDataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- converts the visibility of the vertex to Checbox.Checked -->
+            <extconvertes:BoolToVisibilityConverter x:Key="visibilityToBoolConverter" />
+
+            <!-- Mivel alapból nincs a WPF-ben, a Slider meg elég buta. -->
+            <Converters:IntegerToDoubleConverter x:Key="doubleIntConverter" />
+
+            <ObjectDataProvider
+				x:Key="algorithmConstraintEnum" MethodName="GetValues"
+				ObjectType="{x:Type sys:Enum}"
+                                >
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="Controls:AlgorithmConstraints" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <!--Ribbon Commands-->
+            <rb:RibbonCommand x:Key="NewLayoutRCmd"
+				LabelTitle="New Layout Tab"
+				SmallImageSource="{StaticResource Horizon_Image_Add}"
+				LargeImageSource="{StaticResource Horizon_Image_Add}" />
+
+            <rb:RibbonCommand x:Key="ContinueLayoutRCmd"
+				LabelTitle="Continue Layout"
+				SmallImageSource="{StaticResource Horizon_Image_Forward}"
+				LargeImageSource="{StaticResource Horizon_Image_Forward}" />
+
+            <rb:RibbonCommand x:Key="RelayoutRCmd"
+				LabelTitle="Relayout"
+				SmallImageSource="{StaticResource Horizon_Image_Refresh}"
+				LargeImageSource="{StaticResource Horizon_Image_Refresh}" />
+
+            <rb:RibbonCommand x:Key="OpenGraphFileRCmd"
+				LabelTitle="Open graphs"
+				SmallImageSource="{StaticResource Horizon_Image_Open}"
+				LargeImageSource="{StaticResource Horizon_Image_Open}" />
+
+            <rb:RibbonCommand x:Key="SaveGraphFileRCmd"
+				LabelTitle="Save graphs"
+				SmallImageSource="{StaticResource Horizon_Image_Save}"
+				LargeImageSource="{StaticResource Horizon_Image_Save}" />
+
+            <rb:RibbonCommand x:Key="ExitRCmd"
+				LabelTitle="Exit"
+				SmallImageSource="{StaticResource Horizon_Image_Delete}"
+				LargeImageSource="{StaticResource Horizon_Image_Delete}" />
+
+            <DataTemplate x:Key="GraphItemTemplate">
+                <Label FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Content="{Binding Path=Name, Mode=OneWay, FallbackValue=NoName}">
+                    <Label.Background>
+                        <SolidColorBrush Color="{DynamicResource MainColor}"/>
+                    </Label.Background>
+                </Label>
+            </DataTemplate>
+            <ObjectDataProvider x:Key="graphmodel" d:IsDataSource="True" ObjectType="{x:Type ViewModel:GraphLayoutViewModel}"/>
+        </ResourceDictionary>
+
+    </rb:RibbonWindow.Resources>
+    <rb:RibbonWindow.CommandBindings>
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.RemoveLayoutCommand}" />
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.AddLayoutCommand}" />
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.ContinueLayoutCommand}" />
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.RelayoutCommand}" />
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.OpenGraphsCommand}" />
+        <ext:CommandSinkBinding Command="{x:Static ViewModel:LayoutAnalyzerViewModel.SaveGraphsCommand}" />
+
+        <CommandBinding Command="{StaticResource ExitRCmd}"
+                        Executed="Exit_Executed" />
+
+        <ext:MapperCommandBinding Command="{StaticResource NewLayoutRCmd}"
+                                  MappedToCommand="{x:Static ViewModel:LayoutAnalyzerViewModel.AddLayoutCommand}" />
+        <ext:MapperCommandBinding Command="{StaticResource ContinueLayoutRCmd}"
+                                  MappedToCommand="{x:Static ViewModel:LayoutAnalyzerViewModel.ContinueLayoutCommand}" />
+        <ext:MapperCommandBinding Command="{StaticResource RelayoutRCmd}"
+                                  MappedToCommand="{x:Static ViewModel:LayoutAnalyzerViewModel.RelayoutCommand}" />
+        <ext:MapperCommandBinding Command="{StaticResource OpenGraphFileRCmd}"
+                                  MappedToCommand="{x:Static ViewModel:LayoutAnalyzerViewModel.OpenGraphsCommand}" />
+        <ext:MapperCommandBinding Command="{StaticResource SaveGraphFileRCmd}"
+                                  MappedToCommand="{x:Static ViewModel:LayoutAnalyzerViewModel.SaveGraphsCommand}" />
+    </rb:RibbonWindow.CommandBindings>
+
+    <DockPanel LastChildFill="True">
+
+        <!--the Ribbon-->
+        <rb:Ribbon DockPanel.Dock="Top">
+            <rb:Ribbon.ApplicationMenu>
+                <rb:RibbonApplicationMenu>
+                    <rb:RibbonApplicationMenuItem Command="{StaticResource OpenGraphFileRCmd}" />
+                    <rb:RibbonApplicationMenuItem Command="{StaticResource SaveGraphFileRCmd}" />
+                    <rb:RibbonSeparator />
+                    <rb:RibbonApplicationMenuItem Command="{StaticResource ExitRCmd}" />
+                </rb:RibbonApplicationMenu>
+            </rb:Ribbon.ApplicationMenu>
+
+            <rb:RibbonTab Label="General">
+                <rb:RibbonGroup>
+                    <rb:RibbonGroup.Command>
+                        <rb:RibbonCommand LabelTitle="Project" />
+                    </rb:RibbonGroup.Command>
+
+                    <rb:RibbonButton Command="{StaticResource OpenGraphFileRCmd}" />
+                    <rb:RibbonButton Command="{StaticResource SaveGraphFileRCmd}" />
+                </rb:RibbonGroup>
+
+                <rb:RibbonGroup>
+                    <rb:RibbonGroup.Command>
+                        <rb:RibbonCommand LabelTitle="Layout" />
+                    </rb:RibbonGroup.Command>
+
+                    <rb:RibbonGroup.GroupSizeDefinitions>
+                        <rb:RibbonGroupSizeDefinitionCollection>
+                            <rb:RibbonGroupSizeDefinition>
+                                <rb:RibbonControlSizeDefinition ImageSize="Large"
+									IsLabelVisible="True" />
+                                <rb:RibbonControlSizeDefinition ImageSize="Large"
+									IsLabelVisible="True" />
+                            </rb:RibbonGroupSizeDefinition>
+                            <rb:RibbonGroupSizeDefinition IsCollapsed="True" />
+                        </rb:RibbonGroupSizeDefinitionCollection>
+                    </rb:RibbonGroup.GroupSizeDefinitions>
+
+                    <rb:RibbonButton Command="{StaticResource RelayoutRCmd}" />
+                    <rb:RibbonButton Command="{StaticResource ContinueLayoutRCmd}" />
+                </rb:RibbonGroup>
+                <rb:RibbonGroup>
+                    <rb:RibbonGroup.Command>
+                        <rb:RibbonCommand LabelTitle="View" />
+                    </rb:RibbonGroup.Command>
+                    <rb:RibbonGroup.GroupSizeDefinitions>
+                        <rb:RibbonGroupSizeDefinitionCollection>
+                            <rb:RibbonGroupSizeDefinition>
+                                <rb:RibbonControlSizeDefinition ImageSize="Small"
+									IsLabelVisible="True" />
+                                <rb:RibbonControlSizeDefinition ImageSize="Small"
+									IsLabelVisible="True" />
+                            </rb:RibbonGroupSizeDefinition>
+                        </rb:RibbonGroupSizeDefinitionCollection>
+                    </rb:RibbonGroup.GroupSizeDefinitions>
+                    <rb:RibbonLabel>
+                        <StackPanel Width="Auto"
+							Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{DynamicResource Horizon_Image_Search}"
+									Width="{DynamicResource IconWidth}"
+									Stretch="Uniform"
+									Margin="{DynamicResource IconMargin}" />
+                                <TextBlock Text="General zoom"
+									TextWrapping="Wrap"
+									Margin="5,0,5,0"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center" />
+                            </StackPanel>
+                            <Slider Value="1"
+								Minimum="0.25"
+								Maximum="2"
+								x:Name="zoomSlider"
+								Width="Auto"
+								MinWidth="50" />
+                        </StackPanel>
+                    </rb:RibbonLabel>
+                </rb:RibbonGroup>
+                <rb:RibbonGroup>
+                    <rb:RibbonGroup.Command>
+                        <rb:RibbonCommand LabelTitle="Tests" />
+                    </rb:RibbonGroup.Command>
+
+                    <rb:RibbonButton>
+                        <rb:RibbonButton.Command>
+                            <rb:RibbonCommand LabelTitle="NotificationTest"
+								Executed="NotificationTest_Executed" />
+                        </rb:RibbonButton.Command>
+                    </rb:RibbonButton>
+
+                    <rb:RibbonButton>
+                        <rb:RibbonButton.Command>
+                            <rb:RibbonCommand LabelTitle="CompoundLayoutTest"
+								Executed="CompoundLayoutTest_Executed" />
+                        </rb:RibbonButton.Command>
+                    </rb:RibbonButton>
+                </rb:RibbonGroup>
+            </rb:RibbonTab>
+        </rb:Ribbon>
+
+        <DockPanel>
+
+            <!--Graph Selector-->
+            <ListBox ItemsSource="{Binding Path=GraphModels}"
+				SelectedValue="{Binding Path=SelectedGraphModel, Mode=TwoWay}"
+				Margin="5"
+				DockPanel.Dock="Left" ItemTemplate="{DynamicResource GraphItemTemplate}" MaxWidth="300" MinWidth="150" Width="150" />
+
+            <StackPanel Orientation="Horizontal"
+				Margin="0,5,5,5"
+				DockPanel.Dock="Top">
+                <TextBlock Width="Auto"
+					Height="Auto"
+					Text="Vertices:"
+					TextWrapping="Wrap"
+					VerticalAlignment="Center"
+					Margin="20,0,10,0" />
+                <TextBlock Width="Auto"
+					Height="Auto"
+					Text="{Binding Path=SelectedGraphModel.Graph.VertexCount}"
+					TextWrapping="Wrap"
+					VerticalAlignment="Center"
+					Margin="0,0,20,0" />
+                <TextBlock Width="Auto"
+					Height="Auto"
+					Text="Edges:"
+					TextWrapping="Wrap"
+					VerticalAlignment="Center"
+					Margin="0,0,10,0" />
+                <TextBlock Width="Auto"
+					Height="Auto"
+					Text="{Binding Path=SelectedGraphModel.Graph.EdgeCount}"
+					TextWrapping="Wrap"
+					VerticalAlignment="Center" />
+            </StackPanel>
+
+            <DockPanel DataContext="{Binding Path=AnalyzedLayouts}">
+                <DockPanel.LayoutTransform>
+                    <ScaleTransform ScaleX="{Binding Path=Value, ElementName=zoomSlider}"
+							ScaleY="{Binding Path=Value, ElementName=zoomSlider}"
+							CenterX="0.5"
+							CenterY="0.5" />
+                </DockPanel.LayoutTransform>
+                
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--State infos-->
+                    <StackPanel Grid.Column="0">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </Grid.Resources>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" MinWidth="150" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Layout algorithm"/>
+                            <ComboBox Grid.Column="1"
+											ItemsSource="{Binding Path=LayoutAlgorithmFactory.AlgorithmTypes, ElementName=graphLayout}"
+											SelectedValue="{Binding Path=LayoutAlgorithmType}" />
+                            <TextBlock Grid.Row="1" Text="Overlap Removal"/>
+                            <ComboBox Grid.Column="1"
+											Grid.Row="1"
+											ItemsSource="{Binding Source={StaticResource algorithmConstraintEnum}}"
+											SelectedValue="{Binding Path=OverlapRemovalConstraint, ElementName=graphLayout}" />
+                            <TextBlock Grid.Row="2" Text="Overlap Removal Algorithm"/>
+                            <ComboBox Grid.Column="1"
+											Grid.Row="2"
+											ItemsSource="{Binding Path=OverlapRemovalAlgorithmFactory.AlgorithmTypes, ElementName=graphLayout}"
+											SelectedValue="{Binding Path=OverlapRemovalAlgorithmType, ElementName=graphLayout}" />
+                            <TextBlock Grid.Row="3" Text="Edge Routing"/>
+                            <ComboBox Grid.Column="1"
+											Grid.Row="3"
+											ItemsSource="{Binding Source={StaticResource algorithmConstraintEnum}}"
+											SelectedValue="{Binding Path=EdgeRoutingConstraint, ElementName=graphLayout}" />
+                            <TextBlock Grid.Row="4" Text="Edge Routing Algorithm"/>
+                            <ComboBox Grid.Column="1"
+											Grid.Row="4"
+											ItemsSource="{Binding Path=EdgeRoutingAlgorithmFactory.AlgorithmTypes, ElementName=graphLayout}"
+											SelectedValue="{Binding Path=EdgeRoutingAlgorithmType, ElementName=graphLayout}" />
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="State"/>
+                            <Slider Grid.Column="1"
+											Grid.Row="5"
+											MinWidth="150"
+											Minimum="0"
+											Maximum="{Binding Path=StateCount, Converter={StaticResource doubleIntConverter}, ElementName=graphLayout, FallbackValue=0}"
+											Value="{Binding Path=StateIndex, Converter={StaticResource doubleIntConverter}, ElementName=graphLayout, FallbackValue=0}"
+											TickFrequency="1" />
+                            
+                            <TextBlock Text="Computation Time"
+											Grid.Row="7"
+											Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LayoutState.ComputationTime, ElementName=graphLayout}"
+											Grid.Row="7"
+											Grid.Column="1" />
+
+                            <TextBlock Text="Show all states"
+											Grid.Row="8"
+											Grid.Column="0" />
+                            <CheckBox IsChecked="{Binding Path=ShowAllStates, ElementName=graphLayout}"
+											Grid.Row="8"
+											Grid.Column="1" />
+                        </Grid>
+                    </StackPanel>
+
+                    <!--Parameters-->
+                    <StackPanel Grid.Column="1"
+							Margin="10,0">
+                        <StackPanel.Resources>
+                            <Style TargetType="GroupBox">
+                                <Setter Property="Margin" Value="5"/>
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <GroupBox Header="Layout algorithm parameters"
+										Content="{Binding Path=LayoutParameters, ElementName=graphLayout}" />
+                        <GroupBox Header="Overlap removal parameters"
+										Content="{Binding Path=OverlapRemovalParameters, ElementName=graphLayout}" />
+                        <GroupBox Header="Edge routing parameters"
+										Content="{Binding Path=EdgeRoutingParameters, ElementName=graphLayout}" />
+                    </StackPanel>
+
+                </Grid>
+
+                <WPFExtensions_Controls:ZoomControl>
+                    <ViewModel:PocGraphLayout x:Name="graphLayout"
+											Graph="{Binding Path=Graph}"
+											LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType}"
+											Sample:LayoutManager.ManagedLayout="True"
+											OverlapRemovalAlgorithmType="FSA"
+											HighlightAlgorithmType="Simple" />
+                </WPFExtensions_Controls:ZoomControl>
+            </DockPanel>
+        </DockPanel>
+    </DockPanel>
+</rb:RibbonWindow>

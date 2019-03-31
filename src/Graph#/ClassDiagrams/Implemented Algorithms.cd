@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.Circular.CircularLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\Circular\CircularLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;" Collapsed="true">
+    <Position X="15.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Layout\ParameterizedLayoutAlgorithmBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAUoACAFBEAAAQEAAABAAAgAAVgCBQCIAQCAAEAUCQ=</HashCode>
+      <FileName>Algorithms\Layout\Compound\FDP\CompoundFDPLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.FDP.ISOMLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <InheritanceLine Type="GraphSharp.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="16.5" Y="1.38" />
+        <Point X="16.5" Y="1.867" />
+        <Point X="17.45" Y="1.867" />
+        <Point X="17.45" Y="3.2" />
+        <Point X="19.75" Y="3.2" />
+        <Point X="19.75" Y="3.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>QAAIAAAADgAAAAkAEAAAAAAAAAAACAQAAAACAAAAAAA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\FDP\ISOMLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.FDP.KKLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;" Collapsed="true">
+    <Position X="15.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAAABAAAAAAAAKAAAAEAQAA0AAAEAAAAABAA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\FDP\KKLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.FDP.LinLogLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="17.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAQIAAAAAAAAhABAAEhQAAUAhBAEAABABAA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\FDP\LinLogLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="19.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAGABQBAAEDTCFAgIlCGZAQAQChUgxQBEAAbEkEA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaAlgorithm.BuildSparseNormalizedGraph.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAIABAAAAAAAAIAIAAAAQAAAAQBAAAAgA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\Tree\SimpleTreeLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAABAAAAgAAAAAAAAQACAQAAAAAAAA=</HashCode>
+      <FileName>Algorithms\Layout\Simple\FDP\FRLayoutAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GraphSharp.Algorithms.Layout.ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;" Collapsed="true">
+    <Position X="13.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAABAAAAAAIAAQAgQAAAAAAAAIAAgABAAAA=</HashCode>
+      <FileName>Algorithms\Layout\ParameterizedLayoutAlgorithmBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

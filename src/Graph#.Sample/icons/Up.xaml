@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<DrawingImage x:Key="Horizon_Image_Up">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<DrawingGroup.Children>
+					<GeometryDrawing Brush="#FF003300" Geometry="F1 M 259.219,84L 412,274.964L 324.417,274.956L 324.417,401.639C 324.417,402.695 324.615,404.149 324.615,405.805C 324.615,417.787 315.377,422.921 304.671,425.333L 208.937,425.333C 202.748,417.401 199.427,416.079 198.233,403.987L 198.221,270.725L 110.667,270.725L 259.219,84 Z "/>
+					<GeometryDrawing Geometry="M 401.775,270.971L 258.596,92.0094L 119.593,266.732L 202.161,266.732L 202.161,404.396C 203.207,414.983 206.731,416.484 210.52,421.34L 303.536,421.34C 322.352,417.101 319.213,406.508 319.213,402.276L 319.213,270.963L 401.775,270.971 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="1,0.500001" EndPoint="3.73113e-006,0.500001">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF006600" Offset="0"/>
+									<GradientStop Color="#FF33FF00" Offset="0.999954"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 342.18,195.195L 259.229,91.3693L 120.225,266.092L 202.795,266.092L 202.795,388.892C 269.32,336.543 315.784,271.975 342.18,195.195 Z ">
+						<GeometryDrawing.Pen>
+							<Pen Thickness="1.33333" LineJoin="Round" Brush="#FF006600"/>
+						</GeometryDrawing.Pen>
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.995141,0.500001" EndPoint="0.00111635,0.500001">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF006600" Offset="0"/>
+									<GradientStop Color="#FF33FF00" Offset="0.999954"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+				</DrawingGroup.Children>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+</ResourceDictionary>

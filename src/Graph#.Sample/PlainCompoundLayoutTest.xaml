@@ -1,0 +1,53 @@
+﻿<Window x:Class="GraphSharp.Sample.PlainCompoundLayoutTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
+        Title="PlainCompoundLayoutTest"
+        WindowState="Maximized">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <Button Content="Relayout"
+                    Click="Relayout_Click"/>
+            <Button Content="Pause/Continue"
+                    Click="Pause_Click" />
+            <ComboBox x:Name="cbGraph"
+                      SelectedIndex="0">
+                <ComboBoxItem>BIG</ComboBoxItem>
+                <ComboBoxItem>SMALL</ComboBoxItem>
+                <ComboBoxItem>FLAT</ComboBoxItem>
+                <ComboBoxItem>REP</ComboBoxItem>
+                <ComboBoxItem>STAR</ComboBoxItem>
+                <ComboBoxItem>COMBINED</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <TextBlock x:Name="txtMessage"
+                   DockPanel.Dock="Top" />
+        <UniformGrid Rows="10"
+                     Columns="2">
+            <TextBlock>ElasticConstant</TextBlock>
+            <TextBox Text="{Binding ElasticConstant,Mode=TwoWay}" />
+            <TextBlock>RepulsionConstant</TextBlock>
+            <TextBox Text="{Binding RepulsionConstant,Mode=TwoWay}" />
+            <TextBlock>Gravitation Constant</TextBlock>
+            <TextBox Text="{Binding GravitationFactor,Mode=TwoWay}" />
+            <TextBlock>Nesting Factor</TextBlock>
+            <TextBox Text="{Binding NestingFactor,Mode=TwoWay}" />
+            <TextBlock>Ideal Edge Length</TextBlock>
+            <TextBox Text="{Binding IdealEdgeLength,Mode=TwoWay}" />
+            <TextBlock>Temperature Decreasing</TextBlock>
+            <TextBox Text="{Binding TemperatureDecreasing,Mode=TwoWay}" />
+            <TextBlock>Temperature Factor</TextBlock>
+            <TextBox Text="{Binding TemperatureFactor,Mode=TwoWay}" />
+            <TextBlock>Displacement Multiplier</TextBlock>
+            <TextBox Text="{Binding DisplacementMultiplier,Mode=TwoWay}" />
+            <TextBlock>Ideal Separated Distance</TextBlock>
+            <TextBox Text="{Binding IdealSeparatedDistance,Mode=TwoWay}" />
+            <TextBlock>Separation Multiplier</TextBlock>
+            <TextBox Text="{Binding SeparationMultiplier,Mode=TwoWay}" />
+        </UniformGrid>
+            <Controls:ZoomControl>
+            <Canvas x:Name="lc"/>
+        </Controls:ZoomControl>
+    </DockPanel>
+</Window>

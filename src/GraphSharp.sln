@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\QuickGraph.dll = Libraries\QuickGraph.dll
+		Libraries\RibbonControlsLibrary.dll = Libraries\RibbonControlsLibrary.dll
+		Libraries\WPFExtensions.dll = Libraries\WPFExtensions.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSharp", "Graph#\GraphSharp.csproj", "{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSharp.Controls", "Graph#.Controls\GraphSharp.Controls.csproj", "{90D874F2-486E-477E-93A9-FFA6FC92A2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSharp.Sample", "Graph#.Sample\GraphSharp.Sample.csproj", "{E709850B-B4C1-4789-BC93-44C0CE01C44B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSharp.Test", "Graph#.Test\GraphSharp.Test.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs08.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Graph#\\GraphSharp.csproj
+		SccProjectName1 = Graph#
+		SccLocalPath1 = Graph#
+		SccProjectUniqueName2 = Graph#.Controls\\GraphSharp.Controls.csproj
+		SccProjectName2 = Graph#.Controls
+		SccLocalPath2 = Graph#.Controls
+		SccProjectUniqueName3 = Graph#.Sample\\GraphSharp.Sample.csproj
+		SccProjectName3 = Graph#.Sample
+		SccLocalPath3 = Graph#.Sample
+		SccProjectUniqueName4 = Graph#.Test\\GraphSharp.Test.csproj
+		SccProjectName4 = Graph#.Test
+		SccLocalPath4 = Graph#.Test
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugWithoutPlugins|Any CPU = DebugWithoutPlugins|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.DebugWithoutPlugins|Any CPU.ActiveCfg = DebugWithoutPlugins|Any CPU
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.DebugWithoutPlugins|Any CPU.Build.0 = DebugWithoutPlugins|Any CPU
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.DebugWithoutPlugins|Any CPU.ActiveCfg = DebugWithoutPlugins|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.DebugWithoutPlugins|Any CPU.Build.0 = DebugWithoutPlugins|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.DebugWithoutPlugins|Any CPU.ActiveCfg = DebugWithoutPlugins|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.DebugWithoutPlugins|Any CPU.Build.0 = DebugWithoutPlugins|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E709850B-B4C1-4789-BC93-44C0CE01C44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.DebugWithoutPlugins|Any CPU.ActiveCfg = DebugWithoutPlugins|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.DebugWithoutPlugins|Any CPU.Build.0 = DebugWithoutPlugins|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,60 @@
+﻿<Window x:Class="GraphSharp.Sample.TestContextualLayout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Sample="clr-namespace:GraphSharp.Sample"
+        xmlns:Controls="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
+        xmlns:ContextualLayout="clr-namespace:GraphSharp.Algorithms.Layout.Contextual;assembly=GraphSharp"
+        Title="TestContextualLayout"
+        Height="300"
+        Width="300">
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type Controls:VertexControl}">
+                <Style.Triggers>
+                    <Trigger Property="Controls:GraphElementBehaviour.LayoutInfo"
+                             Value="{x:Static ContextualLayout:DoubleTreeVertexType.Forward}">
+                        <Setter Property="BorderBrush"
+                                Value="Orange" />
+                        <Setter Property="BorderThickness"
+                                Value="5" />
+                    </Trigger>
+                    <Trigger Property="Controls:GraphElementBehaviour.LayoutInfo"
+                             Value="{x:Static ContextualLayout:DoubleTreeVertexType.Center}">
+                        <Setter Property="BorderBrush"
+                                Value="Green" />
+                        <Setter Property="BorderThickness"
+                                Value="5" />
+                    </Trigger>
+                    <Trigger Property="Controls:GraphElementBehaviour.LayoutInfo"
+                             Value="{x:Static ContextualLayout:DoubleTreeVertexType.Backward}">
+                        <Setter Property="BorderBrush"
+                                Value="Red" />
+                        <Setter Property="BorderThickness"
+                                Value="5" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <DataTemplate DataType="{x:Type Sample:PocVertex}">
+                <Border Padding="5"
+                        Background="WhiteSmoke">
+                    <Button Content="{Binding ID}"
+                            Tag="{Binding}"
+                            Click="SelectedVertexChange_Click" />
+                </Border>
+            </DataTemplate>
+        </DockPanel.Resources>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="Selected vertex: " />
+            <ContentControl Content="{Binding SelectedVertex}" />
+        </StackPanel>
+        <ScrollViewer>
+            <Sample:PocContextualGraphLayout Graph="{Binding Graph}"
+                                             SelectedVertex="{Binding SelectedVertex}"
+                                             LayoutAlgorithmType="BalloonTree"
+                                             OverlapRemovalConstraint="Must"
+                                             OverlapRemovalAlgorithmType="FSA" />
+        </ScrollViewer>
+    </DockPanel>
+</Window>

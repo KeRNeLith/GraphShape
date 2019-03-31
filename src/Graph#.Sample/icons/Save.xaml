@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<DrawingImage x:Key="Horizon_Image_Save">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<DrawingGroup.Children>
+					<GeometryDrawing Brush="#FF0C2AAC" Geometry="F1 M 81.344,115.863C 83.428,104.683 88.9573,92.7253 102.819,94.7373L 403.027,94.7373C 412.124,97.5986 422.751,103.081 422.021,115.175L 422.021,419.133C 419.512,427.173 415.032,432.396 407.155,435.315L 114.864,435.848C 98.584,429.805 87.4453,420.269 80.724,403.7M 383.833,123.98L 383.881,142.863L 401.741,142.245L 401.693,123.932M 102.787,126.256L 102.835,145.139L 120.695,144.521L 120.647,126.207L 102.787,126.256 Z "/>
+					<GeometryDrawing Geometry="M 85.4493,401.211L 86.0667,114.916C 88.3587,102.617 93.6867,97.1547 102.049,98.528L 401.872,98.528C 412.12,101.752 417.004,106.76 416.524,113.551L 416.524,416.865C 414.881,422.125 411.331,426.604 405.867,428.628L 115.369,429.156C 100.785,423.745 90.8107,414.428 85.4493,401.211 Z M 378.383,124.189L 378.383,143.689C 378.383,146.241 380.401,148.309 382.889,148.309L 401.909,148.309C 404.399,148.309 406.416,146.241 406.416,143.689L 406.416,124.189C 406.416,121.637 404.399,119.568 401.909,119.568L 382.889,119.568C 380.401,119.568 378.383,121.637 378.383,124.189 Z M 97.3373,124.189L 97.3373,143.689C 97.3373,146.241 99.3547,148.309 101.844,148.309L 120.863,148.309C 123.352,148.309 125.369,146.241 125.369,143.689L 125.369,124.189C 125.369,121.637 123.352,119.568 120.863,119.568L 101.844,119.568C 99.3547,119.568 97.3373,121.637 97.3373,124.189 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.499999,-3.45915e-007" EndPoint="0.499999,1">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF000E97" Offset="0"/>
+									<GradientStop Color="#FF0883E9" Offset="0.432465"/>
+									<GradientStop Color="#FF70E4FD" Offset="0.875107"/>
+									<GradientStop Color="#FFB3FFFF" Offset="0.990784"/>
+									<GradientStop Color="#FFB3FFFF" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 136.527,118.088L 368.009,118.088L 368.009,295.507L 136.527,295.507L 136.527,118.088 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.0497783,-0.0672592" EndPoint="1.4982,-0.0672592">
+								<LinearGradientBrush.RelativeTransform>
+									<TransformGroup>
+										<SkewTransform CenterX="0.0497783" CenterY="-0.0672592" AngleX="15.0549" AngleY="0"/>
+										<RotateTransform CenterX="0.0497783" CenterY="-0.0672592" Angle="51.5618"/>
+									</TransformGroup>
+								</LinearGradientBrush.RelativeTransform>
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFFFFFFF" Offset="0"/>
+									<GradientStop Color="#FFE4FDFF" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 136.46,118.635L 367.943,118.635L 367.943,165.5L 136.46,165.5L 136.46,118.635 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.499999,-1.17212e-005" EndPoint="0.499999,1">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF000E97" Offset="0"/>
+									<GradientStop Color="#FF0883E9" Offset="0.444809"/>
+									<GradientStop Color="#FF70E4FD" Offset="0.900345"/>
+									<GradientStop Color="#FFA8FBFF" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="M 160.169,321.555C 159.808,316.7 163.371,312.937 170.859,310.261L 368.833,310.261C 374.913,311.901 379.331,316.569 382.087,324.265L 382.087,424.285L 160.721,424.285L 160.169,321.555 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.11467,-0.183323" EndPoint="1.71073,-0.183323">
+								<LinearGradientBrush.RelativeTransform>
+									<TransformGroup>
+										<SkewTransform CenterX="0.11467" CenterY="-0.183323" AngleX="35.5994" AngleY="0"/>
+										<RotateTransform CenterX="0.11467" CenterY="-0.183323" Angle="61.9866"/>
+									</TransformGroup>
+								</LinearGradientBrush.RelativeTransform>
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FFFFFFFF" Offset="0"/>
+									<GradientStop Color="#FFE8FDFF" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+					<GeometryDrawing Geometry="F1 M 171.169,325.517C 171.169,323.056 173.115,321.06 175.516,321.06L 316.267,321.06C 318.668,321.06 320.615,323.056 320.615,325.517L 320.615,413.523C 320.615,415.984 318.668,417.979 316.267,417.979L 175.516,417.979C 173.115,417.979 171.169,415.984 171.169,413.523M 182.279,332.803L 182.279,399.612C 182.279,403.688 185.5,406.989 189.475,406.989L 209.761,406.989C 213.737,406.989 216.959,403.688 216.959,399.612L 216.959,332.803C 216.959,328.727 213.737,325.423 209.761,325.423L 189.475,325.423C 185.5,325.423 182.279,328.727 182.279,332.803 Z ">
+						<GeometryDrawing.Brush>
+							<LinearGradientBrush StartPoint="0.500004,1.00001" EndPoint="0.500004,5.66781e-006">
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF001099" Offset="0"/>
+									<GradientStop Color="#FF0883E9" Offset="0.654205"/>
+									<GradientStop Color="#FF3BB3F2" Offset="1"/>
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</GeometryDrawing.Brush>
+					</GeometryDrawing>
+				</DrawingGroup.Children>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+</ResourceDictionary>

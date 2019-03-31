@@ -1,0 +1,55 @@
+﻿<Window x:Class="GraphSharp.Sample.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Sample="clr-namespace:GraphSharp.Sample"
+        xmlns:isom="clr-namespace:GraphSharp.Algorithms.Layout.Simple.FDP;assembly=GraphSharp"
+        xmlns:zoom="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
+        Title="TestWindow"
+        Height="600"
+        Width="600">
+    <DockPanel>
+
+        <WrapPanel Orientation="Horizontal"
+                   DockPanel.Dock="Top">
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin"
+                            Value="0,0,5,0" />
+                    <Setter Property="Padding"
+                            Value="5" />
+                </Style>
+            </WrapPanel.Resources>
+            <Button Content="Generate new graph"
+                    Click="Button_Click" />
+            <Button Content="Add vertex"
+                    Click="AddVertex_Click" />
+            <Button Content="Remove vertex"
+                    Click="RemoveVertex_Click" />
+            <Button Content="Add edge"
+                    Click="AddEdge_Click" />
+            <Button Content="Remove edge"
+                    Click="RemoveEdge_Click" />
+            <Button Content="Relayout"
+                    Click="Button_Click_1" />
+        </WrapPanel>
+
+        <ProgressBar Value="{Binding ElementName=layout,Path=LayoutStatusPercent,Mode=OneWay}" 
+                     Height="30"
+                     DockPanel.Dock="Bottom"/>
+
+        <zoom:ZoomControl>
+            <Sample:MyGraphLayout x:Name="layout"
+                                  LayoutAlgorithmType="ISOM"
+                                  OverlapRemovalAlgorithmType="FSA"
+                                  Graph="{Binding}"
+                                  AsyncCompute="true"
+                                  ShowAllStates="false"
+                                  HighlightAlgorithmType="Simple">
+                <Sample:MyGraphLayout.LayoutParameters>
+                    <isom:ISOMLayoutParameters Width="1200"
+                                               Height="1200" />
+                </Sample:MyGraphLayout.LayoutParameters>
+            </Sample:MyGraphLayout>
+        </zoom:ZoomControl>
+    </DockPanel>
+</Window>

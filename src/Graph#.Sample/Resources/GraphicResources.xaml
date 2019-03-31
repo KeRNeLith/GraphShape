@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
+    
+	<System:Double x:Key="IconWidth">15</System:Double>
+	<System:Double x:Key="IconHeight">15</System:Double>
+    
+</ResourceDictionary>

@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraphSharp</RootNamespace>
+    <AssemblyName>GraphSharp</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>false</SignAssembly>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsBuildReferenceAssembly>True</CodeContractsBuildReferenceAssembly>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsPlatformPath>
+    </CodeContractsPlatformPath>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsBuildReferenceAssembly>True</CodeContractsBuildReferenceAssembly>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsPlatformPath>
+    </CodeContractsPlatformPath>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugWithoutPlugins|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugWithoutPlugins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="QuickGraph, Version=3.2.40122.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\QuickGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\AlgorithmBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Highlight\HighlightAlgorithmBase.cs" />
+    <Compile Include="Algorithms\Highlight\HighlightContext.cs" />
+    <Compile Include="Algorithms\Highlight\HighlightParameterBase.cs" />
+    <Compile Include="Algorithms\Highlight\IHighlightAlgorithm.cs" />
+    <Compile Include="Algorithms\Highlight\IHighlightAlgorithmFactory.cs" />
+    <Compile Include="Algorithms\Highlight\IHighlightContext.cs" />
+    <Compile Include="Algorithms\Highlight\IHighlightController.cs" />
+    <Compile Include="Algorithms\Highlight\IHighlightParameters.cs" />
+    <Compile Include="Algorithms\Highlight\SimpleHighlightAlgorithm.cs" />
+    <Compile Include="Algorithms\Highlight\StandardHighlightAlgorithmFactory.cs" />
+    <Compile Include="Algorithms\IAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\IAlgorithmParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\LayeredTopologicalSortAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Tree\BalloonTreeLayoutAlgorithm.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Tree\BalloonTreeLayoutParameters.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Circular\CircularLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Compound\FDP\CompoundFDPLayoutAlgorithm.cs" />
+    <Compile Include="Algorithms\Layout\Compound\FDP\CompoundFDPLayoutParameters.cs" />
+    <Compile Include="Algorithms\Layout\Compound\CompoundLayoutContext.cs" />
+    <Compile Include="Algorithms\Layout\Contextual\DoubleTreeLayoutAlgorithm.cs" />
+    <Compile Include="Algorithms\EdgeRouting\EdgeRoutingAlgorithmBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\EdgeRouting\EdgeRoutingParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\EdgeRouting\IEdgeRoutingAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\EdgeRouting\IEdgeRoutingAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\EdgeRouting\IEdgeRoutingParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\EdgeRouting\StandardEdgeRoutingAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\ParameterizedLayoutAlgorithmBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\FRLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\BoundedFRLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Compound\ICompoundLayoutAlgorithm.cs" />
+    <Compile Include="Algorithms\Layout\Compound\ICompoundLayoutContext.cs" />
+    <Compile Include="Algorithms\Layout\ILayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\ILayoutAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\ILayoutContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\ILayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\IParameterizedLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\ISOMLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\KKLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutAlgorithmBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutIterationEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutMode.cs" />
+    <Compile Include="Algorithms\Layout\LayoutParametersBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\LayoutUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\LinLogLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\RadialTreeLayoutAlgorithm.cs" />
+    <Compile Include="Algorithms\Layout\StandardLayoutAlgorithmFactory.cs" />
+    <Compile Include="Algorithms\OverlapRemoval\FSAAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\IOverlapRemovalAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\IOverlapRemovalAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\IOverlapRemovalContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\IOverlapRemovalParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OneWayFSAAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OneWayFSAParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OverlapRemovalAlgorithmBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OverlapRemovalContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OverlapRemovalHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\OverlapRemovalParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\RectangleWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\OverlapRemoval\StandardOverlapRemovalAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Tree\SimpleTreeLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.SugiEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.SugiVertex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayerCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CompoundGraph.cs" />
+    <Compile Include="GraphHelper.cs" />
+    <Compile Include="GraphHideHelper.cs" />
+    <Compile Include="HierarchicalGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICompoundGraph.cs" />
+    <Compile Include="IHierarchicalBidirectionalGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ISoftMutableGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoftMutableBidirectionalGraph.cs" />
+    <Compile Include="SoftMutableHierarchicalGraph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TypedEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WeightedEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WrappedVertex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\FactoryHelper.cs" />
+    <Compile Include="Algorithms\Layout\Compound\CompoundVertexInnerLayoutType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\ContextualLayoutAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\ContextualLayoutContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\DoubleTreeLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\IContextualLayoutAlgorithmFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Contextual\RadialTreeLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Circular\CircularLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\ISOMLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\KKLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\LinLogLayoutAlgorithm.QuadTree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\FDP\LinLogLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\Layout\Simple\Tree\SimpleTreeLayoutParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IMutableCompoundGraph.cs" />
+    <Compile Include="Algorithms\Layout\Compound\FDP\CompoundFDPLayoutAlgorithm.Data.cs" />
+    <Compile Include="Algorithms\Layout\Compound\FDP\CompoundFDPLayoutAlgorithm.Init.cs" />
+    <Compile Include="Algorithms\Layout\Compound\CompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="Algorithms\Layout\Simple\FDP\FRCoolingFunction.cs" />
+    <Compile Include="Algorithms\Layout\Simple\FDP\FreeFRLayoutParameters.cs" />
+    <Compile Include="Algorithms\Layout\Simple\FDP\FRLayoutParametersBase.cs" />
+    <Compile Include="Algorithms\Layout\Compound\ICompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="Algorithms\Layout\ILayoutInfoIterationEventArgs.cs" />
+    <Compile Include="Algorithms\Layout\ILayoutIterationEventArgs.cs" />
+    <Compile Include="Algorithms\Layout\Compound\TestingCompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="Algorithms\Layout\Compound\TestingCompoundVertexInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutAlgorithm.AlternatingLayer.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutAlgorithm.Data.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaAlgorithm.DoCrossingMinimizations.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaAlgorithm.BuildSparseNormalizedGraph.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaAlgorithm.DoPreparing.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\EfficientSugiyamaLayoutAlgorithm.HorizontalAssignment.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Hierarchical\SugiyamaEdgeRoutings.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Tree\SimpleTreeLayoutAlgorithm.Data.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Tree\SimpleTreeLayoutAlgorithm.WidthAndHeightOpt.cs" />
+    <Compile Include="Algorithms\Layout\Simple\Tree\SpanningTreeGeneration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagrams\Algorithm Interfaces.cd" />
+    <None Include="ClassDiagrams\Implemented Algorithms.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
