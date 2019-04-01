@@ -2,14 +2,14 @@
 using System.Linq;
 using QuickGraph;
 using GraphSharp;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace GraphSharp.Test
 {
 	/// <summary>
 	/// Summary description for GraphHelperTest
 	/// </summary>
-	[TestClass]
+	[TestFixture]
 	public class GraphHelperTest
 	{
 		BidirectionalGraph<string, Edge<string>> directedGraph;
@@ -37,7 +37,7 @@ namespace GraphSharp.Test
 			#endregion
 		}
 
-		[TestMethod]
+		[Test]
 		public void EdgesBetweenDirectedTestOne()
 		{
 			List<string> set1 = new List<string>( );
@@ -55,7 +55,7 @@ namespace GraphSharp.Test
 			Assert.AreEqual( three, result[ 1 ].Target );
 		}
 
-		[TestMethod]
+		[Test]
 		public void EdgesBetweenDirectedTestTwo()
 		{
 			List<string> set1 = new List<string>( );

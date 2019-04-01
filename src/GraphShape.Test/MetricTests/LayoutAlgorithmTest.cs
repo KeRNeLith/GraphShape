@@ -1,6 +1,5 @@
 ﻿using GraphSharp.Algorithms.EdgeRouting;
 using GraphSharp.Algorithms.Layout;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuickGraph;
 using System.Windows;
 using System.Collections.Generic;

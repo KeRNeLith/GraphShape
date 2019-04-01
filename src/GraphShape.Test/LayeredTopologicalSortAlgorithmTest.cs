@@ -1,7 +1,7 @@
 ﻿using GraphSharp.Algorithms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuickGraph;
 using System.Diagnostics;
+using NUnit.Framework;
 
 namespace GraphSharp.Test
 {
@@ -9,11 +9,11 @@ namespace GraphSharp.Test
 	///This is a test class for LayeredTopologicalSortAlgorithmTest and is intended
 	///to contain all LayeredTopologicalSortAlgorithmTest Unit Tests
 	///</summary>
-	[TestClass]
+	[TestFixture]
 	public class LayeredTopologicalSortAlgorithmTest
 	{
 
-		[TestMethod]
+		[Test]
 		public void Simple()
 		{
 			var g = new BidirectionalGraph<string, Edge<string>>( );
@@ -35,7 +35,7 @@ namespace GraphSharp.Test
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void MultipleSource()
 		{
 			var g = new BidirectionalGraph<string, Edge<string>>( );
@@ -60,7 +60,7 @@ namespace GraphSharp.Test
 			Assert.AreEqual( 0, lts.LayerIndices[ vs[ 4 ] ] );
 		}
 
-		[TestMethod]
+		[Test]
 		public void NonAcyclic()
 		{
 			var g = new BidirectionalGraph<string, Edge<string>>( );

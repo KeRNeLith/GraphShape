@@ -1,10 +1,10 @@
 ﻿using System;
 using GraphSharp.Algorithms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Windows;
 using GraphSharp.Algorithms.Layout;
 using System.Collections.Generic;
 using System.Diagnostics;
+using NUnit.Framework;
 
 namespace GraphSharp.Test
 {
@@ -14,10 +14,10 @@ namespace GraphSharp.Test
     ///This is a test class for LayoutHelperTest and is intended
     ///to contain all LayoutHelperTest Unit Tests
     ///</summary>
-    [TestClass]
+    [TestFixture]
     public class LayoutUtilTest
     {
-        [TestMethod]
+        [Test]
         public void GetClippingPoint_Target_Outside_Source_Rect_ClippingPoint_OnCorner_Test()
         {
             Size size = new Size(10,10);
@@ -29,7 +29,7 @@ namespace GraphSharp.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
+        [Test]
         public void GetClippingPoint_Target_Outside_Source_Rect_ClippingPoint_OnBottomSide_Test()
         {
             Size size = new Size(10, 10);
@@ -41,7 +41,7 @@ namespace GraphSharp.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
+        [Test]
         public void GetClippingPoint_Target_Inside_Source_Rect_ClippingPoint_OnBottomSide_Test()
         {
             Size size = new Size(10, 10);
@@ -58,7 +58,7 @@ namespace GraphSharp.Test
         /// <summary>
         ///A test for BiLayerCrossCount
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void BiLayerCrossCountTest()
         {
             IEnumerable<Pair> pairs = new Pair[] { 
@@ -78,7 +78,7 @@ namespace GraphSharp.Test
         /// <summary>
         ///A test for BiLayerCrossCount
         ///</summary>
-        [TestMethod()]
+        [Test]
         public void Markable_BiLayerCrossCountTest()
         {
             CrossCounterPair[] pairs = new CrossCounterPair[] { 

@@ -96,7 +96,7 @@ namespace GraphSharp.Algorithms.Layout.Simple.FDP
             if ( n == 0 )
                 return;
 
-            //TODO check this condition
+            // TODO check this condition
             for ( int currentIteration = 0; currentIteration < Parameters.MaxIterations; currentIteration++ )
             {
                 #region An iteration
@@ -169,7 +169,7 @@ namespace GraphSharp.Algorithms.Layout.Simple.FDP
 
         /// <returns>
         /// Calculates the energy of the state where 
-        /// the positions of the vertex 'p' & 'q' are exchanged.
+        /// the positions of the vertex 'p' and 'q' are exchanged.
         /// </returns>
         private double CalcEnergyIfExchanged( int p, int q )
         {
