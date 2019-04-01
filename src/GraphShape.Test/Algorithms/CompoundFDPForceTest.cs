@@ -3,17 +3,17 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using GraphSharp.Algorithms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GraphSharp.Algorithms.Layout;
 using GraphSharp.Algorithms.Layout.Compound.FDP;
 using System.Windows;
+using NUnit.Framework;
 
 namespace GraphSharp.Test.Algorithms
 {
     /// <summary>
     /// Summary description for CompoundFDPForceTest
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class CompoundFDPForceTest
     {
         public CompoundFDPForceTest()
@@ -47,7 +47,7 @@ namespace GraphSharp.Test.Algorithms
         //
         #endregion
 
-        [TestMethod]
+        [Test]
         public void ForceTest()
         {
             var repulsionRange = parameters.IdealEdgeLength * 2;
@@ -117,7 +117,7 @@ namespace GraphSharp.Test.Algorithms
             return Fr;
         }
 
-        [TestMethod]
+        [Test]
         public void EdgeCrossingTest()
         {
             var uPoint1 = new Point(0, 0);

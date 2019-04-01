@@ -73,6 +73,7 @@ Supported platforms:
       <SpecificVersion>False</SpecificVersion>
 	  <HintPath>..\Libraries\QuickGraph.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   

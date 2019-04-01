@@ -5,7 +5,6 @@ using System.Linq;
 using QuickGraph;
 using System.Collections.Generic;
 using System.Collections;
-using GraphShape.Utils;
 
 namespace GraphSharp.Algorithms.Layout.Compound.FDP
 {

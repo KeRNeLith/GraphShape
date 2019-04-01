@@ -4,7 +4,6 @@ using System.Windows;
 using QuickGraph;
 using System;
 using System.Diagnostics.Contracts;
-using GraphShape.Utils;
 
 namespace GraphSharp.Algorithms.Layout.Compound.FDP
 {
