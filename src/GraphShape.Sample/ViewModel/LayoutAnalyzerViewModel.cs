@@ -1,5 +1,5 @@
 ﻿using GraphSharp.Sample.Model;
-using GraphSharp.Sample.Properties;
+using GraphShape.Sample.Properties;
 using WPFExtensions.ViewModel.Commanding;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
