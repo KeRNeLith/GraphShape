@@ -1,0 +1,169 @@
+version: '0.0.{build}'
+image: Visual Studio 2017
+
+# Setup environment
+pull_requests:
+  do_not_increment_build_number: true
+
+branches:
+  except:
+    - /tmp|temp/
+
+environment:
+  SONARQUBE_TOKEN:
+    secure: 3wp08w0E7dvLNXiVvmxU0KaeMvr8sAFNSoiaTGV/yZBND0dgJ18NbFJnwtwe09vM
+  DocFXVersion: 2.42.4
+  NUnitConsoleVersion: 3.10.0
+  OpenCoverVersion: 4.7.922
+  CoverallsVersion: 1.0.0
+  COVERALLS_REPO_TOKEN:
+    secure: UXj7LMvcwlRWY+UFiqS6Pqbs8vZjZbDaCMYIwk9YPXcOFbDK8io7lH6/1s0D1uOO
+  GITHUB_ACCESS_TOKEN:
+    secure: fLTTmcGOM55kigJC4vErpObFmybCtzQtwb4QN55BTNq3GDGaOCoHDoIPxexzO59d
+  GITHUB_EMAIL:
+    secure: wcfqCHOmeRLZf/BX6u6qQSV89Q4jFs9fHNDgMpKAcqE=
+
+# Setup build version
+init:
+- ps: >-
+    if ($env:APPVEYOR_REPO_TAG -eq "true")
+    {
+        $env:Build_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
+    }
+    else
+    {
+        $env:Build_Version = "$($env:APPVEYOR_BUILD_VERSION)";
+    }
+
+# Assembly infos & csproj patching
+assembly_info:
+  patch: true
+  file: '**\\AssemblyInfo.*'
+  assembly_version: '$(Build_Version)'
+  assembly_file_version: '$(Build_Version)'
+  assembly_informational_version: '$(Build_Version)'
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '$(Build_Version)'
+  package_version: '$(Build_Version)'
+  assembly_version: '$(Build_Version)'
+  file_version: '$(Build_Version)'
+  informational_version: '$(Build_Version)'
+
+# Build configurations
+platform:
+  - Any CPU
+
+configuration:
+  - Debug
+  - Release
+
+matrix:
+  fast_finish: true
+
+# Build
+before_build:
+# NuGet restore
+  - nuget restore -verbosity detailed
+# SonarQube
+  - ps: >-
+      if ($env:Configuration -eq "Release")
+      {
+          dotnet tool install --tool-path tools dotnet-sonarscanner
+          $sonarScanner = (Resolve-Path "tools\dotnet-sonarscanner.exe").ToString()
+      }
+
+build:
+  verbosity: minimal
+
+build_script:
+# Start SonarQube analysis (only for Release configuration)
+  - ps: $analysisFile = (Convert-Path SonarQube.Analysis.xml).ToString()
+  - ps: >-
+      if ($env:Configuration -eq "Release")
+      {
+          & $sonarScanner begin /k:"graphshape" /s:$analysisFile /o:"kernelith-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.branch.name=$env:APPVEYOR_REPO_BRANCH" /d:sonar.cs.opencover.reportsPaths="coverage.xml" /d:sonar.login="$env:SONARQUBE_TOKEN"
+      }
+  - msbuild
+
+before_test:
+# NuGet packages for test & coverage
+  - ps: >-
+      if ($env:Configuration -eq "Release")
+      {
+          nuget install NUnit.Console -Version $env:NUnitConsoleVersion -OutputDirectory tools
+          nuget install OpenCover -Version $env:OpenCoverVersion -OutputDirectory tools
+          dotnet tool install --tool-path tools --version $env:CoverallsVersion coveralls.net
+      }
+
+after_test:
+# Generate coverage report
+  - ps: >-
+      if ($env:Configuration -eq "Release")
+      {
+          $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString()
+          $nunitConsole = (Resolve-Path "tools\NUnit.ConsoleRunner.*\tools\nunit3-console.exe").ToString()
+          $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString()
+          $testAssemblies = (ls src\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" } | % FullName | sort-object -Unique)
+          
+          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]*" -target:"$nunitConsole" -targetargs:"$testAssemblies" -log:Warn -output:coverage.xml
+          
+          & $sonarScanner end /d:"sonar.login=$env:SONARQUBE_TOKEN"
+          
+          & $coveralls --opencover -i coverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --useRelativePaths --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
+      }
+
+# Artifact
+artifacts:  
+  - path: '**\bin\Release\*.nupkg'
+    name: NuGet
+
+# Documentation
+before_deploy:
+# Release documentation
+  - ps: ./releaseDoc.ps1
+
+# Deploy
+deploy:
+# MyGet
+  - provider: NuGet
+    server: https://www.myget.org/F/kernelith-ci/api/v2/package
+    api_key:
+      secure: ANF+joC2B+NahxCFbLPOjNvEAo36F2F4QJu6zLwoIf2I9KwkxKyCSuNxDpLmJmtU
+    skip_symbols: true
+    on:
+      configuration: Release
+# GitHub packages
+  - provider: NuGet
+    server: https://nuget.pkg.github.com/KeRNeLith/index.json
+    username: KeRNeLith
+    api_key:
+      secure: 6N37NtnuKSzKQXlPOCtPSFJGOvJUdJjPK8LcuWx2PjHs2WVdngenZvYixk6br72b
+    on:
+      branch: master
+      configuration: Release
+      APPVEYOR_REPO_TAG: true
+# NuGet
+  - provider: NuGet
+    api_key:
+      secure: a/0jxqKB5mP/ED1AIQ6YxAoiYZP93M5NQpyZbq40Tkzg+ye0MhFHlDQFBUefrseY
+    on:
+      branch: master
+      configuration: Release
+      APPVEYOR_REPO_TAG: true
+# GitHub
+  - provider: GitHub
+    auth_token:
+      secure: fLTTmcGOM55kigJC4vErpObFmybCtzQtwb4QN55BTNq3GDGaOCoHDoIPxexzO59d
+    release: '${Build_Version}'
+    description: 'Version ${Build_Version}'
+    artifact: NuGet
+    draft: false
+    prerelease: false
+    force_update: true
+    on:
+      branch: master
+      configuration: Release
+      APPVEYOR_REPO_TAG: true
