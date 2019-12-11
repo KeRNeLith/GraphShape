@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	public class LayoutState<TVertex, TEdge>
 	{

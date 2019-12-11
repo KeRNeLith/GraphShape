@@ -1,13 +1,13 @@
-﻿using GraphSharp.Sample.Model;
-using GraphShape.Sample.Properties;
+﻿using GraphShape.Sample.Properties;
 using WPFExtensions.ViewModel.Commanding;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
+using GraphShape.Sample.Model;
 
-namespace GraphSharp.Sample.ViewModel
+namespace GraphShape.Sample.ViewModel
 {
     public partial class LayoutAnalyzerViewModel : CommandSink, INotifyPropertyChanged
     {

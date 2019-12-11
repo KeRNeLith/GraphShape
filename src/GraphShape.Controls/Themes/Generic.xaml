@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:extbehaviour="clr-namespace:WPFExtensions.AttachedBehaviours;assembly=WPFExtensions"
-                    xmlns:Converters="clr-namespace:GraphSharp.Converters"
-                    xmlns:Controls="clr-namespace:GraphSharp.Controls">
+                    xmlns:Converters="clr-namespace:GraphShape.Converters"
+                    xmlns:Controls="clr-namespace:GraphShape.Controls">
 
     <Converters:EdgeRouteToPathConverter x:Key="routeToPathConverter" />
     <Converters:PointArrayToString x:Key="pointsToStringConverter" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
 	public class ISOMLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, ISOMLayoutParameters>
 		where TVertex : class

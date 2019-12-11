@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Controls
+﻿namespace GraphShape.Controls
 {
 	public enum LayoutMode
 	{

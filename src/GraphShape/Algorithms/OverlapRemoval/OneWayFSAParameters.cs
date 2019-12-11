@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.OverlapRemoval
+﻿namespace GraphShape.Algorithms.OverlapRemoval
 {
 	public enum OneWayFSAWayEnum {
 		Horizontal,

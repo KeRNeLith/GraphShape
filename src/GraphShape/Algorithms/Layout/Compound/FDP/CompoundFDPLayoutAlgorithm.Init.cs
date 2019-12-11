@@ -5,7 +5,7 @@ using QuikGraph;
 using System;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.Layout.Compound.FDP
+namespace GraphShape.Algorithms.Layout.Compound.FDP
 {
     public partial class CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

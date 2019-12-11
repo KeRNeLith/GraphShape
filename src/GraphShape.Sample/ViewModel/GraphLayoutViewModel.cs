@@ -1,7 +1,7 @@
-﻿using GraphSharp.Controls;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using GraphShape.Controls;
 
-namespace GraphSharp.Sample.ViewModel
+namespace GraphShape.Sample.ViewModel
 {
 	public class PocGraphLayout : GraphLayout<PocVertex, PocEdge, PocGraph> { }
 

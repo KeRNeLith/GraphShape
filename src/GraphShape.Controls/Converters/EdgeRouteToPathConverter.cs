@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 
-namespace GraphSharp.Converters
+namespace GraphShape.Converters
 {
 	/// <summary>
 	/// Converts the position and sizes of the source and target points, and the route informations

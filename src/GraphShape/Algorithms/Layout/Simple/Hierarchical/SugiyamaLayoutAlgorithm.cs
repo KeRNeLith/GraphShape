@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using GraphSharp.Algorithms.EdgeRouting;
 using QuikGraph;
 using QuikGraph.Algorithms.Search;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Diagnostics.Contracts;
+using GraphShape.Algorithms.EdgeRouting;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
     public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, SugiyamaLayoutParameters>, IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

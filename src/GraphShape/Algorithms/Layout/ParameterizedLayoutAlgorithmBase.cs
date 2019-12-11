@@ -5,7 +5,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParam> : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam>, ILayoutAlgorithm<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo>
 		where TVertex : class

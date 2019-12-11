@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using GraphSharp.Sample.Model;
+using GraphShape.Sample.Model;
 
-namespace GraphSharp.Sample.ViewModel
+namespace GraphShape.Sample.ViewModel
 {
 	public partial class LayoutAnalyzerViewModel
 	{

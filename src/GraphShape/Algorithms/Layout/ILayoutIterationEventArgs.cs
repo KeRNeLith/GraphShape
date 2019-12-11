@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     public interface ILayoutIterationEventArgs<TVertex>
         where TVertex : class

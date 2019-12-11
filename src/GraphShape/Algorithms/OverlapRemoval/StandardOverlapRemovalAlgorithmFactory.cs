@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
 	public class StandardOverlapRemovalAlgorithmFactory<TVertex> : IOverlapRemovalAlgorithmFactory<TVertex>
 		where TVertex : class

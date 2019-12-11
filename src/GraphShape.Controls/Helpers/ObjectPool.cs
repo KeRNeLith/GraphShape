@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Helpers
+namespace GraphShape.Helpers
 {
 	public delegate void DisposingHandler( object sender );
 

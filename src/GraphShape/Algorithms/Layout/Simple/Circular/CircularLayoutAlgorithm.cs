@@ -6,7 +6,7 @@ using System.Windows;
 using System.Diagnostics;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Circular
+namespace GraphShape.Algorithms.Layout.Simple.Circular
 {
     public class CircularLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, CircularLayoutParameters>
         where TVertex : class

@@ -1,6 +1,6 @@
 ﻿using QuikGraph;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public class HighlightContext<TVertex, TEdge, TGraph> : IHighlightContext<TVertex, TEdge, TGraph>
 		where TVertex : class 

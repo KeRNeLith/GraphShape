@@ -1,9 +1,9 @@
-﻿using GraphSharp.Algorithms;
-using QuikGraph;
+﻿using QuikGraph;
 using System.Diagnostics;
+using GraphShape.Algorithms;
 using NUnit.Framework;
 
-namespace GraphSharp.Test
+namespace GraphShape.Test
 {
 	/// <summary>
 	///This is a test class for LayeredTopologicalSortAlgorithmTest and is intended

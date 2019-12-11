@@ -1,7 +1,7 @@
 using System;
 using QuikGraph.Algorithms;
 
-namespace GraphSharp.Algorithms
+namespace GraphShape.Algorithms
 {
 	/// <summary>
 	/// Simple algorithm interface which is not connected to any graph.

@@ -4,7 +4,7 @@ using System.Linq;
 using QuikGraph;
 using QuikGraph.Algorithms;
 
-namespace GraphSharp.Algorithms
+namespace GraphShape.Algorithms
 {
 	public class LayeredTopologicalSortAlgorithm<TVertex, TEdge> : AlgorithmBase<IVertexAndEdgeListGraph<TVertex, TEdge>>
 		where TEdge : IEdge<TVertex>

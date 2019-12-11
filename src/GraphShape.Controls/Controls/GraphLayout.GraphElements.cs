@@ -6,7 +6,7 @@ using System.Threading;
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public partial class GraphLayout<TVertex, TEdge, TGraph> : GraphCanvas
         where TVertex : class
@@ -325,7 +325,7 @@ namespace GraphSharp.Controls
             edgeControl.Source = _vertexControls[edge.Source];
             edgeControl.Target = _vertexControls[edge.Target];
 
-            if (ActualLayoutMode == GraphSharp.Algorithms.Layout.LayoutMode.Simple)
+            if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
                 Children.Insert(0, edgeControl);
             else
                 Children.Add(edgeControl);

@@ -2,7 +2,7 @@
 using System.Linq;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public class StandardHighlightAlgorithmFactory<TVertex, TEdge, TGraph> : IHighlightAlgorithmFactory<TVertex, TEdge, TGraph>
 		where TVertex : class

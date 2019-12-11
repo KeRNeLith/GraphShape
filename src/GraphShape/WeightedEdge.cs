@@ -1,6 +1,6 @@
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public class WeightedEdge<Vertex> : Edge<Vertex>
 	{

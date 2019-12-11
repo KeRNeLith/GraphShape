@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout.Compound
 {
     public class CompoundLayoutContext<TVertex, TEdge, TGraph> 
         : LayoutContext<TVertex, TEdge, TGraph>, ICompoundLayoutContext<TVertex, TEdge, TGraph>

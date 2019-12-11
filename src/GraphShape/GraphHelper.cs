@@ -7,7 +7,7 @@ using QuikGraph.Algorithms.ShortestPath;
 using System.Diagnostics;
 using QuikGraph.Algorithms;
 
-namespace GraphSharp
+namespace GraphShape
 {
     public static class GraphHelper
     {

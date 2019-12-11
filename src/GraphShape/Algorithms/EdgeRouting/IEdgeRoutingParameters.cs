@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.EdgeRouting
+﻿namespace GraphShape.Algorithms.EdgeRouting
 {
 	public interface IEdgeRoutingParameters : IAlgorithmParameters
 	{		

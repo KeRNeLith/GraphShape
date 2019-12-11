@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
-using GraphSharp.Helpers;
+using GraphShape.Helpers;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
 	public class EdgeControl : Control, IPoolObject, IDisposable
 	{

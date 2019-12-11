@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout.Compound.FDP
+﻿namespace GraphShape.Algorithms.Layout.Compound.FDP
 {
     public class CompoundFDPLayoutParameters : LayoutParametersBase
     {

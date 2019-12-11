@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public class HighlightParameterBase : IHighlightParameters
 	{

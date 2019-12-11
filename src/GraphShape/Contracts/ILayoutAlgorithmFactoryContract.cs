@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using GraphSharp.Algorithms.Layout;
 using QuikGraph;
 using System.Linq;
+using GraphShape.Algorithms.Layout;
 
-namespace GraphSharp.Contracts
+namespace GraphShape.Contracts
 {
     [ContractClassFor( typeof( ILayoutAlgorithmFactory<,,> ) )]
     public class ILayoutAlgorithmFactoryContract<TVertex, TEdge, TGraph> : ILayoutAlgorithmFactory<TVertex, TEdge, TGraph>

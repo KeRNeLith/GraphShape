@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public interface IAnimation
     {

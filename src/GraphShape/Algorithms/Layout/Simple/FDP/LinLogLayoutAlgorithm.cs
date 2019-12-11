@@ -4,7 +4,7 @@ using QuikGraph;
 using System.Linq;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
 	public partial class LinLogLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, LinLogLayoutParameters>
 		where TVertex : class

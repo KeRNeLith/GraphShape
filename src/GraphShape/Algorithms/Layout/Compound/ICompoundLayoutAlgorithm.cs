@@ -2,7 +2,7 @@
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout.Compound
 {
 	public interface ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
 		where TVertex : class

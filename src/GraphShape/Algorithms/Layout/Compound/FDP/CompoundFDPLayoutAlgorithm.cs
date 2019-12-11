@@ -6,7 +6,7 @@ using QuikGraph;
 using System.Diagnostics.Contracts;
 using System.Diagnostics;
 
-namespace GraphSharp.Algorithms.Layout.Compound.FDP
+namespace GraphShape.Algorithms.Layout.Compound.FDP
 {
     /// <typeparam name="TVertex">The type of the vertices.</typeparam>
     /// <typeparam name="TEdge">The type of the edges.</typeparam>

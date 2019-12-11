@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
     public partial class EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

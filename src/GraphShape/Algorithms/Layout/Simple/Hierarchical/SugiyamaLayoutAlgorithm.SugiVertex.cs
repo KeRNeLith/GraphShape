@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
 	public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph> 
         where TVertex : class 

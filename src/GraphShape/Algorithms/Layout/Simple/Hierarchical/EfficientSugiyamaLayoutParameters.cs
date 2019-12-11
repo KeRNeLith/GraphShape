@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+﻿namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
 	public class EfficientSugiyamaLayoutParameters : LayoutParametersBase
 	{

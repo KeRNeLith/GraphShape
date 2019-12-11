@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
 	interface ICompoundVertexControl
 	{

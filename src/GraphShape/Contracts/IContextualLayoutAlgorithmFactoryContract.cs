@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Linq;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout.Contextual;
 using QuikGraph;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Algorithms.Layout.Contextual;
 
-namespace GraphSharp.Contracts
+namespace GraphShape.Contracts
 {
     [ContractClassFor( typeof( IContextualLayoutAlgorithmFactory<,,> ) )]
     public class IContextualLayoutAlgorithmFactoryContract<TVertex, TEdge, TGraph> : ILayoutAlgorithmFactoryContract<TVertex, TEdge, TGraph>, IContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph>

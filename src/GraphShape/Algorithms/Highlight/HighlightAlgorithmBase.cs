@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using QuikGraph;
 using System.Diagnostics;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
     public abstract class HighlightAlgorithmBase<TVertex, TEdge, TGraph, TParameters> : IHighlightAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

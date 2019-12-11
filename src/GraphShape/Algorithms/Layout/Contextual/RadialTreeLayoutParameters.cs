@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout.Contextual
+﻿namespace GraphShape.Algorithms.Layout.Contextual
 {
 	public class RadialTreeLayoutParameters : LayoutParametersBase
 	{

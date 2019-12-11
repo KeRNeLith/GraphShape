@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	[DebuggerDisplay("First = {First}, Second = {Second}")]
 	public class Pair

@@ -2,7 +2,7 @@
 using QuikGraph;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public interface ICompoundGraph<TVertex, TEdge> : IBidirectionalGraph<TVertex, TEdge>
 		where TEdge : IEdge<TVertex>

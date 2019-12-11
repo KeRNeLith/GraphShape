@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public interface ITransition
     {

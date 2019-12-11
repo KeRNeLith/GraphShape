@@ -3,7 +3,7 @@ using QuikGraph;
 using System.Linq;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp
+namespace GraphShape
 {
     public class CompoundGraph<TVertex, TEdge> : BidirectionalGraph<TVertex, TEdge>, IMutableCompoundGraph<TVertex, TEdge>
         where TEdge : IEdge<TVertex>

@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using QuikGraph;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     public interface ILayoutContext<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>

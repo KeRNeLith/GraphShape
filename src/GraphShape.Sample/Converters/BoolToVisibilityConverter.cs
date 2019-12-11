@@ -1,7 +1,7 @@
 ﻿using System.Windows.Data;
 using System.Windows;
 
-namespace GraphSharp.Sample.Converters
+namespace GraphShape.Sample.Converters
 {
 	public class BoolToVisibilityConverter : IValueConverter
 	{

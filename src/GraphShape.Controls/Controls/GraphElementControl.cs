@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
 	public class HighlightTriggeredEventArgs : RoutedEventArgs
 	{

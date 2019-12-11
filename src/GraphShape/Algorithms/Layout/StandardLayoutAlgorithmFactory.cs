@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
-using GraphSharp.Algorithms.Layout.Simple.Tree;
-using GraphSharp.Algorithms.Layout.Simple.Circular;
-using GraphSharp.Algorithms.Layout.Simple.FDP;
-using GraphSharp.Algorithms.Layout.Simple.Hierarchical;
-using GraphSharp.Algorithms.Layout.Compound;
-using GraphSharp.Algorithms.Layout.Compound.FDP;
 using System.Windows;
+using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout.Compound.FDP;
+using GraphShape.Algorithms.Layout.Simple.Circular;
+using GraphShape.Algorithms.Layout.Simple.FDP;
+using GraphShape.Algorithms.Layout.Simple.Hierarchical;
+using GraphShape.Algorithms.Layout.Simple.Tree;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     public class StandardLayoutAlgorithmFactory<TVertex, TEdge, TGraph> : ILayoutAlgorithmFactory<TVertex, TEdge, TGraph>
         where TVertex : class

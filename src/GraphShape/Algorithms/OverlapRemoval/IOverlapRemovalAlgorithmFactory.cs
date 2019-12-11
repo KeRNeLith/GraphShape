@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
 	public interface IOverlapRemovalAlgorithmFactory<TVertex>
 		where TVertex : class

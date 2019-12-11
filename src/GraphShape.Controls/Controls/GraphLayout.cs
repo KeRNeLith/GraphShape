@@ -6,16 +6,16 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Windows;
 using System.Linq;
-using GraphSharp.Algorithms.EdgeRouting;
-using GraphSharp.Algorithms.Highlight;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Algorithms.OverlapRemoval;
+using GraphShape.Algorithms.EdgeRouting;
+using GraphShape.Algorithms.Highlight;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.OverlapRemoval;
 using QuikGraph;
 using Point = System.Windows.Point;
 using Size = System.Windows.Size;
-using GraphSharp.Algorithms.Layout.Compound;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     /// <summary>
     /// For general purposes, with general types.
@@ -304,7 +304,7 @@ namespace GraphSharp.Controls
 
         private IDictionary<TVertex, Point> GetOldVertexPositions(bool continueLayout)
         {
-            if (ActualLayoutMode == GraphSharp.Algorithms.Layout.LayoutMode.Simple)
+            if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
             {
                 return continueLayout ? GetLatestVertexPositions() : null;
             }

@@ -3,7 +3,7 @@ using System.Windows;
 using QuikGraph;
 
 
-namespace GraphSharp.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
 	public class RadialTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, RadialTreeLayoutParameters>
 		where TVertex : class

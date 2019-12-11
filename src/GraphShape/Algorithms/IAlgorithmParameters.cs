@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace GraphSharp.Algorithms
+namespace GraphShape.Algorithms
 {
 	public interface IAlgorithmParameters : ICloneable, INotifyPropertyChanged
 	{

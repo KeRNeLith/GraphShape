@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace GraphSharp.Sample.Converters
+namespace GraphShape.Sample.Converters
 {
 	public class IntegerToDoubleConverter : IValueConverter
 	{

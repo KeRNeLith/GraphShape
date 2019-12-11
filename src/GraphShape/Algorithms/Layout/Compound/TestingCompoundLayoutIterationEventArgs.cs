@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout.Compound
 {
     public class TestingCompoundLayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
         : CompoundLayoutIterationEventArgs<TVertex, TEdge>, ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>

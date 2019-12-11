@@ -2,7 +2,7 @@
 using QuikGraph;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout.Compound
 {
     public class CompoundLayoutIterationEventArgs<TVertex, TEdge>
         : LayoutIterationEventArgs<TVertex, TEdge>, ICompoundLayoutIterationEventArgs<TVertex>

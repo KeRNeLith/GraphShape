@@ -1,4 +1,4 @@
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

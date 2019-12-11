@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib"
-                    xmlns:Layout="clr-namespace:GraphSharp.Algorithms.Layout;assembly=GraphShape"
-                    xmlns:SimpleFDPLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.FDP;assembly=GraphShape"
-                    xmlns:SimpleHierarchicalLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.Hierarchical;assembly=GraphShape"
-                    xmlns:SimpleTreeLayout="clr-namespace:GraphSharp.Algorithms.Layout.Simple.Tree;assembly=GraphShape"
-                    xmlns:OverlapRemoval="clr-namespace:GraphSharp.Algorithms.OverlapRemoval;assembly=GraphShape">
+                    xmlns:Layout="clr-namespace:GraphShape.Algorithms.Layout;assembly=GraphShape"
+                    xmlns:SimpleFDPLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.FDP;assembly=GraphShape"
+                    xmlns:SimpleHierarchicalLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.Hierarchical;assembly=GraphShape"
+                    xmlns:SimpleTreeLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.Tree;assembly=GraphShape"
+                    xmlns:OverlapRemoval="clr-namespace:GraphShape.Algorithms.OverlapRemoval;assembly=GraphShape">
 
     <ObjectDataProvider MethodName="GetValues"
                         ObjectType="{x:Type System:Enum}"

@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout.Simple.Tree
+﻿namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
 	public class SimpleTreeLayoutParameters : LayoutParametersBase
 	{

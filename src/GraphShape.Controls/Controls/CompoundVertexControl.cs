@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     [TemplatePart(Name = CompoundVertexControl.PartInnerCanvas, Type = typeof(FrameworkElement))]
     public class CompoundVertexControl : VertexControl, ICompoundVertexControl

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using GraphSharp.Algorithms.Layout;
+using GraphShape.Algorithms.Layout;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.EdgeRouting
+namespace GraphShape.Algorithms.EdgeRouting
 {
 	public interface IEdgeRoutingAlgorithmFactory<TVertex, TEdge, TGraph>
 		where TVertex : class

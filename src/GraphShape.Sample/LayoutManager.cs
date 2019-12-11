@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Collections.Generic;
-using GraphSharp.Sample.ViewModel;
+using GraphShape.Sample.ViewModel;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	public class LayoutManager : DependencyObject
 	{

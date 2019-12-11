@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
-using GraphSharp.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout.Compound;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
     public class PocVertexToLayoutModeConverter : IValueConverter
     {

@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Sample.Model
+﻿namespace GraphShape.Sample.Model
 {
 	public class GraphModel
 	{

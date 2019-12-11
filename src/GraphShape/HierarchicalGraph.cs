@@ -2,7 +2,7 @@
 using QuikGraph;
 using System.Linq;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public class HierarchicalGraph<TVertex, TEdge> :
 		BidirectionalGraph<TVertex, TEdge>, IHierarchicalBidirectionalGraph<TVertex, TEdge>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using GraphSharp.Controls.Animations;
 using System.Windows.Media;
+using GraphShape.Controls.Animations;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public class GraphCanvas : Panel
     {

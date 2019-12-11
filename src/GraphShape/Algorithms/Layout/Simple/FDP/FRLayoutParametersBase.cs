@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     /// <summary>
     /// Parameters base for the Fruchterman-Reingold Algorithm (FDP).

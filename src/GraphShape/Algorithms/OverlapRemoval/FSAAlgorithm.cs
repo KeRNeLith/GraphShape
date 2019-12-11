@@ -4,7 +4,7 @@ using System.Windows;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
     public class FSAAlgorithm<TObject> : FSAAlgorithm<TObject, IOverlapRemovalParameters>
         where TObject : class

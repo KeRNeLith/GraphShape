@@ -1,6 +1,6 @@
 ﻿using QuikGraph;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public interface IHighlightAlgorithm<TVertex, TEdge, TGraph>
 		where TVertex : class

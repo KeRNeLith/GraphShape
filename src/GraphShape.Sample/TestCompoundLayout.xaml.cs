@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
+using GraphShape.Controls;
 using QuikGraph;
-using GraphSharp.Controls;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
     /// <summary>
     /// Interaction logic for TestCompoundLayout.xaml

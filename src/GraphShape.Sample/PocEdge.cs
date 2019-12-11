@@ -1,7 +1,7 @@
 ﻿using QuikGraph;
 using System.Diagnostics;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	/// <summary>
 	/// A simple identifiable edge.

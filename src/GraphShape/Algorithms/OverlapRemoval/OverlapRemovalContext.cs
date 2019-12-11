@@ -2,7 +2,7 @@
 using System.Diagnostics.Contracts;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
     public class OverlapRemovalContext<TVertex> : IOverlapRemovalContext<TVertex>
     {

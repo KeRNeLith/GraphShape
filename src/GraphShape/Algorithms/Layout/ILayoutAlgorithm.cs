@@ -3,7 +3,7 @@ using QuikGraph.Algorithms;
 using QuikGraph;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	public delegate void LayoutIterationEndedEventHandler<TVertex, TEdge>( object sender, ILayoutIterationEventArgs<TVertex> e )
 		where TVertex : class

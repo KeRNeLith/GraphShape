@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using GraphSharp.Algorithms.Layout;
 using QuikGraph;
 using System.Windows;
+using GraphShape.Algorithms.Layout;
 
-namespace GraphSharp.Contracts
+namespace GraphShape.Contracts
 {
     [ContractClassFor( typeof( ILayoutContext<,,> ) )]
     public class ILayoutContextContract<TVertex, TEdge, TGraph> : ILayoutContext<TVertex, TEdge, TGraph>

@@ -3,7 +3,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows;
 
-namespace GraphSharp.Converters
+namespace GraphShape.Converters
 {
 	public class PointArrayToString : IValueConverter
 	{

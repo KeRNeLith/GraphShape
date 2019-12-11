@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout
+﻿namespace GraphShape.Algorithms.Layout
 {
 	public interface IParameterizedLayoutAlgorithm
 	{

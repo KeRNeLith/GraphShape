@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using GraphSharp.Algorithms.EdgeRouting;
-using GraphSharp.Algorithms.Highlight;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Algorithms.OverlapRemoval;
+using GraphShape.Algorithms.EdgeRouting;
+using GraphShape.Algorithms.Highlight;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.OverlapRemoval;
 using QuikGraph;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public partial class GraphLayout<TVertex, TEdge, TGraph> : GraphCanvas
         where TVertex : class

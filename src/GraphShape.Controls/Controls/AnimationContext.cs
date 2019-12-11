@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public class AnimationContext : IAnimationContext
     {

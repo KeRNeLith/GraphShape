@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	public class LayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo> 
         : LayoutIterationEventArgs<TVertex, TEdge>,

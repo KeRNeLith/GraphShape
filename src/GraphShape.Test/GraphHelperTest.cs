@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
-using GraphSharp;
+using GraphShape;
 using NUnit.Framework;
 
-namespace GraphSharp.Test
+namespace GraphShape.Test
 {
 	/// <summary>
 	/// Summary description for GraphHelperTest

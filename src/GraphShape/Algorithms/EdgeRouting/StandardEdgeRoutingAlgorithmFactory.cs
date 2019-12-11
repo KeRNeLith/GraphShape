@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using GraphSharp.Algorithms.Layout;
 using System.Linq;
+using GraphShape.Algorithms.Layout;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.EdgeRouting
+namespace GraphShape.Algorithms.EdgeRouting
 {
 	public class StandardEdgeRoutingAlgorithmFactory<TVertex, TEdge, TGraph> : IEdgeRoutingAlgorithmFactory<TVertex, TEdge, TGraph>
 		where TVertex : class

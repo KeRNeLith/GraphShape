@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	/// <summary>
 	/// Soft mutation means: We can hide the vertices or the edges.

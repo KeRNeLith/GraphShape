@@ -4,7 +4,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public class FadeTransition : TransitionBase
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using GraphSharp.Algorithms.Layout;
 using QuikGraph;
 using System.Windows;
-using GraphSharp.Algorithms.Layout.Contextual;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout.Contextual;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
 	public class ContextualGraphLayout<TVertex, TEdge, TGraph> : GraphLayout<TVertex, TEdge, TGraph>
 		where TVertex : class

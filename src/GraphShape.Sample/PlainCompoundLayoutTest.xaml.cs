@@ -5,15 +5,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using GraphSharp.Algorithms.Layout;
+using GraphShape.Algorithms.Layout;
 using QuikGraph;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Media.Animation;
-using GraphSharp.Algorithms.Layout.Compound.FDP;
-using GraphSharp.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout.Compound.FDP;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
     /// <summary>
     /// Interaction logic for PlainCompoundLayoutTest.xaml

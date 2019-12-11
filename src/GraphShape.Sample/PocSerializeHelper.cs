@@ -1,7 +1,7 @@
 ﻿using QuikGraph.Serialization;
 using System.Xml;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	public static class PocSerializeHelper
 	{

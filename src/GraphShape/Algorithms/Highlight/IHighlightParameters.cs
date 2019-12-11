@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public interface IHighlightParameters : ICloneable, INotifyPropertyChanged
 	{

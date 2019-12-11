@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace GraphSharp.Converters
+namespace GraphShape.Converters
 {
 	static class GraphConverterHelper
 	{

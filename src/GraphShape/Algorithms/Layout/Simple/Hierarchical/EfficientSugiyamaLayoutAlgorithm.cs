@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using GraphShape.Algorithms.EdgeRouting;
 using QuikGraph;
-using GraphSharp.Algorithms.EdgeRouting;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
     public partial class EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph> 
         : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, EfficientSugiyamaLayoutParameters>,

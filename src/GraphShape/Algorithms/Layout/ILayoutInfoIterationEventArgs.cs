@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     public interface ILayoutInfoIterationEventArgs<TVertex, TEdge>
         : ILayoutIterationEventArgs<TVertex>

@@ -2,7 +2,7 @@
 using QuikGraph;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     public interface ILayoutAlgorithmFactory<TVertex, TEdge, TGraph>
         where TVertex : class

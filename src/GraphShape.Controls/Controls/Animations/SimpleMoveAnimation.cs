@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace GraphSharp.Controls.Animations
+namespace GraphShape.Controls.Animations
 {
     public class SimpleMoveAnimation : IAnimation
     {

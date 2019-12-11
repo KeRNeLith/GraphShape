@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using QuikGraph;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     public class FRLayoutAlgorithm<Vertex, Edge, Graph> : ParameterizedLayoutAlgorithmBase<Vertex, Edge, Graph, FRLayoutParametersBase>
         where Vertex : class

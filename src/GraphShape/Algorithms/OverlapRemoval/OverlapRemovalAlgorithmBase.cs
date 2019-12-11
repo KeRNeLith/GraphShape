@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
 	public abstract class OverlapRemovalAlgorithmBase<TObject, TParam> : AlgorithmBase, IOverlapRemovalAlgorithm<TObject, TParam>
 		where TObject : class

@@ -1,4 +1,4 @@
-﻿namespace GraphSharp.Algorithms.Layout.Simple.FDP
+﻿namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
 	public class LinLogLayoutParameters : LayoutParametersBase
 	{

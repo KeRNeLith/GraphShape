@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Tree
+namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
     public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, SimpleTreeLayoutParameters>
         where TVertex : class

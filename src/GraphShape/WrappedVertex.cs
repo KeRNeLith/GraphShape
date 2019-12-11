@@ -1,4 +1,4 @@
-﻿namespace GraphSharp
+﻿namespace GraphShape
 {
 	public class WrappedVertex<TVertex>
 	{

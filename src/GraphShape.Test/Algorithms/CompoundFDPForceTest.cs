@@ -2,13 +2,13 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using GraphSharp.Algorithms;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Algorithms.Layout.Compound.FDP;
+using GraphShape.Algorithms;
 using System.Windows;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout.Compound.FDP;
 using NUnit.Framework;
 
-namespace GraphSharp.Test.Algorithms
+namespace GraphShape.Test.Algorithms
 {
     /// <summary>
     /// Summary description for CompoundFDPForceTest

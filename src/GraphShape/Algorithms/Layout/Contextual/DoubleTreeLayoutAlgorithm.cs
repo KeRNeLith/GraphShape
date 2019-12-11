@@ -4,9 +4,9 @@ using System.Linq;
 using System.Windows;
 using QuikGraph;
 using System.Diagnostics.Contracts;
-using GraphSharp.Algorithms.Layout.Simple.Tree;
+using GraphShape.Algorithms.Layout.Simple.Tree;
 
-namespace GraphSharp.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
     public enum DoubleTreeVertexType
     {

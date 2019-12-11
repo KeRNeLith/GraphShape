@@ -1,10 +1,10 @@
 using System;
 using System.Windows.Input;
-using GraphSharp.Sample.ViewModel;
 using System.Windows;
+using GraphShape.Sample.ViewModel;
 using WPFExtensions.Controls;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
     /// <summary>
     /// Main window of the Proof of Concept application for the GraphLayout control.

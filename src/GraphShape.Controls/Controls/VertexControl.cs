@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using GraphSharp.Helpers;
 using System;
+using GraphShape.Helpers;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
 	/// <summary>
 	/// Logical representation of a vertex.

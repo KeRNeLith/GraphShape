@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace GraphSharp.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
 	public abstract class LayoutParametersBase : ILayoutParameters
 	{

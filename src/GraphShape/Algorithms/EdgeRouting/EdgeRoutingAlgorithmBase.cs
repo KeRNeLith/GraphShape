@@ -3,7 +3,7 @@ using QuikGraph;
 using QuikGraph.Algorithms;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.EdgeRouting
+namespace GraphShape.Algorithms.EdgeRouting
 {
 	public abstract class EdgeRoutingAlgorithmBase<TVertex, TEdge, TGraph> : AlgorithmBase<TGraph>, IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>
 		where TVertex : class

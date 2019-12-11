@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GraphShape.Algorithms.Layout.Simple.Tree;
 using QuikGraph;
-using GraphSharp.Algorithms.Layout.Simple.Tree;
 
-namespace GraphSharp.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
 	public class ContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph> : IContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph>
 		where TVertex : class

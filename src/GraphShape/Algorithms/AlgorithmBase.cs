@@ -1,7 +1,7 @@
 using System;
 using QuikGraph.Algorithms;
 
-namespace GraphSharp.Algorithms
+namespace GraphShape.Algorithms
 {
 	public abstract class AlgorithmBase : IAlgorithm
 	{

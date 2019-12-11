@@ -4,7 +4,7 @@ using System.Linq;
 using QuikGraph;
 using System.Diagnostics;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
 	public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
 		where TVertex : class

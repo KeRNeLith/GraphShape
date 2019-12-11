@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     /// <summary>
     /// Parameters of the Fruchterman-Reingold Algorithm (FDP), bounded version.

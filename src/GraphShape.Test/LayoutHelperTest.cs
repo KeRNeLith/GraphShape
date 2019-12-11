@@ -1,12 +1,12 @@
 ﻿using System;
-using GraphSharp.Algorithms;
+using GraphShape.Algorithms;
 using System.Windows;
-using GraphSharp.Algorithms.Layout;
 using System.Collections.Generic;
 using System.Diagnostics;
+using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
-namespace GraphSharp.Test
+namespace GraphShape.Test
 {
     
     

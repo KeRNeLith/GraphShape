@@ -3,7 +3,7 @@ using System.Windows.Data;
 using System.Diagnostics;
 using System.Windows;
 
-namespace GraphSharp.Converters
+namespace GraphShape.Converters
 {
 	public class CoordinatesToPointConverter : IMultiValueConverter
 	{

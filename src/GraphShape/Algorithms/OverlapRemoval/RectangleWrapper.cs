@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
 	/// <summary>
 	/// A System.Windows.Rect egy struktúra, ezért a heap-en tárolódik. Bizonyos esetekben ez nem

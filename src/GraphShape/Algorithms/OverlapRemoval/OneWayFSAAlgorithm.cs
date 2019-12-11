@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
     public class OneWayFSAAlgorithm<TObject> : FSAAlgorithm<TObject, OneWayFSAParameters>
         where TObject : class

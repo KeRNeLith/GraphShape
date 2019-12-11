@@ -6,7 +6,7 @@ using QuikGraph;
 using System.Windows;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.Layout.Simple.Tree
+namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
 	public class BalloonTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, BalloonTreeLayoutParameters>
 		where TVertex : class

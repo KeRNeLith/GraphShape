@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Windows;
 
-namespace GraphSharp.Controls
+namespace GraphShape.Controls
 {
     public class PositionChangedEventArgs : RoutedEventArgs
     {

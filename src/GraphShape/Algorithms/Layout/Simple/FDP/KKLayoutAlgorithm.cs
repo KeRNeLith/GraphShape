@@ -5,7 +5,7 @@ using QuikGraph;
 using System.Windows;
 using System.Diagnostics;
 
-namespace GraphSharp.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     public class KKLayoutAlgorithm<Vertex, Edge, Graph> : DefaultParameterizedLayoutAlgorithmBase<Vertex, Edge, Graph, KKLayoutParameters>
         where Vertex : class

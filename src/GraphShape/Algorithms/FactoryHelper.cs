@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GraphSharp.Algorithms.Layout;
+using GraphShape.Algorithms.Layout;
 
-namespace GraphSharp.Algorithms
+namespace GraphShape.Algorithms
 {
     public static class FactoryHelper
     {

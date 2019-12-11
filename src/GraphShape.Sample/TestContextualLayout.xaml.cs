@@ -1,10 +1,10 @@
 ﻿using System.Windows;
-using GraphSharp.Controls;
 using System.Linq;
 using System.ComponentModel;
 using System.Windows.Controls;
+using GraphShape.Controls;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	public class PocContextualGraphLayout : ContextualGraphLayout<PocVertex, PocEdge, PocGraph> { }
 

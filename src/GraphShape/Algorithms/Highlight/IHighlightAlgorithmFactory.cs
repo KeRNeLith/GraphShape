@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using QuikGraph;
 
-namespace GraphSharp.Algorithms.Highlight
+namespace GraphShape.Algorithms.Highlight
 {
 	public interface IHighlightAlgorithmFactory<TVertex, TEdge, TGraph>
 		where TVertex : class

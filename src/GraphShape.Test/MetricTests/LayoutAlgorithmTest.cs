@@ -1,5 +1,5 @@
-﻿using GraphSharp.Algorithms.EdgeRouting;
-using GraphSharp.Algorithms.Layout;
+﻿using GraphShape.Algorithms.EdgeRouting;
+using GraphShape.Algorithms.Layout;
 using QuikGraph;
 using System.Windows;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Xml;
 using System.Linq;
 using Palesz.QuickGraph.Test.Generators;
 
-namespace GraphSharp.Test.MetricTests
+namespace GraphShape.Test.MetricTests
 {
 	/*[DeploymentItem( "QuickGraph.dll" )]
 	[TestClass()]

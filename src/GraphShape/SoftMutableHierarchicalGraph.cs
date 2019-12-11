@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public class SoftMutableHierarchicalGraph<TVertex, TEdge> : HierarchicalGraph<TVertex, TEdge>, ISoftMutableGraph<TVertex, TEdge>
 		where TEdge : TypedEdge<TVertex>

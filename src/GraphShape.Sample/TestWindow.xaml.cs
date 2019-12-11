@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using GraphSharp.Controls;
+using GraphShape.Controls;
 using QuikGraph;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
     /// <summary>
     /// Interaction logic for TestWindow.xaml

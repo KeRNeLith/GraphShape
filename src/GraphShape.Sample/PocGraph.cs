@@ -1,6 +1,6 @@
 ﻿using QuikGraph;
 
-namespace GraphSharp.Sample
+namespace GraphShape.Sample
 {
 	public class PocGraph : BidirectionalGraph<PocVertex, PocEdge>
 	{

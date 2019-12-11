@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	internal class GraphHideHelper<TVertex, TEdge> : ISoftMutableGraph<TVertex, TEdge>
 		where TEdge : IEdge<TVertex>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 
-namespace GraphSharp.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout.Compound
 {
     public interface ICompoundLayoutIterationEventArgs<TVertex> 
         : ILayoutIterationEventArgs<TVertex>

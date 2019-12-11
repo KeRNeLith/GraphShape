@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using GraphSharp;
+using GraphShape;
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public class SoftMutableBidirectionalGraph<TVertex, TEdge> : BidirectionalGraph<TVertex, TEdge>, ISoftMutableGraph<TVertex, TEdge>
 		where TEdge : IEdge<TVertex>

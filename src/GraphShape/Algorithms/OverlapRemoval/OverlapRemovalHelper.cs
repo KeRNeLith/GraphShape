@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace GraphSharp.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
 	public static class OverlapRemovalHelper
 	{

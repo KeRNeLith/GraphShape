@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public interface IHierarchicalBidirectionalGraph<TVertex, TEdge> : IBidirectionalGraph<TVertex, TEdge>
 		where TEdge : TypedEdge<TVertex>

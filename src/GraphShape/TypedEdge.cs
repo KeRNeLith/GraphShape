@@ -1,6 +1,6 @@
 ﻿using QuikGraph;
 
-namespace GraphSharp
+namespace GraphShape
 {
 	public enum EdgeTypes
 	{

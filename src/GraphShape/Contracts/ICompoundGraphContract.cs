@@ -2,7 +2,7 @@
 using System.Diagnostics.Contracts;
 using QuikGraph;
 
-namespace GraphSharp.Contracts
+namespace GraphShape.Contracts
 {
     /// <summary>
     /// Contract class for the ICompoundGraph interface.

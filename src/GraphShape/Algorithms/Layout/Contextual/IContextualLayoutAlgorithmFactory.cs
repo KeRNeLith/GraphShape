@@ -1,7 +1,7 @@
 ﻿using QuikGraph;
 using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
     public interface IContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph> : ILayoutAlgorithmFactory<TVertex, TEdge, TGraph>
         where TVertex : class
