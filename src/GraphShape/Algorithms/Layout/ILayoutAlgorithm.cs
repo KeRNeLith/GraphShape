@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using QuickGraph.Algorithms;
-using QuickGraph;
+using QuikGraph.Algorithms;
+using QuikGraph;
 using System.Windows;
 
 namespace GraphSharp.Algorithms.Layout

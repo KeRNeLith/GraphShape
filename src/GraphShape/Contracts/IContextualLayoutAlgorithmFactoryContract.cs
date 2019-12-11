@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Linq;
-using QuickGraph;
+using QuikGraph;
 using GraphSharp.Algorithms.Layout;
 using GraphSharp.Algorithms.Layout.Contextual;
 

@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using GraphSharp.Algorithms.Layout;
-using QuickGraph;
+using QuikGraph;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Media.Animation;

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using QuickGraph;
+using QuikGraph;
 using System.Linq;
 using System.Windows;
 

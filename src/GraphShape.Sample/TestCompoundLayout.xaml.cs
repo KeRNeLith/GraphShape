@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using QuickGraph;
+using QuikGraph;
 using GraphSharp.Controls;
 
 namespace GraphSharp.Sample

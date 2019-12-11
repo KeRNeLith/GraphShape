@@ -10,7 +10,7 @@ using GraphSharp.Algorithms.EdgeRouting;
 using GraphSharp.Algorithms.Highlight;
 using GraphSharp.Algorithms.Layout;
 using GraphSharp.Algorithms.OverlapRemoval;
-using QuickGraph;
+using QuikGraph;
 using Point = System.Windows.Point;
 using Size = System.Windows.Size;
 using GraphSharp.Algorithms.Layout.Compound;

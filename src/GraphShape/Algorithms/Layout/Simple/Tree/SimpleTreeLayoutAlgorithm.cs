@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using QuickGraph;
 using System.Windows;
-using System.Diagnostics;
-using QuickGraph.Algorithms.Search;
-using QuickGraph.Collections;
+using QuikGraph;
+using QuikGraph.Algorithms.Search;
+using QuikGraph.Collections;
 
 namespace GraphSharp.Algorithms.Layout.Simple.Tree
 {
@@ -62,7 +60,7 @@ namespace GraphSharp.Algorithms.Layout.Simple.Tree
         {
             spanningTree = new BidirectionalGraph<TVertex, Edge<TVertex>>( false );
             spanningTree.AddVertexRange( VisitedGraph.Vertices );
-            IQueue<TVertex> vb = new QuickGraph.Collections.Queue<TVertex>();
+            IQueue<TVertex> vb = new QuikGraph.Collections.Queue<TVertex>();
             vb.Enqueue( VisitedGraph.Vertices.OrderBy( v => VisitedGraph.InDegree( v ) ).First() );
             switch ( Parameters.SpanningTreeGeneration )
             {

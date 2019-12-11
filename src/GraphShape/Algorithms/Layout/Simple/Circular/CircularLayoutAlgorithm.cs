@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
 using System.Diagnostics;
-using QuickGraph;
+using QuikGraph;
 
 namespace GraphSharp.Algorithms.Layout.Simple.Circular
 {

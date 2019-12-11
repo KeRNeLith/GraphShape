@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40</TargetFrameworks><!-- TODO Support net20;net30;net35;net45 netstandard old ; netstandard2.0-->
+    <TargetFrameworks>net40</TargetFrameworks>
+    <!-- TODO Support net20;net30;net35;net45 netstandard old ; netstandard2.0-->
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <!-- TODO <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
@@ -21,6 +22,7 @@
 
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
+      GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
 
 Supported platforms:
 - .NET Framework 4.0</Description>
@@ -38,6 +40,11 @@ Supported platforms:
     <PackageProjectUrl>https://github.com/KeRNeLith/GraphShape</PackageProjectUrl>
     <RepositoryType>GitHub</RepositoryType>
     <RepositoryUrl>https://github.com/KeRNeLith/GraphShape</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- C# configuration -->
+  <PropertyGroup>
+    <LangVersion>7</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -69,15 +76,17 @@ Supported platforms:
 
   <!-- Dependencies -->
   <ItemGroup>
-	<Reference Include="QuickGraph, Version=3.2.40122.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\Libraries\QuickGraph.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net20' OR '$(TargetFramework)' == 'net30'">
-    <PackageReference Include="System.Core" Version="3.5.21022.801" />
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" PrivateAssets="All" />
+    <PackageReference Include="QuikGraph" Version="1.0.0" />
+  </ItemGroup>
+
+  <!-- Source Link -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>

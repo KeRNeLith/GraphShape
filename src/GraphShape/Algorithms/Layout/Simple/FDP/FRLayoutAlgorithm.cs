@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using QuickGraph;
+using QuikGraph;
 using System.Windows;
 
 namespace GraphSharp.Algorithms.Layout.Simple.FDP
@@ -56,7 +56,7 @@ namespace GraphSharp.Algorithms.Layout.Simple.FDP
             for (int i = 0;
                   i < Parameters._iterationLimit
                   && _temperature > minimalTemperature
-                  && State != QuickGraph.Algorithms.ComputationState.PendingAbortion;
+                  && State != QuikGraph.Algorithms.ComputationState.PendingAbortion;
                   i++)
             {
                 IterateOne();

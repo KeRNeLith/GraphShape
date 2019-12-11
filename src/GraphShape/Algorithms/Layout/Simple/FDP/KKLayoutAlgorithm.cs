@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using QuickGraph;
+using QuikGraph;
 using System.Windows;
 using System.Diagnostics;
 

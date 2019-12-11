@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using GraphSharp.Controls;
-using QuickGraph;
+using QuikGraph;
 
 namespace GraphSharp.Sample
 {

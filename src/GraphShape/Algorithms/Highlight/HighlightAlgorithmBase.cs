@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using QuickGraph;
+using QuikGraph;
 using System.Diagnostics;
 
 namespace GraphSharp.Algorithms.Highlight

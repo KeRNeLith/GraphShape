@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics.Contracts;
-using QuickGraph;
+using QuikGraph;
 using System.Diagnostics;
 using System.Windows;
 

@@ -1,4 +1,4 @@
-﻿using QuickGraph;
+﻿using QuikGraph;
 using System.Diagnostics.Contracts;
 
 namespace GraphSharp.Algorithms.Layout.Contextual

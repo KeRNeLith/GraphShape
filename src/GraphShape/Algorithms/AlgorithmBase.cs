@@ -1,5 +1,5 @@
 using System;
-using QuickGraph.Algorithms;
+using QuikGraph.Algorithms;
 
 namespace GraphSharp.Algorithms
 {

@@ -5,7 +5,6 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
 	ProjectSection(SolutionItems) = preProject
-		Libraries\QuickGraph.dll = Libraries\QuickGraph.dll
 		Libraries\RibbonControlsLibrary.dll = Libraries\RibbonControlsLibrary.dll
 		Libraries\WPFExtensions.dll = Libraries\WPFExtensions.dll
 	EndProjectSection

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QuickGraph;
+using QuikGraph;
 using System.Diagnostics.Contracts;
 using GraphSharp;
 using System.Collections;

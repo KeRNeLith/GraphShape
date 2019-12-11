@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using GraphSharp.Algorithms.Layout;
-using QuickGraph;
+using QuikGraph;
 using System.Windows;
 
 namespace GraphSharp.Contracts

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using QuickGraph;
+using QuikGraph;
 using System.Diagnostics.Contracts;
 using GraphSharp.Algorithms.Layout.Simple.Tree;
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using QuickGraph;
+using QuikGraph;
 
 namespace GraphSharp.Contracts
 {

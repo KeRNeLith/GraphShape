@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows;
-using QuickGraph;
+using QuikGraph;
 
 namespace GraphSharp.Controls
 {

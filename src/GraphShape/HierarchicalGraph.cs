@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using QuickGraph;
+using QuikGraph;
 using System.Linq;
 
 namespace GraphSharp

@@ -1,5 +1,5 @@
 ﻿using GraphSharp.Algorithms;
-using QuickGraph;
+using QuikGraph;
 using System.Diagnostics;
 using NUnit.Framework;
 

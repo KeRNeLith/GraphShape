@@ -22,9 +22,9 @@
     <IsPackable>false</IsPackable>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/KeRNeLith/Here</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/KeRNeLith/GraphShape</PackageProjectUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <RepositoryUrl>https://github.com/KeRNeLith/Here</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KeRNeLith/GraphShape</RepositoryUrl>
   </PropertyGroup>
 
   <!-- C# configuration -->
@@ -43,45 +43,27 @@
   </PropertyGroup>
 
   <!-- Targets defines -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='net30'">
-    <DefineConstants>$(DefineConstants);NET30;$(AdditionalConstants)</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Test References\" />
-  </ItemGroup>
-
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
-    <PackageReference Include="NUnit" Version="3.11.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
-	<Reference Include="QuickGraph, Version=3.2.40122.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-	  <HintPath>..\Libraries\QuickGraph.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="WindowsBase" />
   </ItemGroup>
-  
-  <!-- <ItemGroup Condition="'$(TargetFramework)' != 'net20' AND '$(TargetFramework)' != 'net30'"> -->
-    <!-- <PackageReference Include="NUnit" Version="3.11.0" /> -->
-  <!-- </ItemGroup> -->
-  
-  <!-- In later releases NUnit target net30 was removed, so it use the net20 build.
-       The problem is that build contains an implementation of Func delegate which 
-       is incompatible with System.Core. -->
-  <!-- <ItemGroup Condition="'$(TargetFramework)' == 'net20' OR '$(TargetFramework)' == 'net30'"> -->
-    <!-- <PackageReference Include="NUnit" Version="3.2.1" /> -->
-  <!-- </ItemGroup> -->
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" PrivateAssets="All" />
+    <PackageReference Include="QuikGraph" Version="1.0.0" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.14.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GraphShape\GraphShape.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 </Project>

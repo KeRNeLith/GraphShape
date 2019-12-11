@@ -1,6 +1,6 @@
 ﻿using GraphSharp.Algorithms.EdgeRouting;
 using GraphSharp.Algorithms.Layout;
-using QuickGraph;
+using QuikGraph;
 using System.Windows;
 using System.Collections.Generic;
 using System;

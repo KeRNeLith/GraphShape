@@ -1,4 +1,4 @@
-﻿using QuickGraph.Serialization;
+﻿using QuikGraph.Serialization;
 using System.Xml;
 
 namespace GraphSharp.Sample

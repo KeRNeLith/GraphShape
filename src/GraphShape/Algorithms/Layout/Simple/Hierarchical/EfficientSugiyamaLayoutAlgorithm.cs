@@ -1,11 +1,6 @@
 ﻿using System.Collections.Generic;
-using QuickGraph;
 using System.Windows;
-using System.Diagnostics.Contracts;
-using QuickGraph.Algorithms.Search;
-using QuickGraph.Algorithms;
-using System.Linq;
-using System;
+using QuikGraph;
 using GraphSharp.Algorithms.EdgeRouting;
 
 namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using QuickGraph;
-using QuickGraph.Algorithms.Search;
+using QuikGraph;
+using QuikGraph.Algorithms.Search;
 
 namespace GraphSharp.Algorithms.Layout.Simple.Hierarchical
 {

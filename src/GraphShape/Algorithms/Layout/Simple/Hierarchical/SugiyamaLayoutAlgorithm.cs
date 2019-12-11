@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using GraphSharp.Algorithms.EdgeRouting;
-using QuickGraph;
-using QuickGraph.Algorithms.Search;
+using QuikGraph;
+using QuikGraph.Algorithms.Search;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;

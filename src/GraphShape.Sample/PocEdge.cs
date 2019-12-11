@@ -1,4 +1,4 @@
-﻿using QuickGraph;
+﻿using QuikGraph;
 using System.Diagnostics;
 
 namespace GraphSharp.Sample

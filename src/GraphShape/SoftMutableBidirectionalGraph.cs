@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GraphSharp;
-using QuickGraph;
+using QuikGraph;
 
 namespace GraphSharp
 {
