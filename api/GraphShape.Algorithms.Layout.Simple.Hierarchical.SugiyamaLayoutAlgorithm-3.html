@@ -1,0 +1,1351 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3">
+  
+  
+  <h1 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3" class="text-break">Class SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html">AlgorithmBase</a></div>
+    <div class="level2"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html">LayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html">ParameterizedLayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html">SugiyamaLayoutParameters</a>&gt;</div>
+    <div class="level4"><a class="xref" href="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase-4.html">DefaultParameterizedLayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html">SugiyamaLayoutParameters</a>&gt;</div>
+    <div class="level5"><span class="xref">SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm</a>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html">SugiyamaLayoutParameters</a>&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a></div>
+    <div><a class="xref" href="GraphShape.Algorithms.EdgeRouting.IEdgeRoutingAlgorithm-3.html">IEdgeRoutingAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;TGraph&gt;</div>
+    <div><span class="xref">QuikGraph.Algorithms.IComputation</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4_DefaultParameters">DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.DefaultParameters</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Parameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.Parameters</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.GetParameters()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_TraceSource">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.TraceSource</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.DefaultParameters</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.InitParameters(SugiyamaLayoutParameters)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.InitializeWithRandomPositions(Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.InitializeWithRandomPositions(Double, Double, Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.NormalizePositions()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.NormalizePositions(IDictionary&lt;TVertex, Point&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VertexPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VertexPositions</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VisitedGraph</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ProgressChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnProgressChangedNeeded</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetVertexInfo(TVertex)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetEdgeInfo(TEdge)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_SyncRoot">AlgorithmBase.SyncRoot</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Abort">AlgorithmBase.Abort()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_StateChanged">AlgorithmBase.StateChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnStateChanged_System_EventArgs_">AlgorithmBase.OnStateChanged(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Started">AlgorithmBase.Started</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnStarted_System_EventArgs_">AlgorithmBase.OnStarted(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Finished">AlgorithmBase.Finished</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnFinished_System_EventArgs_">AlgorithmBase.OnFinished(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Aborted">AlgorithmBase.Aborted</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.html">GraphShape.Algorithms.Layout.Simple.Hierarchical</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, SugiyamaLayoutParameters&gt;, IAlgorithm, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IParameterizedLayoutAlgorithm&lt;SugiyamaLayoutParameters&gt;, IParameterizedLayoutAlgorithm, IEdgeRoutingAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutParameters_System_Func__1_GraphShape_EdgeTypes__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters%2CSystem.Func%7B%601%2CGraphShape.EdgeTypes%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L59">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.#ctor*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutParameters_System_Func__1_GraphShape_EdgeTypes__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Size},GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters,System.Func{`1,GraphShape.EdgeTypes})">SugiyamaLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, SugiyamaLayoutParameters, Func&lt;TEdge, EdgeTypes&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SugiyamaLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; vertexSizes, SugiyamaLayoutParameters parameters, Func&lt;TEdge, EdgeTypes&gt; edgePredicate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">visitedGraph</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
+        <td><span class="parametername">vertexSizes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html">SugiyamaLayoutParameters</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdge, <a class="xref" href="GraphShape.EdgeTypes.html">EdgeTypes</a>&gt;</td>
+        <td><span class="parametername">edgePredicate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutParameters_System_Func__1_GraphShape_EdgeTypes__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Point%7D%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters%2CSystem.Func%7B%601%2CGraphShape.EdgeTypes%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L45">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.#ctor*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutParameters_System_Func__1_GraphShape_EdgeTypes__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Size},System.Collections.Generic.IDictionary{`0,System.Windows.Point},GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters,System.Func{`1,GraphShape.EdgeTypes})">SugiyamaLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, IDictionary&lt;TVertex, Point&gt;, SugiyamaLayoutParameters, Func&lt;TEdge, EdgeTypes&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SugiyamaLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; vertexSizes, IDictionary&lt;TVertex, Point&gt; vertexPositions, SugiyamaLayoutParameters parameters, Func&lt;TEdge, EdgeTypes&gt; edgePredicate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">visitedGraph</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
+        <td><span class="parametername">vertexSizes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Point</span>&gt;</td>
+        <td><span class="parametername">vertexPositions</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html">SugiyamaLayoutParameters</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdge, <a class="xref" href="GraphShape.EdgeTypes.html">EdgeTypes</a>&gt;</td>
+        <td><span class="parametername">edgePredicate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_EdgeRoutes.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.EdgeRoutes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L42">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_EdgeRoutes_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.EdgeRoutes*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_EdgeRoutes" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.EdgeRoutes">EdgeRoutes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;TEdge, Point[]&gt; EdgeRoutes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TEdge, <span class="xref">System.Windows.Point</span>[]&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignLayers.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.AssignLayers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L183">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignLayers_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignLayers*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignLayers" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignLayers">AssignLayers()</h4>
+  <div class="markdown level1 summary"><p>Creates the layering of the graph. (Assigns every vertex to a layer.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void AssignLayers()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPositions.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.AssignPositions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L760">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPositions_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignPositions*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPositions" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignPositions">AssignPositions()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void AssignPositions()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPriorities.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.AssignPriorities%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L565">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPriorities_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignPriorities*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_AssignPriorities" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.AssignPriorities">AssignPriorities()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void AssignPriorities()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConstrainWidth.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.ConstrainWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L275">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConstrainWidth_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ConstrainWidth*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConstrainWidth" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ConstrainWidth">ConstrainWidth()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ConstrainWidth()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConvertGraph_System_Collections_Generic_IDictionary__0_System_Windows_Size__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.ConvertGraph(System.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L72">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConvertGraph_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ConvertGraph*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ConvertGraph_System_Collections_Generic_IDictionary__0_System_Windows_Size__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ConvertGraph(System.Collections.Generic.IDictionary{`0,System.Windows.Size})">ConvertGraph(IDictionary&lt;TVertex, Size&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the VisitedGraph to the inner type (which is a mutable graph representation).
+Wraps the vertices, converts the edges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ConvertGraph(IDictionary&lt;TVertex, Size&gt; vertexSizes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
+        <td><span class="parametername">vertexSizes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositions.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.CopyPositions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L850">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositions_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositions*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositions" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositions">CopyPositions()</h4>
+  <div class="markdown level1 summary"><p>Copies the coordinates of the vertices to the VertexPositions dictionary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void CopyPositions()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.CopyPositionsSilent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L785">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositionsSilent*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositionsSilent">CopyPositionsSilent()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void CopyPositionsSilent()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.CopyPositionsSilent(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L790">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositionsSilent*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_CopyPositionsSilent_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.CopyPositionsSilent(System.Boolean)">CopyPositionsSilent(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void CopyPositionsSilent(bool shouldTranslate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">shouldTranslate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterIsolatedVertices__2_GraphShape_ISoftMutableGraph___0___1__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.FilterIsolatedVertices%60%602(GraphShape.ISoftMutableGraph%7B%60%600%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L144">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterIsolatedVertices_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterIsolatedVertices*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterIsolatedVertices__2_GraphShape_ISoftMutableGraph___0___1__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterIsolatedVertices``2(GraphShape.ISoftMutableGraph{``0,``1})">FilterIsolatedVertices&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void FilterIsolatedVertices&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt; graph)
+    where TEdgeType : class, IEdge&lt;TVertexType&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.ISoftMutableGraph-2.html">ISoftMutableGraph</a>&lt;TVertexType, TEdgeType&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertexType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterLoops__2_GraphShape_ISoftMutableGraph___0___1__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.FilterLoops%60%602(GraphShape.ISoftMutableGraph%7B%60%600%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L150">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterLoops_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterLoops*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterLoops__2_GraphShape_ISoftMutableGraph___0___1__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterLoops``2(GraphShape.ISoftMutableGraph{``0,``1})">FilterLoops&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void FilterLoops&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt; graph)
+    where TVertexType : class where TEdgeType : class, IEdge&lt;TVertexType&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.ISoftMutableGraph-2.html">ISoftMutableGraph</a>&lt;TVertexType, TEdgeType&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertexType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterParallelEdges__2_GraphShape_ISoftMutableGraph___0___1__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.FilterParallelEdges%60%602(GraphShape.ISoftMutableGraph%7B%60%600%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L123">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterParallelEdges_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterParallelEdges*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FilterParallelEdges__2_GraphShape_ISoftMutableGraph___0___1__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FilterParallelEdges``2(GraphShape.ISoftMutableGraph{``0,``1})">FilterParallelEdges&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void FilterParallelEdges&lt;TVertexType, TEdgeType&gt;(ISoftMutableGraph&lt;TVertexType, TEdgeType&gt; graph)
+    where TEdgeType : class, IEdge&lt;TVertexType&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.ISoftMutableGraph-2.html">ISoftMutableGraph</a>&lt;TVertexType, TEdgeType&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertexType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FiltersAndRemovals.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.FiltersAndRemovals%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L161">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FiltersAndRemovals_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FiltersAndRemovals*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_FiltersAndRemovals" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.FiltersAndRemovals">FiltersAndRemovals()</h4>
+  <div class="markdown level1 summary"><p>First step of the algorithm.
+Filters the unappropriate vertices and edges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void FiltersAndRemovals()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignment.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.HorizontalPositionAssignment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L747">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignment_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignment*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignment" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignment">HorizontalPositionAssignment()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void HorizontalPositionAssignment()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentOnLayer_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.HorizontalPositionAssignmentOnLayer(System.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L581">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentOnLayer_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignmentOnLayer*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentOnLayer_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignmentOnLayer(System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter)">HorizontalPositionAssignmentOnLayer(Int32, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void HorizontalPositionAssignmentOnLayer(int layerIndex, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter baryCenter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">layerIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">baryCenter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentSweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.HorizontalPositionAssignmentSweep(System.Int32%2CSystem.Int32%2CSystem.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L741">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentSweep_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignmentSweep*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_HorizontalPositionAssignmentSweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.HorizontalPositionAssignmentSweep(System.Int32,System.Int32,System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter)">HorizontalPositionAssignmentSweep(Int32, Int32, Int32, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void HorizontalPositionAssignmentSweep(int start, int end, int step, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter baryCenter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">end</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">step</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">baryCenter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_InternalCompute.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.InternalCompute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L858">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_InternalCompute_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.InternalCompute*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_InternalCompute" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.InternalCompute">InternalCompute()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void InternalCompute()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_InternalCompute">AlgorithmBase.InternalCompute()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_MinimizeHierarchicalEdgeLong.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.MinimizeHierarchicalEdgeLong%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L201">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_MinimizeHierarchicalEdgeLong_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.MinimizeHierarchicalEdgeLong*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_MinimizeHierarchicalEdgeLong" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.MinimizeHierarchicalEdgeLong">MinimizeHierarchicalEdgeLong()</h4>
+  <div class="markdown level1 summary"><p>Minimizes the long of the hierarchical edges by
+putting down the vertices to the layer above<br>
+its descendants.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void MinimizeHierarchicalEdgeLong()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_OnIterationEnded_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.OnIterationEnded(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L890">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_OnIterationEnded_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.OnIterationEnded*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_OnIterationEnded_System_String_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.OnIterationEnded(System.String)">OnIterationEnded(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void OnIterationEnded(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_PrepareForSugiyama.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.PrepareForSugiyama%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L280">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_PrepareForSugiyama_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.PrepareForSugiyama*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_PrepareForSugiyama" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.PrepareForSugiyama">PrepareForSugiyama()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void PrepareForSugiyama()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ReplaceLongEdges.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.ReplaceLongEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L231">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ReplaceLongEdges_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ReplaceLongEdges*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_ReplaceLongEdges" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.ReplaceLongEdges">ReplaceLongEdges()</h4>
+  <div class="markdown level1 summary"><p>Long edges ( span(e) &gt; 1 ) will be replaced by
+span(e) edges (1 edge between every 2 neighbor layer)
+and span(e)-1 dummy vertices will be added to graph.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void ReplaceLongEdges()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaDirtyPhase_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaDirtyPhase(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L437">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaDirtyPhase_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaDirtyPhase*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaDirtyPhase_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaDirtyPhase(System.Boolean)">SugiyamaDirtyPhase(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SugiyamaDirtyPhase(bool byRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">byRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaLayout.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaLayout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L490">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaLayout_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaLayout*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaLayout" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaLayout">SugiyamaLayout()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SugiyamaLayout()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaPhase1(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L465">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1(System.Boolean)">SugiyamaPhase1(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SugiyamaPhase1(bool byRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">byRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaPhase1(System.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L447">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1(System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter,System.Boolean)">SugiyamaPhase1(Int32, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SugiyamaPhase1(int startLayerIndex, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter startBaryCentering, bool ByRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">startLayerIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">startBaryCentering</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ByRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1Sweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaPhase1Sweep(System.Int32%2CSystem.Int32%2CSystem.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L354">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1Sweep_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1Sweep*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase1Sweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase1Sweep(System.Int32,System.Int32,System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter,System.Boolean,System.Boolean)">SugiyamaPhase1Sweep(Int32, Int32, Int32, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sweeps in one direction in the 1st Phase of the Sugiyama's algorithm.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SugiyamaPhase1Sweep(int start, int end, int step, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter baryCenter, bool dirty, bool byRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>The index of the layer where the sweeping starts.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">end</span></td>
+        <td><p>The index of the layer where the sweeping ends.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">step</span></td>
+        <td><p>Stepcount.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">baryCenter</span></td>
+        <td><p>Kind of the barycentering (Up/Down-barycenter).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">dirty</span></td>
+        <td><p>If this is a dirty sweep</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">byRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2_System_Int32__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter__System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaPhase2(System.Int32%40%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter%40%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L470">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase2*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2_System_Int32__GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter__System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase2(System.Int32@,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter@,System.Boolean)">SugiyamaPhase2(out Int32, out SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SugiyamaPhase2(out int unorderedLayerIndex, out SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter baryCentering, bool byRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">unorderedLayerIndex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">baryCentering</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">byRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2Sweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603.SugiyamaPhase2Sweep(System.Int32%2CSystem.Int32%2CSystem.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.BaryCenter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.cs/#L406">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2Sweep_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase2Sweep*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3_SugiyamaPhase2Sweep_System_Int32_System_Int32_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm__0__1__2__BaryCenter_System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm`3.SugiyamaPhase2Sweep(System.Int32,System.Int32,System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm{`0,`1,`2}.BaryCenter,System.Boolean)">SugiyamaPhase2Sweep(Int32, Int32, Int32, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int SugiyamaPhase2Sweep(int start, int end, int step, SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.BaryCenter baryCenter, bool byRealPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">end</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">step</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.BaryCenter.html">SugiyamaLayoutAlgorithm.BaryCenter</a>&lt;&gt;</td>
+        <td><span class="parametername">baryCenter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">byRealPosition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The index of the layer which is not ordered by <code data-dev-comment-type="paramref" class="paramref">baryCenter</code> anymore.
+If all of the layers ordered, and phase2 sweep done it returns with -1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm&lt;TParam&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.EdgeRouting.IEdgeRoutingAlgorithm-3.html">IEdgeRoutingAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.Algorithms.IAlgorithm&lt;TGraph&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.Algorithms.IComputation</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_SugiyamaLayoutAlgorithm_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/SugiyamaLayoutAlgorithm.VertexLayerCollection.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

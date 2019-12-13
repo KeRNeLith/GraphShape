@@ -1,0 +1,1682 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SoftMutableBidirectionalGraph&lt;TVertex, TEdge&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SoftMutableBidirectionalGraph&lt;TVertex, TEdge&gt;
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.SoftMutableBidirectionalGraph`2">
+  
+  
+  <h1 id="GraphShape_SoftMutableBidirectionalGraph_2" data-uid="GraphShape.SoftMutableBidirectionalGraph`2" class="text-break">Class SoftMutableBidirectionalGraph&lt;TVertex, TEdge&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div class="level2"><span class="xref">SoftMutableBidirectionalGraph&lt;TVertex, TEdge&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">QuikGraph.IEdgeListAndIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableBidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexAndEdgeSet</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexSet</span>&lt;TVertex&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">System.ICloneable</span></div>
+    <div><a class="xref" href="GraphShape.ISoftMutableGraph-2.html">ISoftMutableGraph</a>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IBidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexSet</span>&lt;TVertex&gt;</div>
+    <div><span class="xref">QuikGraph.IEdgeSet</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IBidirectionalIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IImplicitGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IImplicitVertexSet</span>&lt;TVertex&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsEdge(TVertex, TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsOutEdgesEmpty(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutDegree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetOutEdges(TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutEdge(TVertex, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetEdge(TVertex, TVertex, TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetEdges(TVertex, TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsInEdgesEmpty(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InDegree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetInEdges(TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InEdge(TVertex, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Degree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Clear()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVertexRange(System.Collections.Generic.IEnumerable&lt;TVertex&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnVertexAdded(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnVertexRemoved(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveVertexIf(QuikGraph.VertexPredicate&lt;TVertex&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddEdgeRange(System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnEdgeAdded(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnEdgeRemoved(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveEdgeIf(QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVerticesAndEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVerticesAndEdgeRange(System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveOutEdgeIf(TVertex, QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearOutEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TrimEdgeExcess()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveInEdgeIf(TVertex, QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearInEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.MergeVertex(TVertex, QuikGraph.EdgeFactory&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.MergeVerticesIf(QuikGraph.VertexPredicate&lt;TVertex&gt;, QuikGraph.EdgeFactory&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeCapacity</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexType</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeType</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsDirected</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AllowParallelEdges</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsVerticesEmpty</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexCount</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Vertices</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsEdgesEmpty</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeCount</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Edges</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexAdded</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexRemoved</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeAdded</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeRemoved</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.html">GraphShape</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_SoftMutableBidirectionalGraph_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SoftMutableBidirectionalGraph&lt;TVertex, TEdge&gt; : BidirectionalGraph&lt;TVertex, TEdge&gt;, IEdgeListAndIncidenceGraph&lt;TVertex, TEdge&gt;, IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;, IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, IMutableVertexListGraph&lt;TVertex, TEdge&gt;, IMutableIncidenceGraph&lt;TVertex, TEdge&gt;, IMutableVertexAndEdgeSet&lt;TVertex, TEdge&gt;, IMutableVertexSet&lt;TVertex&gt;, IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IMutableGraph&lt;TVertex, TEdge&gt;, ICloneable, ISoftMutableGraph&lt;TVertex, TEdge&gt;, IBidirectionalGraph&lt;TVertex, TEdge&gt;, IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, IVertexListGraph&lt;TVertex, TEdge&gt;, IEdgeListGraph&lt;TVertex, TEdge&gt;, IVertexSet&lt;TVertex&gt;, IEdgeSet&lt;TVertex, TEdge&gt;, IBidirectionalIncidenceGraph&lt;TVertex, TEdge&gt;, IIncidenceGraph&lt;TVertex, TEdge&gt;, IImplicitGraph&lt;TVertex, TEdge&gt;, IGraph&lt;TVertex, TEdge&gt;, IImplicitVertexSet&lt;TVertex&gt; where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2__ctor.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L42">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2__ctor_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2__ctor" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor">SoftMutableBidirectionalGraph()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SoftMutableBidirectionalGraph()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.%23ctor(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L47">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2__ctor_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2__ctor_System_Boolean_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor(System.Boolean)">SoftMutableBidirectionalGraph(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SoftMutableBidirectionalGraph(bool allowParallelEdges)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowParallelEdges</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2__ctor_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.%23ctor(System.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L53">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2__ctor_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2__ctor_System_Boolean_System_Int32_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.#ctor(System.Boolean,System.Int32)">SoftMutableBidirectionalGraph(Boolean, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SoftMutableBidirectionalGraph(bool allowParallelEdges, int vertexCapacity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowParallelEdges</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vertexCapacity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L173">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCount_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgeCount*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCount" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgeCount">HiddenEdgeCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HiddenEdgeCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdges.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L168">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdges_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdges*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdges" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdges">HiddenEdges</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HiddenEdges { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertexCount.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenVertexCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L108">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertexCount_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenVertexCount*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertexCount" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenVertexCount">HiddenVertexCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HiddenVertexCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertices.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L103">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertices_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenVertices*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenVertices" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenVertices">HiddenVertices</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TVertex&gt; HiddenVertices { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCountOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenEdgeCountOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L163">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCountOf_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgeCountOf*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgeCountOf__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgeCountOf(`0)">HiddenEdgeCountOf(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HiddenEdgeCountOf(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgesOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HiddenEdgesOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L158">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgesOf_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgesOf*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HiddenEdgesOf__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HiddenEdgesOf(`0)">HiddenEdgesOf(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HiddenEdgesOf(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L113">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdge_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdge*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdge__1_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdge(`1)">HideEdge(TEdge)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideEdge__1_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideEdge(%601%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L118">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdge_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdge*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdge__1_System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdge(`1,System.String)">HideEdge(TEdge, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge e, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L123">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdges*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1})">HideEdges(IEnumerable&lt;TEdge&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideEdges(IEnumerable&lt;TEdge&gt; edges)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td><span class="parametername">edges</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L128">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdges*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1},System.String)">HideEdges(IEnumerable&lt;TEdge&gt;, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideEdges(IEnumerable&lt;TEdge&gt; edges, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td><span class="parametername">edges</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideEdgesIf_System_Func__1_System_Boolean__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideEdgesIf(System.Func%7B%601%2CSystem.Boolean%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L133">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdgesIf_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdgesIf*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideEdgesIf_System_Func__1_System_Boolean__System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideEdgesIf(System.Func{`1,System.Boolean},System.String)">HideEdgesIf(Func&lt;TEdge, Boolean&gt;, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideEdgesIf(Func&lt;TEdge, bool&gt; predicate, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdge, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L63">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertex_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertex*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertex__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertex(`0)">HideVertex(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideVertex__0_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideVertex(%600%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L68">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertex_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertex*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertex__0_System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertex(`0,System.String)">HideVertex(TVertex, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex v, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L73">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertices*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0})">HideVertices(IEnumerable&lt;TVertex&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideVertices(IEnumerable&lt;TVertex&gt; vertices)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L78">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertices*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0},System.String)">HideVertices(IEnumerable&lt;TVertex&gt;, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideVertices(IEnumerable&lt;TVertex&gt; vertices, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_HideVerticesIf_System_Func__0_System_Boolean__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.HideVerticesIf(System.Func%7B%600%2CSystem.Boolean%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L83">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_HideVerticesIf_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVerticesIf*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_HideVerticesIf_System_Func__0_System_Boolean__System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.HideVerticesIf(System.Func{`0,System.Boolean},System.String)">HideVerticesIf(Func&lt;TVertex, Boolean&gt;, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void HideVerticesIf(Func&lt;TVertex, bool&gt; predicate, string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TVertex, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_Init.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.Init%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L37">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_Init_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.Init*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_Init" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.Init">Init()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Init()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.IsHiddenEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L138">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenEdge_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.IsHiddenEdge*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenEdge__1_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.IsHiddenEdge(`1)">IsHiddenEdge(TEdge)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHiddenEdge(TEdge e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.IsHiddenVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L88">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenVertex_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.IsHiddenVertex*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_IsHiddenVertex__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.IsHiddenVertex(`0)">IsHiddenVertex(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHiddenVertex(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_Unhide_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.Unhide(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L178">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_Unhide_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.Unhide*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_Unhide_System_String_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.Unhide(System.String)">Unhide(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Unhide(string tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideAll.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L183">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideAll_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideAll*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideAll" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideAll">UnhideAll()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UnhideAll()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L143">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdge_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdge*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdge__1_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdge(`1)">UnhideEdge(TEdge)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UnhideEdge(TEdge e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L148">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdges_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdges*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdges(System.Collections.Generic.IEnumerable{`1})">UnhideEdges(IEnumerable&lt;TEdge&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnhideEdges(IEnumerable&lt;TEdge&gt; edges)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td><span class="parametername">edges</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdgesIf_System_Func__1_System_Boolean__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideEdgesIf(System.Func%7B%601%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L153">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdgesIf_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdgesIf*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideEdgesIf_System_Func__1_System_Boolean__" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideEdgesIf(System.Func{`1,System.Boolean})">UnhideEdgesIf(Func&lt;TEdge, Boolean&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnhideEdgesIf(Func&lt;TEdge, bool&gt; predicate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdge, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L93">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertex_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideVertex*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertex__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideVertex(`0)">UnhideVertex(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UnhideVertex(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertexAndEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.UnhideVertexAndEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L98">View Source</a>
+  </span>
+  <a id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertexAndEdges_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideVertexAndEdges*"></a>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_UnhideVertexAndEdges__0_" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.UnhideVertexAndEdges(`0)">UnhideVertexAndEdges(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnhideVertexAndEdges(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_EdgeHidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.EdgeHidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L14">View Source</a>
+  </span>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_EdgeHidden" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.EdgeHidden">EdgeHidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EdgeAction&lt;TVertex, TEdge&gt; EdgeHidden</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.EdgeAction</span>&lt;TVertex, TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_EdgeUnhidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.EdgeUnhidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L19">View Source</a>
+  </span>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_EdgeUnhidden" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.EdgeUnhidden">EdgeUnhidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EdgeAction&lt;TVertex, TEdge&gt; EdgeUnhidden</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.EdgeAction</span>&lt;TVertex, TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_VertexHidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.VertexHidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L25">View Source</a>
+  </span>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_VertexHidden" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.VertexHidden">VertexHidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event VertexAction&lt;TVertex&gt; VertexHidden</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexAction</span>&lt;TVertex&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2_VertexUnhidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602.VertexUnhidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L30">View Source</a>
+  </span>
+  <h4 id="GraphShape_SoftMutableBidirectionalGraph_2_VertexUnhidden" data-uid="GraphShape.SoftMutableBidirectionalGraph`2.VertexUnhidden">VertexUnhidden</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event VertexAction&lt;TVertex&gt; VertexUnhidden</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexAction</span>&lt;TVertex&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">QuikGraph.IEdgeListAndIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexAndEdgeSet&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.ISoftMutableGraph-2.html">ISoftMutableGraph&lt;TVertex, TEdge&gt;</a>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IBidirectionalGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IEdgeSet&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IBidirectionalIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IImplicitGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IImplicitVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetNeighbours__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelper.GetNeighbours&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetOutNeighbours__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelper.GetOutNeighbours&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Collections_Generic_List___0__System_Collections_Generic_List___0__">GraphHelper.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, List&lt;TVertex&gt;, List&lt;TVertex&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetSources__2_QuikGraph_IBidirectionalGraph___0___1__">GraphHelper.GetSources&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_AddEdgeRange__2_QuikGraph_IMutableEdgeListGraph___0___1__System_Collections_Generic_IEnumerable___1__">GraphHelper.AddEdgeRange&lt;TVertex, TEdge&gt;(IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IEnumerable&lt;TEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelper.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableBidirectionalGraph_2.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableBidirectionalGraph%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableBidirectionalGraph.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

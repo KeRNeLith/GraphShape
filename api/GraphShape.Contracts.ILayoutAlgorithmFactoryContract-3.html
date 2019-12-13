@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ILayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ILayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt;
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3">
+  
+  
+  <h1 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3" class="text-break">Class ILayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ILayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt;</span></div>
+      <div class="level2"><a class="xref" href="GraphShape.Contracts.IContextualLayoutAlgorithmFactoryContract-3.html">IContextualLayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt;</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithmFactory-3.html">ILayoutAlgorithmFactory</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Contracts.html">GraphShape.Contracts</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ContractClassFor(typeof(ILayoutAlgorithmFactory&lt;,, &gt;))]
+public class ILayoutAlgorithmFactoryContract&lt;TVertex, TEdge, TGraph&gt; : ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt; where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : class, IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__AlgorithmTypes.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23AlgorithmTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L17">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__AlgorithmTypes_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#AlgorithmTypes*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__AlgorithmTypes" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#AlgorithmTypes">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.AlgorithmTypes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;string&gt; ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.AlgorithmTypes { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateAlgorithm_System_String_GraphShape_Algorithms_Layout_ILayoutContext__0__1__2__GraphShape_Algorithms_Layout_ILayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23CreateAlgorithm(System.String%2CGraphShape.Algorithms.Layout.ILayoutContext%7B%600%2C%601%2C%602%7D%2CGraphShape.Algorithms.Layout.ILayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L27">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateAlgorithm_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#CreateAlgorithm*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateAlgorithm_System_String_GraphShape_Algorithms_Layout_ILayoutContext__0__1__2__GraphShape_Algorithms_Layout_ILayoutParameters_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#CreateAlgorithm(System.String,GraphShape.Algorithms.Layout.ILayoutContext{`0,`1,`2},GraphShape.Algorithms.Layout.ILayoutParameters)">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.CreateAlgorithm(String, ILayoutContext&lt;TVertex, TEdge, TGraph&gt;, ILayoutParameters)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.CreateAlgorithm(string newAlgorithmType, ILayoutContext&lt;TVertex, TEdge, TGraph&gt; context, ILayoutParameters parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">newAlgorithmType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutContext-3.html">ILayoutContext</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateParameters_System_String_GraphShape_Algorithms_Layout_ILayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23CreateParameters(System.String%2CGraphShape.Algorithms.Layout.ILayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L37">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateParameters_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#CreateParameters*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__CreateParameters_System_String_GraphShape_Algorithms_Layout_ILayoutParameters_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#CreateParameters(System.String,GraphShape.Algorithms.Layout.ILayoutParameters)">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.CreateParameters(String, ILayoutParameters)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILayoutParameters ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.CreateParameters(string algorithmType, ILayoutParameters oldParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">algorithmType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__GetAlgorithmType_GraphShape_Algorithms_Layout_ILayoutAlgorithm__0__1__2__.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23GetAlgorithmType(GraphShape.Algorithms.Layout.ILayoutAlgorithm%7B%600%2C%601%2C%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L55">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__GetAlgorithmType_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#GetAlgorithmType*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__GetAlgorithmType_GraphShape_Algorithms_Layout_ILayoutAlgorithm__0__1__2__" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#GetAlgorithmType(GraphShape.Algorithms.Layout.ILayoutAlgorithm{`0,`1,`2})">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.GetAlgorithmType(ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.GetAlgorithmType(ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; algorithm)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td><span class="parametername">algorithm</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__IsValidAlgorithm_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23IsValidAlgorithm(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L46">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__IsValidAlgorithm_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#IsValidAlgorithm*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__IsValidAlgorithm_System_String_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#IsValidAlgorithm(System.String)">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.IsValidAlgorithm(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.IsValidAlgorithm(string algorithmType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">algorithmType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedEdgeRouting_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23NeedEdgeRouting(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L64">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedEdgeRouting_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#NeedEdgeRouting*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedEdgeRouting_System_String_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#NeedEdgeRouting(System.String)">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.NeedEdgeRouting(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.NeedEdgeRouting(string algorithmType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">algorithmType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedOverlapRemoval_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603.GraphShape%23Algorithms%23Layout%23ILayoutAlgorithmFactory%7BTVertex%2CTEdge%2CTGraph%7D%23NeedOverlapRemoval(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L69">View Source</a>
+  </span>
+  <a id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedOverlapRemoval_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#NeedOverlapRemoval*"></a>
+  <h4 id="GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3_GraphShape_Algorithms_Layout_ILayoutAlgorithmFactory_TVertex_TEdge_TGraph__NeedOverlapRemoval_System_String_" data-uid="GraphShape.Contracts.ILayoutAlgorithmFactoryContract`3.GraphShape#Algorithms#Layout#ILayoutAlgorithmFactory{TVertex,TEdge,TGraph}#NeedOverlapRemoval(System.String)">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.NeedOverlapRemoval(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;.NeedOverlapRemoval(string algorithmType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">algorithmType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithmFactory-3.html">ILayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Contracts_ILayoutAlgorithmFactoryContract_3.md&amp;value=---%0Auid%3A%20GraphShape.Contracts.ILayoutAlgorithmFactoryContract%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Contracts/ILayoutAlgorithmFactoryContract.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IHighlightAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IHighlightAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3">
+  
+  
+  <h1 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3" class="text-break">Interface IHighlightAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.Highlight.html">GraphShape.Algorithms.Highlight</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IHighlightAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
+    where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : class, IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_HighlightModes.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603.HighlightModes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L11">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_HighlightModes_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.HighlightModes*"></a>
+  <h4 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_HighlightModes" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.HighlightModes">HighlightModes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;string&gt; HighlightModes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateAlgorithm_System_String_GraphShape_Algorithms_Highlight_IHighlightContext__0__1__2__GraphShape_Algorithms_Highlight_IHighlightController__0__1__2__GraphShape_Algorithms_Highlight_IHighlightParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603.CreateAlgorithm(System.String%2CGraphShape.Algorithms.Highlight.IHighlightContext%7B%600%2C%601%2C%602%7D%2CGraphShape.Algorithms.Highlight.IHighlightController%7B%600%2C%601%2C%602%7D%2CGraphShape.Algorithms.Highlight.IHighlightParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L14">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateAlgorithm_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.CreateAlgorithm*"></a>
+  <h4 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateAlgorithm_System_String_GraphShape_Algorithms_Highlight_IHighlightContext__0__1__2__GraphShape_Algorithms_Highlight_IHighlightController__0__1__2__GraphShape_Algorithms_Highlight_IHighlightParameters_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.CreateAlgorithm(System.String,GraphShape.Algorithms.Highlight.IHighlightContext{`0,`1,`2},GraphShape.Algorithms.Highlight.IHighlightController{`0,`1,`2},GraphShape.Algorithms.Highlight.IHighlightParameters)">CreateAlgorithm(String, IHighlightContext&lt;TVertex, TEdge, TGraph&gt;, IHighlightController&lt;TVertex, TEdge, TGraph&gt;, IHighlightParameters)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IHighlightAlgorithm&lt;TVertex, TEdge, TGraph&gt; CreateAlgorithm(string highlightMode, IHighlightContext&lt;TVertex, TEdge, TGraph&gt; context, IHighlightController&lt;TVertex, TEdge, TGraph&gt; controller, IHighlightParameters parameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">highlightMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightContext-3.html">IHighlightContext</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightController-3.html">IHighlightController</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td><span class="parametername">controller</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightParameters.html">IHighlightParameters</a></td>
+        <td><span class="parametername">parameters</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightAlgorithm-3.html">IHighlightAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateParameters_System_String_GraphShape_Algorithms_Highlight_IHighlightParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603.CreateParameters(System.String%2CGraphShape.Algorithms.Highlight.IHighlightParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L20">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateParameters_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.CreateParameters*"></a>
+  <h4 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_CreateParameters_System_String_GraphShape_Algorithms_Highlight_IHighlightParameters_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.CreateParameters(System.String,GraphShape.Algorithms.Highlight.IHighlightParameters)">CreateParameters(String, IHighlightParameters)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IHighlightParameters CreateParameters(string highlightMode, IHighlightParameters oldParameters)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">highlightMode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightParameters.html">IHighlightParameters</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightParameters.html">IHighlightParameters</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_GetHighlightMode_GraphShape_Algorithms_Highlight_IHighlightAlgorithm__0__1__2__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603.GetHighlightMode(GraphShape.Algorithms.Highlight.IHighlightAlgorithm%7B%600%2C%601%2C%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L22">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_GetHighlightMode_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.GetHighlightMode*"></a>
+  <h4 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_GetHighlightMode_GraphShape_Algorithms_Highlight_IHighlightAlgorithm__0__1__2__" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.GetHighlightMode(GraphShape.Algorithms.Highlight.IHighlightAlgorithm{`0,`1,`2})">GetHighlightMode(IHighlightAlgorithm&lt;TVertex, TEdge, TGraph&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetHighlightMode(IHighlightAlgorithm&lt;TVertex, TEdge, TGraph&gt; algorithm)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightAlgorithm-3.html">IHighlightAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
+        <td><span class="parametername">algorithm</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_IsValidMode_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603.IsValidMode(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L12">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_IsValidMode_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.IsValidMode*"></a>
+  <h4 id="GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3_IsValidMode_System_String_" data-uid="GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory`3.IsValidMode(System.String)">IsValidMode(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsValidMode(string mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightAlgorithmFactory_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightAlgorithmFactory%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightAlgorithmFactory.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

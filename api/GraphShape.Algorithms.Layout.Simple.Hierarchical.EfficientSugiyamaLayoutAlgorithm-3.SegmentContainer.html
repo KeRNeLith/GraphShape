@@ -1,0 +1,705 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.SegmentContainer
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.SegmentContainer
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer">
+  
+  
+  <h1 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer" class="text-break">Class EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.SegmentContainer
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;&gt;</div>
+    <div class="level2"><span class="xref">EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.SegmentContainer</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;&gt;</div>
+    <div><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;&gt;</div>
+    <div><span class="xref">System.Collections.IList</span></div>
+    <div><span class="xref">System.Collections.ICollection</span></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.IData.html">EfficientSugiyamaLayoutAlgorithm.IData</a>&lt;&gt;</div>
+    <div><span class="xref">System.ICloneable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.get_Item(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.set_Item(System.Int32, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Add(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.Add(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.AddRange(System.Collections.Generic.IEnumerable&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.AsReadOnly()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.BinarySearch(System.Int32, System.Int32, GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Collections.Generic.IComparer&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.BinarySearch(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.BinarySearch(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Collections.Generic.IComparer&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Clear()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Contains(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.Contains(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.ConvertAll&lt;TOutput&gt;(System.Converter&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, TOutput&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.CopyTo(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.ICollection.CopyTo(System.Array, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.CopyTo(System.Int32, GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.CopyTo(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;[], System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Exists(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Find(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindAll(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindIndex(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindIndex(System.Int32, System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindIndex(System.Int32, System.Int32, System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindLast(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindLastIndex(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindLastIndex(System.Int32, System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.FindLastIndex(System.Int32, System.Int32, System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.ForEach(System.Action&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.Generic.IEnumerable&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IEnumerable.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.GetRange(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.IndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.IndexOf(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.IndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.IndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Insert(System.Int32, GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.Insert(System.Int32, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.InsertRange(System.Int32, System.Collections.Generic.IEnumerable&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.LastIndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.LastIndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.LastIndexOf(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;, System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Remove(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.Remove(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.RemoveAll(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.RemoveAt(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.RemoveRange(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Reverse()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Reverse(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Sort()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Sort(System.Collections.Generic.IComparer&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Sort(System.Int32, System.Int32, System.Collections.Generic.IComparer&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Sort(System.Comparison&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.ToArray()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.TrimExcess()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.TrueForAll(System.Predicate&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm.Segment&lt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Capacity</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Count</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.IsFixedSize</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.Generic.ICollection&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.IsReadOnly</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.IsReadOnly</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.ICollection.IsSynchronized</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.ICollection.SyncRoot</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.Item[System.Int32]</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;.System.Collections.IList.Item[System.Int32]</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.html">GraphShape.Algorithms.Layout.Simple.Hierarchical</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected class SegmentContainer : List&lt;EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;, IList&lt;EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;, ICollection&lt;EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;, IList, ICollection, EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer, IEnumerable&lt;EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment&gt;, IEnumerable, EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.IData, ICloneable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L66">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.#ctor*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.#ctor">SegmentContainer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SegmentContainer()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.%23ctor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L67">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.#ctor*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer__ctor_System_Int32_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.#ctor(System.Int32)">SegmentContainer(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SegmentContainer(int capacity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">capacity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Position.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L124">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Position_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Position*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Position" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Position">Position</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Position { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Append_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__Segment_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Append(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.Segment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L72">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Append_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Append*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Append_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__Segment_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Append(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.Segment)">Append(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Append(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;</td>
+        <td><span class="parametername">s</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Clone.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L130">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Clone_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Clone*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Clone" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Clone">Clone()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Join_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Join(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L77">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Join_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Join*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Join_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Join(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer)">Join(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Join(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__Segment_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Split(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.Segment%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L82">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__Segment_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split(GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.Segment,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@)">Split(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Split(EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.Segment s, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc1, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html">EfficientSugiyamaLayoutAlgorithm.Segment</a>&lt;&gt;</td>
+        <td><span class="parametername">s</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Split(System.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L92">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split(System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@)">Split(Int32, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Split(int k, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc1, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">k</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer.Split(System.Int32%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40%2CGraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%7B%600%2C%601%2C%602%7D.ISegmentContainer%40%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L101">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer_Split_System_Int32_GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm__0__1__2__ISegmentContainer__System_Boolean_" data-uid="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SegmentContainer.Split(System.Int32,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@,GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm{`0,`1,`2}.ISegmentContainer@,System.Boolean)">Split(Int32, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void Split(int k, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc1, out EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer sc2, bool keep)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">k</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm.ISegmentContainer</a>&lt;&gt;</td>
+        <td><span class="parametername">sc2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">keep</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IList</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.ICollection</span>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.ISegmentContainer.html">EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.ISegmentContainer</a>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.IData.html">EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;.IData</a>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SegmentContainer.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm%603.SegmentContainer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/Hierarchical/EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs/#L63" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1445 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HierarchicalGraph&lt;TVertex, TEdge&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class HierarchicalGraph&lt;TVertex, TEdge&gt;
+   ">
+    <meta name="generator" content="docfx 2.42.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.HierarchicalGraph`2">
+  
+  
+  <h1 id="GraphShape_HierarchicalGraph_2" data-uid="GraphShape.HierarchicalGraph`2" class="text-break">Class HierarchicalGraph&lt;TVertex, TEdge&gt;
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div class="level2"><span class="xref">HierarchicalGraph&lt;TVertex, TEdge&gt;</span></div>
+      <div class="level3"><a class="xref" href="GraphShape.SoftMutableHierarchicalGraph-2.html">SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">QuikGraph.IEdgeListAndIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableBidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexAndEdgeSet</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableVertexSet</span>&lt;TVertex&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IMutableGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">System.ICloneable</span></div>
+    <div><a class="xref" href="GraphShape.IHierarchicalBidirectionalGraph-2.html">IHierarchicalBidirectionalGraph</a>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IBidirectionalGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IEdgeListGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IVertexSet</span>&lt;TVertex&gt;</div>
+    <div><span class="xref">QuikGraph.IEdgeSet</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IBidirectionalIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IIncidenceGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IImplicitGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IGraph</span>&lt;TVertex, TEdge&gt;</div>
+    <div><span class="xref">QuikGraph.IImplicitVertexSet</span>&lt;TVertex&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsEdge(TVertex, TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsOutEdgesEmpty(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutDegree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetOutEdges(TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OutEdge(TVertex, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetEdge(TVertex, TVertex, TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetEdges(TVertex, TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsInEdgesEmpty(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InDegree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TryGetInEdges(TVertex, System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.InEdge(TVertex, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Degree(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Clear()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVertexRange(System.Collections.Generic.IEnumerable&lt;TVertex&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnVertexAdded(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveVertex(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnVertexRemoved(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveVertexIf(QuikGraph.VertexPredicate&lt;TVertex&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddEdgeRange(System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnEdgeAdded(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.OnEdgeRemoved(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveEdgeIf(QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVerticesAndEdge(TEdge)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVerticesAndEdgeRange(System.Collections.Generic.IEnumerable&lt;TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveOutEdgeIf(TVertex, QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearOutEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.TrimEdgeExcess()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveInEdgeIf(TVertex, QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearInEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ClearEdges(TVertex)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.MergeVertex(TVertex, QuikGraph.EdgeFactory&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.MergeVerticesIf(QuikGraph.VertexPredicate&lt;TVertex&gt;, QuikGraph.EdgeFactory&lt;TVertex, TEdge&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.System.ICloneable.Clone()</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeCapacity</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexType</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeType</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsDirected</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AllowParallelEdges</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsVerticesEmpty</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexCount</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Vertices</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.IsEdgesEmpty</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeCount</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.Edges</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexAdded</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.VertexRemoved</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeAdded</span>
+    </div>
+    <div>
+      <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.EdgeRemoved</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.html">GraphShape</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_HierarchicalGraph_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class HierarchicalGraph&lt;TVertex, TEdge&gt; : BidirectionalGraph&lt;TVertex, TEdge&gt;, IEdgeListAndIncidenceGraph&lt;TVertex, TEdge&gt;, IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;, IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, IMutableVertexListGraph&lt;TVertex, TEdge&gt;, IMutableIncidenceGraph&lt;TVertex, TEdge&gt;, IMutableVertexAndEdgeSet&lt;TVertex, TEdge&gt;, IMutableVertexSet&lt;TVertex&gt;, IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IMutableGraph&lt;TVertex, TEdge&gt;, ICloneable, IHierarchicalBidirectionalGraph&lt;TVertex, TEdge&gt;, IBidirectionalGraph&lt;TVertex, TEdge&gt;, IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, IVertexListGraph&lt;TVertex, TEdge&gt;, IEdgeListGraph&lt;TVertex, TEdge&gt;, IVertexSet&lt;TVertex&gt;, IEdgeSet&lt;TVertex, TEdge&gt;, IBidirectionalIncidenceGraph&lt;TVertex, TEdge&gt;, IIncidenceGraph&lt;TVertex, TEdge&gt;, IImplicitGraph&lt;TVertex, TEdge&gt;, IGraph&lt;TVertex, TEdge&gt;, IImplicitVertexSet&lt;TVertex&gt; where TEdge : TypedEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2__ctor.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L23">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2__ctor_" data-uid="GraphShape.HierarchicalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2__ctor" data-uid="GraphShape.HierarchicalGraph`2.#ctor">HierarchicalGraph()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HierarchicalGraph()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.%23ctor(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L26">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2__ctor_" data-uid="GraphShape.HierarchicalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2__ctor_System_Boolean_" data-uid="GraphShape.HierarchicalGraph`2.#ctor(System.Boolean)">HierarchicalGraph(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HierarchicalGraph(bool allowParallelEdges)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowParallelEdges</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2__ctor_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.%23ctor(System.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L29">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2__ctor_" data-uid="GraphShape.HierarchicalGraph`2.#ctor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2__ctor_System_Boolean_System_Int32_" data-uid="GraphShape.HierarchicalGraph`2.#ctor(System.Boolean,System.Int32)">HierarchicalGraph(Boolean, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HierarchicalGraph(bool allowParallelEdges, int vertexCapacity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowParallelEdges</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">vertexCapacity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_GeneralEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.GeneralEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L256">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_GeneralEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_GeneralEdgeCount" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgeCount">GeneralEdgeCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GeneralEdgeCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_GeneralEdges.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.GeneralEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L242">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_GeneralEdges_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_GeneralEdges" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdges">GeneralEdges</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; GeneralEdges { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_HierarchicalEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.HierarchicalEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L234">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_HierarchicalEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_HierarchicalEdgeCount" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgeCount">HierarchicalEdgeCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HierarchicalEdgeCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_HierarchicalEdges.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.HierarchicalEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L220">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_HierarchicalEdges_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_HierarchicalEdges" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdges">HierarchicalEdges</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HierarchicalEdges { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_AddEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.AddEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L70">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_AddEdge_" data-uid="GraphShape.HierarchicalGraph`2.AddEdge*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_AddEdge__1_" data-uid="GraphShape.HierarchicalGraph`2.AddEdge(`1)">AddEdge(TEdge)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool AddEdge(TEdge e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddEdge(TEdge)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_AddVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.AddVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L34">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_AddVertex_" data-uid="GraphShape.HierarchicalGraph`2.AddVertex*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_AddVertex__0_" data-uid="GraphShape.HierarchicalGraph`2.AddVertex(`0)">AddVertex(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool AddVertex(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.AddVertex(TVertex)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_GeneralEdgeCountFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.GeneralEdgeCountFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L191">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_GeneralEdgeCountFor_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgeCountFor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_GeneralEdgeCountFor__0_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgeCountFor(`0)">GeneralEdgeCountFor(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GeneralEdgeCountFor(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_GeneralEdgesFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.GeneralEdgesFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L178">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_GeneralEdgesFor_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgesFor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_GeneralEdgesFor__0_" data-uid="GraphShape.HierarchicalGraph`2.GeneralEdgesFor(`0)">GeneralEdgesFor(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; GeneralEdgesFor(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_HierarchicalEdgeCountFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.HierarchicalEdgeCountFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L151">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_HierarchicalEdgeCountFor_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgeCountFor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_HierarchicalEdgeCountFor__0_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgeCountFor(`0)">HierarchicalEdgeCountFor(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HierarchicalEdgeCountFor(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_HierarchicalEdgesFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.HierarchicalEdgesFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L145">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_HierarchicalEdgesFor_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgesFor*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_HierarchicalEdgesFor__0_" data-uid="GraphShape.HierarchicalGraph`2.HierarchicalEdgesFor(`0)">HierarchicalEdgesFor(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HierarchicalEdgesFor(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_InGeneralEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.InGeneralEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L201">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_InGeneralEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.InGeneralEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_InGeneralEdgeCount__0_" data-uid="GraphShape.HierarchicalGraph`2.InGeneralEdgeCount(`0)">InGeneralEdgeCount(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int InGeneralEdgeCount(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_InGeneralEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.InGeneralEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L196">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_InGeneralEdges_" data-uid="GraphShape.HierarchicalGraph`2.InGeneralEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_InGeneralEdges__0_" data-uid="GraphShape.HierarchicalGraph`2.InGeneralEdges(`0)">InGeneralEdges(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; InGeneralEdges(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_InHierarchicalEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.InHierarchicalEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L161">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_InHierarchicalEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.InHierarchicalEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_InHierarchicalEdgeCount__0_" data-uid="GraphShape.HierarchicalGraph`2.InHierarchicalEdgeCount(`0)">InHierarchicalEdgeCount(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int InHierarchicalEdgeCount(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_InHierarchicalEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.InHierarchicalEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L156">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_InHierarchicalEdges_" data-uid="GraphShape.HierarchicalGraph`2.InHierarchicalEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_InHierarchicalEdges__0_" data-uid="GraphShape.HierarchicalGraph`2.InHierarchicalEdges(`0)">InHierarchicalEdges(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; InHierarchicalEdges(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_OutGeneralEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.OutGeneralEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L211">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_OutGeneralEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.OutGeneralEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_OutGeneralEdgeCount__0_" data-uid="GraphShape.HierarchicalGraph`2.OutGeneralEdgeCount(`0)">OutGeneralEdgeCount(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OutGeneralEdgeCount(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_OutGeneralEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.OutGeneralEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L206">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_OutGeneralEdges_" data-uid="GraphShape.HierarchicalGraph`2.OutGeneralEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_OutGeneralEdges__0_" data-uid="GraphShape.HierarchicalGraph`2.OutGeneralEdges(`0)">OutGeneralEdges(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; OutGeneralEdges(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_OutHierarchicalEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.OutHierarchicalEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L171">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_OutHierarchicalEdgeCount_" data-uid="GraphShape.HierarchicalGraph`2.OutHierarchicalEdgeCount*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_OutHierarchicalEdgeCount__0_" data-uid="GraphShape.HierarchicalGraph`2.OutHierarchicalEdgeCount(`0)">OutHierarchicalEdgeCount(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OutHierarchicalEdgeCount(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_OutHierarchicalEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.OutHierarchicalEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L166">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_OutHierarchicalEdges_" data-uid="GraphShape.HierarchicalGraph`2.OutHierarchicalEdges*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_OutHierarchicalEdges__0_" data-uid="GraphShape.HierarchicalGraph`2.OutHierarchicalEdges(`0)">OutHierarchicalEdges(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; OutHierarchicalEdges(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_RemoveEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.RemoveEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L106">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_RemoveEdge_" data-uid="GraphShape.HierarchicalGraph`2.RemoveEdge*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_RemoveEdge__1_" data-uid="GraphShape.HierarchicalGraph`2.RemoveEdge(`1)">RemoveEdge(TEdge)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool RemoveEdge(TEdge e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEdge</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveEdge(TEdge)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2_RemoveVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602.RemoveVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L44">View Source</a>
+  </span>
+  <a id="GraphShape_HierarchicalGraph_2_RemoveVertex_" data-uid="GraphShape.HierarchicalGraph`2.RemoveVertex*"></a>
+  <h4 id="GraphShape_HierarchicalGraph_2_RemoveVertex__0_" data-uid="GraphShape.HierarchicalGraph`2.RemoveVertex(`0)">RemoveVertex(TVertex)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool RemoveVertex(TVertex v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">v</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveVertex(TVertex)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">QuikGraph.IEdgeListAndIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexAndEdgeSet&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IMutableGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.IHierarchicalBidirectionalGraph-2.html">IHierarchicalBidirectionalGraph&lt;TVertex, TEdge&gt;</a>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IBidirectionalGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IEdgeListGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IEdgeSet&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IBidirectionalIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IIncidenceGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IImplicitGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IGraph&lt;TVertex, TEdge&gt;</span>
+  </div>
+  <div>
+      <span class="xref">QuikGraph.IImplicitVertexSet&lt;TVertex&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetNeighbours__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelper.GetNeighbours&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetOutNeighbours__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelper.GetOutNeighbours&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Collections_Generic_List___0__System_Collections_Generic_List___0__">GraphHelper.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, List&lt;TVertex&gt;, List&lt;TVertex&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetSources__2_QuikGraph_IBidirectionalGraph___0___1__">GraphHelper.GetSources&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_AddEdgeRange__2_QuikGraph_IMutableEdgeListGraph___0___1__System_Collections_Generic_IEnumerable___1__">GraphHelper.AddEdgeRange&lt;TVertex, TEdge&gt;(IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IEnumerable&lt;TEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelper.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_HierarchicalGraph_2.md&amp;value=---%0Auid%3A%20GraphShape.HierarchicalGraph%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/HierarchicalGraph.cs/#L7" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
