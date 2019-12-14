@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape", "src\GraphShap
 EndProject
 Project("{AA19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls", "src\GraphShape.Controls\GraphShape.Controls.csproj", "{90D874F2-486E-477E-93A9-FFA6FC92A2F4}"
 EndProject
-Project("{AB19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Test", "src\GraphShape.Test\GraphShape.Test.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
+Project("{AB19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Tests", "src\GraphShape.Tests\GraphShape.Tests.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphShape.Sample", "src\GraphShape.Sample\GraphShape.Sample.csproj", "{C32CDAAA-E963-4638-BD38-A621B2078083}"
 EndProject

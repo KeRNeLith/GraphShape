@@ -3,7 +3,7 @@ using System.Diagnostics;
 using GraphShape.Algorithms;
 using NUnit.Framework;
 
-namespace GraphShape.Test
+namespace GraphShape.Tests
 {
 	/// <summary>
 	///This is a test class for LayeredTopologicalSortAlgorithmTest and is intended

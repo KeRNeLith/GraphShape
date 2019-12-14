@@ -8,7 +8,7 @@ using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Compound.FDP;
 using NUnit.Framework;
 
-namespace GraphShape.Test.Algorithms
+namespace GraphShape.Tests.Algorithms
 {
     /// <summary>
     /// Summary description for CompoundFDPForceTest

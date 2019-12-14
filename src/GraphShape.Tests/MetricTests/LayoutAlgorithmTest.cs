@@ -11,7 +11,7 @@ using System.Xml;
 using System.Linq;
 using Palesz.QuickGraph.Test.Generators;
 
-namespace GraphShape.Test.MetricTests
+namespace GraphShape.Tests.MetricTests
 {
 	/*[DeploymentItem( "QuickGraph.dll" )]
 	[TestClass()]

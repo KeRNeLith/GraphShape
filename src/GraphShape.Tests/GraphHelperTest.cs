@@ -4,7 +4,7 @@ using QuikGraph;
 using GraphShape;
 using NUnit.Framework;
 
-namespace GraphShape.Test
+namespace GraphShape.Tests
 {
 	/// <summary>
 	/// Summary description for GraphHelperTest

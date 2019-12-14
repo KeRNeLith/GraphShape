@@ -6,7 +6,7 @@ using System.Diagnostics;
 using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
-namespace GraphShape.Test
+namespace GraphShape.Tests
 {
     
     
