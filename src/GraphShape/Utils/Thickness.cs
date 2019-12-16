@@ -50,10 +50,10 @@ namespace GraphShape.Utils
         /// <returns>True if both <see cref="Thickness"/> are equal, otherwise false.</returns>
         public static bool operator ==(Thickness thickness1, Thickness thickness2)
         {
-            return thickness1.Left == thickness2.Left 
-                && thickness1.Top == thickness2.Top 
-                && thickness1.Right == thickness2.Right 
-                && thickness1.Bottom == thickness2.Bottom;
+            return Math.Abs(thickness1.Left - thickness2.Left) < double.Epsilon
+                && Math.Abs(thickness1.Top - thickness2.Top) < double.Epsilon
+                && Math.Abs(thickness1.Right - thickness2.Right) < double.Epsilon
+                && Math.Abs(thickness1.Bottom - thickness2.Bottom) < double.Epsilon;
         }
 
         /// <summary>
@@ -71,24 +71,23 @@ namespace GraphShape.Utils
         public override bool Equals(object obj)
         {
             if (obj is Thickness thickness)
-                return Equals(this, thickness);
+                return this == thickness;
             return false;
         }
 
         /// <inheritdoc />
-        public bool Equals(Thickness value)
+        public bool Equals(Thickness other)
         {
-            return Equals(this, value);
+            return this == other;
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            var hashCode = 551583723;
-            hashCode = hashCode * -1521134295 + Left.GetHashCode();
-            hashCode = hashCode * -1521134295 + Right.GetHashCode();
-            hashCode = hashCode * -1521134295 + Top.GetHashCode();
-            hashCode = hashCode * -1521134295 + Bottom.GetHashCode();
+            int hashCode = Left.GetHashCode();
+            hashCode = (hashCode * 397) ^ Top.GetHashCode();
+            hashCode = (hashCode * 397) ^ Right.GetHashCode();
+            hashCode = (hashCode * 397) ^ Bottom.GetHashCode();
             return hashCode;
         }
     }
