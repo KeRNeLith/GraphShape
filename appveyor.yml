@@ -2,6 +2,9 @@ version: '0.0.{build}'
 image: Visual Studio 2017
 
 # Setup environment
+nuget:
+  disable_publish_on_pr: true
+
 pull_requests:
   do_not_increment_build_number: true
 
@@ -29,27 +32,42 @@ init:
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
         $env:Build_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
+        $env:Build_Assembly_Version = $env:Build_Version;
+        $env:IsFullIntegrationBuild = $true;
     }
     else
     {
         $env:Build_Version = "$($env:APPVEYOR_BUILD_VERSION)";
+        $env:Build_Assembly_Version = "$env:Build_Version" -replace "\-.*","";
+        $env:IsFullIntegrationBuild = "$env:APPVEYOR_PULL_REQUEST_NUMBER" -eq "" -And $env:Configuration -eq "Release";
+    }
+    
+    "Building version: $env:Build_Version";
+    "Building assembly version: $env:Build_Assembly_Version";
+    if ($env:IsFullIntegrationBuild -eq $true)
+    {
+        "With full integration";
+    }
+    else
+    {
+        "Without full integration";
     }
 
 # Assembly infos & csproj patching
 assembly_info:
   patch: true
   file: '**\\AssemblyInfo.*'
-  assembly_version: '$(Build_Version)'
-  assembly_file_version: '$(Build_Version)'
+  assembly_version: '$(Build_Assembly_Version)'
+  assembly_file_version: '$(Build_Assembly_Version)'
   assembly_informational_version: '$(Build_Version)'
 
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '$(Build_Version)'
+  version: '$(Build_Assembly_Version)'
   package_version: '$(Build_Version)'
-  assembly_version: '$(Build_Version)'
-  file_version: '$(Build_Version)'
+  assembly_version: '$(Build_Assembly_Version)'
+  file_version: '$(Build_Assembly_Version)'
   informational_version: '$(Build_Version)'
 
 # Build configurations
@@ -69,7 +87,7 @@ before_build:
   - nuget restore -verbosity detailed
 # SonarQube
   - ps: >-
-      if ($env:Configuration -eq "Release")
+      if ($env:IsFullIntegrationBuild -eq $true)
       {
           dotnet tool install --tool-path tools dotnet-sonarscanner
           $sonarScanner = (Resolve-Path "tools\dotnet-sonarscanner.exe").ToString()
@@ -82,7 +100,7 @@ build_script:
 # Start SonarQube analysis (only for Release configuration)
   - ps: $analysisFile = (Convert-Path SonarQube.Analysis.xml).ToString()
   - ps: >-
-      if ($env:Configuration -eq "Release")
+      if ($env:IsFullIntegrationBuild -eq $true)
       {
           & $sonarScanner begin /k:"graphshape" /s:$analysisFile /o:"kernelith-github" /d:sonar.host.url="https://sonarcloud.io" /d:"sonar.branch.name=$env:APPVEYOR_REPO_BRANCH" /d:sonar.cs.opencover.reportsPaths="coverage.xml" /d:sonar.login="$env:SONARQUBE_TOKEN"
       }
@@ -91,7 +109,7 @@ build_script:
 before_test:
 # NuGet packages for test & coverage
   - ps: >-
-      if ($env:Configuration -eq "Release")
+      if ($env:IsFullIntegrationBuild -eq $true)
       {
           nuget install NUnit.Console -Version $env:NUnitConsoleVersion -OutputDirectory tools
           nuget install OpenCover -Version $env:OpenCoverVersion -OutputDirectory tools
@@ -101,7 +119,7 @@ before_test:
 after_test:
 # Generate coverage report
   - ps: >-
-      if ($env:Configuration -eq "Release")
+      if ($env:IsFullIntegrationBuild -eq $true)
       {
           $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString()
           $nunitConsole = (Resolve-Path "tools\NUnit.ConsoleRunner.*\tools\nunit3-console.exe").ToString()
