@@ -1,6 +1,9 @@
 ﻿namespace GraphShape.Algorithms.EdgeRouting
 {
-	public interface IEdgeRoutingParameters : IAlgorithmParameters
-	{		
-	}
+    /// <summary>
+    /// Represents edge routing algorithm parameters.
+    /// </summary>
+    public interface IEdgeRoutingParameters : IAlgorithmParameters
+    {
+    }
 }

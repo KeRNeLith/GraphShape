@@ -1,18 +1,16 @@
-﻿namespace GraphShape.Algorithms.EdgeRouting
+﻿using GraphShape.Utils;
+
+namespace GraphShape.Algorithms.EdgeRouting
 {
-	public class EdgeRoutingParameters : IEdgeRoutingParameters
-	{
-		public object Clone()
-		{
-			return this.MemberwiseClone();
-		}
-
-		protected void NotifyChanged( string propertyName )
-		{
-			if ( PropertyChanged != null )
-				PropertyChanged( this, new System.ComponentModel.PropertyChangedEventArgs( propertyName ) );
-		}
-
-		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-	}
+    /// <summary>
+    /// Base class for edge routing algorithm parameters.
+    /// </summary>
+    public class EdgeRoutingParameters : NotifierObject, IEdgeRoutingParameters
+    {
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+    }
 }
