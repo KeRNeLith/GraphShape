@@ -121,7 +121,7 @@ namespace GraphShape.Controls
 
         protected static readonly DependencyPropertyKey HighlightAlgorithmPropertyKey =
             DependencyProperty.RegisterReadOnly("HighlightAlgorithm",
-                                                typeof(IHighlightAlgorithm<TVertex, TEdge, TGraph>),
+                                                typeof(IHighlightAlgorithm<TVertex, TEdge>),
                                                 typeof(GraphLayout<TVertex, TEdge, TGraph>),
                                                 new UIPropertyMetadata(null, HighlightAlgorithm_PropertyChanged));
 
@@ -525,7 +525,7 @@ namespace GraphShape.Controls
 
         private static void HighlightAlgorithm_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var algo = e.NewValue as IHighlightAlgorithm<TVertex, TEdge, TGraph>;
+            var algo = e.NewValue as IHighlightAlgorithm<TVertex, TEdge>;
             if (algo != null)
                 algo.ResetHighlight();
         }
@@ -631,9 +631,9 @@ namespace GraphShape.Controls
             protected set { SetValue(OverlapRemovalAlgorithmPropertyKey, value); }
         }
 
-        public IHighlightAlgorithm<TVertex, TEdge, TGraph> HighlightAlgorithm
+        public IHighlightAlgorithm<TVertex, TEdge> HighlightAlgorithm
         {
-            get { return (IHighlightAlgorithm<TVertex, TEdge, TGraph>)GetValue(HighlightAlgorithmProperty); }
+            get { return (IHighlightAlgorithm<TVertex, TEdge>)GetValue(HighlightAlgorithmProperty); }
             protected set { SetValue(HighlightAlgorithmPropertyKey, value); }
         }
 

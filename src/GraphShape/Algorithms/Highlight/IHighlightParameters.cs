@@ -3,7 +3,10 @@ using System.ComponentModel;
 
 namespace GraphShape.Algorithms.Highlight
 {
-	public interface IHighlightParameters : ICloneable, INotifyPropertyChanged
-	{
-	}
+    /// <summary>
+    /// Represents highlight algorithm parameters.
+    /// </summary>
+    public interface IHighlightParameters : ICloneable, INotifyPropertyChanged
+    {
+    }
 }

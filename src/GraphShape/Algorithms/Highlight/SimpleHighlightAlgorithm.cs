@@ -1,105 +1,128 @@
-﻿using QuikGraph;
+﻿using System.Linq;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Highlight
 {
-	public class SimpleHighlightAlgorithm<TVertex, TEdge, TGraph> : HighlightAlgorithmBase<TVertex, TEdge, TGraph, IHighlightParameters>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
-	{
-		public SimpleHighlightAlgorithm(
-			IHighlightController<TVertex, TEdge, TGraph> controller,
-			IHighlightParameters parameters )
-			: base( controller, parameters )
-		{
-		}
+    /// <summary>
+    /// Simple highlight algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public class SimpleHighlightAlgorithm<TVertex, TEdge, TGraph> : HighlightAlgorithmBase<TVertex, TEdge, TGraph, IHighlightParameters>
+        where TEdge : IEdge<TVertex>
+        where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleHighlightAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="controller">Highlight controller.</param>
+        /// <param name="parameters">Highlight algorithm parameters.</param>
+        public SimpleHighlightAlgorithm(
+            [NotNull] IHighlightController<TVertex, TEdge, TGraph> controller,
+            [CanBeNull] IHighlightParameters parameters)
+            : base(controller, parameters)
+        {
+        }
 
-		private void ClearSemiHighlights()
-		{
-			foreach ( var vertex in Controller.SemiHighlightedVertices )
-				Controller.RemoveSemiHighlightFromVertex( vertex );
+        private void ClearSemiHighlights()
+        {
+            foreach (TVertex vertex in Controller.SemiHighlightedVertices.ToArray())
+                Controller.RemoveSemiHighlightFromVertex(vertex);
 
-			foreach ( var edge in Controller.SemiHighlightedEdges )
-				Controller.RemoveSemiHighlightFromEdge( edge );
-		}
+            foreach (TEdge edge in Controller.SemiHighlightedEdges.ToArray())
+                Controller.RemoveSemiHighlightFromEdge(edge);
+        }
 
-		private void ClearAllHighlights()
-		{
-			ClearSemiHighlights();
+        private void ClearAllHighlights()
+        {
+            ClearSemiHighlights();
 
-			foreach ( var vertex in Controller.HighlightedVertices )
-				Controller.RemoveHighlightFromVertex( vertex );
+            foreach (TVertex vertex in Controller.HighlightedVertices.ToArray())
+                Controller.RemoveHighlightFromVertex(vertex);
 
-			foreach ( var edge in Controller.HighlightedEdges )
-				Controller.RemoveHighlightFromEdge( edge );
-		}
+            foreach (TEdge edge in Controller.HighlightedEdges.ToArray())
+                Controller.RemoveHighlightFromEdge(edge);
+        }
 
-		/// <summary>
-		/// Resets the semi-highlights according to the actually
-		/// highlighted vertices/edges.
-		/// 
-		/// This method should be called if the graph changed, 
-		/// or the highlights should be resetted.
-		/// </summary>
-		public override void ResetHighlight()
-		{
-			ClearAllHighlights();
-		}
+        /// <summary>
+        /// Resets the semi-highlights according to the actually
+        /// highlighted vertices/edges.
+        /// 
+        /// This method should be called if the graph changed,
+        /// or the highlights should be reset.
+        /// </summary>
+        public override void ResetHighlight()
+        {
+            ClearAllHighlights();
+        }
 
-		public override bool OnVertexHighlighting( TVertex vertex )
-		{
-			ClearAllHighlights();
+        /// <inheritdoc />
+        public override bool OnVertexHighlighting(TVertex vertex)
+        {
+            ClearAllHighlights();
 
-			if ( vertex == null || !Controller.Graph.ContainsVertex( vertex ) )
-				return false;
+            if (!Controller.Graph.ContainsVertex(vertex))
+                return false;
 
-			//semi-highlight the in-edges, and the neighbours on their other side
-			foreach ( var edge in Controller.Graph.InEdges( vertex ) )
-			{
-				Controller.SemiHighlightEdge( edge, "InEdge" );
-				if ( edge.Source == vertex || Controller.IsHighlightedVertex( edge.Source ) )
-					continue;
+            // Semi-highlight the in-edges, and the neighbors on their other side
+            foreach (TEdge edge in Controller.Graph.InEdges(vertex))
+            {
+                Controller.SemiHighlightEdge(edge, "InEdge");
+                if (Equals(edge.Source, vertex) || Controller.IsHighlightedVertex(edge.Source))
+                    continue;
 
-				Controller.SemiHighlightVertex( edge.Source, "Source" );
-			}
+                Controller.SemiHighlightVertex(edge.Source, "Source");
+            }
 
-			//semi-highlight the out-edges
-			foreach ( var edge in Controller.Graph.OutEdges( vertex ) )
-			{
-				Controller.SemiHighlightEdge( edge, "OutEdge" );
-				if ( edge.Target == vertex || Controller.IsHighlightedVertex( edge.Target ) )
-					continue;
+            // Semi-highlight the out-edges
+            foreach (TEdge edge in Controller.Graph.OutEdges(vertex))
+            {
+                Controller.SemiHighlightEdge(edge, "OutEdge");
+                if (Equals(edge.Target, vertex) || Controller.IsHighlightedVertex(edge.Target))
+                    continue;
 
-				Controller.SemiHighlightVertex( edge.Target, "Target" );
-			}
-			Controller.HighlightVertex( vertex, "None" );
-			return true;
-		}
+                Controller.SemiHighlightVertex(edge.Target, "Target");
+            }
 
-		public override bool OnVertexHighlightRemoving( TVertex vertex )
-		{
-			ClearAllHighlights();
-			return true;
-		}
+            Controller.HighlightVertex(vertex, "None");
+            return true;
+        }
 
-		public override bool OnEdgeHighlighting( TEdge edge )
-		{
-			ClearAllHighlights();
+        /// <inheritdoc />
+        public override bool OnVertexHighlightRemoving(TVertex vertex)
+        {
+            if (!Controller.Graph.ContainsVertex(vertex))
+                return false;
 
-			//highlight the source and the target
-			if ( Equals( edge, default( TEdge ) ) || !Controller.Graph.ContainsEdge( edge ) )
-				return false;
+            ClearAllHighlights();
+            return true;
+        }
 
-			Controller.HighlightEdge( edge, null );
-			Controller.SemiHighlightVertex( edge.Source, "Source" );
-			Controller.SemiHighlightVertex( edge.Target, "Target" );
-			return true;
-		}
+        /// <inheritdoc />
+        public override bool OnEdgeHighlighting(TEdge edge)
+        {
+            ClearAllHighlights();
 
-		public override bool OnEdgeHighlightRemoving( TEdge edge )
-		{
-			ClearAllHighlights();
-			return true;
-		}
-	}
+            // Highlight the source and the target
+            if (!Controller.Graph.ContainsEdge(edge))
+                return false;
+
+            Controller.HighlightEdge(edge, null);
+            Controller.SemiHighlightVertex(edge.Source, "Source");
+            Controller.SemiHighlightVertex(edge.Target, "Target");
+            return true;
+        }
+
+        /// <inheritdoc />
+        public override bool OnEdgeHighlightRemoving(TEdge edge)
+        {
+            if (!Controller.Graph.ContainsEdge(edge))
+                return false;
+
+            ClearAllHighlights();
+            return true;
+        }
+    }
 }

@@ -18,22 +18,22 @@ namespace GraphShape.Controls
 
 		public IEnumerable<TVertex> HighlightedVertices
 		{
-			get { return highlightedVertices.Keys.ToArray(); }
+			get { return highlightedVertices.Keys; }
 		}
 
 		public IEnumerable<TVertex> SemiHighlightedVertices
 		{
-			get { return semiHighlightedVertices.Keys.ToArray(); }
+			get { return semiHighlightedVertices.Keys; }
 		}
 
 		public IEnumerable<TEdge> HighlightedEdges
 		{
-			get { return highlightedEdges.Keys.ToArray(); }
+			get { return highlightedEdges.Keys; }
 		}
 
 		public IEnumerable<TEdge> SemiHighlightedEdges
 		{
-			get { return semiHighlightedEdges.Keys.ToArray(); }
+			get { return semiHighlightedEdges.Keys; }
 		}
 
 		public bool IsHighlightedVertex( TVertex vertex )

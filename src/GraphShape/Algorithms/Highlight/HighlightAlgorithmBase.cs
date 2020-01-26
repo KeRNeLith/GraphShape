@@ -1,64 +1,93 @@
-﻿using System.ComponentModel;
-using System.Diagnostics.Contracts;
+﻿using System;
+using System.ComponentModel;
+using JetBrains.Annotations;
 using QuikGraph;
-using System.Diagnostics;
 
 namespace GraphShape.Algorithms.Highlight
 {
-    public abstract class HighlightAlgorithmBase<TVertex, TEdge, TGraph, TParameters> : IHighlightAlgorithm<TVertex, TEdge, TGraph>
-        where TVertex : class
+    /// <summary>
+    /// Base class for all highlight algorithms.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    /// <typeparam name="TParameters">Algorithm parameters type</typeparam>
+    public abstract class HighlightAlgorithmBase<TVertex, TEdge, TGraph, TParameters> : IHighlightAlgorithm<TVertex, TEdge>
         where TEdge : IEdge<TVertex>
         where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
         where TParameters : class, IHighlightParameters
     {
-        public IHighlightController<TVertex, TEdge, TGraph> Controller { get; private set; }
+        /// <summary>
+        /// Highlight controller.
+        /// </summary>
+        [NotNull]
+        public IHighlightController<TVertex, TEdge, TGraph> Controller { get; }
 
-        IHighlightParameters IHighlightAlgorithm<TVertex, TEdge, TGraph>.Parameters
-        {
-            get { return Parameters; }
-        }
+        /// <inheritdoc />
+        IHighlightParameters IHighlightAlgorithm<TVertex, TEdge>.Parameters => Parameters;
 
+        /// <inheritdoc cref="IHighlightAlgorithm{TVertex,TEdge}.Parameters"/>
         public TParameters Parameters { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HighlightAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
+        /// </summary>
+        /// <param name="controller">Highlight controller.</param>
+        /// <param name="parameters">Highlight algorithm parameters.</param>
         protected HighlightAlgorithmBase(
-            IHighlightController<TVertex, TEdge, TGraph> controller,
-            IHighlightParameters parameters )
+            [NotNull] IHighlightController<TVertex, TEdge, TGraph> controller,
+            [CanBeNull] IHighlightParameters parameters)
         {
-            Controller = controller;
-            TrySetParameters( parameters );
+            Controller = controller ?? throw new ArgumentNullException(nameof(controller));
+            TrySetParameters(parameters);
         }
 
+        /// <inheritdoc />
         public abstract void ResetHighlight();
-        public abstract bool OnVertexHighlighting( TVertex vertex );
-        public abstract bool OnVertexHighlightRemoving( TVertex vertex );
-        public abstract bool OnEdgeHighlighting( TEdge edge );
-        public abstract bool OnEdgeHighlightRemoving( TEdge edge );
 
-        public bool IsParametersSettable( IHighlightParameters parameters )
+        /// <inheritdoc />
+        public abstract bool OnVertexHighlighting(TVertex vertex);
+
+        /// <inheritdoc />
+        public abstract bool OnVertexHighlightRemoving(TVertex vertex);
+
+        /// <inheritdoc />
+        public abstract bool OnEdgeHighlighting(TEdge edge);
+
+        /// <inheritdoc />
+        public abstract bool OnEdgeHighlightRemoving(TEdge edge);
+
+        /// <inheritdoc />
+        public bool IsParametersSettable(IHighlightParameters parameters)
         {
-            return parameters != null && parameters is TParameters;
+            return parameters is TParameters;
         }
 
-        public bool TrySetParameters( IHighlightParameters parameters )
+        /// <inheritdoc />
+        public bool TrySetParameters(IHighlightParameters parameters)
         {
-            if ( IsParametersSettable( parameters ) )
+            if (IsParametersSettable(parameters))
             {
-                if ( Parameters != null )
+                if (Parameters != null)
                     Parameters.PropertyChanged -= OnParameterPropertyChanged;
                 Parameters = (TParameters)parameters;
-                if ( Parameters != null )
+                if (Parameters != null)
                     Parameters.PropertyChanged += OnParameterPropertyChanged;
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Called each time a parameter property changed.
+        /// Resets highlight.
+        /// </summary>
         protected virtual void OnParametersChanged()
         {
-            this.ResetHighlight();
+            ResetHighlight();
         }
 
-        private void OnParameterPropertyChanged( object sender, PropertyChangedEventArgs e )
+        private void OnParameterPropertyChanged([NotNull] object sender, [NotNull] PropertyChangedEventArgs args)
         {
             OnParametersChanged();
         }
