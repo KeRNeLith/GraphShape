@@ -14,6 +14,7 @@ branches:
 
 skip_commits:
   files:
+  - .github/
   - .gitattributes
   - .gitignore
   - LICENSE
@@ -137,7 +138,7 @@ after_test:
           $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString()
           $testAssemblies = (ls src\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" } | % FullName | sort-object -Unique)
           
-          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]*" -target:"$nunitConsole" -targetargs:"$testAssemblies" -log:Warn -output:coverage.xml
+          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -target:"$nunitConsole" -targetargs:"$testAssemblies" -log:Warn -output:coverage.xml
           
           & $sonarScanner end /d:"sonar.login=$env:SONARQUBE_TOKEN"
           
