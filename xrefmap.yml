@@ -6750,6 +6750,14 @@ references:
   fullName.vb: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.IndexInsideLayer
   nameWithType: EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.IndexInsideLayer
   nameWithType.vb: EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.IndexInsideLayer
+- uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex.LayerPosition
+  name: LayerPosition
+  href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.SugiVertex.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SugiVertex_LayerPosition
+  commentId: F:GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex.LayerPosition
+  fullName: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.LayerPosition
+  fullName.vb: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.LayerPosition
+  nameWithType: EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.LayerPosition
+  nameWithType.vb: EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.LayerPosition
 - uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex.LoadPositionFromTemp
   name: LoadPositionFromTemp()
   href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.SugiVertex.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SugiVertex_LoadPositionFromTemp
@@ -6816,14 +6824,6 @@ references:
   fullName.vb: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.TempPosition
   nameWithType: EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.TempPosition
   nameWithType.vb: EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.TempPosition
-- uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex.VerticalPosition
-  name: VerticalPosition
-  href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.SugiVertex.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutAlgorithm_3_SugiVertex_VerticalPosition
-  commentId: F:GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex.VerticalPosition
-  fullName: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.VerticalPosition
-  fullName.vb: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.VerticalPosition
-  nameWithType: EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex.VerticalPosition
-  nameWithType.vb: EfficientSugiyamaLayoutAlgorithm(Of TVertex, TEdge, TGraph).SugiVertex.VerticalPosition
 - uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm`3.SugiVertex`1
   name: EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>.SugiVertex<TVertex>
   href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.SugiVertex-1.html
@@ -6963,6 +6963,19 @@ references:
   commentId: T:GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters
   fullName: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters
   nameWithType: EfficientSugiyamaLayoutParameters
+- uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction
+  name: Direction
+  href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutParameters_Direction
+  commentId: P:GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction
+  fullName: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction
+  nameWithType: EfficientSugiyamaLayoutParameters.Direction
+- uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction*
+  name: Direction
+  href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutParameters_Direction_
+  commentId: Overload:GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.Direction
+  nameWithType: EfficientSugiyamaLayoutParameters.Direction
 - uid: GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.EdgeRouting
   name: EdgeRouting
   href: api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.html#GraphShape_Algorithms_Layout_Simple_Hierarchical_EfficientSugiyamaLayoutParameters_EdgeRouting

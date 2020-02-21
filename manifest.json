@@ -1137,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.Segment.html",
-          "hash": "p5/K7stNdoIplRZwyc9Uhg=="
+          "hash": "UEAfIVY+23VdTh6vvcxCRw=="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.SugiVertex.html",
-          "hash": "+z59u23E4mbpIam4QOWDSQ=="
+          "hash": "sInUX+C/XBkM3yvxe6fiYQ=="
         }
       },
       "is_incremental": false,
@@ -1221,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutParameters.html",
-          "hash": "nQLQ1Pdy8DW2svvYIl4wxw=="
+          "hash": "su066dApqim7GDec1uiXQg=="
         }
       },
       "is_incremental": false,
