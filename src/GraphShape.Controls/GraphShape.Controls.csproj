@@ -73,6 +73,18 @@ Supported platforms:
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+
+    <Page Include="**\*.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
   <!-- Dependencies -->
   <ItemGroup>
     <Reference Include="PresentationCore" />

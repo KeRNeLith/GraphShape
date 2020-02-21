@@ -81,7 +81,7 @@ Supported platforms:
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="QuikGraph" Version="1.0.1" />
+    <PackageReference Include="QuikGraph" Version="2.0.0" />
   </ItemGroup>
 
   <!-- Source Link -->
