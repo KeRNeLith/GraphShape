@@ -17,7 +17,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         private readonly IMutableBidirectionalGraph<Data, IEdge<Data>> _sparseCompactionGraph
             = new BidirectionalGraph<Data, IEdge<Data>>();
 
-        private double[] _layerHeights;
+        private double[] _layerSizes;
         private double[] _layerPositions;
 
         private enum LeftRightMode : byte
@@ -32,11 +32,16 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             Lower = 1
         }
 
+        private bool IsVerticalLayout()
+        {
+            return Parameters.Direction == LayoutDirection.TopToBottom || Parameters.Direction == LayoutDirection.BottomToTop;
+        }
+
         private void CalculatePositions()
         {
             PutbackIsolatedVertices();
-            CalculateLayerHeightsAndPositions();
-            CalculateVerticalPositions();
+            CalculateLayerSizesAndPositions();
+            CalculateLayerPositions();
 
             if (Parameters.PositionMode < 0 || Parameters.PositionMode == 0)
                 CalculateHorizontalPositions(LeftRightMode.Left, UpperLowerEdges.Upper);
@@ -82,7 +87,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 orthoRoutePoints[sourceIndex] = new Point()
                 {
                     X = sourceVertex.HorizontalPosition,
-                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerHeights[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0
+                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0
                 };
                 orthoRoutePoints[targetIndex] = new Point()
                 {
@@ -102,7 +107,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 for (int i = 0; i < kvp.Value.Count; i++)
                 {
                     var vertex = kvp.Value[i];
-                    routePoints[i+2] = new Point(vertex.HorizontalPosition, vertex.VerticalPosition);
+                    routePoints[i + 2] = new Point(vertex.HorizontalPosition, vertex.LayerPosition);
                 }
                 routePoints[1] = new Point(routePoints[2].X, routePoints[0].Y);
                 routePoints[kvp.Value.Count + 2] = new Point(routePoints[kvp.Value.Count + 1].X, routePoints[kvp.Value.Count + 3].Y);
@@ -119,7 +124,10 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 for (int i = 0; i < kvp.Value.Count; i++)
                 {
                     var vertex = kvp.Value[i];
-                    routePoints[i] = new Point(vertex.HorizontalPosition, vertex.VerticalPosition);
+                    if (IsVerticalLayout())
+                        routePoints[i] = new Point(vertex.HorizontalPosition, vertex.LayerPosition);
+                    else
+                        routePoints[i] = new Point(vertex.LayerPosition, vertex.HorizontalPosition);
                 }
                 _edgeRoutingPoints[kvp.Key] = routePoints;
             }
@@ -131,7 +139,9 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             foreach (var vertex in _graph.Vertices)
             {
                 if (vertex.Type == VertexTypes.Original)
-                    VertexPositions[vertex.OriginalVertex] = new Point(vertex.HorizontalPosition, vertex.VerticalPosition);
+                    VertexPositions[vertex.OriginalVertex] = IsVerticalLayout()
+                ? new Point(vertex.HorizontalPosition, vertex.LayerPosition)
+                : new Point(vertex.LayerPosition, vertex.HorizontalPosition);
             }
 
         }
@@ -163,17 +173,19 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
         }
 
-        private void CalculateLayerHeightsAndPositions()
+        private void CalculateLayerSizesAndPositions()
         {
-            _layerHeights = new double[_layers.Count];
+            _layerSizes = new double[_layers.Count];
             for (int i = 0; i < _layers.Count; i++)
-                _layerHeights[i] = _layers[i].Max(v => v.Size.Height);
+            {
+                _layerSizes[i] = _layers[i].Max(v => IsVerticalLayout() ? v.Size.Height : v.Size.Width);
+            }
 
             double layerDistance = Parameters.LayerDistance;
             _layerPositions = new double[_layers.Count];
             _layerPositions[0] = 0;
             for (int i = 1; i < _layers.Count; i++)
-                _layerPositions[i] = _layerPositions[i - 1] + _layerHeights[i - 1] + layerDistance;
+                _layerPositions[i] = _layerPositions[i - 1] + _layerSizes[i - 1] + layerDistance;
 
         }
 
@@ -200,10 +212,15 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
         }
 
-        private void CalculateVerticalPositions()
+        private void CalculateLayerPositions()
         {
             foreach (var vertex in _graph.Vertices)
-                vertex.VerticalPosition = _layerPositions[vertex.LayerIndex] + (vertex.Size.Height <= 0 ? _layerHeights[vertex.LayerIndex] : vertex.Size.Height) / 2.0;
+            {
+                double size = IsVerticalLayout()
+                    ? vertex.Size.Height
+                    : vertex.Size.Width;
+                vertex.LayerPosition = _layerPositions[vertex.LayerIndex] + (size <= 0 ? _layerSizes[vertex.LayerIndex] : size) / 2.0;
+            }
         }
 
         /// <summary>
@@ -211,6 +228,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         /// <param name="leftRightMode">Mode of the vertical alignment.</param>
         /// <param name="upperLowerEdges">Alignment based on which edges (upper or lower ones).</param>
+        // todo Horizontal name to remove
         private void CalculateHorizontalPositions(LeftRightMode leftRightMode, UpperLowerEdges upperLowerEdges)
         {
             int modeIndex = (byte)upperLowerEdges * 2 + (byte)leftRightMode;
@@ -218,6 +236,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             DoAlignment(modeIndex, leftRightMode, upperLowerEdges);
             WriteOutAlignment(modeIndex);
             InitializeSinksAndShifts(modeIndex);
+            // todo Horizontal name to remove
             DoHorizontalCompaction(modeIndex, leftRightMode, upperLowerEdges);
         }
 
@@ -433,7 +452,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             {
                 vertex.Roots[modeIndex] = vertex;
                 vertex.Aligns[modeIndex] = vertex;
-                vertex.BlockWidths[modeIndex] = vertex.Size.Width;
+                vertex.BlockWidths[modeIndex] = IsVerticalLayout() ? vertex.Size.Width : vertex.Size.Height;
             }
         }
     }

@@ -23,9 +23,10 @@ namespace GraphShape.Sample.ViewModel
 			graph.AddEdge(new PocEdge("2to4", graph.Vertices.ElementAt(2), graph.Vertices.ElementAt(4)));
 			graph.AddEdge(new PocEdge("0to5", graph.Vertices.ElementAt(0), graph.Vertices.ElementAt(5)));
 			graph.AddEdge(new PocEdge("1to7", graph.Vertices.ElementAt(1), graph.Vertices.ElementAt(7)));
-			graph.AddEdge(new PocEdge("4to6", graph.Vertices.ElementAt(4), graph.Vertices.ElementAt(6)));
+            graph.AddEdge(new PocEdge("4to6", graph.Vertices.ElementAt(4), graph.Vertices.ElementAt(6)));
+            graph.AddEdge(new PocEdge("0to4", graph.Vertices.ElementAt(0), graph.Vertices.ElementAt(4)));
 
-			GraphModels.Add(new GraphModel("Fa", graph));
+            GraphModels.Add(new GraphModel("Fa", graph));
 
 			#endregion
 		}
