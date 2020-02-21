@@ -198,6 +198,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0"
@@ -233,6 +234,12 @@
                       Content="{Binding Path=OptimizeWidth, UpdateSourceTrigger=PropertyChanged}"
                       Grid.Column="1"
                       Grid.Row="5" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="6"><Run Text="Layout Direction" /></TextBlock>
+            <ComboBox ItemsSource="{Binding Source={StaticResource layoutDirectionEnum}}"
+                      SelectedValue="{Binding Path=Direction}"
+                      Grid.Column="1"
+                      Grid.Row="4" />
         </Grid>
     </DataTemplate>
 

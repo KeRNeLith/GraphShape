@@ -95,8 +95,10 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         protected class SugiVertex : SugiVertex<TVertex>
         {
             public readonly double[] HorizontalPositions = new double[4] { double.NaN, double.NaN, double.NaN, double.NaN };
+
             public double HorizontalPosition = double.NaN;
-            public double VerticalPosition = double.NaN;
+            public double LayerPosition = double.NaN;
+
             public readonly SugiVertex[] Roots = new SugiVertex[4];
             public readonly SugiVertex[] Aligns = new SugiVertex[4];
             public readonly double[] BlockWidths = new double[4] { double.NaN, double.NaN, double.NaN, double.NaN };
