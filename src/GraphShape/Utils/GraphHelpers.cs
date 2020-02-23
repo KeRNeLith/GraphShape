@@ -9,7 +9,7 @@ using QuikGraph.Algorithms;
 
 namespace GraphShape
 {
-    public static class GraphHelper
+    public static class GraphHelpers
     {
         /// <summary>
         /// Returns with the adjacent vertices of the <code>vertex</code>.

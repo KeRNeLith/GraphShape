@@ -7,10 +7,10 @@ using NUnit.Framework;
 namespace GraphShape.Tests
 {
 	/// <summary>
-	/// Summary description for GraphHelperTest
+	/// Summary description for GraphHelpersTests
 	/// </summary>
 	[TestFixture]
-	public class GraphHelperTest
+	public class GraphHelpersTests
 	{
 		BidirectionalGraph<string, Edge<string>> directedGraph;
 		UndirectedBidirectionalGraph<string, Edge<string>> undirectedGraph;
@@ -20,7 +20,7 @@ namespace GraphShape.Tests
 		string four = "four";
 
 
-		public GraphHelperTest()
+		public GraphHelpersTests()
 		{
 			#region create directedGraph
 			directedGraph = new BidirectionalGraph<string, Edge<string>>( );
