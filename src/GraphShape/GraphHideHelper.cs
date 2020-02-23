@@ -150,7 +150,7 @@ namespace GraphShape
 			}
 		}
 
-		public void HideVerticesIf( Func<TVertex, bool> predicate, string tag )
+		public void HideVerticesIf( Predicate<TVertex> predicate, string tag )
 		{
 			var verticesToHide = new List<TVertex>();
 			foreach ( var v in graph.Vertices )
@@ -161,29 +161,29 @@ namespace GraphShape
 			HideVertices( verticesToHide, tag );
 		}
 
-		public bool IsHiddenVertex( TVertex v )
+		public bool IsHiddenVertex( TVertex vertex )
 		{
-			return ( !graph.ContainsVertex( v ) && hiddenVertices.Contains( v ) );
+			return ( !graph.ContainsVertex( vertex ) && hiddenVertices.Contains( vertex ) );
 		}
 
-		public bool UnhideVertex( TVertex v )
+		public bool UnhideVertex( TVertex vertex )
 		{
 			//if v not hidden, it's an error
-			if ( !IsHiddenVertex( v ) )
+			if ( !IsHiddenVertex( vertex ) )
 				return false;
 
 			//unhide the vertex
-			graph.AddVertex( v );
-			hiddenVertices.Remove( v );
-			OnVertexUnhidden( v );
+			graph.AddVertex( vertex );
+			hiddenVertices.Remove( vertex );
+			OnVertexUnhidden( vertex );
 			return true;
 		}
 
-		public void UnhideVertexAndEdges( TVertex v )
+		public void UnhideVertexAndEdges( TVertex vertex )
 		{
-			UnhideVertex( v );
+			UnhideVertex( vertex );
 			List<TEdge> hiddenEdgesList;
-			hiddenEdgesOf.TryGetValue( v, out hiddenEdgesList );
+			hiddenEdgesOf.TryGetValue( vertex, out hiddenEdgesList );
 			if ( hiddenEdgesList != null )
 				UnhideEdges( hiddenEdgesList );
 		}
@@ -255,7 +255,7 @@ namespace GraphShape
 			}
 		}
 
-		public void HideEdgesIf( Func<TEdge, bool> predicate, string tag )
+		public void HideEdgesIf(Predicate<TEdge> predicate, string tag )
 		{
 			var edgesToHide = new List<TEdge>();
 			foreach ( var e in graph.Edges )
@@ -287,7 +287,7 @@ namespace GraphShape
 			return true;
 		}
 
-		public void UnhideEdgesIf( Func<TEdge, bool> predicate )
+		public void UnhideEdgesIf(Predicate<TEdge> predicate )
 		{
 			var edgesToUnhide = new List<TEdge>();
 			foreach ( var e in hiddenEdges )

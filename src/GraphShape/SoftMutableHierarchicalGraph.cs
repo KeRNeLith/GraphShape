@@ -85,24 +85,24 @@ namespace GraphShape
 			hideHelper.HideVertices( vertices, tag );
 		}
 
-		public void HideVerticesIf( Func<TVertex, bool> predicate, string tag )
+		public void HideVerticesIf( Predicate<TVertex> predicate, string tag )
 		{
 			hideHelper.HideVerticesIf( predicate, tag );
 		}
 
-		public bool IsHiddenVertex( TVertex v )
+		public bool IsHiddenVertex( TVertex vertex )
 		{
-			return hideHelper.IsHiddenVertex( v );
+			return hideHelper.IsHiddenVertex( vertex );
 		}
 
-		public bool UnhideVertex( TVertex v )
+		public bool UnhideVertex( TVertex vertex )
 		{
-			return hideHelper.UnhideVertex( v );
+			return hideHelper.UnhideVertex( vertex );
 		}
 
-		public void UnhideVertexAndEdges( TVertex v )
+		public void UnhideVertexAndEdges( TVertex vertex )
 		{
-			hideHelper.UnhideVertexAndEdges( v );
+			hideHelper.UnhideVertexAndEdges( vertex );
 		}
 
 		public IEnumerable<TVertex> HiddenVertices
@@ -135,7 +135,7 @@ namespace GraphShape
 			hideHelper.HideEdges( edges, tag );
 		}
 
-		public void HideEdgesIf( Func<TEdge, bool> predicate, string tag )
+		public void HideEdgesIf(Predicate<TEdge> predicate, string tag )
 		{
 			hideHelper.HideEdgesIf( predicate, tag );
 		}
@@ -155,7 +155,7 @@ namespace GraphShape
 			hideHelper.UnhideEdges( edges );
 		}
 
-		public void UnhideEdgesIf( Func<TEdge, bool> predicate )
+		public void UnhideEdgesIf(Predicate<TEdge> predicate )
 		{
 			hideHelper.UnhideEdgesIf( predicate );
 		}

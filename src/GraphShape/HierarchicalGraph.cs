@@ -142,42 +142,42 @@ namespace GraphShape
 		#endregion
 
 		#region Hierarchical Edges
-		public IEnumerable<TEdge> HierarchicalEdgesFor(TVertex v)
+		public IEnumerable<TEdge> HierarchicalEdgesFor(TVertex vertex)
 		{
-			TypedEdgeCollectionWrapper collections = typedEdgeCollections[v];
+			TypedEdgeCollectionWrapper collections = typedEdgeCollections[vertex];
 			return collections.InHierarchicalEdges.Concat(collections.OutHierarchicalEdges);
 		}
 
-		public int HierarchicalEdgeCountFor(TVertex v)
+		public int HierarchicalEdgeCountFor(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InHierarchicalEdges.Count + typedEdgeCollections[v].OutHierarchicalEdges.Count;
+			return typedEdgeCollections[vertex].InHierarchicalEdges.Count + typedEdgeCollections[vertex].OutHierarchicalEdges.Count;
 		}
 
-		public IEnumerable<TEdge> InHierarchicalEdges(TVertex v)
+		public IEnumerable<TEdge> InHierarchicalEdges(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InHierarchicalEdges;
+			return typedEdgeCollections[vertex].InHierarchicalEdges;
 		}
 
-		public int InHierarchicalEdgeCount(TVertex v)
+		public int InHierarchicalEdgeCount(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InHierarchicalEdges.Count;
+			return typedEdgeCollections[vertex].InHierarchicalEdges.Count;
 		}
 
-		public IEnumerable<TEdge> OutHierarchicalEdges(TVertex v)
+		public IEnumerable<TEdge> OutHierarchicalEdges(TVertex vertex)
 		{
-			return typedEdgeCollections[v].OutHierarchicalEdges;
+			return typedEdgeCollections[vertex].OutHierarchicalEdges;
 		}
 
-		public int OutHierarchicalEdgeCount(TVertex v)
+		public int OutHierarchicalEdgeCount(TVertex vertex)
 		{
-			return typedEdgeCollections[v].OutHierarchicalEdges.Count;
+			return typedEdgeCollections[vertex].OutHierarchicalEdges.Count;
 		}
 		#endregion
 
 		#region General Edges
-		public IEnumerable<TEdge> GeneralEdgesFor(TVertex v)
+		public IEnumerable<TEdge> GeneralEdgesFor(TVertex vertex)
 		{
-			TypedEdgeCollectionWrapper collections = typedEdgeCollections[v];
+			TypedEdgeCollectionWrapper collections = typedEdgeCollections[vertex];
 			foreach (TEdge e in collections.InGeneralEdges)
 			{
 				yield return e;
@@ -188,29 +188,29 @@ namespace GraphShape
 			}
 		}
 
-		public int GeneralEdgeCountFor(TVertex v)
+		public int GeneralEdgeCountFor(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InGeneralEdges.Count + typedEdgeCollections[v].OutGeneralEdges.Count;
+			return typedEdgeCollections[vertex].InGeneralEdges.Count + typedEdgeCollections[vertex].OutGeneralEdges.Count;
 		}
 
-		public IEnumerable<TEdge> InGeneralEdges(TVertex v)
+		public IEnumerable<TEdge> InGeneralEdges(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InGeneralEdges;
+			return typedEdgeCollections[vertex].InGeneralEdges;
 		}
 
-		public int InGeneralEdgeCount(TVertex v)
+		public int InGeneralEdgeCount(TVertex vertex)
 		{
-			return typedEdgeCollections[v].InGeneralEdges.Count;
+			return typedEdgeCollections[vertex].InGeneralEdges.Count;
 		}
 
-		public IEnumerable<TEdge> OutGeneralEdges(TVertex v)
+		public IEnumerable<TEdge> OutGeneralEdges(TVertex vertex)
 		{
-			return typedEdgeCollections[v].OutGeneralEdges;
+			return typedEdgeCollections[vertex].OutGeneralEdges;
 		}
 
-		public int OutGeneralEdgeCount(TVertex v)
+		public int OutGeneralEdgeCount(TVertex vertex)
 		{
-			return typedEdgeCollections[v].OutGeneralEdges.Count;
+			return typedEdgeCollections[vertex].OutGeneralEdges.Count;
 		}
 		#endregion
 

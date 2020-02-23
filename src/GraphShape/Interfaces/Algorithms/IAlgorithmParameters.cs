@@ -3,7 +3,10 @@ using System.ComponentModel;
 
 namespace GraphShape.Algorithms
 {
-	public interface IAlgorithmParameters : ICloneable, INotifyPropertyChanged
-	{
-	}
+    /// <summary>
+    /// Represents algorithm parameters.
+    /// </summary>
+    public interface IAlgorithmParameters : ICloneable, INotifyPropertyChanged
+    {
+    }
 }
