@@ -1,21 +1,17 @@
 ﻿using System;
-using GraphShape.Algorithms;
-using System.Windows;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
 using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
-namespace GraphShape.Tests
+namespace GraphShape.Tests.Algorithms
 {
-    
-    
     /// <summary>
-    ///This is a test class for LayoutHelperTest and is intended
-    ///to contain all LayoutHelperTest Unit Tests
+    /// Tests related to <see cref="LayoutUtils"/>.
     ///</summary>
     [TestFixture]
-    public class LayoutUtilTest
+    internal class LayoutUtilsTests
     {
         [Test]
         public void GetClippingPoint_Target_Outside_Source_Rect_ClippingPoint_OnCorner_Test()
