@@ -1,126 +1,192 @@
 using System;
+using System.Diagnostics;
+using JetBrains.Annotations;
 using QuikGraph.Algorithms;
 
 namespace GraphShape.Algorithms
 {
-	public abstract class AlgorithmBase : IAlgorithm
-	{
-		private volatile object syncRoot = new object();
-		private int cancelling;
-		private volatile ComputationState state = ComputationState.NotRunning;
+    /// <summary>
+    /// Base class for all algorithm.
+    /// </summary>
+    public abstract class AlgorithmBase : IAlgorithm
+    {
+        #region IAlgorithm
 
-		public Object SyncRoot
-		{
-			get { return syncRoot; }
-		}
+        private int _cancelling;
 
-		public ComputationState State
-		{
-			get
-			{
-				lock ( syncRoot )
-				{
-					return state;
-				}
-			}
-		}
+        /// <inheritdoc />
+        public object SyncRoot { get; } = new object();
 
-		protected bool IsAborting
-		{
-			get { return cancelling > 0; }
-		}
+        private volatile ComputationState _state = ComputationState.NotRunning;
 
-		public void Compute()
-		{
-			BeginComputation();
-			InternalCompute();
-			EndComputation();
-		}
+        /// <inheritdoc />
+        public ComputationState State
+        {
+            get
+            {
+                lock (SyncRoot)
+                {
+                    return _state;
+                }
+            }
+        }
 
-		protected abstract void InternalCompute();
+        /// <inheritdoc />
+        public void Compute()
+        {
+            BeginComputation();
 
-		public virtual void Abort()
-		{
-			bool raise = false;
-			lock ( syncRoot )
-			{
-				if ( state == ComputationState.Running )
-				{
-					state = ComputationState.PendingAbortion;
-					System.Threading.Interlocked.Increment( ref cancelling );
-					raise = true;
-				}
-			}
-			if ( raise )
-				OnStateChanged( EventArgs.Empty );
-		}
+            Initialize();
 
-		public event EventHandler StateChanged;
-		protected virtual void OnStateChanged( EventArgs e )
-		{
-			EventHandler eh = StateChanged;
-			if ( eh != null )
-				eh( this, e );
-		}
+            try
+            {
+                InternalCompute();
+            }
+            finally
+            {
+                Clean();
+            }
 
-		public event EventHandler Started;
-		protected virtual void OnStarted( EventArgs e )
-		{
-			EventHandler eh = Started;
-			if ( eh != null )
-				eh( this, e );
-		}
+            EndComputation();
+        }
 
-		public event EventHandler Finished;
-		protected virtual void OnFinished( EventArgs e )
-		{
-			EventHandler eh = Finished;
-			if ( eh != null )
-				eh( this, e );
-		}
+        /// <inheritdoc />
+        public void Abort()
+        {
+            bool raise = false;
+            lock (SyncRoot)
+            {
+                if (_state == ComputationState.Running)
+                {
+                    _state = ComputationState.PendingAbortion;
+                    System.Threading.Interlocked.Increment(ref _cancelling);
+                    raise = true;
+                }
+            }
 
-		public event EventHandler Aborted;
-		protected virtual void OnAborted( EventArgs e )
-		{
-			EventHandler eh = Aborted;
-			if ( eh != null )
-				eh( this, e );
-		}
+            if (raise)
+                OnStateChanged(EventArgs.Empty);
+        }
 
-		protected void BeginComputation()
-		{
-			lock ( syncRoot )
-			{
-				if ( state != ComputationState.NotRunning )
-					throw new InvalidOperationException();
+        /// <inheritdoc />
+        public event EventHandler StateChanged;
 
-				state = ComputationState.Running;
-				cancelling = 0;
-				OnStarted( EventArgs.Empty );
-				OnStateChanged( EventArgs.Empty );
-			}
-		}
+        /// <summary>
+        /// Called on algorithm state changed.
+        /// </summary>
+        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        protected virtual void OnStateChanged([NotNull] EventArgs args)
+        {
+            Debug.Assert(args != null);
 
-		protected void EndComputation()
-		{
-			lock ( syncRoot )
-			{
-				switch ( state )
-				{
-					case ComputationState.Running:
-						state = ComputationState.Finished;
-						OnFinished( EventArgs.Empty );
-						break;
-					case ComputationState.PendingAbortion:
-						state = ComputationState.Aborted;
-						OnAborted( EventArgs.Empty );
-						break;
-					default:
-						throw new InvalidOperationException();
-				}
-				cancelling = 0;
-				OnStateChanged( EventArgs.Empty );
-			}
-		}
-	}
+            StateChanged?.Invoke(this, args);
+        }
+
+        /// <inheritdoc />
+        public event EventHandler Started;
+
+        /// <summary>
+        /// Called on algorithm start.
+        /// </summary>
+        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        protected virtual void OnStarted([NotNull] EventArgs args)
+        {
+            Debug.Assert(args != null);
+
+            Started?.Invoke(this, args);
+        }
+
+        /// <inheritdoc />
+        public event EventHandler Finished;
+
+        /// <summary>
+        /// Called on algorithm finished.
+        /// </summary>
+        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        protected virtual void OnFinished([NotNull] EventArgs args)
+        {
+            Debug.Assert(args != null);
+
+            Finished?.Invoke(this, args);
+        }
+
+        /// <inheritdoc />
+        public event EventHandler Aborted;
+
+        /// <summary>
+        /// Called on algorithm abort.
+        /// </summary>
+        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        protected virtual void OnAborted([NotNull] EventArgs args)
+        {
+            Debug.Assert(args != null);
+
+            Aborted?.Invoke(this, args);
+        }
+
+        #endregion
+
+        private void BeginComputation()
+        {
+            Debug.Assert(
+                State == ComputationState.NotRunning
+                || State == ComputationState.Finished
+                || State == ComputationState.Aborted);
+
+            lock (SyncRoot)
+            {
+                _state = ComputationState.Running;
+                _cancelling = 0;
+                OnStarted(EventArgs.Empty);
+                OnStateChanged(EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Called on algorithm initialization step.
+        /// </summary>
+        protected virtual void Initialize()
+        {
+        }
+
+        /// <summary>
+        /// Algorithm compute step.
+        /// </summary>
+        protected abstract void InternalCompute();
+
+        /// <summary>
+        /// Called on algorithm cleanup step.
+        /// </summary>
+        protected virtual void Clean()
+        {
+        }
+
+        private void EndComputation()
+        {
+            Debug.Assert(
+                State == ComputationState.Running
+                ||
+                State == ComputationState.PendingAbortion);
+
+            lock (SyncRoot)
+            {
+                switch (_state)
+                {
+                    case ComputationState.Running:
+                        _state = ComputationState.Finished;
+                        OnFinished(EventArgs.Empty);
+                        break;
+                    case ComputationState.PendingAbortion:
+                        _state = ComputationState.Aborted;
+                        OnAborted(EventArgs.Empty);
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+
+                _cancelling = 0;
+                OnStateChanged(EventArgs.Empty);
+            }
+        }
+    }
 }

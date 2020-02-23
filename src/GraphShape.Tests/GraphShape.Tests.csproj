@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40</TargetFrameworks>
+    <TargetFrameworks>net40;net45</TargetFrameworks>
 
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
@@ -45,6 +45,9 @@
   <!-- Targets defines -->
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <DefineConstants>$(DefineConstants);NET45;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->

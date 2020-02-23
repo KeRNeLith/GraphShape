@@ -104,25 +104,25 @@ namespace GraphShape.Algorithms.Layout
             switch (algorithmType)
             {
                 case "Tree":
-                    return oldParameters.CreateNewParameter<SimpleTreeLayoutParameters>();
+                    return oldParameters.CreateNewParameters<SimpleTreeLayoutParameters>();
                 case "Circular":
-                    return oldParameters.CreateNewParameter<CircularLayoutParameters>();
+                    return oldParameters.CreateNewParameters<CircularLayoutParameters>();
                 case "FR":
-                    return oldParameters.CreateNewParameter<FreeFRLayoutParameters>();
+                    return oldParameters.CreateNewParameters<FreeFRLayoutParameters>();
                 case "BoundedFR":
-                    return oldParameters.CreateNewParameter<BoundedFRLayoutParameters>();
+                    return oldParameters.CreateNewParameters<BoundedFRLayoutParameters>();
                 case "KK":
-                    return oldParameters.CreateNewParameter<KKLayoutParameters>();
+                    return oldParameters.CreateNewParameters<KKLayoutParameters>();
                 case "ISOM":
-                    return oldParameters.CreateNewParameter<ISOMLayoutParameters>();
+                    return oldParameters.CreateNewParameters<ISOMLayoutParameters>();
                 case "LinLog":
-                    return oldParameters.CreateNewParameter<LinLogLayoutParameters>();
+                    return oldParameters.CreateNewParameters<LinLogLayoutParameters>();
                 case "EfficientSugiyama":
-                    return oldParameters.CreateNewParameter<EfficientSugiyamaLayoutParameters>();
+                    return oldParameters.CreateNewParameters<EfficientSugiyamaLayoutParameters>();
                 case "Sugiyama":
-                    return oldParameters.CreateNewParameter<SugiyamaLayoutParameters>();
+                    return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
                 case "CompoundFDP":
-                    return oldParameters.CreateNewParameter<CompoundFDPLayoutParameters>();
+                    return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
                 default:
                     return null;
             }
