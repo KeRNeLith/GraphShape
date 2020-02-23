@@ -4,8 +4,7 @@
     <TargetFrameworks>net40</TargetFrameworks>
     <!-- TODO Support net20;net30;net35;net45 netstandard old ; netstandard2.0-->
 
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!-- TODO <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
+    <GeneratePackageOnBuild>$(Generate_GraphShape_Core)</GeneratePackageOnBuild>
 
     <Title>GraphShape</Title>
     <RootNamespace>GraphShape</RootNamespace>
@@ -16,21 +15,13 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <!-- Include PDB files in NuGet for Source Link because symbolsource.org does not support portable PDBs -->
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
-GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
 
 Supported platforms:
 - .NET Framework 4.0
 
 Supports Source Link</Description>
-    <Owners>Alexandre Rabérin</Owners>
-    <Authors>Alexandre Rabérin</Authors>
-    <Company>Alexandre Rabérin</Company>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
@@ -43,38 +34,6 @@ It has been split in multiple packages (GraphShape and GraphShape.Controls).
 
 This package should be seen as an alternative one to the old frozen GraphSharp from CodePlex.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
-
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/KeRNeLith/GraphShape</PackageProjectUrl>
-    <RepositoryType>GitHub</RepositoryType>
-    <RepositoryUrl>https://github.com/KeRNeLith/GraphShape</RepositoryUrl>
-  </PropertyGroup>
-
-  <!-- C# configuration -->
-  <PropertyGroup>
-    <LangVersion>7</LangVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <!-- Optimization configurations -->
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <!-- Targets defines -->
@@ -90,11 +49,6 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="QuikGraph" Version="2.0.0" />
-  </ItemGroup>
-
-  <!-- Source Link -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="QuikGraph" Version="$(QuikGraphVersion)" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <!-- Packages generation control -->
+    <Generate_GraphShape_Core>false</Generate_GraphShape_Core>
+    <Generate_GraphShape_Controls>false</Generate_GraphShape_Controls>
+  </PropertyGroup>
+</Project>

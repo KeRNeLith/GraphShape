@@ -39,31 +39,8 @@ environment:
     secure: wcfqCHOmeRLZf/BX6u6qQSV89Q4jFs9fHNDgMpKAcqE=
 
 # Setup build version
-init:
-- ps: >-
-    if ($env:APPVEYOR_REPO_TAG -eq "true")
-    {
-        $env:Build_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        $env:Build_Assembly_Version = $env:Build_Version;
-        $env:IsFullIntegrationBuild = $true;
-    }
-    else
-    {
-        $env:Build_Version = "$($env:APPVEYOR_BUILD_VERSION)";
-        $env:Build_Assembly_Version = "$env:Build_Version" -replace "\-.*","";
-        $env:IsFullIntegrationBuild = "$env:APPVEYOR_PULL_REQUEST_NUMBER" -eq "" -And $env:Configuration -eq "Release";
-    }
-    
-    "Building version: $env:Build_Version";
-    "Building assembly version: $env:Build_Assembly_Version";
-    if ($env:IsFullIntegrationBuild -eq $true)
-    {
-        "With full integration";
-    }
-    else
-    {
-        "Without full integration";
-    }
+install:
+  - ps: ./build/setupBuild.ps1
 
 # Assembly infos & csproj patching
 assembly_info:
@@ -121,48 +98,70 @@ build_script:
 before_test:
 # NuGet packages for test & coverage
   - ps: >-
+      nuget install NUnit.Console -Version $env:NUnitConsoleVersion -OutputDirectory tools
+      
       if ($env:IsFullIntegrationBuild -eq $true)
       {
-          nuget install NUnit.Console -Version $env:NUnitConsoleVersion -OutputDirectory tools
           nuget install OpenCover -Version $env:OpenCoverVersion -OutputDirectory tools
           dotnet tool install --tool-path tools --version $env:CoverallsVersion coveralls.net
       }
 
-after_test:
-# Generate coverage report
+test_script:
+# Test & generate coverage report
   - ps: >-
+      $nunitFolder = (Resolve-Path "tools\NUnit.ConsoleRunner.*\tools").ToString();
+      $nunitConsole = (Resolve-Path "$nunitFolder\nunit3-console.exe").ToString();
+      
+      # Only take test assemblies matching their folder name
+      # Example:
+      # Directory = tests\TestProject.Tests\bin\CONFIGURATION\TARGET
+      # Directory.Parent = tests\TestProject.Tests\bin\CONFIGURATION
+      # Directory.Parent.Parent = tests\TestProject.Tests\bin
+      # Directory.Parent.Parent.Parent = tests\TestProject.Tests
+      
+      $testAssemblies = (ls tests\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" -and [System.IO.Path]::GetFileNameWithoutExtension($_.FullName) -Match $_.Directory.Parent.Parent.Parent.Name } | % FullName | sort-object -Unique)
+      
       if ($env:IsFullIntegrationBuild -eq $true)
       {
-          $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString()
-          $nunitConsole = (Resolve-Path "tools\NUnit.ConsoleRunner.*\tools\nunit3-console.exe").ToString()
-          $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString()
-          $testAssemblies = (ls src\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" } | % FullName | sort-object -Unique)
+          $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString();
+          $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString();
           
-          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -target:"$nunitConsole" -targetargs:"$testAssemblies" -log:Warn -output:coverage.xml
+          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -target:"$nunitConsole" -targetargs:"$testAssemblies --result=\`"TestResult.xml\`"" -returntargetcode -log:Warn -output:coverage.xml
           
           & $sonarScanner end /d:"sonar.login=$env:SONARQUBE_TOKEN"
           
           & $coveralls --opencover -i coverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --useRelativePaths --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
       }
+      else
+      {
+          & $nunitConsole $testAssemblies
+      }
+      
+      # Upload results to AppVeyor
+      
+      $wc = New-Object 'System.Net.WebClient';
+      $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestResult.xml));
 
-# Artifact
-artifacts:  
+# Artifacts
+artifacts:
   - path: '**\bin\Release\*.nupkg'
     name: NuGet
+  - path: '**\bin\Release\*.snupkg'
+    name: NuGet symbols
 
 # Documentation
 before_deploy:
 # Release documentation
-  - ps: ./releaseDoc.ps1
+  - ps: ./build/releaseDoc.ps1
 
 # Deploy
 deploy:
 # MyGet
   - provider: NuGet
     server: https://www.myget.org/F/kernelith-ci/api/v2/package
+    symbol_server: https://www.myget.org/F/kernelith-ci/symbols/api/v2/package
     api_key:
       secure: ANF+joC2B+NahxCFbLPOjNvEAo36F2F4QJu6zLwoIf2I9KwkxKyCSuNxDpLmJmtU
-    skip_symbols: true
     on:
       configuration: Release
 # GitHub packages
@@ -171,8 +170,9 @@ deploy:
     username: KeRNeLith
     api_key:
       secure: 6N37NtnuKSzKQXlPOCtPSFJGOvJUdJjPK8LcuWx2PjHs2WVdngenZvYixk6br72b
+    skip_symbols: true
+    artifact: NuGet
     on:
-      branch: master
       configuration: Release
       APPVEYOR_REPO_TAG: true
 # NuGet
@@ -180,20 +180,17 @@ deploy:
     api_key:
       secure: a/0jxqKB5mP/ED1AIQ6YxAoiYZP93M5NQpyZbq40Tkzg+ye0MhFHlDQFBUefrseY
     on:
-      branch: master
       configuration: Release
       APPVEYOR_REPO_TAG: true
 # GitHub
   - provider: GitHub
     auth_token:
       secure: fLTTmcGOM55kigJC4vErpObFmybCtzQtwb4QN55BTNq3GDGaOCoHDoIPxexzO59d
-    release: '${Build_Version}'
-    description: 'Version ${Build_Version}'
-    artifact: NuGet
+    release: '${APPVEYOR_REPO_TAG_NAME}'
+    description: 'Version ${Release_Name}'
     draft: false
     prerelease: false
     force_update: true
     on:
-      branch: master
       configuration: Release
       APPVEYOR_REPO_TAG: true

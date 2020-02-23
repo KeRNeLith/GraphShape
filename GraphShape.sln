@@ -1,19 +1,31 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
 	ProjectSection(SolutionItems) = preProject
 		Libraries\RibbonControlsLibrary.dll = Libraries\RibbonControlsLibrary.dll
 		Libraries\WPFExtensions.dll = Libraries\WPFExtensions.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{FAAD5B1C-1217-48D6-B1EF-7CAC0440D6A4}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		README.md = README.md
+		RELEASE_NOTES.md = RELEASE_NOTES.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{7A2A3C07-B652-4759-AFC4-49378D764784}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22937B93-4129-4F68-AB14-F7AFE020BA8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{12337AA3-1429-4AD8-FBC5-CCAFDA20B38F}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape", "src\GraphShape\GraphShape.csproj", "{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949}"
 EndProject
-Project("{AA19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls", "src\GraphShape.Controls\GraphShape.Controls.csproj", "{90D874F2-486E-477E-93A9-FFA6FC92A2F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls", "src\GraphShape.Controls\GraphShape.Controls.csproj", "{90D874F2-486E-477E-93A9-FFA6FC92A2F4}"
 EndProject
-Project("{AB19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Tests", "src\GraphShape.Tests\GraphShape.Tests.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Tests", "tests\GraphShape.Tests\GraphShape.Tests.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphShape.Sample", "src\GraphShape.Sample\GraphShape.Sample.csproj", "{C32CDAAA-E963-4638-BD38-A621B2078083}"
 EndProject
@@ -42,6 +54,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C59C516-FCA0-4FCF-AE11-E20F0F1B1949} = {7A2A3C07-B652-4759-AFC4-49378D764784}
+		{90D874F2-486E-477E-93A9-FFA6FC92A2F4} = {7A2A3C07-B652-4759-AFC4-49378D764784}
+		{8F34D487-2FAA-4B4B-9099-D027579A74E1} = {22937B93-4129-4F68-AB14-F7AFE020BA8F}
+		{C32CDAAA-E963-4638-BD38-A621B2078083} = {12337AA3-1429-4AD8-FBC5-CCAFDA20B38F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D51F43F6-C27F-40EE-A4F2-CA21506D9B97}

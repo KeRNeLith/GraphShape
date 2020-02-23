@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Import Project="./PackagesVersions.props" />
+  <PropertyGroup>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+
+    <!-- TODO enable this -->
+    <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
+
+    <Owners>Alexandre Rabérin</Owners>
+    <Authors>Alexandre Rabérin</Authors>
+    <Company>Alexandre Rabérin</Company>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/KeRNeLith/GraphShape</PackageProjectUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <RepositoryUrl>https://github.com/KeRNeLith/GraphShape</RepositoryUrl>
+  </PropertyGroup>
+</Project>
