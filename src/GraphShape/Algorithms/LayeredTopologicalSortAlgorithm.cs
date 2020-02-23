@@ -1,124 +1,164 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using GraphShape.Utils;
+using JetBrains.Annotations;
 using QuikGraph;
 using QuikGraph.Algorithms;
 
 namespace GraphShape.Algorithms
 {
-	public class LayeredTopologicalSortAlgorithm<TVertex, TEdge> : AlgorithmBase<IVertexAndEdgeListGraph<TVertex, TEdge>>
-		where TEdge : IEdge<TVertex>
-	{
-		#region Private values
-		private readonly IDictionary<TVertex, int> layerIndices = new Dictionary<TVertex, int>(); //the index of the layer where the vertex belongs to
-		private readonly List<IList<TVertex>> layers = new List<IList<TVertex>>(); //the list of the vertices in the layers
-		private int layer; //gives the index of the actual layer
-		private readonly IMutableBidirectionalGraph<TVertex, TEdge> tmpGraph;
-		#endregion
+    /// <summary>
+    /// Algorithm that sorts vertices by layer.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    public class LayeredTopologicalSortAlgorithm<TVertex, TEdge> : AlgorithmBase<IVertexAndEdgeListGraph<TVertex, TEdge>>
+        where TEdge : IEdge<TVertex>
+    {
+        // The list of the vertices in the layers
+        [NotNull, ItemNotNull]
+        private readonly List<IList<TVertex>> _layers = new List<IList<TVertex>>();
 
-		#region Properties
-		/// <summary>
-		/// This dictionary contains the layer-index for every vertices.
-		/// </summary>
-		public IDictionary<TVertex, int> LayerIndices
-		{
-			get { return layerIndices; }
-		}
+        [NotNull]
+        private readonly IMutableBidirectionalGraph<TVertex, TEdge> _tmpGraph;
 
-		/// <summary>
-		/// The count of the layers in the graph.
-		/// </summary>
-		public int LayerCount
-		{
-			get { return layer; }
-		}
+        #region Properties
 
-		/// <summary>
-		/// The vertices grouped by their LayerIndex.
-		/// </summary>
-		public IList<IList<TVertex>> Layers
-		{
-			get { return layers; }
-		}
-		#endregion
+        /// <summary>
+        /// This dictionary contains the layer-index for every vertices.
+        /// </summary>
+        [NotNull]
+        public IDictionary<TVertex, int> LayerIndices { get; } = new Dictionary<TVertex, int>();
 
-		public delegate void LayerFinishedDelegate( object sender, LayeredTopologicalSortEventArgs e );
-		public event LayerFinishedDelegate LayerFinished;
+        /// <summary>
+        /// The count of the layers in the graph.
+        /// </summary>
+        public int LayerCount { get; private set; }
 
-		public LayeredTopologicalSortAlgorithm( IVertexAndEdgeListGraph<TVertex, TEdge> g )
-			: base( g )
-		{
-			tmpGraph = new BidirectionalGraph<TVertex, TEdge>();
+        /// <summary>
+        /// The vertices grouped by their LayerIndex.
+        /// </summary>
+        [NotNull, ItemNotNull]
+        public IList<IList<TVertex>> Layers => _layers;
 
-			//create a copy from the graph
-			tmpGraph.AddVertexRange( g.Vertices );
-			foreach ( var e in g.Edges )
-				tmpGraph.AddEdge( e );
-		}
+        #endregion
 
-		protected override void InternalCompute()
-		{
-			//initializing the sources
-			var sources = GetSources( tmpGraph.Vertices );
+        /// <summary>
+        /// Handler for <see cref="LayeredTopologicalSortAlgorithm{TVertex,TEdge}.LayerFinished"/> event.
+        /// </summary>
+        /// <param name="sender">Sender of the event.</param>
+        /// <param name="args">Event arguments.</param>
+        public delegate void LayerFinishedDelegate([NotNull] object sender, [NotNull] LayeredTopologicalSortEventArgs args);
 
-			//initializing the candidates (candidate for 'source' of the next layer)
-			var newSources = new HashSet<TVertex>();
+        /// <summary>
+        /// Fired each time a layer is treated and finished.
+        /// </summary>
+        public event LayerFinishedDelegate LayerFinished;
 
-			for ( layer = 0; sources.Count != 0; layer++ )
-			{
-				foreach ( var s in sources )
-				{
-					layerIndices[s] = layer;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayeredTopologicalSortAlgorithm{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to visit.</param>
+        public LayeredTopologicalSortAlgorithm(
+            [NotNull] IVertexAndEdgeListGraph<TVertex, TEdge> visitedGraph)
+            : base(visitedGraph)
+        {
+            // Create a copy from the graph
+            _tmpGraph = visitedGraph.CopyToBidirectionalGraph();
+        }
 
-					//get the neighbours of this source
-					var outNeighbours = tmpGraph.GetOutNeighbors( s );
+        private void OnLayerFinished([NotNull] LayeredTopologicalSortEventArgs args)
+        {
+            Debug.Assert(args != null);
 
-					//remove this source
-					tmpGraph.RemoveVertex( s );
+            LayerFinished?.Invoke(this, args);
+        }
 
-					//check if any of the neighbours became a source
-					foreach ( var n in outNeighbours )
-						if ( tmpGraph.IsInEdgesEmpty( n ) )
-							newSources.Add( n );
-				}
+        #region AlgorithmBase<TGraph>
 
-				//the actual layer have been finished
-				layers.Add( sources );
-				OnLayerFinished( new LayeredTopologicalSortEventArgs
-				                 	{
-				                 		LayerIndex = layer,
-				                 		Vertices = sources
-				                 	} );
+        /// <inheritdoc />
+        protected override void InternalCompute()
+        {
+            // Initializing the sources
+            IList<TVertex> sources = GetSources(_tmpGraph.Vertices);
 
-				//prepare for the next layer
-				sources = newSources.ToList();
-				newSources = new HashSet<TVertex>();
-			}
+            // Initializing the candidates (candidate for 'source' of the next layer)
+            var newSources = new HashSet<TVertex>();
 
+            for (LayerCount = 0; sources.Count != 0; ++LayerCount)
+            {
+                foreach (TVertex source in sources)
+                {
+                    LayerIndices[source] = LayerCount;
 
-			//if the graph is not empty, it's a problem
-			if ( !tmpGraph.IsVerticesEmpty )
-				throw new NonAcyclicGraphException();
-		}
+                    // Get the neighbors of this source
+                    IEnumerable<TVertex> outNeighbors = _tmpGraph.GetOutNeighbors(source);
 
-		protected IList<TVertex> GetSources( IEnumerable<TVertex> vertices )
-		{
-			return ( from v in vertices
-			         where tmpGraph.IsInEdgesEmpty( v )
-			         select v ).ToList();
-		}
+                    // Remove this source
+                    _tmpGraph.RemoveVertex(source);
 
-		protected void OnLayerFinished( LayeredTopologicalSortEventArgs args )
-		{
-			if ( LayerFinished != null )
-				LayerFinished( this, args );
-		}
+                    // Check if any of the neighbors became a source
+                    foreach (TVertex neighbor in outNeighbors)
+                    {
+                        if (_tmpGraph.IsInEdgesEmpty(neighbor))
+                        {
+                            newSources.Add(neighbor);
+                        }
+                    }
+                }
 
-		public class LayeredTopologicalSortEventArgs : EventArgs
-		{
-			public int LayerIndex { get; internal set; }
-			public IEnumerable<TVertex> Vertices { get; internal set; }
-		}
-	}
+                // The actual layer have been finished
+                _layers.Add(sources);
+                OnLayerFinished(new LayeredTopologicalSortEventArgs(LayerCount, sources));
+
+                // Prepare for the next layer
+                sources = newSources.ToList();
+                newSources = new HashSet<TVertex>();
+            }
+
+            // If the graph is not empty, it's a problem
+            if (!_tmpGraph.IsVerticesEmpty)
+                throw new NonAcyclicGraphException();
+        }
+
+        #endregion
+
+        [NotNull, ItemNotNull]
+        private IList<TVertex> GetSources([NotNull, ItemNotNull] IEnumerable<TVertex> vertices)
+        {
+            Debug.Assert(vertices != null);
+
+            return vertices.Where(v => _tmpGraph.IsInEdgesEmpty(v)).ToList();
+        }
+
+        /// <summary>
+        /// Event arguments for a layered topological sort algorithm.
+        /// </summary>
+        public class LayeredTopologicalSortEventArgs : EventArgs
+        {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="LayeredTopologicalSortEventArgs"/> class.
+            /// </summary>
+            internal LayeredTopologicalSortEventArgs(
+                int layerIndex,
+                [NotNull, ItemNotNull] IEnumerable<TVertex> vertices)
+            {
+                LayerIndex = layerIndex;
+                Vertices = vertices.ToArray();
+            }
+
+            /// <summary>
+            /// Layer index.
+            /// </summary>
+            public int LayerIndex { get; }
+
+            /// <summary>
+            /// Layer vertices.
+            /// </summary>
+            [NotNull, ItemNotNull]
+            public TVertex[] Vertices { get; }
+        }
+    }
 }

@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
 
-    <Title>GraphShape</Title>
+    <Title>GraphShape.Tests</Title>
 
     <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
