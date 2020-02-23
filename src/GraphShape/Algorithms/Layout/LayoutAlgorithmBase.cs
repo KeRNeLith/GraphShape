@@ -24,12 +24,12 @@ namespace GraphShape.Algorithms.Layout
 		{
 		}
 
-		public IDictionary<TVertex, TVertexInfo> VertexInfos
+		public IDictionary<TVertex, TVertexInfo> VerticesInfos
 		{
 			get { return vertexInfos; }
 		}
 
-		public IDictionary<TEdge, TEdgeInfo> EdgeInfos
+		public IDictionary<TEdge, TEdgeInfo> EdgesInfos
 		{
 			get { return edgeInfos; }
 		}
@@ -39,7 +39,7 @@ namespace GraphShape.Algorithms.Layout
 		public override object GetVertexInfo( TVertex vertex )
 		{
 			TVertexInfo info;
-			if ( VertexInfos.TryGetValue( vertex, out info ) )
+			if ( VerticesInfos.TryGetValue( vertex, out info ) )
 				return info;
 
 			return null;
@@ -48,7 +48,7 @@ namespace GraphShape.Algorithms.Layout
 		public override object GetEdgeInfo( TEdge edge )
 		{
 			TEdgeInfo info;
-			if ( EdgeInfos.TryGetValue( edge, out info ) )
+			if ( EdgesInfos.TryGetValue( edge, out info ) )
 				return info;
 
 			return null;
@@ -63,7 +63,7 @@ namespace GraphShape.Algorithms.Layout
 		private readonly Dictionary<TVertex, Point> vertexPositions;
 		private readonly TGraph visitedGraph;
 
-		public IDictionary<TVertex, Point> VertexPositions
+		public IDictionary<TVertex, Point> VerticesPositions
 		{
 			get { return vertexPositions; }
 		}
@@ -73,7 +73,7 @@ namespace GraphShape.Algorithms.Layout
 			get { return visitedGraph; }
 		}
 
-		public event LayoutIterationEndedEventHandler<TVertex, TEdge> IterationEnded;
+		public event LayoutIterationEndedEventHandler<TVertex> IterationEnded;
 
 	    public event ProgressChangedEventHandler ProgressChanged;
 

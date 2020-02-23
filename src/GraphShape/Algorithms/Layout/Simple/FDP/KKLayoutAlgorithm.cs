@@ -59,7 +59,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             foreach ( var v in VisitedGraph.Vertices )
             {
                 vertices[index] = v;
-                positions[index] = VertexPositions[v];
+                positions[index] = VerticesPositions[v];
                 index++;
             }
 
@@ -160,9 +160,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         protected void Report( int currentIteration )
         {
             #region Copy the calculated positions
-            //pozíciók átmásolása a VertexPositions-ba
+            //pozíciók átmásolása a VerticesPositions-ba
             for ( int i = 0; i < vertices.Length; i++ )
-                VertexPositions[vertices[i]] = positions[i];
+                VerticesPositions[vertices[i]] = positions[i];
             #endregion
 
             OnIterationEnded( currentIteration, (double)currentIteration / (double)Parameters.MaxIterations, "Iteration " + currentIteration + " finished.", true );

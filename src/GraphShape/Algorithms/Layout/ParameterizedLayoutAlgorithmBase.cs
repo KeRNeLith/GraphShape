@@ -27,12 +27,12 @@ namespace GraphShape.Algorithms.Layout
 
 		#region ILayoutAlgorithm<TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo> Members
 
-		public IDictionary<TVertex, TVertexInfo> VertexInfos
+		public IDictionary<TVertex, TVertexInfo> VerticesInfos
 		{
 			get { return vertexInfos; }
 		}
 
-		public IDictionary<TEdge, TEdgeInfo> EdgeInfos
+		public IDictionary<TEdge, TEdgeInfo> EdgesInfos
 		{
 			get { return edgeInfos; }
 		}
@@ -47,7 +47,7 @@ namespace GraphShape.Algorithms.Layout
 		public override object GetVertexInfo( TVertex vertex )
 		{
 			TVertexInfo info;
-			if ( VertexInfos.TryGetValue( vertex, out info ) )
+			if ( VerticesInfos.TryGetValue( vertex, out info ) )
 				return info;
 
 			return null;
@@ -56,7 +56,7 @@ namespace GraphShape.Algorithms.Layout
 		public override object GetEdgeInfo( TEdge edge )
 		{
 			TEdgeInfo info;
-			if ( EdgeInfos.TryGetValue( edge, out info ) )
+			if ( EdgesInfos.TryGetValue( edge, out info ) )
 				return info;
 
 			return null;
@@ -99,7 +99,7 @@ namespace GraphShape.Algorithms.Layout
 	/// <typeparam name="TEdge">Type of the edges.</typeparam>
 	/// <typeparam name="TGraph">Type of the graph.</typeparam>
 	/// <typeparam name="TParam">Type of the parameters. Must be based on the LayoutParametersBase.</typeparam>
-	public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam> : LayoutAlgorithmBase<TVertex, TEdge, TGraph>, IParameterizedLayoutAlgorithm<TParam>
+	public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam> : LayoutAlgorithmBase<TVertex, TEdge, TGraph>, IParameterizedLayoutAlgorithm<TVertex, TEdge, TGraph, TParam>
 		where TVertex : class
 		where TEdge : IEdge<TVertex>
 		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
@@ -189,9 +189,9 @@ namespace GraphShape.Algorithms.Layout
 			foreach ( TVertex v in VisitedGraph.Vertices )
 			{
 				//for vertices without assigned position
-				if ( !VertexPositions.ContainsKey( v ) )
+				if ( !VerticesPositions.ContainsKey( v ) )
 				{
-					VertexPositions[v] =
+					VerticesPositions[v] =
 						new Point(
 							Math.Max( double.Epsilon, rnd.NextDouble() * width + translate_x ),
 							Math.Max( double.Epsilon, rnd.NextDouble() * height + translate_y ) );
@@ -203,7 +203,7 @@ namespace GraphShape.Algorithms.Layout
 		{
 			lock ( SyncRoot )
 			{
-				NormalizePositions( VertexPositions );
+				NormalizePositions( VerticesPositions );
 			}
 		}
 
@@ -237,7 +237,7 @@ namespace GraphShape.Algorithms.Layout
 			IDictionary<TVertex, Point> vertexPositions;
 			lock ( SyncRoot )
 			{
-				vertexPositions = new Dictionary<TVertex, Point>( VertexPositions );
+				vertexPositions = new Dictionary<TVertex, Point>( VerticesPositions );
 			}
 			if ( normalizePositions )
 				NormalizePositions( vertexPositions );

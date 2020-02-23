@@ -92,7 +92,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             foreach (Vertex v in VisitedGraph.Vertices)
             {
                 force.X = 0; force.Y = 0;
-                Point posV = VertexPositions[v];
+                Point posV = VerticesPositions[v];
                 foreach (Vertex u in VisitedGraph.Vertices)
                 {
                     //doesn't repulse itself
@@ -100,7 +100,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                         continue;
 
                     //calculating repulsive force
-                    Vector delta = posV - VertexPositions[u];
+                    Vector delta = posV - VerticesPositions[u];
                     double length = Math.Max(delta.Length, double.Epsilon);
                     delta = delta / length * Parameters.ConstantOfRepulsion / length;
 
@@ -117,7 +117,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 Vertex target = e.Target;
 
                 //vonzóerõ számítása a két pont közt
-                Vector delta = VertexPositions[source] - VertexPositions[target];
+                Vector delta = VerticesPositions[source] - VerticesPositions[target];
                 double length = Math.Max(delta.Length, double.Epsilon);
                 delta = delta / length * Math.Pow(length, 2) / Parameters.ConstantOfAttraction;
 
@@ -129,7 +129,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             #region Limit displacement
             foreach (Vertex v in VisitedGraph.Vertices)
             {
-                Point pos = VertexPositions[v];
+                Point pos = VerticesPositions[v];
 
                 //erõ limitálása a temperature-el
                 Vector delta = forces[v];
@@ -142,7 +142,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 //falon ne menjünk ki
                 pos.X = Math.Min(_maxWidth, Math.Max(0, pos.X));
                 pos.Y = Math.Min(_maxHeight, Math.Max(0, pos.Y));
-                VertexPositions[v] = pos;
+                VerticesPositions[v] = pos;
             }
             #endregion
         }

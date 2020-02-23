@@ -146,7 +146,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 		{
 			// Copy positions
 			foreach ( var v in vertices )
-				VertexPositions[v.OriginalVertex] = v.Position;
+				VerticesPositions[v.OriginalVertex] = v.Position;
 		}
 
 		protected void Report( int step )
@@ -327,14 +327,14 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 				              		OriginalVertex = v,
 				              		Attractions = new LinLogEdge[VisitedGraph.Degree( v )],
 				              		RepulsionWeight = 0,
-				              		Position = VertexPositions[v]
+				              		Position = VerticesPositions[v]
 				              	};
 				vertexMap[v] = vertices[i];
 				i++;
 			}
 
 			//minden vertex-hez felépíti az attractionWeights, attractionIndexes,
-			//és a repulsionWeights struktúrát, valamint átmásolja a pozícióját a VertexPositions-ból
+			//és a repulsionWeights struktúrát, valamint átmásolja a pozícióját a VerticesPositions-ból
 			foreach ( var v in vertices )
 			{
 				int attrIndex = 0;

@@ -50,7 +50,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
                 a = Math.Sin( halfSize[i] * 0.5 / radius ) * 2;
                 angle += a;
                 if ( ReportOnIterationEndNeeded )
-                    VertexPositions[v] = new Point( Math.Cos( angle ) * radius + radius, Math.Sin( angle ) * radius + radius );
+                    VerticesPositions[v] = new Point( Math.Cos( angle ) * radius + radius, Math.Sin( angle ) * radius + radius );
                 angle += a;
             }
 
@@ -67,7 +67,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
             {
                 a = Math.Sin( halfSize[i] * 0.5 / radius ) * 2;
                 angle += a;
-                VertexPositions[v] = new Point( Math.Cos( angle ) * radius + radius, Math.Sin( angle ) * radius + radius );
+                VerticesPositions[v] = new Point( Math.Cos( angle ) * radius + radius, Math.Sin( angle ) * radius + radius );
                 angle += a;
             }
         }

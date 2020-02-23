@@ -107,7 +107,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
             // SimpleTree layout on the two side
             //
             var side1LayoutAlg = new SimpleTreeLayoutAlgorithm<TVertex, Edge<TVertex>, BidirectionalGraph<TVertex, Edge<TVertex>>>(
-                graph1, VertexPositions, vertexSizes,
+                graph1, VerticesPositions, vertexSizes,
                 new SimpleTreeLayoutParameters
                     {
                         LayerGap = Parameters.LayerGap,
@@ -116,7 +116,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                         SpanningTreeGeneration = SpanningTreeGeneration.BFS
                     } );
             var side2LayoutAlg = new SimpleTreeLayoutAlgorithm<TVertex, TEdge, BidirectionalGraph<TVertex, TEdge>>(
-                graph2, VertexPositions, vertexSizes,
+                graph2, VerticesPositions, vertexSizes,
                 new SimpleTreeLayoutParameters
                     {
                         LayerGap = Parameters.LayerGap,
@@ -131,12 +131,12 @@ namespace GraphShape.Algorithms.Layout.Contextual
             //
             // Merge the layouts
             //
-            var side2Translate = side1LayoutAlg.VertexPositions[root] - side2LayoutAlg.VertexPositions[root];
+            var side2Translate = side1LayoutAlg.VerticesPositions[root] - side2LayoutAlg.VerticesPositions[root];
             foreach ( var v in side1 )
-                VertexPositions[v] = side1LayoutAlg.VertexPositions[v];
+                VerticesPositions[v] = side1LayoutAlg.VerticesPositions[v];
 
             foreach ( var v in side2 )
-                VertexPositions[v] = side2LayoutAlg.VertexPositions[v] + side2Translate;
+                VerticesPositions[v] = side2LayoutAlg.VerticesPositions[v] + side2Translate;
             NormalizePositions();
         }
 

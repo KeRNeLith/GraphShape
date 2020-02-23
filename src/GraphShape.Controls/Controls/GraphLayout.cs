@@ -409,7 +409,7 @@ namespace GraphShape.Controls
 
         protected virtual void OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex> iterArgs)
         {
-            if (iterArgs == null || iterArgs.VertexPositions == null)
+            if (iterArgs == null || iterArgs.VerticesPositions == null)
             {
                 if (LayoutAlgorithm is ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph>)
                 {
@@ -419,13 +419,13 @@ namespace GraphShape.Controls
                 {
 
                 }
-                OnLayoutIterationFinished(LayoutAlgorithm.VertexPositions, null);
+                OnLayoutIterationFinished(LayoutAlgorithm.VerticesPositions, null);
                 SetLayoutInformations();
             }
             else
             {
                 //TODO compound layout
-                OnLayoutIterationFinished(iterArgs.VertexPositions, iterArgs.Message);
+                OnLayoutIterationFinished(iterArgs.VerticesPositions, iterArgs.Message);
                 LayoutStatusPercent = iterArgs.StatusInPercent;
                 SetLayoutInformations(iterArgs as ILayoutInfoIterationEventArgs<TVertex, TEdge>);
             }

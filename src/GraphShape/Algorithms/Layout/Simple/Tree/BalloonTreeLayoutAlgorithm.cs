@@ -83,7 +83,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
 		private void SecondWalk( TVertex v, TVertex r, double x, double y, float l, float t )
 		{
 			Point pos = new Point( x, y );
-			VertexPositions[v] = pos;
+			VerticesPositions[v] = pos;
 			visitedVertices.Add( v );
 			BalloonData data = datas[v];
 

@@ -34,27 +34,27 @@ namespace GraphShape.Algorithms.Layout
 		                                 IDictionary<TEdge, TEdgeInfo> edgeInfos)
 			: base( iteration, statusInPercent, message, vertexPositions )
 		{
-			this.VertexInfos = vertexInfos;
-			this.EdgeInfos = edgeInfos;
+			this.VerticesInfos = vertexInfos;
+			this.EdgesInfos = edgeInfos;
 		}
 
-		public IDictionary<TVertex, TVertexInfo> VertexInfos { get; private set; }
-		public IDictionary<TEdge, TEdgeInfo> EdgeInfos { get; private set; }
+		public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; private set; }
+		public IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; private set; }
 
 		public sealed override object GetVertexInfo( TVertex vertex )
 		{
-			if ( VertexInfos == null )
+			if ( VerticesInfos == null )
 				return null;
 			TVertexInfo info;
-			return VertexInfos.TryGetValue( vertex, out info ) ? info : default( TVertexInfo );
+			return VerticesInfos.TryGetValue( vertex, out info ) ? info : default( TVertexInfo );
 		}
 
 		public sealed override object GetEdgeInfo( TEdge edge )
 		{
-			if ( EdgeInfos == null )
+			if ( EdgesInfos == null )
 				return null;
 			TEdgeInfo info;
-			return EdgeInfos.TryGetValue( edge, out info ) ? info : default( TEdgeInfo );
+			return EdgesInfos.TryGetValue( edge, out info ) ? info : default( TEdgeInfo );
 		}
 	}
 
@@ -89,7 +89,7 @@ namespace GraphShape.Algorithms.Layout
 			this.Iteration = iteration;
 			this.Abort = false;
 			this.Message = message;
-			this.VertexPositions = vertexPositions;
+			this.VerticesPositions = vertexPositions;
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace GraphShape.Algorithms.Layout
 		/// </summary>
 		public string Message { get; private set; }
 
-		public IDictionary<TVertex, Point> VertexPositions { get; private set; }
+		public IDictionary<TVertex, Point> VerticesPositions { get; private set; }
 
 		public virtual object GetVertexInfo( TVertex vertex )
 		{

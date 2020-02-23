@@ -119,13 +119,13 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 			{
 				TVertex current = _queue.Dequeue();
 				ISOMData currentVid = _isomDataDict[current];
-				Point pos = VertexPositions[current];
+				Point pos = VerticesPositions[current];
 
 				Vector force = _tempPos - pos;
 				double factor = adaptation / Math.Pow( 2, currentVid.Distance );
 
 				pos += factor * force;
-				VertexPositions[current] = pos;
+				VerticesPositions[current] = pos;
 
 				//ha még a hatókörön belül van
 				if ( currentVid.Distance < radius )
@@ -158,7 +158,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 			//find the closest vertex
 			foreach ( TVertex v in VisitedGraph.Vertices )
 			{
-				double d = ( tempPos - VertexPositions[v] ).Length;
+				double d = ( tempPos - VerticesPositions[v] ).Length;
 				if ( d < distance )
 				{
 					vertex = v;

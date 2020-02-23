@@ -39,12 +39,12 @@ namespace GraphShape.Algorithms.Layout.Compound
             return null;
         }
 
-        public IDictionary<TVertex, TVertexInfo> VertexInfos
+        public IDictionary<TVertex, TVertexInfo> VerticesInfos
         {
             get { return this.vertexInfos; }
         }
 
-        public IDictionary<TEdge, TEdgeInfo> EdgeInfos
+        public IDictionary<TEdge, TEdgeInfo> EdgesInfos
         {
             get { return null; }
         }

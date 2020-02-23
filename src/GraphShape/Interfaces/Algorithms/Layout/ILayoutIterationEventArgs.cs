@@ -1,34 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.Layout
 {
+    /// <summary>
+    /// Represents a layout iteration event arguments.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
     public interface ILayoutIterationEventArgs<TVertex>
-        where TVertex : class
     {
         /// <summary>
-        /// Represent the status of the layout algorithm in percent.
+        /// Represents the status of the layout algorithm in percent.
         /// </summary>
         double StatusInPercent { get; }
 
         /// <summary>
-        /// If the user sets this value to <code>true</code>, the algorithm aborts ASAP.
+        /// If the user sets this value to true, the algorithm aborts as soon as possible.
         /// </summary>
         bool Abort { get; set; }
 
         /// <summary>
-        /// Number of the actual iteration.
+        /// Number of the current iteration.
         /// </summary>
         int Iteration { get; }
 
         /// <summary>
-        /// Message, textual representation of the status of the algorithm.
+        /// Message representing the status of the algorithm.
         /// </summary>
+        [NotNull]
         string Message { get; }
 
-        IDictionary<TVertex, Point> VertexPositions { get; }
+        /// <summary>
+        /// Vertices positions associations.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, Point> VerticesPositions { get; }
     }
 }

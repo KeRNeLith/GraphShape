@@ -166,7 +166,7 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                 vertexSizes.TryGetValue(vertex, out vertexSize);
 
                 var position = new Point();
-                VertexPositions.TryGetValue(vertex, out position);
+                VerticesPositions.TryGetValue(vertex, out position);
 
                 //create the information container for this simple vertex
                 var dataContainer = new SimpleVertexData(vertex, _rootCompoundVertex, false, position, vertexSize);
@@ -213,7 +213,7 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                     }
 
                     var position = new Point();
-                    VertexPositions.TryGetValue(vertex, out position);
+                    VerticesPositions.TryGetValue(vertex, out position);
 
                     //create the information container for this compound vertex
                     var dataContainer = new CompoundVertexData(vertex, _rootCompoundVertex, false, position, vertexSize, border, layoutType);

@@ -157,13 +157,13 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             foreach (var vertex in _vertexDatas.Keys)
             {
                 var v = _vertexDatas[vertex];
-                VertexPositions[vertex] = v.Position;
+                VerticesPositions[vertex] = v.Position;
             }
 
             /*var iterationEndedArgs = 
                 new CompoundLayoutIterationEventArgs<TVertex, TEdge>(
                     0, 0, string.Empty, 
-                    VertexPositions,
+                    VerticesPositions,
                     InnerCanvasSizes);*/
 
             //build the test vertex infos
@@ -178,7 +178,7 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             var iterationEndedArgs =
                 new TestingCompoundLayoutIterationEventArgs<TVertex, TEdge, TestingCompoundVertexInfo, object>(
                     0, 0, string.Format("Phase: {0}, Steps: {1}", _phase, _step),
-                    VertexPositions,
+                    VerticesPositions,
                     InnerCanvasSizes,
                     vertexInfos,
                     _rootCompoundVertex.InnerCanvasCenter);

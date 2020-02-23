@@ -143,15 +143,15 @@ namespace GraphShape.Tests.MetricTests
 			var edgeRoutes = ( algo is IEdgeRoutingAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> ? ( algo as IEdgeRoutingAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> ).EdgeRoutes : new Dictionary<TEdge, Point[]>() );
 
 			//do the metrics
-			OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> overlapMetric = new OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VertexPositions, vertexSizes, edgeRoutes );
+			OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> overlapMetric = new OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VerticesPositions, vertexSizes, edgeRoutes );
 			results.OverlapCount += overlapMetric.OverlapCount;
 			results.OverlappedArea += overlapMetric.OverlappedArea;
 
-			LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> areaMetric = new LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VertexPositions, vertexSizes, edgeRoutes );
+			LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> areaMetric = new LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VerticesPositions, vertexSizes, edgeRoutes );
 			results.Area += areaMetric.Area;
 			results.Ratio += areaMetric.Ratio;
 
-			EdgeMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> edgeMetric = new EdgeMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VertexPositions, vertexSizes, edgeRoutes );
+			EdgeMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> edgeMetric = new EdgeMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>( algo.VisitedGraph, algo.VerticesPositions, vertexSizes, edgeRoutes );
 			results.CrossCount += edgeMetric.CrossCount;
 			results.MinimumEdgeLength += edgeMetric.MinimumEdgeLength;
 			results.MaximumEdgeLength += edgeMetric.MaximumEdgeLength;

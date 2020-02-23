@@ -94,9 +94,9 @@ namespace GraphShape.Sample
                                      layoutAlgorithm.IterationEnded += (o, evt) =>
                                      {
                                          var args = evt as TestingCompoundLayoutIterationEventArgs<object, IEdge<object>, TestingCompoundVertexInfo, object>;
-                                         var positions = args.VertexPositions;
+                                         var positions = args.VerticesPositions;
                                          var innerSizes = (args as ICompoundLayoutIterationEventArgs<object>).InnerCanvasSizes;
-                                         var vertexInfos = args.VertexInfos;
+                                         var vertexInfos = args.VerticesInfos;
 
                                          Dispatcher.Invoke(new Action(delegate
                                                                           {

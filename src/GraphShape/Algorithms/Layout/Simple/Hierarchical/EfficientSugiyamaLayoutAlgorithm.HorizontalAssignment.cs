@@ -139,7 +139,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             foreach (var vertex in _graph.Vertices)
             {
                 if (vertex.Type == VertexTypes.Original)
-                    VertexPositions[vertex.OriginalVertex] = IsVerticalLayout()
+                    VerticesPositions[vertex.OriginalVertex] = IsVerticalLayout()
                 ? new Point(vertex.HorizontalPosition, vertex.LayerPosition)
                 : new Point(vertex.LayerPosition, vertex.HorizontalPosition);
             }

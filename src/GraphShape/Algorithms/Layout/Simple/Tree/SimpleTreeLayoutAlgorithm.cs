@@ -148,7 +148,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
                         d.translate += data[d.parent].translate;
                     }
 
-                    VertexPositions[v] =
+                    VerticesPositions[v] =
                         changeCoordinates
                             ? new Point( direction * ( layerSize + size.Height / 2.0 ), d.position )
                             : new Point( d.position, direction * ( layerSize + size.Height / 2.0 ) );

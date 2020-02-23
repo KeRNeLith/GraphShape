@@ -815,7 +815,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
 
             //copy the positions of the vertices
-            VertexPositions.Clear();
+            VerticesPositions.Clear();
             foreach ( var v in _graph.Vertices )
             {
                 if ( v.IsDummyVertex )
@@ -827,7 +827,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     pos.X += v.Size.Width * 0.5 + translation.X;
                     pos.Y += v.Size.Height * 0.5 + translation.Y;
                 }
-                VertexPositions[v.Original] = pos;
+                VerticesPositions[v.Original] = pos;
             }
 
             //copy the edge routes
@@ -845,7 +845,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         }
 
         /// <summary>
-        /// Copies the coordinates of the vertices to the VertexPositions dictionary.
+        /// Copies the coordinates of the vertices to the VerticesPositions dictionary.
         /// </summary>
         protected void CopyPositions()
         {

@@ -1,62 +1,112 @@
 ﻿using System.Collections.Generic;
-using QuikGraph.Algorithms;
-using QuikGraph;
 using System.Windows;
+using JetBrains.Annotations;
+using QuikGraph;
+using QuikGraph.Algorithms;
 
 namespace GraphShape.Algorithms.Layout
 {
-	public delegate void LayoutIterationEndedEventHandler<TVertex, TEdge>( object sender, ILayoutIterationEventArgs<TVertex> e )
-		where TVertex : class
-		where TEdge : IEdge<TVertex>;
-
-	public delegate void LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo>( object sender, ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo> e )
-		where TVertex : class
-		where TEdge : IEdge<TVertex>;
+    /// <summary>
+    /// Handler for a layout iteration ended.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="args">Event arguments.</param>
+    public delegate void LayoutIterationEndedEventHandler<TVertex>(
+        [NotNull] object sender,
+        [NotNull] ILayoutIterationEventArgs<TVertex> args)
+        where TVertex : class;
 
     /// <summary>
-    /// Reports the progress of the layout.
+    /// Handler for a layout iteration ended.
     /// </summary>
-    /// <param name="sender">The sender.</param>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
+    /// <param name="sender">Event sender.</param>
+    /// <param name="args">Event arguments.</param>
+    public delegate void LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo>(
+        [NotNull] object sender,
+        [NotNull] ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo> args)
+        where TVertex : class
+        where TEdge : IEdge<TVertex>;
+
+    /// <summary>
+    /// Handler to report the progress of a layout algorithm.
+    /// </summary>
+    /// <param name="sender">Event sender.</param>
     /// <param name="percent">The status of the progress in percent.</param>
-    public delegate void ProgressChangedEventHandler(object sender, double percent);
+    public delegate void ProgressChangedEventHandler([NotNull] object sender, double percent);
 
-	public interface ILayoutAlgorithm<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-	{
-		/// <summary>
-		/// Extra informations, calculated by the layout
-		/// </summary>
-		IDictionary<TVertex, TVertexInfo> VertexInfos { get; }
+    /// <summary>
+    /// Represents a layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public interface ILayoutAlgorithm<TVertex, in TEdge, out TGraph> : IAlgorithm<TGraph>
+        where TVertex : class
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+    {
+        /// <summary>
+        /// Vertices positions associations.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, Point> VerticesPositions { get; }
 
-		/// <summary>
-		/// Extra informations, calculated by the layout
-		/// </summary>
-		IDictionary<TEdge, TEdgeInfo> EdgeInfos { get; }
+        /// <summary>
+        /// Returns the extra layout information of the <paramref name="vertex"/> (or null).
+        /// </summary>
+        [Pure]
+        [CanBeNull]
+        object GetVertexInfo([NotNull] TVertex vertex);
 
-		new event LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo> IterationEnded;
-	}
+        /// <summary>
+        /// Returns the extra layout information of the <paramref name="edge"/> (or null).
+        /// </summary>
+        [Pure]
+        [CanBeNull]
+        object GetEdgeInfo([NotNull] TEdge edge);
 
-	public interface ILayoutAlgorithm<TVertex, TEdge, TGraph> : IAlgorithm<TGraph>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-	{
-		IDictionary<TVertex, Point> VertexPositions { get; }
+        /// <summary>
+        /// Fired when a layout iteration has been done.
+        /// </summary>
+        event LayoutIterationEndedEventHandler<TVertex> IterationEnded;
 
-		/// <summary>
-		/// Returns with the extra layout information of the vertex (or null).
-		/// </summary>
-		object GetVertexInfo( TVertex vertex );
+        /// <summary>
+        /// Fired when layout algorithm progress changed.
+        /// </summary>
+        event ProgressChangedEventHandler ProgressChanged;
+    }
 
-		/// <summary>
-		/// Returns with the extra layout information of the edge (or null).
-		/// </summary>
-		object GetEdgeInfo( TEdge edge );
+    /// <summary>
+    /// Represents a layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
+    public interface ILayoutAlgorithm<TVertex, TEdge, out TGraph, TVertexInfo, TEdgeInfo> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
+        where TVertex : class
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+    {
+        /// <summary>
+        /// Extra vertices information, calculated by the layout.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, TVertexInfo> VerticesInfos { get; }
 
-		event LayoutIterationEndedEventHandler<TVertex, TEdge> IterationEnded;
+        /// <summary>
+        /// Extra edges information, calculated by the layout.
+        /// </summary>
+        [NotNull]
+        IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; }
 
-	    event ProgressChangedEventHandler ProgressChanged;
-	}
+        /// <inheritdoc cref="ILayoutAlgorithm{TVertex,TEdge,TGraph}.IterationEnded"/>
+        new event LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo> IterationEnded;
+    }
 }
