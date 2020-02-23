@@ -926,7 +926,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 int count = 0;
                 foreach (var edge in edges)
                 {
-                    var otherVertex = edge.OtherVertex(vertex);
+                    var otherVertex = edge.GetOtherVertex(vertex);
                     vertex.MeasuredPosition += otherVertex.Position;
                     count++;
                 }

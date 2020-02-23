@@ -1,350 +1,502 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Reflection;
+using JetBrains.Annotations;
 using QuikGraph;
 using QuikGraph.Algorithms.ShortestPath;
-using System.Diagnostics;
 using QuikGraph.Algorithms;
 
-namespace GraphShape
+namespace GraphShape.Utils
 {
+    /// <summary>
+    /// Helpers to deal with graphs.
+    /// </summary>
     public static class GraphHelpers
     {
         /// <summary>
-        /// Returns with the adjacent vertices of the <code>vertex</code>.
+        /// Gets the neighbors (adjacent vertices) of the <paramref name="vertex"/>.
         /// </summary>
-        /// <param name="g">The graph.</param>
-        /// <param name="vertex">The vertex which neighbours' we want to get.</param>
-        /// <returns>List of the adjacent vertices of the <code>vertex</code>.</returns>
-        public static IEnumerable<TVertex> GetNeighbours<TVertex, TEdge>( this IBidirectionalGraph<TVertex, TEdge> g, TVertex vertex )
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <param name="vertex">The vertex of which we want to get neighbors.</param>
+        /// <returns>Adjacent vertices of the <paramref name="vertex"/>.</returns>
+        [Pure]
+        [NotNull, ItemNotNull]
+        public static IEnumerable<TVertex> GetNeighbors<TVertex, TEdge>(
+            [NotNull] this IBidirectionalGraph<TVertex, TEdge> graph,
+            [NotNull] TVertex vertex)
             where TEdge : IEdge<TVertex>
         {
-            return ( ( from e in g.InEdges( vertex ) select e.Source )
-                .Concat(
-                ( from e in g.OutEdges( vertex ) select e.Target ) ) ).Distinct();
+            return graph.InEdges(vertex).Select(e => e.Source)
+                .Concat(graph.OutEdges(vertex).Select(e => e.Target))
+                .Distinct();
         }
-
-
-        public static IEnumerable<TVertex> GetOutNeighbours<TVertex, TEdge>( this IVertexAndEdgeListGraph<TVertex, TEdge> g, TVertex vertex )
-            where TEdge : IEdge<TVertex>
-        {
-            return ( from e in g.OutEdges( vertex )
-                     select e.Target ).Distinct();
-        }
-
 
         /// <summary>
-        /// If the graph g is directed, then returns every edges which source is one of the vertices in the <code>set1</code>
-        /// and the target is one of the vertices in <code>set2</code>.
+        /// Gets the out neighbors (only adjacent vertices from out-edges) of the <paramref name="vertex"/>.
         /// </summary>
-        /// <typeparam name="TVertex">Type of the vertex.</typeparam>
-        /// <typeparam name="TEdge">Type of the edge.</typeparam>
-        /// <param name="g">The graph.</param>
-        /// <param name="set1"></param>
-        /// <param name="set2"></param>
-        /// <returns>Return the list of the selected edges.</returns>
-        public static IEnumerable<TEdge> GetEdgesBetween<TVertex, TEdge>( this IVertexAndEdgeListGraph<TVertex, TEdge> g, List<TVertex> set1, List<TVertex> set2 )
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <param name="vertex">The vertex of which we want to get neighbors.</param>
+        /// <returns>Adjacent vertices of the <paramref name="vertex"/>.</returns>
+        [Pure]
+        [NotNull, ItemNotNull]
+        public static IEnumerable<TVertex> GetOutNeighbors<TVertex, TEdge>(
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TEdge> graph,
+            [NotNull] TVertex vertex)
             where TEdge : IEdge<TVertex>
         {
-            var edgesBetween = new List<TEdge>();
+            return graph.OutEdges(vertex).Select(e => e.Target).Distinct();
+        }
 
-            //vegig kell menni az osszes vertex minden elen, es megnezni, hogy a target hol van
-            foreach ( TVertex v in set1 )
+        /// <summary>
+        /// Returns every edges which source is one of the vertices in the <paramref name="set1"/>
+        /// and the target is one of the vertices in the <paramref name="set2"/>.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <param name="set1">Source vertices set.</param>
+        /// <param name="set2">Target vertices set</param>
+        /// <returns>Edges with a source in <paramref name="set1"/> and a target in <paramref name="set2"/>.</returns>
+        [Pure]
+        [NotNull, ItemNotNull]
+        public static IEnumerable<TEdge> GetEdgesBetween<TVertex, TEdge>(
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TEdge> graph,
+            [NotNull, ItemNotNull] TVertex[] set1,
+            [NotNull, ItemNotNull] TVertex[] set2)
+            where TEdge : IEdge<TVertex>
+        {
+            if (graph is null)
+                throw new ArgumentNullException(nameof(graph));
+            if (set1 is null)
+                throw new ArgumentNullException(nameof(set1));
+            if (set2 is null)
+                throw new ArgumentNullException(nameof(set2));
+
+            foreach (TVertex vertex in set1)
             {
-                foreach ( TEdge edge in g.OutEdges( v ) )
+                foreach (TEdge edge in graph.OutEdges(vertex))
                 {
-                    if ( set2.Contains( edge.Target ) )
-                        edgesBetween.Add( edge );
+                    if (set2.Contains(edge.Target))
+                        yield return edge;
                 }
             }
-
-            return edgesBetween;
         }
 
-
         /// <summary>
-        /// Returns with the sources in the graph.
+        /// Gets the distances between the vertices of the <paramref name="graph"/>.
+        /// Note: The distance is the number of edges between 2 vertices.
         /// </summary>
-        /// <typeparam name="TVertex"></typeparam>
-        /// <typeparam name="TEdge"></typeparam>
-        /// <param name="g">The graph.</param>
-        /// <returns>Returns with the sources in the graph.</returns>
-        public static IEnumerable<TVertex> GetSources<TVertex, TEdge>( this IBidirectionalGraph<TVertex, TEdge> g )
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <typeparam name="TGraph">Graph type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <returns>The distances between every vertex-pair.</returns>
+        [Pure]
+        [NotNull]
+        public static double[,] GetDistances<TVertex, TEdge, TGraph>(
+            [NotNull] this TGraph graph)
             where TEdge : IEdge<TVertex>
+            where TGraph : IBidirectionalGraph<TVertex, TEdge>
         {
-            return from v in g.Vertices
-                   where g.InDegree( v ) == 0
-                   select v;
-        }
+            if (graph == null)
+                throw new ArgumentNullException(nameof(graph));
 
-        /// <summary>
-        /// Gets the diameter of a graph.
-        /// The diameter is the greatest distance between two vertices.
-        /// </summary>
-        /// <param name="g">The graph.</param>
-        /// <returns>The diameter of the Graph <code>g</code>.</returns>
-        public static double GetDiameter<Vertex, Edge, Graph>( this Graph g )
-            where Edge : IEdge<Vertex>
-            where Graph : IBidirectionalGraph<Vertex, Edge>
-        {
-            double[,] distances;
-            return g.GetDiameter<Vertex, Edge, Graph>( out distances );
-        }
-
-        /// <summary>
-        /// Gets the diameter of a graph.
-        /// The diameter is the greatest distance between two vertices.
-        /// </summary>
-        /// <param name="g">The graph.</param>
-        /// <param name="distances">This is an out parameter. It gives the distances between every vertex-pair.</param>
-        /// <returns>The diameter of the Graph <code>g</code>.</returns>
-        public static double GetDiameter<Vertex, Edge, Graph>( this Graph g, out double[,] distances )
-            where Edge : IEdge<Vertex>
-            where Graph : IBidirectionalGraph<Vertex, Edge>
-        {
-            distances = GetDistances<Vertex, Edge, Graph>( g );
-
-            int n = g.VertexCount;
-            double distance = double.NegativeInfinity;
-            for ( int i = 0; i < n - 1; i++ )
+            var distances = new double[graph.VertexCount, graph.VertexCount];
+            for (int k = 0; k < graph.VertexCount; ++k)
             {
-                for ( int j = i + 1; j < n; j++ )
-                {
-                    if ( double.MaxValue == distances[i, j] )
-                        continue;
-
-                    distance = Math.Max( distance, distances[i, j] );
-                }
-            }
-            return distance;
-        }
-
-        /// <param name="g">The graph.</param>
-        /// <returns>Returns with the distance between the vertices (distance: number of the edges).</returns>
-        public static double[,] GetDistances<Vertex, Edge, Graph>( Graph g )
-            where Edge : IEdge<Vertex>
-            where Graph : IBidirectionalGraph<Vertex, Edge>
-        {
-            var distances = new double[g.VertexCount, g.VertexCount];
-            for ( int k = 0; k < g.VertexCount; k++ )
-            {
-                for ( int j = 0; j < g.VertexCount; j++ )
+                for (int j = 0; j < graph.VertexCount; ++j)
                 {
                     distances[k, j] = double.PositiveInfinity;
                 }
             }
 
-            var undirected = new UndirectedBidirectionalGraph<Vertex, Edge>( g );
-            //minden élet egy hosszal veszünk figyelembe - unweighted
-            var weights = new Dictionary<Edge, double>();
-            foreach ( Edge edge in undirected.Edges )
-            {
-                weights[edge] = 1;
-            }
-
-            //compute the distances from every vertex: O(n(n^2 + e)) complexity
+            var undirected = new UndirectedBidirectionalGraph<TVertex, TEdge>(graph);
+            // Compute the distances from every vertex: O(n(n^2 + e)) complexity
             int i = 0;
-            foreach ( Vertex source in g.Vertices )
+            foreach (TVertex source in graph.Vertices)
             {
-                //compute the distances from the 'source'
-                var spaDijkstra =
-                    new UndirectedDijkstraShortestPathAlgorithm<Vertex, Edge>( undirected, ( edge ) => weights[edge], DistanceRelaxers.ShortestDistance);
-                spaDijkstra.Compute( source );
+                // Compute the distances from the 'source'
+                // Each edge is taken into account as 1 (unweighted)
+                var dijkstra = new UndirectedDijkstraShortestPathAlgorithm<TVertex, TEdge>(
+                    undirected,
+                    edge => 1.0,
+                    DistanceRelaxers.ShortestDistance);
+                dijkstra.Compute(source);
 
                 int j = 0;
-                foreach ( Vertex v in undirected.Vertices )
+                foreach (TVertex vertex in undirected.Vertices)
                 {
-                    double d = spaDijkstra.Distances[v];
-                    distances[i, j] = Math.Min( distances[i, j], d );
-                    distances[i, j] = Math.Min( distances[i, j], distances[j, i] );
-                    distances[j, i] = Math.Min( distances[i, j], distances[j, i] );
-                    j++;
+                    double distance = dijkstra.Distances[vertex];
+                    distances[i, j] = Math.Min(distances[i, j], distance);
+                    distances[i, j] = Math.Min(distances[i, j], distances[j, i]);
+                    distances[j, i] = Math.Min(distances[i, j], distances[j, i]);
+                    ++j;
                 }
-                i++;
+                ++i;
             }
 
             return distances;
         }
 
-        public static BidirectionalGraph<TVertex, Edge<TVertex>> CreateGraph<TVertex, TOtherEdge>(
-            IEnumerable<TVertex> vertices,
-            IEnumerable<TOtherEdge> edges,
-            string sourcePropertyName,
-            string targetPropertyName )
-            where TVertex : class
+        /// <summary>
+        /// Gets the diameter of the <paramref name="graph"/>.
+        /// Note: The diameter is the greatest distance between two vertices.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <typeparam name="TGraph">Graph type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <returns>The diameter of the <paramref name="graph"/>.</returns>
+        [Pure]
+        public static double GetDiameter<TVertex, TEdge, TGraph>(
+            [NotNull] this TGraph graph)
+            where TEdge : IEdge<TVertex>
+            where TGraph : IBidirectionalGraph<TVertex, TEdge>
         {
-            var graph = new BidirectionalGraph<TVertex, Edge<TVertex>>();
-
-            graph.AddVertexRange( vertices );
-
-            //get the property infos
-            System.Reflection.PropertyInfo spi = typeof( TOtherEdge ).GetProperty( sourcePropertyName );
-            System.Reflection.PropertyInfo tpi = typeof( TOtherEdge ).GetProperty( targetPropertyName );
-
-            //creating the new edges
-            foreach ( TOtherEdge oe in edges )
-            {
-                var edge = new Edge<TVertex>(
-                    spi.GetValue( oe, null ) as TVertex,
-                    tpi.GetValue( oe, null ) as TVertex );
-                graph.AddEdge( edge );
-            }
-
-            return graph;
+            return graph.GetDiameter<TVertex, TEdge, TGraph>(out _);
         }
-
-
 
         /// <summary>
-        /// Creates a new BidirectionalGraph with the given types from the 
-        /// list of vertices, and the list of edges.
+        /// Gets the diameter of the <paramref name="graph"/>.
+        /// Note: The diameter is the greatest distance between two vertices.
         /// </summary>
-        /// <typeparam name="TVertex">The type of the vertices.</typeparam>
-        /// <typeparam name="TEdge">The type of the edges in the new graph.</typeparam>
-        /// <typeparam name="TOtherEdge">The type of the items in the list of the edges.</typeparam>
-        /// <param name="vertices">The list of the vertices.</param>
-        /// <param name="edges">The list of the edges.</param>
-        /// <param name="factoryMethod">Delegate which converts an edge from the type <code>TOtherEdge</code>
-        /// to the type <code>TEdge</code>.</param>
-        /// <param name="allowParallelEdges">Parallel edges are allowed or not?.</param>
-        /// <returns>The new BidirectionalGraph</returns>
-        public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TOtherEdge>(
-            IEnumerable<TVertex> vertices,
-            IEnumerable<TOtherEdge> edges,
-            Func<TOtherEdge, TEdge> factoryMethod,
-            bool allowParallelEdges )
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <typeparam name="TGraph">Graph type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <param name="distances">Will give distances between every vertex-pair.</param>
+        /// <returns>The diameter of the <paramref name="graph"/>.</returns>
+        [Pure]
+        public static double GetDiameter<TVertex, TEdge, TGraph>(
+            [NotNull] this TGraph graph,
+            [NotNull] out double[,] distances)
             where TEdge : IEdge<TVertex>
+            where TGraph : IBidirectionalGraph<TVertex, TEdge>
         {
-            var graph = new BidirectionalGraph<TVertex, TEdge>( allowParallelEdges );
+            distances = GetDistances<TVertex, TEdge, TGraph>(graph);
 
-            //add the vertices to the graph
-            graph.AddVertexRange( vertices );
-
-            //create the edges
-            foreach ( TOtherEdge oe in edges )
+            int n = graph.VertexCount;
+            double distance = double.NegativeInfinity;
+            for (int i = 0; i < n - 1; ++i)
             {
-                TEdge e = factoryMethod( oe );
-                graph.AddEdge( e );
+                for (int j = i + 1; j < n; ++j)
+                {
+                    if (Math.Abs(double.MaxValue - distances[i, j]) < double.Epsilon)
+                        continue;
+
+                    distance = Math.Max(distance, distances[i, j]);
+                }
+            }
+
+            return distance;
+        }
+
+        #region Graph manipulations
+
+        /// <summary>
+        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdge}"/> with the given <paramref name="vertices"/>
+        /// and edges constructed by getting values of properties <paramref name="sourcePropertyName"/>
+        /// and <paramref name="targetPropertyName"/> on type <typeparamref name="TEdgeData"/>.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdgeData">Type of the object used to construct edges.</typeparam>
+        /// <param name="vertices">The set of the vertices.</param>
+        /// <param name="edgesData">The set of data used to construct graph edges.</param>
+        /// <param name="sourcePropertyName">
+        /// Name of the property to get value from <typeparamref name="TEdgeData"/> to construct edge source.
+        /// </param>
+        /// <param name="targetPropertyName">
+        /// Name of the property to get value from <typeparamref name="TEdgeData"/> to construct edge target.
+        /// </param>
+        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        [Pure]
+        [NotNull]
+        public static BidirectionalGraph<TVertex, Edge<TVertex>> CreateGraph<TVertex, TEdgeData>(
+            [NotNull, ItemNotNull] IEnumerable<TVertex> vertices,
+            [NotNull, ItemNotNull] IEnumerable<TEdgeData> edgesData,
+            [NotNull] string sourcePropertyName,
+            [NotNull] string targetPropertyName)
+        {
+            if (edgesData is null)
+                throw new ArgumentNullException(nameof(edgesData));
+
+            var graph = new BidirectionalGraph<TVertex, Edge<TVertex>>();
+            graph.AddVertexRange(vertices);
+
+            // Get the property infos
+            PropertyInfo sourceProperty = typeof(TEdgeData).GetProperty(sourcePropertyName)
+                ?? throw new ArgumentException(
+                    $"No source property named {sourcePropertyName} on type {typeof(TEdgeData).Name}.",
+                    nameof(sourcePropertyName));
+            if (!typeof(TVertex).IsAssignableFrom(sourceProperty.PropertyType))
+            {
+                throw new ArgumentException(
+                    $"Type of property {sourcePropertyName} is not assignable to type {typeof(TVertex).Name}.",
+                    nameof(sourcePropertyName));
+            }
+
+            PropertyInfo targetProperty = typeof(TEdgeData).GetProperty(targetPropertyName)
+                ?? throw new ArgumentException(
+                    $"No source property named {targetPropertyName} on type {typeof(TEdgeData).Name}.",
+                    nameof(targetPropertyName));
+            if (!typeof(TVertex).IsAssignableFrom(targetProperty.PropertyType))
+            {
+                throw new ArgumentException(
+                    $"Type of property {targetPropertyName} is not assignable to type {typeof(TVertex).Name}.",
+                    nameof(targetPropertyName));
+            }
+
+            // Create the new edges
+            foreach (TEdgeData data in edgesData)
+            {
+                var edge = new Edge<TVertex>(
+                    (TVertex)sourceProperty.GetValue(data, null),
+                    (TVertex)targetProperty.GetValue(data, null));
+                graph.AddEdge(edge);
             }
 
             return graph;
         }
 
-
-
-        public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TOtherEdge>(
-            IEnumerable<TVertex> vertices,
-            IEnumerable<TOtherEdge> edges,
-            Func<TOtherEdge, TEdge> factoryMethod )
+        /// <summary>
+        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
+        /// and edges constructed using <paramref name="edgeFactory"/>.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <typeparam name="TEdgeData">Type of the object used to construct edges.</typeparam>
+        /// <param name="vertices">The set of the vertices.</param>
+        /// <param name="edgesData">The set of data used to construct graph edges.</param>
+        /// <param name="edgeFactory">Factory method to convert an edge data into an edge.</param>
+        /// <param name="allowParallelEdges">Indicates if parallel edges are allowed.</param>
+        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        [Pure]
+        [NotNull]
+        public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TEdgeData>(
+            [NotNull, ItemNotNull] IEnumerable<TVertex> vertices,
+            [NotNull, ItemNotNull] IEnumerable<TEdgeData> edgesData,
+            [NotNull, InstantHandle] Func<TEdgeData, TEdge> edgeFactory,
+            bool allowParallelEdges)
             where TEdge : IEdge<TVertex>
         {
-            return CreateGraph( vertices, edges, factoryMethod, true );
+            if (edgesData is null)
+                throw new ArgumentNullException(nameof(edgesData));
+            if (edgeFactory is null)
+                throw new ArgumentNullException(nameof(edgeFactory));
+
+            var graph = new BidirectionalGraph<TVertex, TEdge>(allowParallelEdges);
+            graph.AddVertexRange(vertices);
+
+            // Create the edges
+            foreach (TEdgeData data in edgesData)
+            {
+                TEdge edge = edgeFactory(data);
+                graph.AddEdge(edge);
+            }
+
+            return graph;
         }
 
-
-
-        public static TVertex OtherVertex<TVertex>( this IEdge<TVertex> edge, TVertex thisVertex )
-        {
-            return edge.Source.Equals( thisVertex ) ? edge.Target : edge.Source;
-        }
-
-
-
-        public static void AddEdgeRange<TVertex, TEdge>( this IMutableEdgeListGraph<TVertex, TEdge> graph, IEnumerable<TEdge> edges )
+        /// <summary>
+        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
+        /// and edges constructed using <paramref name="edgeFactory"/>.
+        /// Note: The graph will allow parallel edges.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <typeparam name="TEdgeData">Type of the object used to construct edges.</typeparam>
+        /// <param name="vertices">The set of the vertices.</param>
+        /// <param name="edgesData">The set of data used to construct graph edges.</param>
+        /// <param name="edgeFactory">Factory method to convert an edge data into an edge.</param>
+        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        [Pure]
+        [NotNull]
+        public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TEdgeData>(
+            [NotNull, ItemNotNull] IEnumerable<TVertex> vertices,
+            [NotNull, ItemNotNull] IEnumerable<TEdgeData> edgesData,
+            [NotNull, InstantHandle] Func<TEdgeData, TEdge> edgeFactory)
             where TEdge : IEdge<TVertex>
         {
-            foreach ( var edge in edges )
-                graph.AddEdge( edge );
+            return CreateGraph(vertices, edgesData, edgeFactory, true);
         }
 
-
-
-        public static BidirectionalGraph<TNewVertex, TNewEdge> Convert<TOldVertex, TOldEdge, TNewVertex, TNewEdge>(
-            this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
-            Func<TOldVertex, TNewVertex> vertexMapperFunc,
-            Func<TOldEdge, TNewEdge> edgeMapperFunc )
-            where TOldEdge : IEdge<TOldVertex>
-            where TNewEdge : IEdge<TNewVertex>
-        {
-            return oldGraph.Convert(
-                new BidirectionalGraph<TNewVertex, TNewEdge>( oldGraph.AllowParallelEdges, oldGraph.VertexCount ),
-                vertexMapperFunc,
-                edgeMapperFunc );
-        }
-
-
-
-        public static BidirectionalGraph<TOldVertex, TNewEdge> Convert<TOldVertex, TOldEdge, TNewEdge>(
-            this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
-            Func<TOldEdge, TNewEdge> edgeMapperFunc )
-            where TOldEdge : IEdge<TOldVertex>
-            where TNewEdge : IEdge<TOldVertex>
-        {
-            return oldGraph.Convert<TOldVertex, TOldEdge, TOldVertex, TNewEdge>( null, edgeMapperFunc );
-        }
-
-
-
+        /// <summary>
+        /// Converts the <paramref name="oldGraph"/> into the <paramref name="newGraph"/>.
+        /// Uses <paramref name="vertexConverter"/> and <paramref name="edgeConverter"/> to
+        /// convert vertices and edges if provided. Performs a direct cast otherwise.
+        /// </summary>
+        /// <typeparam name="TOldVertex">Old vertex type.</typeparam>
+        /// <typeparam name="TNewVertex">New vertex type.</typeparam>
+        /// <typeparam name="TOldEdge">Old edge type.</typeparam>
+        /// <typeparam name="TNewEdge">New edge type.</typeparam>
+        /// <typeparam name="TNewGraph">Converted graph type.</typeparam>
+        /// <param name="oldGraph">Graph to convert.</param>
+        /// <param name="newGraph">Graph that will be filled with converted content.</param>
+        /// <param name="vertexConverter">Function to convert vertices from <typeparamref name="TOldVertex"/> to <typeparamref name="TNewVertex"/>.</param>
+        /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
+        /// <returns>The converted graph.</returns>
+        [Pure]
+        [NotNull]
         public static TNewGraph Convert<TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph>(
-            this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
-            TNewGraph newGraph,
-            Func<TOldVertex, TNewVertex> vertexMapperFunc,
-            Func<TOldEdge, TNewEdge> edgeMapperFunc )
+            [NotNull] this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
+            [NotNull] TNewGraph newGraph,
+            [CanBeNull, InstantHandle] Func<TOldVertex, TNewVertex> vertexConverter,
+            [CanBeNull, InstantHandle] Func<TOldEdge, TNewEdge> edgeConverter)
             where TOldEdge : IEdge<TOldVertex>
             where TNewEdge : IEdge<TNewVertex>
             where TNewGraph : IMutableVertexAndEdgeListGraph<TNewVertex, TNewEdge>
         {
-            //VERTICES
-            if ( vertexMapperFunc != null )
-                newGraph.AddVertexRange( oldGraph.Vertices.Select( vertexMapperFunc ) );
-            else
-                newGraph.AddVertexRange( oldGraph.Vertices.Cast<TNewVertex>() );
+            if (oldGraph is null)
+                throw new ArgumentNullException(nameof(oldGraph));
+            if (newGraph == null)
+                throw new ArgumentNullException(nameof(newGraph));
 
-            //EDGES
-            if ( edgeMapperFunc != null )
-                newGraph.AddEdgeRange( oldGraph.Edges.Select( edgeMapperFunc ) );
-            else
-                newGraph.AddEdgeRange( oldGraph.Edges.Cast<TNewEdge>() );
+            // Vertices
+            newGraph.AddVertexRange(vertexConverter != null
+                ? oldGraph.Vertices.Select(vertexConverter)
+                : oldGraph.Vertices.Cast<TNewVertex>());
+
+            // Edges
+            newGraph.AddEdgeRange(edgeConverter != null
+                ? oldGraph.Edges.Select(edgeConverter)
+                : oldGraph.Edges.Cast<TNewEdge>());
 
             return newGraph;
         }
 
-
-
-        public static TNewGraph Convert<TOldVertex, TOldEdge, TNewEdge, TNewGraph>(
-            this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
-            TNewGraph newGraph,
-            Func<TOldEdge, TNewEdge> edgeMapperFunc )
-            where TOldEdge : IEdge<TOldVertex>
-            where TNewEdge : IEdge<TOldVertex>
-            where TNewGraph : IMutableVertexAndEdgeListGraph<TOldVertex, TNewEdge>
+        /// <summary>
+        /// Converts the <paramref name="oldGraph"/> into the <paramref name="newGraph"/>.
+        /// Uses <paramref name="edgeConverter"/> to convert edges if provided. Performs a direct cast otherwise.
+        /// </summary>
+        /// <typeparam name="TVertex">Old vertex type.</typeparam>
+        /// <typeparam name="TOldEdge">Old edge type.</typeparam>
+        /// <typeparam name="TNewEdge">New edge type.</typeparam>
+        /// <typeparam name="TNewGraph">Converted graph type.</typeparam>
+        /// <param name="oldGraph">Graph to convert.</param>
+        /// <param name="newGraph">Graph that will be filled with converted content.</param>
+        /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
+        /// <returns>The converted graph.</returns>
+        [Pure]
+        [NotNull]
+        public static TNewGraph Convert<TVertex, TOldEdge, TNewEdge, TNewGraph>(
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TOldEdge> oldGraph,
+            [NotNull] TNewGraph newGraph,
+            [CanBeNull, InstantHandle] Func<TOldEdge, TNewEdge> edgeConverter)
+            where TOldEdge : IEdge<TVertex>
+            where TNewEdge : IEdge<TVertex>
+            where TNewGraph : IMutableVertexAndEdgeListGraph<TVertex, TNewEdge>
         {
-            return oldGraph.Convert<TOldVertex, TOldEdge, TOldVertex, TNewEdge, TNewGraph>( newGraph, null, edgeMapperFunc );
+            return oldGraph.Convert<TVertex, TOldEdge, TVertex, TNewEdge, TNewGraph>(
+                newGraph,
+                null,
+                edgeConverter);
         }
 
-
-
-        public static TNewGraph Convert<TOldVertex, TOldEdge, TNewGraph>(
-            this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
-            TNewGraph newGraph )
-            where TOldEdge : IEdge<TOldVertex>
-            where TNewGraph : IMutableVertexAndEdgeListGraph<TOldVertex, TOldEdge>
+        /// <summary>
+        /// Converts the <paramref name="oldGraph"/> into the <paramref name="newGraph"/>.
+        /// </summary>
+        /// <typeparam name="TVertex">Old vertex type.</typeparam>
+        /// <typeparam name="TEdge">Old edge type.</typeparam>
+        /// <typeparam name="TNewGraph">Converted graph type.</typeparam>
+        /// <param name="oldGraph">Graph to convert.</param>
+        /// <param name="newGraph">Graph that will be filled with converted content.</param>
+        /// <returns>The converted graph.</returns>
+        [Pure]
+        [NotNull]
+        public static TNewGraph Convert<TVertex, TEdge, TNewGraph>(
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TEdge> oldGraph,
+            [NotNull] TNewGraph newGraph)
+            where TEdge : IEdge<TVertex>
+            where TNewGraph : IMutableVertexAndEdgeListGraph<TVertex, TEdge>
         {
-            return oldGraph.Convert<TOldVertex, TOldEdge, TOldVertex, TOldEdge, TNewGraph>( newGraph, null, null );
+            return oldGraph.Convert<TVertex, TEdge, TVertex, TEdge, TNewGraph>(
+                newGraph,
+                null,
+                null);
         }
 
+        /// <summary>
+        /// Converts the <paramref name="oldGraph"/> into a <see cref="BidirectionalGraph{TVertex,TEdge}"/>.
+        /// Uses <paramref name="vertexConverter"/> and <paramref name="edgeConverter"/> to
+        /// convert vertices and edges if provided. Performs a direct cast otherwise.
+        /// </summary>
+        /// <typeparam name="TOldVertex">Old vertex type.</typeparam>
+        /// <typeparam name="TNewVertex">New vertex type.</typeparam>
+        /// <typeparam name="TOldEdge">Old edge type.</typeparam>
+        /// <typeparam name="TNewEdge">New edge type.</typeparam>
+        /// <param name="oldGraph">Graph to convert.</param>
+        /// <param name="vertexConverter">Function to convert vertices from <typeparamref name="TOldVertex"/> to <typeparamref name="TNewVertex"/>.</param>
+        /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
+        /// <returns>The converted graph.</returns>
+        [Pure]
+        [NotNull]
+        public static BidirectionalGraph<TNewVertex, TNewEdge> Convert<TOldVertex, TOldEdge, TNewVertex, TNewEdge>(
+            [NotNull] this IVertexAndEdgeListGraph<TOldVertex, TOldEdge> oldGraph,
+            [CanBeNull, InstantHandle] Func<TOldVertex, TNewVertex> vertexConverter,
+            [CanBeNull, InstantHandle] Func<TOldEdge, TNewEdge> edgeConverter)
+            where TOldEdge : IEdge<TOldVertex>
+            where TNewEdge : IEdge<TNewVertex>
+        {
+            if (oldGraph is null)
+                throw new ArgumentNullException(nameof(oldGraph));
+            return oldGraph.Convert(
+                new BidirectionalGraph<TNewVertex, TNewEdge>(oldGraph.AllowParallelEdges, oldGraph.VertexCount),
+                vertexConverter,
+                edgeConverter);
+        }
 
+        /// <summary>
+        /// Converts the <paramref name="oldGraph"/> into a <see cref="BidirectionalGraph{TVertex,TEdge}"/>.
+        /// Uses <paramref name="edgeConverter"/> to convert edges if provided. Performs a direct cast otherwise.
+        /// </summary>
+        /// <typeparam name="TVertex">Old vertex type.</typeparam>
+        /// <typeparam name="TOldEdge">Old edge type.</typeparam>
+        /// <typeparam name="TNewEdge">New edge type.</typeparam>
+        /// <param name="oldGraph">Graph to convert.</param>
+        /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
+        /// <returns>The converted graph.</returns>
+        [Pure]
+        [NotNull]
+        public static BidirectionalGraph<TVertex, TNewEdge> Convert<TVertex, TOldEdge, TNewEdge>(
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TOldEdge> oldGraph,
+            [CanBeNull, InstantHandle] Func<TOldEdge, TNewEdge> edgeConverter)
+            where TOldEdge : IEdge<TVertex>
+            where TNewEdge : IEdge<TVertex>
+        {
+            return oldGraph.Convert<TVertex, TOldEdge, TVertex, TNewEdge>(
+                null,
+                edgeConverter);
+        }
+
+        /// <summary>
+        /// Copies this graph into a <see cref="BidirectionalGraph{TVertex,TEdge}"/> one.
+        /// </summary>
+        /// <typeparam name="TVertex">Vertex type.</typeparam>
+        /// <typeparam name="TEdge">Edge type.</typeparam>
+        /// <param name="graph">Graph to copy.</param>
+        /// <returns><see cref="BidirectionalGraph{TVertex,TEdge}"/> initialized from <paramref name="graph"/>.</returns>
+        [Pure]
+        [NotNull]
         public static BidirectionalGraph<TVertex, TEdge> CopyToBidirectionalGraph<TVertex, TEdge>(
-            this IVertexAndEdgeListGraph<TVertex, TEdge> graph)
+            [NotNull] this IVertexAndEdgeListGraph<TVertex, TEdge> graph)
             where TEdge : IEdge<TVertex>
         {
+            if (graph is null)
+                throw new ArgumentNullException(nameof(graph));
+
             var newGraph = new BidirectionalGraph<TVertex, TEdge>();
 
-            //copy the vertices
-            newGraph.AddVerticesAndEdgeRange(graph.Edges);
+            newGraph.AddVertexRange(graph.Vertices);
+            newGraph.AddEdgeRange(graph.Edges);
 
             return newGraph;
         }
+
+        #endregion
     }
 }

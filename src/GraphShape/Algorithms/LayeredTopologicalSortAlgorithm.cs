@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GraphShape.Utils;
 using QuikGraph;
 using QuikGraph.Algorithms;
 
@@ -71,7 +72,7 @@ namespace GraphShape.Algorithms
 					layerIndices[s] = layer;
 
 					//get the neighbours of this source
-					var outNeighbours = tmpGraph.GetOutNeighbours( s );
+					var outNeighbours = tmpGraph.GetOutNeighbors( s );
 
 					//remove this source
 					tmpGraph.RemoveVertex( s );

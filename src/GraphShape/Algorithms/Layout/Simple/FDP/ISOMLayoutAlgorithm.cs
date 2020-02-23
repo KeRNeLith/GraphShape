@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using GraphShape.Utils;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
@@ -130,7 +131,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 				if ( currentVid.Distance < radius )
 				{
 					//akkor a szomszedokra is hatassal vagyunk
-					foreach ( TVertex neighbour in VisitedGraph.GetNeighbours<TVertex, TEdge>( current ) )
+					foreach ( TVertex neighbour in VisitedGraph.GetNeighbors<TVertex, TEdge>( current ) )
 					{
 						ISOMData nvid = _isomDataDict[neighbour];
 						if ( !nvid.Visited )

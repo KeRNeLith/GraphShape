@@ -415,7 +415,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                             var edge = neighbourEdges[medians[m]];
                             if (edge.Marked)
                                 Debug.WriteLine("Edge marked: " + edge.Source.OriginalVertex + ", " + edge.Target.OriginalVertex);
-                            var neighbour = edge.OtherVertex(vertex);
+                            var neighbour = edge.GetOtherVertex(vertex);
                             if (!edge.Marked &&
                                 ((leftRightMode == LeftRightMode.Left && r < neighbour.Position)
                                     || (leftRightMode == LeftRightMode.Right && r > neighbour.Position)))

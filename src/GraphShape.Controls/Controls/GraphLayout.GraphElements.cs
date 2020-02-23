@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using GraphShape.Utils;
 using QuikGraph;
 
 namespace GraphShape.Controls
@@ -268,7 +269,7 @@ namespace GraphShape.Controls
             {
                 var pos = new Point();
                 int count = 0;
-                foreach (var neighbour in Graph.GetNeighbours(vertex))
+                foreach (var neighbour in Graph.GetNeighbors(vertex))
                 {
                     VertexControl neighbourControl;
                     if (_vertexControls.TryGetValue(neighbour, out neighbourControl))

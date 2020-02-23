@@ -51,6 +51,26 @@ namespace GraphShape.Tests
             CollectionAssert.AreEquivalent(edgeArray, graph.Edges);
         }
 
+        public static void AssertHasEdges_DeepCheck<TVertex>(
+            [NotNull] IEdgeSet<TVertex, Edge<TVertex>> graph,
+            [NotNull, ItemNotNull] IEnumerable<Edge<TVertex>> edges)
+        {
+            List<Edge<TVertex>> edgeList = edges.ToList();
+            CollectionAssert.IsNotEmpty(edgeList);
+
+            Assert.IsFalse(graph.IsEdgesEmpty);
+            Assert.AreEqual(edgeList.Count, graph.EdgeCount);
+            foreach (Edge<TVertex> edge in graph.Edges)
+            {
+                Edge<TVertex> foundEdge = edgeList.FirstOrDefault(
+                    e => Equals(e.Source, edge.Source)
+                         && Equals(e.Target, edge.Target));
+
+                Assert.IsNotNull(foundEdge);
+                edgeList.Remove(foundEdge);
+            }
+        }
+
         public static void AssertEmptyGraph<TVertex, TEdge>(
             [NotNull] IEdgeListGraph<TVertex, TEdge> graph)
             where TEdge : IEdge<TVertex>

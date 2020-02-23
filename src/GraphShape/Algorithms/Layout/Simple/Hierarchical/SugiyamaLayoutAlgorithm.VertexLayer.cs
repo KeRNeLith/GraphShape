@@ -240,9 +240,9 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 				foreach ( var edge in edges )
 				{
 					if ( byRealPosition )
-						baryCenter += edge.OtherVertex( vertex ).RealPosition.X;
+						baryCenter += edge.GetOtherVertex( vertex ).RealPosition.X;
 					else
-						baryCenter += edge.OtherVertex( vertex ).Position;
+						baryCenter += edge.GetOtherVertex( vertex ).Position;
 					number++;
 				}
 
