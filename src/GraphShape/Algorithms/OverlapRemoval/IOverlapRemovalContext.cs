@@ -1,10 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public interface IOverlapRemovalContext<TVertex>
-	{
-		IDictionary<TVertex, Rect> Rectangles { get; }
-	}
+    /// <summary>
+    /// Represents an overlap removal context.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    public interface IOverlapRemovalContext<TVertex>
+    {
+        /// <summary>
+        /// Overlap rectangles.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, Rect> Rectangles { get; }
+    }
 }

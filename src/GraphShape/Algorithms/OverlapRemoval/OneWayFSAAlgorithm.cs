@@ -1,21 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
+    /// <summary>
+    /// One way Fast Statistical Alignment algorithm (FSA).
+    /// </summary>
+    /// <typeparam name="TObject">Object type.</typeparam>
     public class OneWayFSAAlgorithm<TObject> : FSAAlgorithm<TObject, OneWayFSAParameters>
-        where TObject : class
     {
-        public OneWayFSAAlgorithm( IDictionary<TObject, Rect> rectangles, OneWayFSAParameters parameters )
-            : base( rectangles, parameters )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OneWayFSAAlgorithm{TObject}"/> class.
+        /// </summary>
+        /// <param name="rectangles">Overlap rectangles.</param>
+        /// <param name="parameters">Algorithm parameters.</param>
+        public OneWayFSAAlgorithm(
+            [NotNull] IDictionary<TObject, Rect> rectangles,
+            [NotNull] OneWayFSAParameters parameters)
+            : base(rectangles, parameters)
         {
         }
 
+        #region OverlapRemovalAlgorithmBase
+
+        /// <inheritdoc />
         protected override void RemoveOverlap()
         {
-            switch ( Parameters.Way )
+            switch (Parameters.Way)
             {
                 case OneWayFSAWayEnum.Horizontal:
                     HorizontalImproved();
@@ -23,31 +36,34 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 case OneWayFSAWayEnum.Vertical:
                     VerticalImproved();
                     break;
-                default:
-                    break;
             }
         }
 
+        #endregion
+
+        /// <inheritdoc cref="FSAAlgorithm{TObject,TParameters}.HorizontalImproved"/>
         protected new double HorizontalImproved()
         {
-            wrappedRectangles.Sort( XComparison );
-            int i = 0, n = wrappedRectangles.Count;
+            WrappedRectangles.Sort(XComparison);
+            int i = 0;
+            int n = WrappedRectangles.Count;
 
-            //bal szelso
-            var lmin = wrappedRectangles[0];
-            double sigma = 0, x0 = lmin.CenterX;
-            var gamma = new double[wrappedRectangles.Count];
-            var x = new double[wrappedRectangles.Count];
-            while ( i < n )
+            // Left side
+            RectangleWrapper<TObject> leftMin = WrappedRectangles[0];
+            double sigma = 0;
+            double x0 = leftMin.CenterX;
+            var gamma = new double[WrappedRectangles.Count];
+            var x = new double[WrappedRectangles.Count];
+            while (i < n)
             {
-                var u = wrappedRectangles[i];
+                RectangleWrapper<TObject> u = WrappedRectangles[i];
 
-                //i-vel azonos középponttal rendelkező téglalapok meghatározása
+                // Rectangle with the same center than Rectangle[i]
                 int k = i;
-                for ( int j = i + 1; j < n; j++ )
+                for (int j = i + 1; j < n; ++j)
                 {
-                    var v = wrappedRectangles[j];
-                    if ( u.CenterX == v.CenterX )
+                    RectangleWrapper<TObject> v = WrappedRectangles[j];
+                    if (Math.Abs(u.CenterX - v.CenterX) < double.Epsilon)
                     {
                         u = v;
                         k = j;
@@ -57,65 +73,67 @@ namespace GraphShape.Algorithms.OverlapRemoval
                         break;
                     }
                 }
-                double g = 0;
 
-                //ne legyenek ugyanabban a pontban
-                for ( int z = i + 1; z <= k; z++ )
+                double g = 0;
+                for (int z = i + 1; z <= k; ++z)
                 {
-                    var v = wrappedRectangles[z];
-                    v.Rectangle.X += ( z - i ) * 0.0001;
+                    RectangleWrapper<TObject> v = WrappedRectangles[z];
+                    v.Rectangle.X += (z - i) * 0.0001;
                 }
 
-                //i-k intervallumban lévő téglalapokra erőszámítás a tőlük balra lévőkkel
-                if ( u.CenterX > x0 )
+                // For rectangles in [i, k], compute the left force
+                if (u.CenterX > x0)
                 {
-                    for ( int m = i; m <= k; m++ )
+                    for (int m = i; m <= k; ++m)
                     {
                         double ggg = 0;
-                        for ( int j = 0; j < i; j++ )
+                        for (int j = 0; j < i; ++j)
                         {
-                            var f = force( wrappedRectangles[j].Rectangle, wrappedRectangles[m].Rectangle );
-                            ggg = Math.Max( f.X + gamma[j], ggg );
+                            Vector force = Force(WrappedRectangles[j].Rectangle, WrappedRectangles[m].Rectangle);
+                            ggg = Math.Max(force.X + gamma[j], ggg);
                         }
-                        var v = wrappedRectangles[m];
-                        double gg = v.Rectangle.Left + ggg < lmin.Rectangle.Left ? sigma : ggg;
-                        g = Math.Max( g, gg );
-                    }
-                }
-                //megjegyezzük az elemek eltolásást x tömbbe
-                //bal szélő elemet újra meghatározzuk
-                for ( int m = i; m <= k; m++ )
-                {
-                    gamma[m] = g;
-                    var r = wrappedRectangles[m];
-                    x[m] = r.Rectangle.Left + g;
-                    if ( r.Rectangle.Left < lmin.Rectangle.Left )
-                    {
-                        lmin = r;
+
+                        RectangleWrapper<TObject> v = WrappedRectangles[m];
+                        double gg = v.Rectangle.Left + ggg < leftMin.Rectangle.Left ? sigma : ggg;
+                        g = Math.Max(g, gg);
                     }
                 }
 
-                //az i-k intervallum négyzeteitől jobbra lévőkkel erőszámítás, legnagyobb erő tárolása
+                // Compute offset to elements in x
+                // and redefine left side
+                for (int m = i; m <= k; ++m)
+                {
+                    gamma[m] = g;
+                    RectangleWrapper<TObject> r = WrappedRectangles[m];
+                    x[m] = r.Rectangle.Left + g;
+                    if (r.Rectangle.Left < leftMin.Rectangle.Left)
+                    {
+                        leftMin = r;
+                    }
+                }
+
+                // Compute the right force of rectangles in [i, k] and store the maximal one
                 // delta = max(0, max{f.x(m,j)|i<=m<=k<j<n})
                 double delta = 0;
-                for ( int m = i; m <= k; m++ )
+                for (int m = i; m <= k; ++m)
                 {
-                    for ( int j = k + 1; j < n; j++ )
+                    for (int j = k + 1; j < n; ++j)
                     {
-                        var f = force( wrappedRectangles[m].Rectangle, wrappedRectangles[j].Rectangle );
-                        if ( f.X > delta )
+                        Vector force = Force(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
+                        if (force.X > delta)
                         {
-                            delta = f.X;
+                            delta = force.X;
                         }
                     }
                 }
                 sigma += delta;
                 i = k + 1;
             }
+
             double cost = 0;
-            for ( i = 0; i < n; i++ )
+            for (i = 0; i < n; ++i)
             {
-                var r = wrappedRectangles[i];
+                RectangleWrapper<TObject> r = WrappedRectangles[i];
                 double oldPos = r.Rectangle.Left;
                 double newPos = x[i];
 

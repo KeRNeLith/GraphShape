@@ -18,7 +18,6 @@ namespace GraphShape.Algorithms.Highlight
         /// <summary>
         /// Graph concerned by the highlighting.
         /// </summary>
-        [NotNull]
         TGraph Graph { get; }
 
         /// <summary>

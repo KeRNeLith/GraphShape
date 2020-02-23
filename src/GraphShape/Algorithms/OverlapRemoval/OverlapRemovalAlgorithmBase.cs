@@ -1,78 +1,117 @@
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Windows;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public abstract class OverlapRemovalAlgorithmBase<TObject, TParam> : AlgorithmBase, IOverlapRemovalAlgorithm<TObject, TParam>
-		where TObject : class
-		where TParam : IOverlapRemovalParameters
-	{
-		protected IDictionary<TObject, Rect> originalRectangles;
-		public IDictionary<TObject, Rect> Rectangles
-		{
-			get { return originalRectangles; }
-		}
+    /// <summary>
+    /// Base class for all overlap removal algorithm.
+    /// </summary>
+    /// <typeparam name="TObject">Object type.</typeparam>
+    /// <typeparam name="TParameters">Algorithm parameters type.</typeparam>
+    public abstract class OverlapRemovalAlgorithmBase<TObject, TParameters>
+        : AlgorithmBase
+        , IOverlapRemovalAlgorithm<TObject, TParameters>
+        where TParameters : IOverlapRemovalParameters
+    {
+        /// <summary>
+        /// Wrapped rectangles.
+        /// </summary>
+        [NotNull, ItemNotNull]
+        protected List<RectangleWrapper<TObject>> WrappedRectangles;
 
-		public TParam Parameters { get; private set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OverlapRemovalAlgorithmBase{TObject,TParameters}"/> class.
+        /// </summary>
+        /// <param name="rectangles">Overlap rectangles.</param>
+        /// <param name="parameters">Algorithm parameters.</param>
+        protected OverlapRemovalAlgorithmBase(
+            [NotNull] IDictionary<TObject, Rect> rectangles,
+            [NotNull] TParameters parameters)
+        {
+            if (parameters == null)
+                throw new ArgumentNullException(nameof(parameters));
 
-		public IOverlapRemovalParameters GetParameters()
-		{
-			return Parameters;
-		}
+            // Original rectangles
+            Rectangles = rectangles ?? throw new ArgumentNullException(nameof(rectangles));
 
-		protected List<RectangleWrapper<TObject>> wrappedRectangles;
+            // Wrapping the old rectangles, to remember which one belongs to which object
+            WrappedRectangles = new List<RectangleWrapper<TObject>>();
+            int i = 0;
+            foreach (KeyValuePair<TObject, Rect> rectanglePair in rectangles)
+            {
+                WrappedRectangles.Insert(
+                    i,
+                    new RectangleWrapper<TObject>(rectanglePair.Key, rectanglePair.Value));
+                ++i;
+            }
 
+            Parameters = parameters;
+        }
 
-		public OverlapRemovalAlgorithmBase( IDictionary<TObject, Rect> rectangles, TParam parameters )
-		{
-			//eredeti téglalapok listája
-			originalRectangles = rectangles;
+        #region IOverlapRemovalAlgorithm
 
-			//wrapping the old rectangles, to remember which one belongs to which object
-			wrappedRectangles = new List<RectangleWrapper<TObject>>();
-			int i = 0;
-			foreach ( var kvpRect in rectangles )
-			{
-				wrappedRectangles.Insert( i, new RectangleWrapper<TObject>( kvpRect.Value, kvpRect.Key ) );
-				i++;
-			}
+        /// <inheritdoc />
+        public IDictionary<TObject, Rect> Rectangles { get; }
 
-			Parameters = parameters;
-		}
+        /// <inheritdoc />
+        public TParameters Parameters { get; }
 
-		protected sealed override void InternalCompute()
-		{
-			AddGaps();
+        /// <inheritdoc />
+        public IOverlapRemovalParameters GetParameters()
+        {
+            return Parameters;
+        }
 
-			RemoveOverlap();
+        #endregion
 
-			RemoveGaps();
+        #region AlgorithmBase
 
-			foreach ( var r in wrappedRectangles )
-				originalRectangles[r.Id] = r.Rectangle;
-		}
+        /// <inheritdoc />
+        protected sealed override void InternalCompute()
+        {
+            AddGaps();
 
-		protected virtual void AddGaps()
-		{
-			foreach ( var r in wrappedRectangles )
-			{
-				r.Rectangle.Width += Parameters.HorizontalGap;
-				r.Rectangle.Height += Parameters.VerticalGap;
-				r.Rectangle.Offset( -Parameters.HorizontalGap / 2, -Parameters.VerticalGap / 2 );
-			}
-		}
+            RemoveOverlap();
 
-		protected virtual void RemoveGaps()
-		{
-			foreach ( var r in wrappedRectangles )
-			{
-				r.Rectangle.Width -= Parameters.HorizontalGap;
-				r.Rectangle.Height -= Parameters.VerticalGap;
-				r.Rectangle.Offset( Parameters.HorizontalGap / 2, Parameters.VerticalGap / 2 );
-			}
-		}
+            RemoveGaps();
 
-		protected abstract void RemoveOverlap();
-	}
+            foreach (RectangleWrapper<TObject> rectangle in WrappedRectangles)
+                Rectangles[rectangle.Id] = rectangle.Rectangle;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Adds gaps between rectangles.
+        /// </summary>
+        protected virtual void AddGaps()
+        {
+            foreach (RectangleWrapper<TObject> wrapper in WrappedRectangles)
+            {
+                wrapper.Rectangle.Width += Parameters.HorizontalGap;
+                wrapper.Rectangle.Height += Parameters.VerticalGap;
+                wrapper.Rectangle.Offset(-Parameters.HorizontalGap / 2, -Parameters.VerticalGap / 2);
+            }
+        }
+
+        /// <summary>
+        /// Removes overlap.
+        /// </summary>
+        protected abstract void RemoveOverlap();
+
+        /// <summary>
+        /// Removes gaps between rectangles.
+        /// </summary>
+        protected virtual void RemoveGaps()
+        {
+            foreach (RectangleWrapper<TObject> wrapper in WrappedRectangles)
+            {
+                wrapper.Rectangle.Width -= Parameters.HorizontalGap;
+                wrapper.Rectangle.Height -= Parameters.VerticalGap;
+                wrapper.Rectangle.Offset(Parameters.HorizontalGap / 2, Parameters.VerticalGap / 2);
+            }
+        }
+    }
 }

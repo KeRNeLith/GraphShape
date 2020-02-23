@@ -1,8 +1,18 @@
 ﻿namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public interface IOverlapRemovalParameters : IAlgorithmParameters
-	{
-		float VerticalGap { get; }
-		float HorizontalGap { get; }
-	}
+    /// <summary>
+    /// Represents overlap removal algorithm parameters.
+    /// </summary>
+    public interface IOverlapRemovalParameters : IAlgorithmParameters
+    {
+        /// <summary>
+        /// Vertical gap.
+        /// </summary>
+        float VerticalGap { get; }
+
+        /// <summary>
+        /// Horizontal gap.
+        /// </summary>
+        float HorizontalGap { get; }
+    }
 }

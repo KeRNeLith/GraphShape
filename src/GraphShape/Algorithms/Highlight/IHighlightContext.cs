@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using QuikGraph;
+﻿using QuikGraph;
 
 namespace GraphShape.Algorithms.Highlight
 {
@@ -16,7 +15,6 @@ namespace GraphShape.Algorithms.Highlight
         /// <summary>
         /// Graph concerned by the highlighting.
         /// </summary>
-        [NotNull]
         TGraph Graph { get; }
     }
 }

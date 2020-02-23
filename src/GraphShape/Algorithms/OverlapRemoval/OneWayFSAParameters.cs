@@ -1,24 +1,41 @@
 ﻿namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public enum OneWayFSAWayEnum {
-		Horizontal,
-		Vertical
-	}
+    /// <summary>
+    /// Enumeration of possible FSA algorithm orientations (way).
+    /// </summary>
+    public enum OneWayFSAWayEnum
+    {
+        /// <summary>
+        /// Horizontal.
+        /// </summary>
+        Horizontal,
 
-	public class OneWayFSAParameters : OverlapRemovalParameters
-	{
-		private OneWayFSAWayEnum way;
-		public OneWayFSAWayEnum Way
-		{
-			get { return way; }
-			set
-			{
-				if ( way != value )
-				{
-					way = value;
-					NotifyChanged( "Way" );
-				}
-			}
-		}
-	}
+        /// <summary>
+        /// Vertical.
+        /// </summary>
+        Vertical
+    }
+
+    /// <summary>
+    /// One way FSA algorithm parameters.
+    /// </summary>
+    public class OneWayFSAParameters : OverlapRemovalParameters
+    {
+        private OneWayFSAWayEnum _way;
+
+        /// <summary>
+        /// Overlap removal orientation (way).
+        /// </summary>
+        public OneWayFSAWayEnum Way
+        {
+            get => _way;
+            set
+            {
+                if (_way == value)
+                    return;
+                _way = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

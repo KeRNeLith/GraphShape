@@ -1,48 +1,55 @@
+using System;
 using System.Windows;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
-	/// <summary>
-	/// A System.Windows.Rect egy struktúra, ezért a heap-en tárolódik. Bizonyos esetekben ez nem
-	/// szerencsés, így szükség van erre a wrapper osztályra. Mivel ez class, ezért nem
-	/// érték szerinti átadás van.
-	/// </summary>
-	public class RectangleWrapper<TObject>
-		where TObject : class
-	{
-		private readonly TObject id;
-		public TObject Id
-		{
-			get { return id; }
-		}
+    /// <summary>
+    /// <see cref="Rect"/>angle wrapper.
+    /// </summary>
+    public class RectangleWrapper<TObject>
+    {
+        /// <summary>
+        /// Rectangle Id.
+        /// </summary>
+        [NotNull]
+        public TObject Id { get; }
 
-		public Rect Rectangle;
+        /// <summary>
+        /// Wrapped rectangle.
+        /// </summary>
+        public Rect Rectangle;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="rectangle"></param>
-		/// <param name="id">Az adott téglalap azonosítója (az overlap-removal végén tudnunk kell, hogy 
-		/// melyik téglalap melyik objektumhoz tartozik. Az azonosítás megoldható lesz id alapján.</param>
-		public RectangleWrapper( Rect rectangle, TObject id )
-		{
-			Rectangle = rectangle;
-			this.id = id;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RectangleWrapper{TObject}"/> class.
+        /// </summary>
+        /// <param name="rectangle">Rectangle to wrap.</param>
+        /// <param name="id">
+        /// Rectangle id (at the end of the overlap removal, we must know which rectangle
+        /// is associated to which object. The id will be resolved at that time.
+        /// </param>
+        public RectangleWrapper([NotNull] TObject id, Rect rectangle)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
 
-		public double CenterX
-		{
-			get { return Rectangle.Left + Rectangle.Width / 2; }
-		}
+            Id = id;
+            Rectangle = rectangle;
+        }
 
-		public double CenterY
-		{
-			get { return Rectangle.Top + Rectangle.Height / 2; }
-		}
+        /// <summary>
+        /// Rectangle center.
+        /// </summary>
+        public Point Center => Rectangle.GetCenter();
 
-		public Point Center
-		{
-			get { return new Point( CenterX, CenterY ); }
-		}
-	}
+        /// <summary>
+        /// Rectangle center on X axis.
+        /// </summary>
+        public double CenterX => Rectangle.Left + Rectangle.Width / 2;
+
+        /// <summary>
+        /// Rectangle center on Y axis.
+        /// </summary>
+        public double CenterY => Rectangle.Top + Rectangle.Height / 2;
+    }
 }

@@ -11,7 +11,7 @@ namespace GraphShape.Algorithms.Highlight
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
     /// <typeparam name="TGraph">Graph type.</typeparam>
-    /// <typeparam name="TParameters">Algorithm parameters type</typeparam>
+    /// <typeparam name="TParameters">Algorithm parameters type.</typeparam>
     public abstract class HighlightAlgorithmBase<TVertex, TEdge, TGraph, TParameters> : IHighlightAlgorithm<TVertex, TEdge>
         where TEdge : IEdge<TVertex>
         where TGraph : class, IBidirectionalGraph<TVertex, TEdge>

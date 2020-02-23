@@ -1,47 +1,55 @@
-﻿namespace GraphShape.Algorithms.OverlapRemoval
+﻿using System;
+using GraphShape.Utils;
+
+namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public class OverlapRemovalParameters : IOverlapRemovalParameters
-	{
-		private float verticalGap = 10;
-		private float horizontalGap = 10;
-		
-		public float VerticalGap
-		{
-			get { return verticalGap; }
-			set
-			{
-				if ( verticalGap != value )
-				{
-					verticalGap = value;
-					NotifyChanged( "VerticalGap" );
-				}
-			}
-		}
+    /// <summary>
+    /// Base class for overlap removal algorithm parameters.
+    /// </summary>
+    public class OverlapRemovalParameters : NotifierObject, IOverlapRemovalParameters
+    {
+        private float _verticalGap = 10;
 
-		public float HorizontalGap
-		{
-			get { return horizontalGap; }
-			set
-			{
-				if ( horizontalGap != value )
-				{
-					horizontalGap = value;
-					NotifyChanged( "HorizontalGap" );
-				}
-			}
-		}
+        /// <inheritdoc />
+        public float VerticalGap
+        {
+            get => _verticalGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VerticalGap)} must be positive or 0.");
 
-		public object Clone()
-		{
-			return MemberwiseClone();
-		}
+                if (Math.Abs(_verticalGap - value) > float.Epsilon)
+                {
+                    _verticalGap = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-		protected void NotifyChanged( string propertyName )
-		{
-			if ( PropertyChanged != null )
-				PropertyChanged( this, new System.ComponentModel.PropertyChangedEventArgs( propertyName ) );
-		}
+        private float _horizontalGap = 10;
 
-		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-	}
+        /// <inheritdoc />
+        public float HorizontalGap
+        {
+            get => _horizontalGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(HorizontalGap)} must be positive or 0.");
+
+                if (Math.Abs(_horizontalGap - value) > float.Epsilon)
+                {
+                    _horizontalGap = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+    }
 }

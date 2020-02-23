@@ -1,3 +1,4 @@
+using GraphShape.Algorithms;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph.Algorithms;
@@ -10,6 +11,14 @@ namespace GraphShape.Tests.Algorithms
     internal abstract class AlgorithmTestsBase
     {
         #region Test helpers
+
+        protected static void AssertAlgorithmState(
+            [NotNull] AlgorithmBase algorithm,
+            ComputationState state = ComputationState.NotRunning)
+        {
+            Assert.IsNotNull(algorithm.SyncRoot);
+            Assert.AreEqual(state, algorithm.State);
+        }
 
         protected static void AssertAlgorithmState<TGraph>(
             [NotNull] AlgorithmBase<TGraph> algorithm,

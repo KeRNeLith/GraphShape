@@ -21,9 +21,9 @@ namespace GraphShape.Algorithms.Highlight
         /// Initializes a new instance of the <see cref="HighlightContext{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="graph">Target graph.</param>
-        public HighlightContext([NotNull] TGraph graph)
+        public HighlightContext([CanBeNull] TGraph graph)
         {
-            Graph = graph ?? throw new ArgumentNullException(nameof(graph));
+            Graph = graph;
         }
     }
 }

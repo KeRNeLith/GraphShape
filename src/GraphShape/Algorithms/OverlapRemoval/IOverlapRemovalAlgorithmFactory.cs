@@ -1,21 +1,58 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
-	public interface IOverlapRemovalAlgorithmFactory<TVertex>
-		where TVertex : class
-	{
-		/// <summary>
-		/// List of the available algorithms.
-		/// </summary>
-		IEnumerable<string> AlgorithmTypes { get; }
+    /// <summary>
+    /// Represents a factory of overlap removal algorithms.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    public interface IOverlapRemovalAlgorithmFactory<TVertex>
+    {
+        /// <summary>
+        /// The set of available algorithms.
+        /// </summary>
+        [NotNull, ItemNotNull]
+        IEnumerable<string> AlgorithmTypes { get; }
 
-		IOverlapRemovalAlgorithm<TVertex> CreateAlgorithm( string newAlgorithmType, IOverlapRemovalContext<TVertex> context, IOverlapRemovalParameters parameters );
+        /// <summary>
+        /// Creates an algorithm corresponding to given <paramref name="algorithmType"/>,
+        /// <paramref name="context"/> and <paramref name="parameters"/>.
+        /// </summary>
+        /// <param name="algorithmType">Algorithm type.</param>
+        /// <param name="context">Creation context.</param>
+        /// <param name="parameters">Algorithm parameters.</param>
+        /// <returns>Created algorithm.</returns>
+        [Pure]
+        IOverlapRemovalAlgorithm<TVertex> CreateAlgorithm(
+            [NotNull] string algorithmType,
+            [NotNull] IOverlapRemovalContext<TVertex> context,
+            [NotNull] IOverlapRemovalParameters parameters);
 
-		IOverlapRemovalParameters CreateParameters( string algorithmType, IOverlapRemovalParameters oldParameters );
+        /// <summary>
+        /// Creates algorithm parameters for an algorithm of given <paramref name="algorithmType"/>
+        /// and <paramref name="oldParameters"/>.
+        /// </summary>
+        /// <param name="algorithmType">Algorithm type.</param>
+        /// <param name="oldParameters">Old parameters.</param>
+        /// <returns>New algorithm parameters.</returns>
+        [Pure]
+        IOverlapRemovalParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] IOverlapRemovalParameters oldParameters);
 
-		bool IsValidAlgorithm( string algorithmType );
+        /// <summary>
+        /// Checks if the given <paramref name="algorithmType"/> is a valid one.
+        /// </summary>
+        /// <param name="algorithmType">Algorithm type.</param>
+        /// <returns>True if the algorithm type is valid, false otherwise.</returns>
+        [Pure]
+        bool IsValidAlgorithm([CanBeNull] string algorithmType);
 
-		string GetAlgorithmType( IOverlapRemovalAlgorithm<TVertex> algorithm );
-	}
+        /// <summary>
+        /// Gets the algorithm type from a given <paramref name="algorithm"/>.
+        /// </summary>
+        /// <param name="algorithm">Algorithm to get its type.</param>
+        /// <returns>Algorithm type.</returns>
+        [Pure]
+        string GetAlgorithmType([NotNull] IOverlapRemovalAlgorithm<TVertex> algorithm);
+    }
 }

@@ -40,7 +40,7 @@ namespace GraphShape.Algorithms.EdgeRouting
         /// <inheritdoc />
         public bool IsValidAlgorithm(string algorithmType)
         {
-            return AlgorithmTypes.Any(type => type == algorithmType);
+            return AlgorithmTypes.Contains(algorithmType);
         }
 
         /// <inheritdoc />
