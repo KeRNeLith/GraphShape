@@ -1,83 +1,102 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using QuikGraph;
 using System.Linq;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
 
 namespace GraphShape
 {
+    /// <summary>
+    /// Compound graph data structure.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
     public class CompoundGraph<TVertex, TEdge> : BidirectionalGraph<TVertex, TEdge>, IMutableCompoundGraph<TVertex, TEdge>
         where TEdge : IEdge<TVertex>
     {
-        public CompoundGraph()
-        {
-
-        }
-
-        public CompoundGraph(bool allowParallelEdges)
-            : base(allowParallelEdges)
-        {
-
-        }
-
-        public CompoundGraph(bool allowParallelEdges, int vertexCapacity)
-            : base(allowParallelEdges, vertexCapacity)
-        {
-
-        }
-
-        public CompoundGraph(IBidirectionalGraph<TVertex, TEdge> graph)
-            : base(graph.AllowParallelEdges, graph.VertexCount)
-        {
-            //copy the vertices
-            AddVertexRange(graph.Vertices);
-
-            //copy the edges
-            AddEdgeRange(graph.Edges);
-        }
-
-        public CompoundGraph(ICompoundGraph<TVertex, TEdge> graph)
-            : base(graph.AllowParallelEdges, graph.VertexCount)
-        {
-            //copy the vertices
-            AddVertexRange(graph.Vertices);
-
-            //copy the containment information
-            foreach (var vertex in graph.Vertices)
-            {
-                if (!graph.IsChildVertex(vertex))
-                    continue;
-
-                var parent = graph.GetParent(vertex);
-                AddChildVertex(parent, vertex);
-            }
-
-            //copy the edges
-            AddEdgeRange(graph.Edges);
-        }
-
+        [NotNull]
         private readonly IDictionary<TVertex, TVertex> _parentRegistry =
             new Dictionary<TVertex, TVertex>();
 
-        private readonly IDictionary<TVertex, IList<TVertex>> _childrenRegistry =
-            new Dictionary<TVertex, IList<TVertex>>();
+        [NotNull]
+        private readonly IDictionary<TVertex, List<TVertex>> _childrenRegistry =
+            new Dictionary<TVertex, List<TVertex>>();
 
-        public IEnumerable<TVertex> CompoundVertices
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
+        /// </summary>
+        public CompoundGraph()
         {
-            get
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="allowParallelEdges">Indicates if parallel edges are allowed.</param>
+        public CompoundGraph(bool allowParallelEdges)
+            : base(allowParallelEdges)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="allowParallelEdges">Indicates if parallel edges are allowed.</param>
+        /// <param name="capacity">Vertex capacity.</param>
+        public CompoundGraph(bool allowParallelEdges, int capacity)
+            : base(allowParallelEdges, capacity)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="graph">Graph from which initializing this graph.</param>
+        public CompoundGraph([NotNull] IEdgeListGraph<TVertex, TEdge> graph)
+            // ReSharper disable once ConstantConditionalAccessQualifier
+            : base(graph?.AllowParallelEdges ?? throw new ArgumentNullException(nameof(graph)), graph.VertexCount)
+        {
+            // Copy the vertices
+            // ReSharper disable once VirtualMemberCallInConstructor
+            AddVertexRange(graph.Vertices);
+
+            // Copy the edges
+            AddEdgeRange(graph.Edges);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="graph">Graph from which initializing this graph.</param>
+        public CompoundGraph([NotNull] ICompoundGraph<TVertex, TEdge> graph)
+            // ReSharper disable once ConstantConditionalAccessQualifier
+            : base(graph?.AllowParallelEdges ?? throw new ArgumentNullException(nameof(graph)), graph.VertexCount)
+        {
+            // Copy the vertices
+            // ReSharper disable once VirtualMemberCallInConstructor
+            AddVertexRange(graph.Vertices);
+
+            // Copy the containment information
+            foreach (TVertex vertex in graph.Vertices.Where(graph.IsChildVertex))
             {
-                return _childrenRegistry.Keys;
+                TVertex parent = graph.GetParent(vertex);
+                // ReSharper disable once AssignNullToNotNullAttribute, Justification: Is a child vertex so must have a parent
+                AddChildVertex(parent, vertex);
             }
+
+            // Copy the edges
+            AddEdgeRange(graph.Edges);
         }
 
-        public IEnumerable<TVertex> SimpleVertices
+        [Pure]
+        [CanBeNull, ItemNotNull]
+        [ContractAnnotation("createIfNotExists:true => notnull")]
+        private IList<TVertex> GetChildrenList([NotNull] TVertex vertex, bool createIfNotExists)
         {
-            get { return Vertices.Where(v => !_childrenRegistry.ContainsKey(v)); }
-        }
+            Debug.Assert(vertex != null);
 
-        private IList<TVertex> GetChildrenList(TVertex vertex, bool createIfNotExists)
-        {
-            IList<TVertex> childrenList;
-            if (_childrenRegistry.TryGetValue(vertex, out childrenList) || !createIfNotExists)
+            if (_childrenRegistry.TryGetValue(vertex, out List<TVertex> childrenList) || !createIfNotExists)
                 return childrenList;
 
             childrenList = new List<TVertex>();
@@ -85,10 +104,19 @@ namespace GraphShape
             return childrenList;
         }
 
-        #region ICompoundGraph<TVertex,TEdge> Members
+        #region ICompoundGraph<TVertex,TEdge>
 
+        /// <inheritdoc />
+        public IEnumerable<TVertex> SimpleVertices => Vertices.Where(v => !_childrenRegistry.ContainsKey(v));
+
+        /// <inheritdoc />
+        public IEnumerable<TVertex> CompoundVertices => _childrenRegistry.Keys;
+
+        /// <inheritdoc />
         public bool AddChildVertex(TVertex parent, TVertex child)
         {
+            if (!ContainsVertex(parent))
+                throw new VertexNotFoundException("Parent vertex must already be part of the graph.");
             if (!ContainsVertex(child))
                 AddVertex(child);
             _parentRegistry[child] = parent;
@@ -96,60 +124,88 @@ namespace GraphShape
             return true;
         }
 
+        /// <inheritdoc />
         public int AddChildVertexRange(TVertex parent, IEnumerable<TVertex> children)
         {
-            int ret = AddVertexRange(children);
+            if (!ContainsVertex(parent))
+                throw new VertexNotFoundException("Parent vertex must already be part of the graph.");
+            TVertex[] childrenArray = children.ToArray();
+            int count = AddVertexRange(childrenArray);
             IList<TVertex> childrenList = GetChildrenList(parent, true);
-            foreach (var v in children)
+            foreach (TVertex vertex in childrenArray)
             {
-                _parentRegistry[v] = parent;
-                childrenList.Add(v);
+                _parentRegistry[vertex] = parent;
+                childrenList.Add(vertex);
             }
-            return ret;
+            return count;
         }
 
+        /// <inheritdoc />
         public TVertex GetParent(TVertex vertex)
         {
-            TVertex parent;
-            if (_parentRegistry.TryGetValue(vertex, out parent))
+            if (!ContainsVertex(vertex))
+                throw new VertexNotFoundException();
+            if (_parentRegistry.TryGetValue(vertex, out TVertex parent))
                 return parent;
-
             return default(TVertex);
         }
 
+        /// <inheritdoc />
         public bool IsChildVertex(TVertex vertex)
         {
+            if (!ContainsVertex(vertex))
+                throw new VertexNotFoundException();
             return _parentRegistry.ContainsKey(vertex);
         }
 
+        /// <inheritdoc />
         public IEnumerable<TVertex> GetChildrenVertices(TVertex vertex)
         {
-            return GetChildrenList(vertex, false);
+            if (!ContainsVertex(vertex))
+                throw new VertexNotFoundException();
+            return GetChildrenList(vertex, false) ?? Enumerable.Empty<TVertex>();
         }
 
+        /// <inheritdoc />
         public int GetChildrenCount(TVertex vertex)
         {
-            IList<TVertex> childrenList = GetChildrenList(vertex, false);
-            if (childrenList == null)
-                return 0;
-
-            return childrenList.Count;
+            if (!ContainsVertex(vertex))
+                throw new VertexNotFoundException();
+            return GetChildrenList(vertex, false)?.Count ?? 0;
         }
 
+        /// <inheritdoc />
         public bool IsCompoundVertex(TVertex vertex)
         {
+            if (!ContainsVertex(vertex))
+                throw new VertexNotFoundException();
             return GetChildrenList(vertex, false) != null;
         }
 
         #endregion
 
-        public override bool RemoveVertex(TVertex v)
+        /// <inheritdoc />
+        public override bool RemoveVertex(TVertex vertex)
         {
-            bool removed = base.RemoveVertex(v);
+            bool removed = base.RemoveVertex(vertex);
             if (removed)
             {
-                _parentRegistry.Remove(v);
-                _childrenRegistry.Remove(v);
+                _parentRegistry.Remove(vertex);
+                _childrenRegistry.Remove(vertex);
+
+                List<TVertex> verticesToClean = null;
+                foreach (KeyValuePair<TVertex, List<TVertex>> pair in _childrenRegistry)
+                {
+                    pair.Value.RemoveAll(v => Equals(v, vertex));
+                    if (pair.Value.Count == 0)
+                    {
+                        if (verticesToClean is null)
+                            verticesToClean = new List<TVertex>();
+                        verticesToClean.Add(pair.Key);
+                    }
+                }
+
+                verticesToClean?.ForEach(v => _childrenRegistry.Remove(v));
             }
             return removed;
         }

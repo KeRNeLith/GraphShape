@@ -1,492 +1,649 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape
 {
-	internal class GraphHideHelper<TVertex, TEdge> : ISoftMutableGraph<TVertex, TEdge>
-		where TEdge : IEdge<TVertex>
-	{
-		private readonly IMutableBidirectionalGraph<TVertex, TEdge> graph;
-
-		#region Helper Types
-		protected class HiddenCollection
-		{
-			public List<TVertex> hiddenVertices = new List<TVertex>();
-			public List<TEdge> hiddenEdges = new List<TEdge>();
-		}
-		#endregion
-
-		#region Properties, fields, events
-		private readonly List<TVertex> hiddenVertices = new List<TVertex>();
-		private readonly List<TEdge> hiddenEdges = new List<TEdge>();
-		private readonly IDictionary<string, HiddenCollection> hiddenCollections = new Dictionary<string, HiddenCollection>();
-		private readonly IDictionary<TVertex, List<TEdge>> hiddenEdgesOf = new Dictionary<TVertex, List<TEdge>>();
-
-		public event EdgeAction<TVertex, TEdge> EdgeHidden;
-		public event EdgeAction<TVertex, TEdge> EdgeUnhidden;
-
-		public event VertexAction<TVertex> VertexHidden;
-		public event VertexAction<TVertex> VertexUnhidden;
-		#endregion
-
-		public GraphHideHelper( IMutableBidirectionalGraph<TVertex, TEdge> managedGraph )
-		{
-			graph = managedGraph;
-		}
-
-		#region Event handlers, helper methods
-
-		/// <summary>
-		/// Returns every edge connected with the vertex <code>v</code>.
-		/// </summary>
-		/// <param name="v">The vertex.</param>
-		/// <returns>Edges, adjacent to the vertex <code>v</code>.</returns>
-		protected IEnumerable<TEdge> EdgesFor( TVertex v )
-		{
-			return graph.InEdges( v ).Concat( graph.OutEdges( v ) );
-		}
-
-		protected HiddenCollection GetHiddenCollection( string tag )
-		{
-			HiddenCollection h;
-			if ( !hiddenCollections.TryGetValue( tag, out h ) )
-			{
-				h = new HiddenCollection();
-				hiddenCollections[tag] = h;
-			}
-			return h;
-		}
-
-		protected void OnEdgeHidden( TEdge e )
-		{
-			if ( EdgeHidden != null )
-				EdgeHidden( e );
-		}
-
-		protected void OnEdgeUnhidden( TEdge e )
-		{
-			if ( EdgeUnhidden != null )
-				EdgeUnhidden( e );
-		}
-
-		protected void OnVertexHidden( TVertex v )
-		{
-			if ( VertexHidden != null )
-				VertexHidden( v );
-		}
-
-		protected void OnVertexUnhidden( TVertex v )
-		{
-			if ( VertexUnhidden != null )
-				VertexUnhidden( v );
-		}
-		#endregion
-
-		#region ISoftMutableGraph<TVertex,TEdge> Members
-
-		public IEnumerable<TVertex> HiddenVertices
-		{
-			get { return hiddenVertices; }
-		}
-
-		public IEnumerable<TEdge> HiddenEdges
-		{
-			get { return hiddenEdges; }
-		}
-
-		/// <summary>
-		/// Hides the vertex <code>v</code>.
-		/// </summary>
-		/// <param name="v">The vertex to hide.</param>
-		public bool HideVertex( TVertex v )
-		{
-			if ( graph.ContainsVertex( v ) && !hiddenVertices.Contains( v ) )
-			{
-				HideEdges( EdgesFor( v ) );
-
-				//hide the vertex
-				graph.RemoveVertex( v );
-				hiddenVertices.Add( v );
-				OnVertexHidden( v );
-				return true;
-			}
-
-			return false;
-		}
-
-		/// <summary>
-		/// Hides a lot of vertices.
-		/// </summary>
-		/// <param name="vertices">The vertices to hide.</param>
-		public void HideVertices( IEnumerable<TVertex> vertices )
-		{
-			var verticesToHide = new List<TVertex>( vertices );
-			foreach ( TVertex v in verticesToHide )
-			{
-				HideVertex( v );
-			}
-		}
-
-		public bool HideVertex( TVertex v, string tag )
-		{
-			HiddenCollection h = GetHiddenCollection( tag );
-			var eeh = new EdgeAction<TVertex, TEdge>( e => h.hiddenEdges.Add( e ) );
-			var veh = new VertexAction<TVertex>( vertex => h.hiddenVertices.Add( vertex ) );
-			EdgeHidden += eeh;
-			VertexHidden += veh;
-			bool ret = HideVertex( v );
-			EdgeHidden -= eeh;
-			VertexHidden -= veh;
-			return ret;
-		}
-
-		public void HideVertices( IEnumerable<TVertex> vertices, string tag )
-		{
-			foreach ( TVertex v in vertices )
-			{
-				HideVertex( v, tag );
-			}
-		}
-
-		public void HideVerticesIf( Predicate<TVertex> predicate, string tag )
-		{
-			var verticesToHide = new List<TVertex>();
-			foreach ( var v in graph.Vertices )
-			{
-				if ( predicate( v ) )
-					verticesToHide.Add( v );
-			}
-			HideVertices( verticesToHide, tag );
-		}
-
-		public bool IsHiddenVertex( TVertex vertex )
-		{
-			return ( !graph.ContainsVertex( vertex ) && hiddenVertices.Contains( vertex ) );
-		}
-
-		public bool UnhideVertex( TVertex vertex )
-		{
-			//if v not hidden, it's an error
-			if ( !IsHiddenVertex( vertex ) )
-				return false;
-
-			//unhide the vertex
-			graph.AddVertex( vertex );
-			hiddenVertices.Remove( vertex );
-			OnVertexUnhidden( vertex );
-			return true;
-		}
-
-		public void UnhideVertexAndEdges( TVertex vertex )
-		{
-			UnhideVertex( vertex );
-			List<TEdge> hiddenEdgesList;
-			hiddenEdgesOf.TryGetValue( vertex, out hiddenEdgesList );
-			if ( hiddenEdgesList != null )
-				UnhideEdges( hiddenEdgesList );
-		}
-
-		public bool HideEdge( TEdge e )
-		{
-			if ( graph.ContainsEdge( e ) && !hiddenEdges.Contains( e ) )
-			{
-				graph.RemoveEdge( e );
-				hiddenEdges.Add( e );
-
-				GetHiddenEdgeListOf( e.Source ).Add( e );
-				GetHiddenEdgeListOf( e.Target ).Add( e );
-
-				OnEdgeHidden( e );
-				return true;
-			}
-
-			return false;
-		}
-
-		private List<TEdge> GetHiddenEdgeListOf( TVertex v )
-		{
-			List<TEdge> hiddenEdgeList;
-			hiddenEdgesOf.TryGetValue( v, out hiddenEdgeList );
-			if ( hiddenEdgeList == null )
-			{
-				hiddenEdgeList = new List<TEdge>();
-				hiddenEdgesOf[v] = hiddenEdgeList;
-			}
-			return hiddenEdgeList;
-		}
-
-		public IEnumerable<TEdge> HiddenEdgesOf( TVertex v )
-		{
-			return GetHiddenEdgeListOf( v );
-		}
-
-		public int HiddenEdgeCountOf( TVertex v )
-		{
-			return GetHiddenEdgeListOf( v ).Count;
-		}
-
-		public bool HideEdge( TEdge e, string tag )
-		{
-			var h = GetHiddenCollection( tag );
-			var eeh = new EdgeAction<TVertex, TEdge>( edge => h.hiddenEdges.Add( edge ) );
-			EdgeHidden += eeh;
-			bool ret = HideEdge( e );
-			EdgeHidden -= eeh;
-			return ret;
-		}
-
-		public void HideEdges( IEnumerable<TEdge> edges )
-		{
-			var edgesToHide = new List<TEdge>( edges );
-			foreach ( var e in edgesToHide )
-			{
-				HideEdge( e );
-			}
-		}
-
-		public void HideEdges( IEnumerable<TEdge> edges, string tag )
-		{
-			var edgesToHide = new List<TEdge>( edges );
-			foreach ( var e in edgesToHide )
-			{
-				HideEdge( e, tag );
-			}
-		}
-
-		public void HideEdgesIf(Predicate<TEdge> predicate, string tag )
-		{
-			var edgesToHide = new List<TEdge>();
-			foreach ( var e in graph.Edges )
-			{
-				if ( predicate( e ) )
-					edgesToHide.Add( e );
-			}
-			HideEdges( edgesToHide, tag );
-		}
-
-		public bool IsHiddenEdge( TEdge e )
-		{
-			return ( !graph.ContainsEdge( e ) && hiddenEdges.Contains( e ) );
-		}
-
-		public bool UnhideEdge( TEdge e )
-		{
-			if ( IsHiddenVertex( e.Source ) || IsHiddenVertex( e.Target ) || !IsHiddenEdge( e ) )
-				return false;
-
-			//unhide the edge
-			graph.AddEdge( e );
-			hiddenEdges.Remove( e );
-
-			GetHiddenEdgeListOf( e.Source ).Remove( e );
-			GetHiddenEdgeListOf( e.Target ).Remove( e );
-
-			OnEdgeUnhidden( e );
-			return true;
-		}
-
-		public void UnhideEdgesIf(Predicate<TEdge> predicate )
-		{
-			var edgesToUnhide = new List<TEdge>();
-			foreach ( var e in hiddenEdges )
-			{
-				if ( predicate( e ) )
-					edgesToUnhide.Add( e );
-			}
-			UnhideEdges( edgesToUnhide );
-		}
-
-		public void UnhideEdges( IEnumerable<TEdge> edges )
-		{
-			var edgesToUnhide = new List<TEdge>( edges );
-			foreach ( var e in edgesToUnhide )
-			{
-				UnhideEdge( e );
-			}
-		}
-
-		public bool Unhide( string tag )
-		{
-			HiddenCollection h = GetHiddenCollection( tag );
-			foreach ( TVertex v in h.hiddenVertices )
-			{
-				UnhideVertex( v );
-			}
-			foreach ( TEdge e in h.hiddenEdges )
-			{
-				UnhideEdge( e );
-			}
-			return hiddenCollections.Remove( tag );
-		}
-
-		public bool UnhideAll()
-		{
-			while ( hiddenVertices.Count > 0 )
-			{
-				UnhideVertex( hiddenVertices[0] );
-			}
-			while ( hiddenEdges.Count > 0 )
-			{
-				UnhideEdge( hiddenEdges[0] );
-			}
-			return true;
-		}
-
-		public int HiddenVertexCount
-		{
-			get { return hiddenVertices.Count; }
-		}
-
-		public int HiddenEdgeCount
-		{
-			get { return hiddenEdges.Count; }
-		}
-		#endregion
-
-		#region IBidirectionalGraph<TVertex,TEdge> Members
-
-		public int Degree( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		public int InDegree( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		public TEdge InEdge( TVertex v, int index )
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<TEdge> InEdges( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool IsInEdgesEmpty( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		#endregion
-
-		#region IIncidenceGraph<TVertex,TEdge> Members
-
-		public bool ContainsEdge( TVertex source, TVertex target )
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool TryGetEdge( TVertex source, TVertex target, out TEdge edge )
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool TryGetEdges( TVertex source, TVertex target, out IEnumerable<TEdge> edges )
-		{
-			throw new NotImplementedException();
-		}
-
-		#endregion
-
-		#region IImplicitGraph<TVertex,TEdge> Members
-
-		public bool IsOutEdgesEmpty( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		public int OutDegree( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		public TEdge OutEdge( TVertex v, int index )
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<TEdge> OutEdges( TVertex v )
-		{
-			throw new NotImplementedException();
-		}
-
-		#endregion
-
-		#region IGraph<TVertex,TEdge> Members
-
-		public bool AllowParallelEdges
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public bool IsDirected
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		#endregion
-
-		#region IVertexSet<TVertex,TEdge> Members
-
-		public bool ContainsVertex( TVertex vertex )
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool IsVerticesEmpty
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public int VertexCount
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IEnumerable<TVertex> Vertices
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		#endregion
-
-		#region IEdgeListGraph<TVertex,TEdge> Members
-
-		public bool ContainsEdge( TEdge edge )
-		{
-			throw new NotImplementedException();
-		}
-
-		public int EdgeCount
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IEnumerable<TEdge> Edges
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public bool IsEdgesEmpty
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		#endregion
-
-		public bool TryGetInEdges( TVertex v, out IEnumerable<TEdge> edges )
-		{
-			throw new NotImplementedException();
-		}
-		
-		public bool TryGetOutEdges( TVertex v, out IEnumerable<TEdge> edges )
-		{
-			throw new NotImplementedException();
-		}
-	}
+    internal class GraphHideHelpers<TVertex, TEdge> : ISoftMutableGraph<TVertex, TEdge>
+        where TEdge : IEdge<TVertex>
+    {
+        #region Helper Types
+
+        private class HiddenCollection
+        {
+            [NotNull, ItemNotNull]
+            public List<TVertex> HiddenVertices { get; } = new List<TVertex>();
+
+            [NotNull, ItemNotNull]
+            public List<TEdge> HiddenEdges { get; } = new List<TEdge>();
+        }
+
+        #endregion
+
+        #region Properties, fields, events
+
+        [NotNull]
+        private readonly IMutableBidirectionalGraph<TVertex, TEdge> _graph;
+
+        [NotNull, ItemNotNull]
+        private readonly List<TVertex> _hiddenVertices = new List<TVertex>();
+
+        [NotNull, ItemNotNull]
+        private readonly List<TEdge> _hiddenEdges = new List<TEdge>();
+
+        [NotNull]
+        private readonly IDictionary<string, HiddenCollection> _hiddenCollections = new Dictionary<string, HiddenCollection>();
+
+        [NotNull]
+        private readonly IDictionary<TVertex, List<TEdge>> _hiddenEdgesOf = new Dictionary<TVertex, List<TEdge>>();
+
+        public event VertexAction<TVertex> VertexHidden;
+        public event VertexAction<TVertex> VertexUnhidden;
+
+        public event EdgeAction<TVertex, TEdge> EdgeHidden;
+        public event EdgeAction<TVertex, TEdge> EdgeUnhidden;
+
+        #endregion
+
+        public GraphHideHelpers([NotNull] IMutableBidirectionalGraph<TVertex, TEdge> managedGraph)
+        {
+            Debug.Assert(managedGraph != null);
+
+            _graph = managedGraph;
+        }
+
+        #region Event handlers, helper methods
+
+        /// <summary>
+        /// Returns every edges connected with the <paramref name="vertex"/>.
+        /// </summary>
+        /// <param name="vertex">The vertex.</param>
+        /// <returns>Edges, adjacent to the vertex <code>vertex</code>.</returns>
+        [Pure]
+        [NotNull, ItemNotNull]
+        private IEnumerable<TEdge> EdgesFor([NotNull] TVertex vertex)
+        {
+            Debug.Assert(vertex != null);
+            return _graph.InEdges(vertex)
+                .Concat(_graph.OutEdges(vertex).Where(e => !e.IsSelfEdge()));
+        }
+
+        [Pure]
+        [NotNull]
+        private HiddenCollection GetHiddenCollection([NotNull] string tag)
+        {
+            if (!_hiddenCollections.TryGetValue(tag, out HiddenCollection collection))
+            {
+                collection = new HiddenCollection();
+                _hiddenCollections[tag] = collection;
+            }
+
+            return collection;
+        }
+
+        private void OnVertexHidden([NotNull] TVertex vertex)
+        {
+            Debug.Assert(vertex != null);
+
+            VertexHidden?.Invoke(vertex);
+        }
+
+        private void OnVertexUnhidden([NotNull] TVertex vertex)
+        {
+            Debug.Assert(vertex != null);
+
+            VertexUnhidden?.Invoke(vertex);
+        }
+
+        private void OnEdgeHidden([NotNull] TEdge edge)
+        {
+            Debug.Assert(edge != null);
+
+            EdgeHidden?.Invoke(edge);
+        }
+
+        private void OnEdgeUnhidden([NotNull] TEdge edge)
+        {
+            Debug.Assert(edge != null);
+
+            EdgeUnhidden?.Invoke(edge);
+        }
+
+        #endregion
+
+        #region ISoftMutableGraph<TVertex,TEdge>
+
+        /// <inheritdoc />
+        public IEnumerable<TVertex> HiddenVertices => _hiddenVertices;
+
+        /// <inheritdoc />
+        public int HiddenVertexCount => _hiddenVertices.Count;
+
+        /// <inheritdoc />
+        public bool HideVertex(TVertex vertex)
+        {
+            if (!_hiddenVertices.Contains(vertex))
+            {
+                if (_graph.ContainsVertex(vertex))
+                {
+                    HideEdges(EdgesFor(vertex));
+
+                    // Hide the vertex
+                    _graph.RemoveVertex(vertex);
+                    _hiddenVertices.Add(vertex);
+                    OnVertexHidden(vertex);
+                    return true;
+                }
+
+                throw new VertexNotFoundException();
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc />
+        public bool HideVertex(TVertex vertex, string tag)
+        {
+            HiddenCollection collection = GetHiddenCollection(tag);
+            var hideEdgeHandler = new EdgeAction<TVertex, TEdge>(e => collection.HiddenEdges.Add(e));
+            var hideVertexHandler = new VertexAction<TVertex>(v => collection.HiddenVertices.Add(v));
+
+            EdgeHidden += hideEdgeHandler;
+            VertexHidden += hideVertexHandler;
+
+            bool hidden = HideVertex(vertex);
+
+            EdgeHidden -= hideEdgeHandler;
+            VertexHidden -= hideVertexHandler;
+
+            return hidden;
+        }
+
+        /// <inheritdoc />
+        public void HideVertices(IEnumerable<TVertex> vertices)
+        {
+            foreach (TVertex vertex in vertices.ToArray())
+            {
+                HideVertex(vertex);
+            }
+        }
+
+        /// <inheritdoc />
+        public void HideVertices(IEnumerable<TVertex> vertices, string tag)
+        {
+            foreach (TVertex vertex in vertices.ToArray())
+            {
+                HideVertex(vertex, tag);
+            }
+        }
+
+        /// <inheritdoc />
+        public void HideVerticesIf(Predicate<TVertex> predicate, string tag)
+        {
+            if (predicate is null)
+                throw new ArgumentNullException(nameof(predicate));
+            if (tag is null)
+                throw new ArgumentNullException(nameof(tag));
+
+            var verticesToHide = new List<TVertex>();
+            foreach (TVertex vertex in _graph.Vertices)
+            {
+                if (predicate(vertex))
+                    verticesToHide.Add(vertex);
+            }
+
+            HideVertices(verticesToHide, tag);
+        }
+
+        /// <inheritdoc />
+        public bool IsHiddenVertex(TVertex vertex)
+        {
+            if (!_graph.ContainsVertex(vertex))
+            {
+                if (_hiddenVertices.Contains(vertex))
+                    return true;
+
+                throw new VertexNotFoundException();
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc />
+        public bool UnhideVertex(TVertex vertex)
+        {
+            // If the vertex is not hidden, it's an error
+            if (!IsHiddenVertex(vertex))
+                return false;
+
+            // Unhide the vertex
+            _graph.AddVertex(vertex);
+            _hiddenVertices.Remove(vertex);
+            OnVertexUnhidden(vertex);
+
+            return true;
+        }
+
+        /// <inheritdoc />
+        public void UnhideVertexAndEdges(TVertex vertex)
+        {
+            UnhideVertex(vertex);
+            _hiddenEdgesOf.TryGetValue(vertex, out List<TEdge> hiddenEdges);
+            if (hiddenEdges != null)
+                UnhideEdges(hiddenEdges);
+        }
+
+        [CanBeNull, ItemNotNull]
+        [ContractAnnotation("createIfNotExists:true => notnull")]
+        private List<TEdge> GetHiddenEdgeListOf([NotNull] TVertex vertex, bool createIfNotExists)
+        {
+            Debug.Assert(vertex != null);
+
+            if (_hiddenEdgesOf.TryGetValue(vertex, out List<TEdge> hiddenEdges) || !createIfNotExists)
+                return hiddenEdges;
+
+            hiddenEdges = new List<TEdge>();
+            _hiddenEdgesOf[vertex] = hiddenEdges;
+            return hiddenEdges;
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<TEdge> HiddenEdges => _hiddenEdges;
+
+        /// <inheritdoc />
+        public int HiddenEdgeCount => _hiddenEdges.Count;
+
+        /// <inheritdoc />
+        public bool HideEdge(TEdge edge)
+        {
+            if (_graph.ContainsEdge(edge) && !_hiddenEdges.Contains(edge))
+            {
+                _graph.RemoveEdge(edge);
+                _hiddenEdges.Add(edge);
+
+                GetHiddenEdgeListOf(edge.Source, true).Add(edge);
+                if (!edge.IsSelfEdge())
+                    GetHiddenEdgeListOf(edge.Target, true).Add(edge);
+
+                OnEdgeHidden(edge);
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc />
+        public bool HideEdge(TEdge edge, string tag)
+        {
+            HiddenCollection collection = GetHiddenCollection(tag);
+            var hideEdgeHandler = new EdgeAction<TVertex, TEdge>(e => collection.HiddenEdges.Add(e));
+            EdgeHidden += hideEdgeHandler;
+            bool hidden = HideEdge(edge);
+            EdgeHidden -= hideEdgeHandler;
+            return hidden;
+        }
+
+        /// <inheritdoc />
+        public void HideEdges(IEnumerable<TEdge> edges)
+        {
+            foreach (TEdge edge in edges.ToArray())
+            {
+                HideEdge(edge);
+            }
+        }
+
+        /// <inheritdoc />
+        public void HideEdges(IEnumerable<TEdge> edges, string tag)
+        {
+            foreach (TEdge edge in edges.ToArray())
+            {
+                HideEdge(edge, tag);
+            }
+        }
+
+        /// <inheritdoc />
+        public void HideEdgesIf(Predicate<TEdge> predicate, string tag)
+        {
+            if (predicate is null)
+                throw new ArgumentNullException(nameof(predicate));
+            if (tag is null)
+                throw new ArgumentNullException(nameof(tag));
+
+            var edgesToHide = new List<TEdge>();
+            foreach (TEdge edge in _graph.Edges)
+            {
+                if (predicate(edge))
+                    edgesToHide.Add(edge);
+            }
+
+            HideEdges(edgesToHide, tag);
+        }
+
+        /// <inheritdoc />
+        public bool IsHiddenEdge(TEdge edge)
+        {
+            return !_graph.ContainsEdge(edge) && _hiddenEdges.Contains(edge);
+        }
+
+        /// <inheritdoc />
+        public bool UnhideEdge(TEdge edge)
+        {
+            // If edge is not hidden or has at least one of its vertex hidden => does nothing
+            if (!IsHiddenEdge(edge) || IsHiddenVertex(edge.Source) || IsHiddenVertex(edge.Target))
+                return false;
+
+            // Unhide the edge
+            _graph.AddEdge(edge);
+            _hiddenEdges.Remove(edge);
+
+            // ReSharper disable PossibleNullReferenceException
+            // Justification: The list must exists (at least empty) if unhiding an edge
+            // because it has been created on HideEdge call
+            GetHiddenEdgeListOf(edge.Source, false).Remove(edge);
+            GetHiddenEdgeListOf(edge.Target, false).Remove(edge);
+            // ReSharper restore PossibleNullReferenceException
+
+            OnEdgeUnhidden(edge);
+            return true;
+        }
+
+        /// <inheritdoc />
+        public void UnhideEdges(IEnumerable<TEdge> edges)
+        {
+            foreach (TEdge edge in edges.ToArray())
+            {
+                UnhideEdge(edge);
+            }
+        }
+
+        /// <inheritdoc />
+        public void UnhideEdgesIf(Predicate<TEdge> predicate)
+        {
+            if (predicate is null)
+                throw new ArgumentNullException(nameof(predicate));
+
+            var edgesToUnhide = new List<TEdge>();
+            foreach (TEdge edge in _hiddenEdges)
+            {
+                if (predicate(edge))
+                    edgesToUnhide.Add(edge);
+            }
+
+            UnhideEdges(edgesToUnhide);
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<TEdge> HiddenEdgesOf(TVertex vertex)
+        {
+            if (vertex == null)
+                throw new ArgumentNullException(nameof(vertex));
+            if (!_graph.ContainsVertex(vertex) && !_hiddenVertices.Contains(vertex))
+                throw new VertexNotFoundException();
+            return GetHiddenEdgeListOf(vertex, false) ?? Enumerable.Empty<TEdge>();
+        }
+
+        /// <inheritdoc />
+        public int HiddenEdgeCountOf(TVertex vertex)
+        {
+            if (vertex == null)
+                throw new ArgumentNullException(nameof(vertex));
+            if (!_graph.ContainsVertex(vertex) && !_hiddenVertices.Contains(vertex))
+                throw new VertexNotFoundException();
+            return GetHiddenEdgeListOf(vertex, false)?.Count ?? 0;
+        }
+
+        /// <inheritdoc />
+        public bool Unhide(string tag)
+        {
+            HiddenCollection collection = GetHiddenCollection(tag);
+            foreach (TVertex vertex in collection.HiddenVertices)
+            {
+                UnhideVertex(vertex);
+            }
+
+            foreach (TEdge edge in collection.HiddenEdges)
+            {
+                UnhideEdge(edge);
+            }
+
+            return _hiddenCollections.Remove(tag);
+        }
+
+        /// <inheritdoc />
+        public bool UnhideAll()
+        {
+            while (_hiddenVertices.Count > 0)
+            {
+                UnhideVertex(_hiddenVertices[0]);
+            }
+
+            while (_hiddenEdges.Count > 0)
+            {
+                UnhideEdge(_hiddenEdges[0]);
+            }
+
+            return true;
+        }
+
+        #endregion
+
+        #region IGraph<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="TryGetOutEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool IsDirected => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="TryGetOutEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool AllowParallelEdges => throw new NotSupportedException();
+
+        #endregion
+
+        #region IVertexSet<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="ContainsVertex"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool ContainsVertex(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="IsVerticesEmpty"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool IsVerticesEmpty => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="VertexCount"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public int VertexCount => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="Vertices"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public IEnumerable<TVertex> Vertices => throw new NotSupportedException();
+
+        #endregion
+
+        #region IEdgeListGraph<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="IsEdgesEmpty"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool IsEdgesEmpty => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="EdgeCount"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public int EdgeCount => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="Edges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public IEnumerable<TEdge> Edges => throw new NotSupportedException();
+
+        /// <summary>
+        /// <see cref="ContainsEdge(TEdge)"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool ContainsEdge(TEdge edge)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="ContainsEdge(TVertex,TVertex)"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool ContainsEdge(TVertex source, TVertex target)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+
+        #region IImplicitGraph<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="IsOutEdgesEmpty"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool IsOutEdgesEmpty(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="OutDegree"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public int OutDegree(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="OutEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public IEnumerable<TEdge> OutEdges(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="TryGetOutEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool TryGetOutEdges(TVertex vertex, out IEnumerable<TEdge> edges)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="OutEdge"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public TEdge OutEdge(TVertex vertex, int index)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+
+        #region IIncidenceGraph<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="TryGetEdge"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool TryGetEdge(TVertex source, TVertex target, out TEdge edge)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="TryGetEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool TryGetEdges(TVertex source, TVertex target, out IEnumerable<TEdge> edges)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+
+        #region IBidirectionalGraph<TVertex,TEdge>
+
+        /// <summary>
+        /// <see cref="IsInEdgesEmpty"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool IsInEdgesEmpty(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="InDegree"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public int InDegree(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="InEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public IEnumerable<TEdge> InEdges(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="TryGetInEdges"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public bool TryGetInEdges(TVertex vertex, out IEnumerable<TEdge> edges)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="InEdge"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public TEdge InEdge(TVertex vertex, int index)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// <see cref="Degree"/> is not implemented for this helper.
+        /// </summary>
+        /// <exception cref="NotSupportedException">This method is not supported.</exception>
+        public int Degree(TVertex vertex)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+    }
 }
