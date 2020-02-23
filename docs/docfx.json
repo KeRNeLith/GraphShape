@@ -36,6 +36,12 @@
           "toc.yml",
           "*.md"
         ]
+      },
+      {
+        "files": [
+          "RELEASE_NOTES.md"
+        ],
+        "cwd": ".."
       }
     ],
     "resource": [
