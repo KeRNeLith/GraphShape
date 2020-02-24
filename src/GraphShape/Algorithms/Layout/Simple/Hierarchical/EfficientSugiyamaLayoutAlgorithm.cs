@@ -50,18 +50,18 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             new List<IList<SugiVertex>>();
 
         public EfficientSugiyamaLayoutAlgorithm(
-            TGraph visitedGraph, 
-            EfficientSugiyamaLayoutParameters parameters, 
-            IDictionary<TVertex, Size> vertexSizes)
-            : this(visitedGraph, parameters, null, vertexSizes)
+            TGraph visitedGraph,
+            IDictionary<TVertex, Size> vertexSizes,
+            EfficientSugiyamaLayoutParameters parameters)
+            : this(visitedGraph, null, vertexSizes, parameters)
         { }
 
         public EfficientSugiyamaLayoutAlgorithm(
-            TGraph visitedGraph, 
-            EfficientSugiyamaLayoutParameters parameters, 
-            IDictionary<TVertex, Point> vertexPositions,
-            IDictionary<TVertex, Size> vertexSizes)
-            : base(visitedGraph, vertexPositions, parameters)
+            TGraph visitedGraph,
+            IDictionary<TVertex, Point> verticesPositions,
+            IDictionary<TVertex, Size> vertexSizes,
+            EfficientSugiyamaLayoutParameters parameters)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _vertexSizes = vertexSizes;
         }

@@ -10,7 +10,6 @@ namespace GraphShape.Algorithms.Layout
     /// <typeparam name="TEdge">Edge type.</typeparam>
     /// <typeparam name="TGraph">Graph type.</typeparam>
     public interface IParameterizedLayoutAlgorithm<TVertex, in TEdge, out TGraph> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
@@ -31,7 +30,6 @@ namespace GraphShape.Algorithms.Layout
     /// <typeparam name="TGraph">Graph type.</typeparam>
     /// <typeparam name="TParameters">Parameters type.</typeparam>
     public interface IParameterizedLayoutAlgorithm<TVertex, in TEdge, out TGraph, out TParameters> : IParameterizedLayoutAlgorithm<TVertex, TEdge, TGraph>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
         where TParameters : ILayoutParameters

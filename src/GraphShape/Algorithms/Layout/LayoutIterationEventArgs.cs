@@ -1,127 +1,222 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout
 {
-	public class LayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo> 
-        : LayoutIterationEventArgs<TVertex, TEdge>,
-            ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-	{
-		public LayoutIterationEventArgs()
-			: this( 0, 0, string.Empty, null, null, null )
-		{ }
+    /// <summary>
+    /// Information on a layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    public class LayoutIterationEventArgs<TVertex, TEdge>
+        : EventArgs
+        , ILayoutInfoIterationEventArgs<TVertex, TEdge>
+        where TEdge : IEdge<TVertex>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        public LayoutIterationEventArgs()
+            : this(0, 0, string.Empty, null)
+        {
+        }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent )
-			: this( iteration, statusInPercent, string.Empty, null, null, null )
-		{ }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        public LayoutIterationEventArgs(int iteration, double statusInPercent)
+            : this(iteration, statusInPercent, string.Empty, null)
+        {
+        }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent, string message )
-			: this( iteration, statusInPercent, message, null, null, null )
-		{ }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        public LayoutIterationEventArgs(int iteration, double statusInPercent, [NotNull] string message)
+            : this(iteration, statusInPercent, message, null)
+        {
+        }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent,
-		                                 IDictionary<TVertex, Point> vertexPositions )
-			: this( iteration, statusInPercent, string.Empty, vertexPositions, null, null )
-		{ }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        public LayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
+            : this(iteration, statusInPercent, string.Empty, verticesPositions)
+        {
+        }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent, string message,
-		                                 IDictionary<TVertex, Point> vertexPositions,
-		                                 IDictionary<TVertex, TVertexInfo> vertexInfos,
-		                                 IDictionary<TEdge, TEdgeInfo> edgeInfos)
-			: base( iteration, statusInPercent, message, vertexPositions )
-		{
-			this.VerticesInfos = vertexInfos;
-			this.EdgesInfos = edgeInfos;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        public LayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
+        {
+            if (statusInPercent < 0)
+                throw new ArgumentOutOfRangeException(nameof(statusInPercent), $"{nameof(statusInPercent)} must be positive or 0.");
+            if (iteration < 0)
+                throw new ArgumentOutOfRangeException(nameof(iteration), $"{nameof(iteration)} must be positive or 0.");
 
-		public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; private set; }
-		public IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; private set; }
+            StatusInPercent = statusInPercent;
+            Iteration = iteration;
+            Abort = false;
+            Message = message ?? throw new ArgumentNullException(nameof(message));
+            VerticesPositions = verticesPositions;
+        }
 
-		public sealed override object GetVertexInfo( TVertex vertex )
-		{
-			if ( VerticesInfos == null )
-				return null;
-			TVertexInfo info;
-			return VerticesInfos.TryGetValue( vertex, out info ) ? info : default( TVertexInfo );
-		}
+        /// <inheritdoc />
+        public double StatusInPercent { get; }
 
-		public sealed override object GetEdgeInfo( TEdge edge )
-		{
-			if ( EdgesInfos == null )
-				return null;
-			TEdgeInfo info;
-			return EdgesInfos.TryGetValue( edge, out info ) ? info : default( TEdgeInfo );
-		}
-	}
+        /// <inheritdoc />
+        public bool Abort { get; set; }
 
-	public class LayoutIterationEventArgs<TVertex, TEdge> 
-        : EventArgs, 
-            ILayoutIterationEventArgs<TVertex>, 
-            ILayoutInfoIterationEventArgs<TVertex, TEdge>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-	{
-		public LayoutIterationEventArgs()
-			: this( 0, 0, string.Empty, null )
-		{ }
+        /// <inheritdoc />
+        public int Iteration { get; }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent )
-			: this( iteration, statusInPercent, string.Empty, null )
-		{ }
+        /// <inheritdoc />
+        public string Message { get; }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent, string message )
-			: this( iteration, statusInPercent, message, null )
-		{ }
+        /// <inheritdoc />
+        public IDictionary<TVertex, Point> VerticesPositions { get; }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent,
-		                                 IDictionary<TVertex, Point> vertexPositions )
-			: this( iteration, statusInPercent, string.Empty, vertexPositions )
-		{ }
+        /// <inheritdoc />
+        public virtual object GetVertexInfo(TVertex vertex)
+        {
+            if (vertex == null)
+                throw new ArgumentNullException(nameof(vertex));
+            return null;
+        }
 
-		public LayoutIterationEventArgs( int iteration, double statusInPercent, string message,
-		                                 IDictionary<TVertex, Point> vertexPositions )
-		{
-			this.StatusInPercent = statusInPercent;
-			this.Iteration = iteration;
-			this.Abort = false;
-			this.Message = message;
-			this.VerticesPositions = vertexPositions;
-		}
+        /// <inheritdoc />
+        public virtual object GetEdgeInfo(TEdge edge)
+        {
+            if (edge == null)
+                throw new ArgumentNullException(nameof(edge));
+            return null;
+        }
+    }
 
-		/// <summary>
-		/// Represent the status of the layout algorithm in percent.
-		/// </summary>
-		public double StatusInPercent { get; private set; }
+    /// <summary>
+    /// Information on a layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
+    public class LayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
+        : LayoutIterationEventArgs<TVertex, TEdge>
+        , ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
+        where TEdge : IEdge<TVertex>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        public LayoutIterationEventArgs()
+            : this(0, 0, string.Empty, null, null, null)
+        {
+        }
 
-		/// <summary>
-		/// If the user sets this value to <code>true</code>, the algorithm aborts ASAP.
-		/// </summary>
-		public bool Abort { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        public LayoutIterationEventArgs(int iteration, double statusInPercent)
+            : this(iteration, statusInPercent, string.Empty, null, null, null)
+        {
+        }
 
-		/// <summary>
-		/// Number of the actual iteration.
-		/// </summary>
-		public int Iteration { get; private set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        public LayoutIterationEventArgs(int iteration, double statusInPercent, [NotNull] string message)
+            : this(iteration, statusInPercent, message, null, null, null)
+        {
+        }
 
-		/// <summary>
-		/// Message, textual representation of the status of the algorithm.
-		/// </summary>
-		public string Message { get; private set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        public LayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
+            : this(iteration, statusInPercent, string.Empty, verticesPositions, null, null)
+        {
+        }
 
-		public IDictionary<TVertex, Point> VerticesPositions { get; private set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <param name="vertexInfos">Extra vertices information.</param>
+        /// <param name="edgeInfos">Extra edges information.</param>
+        public LayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] IDictionary<TVertex, TVertexInfo> vertexInfos,
+            [CanBeNull] IDictionary<TEdge, TEdgeInfo> edgeInfos)
+            : base(iteration, statusInPercent, message, verticesPositions)
+        {
+            VerticesInfos = vertexInfos;
+            EdgesInfos = edgeInfos;
+        }
 
-		public virtual object GetVertexInfo( TVertex vertex )
-		{
-			return null;
-		}
+        /// <inheritdoc />
+        public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; }
 
-		public virtual object GetEdgeInfo( TEdge edge )
-		{
-			return null;
-		}
-	}
+        /// <inheritdoc />
+        public IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; }
+
+        /// <inheritdoc />
+        public sealed override object GetVertexInfo(TVertex vertex)
+        {
+            if (vertex == null)
+                throw new ArgumentNullException(nameof(vertex));
+            if (VerticesInfos != null && VerticesInfos.TryGetValue(vertex, out TVertexInfo info))
+                return info;
+            return null;
+        }
+
+        /// <inheritdoc />
+        public sealed override object GetEdgeInfo(TEdge edge)
+        {
+            if (edge == null)
+                throw new ArgumentNullException(nameof(edge));
+            if (EdgesInfos != null && EdgesInfos.TryGetValue(edge, out TEdgeInfo info))
+                return info;
+            return null;
+        }
+    }
 }

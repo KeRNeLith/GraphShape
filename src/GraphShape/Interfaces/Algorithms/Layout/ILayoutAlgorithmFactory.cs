@@ -11,7 +11,6 @@ namespace GraphShape.Algorithms.Layout
     /// <typeparam name="TEdge">Edge type.</typeparam>
     /// <typeparam name="TGraph">Graph type.</typeparam>
     public interface ILayoutAlgorithmFactory<TVertex, TEdge, TGraph>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
     {
@@ -33,7 +32,7 @@ namespace GraphShape.Algorithms.Layout
         ILayoutAlgorithm<TVertex, TEdge, TGraph> CreateAlgorithm(
             [NotNull] string algorithmType,
             [NotNull] ILayoutContext<TVertex, TEdge, TGraph> context,
-            [NotNull] ILayoutParameters parameters);
+            [CanBeNull] ILayoutParameters parameters);
 
         /// <summary>
         /// Creates algorithm parameters for an algorithm of given <paramref name="algorithmType"/>

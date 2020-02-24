@@ -7,8 +7,7 @@ using System.Windows;
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
 	public partial class LinLogLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, LinLogLayoutParameters>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
+        where TEdge : IEdge<TVertex>
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
 		#region Constructors

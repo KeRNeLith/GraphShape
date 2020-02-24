@@ -37,6 +37,9 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
   </PropertyGroup>
 
   <!-- Targets defines -->
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
     <AssemblyTitle>GraphShape .NET 4.0</AssemblyTitle>
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>

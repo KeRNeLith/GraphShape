@@ -116,8 +116,6 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
             Assert.Throws<ArgumentNullException>(
                 () => factory.CreateAlgorithm(null, context, null));
             Assert.Throws<ArgumentNullException>(
-                () => factory.CreateAlgorithm(null, null, new OverlapRemovalParameters()));
-            Assert.Throws<ArgumentNullException>(
                 () => factory.CreateAlgorithm(string.Empty, context, null));
             Assert.Throws<ArgumentNullException>(
                 () => factory.CreateAlgorithm(string.Empty, null, new OverlapRemovalParameters()));

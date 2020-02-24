@@ -19,8 +19,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         readonly IList<Layer> layers = new List<Layer>();
         int direction;
 
-        public SimpleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, SimpleTreeLayoutParameters parameters )
-            : base( visitedGraph, vertexPositions, parameters )
+        public SimpleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions, IDictionary<TVertex, Size> vertexSizes, SimpleTreeLayoutParameters parameters )
+            : base( visitedGraph, verticesPositions, parameters )
         {
             //Contract.Requires( vertexSizes != null );
             //Contract.Requires( visitedGraph.Vertices.All( v => vertexSizes.ContainsKey( v ) ) );

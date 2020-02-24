@@ -6,7 +6,6 @@ using System.Windows;
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     public class FRLayoutAlgorithm<Vertex, Edge, Graph> : ParameterizedLayoutAlgorithmBase<Vertex, Edge, Graph, FRLayoutParametersBase>
-        where Vertex : class
         where Edge : IEdge<Vertex>
         where Graph : IVertexAndEdgeListGraph<Vertex, Edge>
     {
@@ -27,8 +26,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         public FRLayoutAlgorithm(Graph visitedGraph)
             : base(visitedGraph) { }
 
-        public FRLayoutAlgorithm(Graph visitedGraph, IDictionary<Vertex, Point> vertexPositions, FRLayoutParametersBase parameters)
-            : base(visitedGraph, vertexPositions, parameters) { }
+        public FRLayoutAlgorithm(Graph visitedGraph, IDictionary<Vertex, Point> verticesPositions, FRLayoutParametersBase parameters)
+            : base(visitedGraph, verticesPositions, parameters) { }
         #endregion
 
         /// <summary>

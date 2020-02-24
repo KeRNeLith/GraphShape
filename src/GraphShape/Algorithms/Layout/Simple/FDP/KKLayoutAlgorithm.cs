@@ -9,7 +9,6 @@ using GraphShape.Utils;
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     public class KKLayoutAlgorithm<Vertex, Edge, Graph> : DefaultParameterizedLayoutAlgorithmBase<Vertex, Edge, Graph, KKLayoutParameters>
-        where Vertex : class
         where Edge : IEdge<Vertex>
         where Graph : IBidirectionalGraph<Vertex, Edge>
     {
@@ -37,9 +36,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         public KKLayoutAlgorithm( Graph visitedGraph, KKLayoutParameters oldParameters )
             : this( visitedGraph, null, oldParameters ) { }
 
-        public KKLayoutAlgorithm( Graph visitedGraph, IDictionary<Vertex, Point> vertexPositions,
+        public KKLayoutAlgorithm( Graph visitedGraph, IDictionary<Vertex, Point> verticesPositions,
                                   KKLayoutParameters oldParameters )
-            : base( visitedGraph, vertexPositions, oldParameters ) { }
+            : base( visitedGraph, verticesPositions, oldParameters ) { }
         #endregion
 
         protected override void InternalCompute()

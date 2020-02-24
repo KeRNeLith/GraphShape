@@ -11,7 +11,6 @@ namespace GraphShape.Algorithms.Layout
     /// <typeparam name="TEdge">Edge type.</typeparam>
     public interface ILayoutInfoIterationEventArgs<TVertex, in TEdge>
         : ILayoutIterationEventArgs<TVertex>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
     {
         /// <summary>
@@ -38,7 +37,6 @@ namespace GraphShape.Algorithms.Layout
     /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
     public interface ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
         : ILayoutInfoIterationEventArgs<TVertex, TEdge>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
     {
         /// <summary>

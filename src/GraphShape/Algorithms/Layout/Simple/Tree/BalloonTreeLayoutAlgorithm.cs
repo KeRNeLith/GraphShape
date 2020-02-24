@@ -30,11 +30,11 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
 
 		public BalloonTreeLayoutAlgorithm(
 			TGraph visitedGraph,
-			IDictionary<TVertex, Point> vertexPositions,
+			IDictionary<TVertex, Point> verticesPositions,
 			IDictionary<TVertex, Size> vertexSizes,
 			BalloonTreeLayoutParameters oldParameters,
 			TVertex selectedVertex )
-			: base( visitedGraph, vertexPositions, oldParameters )
+			: base( visitedGraph, verticesPositions, oldParameters )
 		{
 			this.root = selectedVertex;
 			this.vertexSizes = vertexSizes;

@@ -12,7 +12,7 @@
 			set
 			{
 				width = value;
-				NotifyPropertyChanged("Width");
+                OnPropertyChanged();
 			}
 		}
 
@@ -26,7 +26,7 @@
 			set
 			{
 				height = value;
-				NotifyPropertyChanged("Height");
+                OnPropertyChanged();
 			}
 		}
 
@@ -40,7 +40,7 @@
 			set
 			{
 				maxIterations = value;
-				NotifyPropertyChanged("MaxIterations");
+                OnPropertyChanged();
 			}
 		}
 
@@ -51,7 +51,7 @@
 			set
 			{
 				_k = value;
-				NotifyPropertyChanged("K");
+                OnPropertyChanged();
 			}
 		}
 
@@ -67,7 +67,7 @@
 			set
 			{
 				adjustForGravity = value;
-				NotifyPropertyChanged("AdjustForGravity");
+                OnPropertyChanged();
 			}
 		}
 
@@ -78,7 +78,7 @@
 			set
 			{
 				exchangeVertices = value;
-				NotifyPropertyChanged("ExchangeVertices");
+                OnPropertyChanged();
 			}
 		}
 
@@ -92,7 +92,7 @@
 			set
 			{
 				lengthFactor = value;
-				NotifyPropertyChanged("LengthFactor");
+                OnPropertyChanged();
 			}
 		}
 
@@ -106,7 +106,7 @@
 			set
 			{
 				disconnectedMultiplier = value;
-				NotifyPropertyChanged("DisconnectedMultiplier");
+                OnPropertyChanged();
 			}
 		}
 	}

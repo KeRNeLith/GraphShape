@@ -6,7 +6,7 @@ using QuikGraph;
 namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
-    /// Represents a graph highlighting context.
+    /// Represents a graph layout context.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
@@ -18,7 +18,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Vertices positions.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         IDictionary<TVertex, Point> Positions { get; }
 
         /// <summary>

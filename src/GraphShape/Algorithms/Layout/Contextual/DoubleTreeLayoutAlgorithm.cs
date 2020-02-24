@@ -28,8 +28,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
             get { return new DoubleTreeLayoutParameters(); }
         }
 
-        public DoubleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, DoubleTreeLayoutParameters oldParameters, TVertex selectedVertex )
-            : base( visitedGraph, vertexPositions, oldParameters )
+        public DoubleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions, IDictionary<TVertex, Size> vertexSizes, DoubleTreeLayoutParameters oldParameters, TVertex selectedVertex )
+            : base( visitedGraph, verticesPositions, oldParameters )
         {
             root = selectedVertex;
             this.vertexSizes = ( vertexSizes ?? new Dictionary<TVertex, Size>() );
@@ -53,7 +53,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
             graph1.AddVertexRange( side1 );
             foreach ( var v in side1 )
             {
-                vertexInfos[v] = DoubleTreeVertexType.Backward;
+                VerticesInfos[v] = DoubleTreeVertexType.Backward;
                 foreach ( var e in VisitedGraph.InEdges( v ) )
                 {
                     if ( !side1.Contains( e.Source ) || e.Source.Equals( e.Target ) )
@@ -71,7 +71,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
             graph2.AddVertexRange( side2 );
             foreach ( var v in side2 )
             {
-                vertexInfos[v] = DoubleTreeVertexType.Forward;
+                VerticesInfos[v] = DoubleTreeVertexType.Forward;
                 foreach ( var e in VisitedGraph.OutEdges( v ) )
                 {
                     if ( !side2.Contains( e.Target ) || e.Source.Equals( e.Target ) )
@@ -82,7 +82,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 }
             }
 
-            vertexInfos[root] = DoubleTreeVertexType.Center;
+            VerticesInfos[root] = DoubleTreeVertexType.Center;
             #endregion
 
             LayoutDirection side2Direction = Parameters.Direction;

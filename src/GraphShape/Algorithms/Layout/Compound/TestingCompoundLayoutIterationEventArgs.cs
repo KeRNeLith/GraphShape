@@ -20,11 +20,11 @@ namespace GraphShape.Algorithms.Layout.Compound
             int iteration, 
             double statusInPercent, 
             string message, 
-            IDictionary<TVertex, Point> vertexPositions, 
+            IDictionary<TVertex, Point> verticesPositions, 
             IDictionary<TVertex, Size> innerCanvasSizes,
             IDictionary<TVertex, TVertexInfo> vertexInfos,
             Point gravitationCenter) 
-            : base(iteration, statusInPercent, message, vertexPositions, innerCanvasSizes)
+            : base(iteration, statusInPercent, message, verticesPositions, innerCanvasSizes)
         {
             this.vertexInfos = vertexInfos;
             this.GravitationCenter = gravitationCenter;

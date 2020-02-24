@@ -219,11 +219,11 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             positionVector.Normalize();
 
             //get the clipping points
-            var c_u = LayoutUtil.GetClippingPoint(uSize, uPos, vPos);
-            var c_v = LayoutUtil.GetClippingPoint(vSize, vPos, uPos);
+            var c_u = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
+            var c_v = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
             Vector F = (c_u - c_v);
-            bool isSameDirection = LayoutUtil.IsSameDirection(positionVector, F);
+            bool isSameDirection = LayoutUtils.IsSameDirection(positionVector, F);
             double length = 0;
             if (isSameDirection)
                 length = F.Length - idealLength;
@@ -252,11 +252,11 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             }
             positionVector.Normalize();
 
-            var c_u = LayoutUtil.GetClippingPoint(uSize, uPos, vPos);
-            var c_v = LayoutUtil.GetClippingPoint(vSize, vPos, uPos);
+            var c_u = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
+            var c_v = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
             var F = c_u - c_v;
-            var isSameDirection = LayoutUtil.IsSameDirection(positionVector, F);
+            var isSameDirection = LayoutUtils.IsSameDirection(positionVector, F);
             var Fr = new Vector();
 
             if (isSameDirection && F.Length > repulsionRange)

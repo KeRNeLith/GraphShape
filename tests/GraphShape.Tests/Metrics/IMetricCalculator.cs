@@ -12,7 +12,7 @@ namespace Palesz.QuickGraph.Test.Metrics
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
 		/*
-		 * TGraph graph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSize, IDictionary<TEdge, Point[]> edgeRoutes
+		 * TGraph graph, IDictionary<TVertex, Point> verticesPositions, IDictionary<TVertex, Size> vertexSize, IDictionary<TEdge, Point[]> edgeRoutes
 		 */
 		void Calculate();
 	}

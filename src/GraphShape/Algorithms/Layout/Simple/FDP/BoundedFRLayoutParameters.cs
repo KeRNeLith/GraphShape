@@ -24,7 +24,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             {
                 _width = value;
                 UpdateParameters();
-                NotifyPropertyChanged("Width");
+                OnPropertyChanged();
             }
         }
 
@@ -38,7 +38,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             {
                 _height = value;
                 UpdateParameters();
-                NotifyPropertyChanged("Height");
+                OnPropertyChanged();
             }
         }
 
@@ -61,7 +61,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         protected override void UpdateParameters()
         {
             _k = Math.Sqrt(_width * Height / VertexCount);
-            NotifyPropertyChanged("K");
+            OnPropertyChanged(nameof(K));
             base.UpdateParameters();
         }
 

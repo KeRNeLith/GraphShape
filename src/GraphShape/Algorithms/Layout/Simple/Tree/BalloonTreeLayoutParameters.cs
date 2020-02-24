@@ -18,7 +18,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
 				if ( value != minRadius )
 				{
 					minRadius = value;
-					NotifyPropertyChanged( "MinRadius" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -32,7 +32,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
 				if ( value != border )
 				{
 					border = value;
-					NotifyPropertyChanged( "Border" );
+					OnPropertyChanged();
 				}
 			}
 		}

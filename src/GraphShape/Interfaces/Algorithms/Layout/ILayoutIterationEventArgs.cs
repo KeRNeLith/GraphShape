@@ -34,7 +34,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Vertices positions associations.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         IDictionary<TVertex, Point> VerticesPositions { get; }
     }
 }

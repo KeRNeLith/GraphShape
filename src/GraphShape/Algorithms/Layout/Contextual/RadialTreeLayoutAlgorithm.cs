@@ -14,10 +14,10 @@ namespace GraphShape.Algorithms.Layout.Contextual
 
 		public RadialTreeLayoutAlgorithm(
 			TGraph visitedGraph,
-			IDictionary<TVertex, Point> vertexPositions,
+			IDictionary<TVertex, Point> verticesPositions,
 			RadialTreeLayoutParameters oldParameters,
 			TVertex selectedVertex )
-			: base( visitedGraph, vertexPositions, oldParameters )
+			: base( visitedGraph, verticesPositions, oldParameters )
 		{
 			this.root = selectedVertex;
 		}

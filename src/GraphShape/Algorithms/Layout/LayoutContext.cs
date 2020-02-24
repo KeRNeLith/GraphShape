@@ -1,27 +1,49 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using QuikGraph;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout
 {
+    /// <summary>
+    /// Graph layout context.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
     public class LayoutContext<TVertex, TEdge, TGraph> : ILayoutContext<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
-        public IDictionary<TVertex, Point> Positions { get; private set; }
+        /// <inheritdoc />
+        public IDictionary<TVertex, Point> Positions { get; }
 
-        public IDictionary<TVertex, Size> Sizes { get; private set; }
+        /// <inheritdoc />
+        public IDictionary<TVertex, Size> Sizes { get; }
 
-        public TGraph Graph { get; private set; }
+        /// <inheritdoc />
+        public TGraph Graph { get; }
 
-        public LayoutMode Mode { get; private set; }
+        /// <inheritdoc />
+        public LayoutMode Mode { get; }
 
-        public LayoutContext( TGraph graph, IDictionary<TVertex, Point> positions, IDictionary<TVertex, Size> sizes, LayoutMode mode )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LayoutContext{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="graph">Graph to layout.</param>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="sizes">Vertices sizes.</param>
+        /// <param name="mode">Layout mode.</param>
+        public LayoutContext(
+            TGraph graph,
+            [CanBeNull] IDictionary<TVertex, Point> positions,
+            [NotNull] IDictionary<TVertex, Size> sizes,
+            LayoutMode mode)
         {
             Graph = graph;
             Positions = positions;
-            Sizes = sizes;
+            Sizes = sizes ?? throw new ArgumentNullException(nameof(sizes));
             Mode = mode;
         }
     }

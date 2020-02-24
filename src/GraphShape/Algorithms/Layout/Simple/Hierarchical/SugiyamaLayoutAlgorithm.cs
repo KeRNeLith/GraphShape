@@ -45,10 +45,10 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         public SugiyamaLayoutAlgorithm(
             TGraph visitedGraph,
             IDictionary<TVertex, Size> vertexSizes,
-            IDictionary<TVertex, Point> vertexPositions,
+            IDictionary<TVertex, Point> verticesPositions,
             SugiyamaLayoutParameters parameters,
             Func<TEdge, EdgeTypes> edgePredicate )
-            : base( visitedGraph, vertexPositions, parameters )
+            : base( visitedGraph, verticesPositions, parameters )
         {
             _edgePredicate = edgePredicate;
             EdgeRoutes = new Dictionary<TEdge, Point[]>();

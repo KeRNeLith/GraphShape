@@ -9,14 +9,13 @@ using QuikGraph;
 namespace GraphShape.Algorithms.Layout.Simple.Circular
 {
     public class CircularLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, CircularLayoutParameters>
-        where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
         readonly IDictionary<TVertex, Size> sizes;
 
-        public CircularLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, CircularLayoutParameters parameters )
-            : base( visitedGraph, vertexPositions, parameters )
+        public CircularLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions, IDictionary<TVertex, Size> vertexSizes, CircularLayoutParameters parameters )
+            : base( visitedGraph, verticesPositions, parameters )
         {
             //Contract.Requires( vertexSizes != null );
             //Contract.Requires( visitedGraph.Vertices.All( v => vertexSizes.ContainsKey( v ) ) );

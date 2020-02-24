@@ -10,7 +10,7 @@
 			set
 			{
 				attractionExponent = value;
-				NotifyPropertyChanged("AttractionExponent");
+                OnPropertyChanged();
 			}
 		}
 
@@ -22,7 +22,7 @@
 			set
 			{
 				repulsiveExponent = value;
-				NotifyPropertyChanged("RepulsiveExponent");
+                OnPropertyChanged();
 			}
 		}
 
@@ -34,7 +34,7 @@
 			set
 			{
 				gravitationMultiplier = value;
-				NotifyPropertyChanged("GravitationMultiplier");
+                OnPropertyChanged();
 			}
 		}
 
@@ -46,7 +46,7 @@
 			set
 			{
 				iterationCount = value;
-				NotifyPropertyChanged("IterationCount");
+                OnPropertyChanged();
 			}
 		}
 	}

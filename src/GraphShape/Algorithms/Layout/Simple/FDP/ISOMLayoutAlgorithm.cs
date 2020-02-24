@@ -7,8 +7,7 @@ using QuikGraph;
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
 	public class ISOMLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, ISOMLayoutParameters>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
+        where TEdge : IEdge<TVertex>
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
 		#region Private fields
@@ -28,9 +27,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 			Init( oldParameters );
 		}
 
-		public ISOMLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
+		public ISOMLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions,
 		                            ISOMLayoutParameters oldParameters )
-			: base( visitedGraph, vertexPositions, oldParameters )
+			: base( visitedGraph, verticesPositions, oldParameters )
 		{
 			Init( oldParameters );
 		}

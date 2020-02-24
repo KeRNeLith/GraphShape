@@ -52,7 +52,7 @@
 				if ( _horizontalgap != value )
 				{
 					_horizontalgap = value;
-					NotifyPropertyChanged( "HorizontalGap" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -65,7 +65,7 @@
 				if ( _maxWidth != value )
 				{
 					_maxWidth = value;
-					NotifyPropertyChanged( "MaxWidth" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -78,7 +78,7 @@
 				if ( _baryCenteringByPosition != value )
 				{
 					_baryCenteringByPosition = value;
-					NotifyPropertyChanged( "BaryCenteringByPosition" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -94,7 +94,7 @@
 				if ( _verticalgap != value )
 				{
 					_verticalgap = value;
-					NotifyPropertyChanged( "VerticalGap" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -111,7 +111,7 @@
 				if ( _dirty != value )
 				{
 					_dirty = value;
-					NotifyPropertyChanged( "DirtyRound" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -127,7 +127,7 @@
 				if ( _phase1IterationCount != value )
 				{
 					_phase1IterationCount = value;
-					NotifyPropertyChanged( "Phase1IterationCount" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -143,7 +143,7 @@
 				if ( _phase2IterationCount != value )
 				{
 					_phase2IterationCount = value;
-					NotifyPropertyChanged( "Phase2IterationCount" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -156,7 +156,7 @@
 				if ( _minimizeHierarchicalEdgeLong != value )
 				{
 					_minimizeHierarchicalEdgeLong = value;
-					NotifyPropertyChanged( "MinimizeHierarchicalEdgeLong" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -169,7 +169,7 @@
 				if ( value != _positionCalculationMethod )
 				{
 					_positionCalculationMethod = value;
-					NotifyPropertyChanged( "PositionCalculationMethod" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -188,7 +188,7 @@
 				if ( _simplify != value )
 				{
 					_simplify = value;
-					NotifyPropertyChanged( "Simplify" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -204,7 +204,7 @@
 				if ( _promptingConstraint != value )
 				{
 					_promptingConstraint = value;
-					NotifyPropertyChanged( "Prompting" );
+                    OnPropertyChanged();
 				}
 			}
 		}

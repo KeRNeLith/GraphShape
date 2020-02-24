@@ -49,7 +49,7 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
         {
             Constructor_Test<double, OverlapRemovalParameters, FSAAlgorithm<double, OverlapRemovalParameters>>(
                 (rectangles, parameters) => new FSAAlgorithm<double, OverlapRemovalParameters>(rectangles, parameters));
-            
+
             var rects = new Dictionary<double, Rect>();
             var param = new OverlapRemovalParameters();
             var algorithm = new FSAAlgorithm<double>(rects, param);

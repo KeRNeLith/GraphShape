@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using GraphShape.Algorithms.Layout;
+using GraphShape.Utils;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace GraphShape.Tests.Algorithms
@@ -13,238 +14,271 @@ namespace GraphShape.Tests.Algorithms
     [TestFixture]
     internal class LayoutUtilsTests
     {
-        [Test]
-        public void GetClippingPoint_Target_Outside_Source_Rect_ClippingPoint_OnCorner_Test()
+        [NotNull, ItemNotNull]
+        private static IEnumerable<TestCaseData> FillWithRandomPositionsTestCases
         {
-            Size size = new Size(10,10);
-            Point s = new Point(5,5);
-            Point t = new Point(20,20);
-            Point expected = new Point(10,10);
-
-            Point actual = LayoutUtil.GetClippingPoint(size, s, t);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void GetClippingPoint_Target_Outside_Source_Rect_ClippingPoint_OnBottomSide_Test()
-        {
-            Size size = new Size(10, 10);
-            Point s = new Point(5, 5);
-            Point t = new Point(20, 30);
-            Point expected = new Point(8, 10);
-
-            Point actual = LayoutUtil.GetClippingPoint(size, s, t);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void GetClippingPoint_Target_Inside_Source_Rect_ClippingPoint_OnBottomSide_Test()
-        {
-            Size size = new Size(10, 10);
-            Point s = new Point(5, 5);
-            Point t = new Point(5.3, 5.5);
-            Point expected = new Point(8, 10);
-
-            Point actual = LayoutUtil.GetClippingPoint(size, s, t);
-            double epsilon = 0.0000001;
-            Assert.IsTrue(Math.Abs(expected.X - actual.X) < epsilon);
-            Assert.IsTrue(Math.Abs(expected.Y - actual.Y) < epsilon);
-        }
-
-        /// <summary>
-        ///A test for BiLayerCrossCount
-        ///</summary>
-        [Test]
-        public void BiLayerCrossCountTest()
-        {
-            IEnumerable<Pair> pairs = new Pair[] { 
-			                                     	new Pair() { First = 0, Second = 1, Weight = 2},
-			                                     	new Pair() { First = 0, Second = 2, Weight = 3},
-			                                     	new Pair() { First = 3, Second = 0, Weight = 2}, 
-                                                    new Pair() { First = 3, Second = 1, Weight = 4},
-                                                    new Pair() { First = 5, Second = 0, Weight = 3}
-			                                     };
-            int firstLayerVertexCount = 26;
-            int secondLayerVertexCount = 3;
-            int expected = 49;
-            int actual = LayoutUtil.BiLayerCrossCount(pairs, firstLayerVertexCount, secondLayerVertexCount);
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///A test for BiLayerCrossCount
-        ///</summary>
-        [Test]
-        public void Markable_BiLayerCrossCountTest()
-        {
-            CrossCounterPair[] pairs = new CrossCounterPair[] { 
-			                                     	new CrossCounterPair() { First = 0, Second = 1, Weight = 1, Markable = true},
-			                                     	new CrossCounterPair() { First = 1, Second = 0, Weight = 1, Markable = false},
-			                                     	new CrossCounterPair() { First = 3, Second = 1, Weight = 1, Markable = true}, 
-                                                    new CrossCounterPair() { First = 3, Second = 2, Weight = 1, Markable = true},
-                                                    new CrossCounterPair() { First = 3, Second = 3, Weight = 1, Markable = true},
-                                                    new CrossCounterPair() { First = 4, Second = 2, Weight = 1, Markable = false},
-                                                    new CrossCounterPair() { First = 2, Second = 2, Weight = 1, Markable = false}
-			                                     };
-            int firstLayerVertexCount = 5;
-            int secondLayerVertexCount = 5;
-            int expected = 3;
-            int actual = BiLayerCrossCount(pairs, firstLayerVertexCount, secondLayerVertexCount);
-            Assert.AreEqual(expected, actual);
-
-            foreach (var pair in pairs)
+            [UsedImplicitly]
+            get
             {
-                Debug.WriteLine(pair.First + " " + pair.Second + " " + pair.Marked);
-            }
-
-            Assert.IsTrue(pairs[0].Marked);
-            Assert.IsFalse(pairs[1].Marked);
-            Assert.IsTrue(pairs[2].Marked);
-            Assert.IsFalse(pairs[3].Marked);
-            Assert.IsTrue(pairs[4].Marked);
-            Assert.IsFalse(pairs[5].Marked);
-            Assert.IsFalse(pairs[5].Marked);
-        }
-
-        private class CrossCounterPair : Pair
-        {
-            public bool Markable = false;
-            public bool Marked = false;
-        }
-
-
-        private class CrossCounterTreeNode
-        {
-            public int Accumulator;
-            public bool InnerSegmentMarker;
-            public readonly Queue<CrossCounterPair> NonInnerSegmentQueue = new Queue<CrossCounterPair>();
-        }
-
-        private static int BiLayerCrossCount(IEnumerable<CrossCounterPair> pairs, int firstLayerVertexCount, int secondLayerVertexCount)
-        {
-            if (pairs == null)
-                return 0;
-
-            //radix sort of the pair, order by First asc, Second asc
-
-            #region Sort by Second ASC
-            var radixBySecond = new List<CrossCounterPair>[secondLayerVertexCount];
-            List<CrossCounterPair> r;
-            int pairCount = 0;
-            foreach (var pair in pairs)
-            {
-                //get the radix where the pair should be inserted
-                r = radixBySecond[pair.Second];
-                if (r == null)
-                {
-                    r = new List<CrossCounterPair>();
-                    radixBySecond[pair.Second] = r;
-                }
-                r.Add(pair);
-                pairCount++;
-            }
-            #endregion
-
-            #region Sort By First ASC
-            var radixByFirst = new List<CrossCounterPair>[firstLayerVertexCount];
-            foreach (var list in radixBySecond)
-            {
-                if (list == null)
-                    continue;
-
-                foreach (var pair in list)
-                {
-                    //get the radix where the pair should be inserted
-                    r = radixByFirst[pair.First];
-                    if (r == null)
+                yield return new TestCaseData(
+                    15, 15, 0, 0,
+                    new[] { 1, 2, 3, 4, 5 },
+                    new Dictionary<int, Point>
                     {
-                        r = new List<CrossCounterPair>();
-                        radixByFirst[pair.First] = r;
-                    }
-                    r.Add(pair);
-                }
+                        [1] = new Point(1, 2),
+                        [2] = new Point(2, 2),
+                        [3] = new Point(3, 4),
+                        [4] = new Point(7, 15),
+                        [5] = new Point(16, 9)
+                    });
+
+                yield return new TestCaseData(
+                    15, 15, 0, 0,
+                    new[] { 1, 2, 3, 4, 5 },
+                    new Dictionary<int, Point>());
+
+                yield return new TestCaseData(
+                    15, 15, 0, 0,
+                    new[] { 1, 2, 3, 4, 5 },
+                    new Dictionary<int, Point>
+                    {
+                        [1] = new Point(1, 2),
+                        [4] = new Point(7, 15),
+                        [5] = new Point(16, 9)
+                    });
+
+                yield return new TestCaseData(
+                    15, 25, 0, 0,
+                    new[] { 1, 2, 3, 4, 5 },
+                    new Dictionary<int, Point>
+                    {
+                        [1] = new Point(1, 2),
+                        [5] = new Point(16, 9)
+                    });
+
+                yield return new TestCaseData(
+                    15, 25, 5, 7,
+                    new[] { 1, 2, 3, 4, 5 },
+                    new Dictionary<int, Point>
+                    {
+                        [1] = new Point(1, 2),
+                        [5] = new Point(16, 9)
+                    });
             }
-            #endregion
+        }
 
-            //
-            // Build the accumulator tree
-            //
-            int firstIndex = 1;
-            while (firstIndex < pairCount)
-                firstIndex *= 2;
-            int treeSize = 2 * firstIndex - 1;
-            firstIndex -= 1;
-            CrossCounterTreeNode[] tree = new CrossCounterTreeNode[treeSize];
-            for (int i = 0; i < treeSize; i++)
-                tree[i] = new CrossCounterTreeNode();
+        [TestCaseSource(nameof(FillWithRandomPositionsTestCases))]
+        public void FillWithRandomPositions(
+            double width,
+            double height,
+            double translateX,
+            double translateY,
+            [NotNull] IEnumerable<int> vertices,
+            [NotNull] IDictionary<int, Point> verticesPositions)
+        {
+            int[] verticesArray = vertices as int[] ?? vertices.ToArray();
+            int[] initialVertices = verticesPositions.Keys.ToArray();
+            LayoutUtils.FillWithRandomPositions(
+                width,
+                height,
+                translateX,
+                translateY,
+                verticesArray,
+                verticesPositions);
 
-            //
-            // Count the crossings
-            //
-            int crossCount = 0;
-            int index;
-            foreach (var list in radixByFirst)
+            Assert.GreaterOrEqual(verticesPositions.Count, verticesArray.Length);
+            foreach (int vertex in verticesArray)
             {
-                if (list == null)
-                    continue;
-
-                foreach (var pair in list)
-                {
-                    index = pair.Second + firstIndex;
-                    tree[index].Accumulator += pair.Weight;
-                    switch (pair.Markable)
-                    {
-                        case false:
-                            tree[index].InnerSegmentMarker = true;
-                            break;
-                        case true:
-                            tree[index].NonInnerSegmentQueue.Enqueue(pair);
-                            break;
-                        default:
-                            break;
-                    }
-                    while (index > 0)
-                    {
-                        if (index % 2 > 0)
-                        {
-                            crossCount += tree[index + 1].Accumulator * pair.Weight;
-                            switch (pair.Markable)
-                            {
-                                case false:
-                                    var queue = tree[index + 1].NonInnerSegmentQueue;
-                                    while (queue.Count > 0)
-                                    {
-                                        queue.Dequeue().Marked = true;
-                                    }
-                                    break;
-                                case true:
-                                    if (tree[index+1].InnerSegmentMarker)
-                                    {
-                                        pair.Marked = true;
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        index = (index - 1) / 2;
-                        tree[index].Accumulator += pair.Weight;
-                        switch (pair.Markable)
-                        {
-                            case false:
-                                tree[index].InnerSegmentMarker = true;
-                                break;
-                            case true:
-                                tree[index].NonInnerSegmentQueue.Enqueue(pair);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
+                CollectionAssert.Contains(verticesPositions.Keys, vertex);
             }
 
-            return crossCount;
+            // Only on added vertices positions
+            foreach (int vertex in verticesArray.Except(initialVertices))
+            {
+                Assert.GreaterOrEqual(verticesPositions[vertex].X, translateX);
+                Assert.LessOrEqual(verticesPositions[vertex].X, width + translateX);
+
+                Assert.GreaterOrEqual(verticesPositions[vertex].Y, translateY);
+                Assert.LessOrEqual(verticesPositions[vertex].Y, height + translateY);
+            }
+        }
+
+        [NotNull, ItemNotNull]
+        private static IEnumerable<TestCaseData> NormalizePositionsTestCases
+        {
+            [UsedImplicitly]
+            get
+            {
+                yield return new TestCaseData(null)
+                {
+                    ExpectedResult = null
+                };
+
+                yield return new TestCaseData(new Dictionary<int, Point>())
+                {
+                    ExpectedResult = new Dictionary<int, Point>()
+                };
+
+                yield return new TestCaseData(
+                    new Dictionary<int, Point>
+                    {
+                        [1] = new Point(5, 2),
+                        [2] = new Point(9, 1),
+                        [3] = new Point(3, 4),
+                        [4] = new Point(7, 15),
+                        [5] = new Point(16, 9)
+                    })
+                {
+                    ExpectedResult = new Dictionary<int, Point>
+                    {
+                        [1] = new Point(2, 1),
+                        [2] = new Point(6, 0),
+                        [3] = new Point(0, 3),
+                        [4] = new Point(4, 14),
+                        [5] = new Point(13, 8)
+                    }
+                };
+
+                yield return new TestCaseData(
+                    new Dictionary<int, Point>
+                    {
+                        [1] = new Point(7, 6),
+                        [2] = new Point(8, 6),
+                        [4] = new Point(5, 5),
+                        [5] = new Point(4, 7),
+                        [10] = new Point(12, 4)
+                    })
+                {
+                    ExpectedResult = new Dictionary<int, Point>
+                    {
+                        [1] = new Point(3, 2),
+                        [2] = new Point(4, 2),
+                        [4] = new Point(1, 1),
+                        [5] = new Point(0, 3),
+                        [10] = new Point(8, 0)
+                    }
+                };
+            }
+        }
+
+        [NotNull]
+        [TestCaseSource(nameof(NormalizePositionsTestCases))]
+        public IDictionary<int, Point> NormalizePositions([NotNull] IDictionary<int, Point> verticesPositions)
+        {
+            LayoutUtils.NormalizePositions(verticesPositions);
+            return verticesPositions;
+        }
+
+        [NotNull, ItemNotNull]
+        private static IEnumerable<TestCaseData> IsSameDirectionTestCases
+        {
+            [UsedImplicitly]
+            get
+            {
+                yield return new TestCaseData(new Vector(), new Vector())
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(10, 5), new Vector(10, 5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(-10, 5), new Vector(-10, 5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(15, 2), new Vector(10, 5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(-15, 2), new Vector(-10, 5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(15, -2), new Vector(10, -5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(-1, -2), new Vector(-10, -5))
+                {
+                    ExpectedResult = true
+                };
+
+                yield return new TestCaseData(new Vector(15, -2), new Vector(10, 0))
+                {
+                    ExpectedResult = false
+                };
+
+                yield return new TestCaseData(new Vector(15, -2), new Vector(10, 1))
+                {
+                    ExpectedResult = false
+                };
+
+                yield return new TestCaseData(new Vector(1, 1), new Vector(-1, -1))
+                {
+                    ExpectedResult = false
+                };
+
+                yield return new TestCaseData(new Vector(-1, 1), new Vector(-1, -1))
+                {
+                    ExpectedResult = false
+                };
+            }
+        }
+
+        [TestCaseSource(nameof(IsSameDirectionTestCases))]
+        public bool IsSameDirection(Vector a, Vector b)
+        {
+            return LayoutUtils.IsSameDirection(a, b);
+        }
+
+        [NotNull, ItemNotNull]
+        private static IEnumerable<TestCaseData> GetClippingPointTestCases
+        {
+            [UsedImplicitly]
+            get
+            {
+                // Target outside source rect clipping point on corner
+                yield return new TestCaseData(new Size(10, 10), new Point(5, 5), new Point(20, 20), new Point(10, 10));
+
+                // Target outside source rect clipping point on top side
+                yield return new TestCaseData(new Size(20, 10), new Point(5, 5), new Point(20, 20), new Point(10, 10));
+
+                // Target outside source rect clipping point on right side
+                yield return new TestCaseData(new Size(4, 2), new Point(2, 3), new Point(6, 4), new Point(4, 3.5));
+
+                // Target outside source rect clipping point on left side
+                yield return new TestCaseData(new Size(2, 4), new Point(-1, 2), new Point(-5, 6), new Point(-2, 3));
+
+                // Target outside source rect clipping point on bottom side
+                yield return new TestCaseData(new Size(10, 10), new Point(5, 5), new Point(20, 30), new Point(8, 10));
+
+                // Target inside source rect clipping point on bottom side
+                yield return new TestCaseData(new Size(10, 10), new Point(5, 5), new Point(5.3, 5.5), new Point(8, 10));
+
+                // Target inside source rect clipping point on left side
+                yield return new TestCaseData(new Size(10, 10), new Point(2.5, 2.5), new Point(0, 0), new Point(-2.5, -2.5));
+
+                // Target inside source rect clipping point on top side
+                yield return new TestCaseData(new Size(4, 2), new Point(0, 0), new Point(1, 0.5), new Point(2, 1));
+
+                // Target on source rect clipping point on corner side
+                yield return new TestCaseData(new Size(2, 3), new Point(1, 3), new Point(2, 4), new Point(2, 4));
+            }
+        }
+
+        [TestCaseSource(nameof(GetClippingPointTestCases))]
+        public void GetClippingPoint(Size size, Point center, Point p, Point expected)
+        {
+            Point actual = LayoutUtils.GetClippingPoint(size, center, p);
+            Assert.IsTrue(MathUtils.NearEqual(actual.X, expected.X));
+            Assert.IsTrue(MathUtils.NearEqual(actual.Y, expected.Y));
         }
     }
 }

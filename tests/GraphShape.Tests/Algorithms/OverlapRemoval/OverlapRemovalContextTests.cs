@@ -17,7 +17,7 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
         {
             var rectangles = new Dictionary<int, Rect>();
             var context = new OverlapRemovalContext<int>(rectangles);
-            
+
             Assert.AreSame(rectangles, context.Rectangles);
 
             rectangles = new Dictionary<int, Rect>

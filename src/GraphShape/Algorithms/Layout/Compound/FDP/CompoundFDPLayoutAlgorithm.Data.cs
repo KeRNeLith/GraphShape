@@ -117,9 +117,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             IDictionary<TVertex, Size> vertexSizes,
             IDictionary<TVertex, Thickness> vertexBorders,
             IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            IDictionary<TVertex, Point> vertexPositions,
+            IDictionary<TVertex, Point> verticesPositions,
             CompoundFDPLayoutParameters oldParameters)
-            : base(visitedGraph, vertexPositions, oldParameters)
+            : base(visitedGraph, verticesPositions, oldParameters)
         {
             _vertexSizes = vertexSizes;
             _vertexBorders = vertexBorders;

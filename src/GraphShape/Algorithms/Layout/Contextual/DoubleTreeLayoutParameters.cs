@@ -20,7 +20,7 @@
 				if ( direction != value )
 				{
 					direction = value;
-					NotifyPropertyChanged( "Direction" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -37,7 +37,7 @@
 				if ( layerGap != value )
 				{
 					layerGap = value;
-					NotifyPropertyChanged( "LayerGap" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -54,7 +54,7 @@
 				if ( vertexGap != value )
 				{
 					vertexGap = value;
-					NotifyPropertyChanged( "VertexGap" );
+                    OnPropertyChanged();
 				}
 			}
 		}
@@ -72,7 +72,7 @@
 				if ( prioritizedTreeSide != value )
 				{
 					prioritizedTreeSide = value;
-					NotifyPropertyChanged( "PrioritizedTreeSide" );
+                    OnPropertyChanged();
 				}
 			}
 		}

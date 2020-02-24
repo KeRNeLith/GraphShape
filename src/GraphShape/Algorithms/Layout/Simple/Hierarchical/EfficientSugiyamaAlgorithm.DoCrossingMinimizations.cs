@@ -7,6 +7,7 @@ using System.Diagnostics.Contracts;
 using GraphShape;
 using System.Collections;
 using System.Diagnostics;
+using GraphShape.Utils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {

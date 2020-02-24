@@ -1,254 +1,322 @@
-using System;
 using System.Collections.Generic;
-using QuikGraph;
-using System.Linq;
 using System.Diagnostics;
 using System.Windows;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout
 {
-	public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParam> : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam>, ILayoutAlgorithm<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-		where TParam : class, ILayoutParameters
-	{
-		protected readonly IDictionary<TVertex, TVertexInfo> vertexInfos = new Dictionary<TVertex, TVertexInfo>();
-		protected readonly IDictionary<TEdge, TEdgeInfo> edgeInfos = new Dictionary<TEdge, TEdgeInfo>();
-
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph )
-			: base( visitedGraph, null, null ) { }
-
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
-		                                       TParam oldParameters )
-			: base( visitedGraph, vertexPositions, oldParameters )
-		{
-		}
-
-		#region ILayoutAlgorithm<TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo> Members
-
-		public IDictionary<TVertex, TVertexInfo> VerticesInfos
-		{
-			get { return vertexInfos; }
-		}
-
-		public IDictionary<TEdge, TEdgeInfo> EdgesInfos
-		{
-			get { return edgeInfos; }
-		}
-
-		protected override ILayoutIterationEventArgs<TVertex> CreateLayoutIterationEventArgs( int iteration, double statusInPercent, string message, IDictionary<TVertex, Point> vertexPositions )
-		{
-			return new LayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>( iteration, statusInPercent, message, vertexPositions, vertexInfos, edgeInfos );
-		}
-
-		public new event LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo> IterationEnded;
-
-		public override object GetVertexInfo( TVertex vertex )
-		{
-			TVertexInfo info;
-			if ( VerticesInfos.TryGetValue( vertex, out info ) )
-				return info;
-
-			return null;
-		}
-
-		public override object GetEdgeInfo( TEdge edge )
-		{
-			TEdgeInfo info;
-			if ( EdgesInfos.TryGetValue( edge, out info ) )
-				return info;
-
-			return null;
-		}
-
-		#endregion
-	}
-
     /// <summary>
-    /// Use this class as a base class for your layout algorithm 
-    /// if it's parameter class has a default contstructor.
+    /// Base class for all <see cref="ILayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
     /// </summary>
-    /// <typeparam name="TVertex">The type of the vertices.</typeparam>
-    /// <typeparam name="TEdge">The type of the edges.</typeparam>
-    /// <typeparam name="TGraph">The type of the graph.</typeparam>
-    /// <typeparam name="TParam">The type of the parameters. Must be based on the LayoutParametersBase.</typeparam>
-    public abstract class DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam> : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam>
-        where TVertex : class
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    /// <typeparam name="TParameters">Parameters type.</typeparam>
+    public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters>
+        : LayoutAlgorithmBase<TVertex, TEdge, TGraph>
+        , IParameterizedLayoutAlgorithm<TVertex, TEdge, TGraph, TParameters>
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-        where TParam : class, ILayoutParameters, new()
+        where TParameters : class, ILayoutParameters
     {
-        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph) 
+        /// <inheritdoc />
+        public TParameters Parameters { get; protected set; }
+
+        /// <inheritdoc />
+        public ILayoutParameters GetParameters()
+        {
+            return Parameters;
+        }
+
+        /// <summary>
+        /// Algorithm tracker.
+        /// </summary>
+        [NotNull]
+        public TraceSource TraceSource { get; protected set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        // ReSharper disable once NotNullMemberIsNotInitialized, Justification: Initialized in InitParameters
+        protected ParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
+            : this(visitedGraph, null, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        // ReSharper disable once NotNullMemberIsNotInitialized, Justification: Initialized in InitParameters
+        protected ParameterizedLayoutAlgorithmBase(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] TParameters oldParameters)
+            : base(visitedGraph, verticesPositions)
+        {
+            InitParameters(oldParameters);
+            TraceSource = new TraceSource("LayoutAlgorithm", SourceLevels.All);
+        }
+
+        #region Initializers
+
+        /// <summary>
+        /// Default algorithm parameters to use if no parameters provided at construction.
+        /// </summary>
+        protected abstract TParameters DefaultParameters { get; }
+
+        /// <summary>
+        /// Initializes the parameters (cloning or creating new parameter object with default values).
+        /// </summary>
+        /// <param name="oldParameters">Parameters from a previous layout. If it is null, the parameters will be set to the default ones.</param>
+        protected void InitParameters([CanBeNull] TParameters oldParameters)
+        {
+            if (oldParameters is null)
+            {
+                Parameters = DefaultParameters;
+            }
+            else
+            {
+                Parameters = (TParameters)oldParameters.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
+        /// It does NOT modify the position of the other vertices.
+        /// Bounding box:
+        /// x coordinates: <see cref="double.Epsilon"/> - <paramref name="width"/>
+        /// y coordinates: <see cref="double.Epsilon"/> - <paramref name="height"/>
+        /// </summary>
+        /// <param name="width">Width of the bounding box.</param>
+        /// <param name="height">Height of the bounding box.</param>
+        protected virtual void InitializeWithRandomPositions(double width, double height)
+        {
+            InitializeWithRandomPositions(width, height, 0, 0);
+        }
+
+        /// <summary>
+        /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
+        /// It does NOT modify the position of the other vertices.
+        /// Bounding box:
+        /// x coordinates: <see cref="double.Epsilon"/> - <paramref name="width"/>
+        /// y coordinates: <see cref="double.Epsilon"/> - <paramref name="height"/>
+        /// </summary>
+        /// <param name="width">Width of the bounding box.</param>
+        /// <param name="height">Height of the bounding box.</param>
+        /// <param name="translateX">Translates the generated x coordinate.</param>
+        /// <param name="translateY">Translates the generated y coordinate.</param>
+        protected virtual void InitializeWithRandomPositions(double width, double height, double translateX, double translateY)
+        {
+            LayoutUtils.FillWithRandomPositions(
+                width,
+                height,
+                translateX,
+                translateY,
+                VisitedGraph.Vertices,
+                VerticesPositions);
+        }
+
+        /// <summary>
+        /// Normalizes the vertices positions.
+        /// </summary>
+        protected virtual void NormalizePositions()
+        {
+            lock (SyncRoot)
+            {
+                LayoutUtils.NormalizePositions(VerticesPositions);
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Creates event arguments for <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph}.IterationEnded"/>.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <returns>A new instance of <see cref="ILayoutIterationEventArgs{TVertex}"/>.</returns>
+        [Pure]
+        [NotNull]
+        protected virtual ILayoutIterationEventArgs<TVertex> CreateLayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
+        {
+            return new LayoutIterationEventArgs<TVertex, TEdge>(iteration, statusInPercent, message, verticesPositions);
+        }
+
+        /// <summary>
+        /// Raises an <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph}.IterationEnded"/> event.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="normalizePositions">Indicates if given positions must be normalized.</param>
+        protected void OnIterationEnded(
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            bool normalizePositions)
+        {
+            // Copy the actual positions
+            IDictionary<TVertex, Point> vertexPositions;
+            lock (SyncRoot)
+            {
+                vertexPositions = new Dictionary<TVertex, Point>(VerticesPositions);
+            }
+
+            if (normalizePositions)
+                LayoutUtils.NormalizePositions(vertexPositions);
+
+            ILayoutIterationEventArgs<TVertex> args = CreateLayoutIterationEventArgs(
+                iteration,
+                statusInPercent,
+                message,
+                vertexPositions);
+            OnIterationEnded(args);
+        }
+    }
+
+    /// <summary>
+    /// Base class for all <see cref="ILayoutAlgorithm{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/>.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    /// <typeparam name="TParameters">Parameters type.</typeparam>
+    public abstract class DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters>
+        : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+        where TParameters : class, ILayoutParameters, new()
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        protected DefaultParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : base(visitedGraph)
         {
         }
 
-        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, TParam oldParameters) 
-            : base(visitedGraph, vertexPositions, oldParameters)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        protected DefaultParameterizedLayoutAlgorithmBase(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] TParameters oldParameters)
+            : base(visitedGraph, verticesPositions, oldParameters)
         {
         }
 
-        protected override TParam DefaultParameters
-        {
-            get { return new TParam(); }
-        }
+        /// <inheritdoc />
+        protected override TParameters DefaultParameters { get; } = new TParameters();
     }
 
-	/// <typeparam name="TVertex">Type of the vertices.</typeparam>
-	/// <typeparam name="TEdge">Type of the edges.</typeparam>
-	/// <typeparam name="TGraph">Type of the graph.</typeparam>
-	/// <typeparam name="TParam">Type of the parameters. Must be based on the LayoutParametersBase.</typeparam>
-	public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam> : LayoutAlgorithmBase<TVertex, TEdge, TGraph>, IParameterizedLayoutAlgorithm<TVertex, TEdge, TGraph, TParam>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-		where TParam : class, ILayoutParameters
-	{
-		#region Properties
-		/// <summary>
-		/// Parameters of the algorithm. For more information see <see cref="LayoutParametersBase"/>.
-		/// </summary>
-		public TParam Parameters { get; protected set; }
-		public ILayoutParameters GetParameters()
-		{
-			return Parameters;
-		}
-		public TraceSource TraceSource { get; protected set; }
-		#endregion
+    /// <summary>
+    /// Base class for all <see cref="ILayoutAlgorithm{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/>.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
+    /// <typeparam name="TParameters">Parameters type.</typeparam>
+    public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParameters>
+        : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters>
+        , ILayoutAlgorithm<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+        where TParameters : class, ILayoutParameters
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        protected ParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
+            : base(visitedGraph, null, null)
+        {
+        }
 
-		#region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo,TParameters}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        protected ParameterizedLayoutAlgorithmBase(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] TParameters oldParameters)
+            : base(visitedGraph, verticesPositions, oldParameters)
+        {
+        }
 
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph )
-			: this( visitedGraph, null, null ) { }
+        /// <inheritdoc />
+        /// <returns>A new instance of <see cref="ILayoutInfoIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/>.</returns>
+        protected override ILayoutIterationEventArgs<TVertex> CreateLayoutIterationEventArgs(
+            int iteration,
+            double statusInPercent,
+            string message,
+            IDictionary<TVertex, Point> verticesPositions)
+        {
+            return new LayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>(
+                iteration,
+                statusInPercent,
+                message,
+                verticesPositions,
+                VerticesInfos,
+                EdgesInfos);
+        }
 
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
-		                                       TParam oldParameters )
-			: base( visitedGraph, vertexPositions )
-		{
-			InitParameters( oldParameters );
-			TraceSource = new TraceSource( "LayoutAlgorithm", SourceLevels.All );
-		}
-		#endregion
+        #region ILayoutAlgorithm<TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo>
 
-		#region Initializers
+        /// <inheritdoc />
+        public event LayoutIterationEndedEventHandler<TVertex, TEdge, TVertexInfo, TEdgeInfo> InfoIterationEnded;
 
-        protected abstract TParam DefaultParameters { get; } 
+        /// <inheritdoc />
+        public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; } = new Dictionary<TVertex, TVertexInfo>();
 
-		/// <summary>
-		/// Initializes the parameters (cloning or creating new parameter object with default values).
-		/// </summary>
-		/// <param name="oldParameters">Parameters from a prevorious layout. If it is null, 
-		/// the parameters will be set to the default ones.</param>
-		protected void InitParameters( TParam oldParameters )
-		{
-            if (oldParameters == null)
-                Parameters = DefaultParameters;
-            else
-            {
-                Parameters = (TParam)oldParameters.Clone();
-            }
-		}
+        /// <inheritdoc />
+        public IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; } = new Dictionary<TEdge, TEdgeInfo>();
 
-		/// <summary>
-		/// Initializes the positions of the vertices. Assign a random position inside the 'bounding box' to the vertices without positions.
-		/// It does NOT modify the position of the other vertices.
-		/// 
-		/// It generates an <code>IterationEnded</code> event.
-		/// 
-		/// Bounding box:
-		/// x coordinates: double.Epsilon - <code>width</code>
-		/// y coordinates: double.Epsilon - <code>height</code>
-		/// </summary>
-		/// <param name="width">Width of the bounding box.</param>
-		/// <param name="height">Height of the bounding box.</param>
-		protected virtual void InitializeWithRandomPositions( double width, double height )
-		{
-			InitializeWithRandomPositions( width, height, 0, 0 );
-		}
+        /// <inheritdoc />
+        public override object GetVertexInfo(TVertex vertex)
+        {
+            if (VerticesInfos.TryGetValue(vertex, out TVertexInfo info))
+                return info;
+            return null;
+        }
 
-		/// <summary>
-		/// Initializes the positions of the vertices. Assign a random position inside the 'bounding box' to the vertices without positions.
-		/// It does NOT modify the position of the other vertices.
-		/// 
-		/// It generates an <code>IterationEnded</code> event.
-		/// 
-		/// Bounding box:
-		/// x coordinates: double.Epsilon - <code>width</code>
-		/// y coordinates: double.Epsilon - <code>height</code>
-		/// </summary>
-		/// <param name="width">Width of the bounding box.</param>
-		/// <param name="height">Height of the bounding box.</param>
-		/// <param name="translate_x">Translates the generated x coordinate.</param>
-		/// <param name="translate_y">Translates the generated y coordinate.</param>
-		protected virtual void InitializeWithRandomPositions( double width, double height, double translate_x, double translate_y )
-		{
-			var rnd = new Random( DateTime.Now.Millisecond );
+        /// <inheritdoc />
+        public override object GetEdgeInfo(TEdge edge)
+        {
+            if (EdgesInfos.TryGetValue(edge, out TEdgeInfo info))
+                return info;
+            return null;
+        }
 
-			//initialize with random position
-			foreach ( TVertex v in VisitedGraph.Vertices )
-			{
-				//for vertices without assigned position
-				if ( !VerticesPositions.ContainsKey( v ) )
-				{
-					VerticesPositions[v] =
-						new Point(
-							Math.Max( double.Epsilon, rnd.NextDouble() * width + translate_x ),
-							Math.Max( double.Epsilon, rnd.NextDouble() * height + translate_y ) );
-				}
-			}
-		}
+        #endregion
 
-		protected virtual void NormalizePositions()
-		{
-			lock ( SyncRoot )
-			{
-				NormalizePositions( VerticesPositions );
-			}
-		}
+        /// <inheritdoc />
+        internal override void RaiseIterationEnded(ILayoutIterationEventArgs<TVertex> args)
+        {
+            base.RaiseIterationEnded(args);
 
-		protected static void NormalizePositions( IDictionary<TVertex, Point> vertexPositions )
-		{
-			if ( vertexPositions == null || vertexPositions.Count == 0 )
-				return;
-
-			//get the topLeft position
-			var topLeft = new Point( float.PositiveInfinity, float.PositiveInfinity );
-			foreach ( var pos in vertexPositions.Values.ToArray() )
-			{
-				topLeft.X = Math.Min( topLeft.X, pos.X );
-				topLeft.Y = Math.Min( topLeft.Y, pos.Y );
-			}
-
-			//translate with the topLeft position
-			foreach ( var v in vertexPositions.Keys.ToArray() )
-			{
-				var pos = vertexPositions[v];
-				pos.X -= topLeft.X;
-				pos.Y -= topLeft.Y;
-				vertexPositions[v] = pos;
-			}
-		}
-		#endregion
-
-		protected void OnIterationEnded( int iteration, double statusInPercent, string message, bool normalizePositions )
-		{
-			//copy the actual positions
-			IDictionary<TVertex, Point> vertexPositions;
-			lock ( SyncRoot )
-			{
-				vertexPositions = new Dictionary<TVertex, Point>( VerticesPositions );
-			}
-			if ( normalizePositions )
-				NormalizePositions( vertexPositions );
-
-			var args = CreateLayoutIterationEventArgs( iteration, statusInPercent, message, vertexPositions );
-			OnIterationEnded( args );
-		}
-
-		protected virtual ILayoutIterationEventArgs<TVertex> CreateLayoutIterationEventArgs( int iteration, double statusInPercent, string message, IDictionary<TVertex, Point> vertexPositions )
-		{
-			return new LayoutIterationEventArgs<TVertex, TEdge>( iteration, statusInPercent, message, vertexPositions );
-		}
-	}
+            var castArgs = (ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>)args;
+            InfoIterationEnded?.Invoke(this, castArgs);
+        }
+    }
 }

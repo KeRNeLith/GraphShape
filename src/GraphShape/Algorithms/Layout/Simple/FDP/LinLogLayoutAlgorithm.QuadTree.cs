@@ -4,8 +4,7 @@ using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
-	public partial class LinLogLayoutAlgorithm<TVertex, TEdge, TGraph> 
-		where TVertex : class
+	public partial class LinLogLayoutAlgorithm<TVertex, TEdge, TGraph>
 		where TEdge : IEdge<TVertex>
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
