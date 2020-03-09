@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net40</TargetFrameworks>
     <!-- TODO Support net20;net30;net35;net45 netstandard old ; netstandard2.0-->
+    <UseWpf>true</UseWpf>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <!-- TODO <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
@@ -73,31 +74,9 @@ Supported platforms:
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Update="**\*.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-
-    <Page Include="**\*.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
   <!-- Dependencies -->
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="WPFExtensions, Version=1.0.3437.34043, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\WPFExtensions.dll</HintPath>
-    </Reference>
+    <PackageReference Include="WPFExtensions" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
