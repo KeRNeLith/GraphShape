@@ -25,15 +25,24 @@
     <Description>GraphShape WPF controls.
 
 Supported platforms:
-- .NET Framework 4.0</Description>
+- .NET Framework 4.0
+
+Supports Source Link</Description>
     <Owners>Alexandre Rabérin</Owners>
     <Authors>Alexandre Rabérin</Authors>
     <Company>Alexandre Rabérin</Company>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 1.0.0</PackageReleaseNotes>
-    <PackageTags>GraphShape Graph Layout Algorithm C#</PackageTags>
+    <PackageReleaseNotes>➟ Release 0.1.0
+This package is a version of the original GraphSharp renamed GraphShape and using NET Core csproj.
+
+Remove references to embedded assemblies and use NuGet packages as replacement (QuikGraph and WPFExtensions).
+
+It has been split in multiple packages (GraphShape and GraphShape.Controls).
+
+This package should be seen as an alternative one to the old frozen GraphSharp from CodePlex.</PackageReleaseNotes>
+    <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -22,18 +22,27 @@
 
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
-      GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
+GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
 
 Supported platforms:
-- .NET Framework 4.0</Description>
+- .NET Framework 4.0
+
+Supports Source Link</Description>
     <Owners>Alexandre Rabérin</Owners>
     <Authors>Alexandre Rabérin</Authors>
     <Company>Alexandre Rabérin</Company>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 1.0.0</PackageReleaseNotes>
-    <PackageTags>GraphShape Graph Layout Algorithm C#</PackageTags>
+    <PackageReleaseNotes>➟ Release 0.1.0
+This package is a version of the original GraphSharp renamed GraphShape and using NET Core csproj.
+
+Remove references to embedded assemblies and use NuGet packages as replacement (QuikGraph).
+
+It has been split in multiple packages (GraphShape and GraphShape.Controls).
+
+This package should be seen as an alternative one to the old frozen GraphSharp from CodePlex.</PackageReleaseNotes>
+    <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
