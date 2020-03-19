@@ -1,113 +1,149 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.FDP
+﻿using System;
+using static GraphShape.Utils.MathUtils;
+
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
-	public class KKLayoutParameters : LayoutParametersBase
-	{
-		private double width = 300;
-		/// <summary>
-		/// Width of the bounding box.
-		/// </summary>
-		public double Width
-		{
-			get { return width; }
-			set
-			{
-				width = value;
-                OnPropertyChanged();
-			}
-		}
+    /// <summary>
+    /// Kamada-Kawai layout algorithm parameters.
+    /// </summary>
+    public class KKLayoutParameters : LayoutParametersBase
+    {
+        private double _width = 300;
 
-		private double height = 300;
-		/// <summary>
-		/// Height of the bounding box.
-		/// </summary>
-		public double Height
-		{
-			get { return height; }
-			set
-			{
-				height = value;
-                OnPropertyChanged();
-			}
-		}
+        /// <summary>
+        /// Width of the bounding box.
+        /// </summary>
+        public double Width
+        {
+            get => _width;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Width)} must be positive or 0.");
 
-		private int maxIterations = 200;
-		/// <summary>
-		/// Maximum number of the iterations.
-		/// </summary>
-		public int MaxIterations
-		{
-			get { return maxIterations; }
-			set
-			{
-				maxIterations = value;
-                OnPropertyChanged();
-			}
-		}
+                if (NearEqual(_width, value))
+                    return;
 
-		private double _k = 1;
-		public double K
-		{
-			get { return _k; }
-			set
-			{
-				_k = value;
+                _width = value;
                 OnPropertyChanged();
-			}
-		}
+            }
+        }
 
+        private double _height = 300;
 
-		private bool adjustForGravity;
-		/// <summary>
-		/// If true, then after the layout process, the vertices will be moved, so the barycenter will be
-		/// in the center point of the bounding box.
-		/// </summary>
-		public bool AdjustForGravity
-		{
-			get { return adjustForGravity; }
-			set
-			{
-				adjustForGravity = value;
+        /// <summary>
+        /// Height of the bounding box.
+        /// </summary>
+        public double Height
+        {
+            get => _height;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Height)} must be positive or 0.");
+
+                if (NearEqual(_height, value))
+                    return;
+
+                _height = value;
                 OnPropertyChanged();
-			}
-		}
+            }
+        }
 
-		private bool exchangeVertices;
-		public bool ExchangeVertices
-		{
-			get { return exchangeVertices; }
-			set
-			{
-				exchangeVertices = value;
-                OnPropertyChanged();
-			}
-		}
+        private int _maxIterations = 200;
 
-		private double lengthFactor = 1;
-		/// <summary>
-		/// Multiplier of the ideal edge length. (With this parameter the user can modify the ideal edge length).
-		/// </summary>
-		public double LengthFactor
-		{
-			get { return lengthFactor; }
-			set
-			{
-				lengthFactor = value;
-                OnPropertyChanged();
-			}
-		}
+        /// <summary>
+        /// Maximum number of the iterations.
+        /// </summary>
+        public int MaxIterations
+        {
+            get => _maxIterations;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxIterations)} must be positive or 0.");
 
-		private double disconnectedMultiplier = 0.5;
-		/// <summary>
-		/// Ideal distance between the disconnected points (1 is equal the ideal edge length).
-		/// </summary>
-		public double DisconnectedMultiplier
-		{
-			get { return disconnectedMultiplier; }
-			set
-			{
-				disconnectedMultiplier = value;
+                if (_maxIterations == value)
+                    return;
+
+                _maxIterations = value;
                 OnPropertyChanged();
-			}
-		}
-	}
+            }
+        }
+
+        private double _k = 1;
+
+        /// <summary>
+        /// Vertex attraction constant (can be the number of vertices in the treated graph).
+        /// </summary>
+        public double K
+        {
+            get => _k;
+            set
+            {
+                if (NearEqual(_k, value))
+                    return;
+
+                _k = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _exchangeVertices;
+
+        /// <summary>
+        /// Indicates that vertices can be exchanged to improve algorithm result.
+        /// </summary>
+        public bool ExchangeVertices
+        {
+            get => _exchangeVertices;
+            set
+            {
+                if (_exchangeVertices == value)
+                    return;
+
+                _exchangeVertices = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _lengthFactor = 1;
+
+        /// <summary>
+        /// Multiplier of the ideal edge length. (With this parameter the user can modify the ideal edge length).
+        /// </summary>
+        public double LengthFactor
+        {
+            get => _lengthFactor;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LengthFactor)} must be positive or 0.");
+
+                if (NearEqual(_lengthFactor, value))
+                    return;
+
+                _lengthFactor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _disconnectedMultiplier = 0.5;
+
+        /// <summary>
+        /// Ideal distance between the disconnected points (1 is equal the ideal edge length).
+        /// </summary>
+        public double DisconnectedMultiplier
+        {
+            get => _disconnectedMultiplier;
+            set
+            {
+                if (NearEqual(_disconnectedMultiplier, value))
+                    return;
+
+                _disconnectedMultiplier = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using QuikGraph;
 using QuikGraph.Algorithms.ShortestPath;
 using QuikGraph.Algorithms;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Utils
 {
@@ -186,7 +187,7 @@ namespace GraphShape.Utils
             {
                 for (int j = i + 1; j < n; ++j)
                 {
-                    if (Math.Abs(double.MaxValue - distances[i, j]) < double.Epsilon)
+                    if (NearEqual(distances[i, j], double.MaxValue))
                         continue;
 
                     distance = Math.Max(distance, distances[i, j]);

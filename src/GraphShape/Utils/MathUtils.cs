@@ -36,6 +36,7 @@ namespace GraphShape.Utils
         /// <param name="a">The first <see cref="float"/> to compare.</param>
         /// <param name="b">The second <see cref="float"/> to compare.</param>
         /// <returns>The result of the comparision.</returns>
+        [Pure]
         public static unsafe bool NearEqual(float a, float b)
         {
             // Check if the numbers are really close

@@ -1,52 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Compound
 {
+    /// <summary>
+    /// Information on a compound layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TVertexInfo">Vertex information type.</typeparam>
+    /// <typeparam name="TEdgeInfo">Edge information type.</typeparam>
     public class TestingCompoundLayoutIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
-        : CompoundLayoutIterationEventArgs<TVertex, TEdge>, ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
-        where TVertex : class 
+        : CompoundLayoutIterationEventArgs<TVertex, TEdge>
+        , ILayoutInfoIterationEventArgs<TVertex, TEdge, TVertexInfo, TEdgeInfo>
         where TEdge : IEdge<TVertex>
     {
-        private IDictionary<TVertex, TVertexInfo> vertexInfos;
+        /// <summary>
+        /// Gravitation center position.
+        /// </summary>
+        public Point GravitationCenter { get; }
 
-        public Point GravitationCenter { get; private set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestingCompoundLayoutIterationEventArgs{TVertex,TEdge,TVertexInfo,TEdgeInfo}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <param name="innerCanvasSizes">Inner canvas vertices sizes associations.</param>
+        /// <param name="verticesInfos">Extra vertices information.</param>
+        /// <param name="gravitationCenter">Gravitation center.</param>
         public TestingCompoundLayoutIterationEventArgs(
-            int iteration, 
-            double statusInPercent, 
-            string message, 
-            IDictionary<TVertex, Point> verticesPositions, 
-            IDictionary<TVertex, Size> innerCanvasSizes,
-            IDictionary<TVertex, TVertexInfo> vertexInfos,
-            Point gravitationCenter) 
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [NotNull] IDictionary<TVertex, Size> innerCanvasSizes,
+            [NotNull] IDictionary<TVertex, TVertexInfo> verticesInfos,
+            Point gravitationCenter)
             : base(iteration, statusInPercent, message, verticesPositions, innerCanvasSizes)
         {
-            this.vertexInfos = vertexInfos;
-            this.GravitationCenter = gravitationCenter;
+            VerticesInfos = verticesInfos ?? throw new ArgumentNullException(nameof(verticesInfos));
+            GravitationCenter = gravitationCenter;
         }
 
+        /// <inheritdoc />
+        [NotNull]
+        public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; }
+
+        /// <inheritdoc />
+        public IDictionary<TEdge, TEdgeInfo> EdgesInfos => null;
+
+        /// <inheritdoc />
         public override object GetVertexInfo(TVertex vertex)
         {
-            TVertexInfo info = default(TVertexInfo);
-            if (vertexInfos.TryGetValue(vertex, out info))
+            if (VerticesInfos.TryGetValue(vertex, out TVertexInfo info))
                 return info;
-
             return null;
-        }
-
-        public IDictionary<TVertex, TVertexInfo> VerticesInfos
-        {
-            get { return this.vertexInfos; }
-        }
-
-        public IDictionary<TEdge, TEdgeInfo> EdgesInfos
-        {
-            get { return null; }
         }
     }
 }

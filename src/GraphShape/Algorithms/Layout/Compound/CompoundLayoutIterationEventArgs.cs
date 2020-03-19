@@ -1,31 +1,44 @@
-﻿using System.Collections.Generic;
-using QuikGraph;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Compound
 {
+    /// <summary>
+    /// Information on a compound layout algorithm iteration.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
     public class CompoundLayoutIterationEventArgs<TVertex, TEdge>
-        : LayoutIterationEventArgs<TVertex, TEdge>, ICompoundLayoutIterationEventArgs<TVertex>
-        where TVertex : class
+        : LayoutIterationEventArgs<TVertex, TEdge>
+        , ICompoundLayoutIterationEventArgs<TVertex>
         where TEdge : IEdge<TVertex>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompoundLayoutIterationEventArgs{TVertex,TEdge}"/> class.
+        /// </summary>
+        /// <param name="iteration">Number of the current iteration.</param>
+        /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <param name="innerCanvasSizes">Inner canvas vertices sizes associations.</param>
         public CompoundLayoutIterationEventArgs(
-            int iteration, 
-            double statusInPercent, 
-            string message,
-            IDictionary<TVertex, Point> verticesPositions,
-            IDictionary<TVertex, Size> innerCanvasSizes)
+            int iteration,
+            double statusInPercent,
+            [NotNull] string message,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [NotNull] IDictionary<TVertex, Size> innerCanvasSizes)
             : base(iteration, statusInPercent, message, verticesPositions)
         {
-            InnerCanvasSizes = innerCanvasSizes;
+            InnerCanvasSizes = innerCanvasSizes ?? throw new ArgumentNullException(nameof(innerCanvasSizes));
         }
 
-        #region ICompoundLayoutIterationEventArgs<TVertex> Members
+        #region ICompoundLayoutIterationEventArgs<TVertex>
 
-        public IDictionary<TVertex, Size> InnerCanvasSizes
-        {
-            get; private set;
-        }
+        /// <inheritdoc />
+        public IDictionary<TVertex, Size> InnerCanvasSizes { get; }
 
         #endregion
     }

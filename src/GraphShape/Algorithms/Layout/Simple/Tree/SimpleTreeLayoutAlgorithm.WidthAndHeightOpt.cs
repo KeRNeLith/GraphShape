@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using QuikGraph;
+﻿using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
-    public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, SimpleTreeLayoutParameters>
+    public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
@@ -29,19 +25,18 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
 
         private void CreateVertexWHOptInfos()
         {
-
         }
+
         private void CreateLayerWHOptInfos()
         {
-            
         }
+
         private bool DoWHOptimizationStep()
         {
-            
         }
+
         private void RewriteLayerIndexes()
         {
-            
         }*/
     }
 }

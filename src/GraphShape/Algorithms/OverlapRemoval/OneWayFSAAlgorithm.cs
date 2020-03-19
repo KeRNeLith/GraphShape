@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using JetBrains.Annotations;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
@@ -30,10 +31,10 @@ namespace GraphShape.Algorithms.OverlapRemoval
         {
             switch (Parameters.Way)
             {
-                case OneWayFSAWayEnum.Horizontal:
+                case OneWayFSAWay.Horizontal:
                     HorizontalImproved();
                     break;
-                case OneWayFSAWayEnum.Vertical:
+                case OneWayFSAWay.Vertical:
                     VerticalImproved();
                     break;
             }
@@ -63,7 +64,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 for (int j = i + 1; j < n; ++j)
                 {
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
-                    if (Math.Abs(u.CenterX - v.CenterX) < double.Epsilon)
+                    if (NearEqual(u.CenterX, v.CenterX))
                     {
                         u = v;
                         k = j;

@@ -3,529 +3,583 @@ using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
 using System.Diagnostics;
+using JetBrains.Annotations;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
-	public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-	{
-		private class VertexLayer : List<SugiVertex>
-		{
-			#region Properties, fields
-			/// <summary>
-			/// Index of the layer.
-			/// </summary>
-			public int LayerIndex { get; set; }
-
-			public readonly SoftMutableHierarchicalGraph<SugiVertex, SugiEdge> Graph;
-
-			/// <summary>
-			/// Height of the layer. (Equals with the height of the heightest vertex.)
-			/// </summary>
-			public double Height { get { return ComputeHeight(); } }
-
-			/// <summary>
-			/// List of the hierarchical edges comes into this layer.
-			/// </summary>
-			public IEnumerable<SugiEdge> UpEdges
-			{
-				get
-				{
-					foreach ( SugiVertex v in this )
-					{
-						foreach ( SugiEdge e in Graph.InHierarchicalEdges( v ) )
-						{
-							yield return e;
-						}
-					}
-				}
-			}
-
-			/// <summary>
-			/// List of the hierarhical edges goes out from this layer.
-			/// </summary>
-			public IEnumerable<SugiEdge> DownEdges
-			{
-				get
-				{
-					foreach ( SugiVertex v in this )
-					{
-						foreach ( SugiEdge e in Graph.OutHierarchicalEdges( v ) )
-						{
-							yield return e;
-						}
-					}
-				}
-			}
-			#endregion
-
-			#region Constructors
-
-			public VertexLayer(
-				SoftMutableHierarchicalGraph<SugiVertex, SugiEdge> graph,
-				int layerIndex,
-				IEnumerable<SugiVertex> vertices )
-			{
-				Graph = graph;
-				LayerIndex = layerIndex;
-				AddRange( vertices );
-			}
-
-			#endregion
-
-			#region Crosscounting
-			public int CalculateCrossCount( CrossCount crossCountDirection )
-			{
-				return CalculateCrossCount( crossCountDirection, false, false );
-			}
-
-			public int CalculateCrossCount( CrossCount crossCountDirection, bool sourcesByMeasure, bool targetsByMeasure )
-			{
-				int crossCount = 0;
-
-				bool calculateUpCrossings = ( crossCountDirection & CrossCount.Up ) == CrossCount.Up;
-				bool calculateDownCrossings = ( crossCountDirection & CrossCount.Down ) == CrossCount.Down;
-
-				if ( calculateUpCrossings )
-					crossCount += CalculateCrossings( UpEdges, sourcesByMeasure, targetsByMeasure );
-
-				if ( calculateDownCrossings )
-					crossCount += CalculateCrossings( DownEdges, sourcesByMeasure, targetsByMeasure );
-
-				return crossCount;
-			}
-
-			private static int CalculateCrossings( IEnumerable<SugiEdge> edges, bool sourcesByMeasure, bool targetsByMeasure )
-			{
-				var edgeArray = edges.ToArray();
-				int count = edgeArray.Length;
-				int crossings = 0;
-				SugiEdge edge1, edge2;
-				for ( int i = 0; i < count; i++ )
-				{
-					edge1 = edgeArray[i];
-					for ( int j = i + 1; j < count; j++ )
-					{
-						edge2 = edgeArray[j];
-						Debug.Assert(
-							( edge1.Source.LayerIndex == edge2.Source.LayerIndex &&
-							  edge1.Target.LayerIndex == edge2.Target.LayerIndex ),
-							"Bad edge at crossing computing", edge1 + "\n" + edge2 );
-
-						//get the position of the sources
-						double source2pos;
-						double source1pos;
-						if ( sourcesByMeasure )
-						{
-							source1pos = edge1.Source.Measure;
-							source2pos = edge2.Source.Measure;
-						}
-						else
-						{
-							source1pos = edge1.Source.Position;
-							source2pos = edge2.Source.Position;
-						}
-
-						//get the position of the targets
-						double target1pos;
-						double target2pos;
-						if ( targetsByMeasure )
-						{
-							target1pos = edge1.Target.Measure;
-							target2pos = edge2.Target.Measure;
-						}
-						else
-						{
-							target1pos = edge1.Target.Position;
-							target2pos = edge2.Target.Position;
-						}
-
-						if ( ( source1pos - source2pos ) * ( target1pos - target2pos ) < 0 )
-							crossings++;
-					}
-				}
-				return crossings;
-			}
-			#endregion
-
-			#region Insert & Remove
-
-			public new void Add( SugiVertex vertex )
-			{
-				base.Add( vertex );
-				vertex.LayerIndex = LayerIndex;
-				ReassignPositions();
-			}
-
-			public new void AddRange( IEnumerable<SugiVertex> vertices )
-			{
-				base.AddRange( vertices );
-				foreach ( var v in vertices )
-					v.LayerIndex = LayerIndex;
-				ReassignPositions();
-			}
-
-			public new void Remove( SugiVertex vertex )
-			{
-				base.Remove( vertex );
-				vertex.LayerIndex = SugiVertex.UndefinedLayerIndex;
-			}
-
-			#endregion
-
-			#region Measuring
-
-			/// <summary>
-			/// Computes the measures for every vertex in the layer by the given barycenters.
-			/// </summary>
-			/// <param name="baryCenters">The barycenters.</param>
-			/// <param name="byRealPosition">If true, the barycenters will be computed based on the RealPosition.X value of the vertices. Otherwise the barycenter will be computed based on the value of the Position field (which is basically the index of the vertex inside the layer).</param>
-			public void Measure( BaryCenter baryCenters, bool byRealPosition )
-			{
-				bool computeUpBaryCenter = ( baryCenters & BaryCenter.Up ) == BaryCenter.Up;
-				bool computeDownBaryCenter = ( baryCenters & BaryCenter.Down ) == BaryCenter.Down;
-				bool computeSubBaryCenter = ( baryCenters & BaryCenter.Sub ) == BaryCenter.Sub;
-
-				int divCount = 0;
-				if ( computeUpBaryCenter )
-					divCount++;
-				if ( computeDownBaryCenter )
-					divCount++;
-				if ( computeSubBaryCenter )
-					divCount++;
-
-				//compute the measures for every vertex in the layer
-				foreach ( var vertex in this )
-					Measure( vertex, computeUpBaryCenter, computeDownBaryCenter, computeSubBaryCenter, divCount, byRealPosition );
-			}
-
-			/// <summary>
-			/// Computes the measure for the given <paramref name="vertex"/>.
-			/// </summary>
-			/// <param name="vertex"></param>
-			/// <param name="computeUpBaryCenter"></param>
-			/// <param name="computeDownBaryCenter"></param>
-			/// <param name="computeSubBaryCenter"></param>
-			/// <param name="divCount"></param>
-			/// <param name="byRealPosition"></param>
-			private void Measure( SugiVertex vertex, bool computeUpBaryCenter, bool computeDownBaryCenter, bool computeSubBaryCenter, int divCount, bool byRealPosition )
-			{
-				vertex.Measure = 0;
-
-				if ( computeUpBaryCenter )
-					vertex.Measure += ComputeBaryCenter( vertex, Graph.InHierarchicalEdges( vertex ), byRealPosition );
-				if ( computeDownBaryCenter )
-					vertex.Measure += ComputeBaryCenter( vertex, Graph.OutHierarchicalEdges( vertex ), byRealPosition );
-				if ( computeSubBaryCenter )
-					vertex.Measure += ComputeBaryCenter( vertex, Graph.GeneralEdgesFor( vertex ), byRealPosition );
-
-				vertex.Measure /= divCount;
-			}
-
-			/// <summary>
-			/// Computes the barycenter of the given <paramref name="vertex"/>
-			/// based on positions of the vertices on other side of the given <paramref name="edges"/>.
-			/// </summary>
-			/// <param name="vertex">The vertex which barycenter will be computed.</param>
-			/// <param name="edges">The edges used for the computation.</param>
-			/// <param name="byRealPosition"></param>
-			/// <returns>The computed barycenter.</returns>
-			private static double ComputeBaryCenter( SugiVertex vertex, IEnumerable<SugiEdge> edges, bool byRealPosition )
-			{
-				double baryCenter = 0;
-				int number = 0;
-
-				foreach ( var edge in edges )
-				{
-					if ( byRealPosition )
-						baryCenter += edge.GetOtherVertex( vertex ).RealPosition.X;
-					else
-						baryCenter += edge.GetOtherVertex( vertex ).Position;
-					number++;
-				}
-
-				if ( number != 0 )
-					return baryCenter / number;
-
-				return ( byRealPosition ? vertex.RealPosition.X : vertex.Position );
-			}
-
-			/// <summary>
-			/// Computes the height of the vertexlayer (which is the maximum height of the vertices 
-			/// in this layer).
-			/// </summary>
-			/// <returns>Returns with the computed height of the layer.</returns>
-			private double ComputeHeight()
-			{
-				return this.Max( v => v.Size.Height );
-			}
-			#endregion
-
-			#region Sort
-			/// <summary>
-			/// 
-			/// </summary>
-			/// <param name="baryCenters"></param>
-			/// <param name="byRealPosition"></param>
-			/// <returns>Returns with true if the vertices in this 
-			/// layer ordered by the given <paramref name="baryCenters"/>.</returns>
-			public bool IsOrderedByBaryCenters( BaryCenter baryCenters, bool byRealPosition )
-			{
-				if ( Count == 0 ) return true;
-
-				//fill the measure by the given barycenters
-				Measure( baryCenters, byRealPosition );
-
-				//check that the ordering is valid
-				for ( int i = 1; i < Count; i++ )
-				{
-					if ( this[i].Measure < this[i - 1].Measure )
-						return false; //invalid ordering
-				}
-
-				//the ordering is valid
-				return true;
-			}
-
-			/// <summary>
-			/// Sort the vertices in the layer by it's measures.
-			/// </summary>
-			public void SortByMeasure()
-			{
-				//sort the vertices by the measure
-				Sort( MeasureComparer.Instance );
-
-				//reassing the positions of the vertices
-				ReassignPositions();
-			}
-
-			protected void SavePositionsToTemp()
-			{
-				foreach ( var v in this )
-					v.Temp = v.Position;
-			}
-
-			protected void LoadPositionsFromTemp()
-			{
-				foreach ( var v in this )
-					v.Position = (int)v.Temp;
-			}
-
-			/// <summary>
-			/// 
-			/// </summary>
-			/// <param name="vertices"></param>
-			/// <returns>Returns true if the vertices have permutated, 
-			/// otherwise (no more permutation) returns with false.</returns>
-			protected bool Permutate( IList<SugiVertex> vertices )
-			{
-				//do the initial ordering
-				int n = vertices.Count;
-				int i, j;
-
-				//find place to start
-				for ( i = n - 1;
-					  i > 0 && vertices[i - 1].PermutationIndex >= vertices[i].PermutationIndex;
-					  i-- ) { }
-
-				//all in reverse order
-				if ( i < 1 )
-					return false; //no more permutation
-
-				//do next permutation
-				for ( j = n;
-					  j > 1 && vertices[j - 1].PermutationIndex <= vertices[i - 1].PermutationIndex;
-					  j-- ) { }
-
-				//swap values i-1, j-1
-				int c = vertices[i - 1].PermutationIndex;
-				vertices[i - 1].PermutationIndex = vertices[j - 1].PermutationIndex;
-				vertices[j - 1].PermutationIndex = c;
-
-				//need more swaps
-				for ( i++, j = n; i < j; i++, j-- )
-				{
-					c = vertices[i - 1].PermutationIndex;
-					vertices[i - 1].PermutationIndex = vertices[j - 1].PermutationIndex;
-					vertices[j - 1].PermutationIndex = c;
-				}
-
-				return true; //new permutation generated
-			}
-
-			/// <summary>
-			/// Changes the order of the vertices with the same measure.
-			/// It does that in the brute-force way (every permutation will be analyzed).
-			/// Vertices should be sorted by it's measures.
-			/// </summary>
-			public void FindBestPermutation( CrossCount crossCounting )
-			{
-				int bestKnownCrossCount = CalculateCrossCount( crossCounting );
-
-				//get the vertices with the same index
-				var verticesWithSameMeasure = new List<SugiVertex>();
-				int startIndex, endIndex;
-				for ( startIndex = 0; startIndex < Count; startIndex = endIndex + 1 )
-				{
-					for ( endIndex = startIndex + 1;
-						  endIndex < Count && this[startIndex].Measure == this[endIndex].Measure;
-						  endIndex++ ) { }
-					endIndex -= 1;
-
-					if ( endIndex > startIndex )
-					{
-						for ( int i = startIndex; i <= endIndex; i++ )
-							verticesWithSameMeasure.Add( this[i] );
-					}
-				}
-
-				//save the original positions
-				SavePositionsToTemp();
-
-				//null PermutationIndex
-				foreach ( var v in this )
-					v.PermutationIndex = 0;
-
-				//create initial permutation
-				for ( int i = 0; i < verticesWithSameMeasure.Count; i++ )
-					verticesWithSameMeasure[i].PermutationIndex = 0;
-
-				while ( Permutate( verticesWithSameMeasure ) )
-				{
-					//sort the vertices with the same measure by barycenter
-					Sort( MeasureAndPermutationIndexComparer.Instance );
-					ReassignPositions();
-
-					int newCrossCount = CalculateCrossCount( crossCounting );
-					if ( newCrossCount < bestKnownCrossCount )
-					{
-						SavePositionsToTemp();
-						bestKnownCrossCount = newCrossCount;
-					}
-				}
-
-				//the best solution is in the temp
-				LoadPositionsFromTemp();
-
-				Sort( PositionComparer.Instance );
-				ReassignPositions();
-			}
-
-			/// <summary>
-			/// Reassigns the position of vertices to it's indexes in the vertexlayer.
-			/// </summary>
-			public void ReassignPositions()
-			{
-				int index = 0;
-				foreach ( SugiVertex v in this )
-					v.Position = index++;
-			}
-			#endregion
-
-			class MeasureComparer : IComparer<SugiVertex>
-			{
-				private static MeasureComparer instance;
-				public static MeasureComparer Instance
-				{
-					get
-					{
-						if ( instance == null )
-							instance = new MeasureComparer();
-						return instance;
-					}
-				}
-
-				private MeasureComparer() { }
-
-				public int Compare( SugiVertex x, SugiVertex y )
-				{
-					return Math.Sign( (sbyte)( x.Measure - y.Measure ) );
-				}
-			}
-
-			class PositionComparer : IComparer<SugiVertex>
-			{
-				private static PositionComparer instance;
-				public static PositionComparer Instance
-				{
-					get
-					{
-						if ( instance == null )
-							instance = new PositionComparer();
-						return instance;
-					}
-				}
-
-				private PositionComparer() { }
-
-				public int Compare( SugiVertex x, SugiVertex y )
-				{
-					return Math.Sign( (sbyte)( x.Position - y.Position ) );
-				}
-			}
-
-			class MeasureAndPermutationIndexComparer : IComparer<SugiVertex>
-			{
-				private static MeasureAndPermutationIndexComparer instance;
-				public static MeasureAndPermutationIndexComparer Instance
-				{
-					get
-					{
-						if ( instance == null )
-							instance = new MeasureAndPermutationIndexComparer();
-						return instance;
-					}
-				}
-
-				private MeasureAndPermutationIndexComparer() { }
-
-				public int Compare( SugiVertex x, SugiVertex y )
-				{
-					int sign = Math.Sign( (sbyte)( x.Measure - y.Measure ) );
-					if ( sign == 0 )
-						return Math.Sign( (sbyte)( x.PermutationIndex - y.PermutationIndex ) );
-
-					return sign;
-				}
-			}
-
-			#region Priorities
-			public void CalculateSubPriorities()
-			{
-				var orderedVertices = ( from v in this
-										orderby v.Priority ascending, v.Measure ascending, v.Position ascending
-										select v ).ToArray();
-
-				//calculate subpriorities
-				int startIndex = 0;
-				while ( startIndex < orderedVertices.Length )
-				{
-					int endIndex = startIndex + 1;
-
-					//get the vertices with the same priorities and measure
-					while ( endIndex < orderedVertices.Length
-							&& orderedVertices[startIndex].Priority == orderedVertices[endIndex].Priority
-							&& orderedVertices[startIndex].Measure == orderedVertices[endIndex].Measure )
-						endIndex++;
-					endIndex--;
-
-					//set the subpriorities
-					int count = endIndex - startIndex + 1;
-					var border = (int)Math.Ceiling( count / (float)2.0 );
-					int subPriority = count - border;
-					for ( int i = 0; i < count; i++ )
-					{
-						orderedVertices[startIndex + i].SubPriority = count - Math.Abs( subPriority );
-						subPriority--;
-					}
-
-					//go to the next group of vertices with the same priorities
-					startIndex = endIndex + 1;
-				}
-			}
-			#endregion
-		}
-	}
+    public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
+        where TVertex : class
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
+    {
+        private class VertexLayer : List<SugiVertex>
+        {
+            /// <summary>
+            /// Index of the layer.
+            /// </summary>
+            private readonly int _layerIndex;
+
+            [NotNull]
+            private readonly SoftMutableHierarchicalGraph<SugiVertex, SugiEdge> _graph;
+
+            /// <summary>
+            /// Height of the layer. (Equals with the height of the hightest vertex.)
+            /// </summary>
+            public double Height => ComputeHeight();
+
+            /// <summary>
+            /// List of the hierarchical edges comes into this layer.
+            /// </summary>
+            private IEnumerable<SugiEdge> UpEdges => this.SelectMany(vertex => _graph.InHierarchicalEdges(vertex));
+
+            /// <summary>
+            /// List of the hierarchical edges goes out from this layer.
+            /// </summary>
+            private IEnumerable<SugiEdge> DownEdges => this.SelectMany(vertex => _graph.OutHierarchicalEdges(vertex));
+
+            public VertexLayer(
+                [NotNull] SoftMutableHierarchicalGraph<SugiVertex, SugiEdge> graph,
+                int layerIndex,
+                [NotNull, ItemNotNull] IEnumerable<SugiVertex> vertices)
+            {
+                Debug.Assert(graph != null);
+                Debug.Assert(vertices != null);
+
+                _graph = graph;
+                _layerIndex = layerIndex;
+                AddRange(vertices);
+            }
+
+            #region Crosscounting
+
+            [Pure]
+            public int CalculateCrossCount(
+                CrossCount crossCountDirection,
+                bool sourcesByMeasure = false,
+                bool targetsByMeasure = false)
+            {
+                int crossCount = 0;
+
+                bool calculateUpCrossings = (crossCountDirection & CrossCount.Up) == CrossCount.Up;
+                bool calculateDownCrossings = (crossCountDirection & CrossCount.Down) == CrossCount.Down;
+
+                if (calculateUpCrossings)
+                    crossCount += CalculateCrossings(UpEdges, sourcesByMeasure, targetsByMeasure);
+
+                if (calculateDownCrossings)
+                    crossCount += CalculateCrossings(DownEdges, sourcesByMeasure, targetsByMeasure);
+
+                return crossCount;
+            }
+
+            [Pure]
+            private static int CalculateCrossings(
+                [NotNull, ItemNotNull] IEnumerable<SugiEdge> edges,
+                bool sourcesByMeasure,
+                bool targetsByMeasure)
+            {
+                SugiEdge[] edgeArray = edges.ToArray();
+                int count = edgeArray.Length;
+                int crossings = 0;
+                for (int i = 0; i < count; ++i)
+                {
+                    SugiEdge edge1 = edgeArray[i];
+                    for (int j = i + 1; j < count; ++j)
+                    {
+                        SugiEdge edge2 = edgeArray[j];
+                        Debug.Assert(
+                            edge1.Source.LayerIndex == edge2.Source.LayerIndex
+                            && edge1.Target.LayerIndex == edge2.Target.LayerIndex,
+                            "Bad edge at crossing computing",
+                            $"{edge1}{Environment.NewLine}{edge2}");
+
+                        // Get the position of the sources
+                        double source1Pos;
+                        double source2Pos;
+                        if (sourcesByMeasure)
+                        {
+                            source1Pos = edge1.Source.Measure;
+                            source2Pos = edge2.Source.Measure;
+                        }
+                        else
+                        {
+                            source1Pos = edge1.Source.Position;
+                            source2Pos = edge2.Source.Position;
+                        }
+
+                        // Get the position of the targets
+                        double target1Pos;
+                        double target2Pos;
+                        if (targetsByMeasure)
+                        {
+                            target1Pos = edge1.Target.Measure;
+                            target2Pos = edge2.Target.Measure;
+                        }
+                        else
+                        {
+                            target1Pos = edge1.Target.Position;
+                            target2Pos = edge2.Target.Position;
+                        }
+
+                        if ((source1Pos - source2Pos) * (target1Pos - target2Pos) < 0)
+                            ++crossings;
+                    }
+                }
+
+                return crossings;
+            }
+
+            #endregion
+
+            #region Insert & Remove
+
+            public new void Add([NotNull] SugiVertex vertex)
+            {
+                Debug.Assert(vertex != null);
+
+                base.Add(vertex);
+                vertex.LayerIndex = _layerIndex;
+                ReassignPositions();
+            }
+
+            public new void AddRange([NotNull, ItemNotNull] IEnumerable<SugiVertex> vertices)
+            {
+                Debug.Assert(vertices != null);
+
+                SugiVertex[] verticesArray = vertices as SugiVertex[] ?? vertices.ToArray();
+                base.AddRange(verticesArray);
+                foreach (SugiVertex vertex in verticesArray)
+                    vertex.LayerIndex = _layerIndex;
+                ReassignPositions();
+            }
+
+            public new void Remove([NotNull] SugiVertex vertex)
+            {
+                Debug.Assert(vertex != null);
+
+                base.Remove(vertex);
+                vertex.LayerIndex = SugiVertex.UndefinedLayerIndex;
+            }
+
+            #endregion
+
+            #region Measuring
+
+            /// <summary>
+            /// Computes the measures for every vertex in the layer by the given barycenters.
+            /// </summary>
+            /// <param name="barycenters">The barycenters.</param>
+            /// <param name="byRealPosition">If true, the barycenters will be computed based on the RealPosition.X value of the vertices. Otherwise the barycenter will be computed based on the value of the Position field (which is basically the index of the vertex inside the layer).</param>
+            public void Measure(Barycenter barycenters, bool byRealPosition)
+            {
+                bool computeUpBarycenter = (barycenters & Barycenter.Up) == Barycenter.Up;
+                bool computeDownBarycenter = (barycenters & Barycenter.Down) == Barycenter.Down;
+                bool computeSubBarycenter = (barycenters & Barycenter.Sub) == Barycenter.Sub;
+
+                int divCount = 0;
+                if (computeUpBarycenter)
+                    ++divCount;
+                if (computeDownBarycenter)
+                    ++divCount;
+                if (computeSubBarycenter)
+                    ++divCount;
+
+                // Compute the measures for every vertex in the layer
+                foreach (SugiVertex vertex in this)
+                    Measure(vertex, computeUpBarycenter, computeDownBarycenter, computeSubBarycenter, divCount, byRealPosition);
+            }
+
+            /// <summary>
+            /// Computes the measure for the given <paramref name="vertex"/>.
+            /// </summary>
+            private void Measure(
+                [NotNull] SugiVertex vertex,
+                bool computeUpBarycenter,
+                bool computeDownBarycenter,
+                bool computeSubBarycenter,
+                int divCount,
+                bool byRealPosition)
+            {
+                Debug.Assert(vertex != null);
+
+                vertex.Measure = 0;
+
+                if (computeUpBarycenter)
+                    vertex.Measure += ComputeBarycenter(vertex, _graph.InHierarchicalEdges(vertex), byRealPosition);
+                if (computeDownBarycenter)
+                    vertex.Measure += ComputeBarycenter(vertex, _graph.OutHierarchicalEdges(vertex), byRealPosition);
+                if (computeSubBarycenter)
+                    vertex.Measure += ComputeBarycenter(vertex, _graph.GeneralEdgesFor(vertex), byRealPosition);
+
+                vertex.Measure /= divCount;
+            }
+
+            /// <summary>
+            /// Computes the barycenter of the given <paramref name="vertex"/>
+            /// based on positions of the vertices on other side of the given <paramref name="edges"/>.
+            /// </summary>
+            /// <param name="vertex">The vertex which barycenter will be computed.</param>
+            /// <param name="edges">The edges used for the computation.</param>
+            /// <param name="byRealPosition"></param>
+            /// <returns>The computed barycenter.</returns>
+            private static double ComputeBarycenter(
+                [NotNull] SugiVertex vertex,
+                [NotNull, ItemNotNull] IEnumerable<SugiEdge> edges,
+                bool byRealPosition)
+            {
+                Debug.Assert(vertex != null);
+                Debug.Assert(edges != null);
+
+                double barycenter = 0;
+                int number = 0;
+
+                foreach (SugiEdge edge in edges)
+                {
+                    if (byRealPosition)
+                        barycenter += edge.GetOtherVertex(vertex).RealPosition.X;
+                    else
+                        barycenter += edge.GetOtherVertex(vertex).Position;
+                    ++number;
+                }
+
+                if (number != 0)
+                    return barycenter / number;
+                return byRealPosition ? vertex.RealPosition.X : vertex.Position;
+            }
+
+            /// <summary>
+            /// Computes the height of the vertexlayer (which is the maximum height of the vertices 
+            /// in this layer).
+            /// </summary>
+            /// <returns>Returns with the computed height of the layer.</returns>
+            private double ComputeHeight()
+            {
+                return this.Max(v => v.Size.Height);
+            }
+
+            #endregion
+
+            #region Sort
+
+            /// <returns>
+            /// Returns with true if the vertices in this layer ordered by the given <paramref name="barycenters"/>.
+            /// </returns>
+            public bool IsOrderedByBarycenters(Barycenter barycenters, bool byRealPosition)
+            {
+                if (Count == 0)
+                    return true;
+
+                // Fill the measure by the given barycenters
+                Measure(barycenters, byRealPosition);
+
+                // Check that the ordering is valid
+                for (int i = 1; i < Count; ++i)
+                {
+                    if (this[i].Measure < this[i - 1].Measure)
+                        return false; // Invalid ordering
+                }
+
+                // The ordering is valid
+                return true;
+            }
+
+            /// <summary>
+            /// Sorts the vertices in the layer by it's measures.
+            /// </summary>
+            public void SortByMeasure()
+            {
+                // Sort the vertices by the measure
+                Sort(MeasureComparer.Instance);
+
+                // Reassign the positions of the vertices
+                ReassignPositions();
+            }
+
+            private void SavePositionsToTemp()
+            {
+                foreach (SugiVertex vertex in this)
+                    vertex.SavePositionToTemp();
+            }
+
+            private void LoadPositionsFromTemp()
+            {
+                foreach (SugiVertex vertex in this)
+                    vertex.LoadPositionFromTemp();
+            }
+
+            /// <returns>
+            /// Returns true if the vertices have been swapped, 
+            /// otherwise (no more permutation) returns with false.</returns>
+            [Pure]
+            private static bool Swap([NotNull, ItemNotNull] IList<SugiVertex> vertices)
+            {
+                Debug.Assert(vertices != null);
+
+                // Do the initial ordering
+                int n = vertices.Count;
+                int i;
+                int j;
+
+                // Find place to start
+                for (i = n - 1;
+                    i > 0 && vertices[i - 1].PermutationIndex >= vertices[i].PermutationIndex;
+                    --i)
+                {
+                }
+
+                // All in reverse order
+                if (i < 1)
+                    return false; // No more permutation
+
+                // Do next permutation
+                for (j = n;
+                    j > 1 && vertices[j - 1].PermutationIndex <= vertices[i - 1].PermutationIndex;
+                    --j)
+                {
+                }
+
+                // Swap values i-1, j-1
+                int c = vertices[i - 1].PermutationIndex;
+                vertices[i - 1].PermutationIndex = vertices[j - 1].PermutationIndex;
+                vertices[j - 1].PermutationIndex = c;
+
+                // Need more swaps
+                for (i++, j = n; i < j; ++i, --j)
+                {
+                    c = vertices[i - 1].PermutationIndex;
+                    vertices[i - 1].PermutationIndex = vertices[j - 1].PermutationIndex;
+                    vertices[j - 1].PermutationIndex = c;
+                }
+
+                return true; // New permutation generated
+            }
+
+            /// <summary>
+            /// Changes the order of the vertices with the same measure.
+            /// It does that in the brute-force way (every permutation will be analyzed).
+            /// Vertices should be sorted by it's measures.
+            /// </summary>
+            public void FindBestPermutation(CrossCount crossCounting)
+            {
+                int bestKnownCrossCount = CalculateCrossCount(crossCounting);
+
+                // Get the vertices with the same index
+                var verticesWithSameMeasure = new List<SugiVertex>();
+                int startIndex, endIndex;
+                for (startIndex = 0; startIndex < Count; startIndex = endIndex + 1)
+                {
+                    for (endIndex = startIndex + 1;
+                        endIndex < Count && NearEqual(this[startIndex].Measure, this[endIndex].Measure);
+                        ++endIndex)
+                    {
+                    }
+                    --endIndex;
+
+                    if (endIndex > startIndex)
+                    {
+                        for (int i = startIndex; i <= endIndex; ++i)
+                            verticesWithSameMeasure.Add(this[i]);
+                    }
+                }
+
+                // Save the original positions
+                SavePositionsToTemp();
+
+                // Null PermutationIndex
+                foreach (SugiVertex vertex in this)
+                    vertex.PermutationIndex = 0;
+
+                // Create initial permutation
+                foreach (SugiVertex vertex in verticesWithSameMeasure)
+                    vertex.PermutationIndex = 0;
+
+                while (Swap(verticesWithSameMeasure))
+                {
+                    // Sort the vertices with the same measure by barycenter
+                    Sort(MeasureAndPermutationIndexComparer.Instance);
+                    ReassignPositions();
+
+                    int newCrossCount = CalculateCrossCount(crossCounting);
+                    if (newCrossCount < bestKnownCrossCount)
+                    {
+                        SavePositionsToTemp();
+                        bestKnownCrossCount = newCrossCount;
+                    }
+                }
+
+                // The best solution is in the temp
+                LoadPositionsFromTemp();
+
+                Sort(PositionComparer.Instance);
+                ReassignPositions();
+            }
+
+            /// <summary>
+            /// Reassigns the position of vertices to it's indexes in the vertexlayer.
+            /// </summary>
+            private void ReassignPositions()
+            {
+                int index = 0;
+                foreach (SugiVertex vertex in this)
+                    vertex.Position = index++;
+            }
+
+            #endregion
+
+            #region Comparers
+
+            private class MeasureComparer : IComparer<SugiVertex>
+            {
+                #region Singleton management
+
+                private MeasureComparer()
+                {
+                }
+
+                /// <summary>
+                /// Gets the cache instance.
+                /// </summary>
+                public static MeasureComparer Instance { get; } = InstanceHandler.InternalInstance;
+
+                private static class InstanceHandler
+                {
+                    // Explicit static constructor to tell C# compiler
+                    // not to mark type as beforefieldinit
+                    static InstanceHandler()
+                    {
+                    }
+
+                    internal static readonly MeasureComparer InternalInstance = new MeasureComparer();
+                }
+
+                #endregion
+
+                /// <inheritdoc />
+                public int Compare(SugiVertex x, SugiVertex y)
+                {
+                    // ReSharper disable PossibleNullReferenceException
+                    // Comparing only non null vertices
+                    return Math.Sign((sbyte)(x.Measure - y.Measure));
+                    // ReSharper restore PossibleNullReferenceException
+                }
+            }
+
+            private class PositionComparer : IComparer<SugiVertex>
+            {
+                #region Singleton management
+
+                private PositionComparer()
+                {
+                }
+
+                /// <summary>
+                /// Gets the cache instance.
+                /// </summary>
+                public static PositionComparer Instance { get; } = InstanceHandler.InternalInstance;
+
+                private static class InstanceHandler
+                {
+                    // Explicit static constructor to tell C# compiler
+                    // not to mark type as beforefieldinit
+                    static InstanceHandler()
+                    {
+                    }
+
+                    internal static readonly PositionComparer InternalInstance = new PositionComparer();
+                }
+
+                #endregion
+
+                /// <inheritdoc />
+                public int Compare(SugiVertex x, SugiVertex y)
+                {
+                    // ReSharper disable PossibleNullReferenceException
+                    // Comparing only non null vertices
+                    return Math.Sign((sbyte)(x.Position - y.Position));
+                    // ReSharper restore PossibleNullReferenceException
+                }
+            }
+
+            private class MeasureAndPermutationIndexComparer : IComparer<SugiVertex>
+            {
+                #region Singleton management
+
+                private MeasureAndPermutationIndexComparer()
+                {
+                }
+
+                /// <summary>
+                /// Gets the cache instance.
+                /// </summary>
+                public static MeasureAndPermutationIndexComparer Instance { get; } = InstanceHandler.InternalInstance;
+
+                private static class InstanceHandler
+                {
+                    // Explicit static constructor to tell C# compiler
+                    // not to mark type as beforefieldinit
+                    static InstanceHandler()
+                    {
+                    }
+
+                    internal static readonly MeasureAndPermutationIndexComparer InternalInstance = new MeasureAndPermutationIndexComparer();
+                }
+
+                #endregion
+
+                /// <inheritdoc />
+                public int Compare(SugiVertex x, SugiVertex y)
+                {
+                    // ReSharper disable PossibleNullReferenceException
+                    // Comparing only non null vertices
+                    int sign = Math.Sign((sbyte)(x.Measure - y.Measure));
+                    if (sign == 0)
+                        return Math.Sign((sbyte)(x.PermutationIndex - y.PermutationIndex));
+                    return sign;
+                    // ReSharper restore PossibleNullReferenceException
+                }
+            }
+
+            #endregion
+
+            #region Priorities
+
+            public void CalculateSubPriorities()
+            {
+                SugiVertex[] orderedVertices =
+                    (from v in this orderby v.Priority, v.Measure, v.Position select v).ToArray();
+
+                // Calculate sub-priorities
+                int startIndex = 0;
+                while (startIndex < orderedVertices.Length)
+                {
+                    int endIndex = startIndex + 1;
+
+                    // Get the vertices with the same priorities and measure
+                    while (endIndex < orderedVertices.Length
+                           && orderedVertices[startIndex].Priority == orderedVertices[endIndex].Priority
+                           && NearEqual(orderedVertices[startIndex].Measure, orderedVertices[endIndex].Measure))
+                    {
+                        ++endIndex;
+                    }
+                    --endIndex;
+
+                    // Set the sub-priorities
+                    int count = endIndex - startIndex + 1;
+                    var border = (int)Math.Ceiling(count / (float)2.0);
+                    int subPriority = count - border;
+                    for (int i = 0; i < count; ++i)
+                    {
+                        orderedVertices[startIndex + i].SubPriority = count - Math.Abs(subPriority);
+                        --subPriority;
+                    }
+
+                    // Go to the next group of vertices with the same priorities
+                    startIndex = endIndex + 1;
+                }
+            }
+
+            #endregion
+        }
+    }
 }

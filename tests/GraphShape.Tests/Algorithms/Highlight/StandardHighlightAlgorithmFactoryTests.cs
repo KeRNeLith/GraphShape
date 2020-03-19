@@ -231,8 +231,11 @@ namespace GraphShape.Tests.Algorithms.Highlight
             Assert.IsInstanceOf<HighlightParameters>(createdParameters);
             Assert.AreNotSame(parameters, createdParameters);
 
+            createdParameters = factory.CreateParameters("NotExist", null);
+            Assert.IsNull(createdParameters);
 
-            Assert.IsTrue(factory.IsValidMode(null));
+
+            Assert.IsFalse(factory.IsValidMode(null));
             Assert.IsTrue(factory.IsValidMode(string.Empty));
             Assert.IsTrue(factory.IsValidMode("Simple"));
             Assert.IsFalse(factory.IsValidMode("simple"));

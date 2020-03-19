@@ -2,12 +2,20 @@ using System;
 using System.Collections.Generic;
 using QuikGraph;
 using System.Windows;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
-    public class FRLayoutAlgorithm<Vertex, Edge, Graph> : ParameterizedLayoutAlgorithmBase<Vertex, Edge, Graph, FRLayoutParametersBase>
-        where Edge : IEdge<Vertex>
-        where Graph : IVertexAndEdgeListGraph<Vertex, Edge>
+    /// <summary>
+    /// Fruchterman-Reingold layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type</typeparam>
+    public class FRLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, FRLayoutParametersBase>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         /// <summary>
         /// Actual temperature of the 'mass'.
@@ -17,105 +25,134 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         private double _maxWidth = double.PositiveInfinity;
         private double _maxHeight = double.PositiveInfinity;
 
-        protected override FRLayoutParametersBase DefaultParameters
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        public FRLayoutAlgorithm([NotNull] TGraph visitedGraph)
+            : base(visitedGraph)
         {
-            get { return new FreeFRLayoutParameters(); }
         }
 
-        #region Constructors
-        public FRLayoutAlgorithm(Graph visitedGraph)
-            : base(visitedGraph) { }
-
-        public FRLayoutAlgorithm(Graph visitedGraph, IDictionary<Vertex, Point> verticesPositions, FRLayoutParametersBase parameters)
-            : base(visitedGraph, verticesPositions, parameters) { }
-        #endregion
-
         /// <summary>
-        /// It computes the layout of the vertices.
+        /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
-        protected override void InternalCompute()
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public FRLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] FRLayoutParametersBase oldParameters)
+            : base(visitedGraph, verticesPositions, oldParameters)
         {
-            //initializing the positions
-            if (Parameters is BoundedFRLayoutParameters)
+        }
+
+        /// <inheritdoc />
+        protected override FRLayoutParametersBase DefaultParameters { get; } = new FreeFRLayoutParameters();
+
+        #region AlgorithmBase
+
+        /// <inheritdoc />
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            // Initializing the positions
+            if (Parameters is BoundedFRLayoutParameters boundedFRParams)
             {
-                var param = Parameters as BoundedFRLayoutParameters;
-                InitializeWithRandomPositions(param.Width, param.Height);
-                _maxWidth = param.Width;
-                _maxHeight = param.Height;
+                InitializeWithRandomPositions(boundedFRParams.Width, boundedFRParams.Height);
+                _maxWidth = boundedFRParams.Width;
+                _maxHeight = boundedFRParams.Height;
             }
             else
             {
                 InitializeWithRandomPositions(10.0, 10.0);
             }
-            Parameters.VertexCount = VisitedGraph.VertexCount;
 
+            Parameters.VertexCount = VisitedGraph.VertexCount;
+        }
+
+        /// <inheritdoc />
+        protected override void InternalCompute()
+        {
             // Actual temperature of the 'mass'. Used for cooling.
-            var minimalTemperature = Parameters.InitialTemperature*0.01;
+            double minimalTemperature = Parameters.InitialTemperature * 0.01;
             _temperature = Parameters.InitialTemperature;
             for (int i = 0;
-                  i < Parameters._iterationLimit
-                  && _temperature > minimalTemperature
-                  && State != QuikGraph.Algorithms.ComputationState.PendingAbortion;
-                  i++)
+                i < Parameters.IterationLimit
+                && _temperature > minimalTemperature
+                && State != QuikGraph.Algorithms.ComputationState.PendingAbortion;
+                ++i)
             {
                 IterateOne();
 
-                //make some cooling
-                switch (Parameters._coolingFunction)
+                // Make some cooling
+                switch (Parameters.CoolingFunction)
                 {
                     case FRCoolingFunction.Linear:
-                        _temperature *= (1.0 - (double)i / (double)Parameters._iterationLimit);
+                        _temperature *= 1.0 - i / (double)Parameters.IterationLimit;
                         break;
                     case FRCoolingFunction.Exponential:
-                        _temperature *= Parameters._lambda;
+                        _temperature *= Parameters.Lambda;
                         break;
                 }
 
-                //iteration ended, do some report
+                // Iteration ended, do some report
                 if (ReportOnIterationEndNeeded)
                 {
-                    double statusInPercent = (double)i / (double)Parameters._iterationLimit;
+                    double statusInPercent = i / (double)Parameters.IterationLimit;
                     OnIterationEnded(i, statusInPercent, string.Empty, true);
                 }
             }
         }
 
+        #endregion
 
+        /// <summary>
+        /// First force application iteration.
+        /// </summary>
         protected void IterateOne()
         {
-            //create the forces (zero forces)
-            var forces = new Dictionary<Vertex, Vector>();
+            // Create the forces (zero forces)
+            var forces = new Dictionary<TVertex, Vector>();
 
             #region Repulsive forces
+
             var force = new Vector(0, 0);
-            foreach (Vertex v in VisitedGraph.Vertices)
+            foreach (TVertex v in VisitedGraph.Vertices)
             {
-                force.X = 0; force.Y = 0;
+                force.X = 0;
+                force.Y = 0;
+                
                 Point posV = VerticesPositions[v];
-                foreach (Vertex u in VisitedGraph.Vertices)
+                foreach (TVertex u in VisitedGraph.Vertices)
                 {
-                    //doesn't repulse itself
+                    // Doesn't repulse itself
                     if (u.Equals(v))
                         continue;
 
-                    //calculating repulsive force
+                    // Calculate repulsive force
                     Vector delta = posV - VerticesPositions[u];
                     double length = Math.Max(delta.Length, double.Epsilon);
                     delta = delta / length * Parameters.ConstantOfRepulsion / length;
 
                     force += delta;
                 }
+                
                 forces[v] = force;
             }
+
             #endregion
 
             #region Attractive forces
-            foreach (Edge e in VisitedGraph.Edges)
-            {
-                Vertex source = e.Source;
-                Vertex target = e.Target;
 
-                //vonzóerõ számítása a két pont közt
+            foreach (TEdge edge in VisitedGraph.Edges)
+            {
+                TVertex source = edge.Source;
+                TVertex target = edge.Target;
+
+                // Compute attraction point between 2 vertices
                 Vector delta = VerticesPositions[source] - VerticesPositions[target];
                 double length = Math.Max(delta.Length, double.Epsilon);
                 delta = delta / length * Math.Pow(length, 2) / Parameters.ConstantOfAttraction;
@@ -123,26 +160,27 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 forces[source] -= delta;
                 forces[target] += delta;
             }
+
             #endregion
 
             #region Limit displacement
-            foreach (Vertex v in VisitedGraph.Vertices)
-            {
-                Point pos = VerticesPositions[v];
 
-                //erõ limitálása a temperature-el
-                Vector delta = forces[v];
+            foreach (TVertex vertex in VisitedGraph.Vertices)
+            {
+                Point position = VerticesPositions[vertex];
+
+                Vector delta = forces[vertex];
                 double length = Math.Max(delta.Length, double.Epsilon);
                 delta = delta / length * Math.Min(delta.Length, _temperature);
 
-                //erõhatás a pontra
-                pos += delta;
+                position += delta;
 
-                //falon ne menjünk ki
-                pos.X = Math.Min(_maxWidth, Math.Max(0, pos.X));
-                pos.Y = Math.Min(_maxHeight, Math.Max(0, pos.Y));
-                VerticesPositions[v] = pos;
+                // Ensure bounds
+                position.X = Math.Min(_maxWidth, Math.Max(0, position.X));
+                position.Y = Math.Min(_maxHeight, Math.Max(0, position.Y));
+                VerticesPositions[vertex] = position;
             }
+
             #endregion
         }
     }

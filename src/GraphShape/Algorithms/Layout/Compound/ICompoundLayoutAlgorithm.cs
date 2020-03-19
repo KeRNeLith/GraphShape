@@ -1,14 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Compound
 {
-	public interface ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
-	{
-	    IDictionary<TVertex, Size> InnerCanvasSizes { get; }
-	}
+    /// <summary>
+    /// Represents a compound layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public interface ICompoundLayoutAlgorithm<TVertex, in TEdge, out TGraph> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        /// <summary>
+        /// Inner canvas vertices sizes.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, Size> InnerCanvasSizes { get; }
+    }
 }

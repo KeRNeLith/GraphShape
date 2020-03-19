@@ -58,6 +58,9 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
             IOverlapRemovalParameters createdParameters = factory.CreateParameters(string.Empty, fsaParameters);
             Assert.IsNull(createdParameters);
 
+            createdParameters = factory.CreateParameters("fsa", fsaParameters);
+            Assert.IsNull(createdParameters);
+
             createdParameters = factory.CreateParameters("FSA", fsaParameters);
             Assert.IsInstanceOf<OverlapRemovalParameters>(createdParameters);
             Assert.AreNotSame(fsaParameters, createdParameters);

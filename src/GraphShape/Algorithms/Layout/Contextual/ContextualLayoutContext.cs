@@ -1,19 +1,44 @@
-﻿using System.Collections.Generic;
-using QuikGraph;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Contextual
 {
+    /// <summary>
+    /// Contextual graph layout context.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
     public class ContextualLayoutContext<TVertex, TEdge, TGraph> : LayoutContext<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
-        public TVertex SelectedVertex { get; private set; }
+        /// <summary>
+        /// The selected vertex.
+        /// </summary>
+        [NotNull]
+        public TVertex SelectedVertex { get; }
 
-        public ContextualLayoutContext( TGraph graph, TVertex selectedVertex, IDictionary<TVertex, Point> positions, IDictionary<TVertex, Size> sizes )
-            : base( graph, positions, sizes, LayoutMode.Simple )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContextualLayoutContext{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="graph">Graph to layout.</param>
+        /// <param name="selectedVertex">THe selected vertex.</param>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="sizes">Vertices sizes.</param>
+        public ContextualLayoutContext(
+            [CanBeNull] TGraph graph,
+            [NotNull] TVertex selectedVertex,
+            [CanBeNull] IDictionary<TVertex, Point> positions,
+            [NotNull] IDictionary<TVertex, Size> sizes)
+            : base(graph, positions, sizes, LayoutMode.Simple)
         {
+            if (selectedVertex == null)
+                throw new ArgumentNullException(nameof(selectedVertex));
+
             SelectedVertex = selectedVertex;
         }
     }

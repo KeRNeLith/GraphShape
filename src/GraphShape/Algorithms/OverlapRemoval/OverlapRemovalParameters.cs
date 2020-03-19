@@ -1,10 +1,11 @@
 ﻿using System;
 using GraphShape.Utils;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
     /// <summary>
-    /// Base class for overlap removal algorithm parameters.
+    /// Overlap removal algorithm parameters.
     /// </summary>
     public class OverlapRemovalParameters : NotifierObject, IOverlapRemovalParameters
     {
@@ -19,11 +20,11 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VerticalGap)} must be positive or 0.");
 
-                if (Math.Abs(_verticalGap - value) > float.Epsilon)
-                {
-                    _verticalGap = value;
-                    OnPropertyChanged();
-                }
+                if (NearEqual(_verticalGap, value))
+                    return;
+
+                _verticalGap = value;
+                OnPropertyChanged();
             }
         }
 
@@ -38,11 +39,11 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(HorizontalGap)} must be positive or 0.");
 
-                if (Math.Abs(_horizontalGap - value) > float.Epsilon)
-                {
-                    _horizontalGap = value;
-                    OnPropertyChanged();
-                }
+                if (NearEqual(_horizontalGap, value))
+                    return;
+
+                _horizontalGap = value;
+                OnPropertyChanged();
             }
         }
 

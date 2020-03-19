@@ -7,7 +7,7 @@ using QuikGraph.Algorithms;
 namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
-    /// Represents a layout algorithm (Base interface).
+    /// Represents a layout algorithm.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>

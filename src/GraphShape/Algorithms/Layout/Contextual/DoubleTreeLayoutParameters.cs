@@ -1,80 +1,71 @@
-﻿namespace GraphShape.Algorithms.Layout.Contextual
+﻿using System;
+using static GraphShape.Utils.MathUtils;
+
+namespace GraphShape.Algorithms.Layout.Contextual
 {
-	public enum DoubleTreeSides
-	{
-		Side1,
-		Side2
-	}
+    /// <summary>
+    /// Double tree layout algorithm parameters.
+    /// </summary>
+    public class DoubleTreeLayoutParameters : LayoutParametersBase
+    {
+        private LayoutDirection _direction = LayoutDirection.LeftToRight;
+        
+        /// <summary>
+        /// The layout direction.
+        /// </summary>
+        public LayoutDirection Direction
+        {
+            get => _direction;
+            set
+            {
+                if (_direction == value)
+                    return;
 
-	public class DoubleTreeLayoutParameters : LayoutParametersBase
-	{
-		private LayoutDirection direction = LayoutDirection.LeftToRight;
-		/// <summary>
-		/// Gets or sets the layout direction.
-		/// </summary>
-		public LayoutDirection Direction
-		{
-			get { return direction; }
-			set
-			{
-				if ( direction != value )
-				{
-					direction = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                _direction = value;
+                OnPropertyChanged();
+            }
+        }
 
-		private double layerGap = 10;
-		/// <summary>
-		/// Gets or sets the gap between the layers.
-		/// </summary>
-		public double LayerGap
-		{
-			get { return layerGap; }
-			set
-			{
-				if ( layerGap != value )
-				{
-					layerGap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        private double _vertexGap = 10;
 
-		private double vertexGap = 10;
-		/// <summary>
-		/// Gets or sets the gap between the neighbor vertices in a layer.
-		/// </summary>
-		public double VertexGap
-		{
-			get { return vertexGap; }
-			set
-			{
-				if ( vertexGap != value )
-				{
-					vertexGap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Minimum gap between the neighbor vertices in a layer.
+        /// </summary>
+        public double VertexGap
+        {
+            get => _vertexGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VertexGap)} must be positive or 0.");
 
-		private DoubleTreeSides prioritizedTreeSide = DoubleTreeSides.Side1;
-		/// <summary>
-		/// Gets or sets the the prioritized tree side (the one with the bigger priority: where a vertex 
-		/// goes if it should go on both side).
-		/// </summary>
-		public DoubleTreeSides PrioritizedTreeSide
-		{
-			get { return prioritizedTreeSide; }
-			set
-			{
-				if ( prioritizedTreeSide != value )
-				{
-					prioritizedTreeSide = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
-	}
+                if (NearEqual(_vertexGap, value))
+                    return;
+
+                _vertexGap = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _layerGap = 10;
+
+        /// <summary>
+        /// Minimum gap between layers.
+        /// </summary>
+        public double LayerGap
+        {
+            get => _layerGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LayerGap)} must be positive or 0.");
+
+                if (NearEqual(_layerGap, value))
+                    return;
+                
+                _layerGap = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

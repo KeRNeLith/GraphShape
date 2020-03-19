@@ -1,5 +1,4 @@
-﻿using GraphShape.Algorithms.Layout;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms
 {
@@ -9,7 +8,7 @@ namespace GraphShape.Algorithms
     public static class FactoryHelpers
     {
         /// <summary>
-        /// Creates a new set of layout parameters.
+        /// Creates a new set of algorithm parameters.
         /// Clones given <paramref name="parameters"/> if possible, creates default otherwise.
         /// </summary>
         /// <typeparam name="TParam">Parameter type.</typeparam>
@@ -17,8 +16,8 @@ namespace GraphShape.Algorithms
         /// <returns>Created set of parameters.</returns>
         [Pure]
         [NotNull]
-        public static TParam CreateNewParameters<TParam>([CanBeNull] this ILayoutParameters parameters)
-            where TParam : class, ILayoutParameters, new()
+        public static TParam CreateNewParameters<TParam>([CanBeNull] this IAlgorithmParameters parameters)
+            where TParam : class, IAlgorithmParameters, new()
         {
             return parameters is TParam oldParams
                 ? (TParam)oldParams.Clone()

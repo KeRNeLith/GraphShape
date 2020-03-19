@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Diagnostics;
 using JetBrains.Annotations;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.OverlapRemoval
 {
@@ -73,7 +74,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
             // ReSharper disable once InconsistentNaming
             double Gij = (vi.Height + vj.Height) / (vi.Width + vj.Width);
 
-            if (Gij >= gij && gij > 0 || -Gij <= gij && gij < 0 || Math.Abs(gij) < double.Epsilon)
+            if (Gij >= gij && gij > 0 || -Gij <= gij && gij < 0 || IsZero(gij))
             {
                 // vi and vj touch with y-direction boundaries
                 force.X = distance.X / absDistanceX * ((vi.Width + vj.Width) / 2.0 - absDistanceX);
@@ -107,7 +108,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 force.X = (vi.Width + vj.Width) / 2.0 - distance.X;
                 force.Y = (vi.Height + vj.Height) / 2.0 - distance.Y;
                 // In the X dimension
-                if (force.X > force.Y && Math.Abs(gij) > float.Epsilon)
+                if (force.X > force.Y && !IsZero(gij))
                 {
                     force.X = force.Y / gij;
                 }
@@ -158,7 +159,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 for (int j = i + 1; j < n; ++j)
                 {
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
-                    if (Math.Abs(u.CenterX - v.CenterX) < double.Epsilon)
+                    if (NearEqual(u.CenterX, v.CenterX))
                     {
                         u = v;
                         k = j;
@@ -217,7 +218,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 for (int j = i + 1; j < n; ++j)
                 {
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
-                    if (Math.Abs(u.CenterX - v.CenterX) < double.Epsilon)
+                    if (NearEqual(u.CenterX, v.CenterX))
                     {
                         u = v;
                         k = j;
@@ -338,7 +339,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 for (int j = i; j < n; ++j)
                 {
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
-                    if (Math.Abs(u.CenterY - v.CenterY) < double.Epsilon)
+                    if (NearEqual(u.CenterY, v.CenterY))
                     {
                         u = v;
                         k = j;
@@ -395,7 +396,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 for (int j = i + 1; j < n; ++j)
                 {
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
-                    if (Math.Abs(u.CenterY - v.CenterY) < double.Epsilon)
+                    if (NearEqual(u.CenterY, v.CenterY))
                     {
                         u = v;
                         k = j;

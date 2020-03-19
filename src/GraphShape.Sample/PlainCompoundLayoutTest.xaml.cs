@@ -173,25 +173,25 @@ namespace GraphShape.Sample
                                                                               var gravityColor = Brushes.Green;
                                                                               var applicationColor = Brushes.Yellow;
 
-                                                                              foreach (var kvp in vertexInfos)
+                                                                              foreach (var pair in vertexInfos)
                                                                               {
-                                                                                  var line = CreateLine(pDict[kvp.Key],
-                                                                                                        kvp.Value.SpringForce,
+                                                                                  var line = CreateLine(pDict[pair.Key],
+                                                                                                        pair.Value.SpringForce,
                                                                                                         springColor);
                                                                                   lc.Children.Add(line);
                                                                                   _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[kvp.Key],
-                                                                                             kvp.Value.RepulsionForce,
+                                                                                  line = CreateLine(pDict[pair.Key],
+                                                                                             pair.Value.RepulsionForce,
                                                                                              repulsionColor);
                                                                                   lc.Children.Add(line);
                                                                                   _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[kvp.Key],
-                                                                                             kvp.Value.GravityForce,
+                                                                                  line = CreateLine(pDict[pair.Key],
+                                                                                             pair.Value.GravityForce,
                                                                                              gravityColor);
                                                                                   lc.Children.Add(line);
                                                                                   _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[kvp.Key],
-                                                                                             kvp.Value.ApplicationForce,
+                                                                                  line = CreateLine(pDict[pair.Key],
+                                                                                             pair.Value.ApplicationForce,
                                                                                              applicationColor);
                                                                                   lc.Children.Add(line);
                                                                                   _forceLines.Add(line);

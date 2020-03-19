@@ -1,103 +1,128 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Tree
+﻿using System;
+using static GraphShape.Utils.MathUtils;
+
+namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
-	public class SimpleTreeLayoutParameters : LayoutParametersBase
-	{
-		private double vertexGap = 10;
-		/// <summary>
-		/// Gets or sets the gap between the vertices.
-		/// </summary>
-		public double VertexGap
-		{
-			get { return vertexGap; }
-			set
-			{
-				if ( vertexGap != value )
-				{
-					vertexGap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+    /// <summary>
+    /// Simple Tree layout algorithm parameters.
+    /// </summary>
+    public class SimpleTreeLayoutParameters : LayoutParametersBase
+    {
+        private double _vertexGap = 10;
 
-		private double layerGap = 10;
-		/// <summary>
-		/// Gets or sets the gap between the layers.
-		/// </summary>
-		public double LayerGap
-		{
-			get { return layerGap; }
-			set
-			{
-				if ( layerGap != value )
-				{
-					layerGap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Minimum vertical gap between vertices.
+        /// </summary>
+        public double VertexGap
+        {
+            get => _vertexGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VertexGap)} must be positive or 0.");
 
-		private LayoutDirection direction = LayoutDirection.TopToBottom;
-		/// <summary>
-		/// Gets or sets the direction of the layout.
-		/// </summary>
-		public LayoutDirection Direction
-		{
-			get { return direction; }
-			set
-			{
-				if ( direction != value )
-				{
-					direction = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                if (NearEqual(_vertexGap, value))
+                    return;
 
-		private SpanningTreeGeneration spanningTreeGeneration = SpanningTreeGeneration.DFS;
-		/// <summary>
-		/// Gets or sets the direction of the layout.
-		/// </summary>
-		public SpanningTreeGeneration SpanningTreeGeneration
-		{
-			get { return spanningTreeGeneration; }
-			set
-			{
-				if ( spanningTreeGeneration != value )
-				{
-					spanningTreeGeneration = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                _vertexGap = value;
+                OnPropertyChanged();
+            }
+        }
 
-        private bool optimizeWidthAndHeight = false;
+        private double _layerGap = 10;
 
+        /// <summary>
+        /// Minimum horizontal gap between layers.
+        /// </summary>
+        public double LayerGap
+        {
+            get => _layerGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LayerGap)} must be positive or 0.");
+
+                if (NearEqual(_layerGap, value))
+                    return;
+
+                _layerGap = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private LayoutDirection _direction = LayoutDirection.TopToBottom;
+
+        /// <summary>
+        /// Direction of the layout.
+        /// </summary>
+        public LayoutDirection Direction
+        {
+            get => _direction;
+            set
+            {
+                if (_direction == value)
+                    return;
+
+                _direction = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private SpanningTreeGeneration _spanningTreeGeneration = SpanningTreeGeneration.DFS;
+
+        /// <summary>
+        /// Spanning tree generation mode.
+        /// </summary>
+        public SpanningTreeGeneration SpanningTreeGeneration
+        {
+            get => _spanningTreeGeneration;
+            set
+            {
+                if (_spanningTreeGeneration == value)
+                    return;
+
+                _spanningTreeGeneration = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _optimizeWidthAndHeight;
+
+        /// <summary>
+        /// Indicates if optimization concerns width and height.
+        /// </summary>
         public bool OptimizeWidthAndHeight
         {
-            get { return optimizeWidthAndHeight; }
+            get => _optimizeWidthAndHeight;
             set
             {
-                if (value == optimizeWidthAndHeight)
+                if (_optimizeWidthAndHeight == value)
                     return;
 
-                optimizeWidthAndHeight = value;
+                _optimizeWidthAndHeight = value;
                 OnPropertyChanged();
             }
         }
 
-        private double widthPerHeight = 1.0;
+        private double _widthPerHeight = 1.0;
 
+        /// <summary>
+        /// Ratio width/height.
+        /// </summary>
         public double WidthPerHeight
         {
-            get { return widthPerHeight; }
+            get => _widthPerHeight;
             set
             {
-                if (value == widthPerHeight)
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(WidthPerHeight)} must be positive or 0.");
+
+                if (NearEqual(_widthPerHeight, value))
                     return;
 
-                widthPerHeight = value;
+                _widthPerHeight = value;
                 OnPropertyChanged();
             }
         }
-	}
+    }
 }

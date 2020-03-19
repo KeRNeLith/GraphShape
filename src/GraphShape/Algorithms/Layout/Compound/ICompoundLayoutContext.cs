@@ -1,14 +1,30 @@
 ﻿using System.Collections.Generic;
-using QuikGraph;
 using System.Windows;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Compound
 {
-    public interface ICompoundLayoutContext<TVertex, TEdge, TGraph> : ILayoutContext<TVertex, TEdge, TGraph>
+    /// <summary>
+    /// Represents a compound graph layout context.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public interface ICompoundLayoutContext<TVertex, TEdge, out TGraph> : ILayoutContext<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        IDictionary<TVertex, Thickness> VertexBorders { get; }
+        /// <summary>
+        /// Vertices borders.
+        /// </summary>
+        [NotNull]
+        IDictionary<TVertex, Thickness> VerticesBorders { get; }
+
+        /// <summary>
+        /// Layout types per vertex.
+        /// </summary>
+        [NotNull]
         IDictionary<TVertex, CompoundVertexInnerLayoutType> LayoutTypes { get; }
     }
 }

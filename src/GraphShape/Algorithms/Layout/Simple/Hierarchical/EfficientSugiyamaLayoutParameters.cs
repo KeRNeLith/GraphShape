@@ -1,24 +1,26 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
-{
-	public class EfficientSugiyamaLayoutParameters : LayoutParametersBase
-	{
-        private LayoutDirection _direction = LayoutDirection.TopToBottom;
-        private double _layerDistance = 15.0;
-        private double _vertexDistance = 15.0;
-        private int _positionMode = -1;
-        private bool _optimizeWidth = false;
-        private double _widthPerHeight = 1.0;
-        private bool _minimizeEdgeLength = true;
-        internal const int MaxPermutations = 50;
-        private SugiyamaEdgeRoutings _edgeRouting = SugiyamaEdgeRoutings.Traditional;
+﻿using System;
+using static GraphShape.Utils.MathUtils;
 
-        //it will be available on next releases
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+{
+    /// <summary>
+    /// Efficient Sugiyama layout algorithm parameters.
+    /// </summary>
+    public class EfficientSugiyamaLayoutParameters : LayoutParametersBase
+    {
+        internal const int MaxPermutations = 50;
+
+        private LayoutDirection _direction = LayoutDirection.TopToBottom;
+
+        /// <summary>
+        /// Layout direction (orientation)
+        /// </summary>
         public LayoutDirection Direction
         {
-            get { return _direction; }
+            get => _direction;
             set
             {
-                if (value == _direction)
+                if (_direction == value)
                     return;
 
                 _direction = value;
@@ -26,12 +28,20 @@
             }
         }
 
+        private double _layerDistance = 15.0;
+
+        /// <summary>
+        /// Distance between layers.
+        /// </summary>
         public double LayerDistance
         {
-            get { return _layerDistance; }
+            get => _layerDistance;
             set
             {
-                if (value == _layerDistance)
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LayerDistance)} must be positive or 0.");
+
+                if (NearEqual(_layerDistance, value))
                     return;
 
                 _layerDistance = value;
@@ -39,12 +49,20 @@
             }
         }
 
+        private double _vertexDistance = 15.0;
+
+        /// <summary>
+        /// Distance between vertices.
+        /// </summary>
         public double VertexDistance
         {
-            get { return _vertexDistance; }
+            get => _vertexDistance;
             set
             {
-                if (value == _vertexDistance)
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VertexDistance)} must be positive or 0.");
+
+                if (NearEqual(_vertexDistance, value))
                     return;
 
                 _vertexDistance = value;
@@ -52,12 +70,20 @@
             }
         }
 
+        private int _positionMode = -1;
+
+        /// <summary>
+        /// Position mode (can be negative or in [0, 3]).
+        /// </summary>
         public int PositionMode
         {
-            get { return _positionMode; }
+            get => _positionMode;
             set
             {
-                if (value == _positionMode)
+                if (value > 3)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(PositionMode)} must be in [0, 3] or negative.");
+
+                if (_positionMode == value)
                     return;
 
                 _positionMode = value;
@@ -65,25 +91,17 @@
             }
         }
 
-        public double WidthPerHeight
-        {
-            get { return _widthPerHeight; }
-            set
-            {
-                if (value == _widthPerHeight)
-                    return;
+        private bool _optimizeWidth;
 
-                _widthPerHeight = value;
-                OnPropertyChanged();
-            }
-        }
-
+        /// <summary>
+        /// Indicates if a width optimization should be performed.
+        /// </summary>
         public bool OptimizeWidth
         {
-            get { return _optimizeWidth; }
+            get => _optimizeWidth;
             set
             {
-                if (value == _optimizeWidth)
+                if (_optimizeWidth == value)
                     return;
 
                 _optimizeWidth = value;
@@ -91,12 +109,38 @@
             }
         }
 
-        public bool MinimizeEdgeLength
+        private double _widthPerHeight = 1.0;
+
+        /// <summary>
+        /// Width per height ratio.
+        /// </summary>
+        public double WidthPerHeight
         {
-            get { return _minimizeEdgeLength; }
+            get => _widthPerHeight;
             set
             {
-                if (value == _minimizeEdgeLength)
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(WidthPerHeight)} must be positive or 0.");
+
+                if (NearEqual(_widthPerHeight, value))
+                    return;
+
+                _widthPerHeight = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _minimizeEdgeLength = true;
+
+        /// <summary>
+        /// Indicates if edge length should be minimized or not.
+        /// </summary>
+        public bool MinimizeEdgeLength
+        {
+            get => _minimizeEdgeLength;
+            set
+            {
+                if (_minimizeEdgeLength == value)
                     return;
 
                 _minimizeEdgeLength = value;
@@ -104,17 +148,22 @@
             }
         }
 
-        public SugiyamaEdgeRoutings EdgeRouting
+        private SugiyamaEdgeRouting _edgeRouting = SugiyamaEdgeRouting.Traditional;
+
+        /// <summary>
+        /// Edge routing method.
+        /// </summary>
+        public SugiyamaEdgeRouting EdgeRouting
         {
-            get { return _edgeRouting; }
+            get => _edgeRouting;
             set
             {
-                if (value == _edgeRouting)
+                if (_edgeRouting == value)
                     return;
 
                 _edgeRouting = value;
                 OnPropertyChanged();
             }
         }
-	}
+    }
 }

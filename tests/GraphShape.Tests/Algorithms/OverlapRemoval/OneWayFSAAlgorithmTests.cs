@@ -116,36 +116,36 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
             {
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
-                    Way = OneWayFSAWayEnum.Horizontal
+                    Way = OneWayFSAWay.Horizontal
                 });
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
                     HorizontalGap = 5,
                     VerticalGap = 4,
-                    Way = OneWayFSAWayEnum.Horizontal
+                    Way = OneWayFSAWay.Horizontal
                 });
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
                     HorizontalGap = 25,
                     VerticalGap = 12,
-                    Way = OneWayFSAWayEnum.Horizontal
+                    Way = OneWayFSAWay.Horizontal
                 });
 
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
-                    Way = OneWayFSAWayEnum.Vertical
+                    Way = OneWayFSAWay.Vertical
                 });
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
                     HorizontalGap = 5,
                     VerticalGap = 4,
-                    Way = OneWayFSAWayEnum.Vertical
+                    Way = OneWayFSAWay.Vertical
                 });
                 yield return new TestCaseData(new OneWayFSAParameters
                 {
                     HorizontalGap = 25,
                     VerticalGap = 12,
-                    Way = OneWayFSAWayEnum.Vertical
+                    Way = OneWayFSAWay.Vertical
                 });
             }
         }
@@ -171,7 +171,7 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
                 Assert.AreEqual(initialRectangle.Size, pair.Value.Size);
 
                 // X or Y must not change depending on the used Way
-                if (parameters.Way == OneWayFSAWayEnum.Horizontal)
+                if (parameters.Way == OneWayFSAWay.Horizontal)
                     Assert.AreEqual(initialRectangle.Y, pair.Value.Y);
                 else
                     Assert.AreEqual(initialRectangle.X, pair.Value.X);

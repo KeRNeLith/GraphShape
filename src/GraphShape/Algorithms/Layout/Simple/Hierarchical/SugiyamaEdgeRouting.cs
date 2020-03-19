@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+﻿namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
-    public enum SugiyamaEdgeRoutings
+    /// <summary>
+    /// Enumeration of possible edge routing for Sugiyama layout algorithm.
+    /// </summary>
+    public enum SugiyamaEdgeRouting
     {
+        /// <summary>
+        /// Traditional routing.
+        /// </summary>
         Traditional,
+
+        /// <summary>
+        /// Orthogonal routing.
+        /// </summary>
         Orthogonal
     }
 }

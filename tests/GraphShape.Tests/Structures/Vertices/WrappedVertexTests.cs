@@ -1,4 +1,3 @@
-using System;
 using NUnit.Framework;
 
 namespace GraphShape.Tests.Structures
@@ -18,14 +17,9 @@ namespace GraphShape.Tests.Structures
             var vertex = new TestVertex();
             var wrapper2 = new WrappedVertex<TestVertex>(vertex);
             Assert.AreSame(vertex, wrapper2.Original);
-        }
 
-        [Test]
-        public void Constructor_Throws()
-        {
-            // ReSharper disable once ObjectCreationAsStatement
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Assert.Throws<ArgumentNullException>(() => new WrappedVertex<TestVertex>(null));
+            var wrapper3 = new WrappedVertex<TestVertex>(null);
+            Assert.IsNull(wrapper3.Original);
         }
     }
 }

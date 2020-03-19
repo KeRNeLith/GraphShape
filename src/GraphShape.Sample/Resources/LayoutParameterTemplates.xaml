@@ -27,7 +27,7 @@
                         ObjectType="{x:Type System:Enum}"
                         x:Key="sugiyamaEdgeRoutingEnum">
         <ObjectDataProvider.MethodParameters>
-            <x:Type TypeName="SimpleHierarchicalLayout:SugiyamaEdgeRoutings" />
+            <x:Type TypeName="SimpleHierarchicalLayout:SugiyamaEdgeRouting" />
         </ObjectDataProvider.MethodParameters>
     </ObjectDataProvider>
 
@@ -321,14 +321,14 @@
                          Grid.Row="6" />
 
                 <TextBlock Grid.Column="0"
-                           Grid.Row="7"><Run Text="InitialAdaption" /></TextBlock>
-                <TextBox Text="{Binding Path=InitialAdaption}"
+                           Grid.Row="7"><Run Text="InitialAdaptation" /></TextBlock>
+                <TextBox Text="{Binding Path=InitialAdaptation}"
                          Grid.Column="1"
                          Grid.Row="7" />
 
                 <TextBlock Grid.Column="0"
-                           Grid.Row="8"><Run Text="MinAdaption" /></TextBlock>
-                <TextBox Text="{Binding Path=MinAdaption}"
+                           Grid.Row="8"><Run Text="MinAdaptation" /></TextBlock>
+                <TextBox Text="{Binding Path=MinAdaptation}"
                          Grid.Column="1"
                          Grid.Row="8" />
 

@@ -1,40 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
-	public class BalloonTreeLayoutParameters : LayoutParametersBase
-	{
-		internal int minRadius = 2;
-		internal float border = 20.0f;
+    /// <summary>
+    /// Balloon Tree layout algorithm parameters.
+    /// </summary>
+    public class BalloonTreeLayoutParameters : LayoutParametersBase
+    {
+        private int _minRadius = 2;
 
-		public int MinRadius
-		{
-			get { return minRadius; }
-			set
-			{
-				if ( value != minRadius )
-				{
-					minRadius = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Minimum radius.
+        /// </summary>
+        public int MinRadius
+        {
+            get => _minRadius;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MinRadius)} must be positive or 0.");
 
+                if (_minRadius == value)
+                    return;
 
-		public float Border
-		{
-			get { return border; }
-			set
-			{
-				if ( value != border )
-				{
-					border = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-	}
+                _minRadius = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float _border = 20.0f;
+
+        /// <summary>
+        /// Border.
+        /// </summary>
+        public float Border
+        {
+            get => _border;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Border)} must be positive or 0.");
+
+                if (NearEqual(_border, value))
+                    return;
+
+                _border = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 
 namespace GraphShape
 {
@@ -12,17 +11,15 @@ namespace GraphShape
         /// <summary>
         /// Wrapped vertex.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         public TVertex Original { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WrappedVertex{TVertex}"/> class.
         /// </summary>
         /// <param name="original">Vertex to wrap.</param>
-        public WrappedVertex([NotNull] TVertex original)
+        public WrappedVertex([CanBeNull] TVertex original)
         {
-            if (original == null)
-                throw new ArgumentNullException(nameof(original));
             Original = original;
         }
     }

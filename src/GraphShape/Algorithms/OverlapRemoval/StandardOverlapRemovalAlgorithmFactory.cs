@@ -59,16 +59,12 @@ namespace GraphShape.Algorithms.OverlapRemoval
             switch (algorithmType)
             {
                 case FSAAlgorithm:
-                    return oldParameters is OverlapRemovalParameters overlapRemovalParams
-                        ? (IOverlapRemovalParameters)(overlapRemovalParams).Clone()
-                        : new OverlapRemovalParameters();
+                    return oldParameters.CreateNewParameters<OverlapRemovalParameters>();
                 case OneWayFSAAlgorithm:
-                    return oldParameters is OneWayFSAParameters oneWayFSAParams
-                        ? (IOverlapRemovalParameters)oneWayFSAParams.Clone()
-                        : new OneWayFSAParameters();
-                default:
-                    return null;
+                    return oldParameters.CreateNewParameters<OneWayFSAParameters>();
             }
+
+            return null;
         }
 
         /// <inheritdoc />

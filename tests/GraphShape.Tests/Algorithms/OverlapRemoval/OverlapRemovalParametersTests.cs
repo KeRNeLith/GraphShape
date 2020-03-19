@@ -29,10 +29,14 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
             expectedPropertyName = nameof(OverlapRemovalParameters.VerticalGap);
             parameters.VerticalGap = 42;
 
+            expectedPropertyName = null;
+            parameters.VerticalGap = 42;
+
             expectedPropertyName = nameof(OverlapRemovalParameters.HorizontalGap);
             parameters.HorizontalGap = 72;
 
             expectedPropertyName = null;
+            parameters.HorizontalGap = 72;
 
             var oneWayFSAParameters = new OneWayFSAParameters();
             oneWayFSAParameters.PropertyChanged += (sender, args) =>
@@ -48,17 +52,23 @@ namespace GraphShape.Tests.Algorithms.OverlapRemoval
             expectedPropertyName = nameof(OverlapRemovalParameters.VerticalGap);
             oneWayFSAParameters.VerticalGap = 42;
 
+            expectedPropertyName = null;
+            oneWayFSAParameters.VerticalGap = 42;
+
             expectedPropertyName = nameof(OverlapRemovalParameters.HorizontalGap);
             oneWayFSAParameters.HorizontalGap = 72;
 
+            expectedPropertyName = null;
+            oneWayFSAParameters.HorizontalGap = 72;
+
             expectedPropertyName = nameof(OneWayFSAParameters.Way);
-            oneWayFSAParameters.Way = OneWayFSAWayEnum.Vertical;
+            oneWayFSAParameters.Way = OneWayFSAWay.Vertical;
 
             expectedPropertyName = null;
-            oneWayFSAParameters.Way = OneWayFSAWayEnum.Vertical;
+            oneWayFSAParameters.Way = OneWayFSAWay.Vertical;
 
             expectedPropertyName = nameof(OneWayFSAParameters.Way);
-            oneWayFSAParameters.Way = OneWayFSAWayEnum.Horizontal;
+            oneWayFSAParameters.Way = OneWayFSAWay.Horizontal;
         }
 
         [Test]

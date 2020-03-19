@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
+using JetBrains.Annotations;
 using QuikGraph;
-using System.Diagnostics.Contracts;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
@@ -12,124 +11,164 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
+        /// <summary>
+        /// Represents a <see cref="Segment"/> container.
+        /// </summary>
         protected interface ISegmentContainer : IEnumerable<Segment>, IData, ICloneable
         {
             /// <summary>
-            /// Appends the segment <paramref name="s"/> to the end of the 
-            /// container.
+            /// Appends the segment <paramref name="segment"/> to the end of this container.
             /// </summary>
-            /// <param name="s">The segment to append.</param>
-            void Append(Segment s);
+            /// <param name="segment">The segment to append.</param>
+            void Append([NotNull] Segment segment);
 
             /// <summary>
-            /// Appends all elements of the container <paramref name="sc"/> to 
-            /// this container.
+            /// Appends all elements of the <paramref name="container"/> to this container.
             /// </summary>
-            /// <param name="sc"></param>
-            void Join(ISegmentContainer sc);
+            /// <param name="container">Container to append.</param>
+            void Join([NotNull] ISegmentContainer container);
 
             /// <summary>
-            /// Split this container at segment <paramref name="s"/> into two contsiners
-            /// <paramref name="sc1"/> and <paramref name="sc2"/>. 
-            /// All elements less than s are stored in container <paramref name="sc1"/> and
-            /// those who are greated than <paramref name="s"/> in <paramref name="sc2"/>.
-            /// Element <paramref name="s"/> is neither in <paramref name="sc1"/> or 
-            /// <paramref name="sc2"/>.
+            /// Splits this container at segment <paramref name="segment"/> into two containers
+            /// <paramref name="container1"/> and <paramref name="container2"/>. 
+            /// All elements less than <paramref name="segment"/> are stored in container <paramref name="container1"/> and
+            /// those who are greater than <paramref name="segment"/> in <paramref name="container2"/>.
+            /// Element <paramref name="segment"/> is neither in <paramref name="container1"/> or 
+            /// <paramref name="container2"/>.
             /// </summary>
-            /// <param name="s">The segment to split at.</param>
-            /// <param name="sc1">The container which contains the elements before <paramref name="s"/>.</param>
-            /// <param name="sc2">The container which contains the elements after <paramref name="s"/>.</param>
-            void Split(Segment s, out ISegmentContainer sc1, out ISegmentContainer sc2);
+            /// <param name="segment">The segment to split at.</param>
+            /// <param name="container1">The container which contains the elements before <paramref name="segment"/>.</param>
+            /// <param name="container2">The container which contains the elements after <paramref name="segment"/>.</param>
+            void Split(
+                [NotNull] Segment segment,
+                [NotNull] out ISegmentContainer container1,
+                [NotNull] out ISegmentContainer container2);
 
             /// <summary>
-            /// Split the container at position <paramref name="k"/>. The first <paramref name="k"/>
-            /// elements of the container are stored in <paramref name="sc1"/> and the remainder
-            /// in <paramref name="sc2"/>.
+            /// Splits this container at position <paramref name="k"/>. The first <paramref name="k"/>
+            /// elements of the container are stored in <paramref name="container1"/> and the remainder
+            /// in <paramref name="container2"/>.
             /// </summary>
-            /// <param name="k">The index where the container should be splitted.</param>
-            /// <param name="sc1">The container which contains the elements before <paramref name="s"/>.</param>
-            /// <param name="sc2">The container which contains the elements after <paramref name="s"/>.</param>
-            void Split(int k, out ISegmentContainer sc1, out ISegmentContainer sc2);
+            /// <param name="k">The index where the container should be split.</param>
+            /// <param name="container1">The container which contains the elements before <paramref name="k"/>.</param>
+            /// <param name="container2">The container which contains the elements after <paramref name="k"/>.</param>
+            void Split(
+                int k,
+                [NotNull] out ISegmentContainer container1,
+                [NotNull] out ISegmentContainer container2);
 
+            /// <summary>
+            /// Element count.
+            /// </summary>
             int Count { get; }
         }
 
-        //TODO: implement it with a SplayTree
-        //info could be found at:
-        //http://en.wikipedia.org/wiki/Splay_tree
+        // TODO: Implement it with a SplayTree
+        // Info could be found at:
+        // http://en.wikipedia.org/wiki/Splay_tree
         //
-        //Implementation that could be ported can be found at:
-        //http://www.link.cs.cmu.edu/link/ftp-site/splaying/SplayTree.java
+        // Implementation that could be ported can be found at:
+        // http://www.link.cs.cmu.edu/link/ftp-site/splaying/SplayTree.java
+        /// <summary>
+        /// <see cref="Segment"/> container.
+        /// </summary>
         protected class SegmentContainer : List<Segment>, ISegmentContainer
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SegmentContainer"/> class.
+            /// </summary>
+            public SegmentContainer()
+            {
+            }
 
-            public SegmentContainer() { }
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SegmentContainer"/> class.
+            /// </summary>
+            /// <param name="capacity">Container capacity.</param>
             public SegmentContainer(int capacity)
-                : base(capacity) { }
-
-            #region ISegmentContainer Members
-
-            public void Append(Segment s)
+                : base(capacity)
             {
-                Add(s);
             }
 
-            public void Join(ISegmentContainer sc)
+            #region ISegmentContainer
+
+            /// <inheritdoc />
+            public void Append(Segment segment)
             {
-                AddRange(sc);
+                Debug.Assert(segment != null);
+
+                Add(segment);
             }
 
-            public void Split(Segment s, out ISegmentContainer sc1, out ISegmentContainer sc2)
+            /// <inheritdoc />
+            public void Join(ISegmentContainer container)
             {
-                //Contract.Requires(Contains(s));
-                //Contract.Ensures(sc1 != null);
-                //Contract.Ensures(sc2 != null);
+                Debug.Assert(container != null);
 
-                int index = IndexOf(s);
-                Split(index, out sc1, out sc2, false);
+                AddRange(container);
             }
 
-            public void Split(int k, out ISegmentContainer sc1, out ISegmentContainer sc2)
+            /// <inheritdoc />
+            public void Split(Segment segment, out ISegmentContainer container1, out ISegmentContainer container2)
             {
-                //Contract.Requires(k < Count);
-                //Contract.Ensures(sc1 != null);
-                //Contract.Ensures(sc2 != null);
+                Debug.Assert(segment != null);
 
-                Split(k, out sc1, out sc2, true);
+                int index = IndexOf(segment);
+                Split(index, out container1, out container2, false);
             }
 
-            protected void Split(int k, out ISegmentContainer sc1, out ISegmentContainer sc2, bool keep)
+            /// <inheritdoc />
+            public void Split(int k, out ISegmentContainer container1, out ISegmentContainer container2)
             {
-                //Contract.Requires(k < Count);
-                //Contract.Ensures(sc1 != null);
-                //Contract.Ensures(sc2 != null);
-
-                int sc1Count = k + (keep ? 1 : 0);
-                int sc2Count = Count - k - 1;
-
-                sc1 = new SegmentContainer(sc1Count);
-                sc2 = new SegmentContainer(sc2Count);
-
-                for (int i = 0; i < sc1Count; i++)
-                    sc1.Append(this[i]);
-
-                for (int i = k + 1; i < Count; i++)
-                    sc2.Append(this[i]);
+                Split(k, out container1, out container2, true);
             }
+
+            /// <summary>
+            /// Splits this container at position <paramref name="k"/>. The first <paramref name="k"/>
+            /// elements of the container are stored in <paramref name="container1"/> and the remainder
+            /// in <paramref name="container2"/>.
+            /// </summary>
+            /// <param name="k">The index where the container should be split.</param>
+            /// <param name="container1">The container which contains the elements before <paramref name="k"/>.</param>
+            /// <param name="container2">The container which contains the elements after <paramref name="k"/>.</param>
+            /// <param name="keep">Indicates if <paramref name="k"/>th item should be kept in <paramref name="container1"/> or not.</param>
+            protected void Split(
+                int k,
+                [NotNull] out ISegmentContainer container1,
+                [NotNull] out ISegmentContainer container2,
+                bool keep)
+            {
+                Debug.Assert(k < Count);
+
+                int container1Count = k + (keep ? 1 : 0);
+                int container2Count = Count - k - 1;
+
+                container1 = new SegmentContainer(container1Count);
+                container2 = new SegmentContainer(container2Count);
+
+                for (int i = 0; i < container1Count; ++i)
+                    container1.Append(this[i]);
+
+                for (int i = k + 1; i < Count; ++i)
+                    container2.Append(this[i]);
+            }
+
             #endregion
 
-            #region IData Members
+            #region IData
 
-            //TODO get them from the first element of the container, MAYBE!
+            // TODO: Get them from the first element of the container, MAYBE!
+            /// <inheritdoc />
             public int Position { get; set; }
 
             #endregion
 
-            #region ICloneable Members
+            #region ICloneable
 
+            /// <inheritdoc />
             public object Clone()
             {
-                return this.MemberwiseClone();
+                return MemberwiseClone();
             }
 
             #endregion

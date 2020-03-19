@@ -1,131 +1,197 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.FDP
+﻿using System;
+using static GraphShape.Utils.MathUtils;
+
+namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
-	public class ISOMLayoutParameters : LayoutParametersBase
-	{
-		private double _width = 300;
-		/// <summary>
-		/// Width of the bounding box. Default value is 300.
-		/// </summary>
-		public double Width
-		{
-			get { return _width; }
-			set
-			{
-				_width = value;
-                OnPropertyChanged();
-			}
-		}
+    /// <summary>
+    /// Inverted Self-Organizing Map (ISOM) layout algorithm parameters.
+    /// </summary>
+    public class ISOMLayoutParameters : LayoutParametersBase
+    {
+        private double _width = 300;
 
-		private double _height = 300;
-		/// <summary>
-		/// Height of the bounding box. Default value is 300.
-		/// </summary>
-		public double Height
-		{
-			get { return _height; }
-			set
-			{
-				_height = value;
-                OnPropertyChanged();
-			}
-		}
+        /// <summary>
+        /// Width of the bounding box.
+        /// </summary>
+        public double Width
+        {
+            get => _width;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Width)} must be positive or 0.");
 
-		private int maxEpoch = 2000;
-		/// <summary>
-		/// Maximum iteration number. Default value is 2000.
-		/// </summary>
-		public int MaxEpoch
-		{
-			get { return maxEpoch; }
-			set
-			{
-				maxEpoch = value;
-                OnPropertyChanged();
-			}
-		}
+                if (NearEqual(_width, value))
+                    return;
 
-		private int _radiusConstantTime = 100;
-		/// <summary>
-		/// Radius constant time. Default value is 100.
-		/// </summary>
-		public int RadiusConstantTime
-		{
-			get { return _radiusConstantTime; }
-			set
-			{
-				_radiusConstantTime = value;
+                _width = value;
                 OnPropertyChanged();
-			}
-		}
+            }
+        }
 
-		private int _initialRadius = 5;
-		/// <summary>
-		/// Default value is 5.
-		/// </summary>
-		public int InitialRadius
-		{
-			get { return _initialRadius; }
-			set
-			{
-				_initialRadius = value;
-                OnPropertyChanged();
-			}
-		}
+        private double _height = 300;
 
-		private int _minRadius = 1;
-		/// <summary>
-		/// Minimal radius. Default value is 1.
-		/// </summary>
-		public int MinRadius
-		{
-			get { return _minRadius; }
-			set
-			{
-				_minRadius = value;
-                OnPropertyChanged();
-			}
-		}
+        /// <summary>
+        /// Height of the bounding box.
+        /// </summary>
+        public double Height
+        {
+            get => _height;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Height)} must be positive or 0.");
 
-		private double _initialAdaption = 0.9;
-		/// <summary>
-		/// Default value is 0.9.
-		/// </summary>
-		public double InitialAdaption
-		{
-			get { return _initialAdaption; }
-			set
-			{
-				_initialAdaption = value;
-                OnPropertyChanged();
-			}
-		}
+                if (NearEqual(_height, value))
+                    return;
 
-		private double _minAdaption;
-		/// <summary>
-		/// Default value is 0.
-		/// </summary>
-		public double MinAdaption
-		{
-			get { return _minAdaption; }
-			set
-			{
-				_minAdaption = value;
+                _height = value;
                 OnPropertyChanged();
-			}
-		}
+            }
+        }
 
-		private double _coolingFactor = 2;
-		/// <summary>
-		/// Default value is 2.
-		/// </summary>
-		public double CoolingFactor
-		{
-			get { return _coolingFactor; }
-			set
-			{
-				_coolingFactor = value;
+        private int _maxEpoch = 2000;
+
+        /// <summary>
+        /// Maximum iteration number.
+        /// </summary>
+        public int MaxEpoch
+        {
+            get => _maxEpoch;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxEpoch)} must be positive or 0.");
+
+                if (_maxEpoch == value)
+                    return;
+
+                _maxEpoch = value;
                 OnPropertyChanged();
-			}
-		}
-	}
+            }
+        }
+
+        private int _radiusConstantTime = 100;
+
+        /// <summary>
+        /// Radius constant time.
+        /// </summary>
+        public int RadiusConstantTime
+        {
+            get => _radiusConstantTime;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(RadiusConstantTime)} must be positive or 0.");
+
+                if (_radiusConstantTime == value)
+                    return;
+
+                _radiusConstantTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _initialRadius = 5;
+
+        /// <summary>
+        /// Initial radius.
+        /// </summary>
+        public int InitialRadius
+        {
+            get => _initialRadius;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(InitialRadius)} must be positive or 0.");
+
+                if (_initialRadius == value)
+                    return;
+
+                _initialRadius = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _minRadius = 1;
+
+        /// <summary>
+        /// Minimal radius.
+        /// </summary>
+        public int MinRadius
+        {
+            get => _minRadius;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MinRadius)} must be positive or 0.");
+
+                if (_minRadius == value)
+                    return;
+
+                _minRadius = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _initialAdaptation = 0.9;
+
+        /// <summary>
+        /// Initial adaption.
+        /// </summary>
+        public double InitialAdaptation
+        {
+            get => _initialAdaptation;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(InitialAdaptation)} must be positive or 0.");
+
+                if (NearEqual(_initialAdaptation, value))
+                    return;
+
+                _initialAdaptation = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _minAdaptation;
+
+        /// <summary>
+        /// Minimal adaption.
+        /// </summary>
+        public double MinAdaptation
+        {
+            get => _minAdaptation;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MinAdaptation)} must be positive or 0.");
+
+                if (NearEqual(_minAdaptation, value))
+                    return;
+
+                _minAdaptation = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _coolingFactor = 2;
+
+        /// <summary>
+        /// Cooling factor.
+        /// </summary>
+        public double CoolingFactor
+        {
+            get => _coolingFactor;
+            set
+            {
+                if (NearEqual(_coolingFactor, value))
+                    return;
+
+                _coolingFactor = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

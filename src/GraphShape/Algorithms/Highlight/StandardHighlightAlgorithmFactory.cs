@@ -40,9 +40,9 @@ namespace GraphShape.Algorithms.Highlight
             {
                 case SimpleMode:
                     return new SimpleHighlightAlgorithm<TVertex, TEdge, TGraph>(controller, parameters);
-                default:
-                    return null;
             }
+
+            return null;
         }
 
         /// <inheritdoc />
@@ -53,17 +53,18 @@ namespace GraphShape.Algorithms.Highlight
 
             switch (highlightMode)
             {
+                case "":
                 case SimpleMode:
                     return new HighlightParameters();
-                default:
-                    return new HighlightParameters();
             }
+
+            return null;
         }
 
         /// <inheritdoc />
         public bool IsValidMode(string mode)
         {
-            return string.IsNullOrEmpty(mode) || HighlightModes.Contains(mode);
+            return mode == string.Empty || HighlightModes.Contains(mode);
         }
 
         /// <inheritdoc />

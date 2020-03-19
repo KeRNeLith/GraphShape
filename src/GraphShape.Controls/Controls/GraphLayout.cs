@@ -79,10 +79,10 @@ namespace GraphShape.Controls
                     InvalidateMeasure();
                     UpdateLayout();
                     _sizes = new Dictionary<TVertex, SizeF>();
-                    foreach (var kvp in _vertexControls)
+                    foreach (var pair in _vertexControls)
                     {
-                        var size = kvp.Value.DesiredSize;
-                        _sizes.Add(kvp.Key, new SizeF(
+                        var size = pair.Value.DesiredSize;
+                        _sizes.Add(pair.Key, new SizeF(
                                                  (double.IsNaN(size.Width) ? 0 : (float)size.Width),
                                                  (double.IsNaN(size.Height) ? 0 : (float)size.Height)));
                     }
@@ -158,17 +158,17 @@ namespace GraphShape.Controls
                 return new LayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode);
             else
             {
-                var borders = (from kvp in _vertexControls
-                               where kvp.Value is CompoundVertexControl
-                               select kvp).ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => ((CompoundVertexControl)kvp.Value).VertexBorderThickness);
+                var borders = (from pair in _vertexControls
+                               where pair.Value is CompoundVertexControl
+                               select pair).ToDictionary(
+                    pair => pair.Key,
+                    pair => ((CompoundVertexControl)pair.Value).VertexBorderThickness);
 
-                var layoutTypes = (from kvp in _vertexControls
-                                   where kvp.Value is CompoundVertexControl
-                                   select kvp).ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => ((CompoundVertexControl)kvp.Value).LayoutMode);
+                var layoutTypes = (from pair in _vertexControls
+                                   where pair.Value is CompoundVertexControl
+                                   select pair).ToDictionary(
+                    pair => pair.Key,
+                    pair => ((CompoundVertexControl)pair.Value).LayoutMode);
 
                 return new CompoundLayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode, borders, layoutTypes);
             }
@@ -363,19 +363,19 @@ namespace GraphShape.Controls
             var posDict = new Dictionary<TVertex, Point>(_vertexControls.Count);
             if (continueLayout)
             {
-                foreach (var kvp in _vertexControls)
+                foreach (var pair in _vertexControls)
                 {
-                    posDict[kvp.Key] = GetRelativePosition(kvp.Value);
+                    posDict[pair.Key] = GetRelativePosition(pair.Value);
                 }
             }
             else
             {
-                foreach (var kvp in _vertexControls)
+                foreach (var pair in _vertexControls)
                 {
-                    if (!(kvp.Value is CompoundVertexControl))
+                    if (!(pair.Value is CompoundVertexControl))
                         continue;
 
-                    var cvc = (CompoundVertexControl)kvp.Value;
+                    var cvc = (CompoundVertexControl)pair.Value;
                     foreach (var vc in cvc.Vertices)
                     {
                         posDict[(TVertex)vc.Vertex] = GetRelativePosition(vc, cvc);
@@ -469,18 +469,18 @@ namespace GraphShape.Controls
             if (iterArgs == null)
                 return;
 
-            foreach (var kvp in _vertexControls)
+            foreach (var pair in _vertexControls)
             {
-                var vertex = kvp.Key;
-                var control = kvp.Value;
+                var vertex = pair.Key;
+                var control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, iterArgs.GetVertexInfo(vertex));
             }
 
-            foreach (var kvp in _edgeControls)
+            foreach (var pair in _edgeControls)
             {
-                var edge = kvp.Key;
-                var control = kvp.Value;
+                var edge = pair.Key;
+                var control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, iterArgs.GetEdgeInfo(edge));
             }
@@ -491,18 +491,18 @@ namespace GraphShape.Controls
             if (LayoutAlgorithm == null)
                 return;
 
-            foreach (var kvp in _vertexControls)
+            foreach (var pair in _vertexControls)
             {
-                var vertex = kvp.Key;
-                var control = kvp.Value;
+                var vertex = pair.Key;
+                var control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, LayoutAlgorithm.GetVertexInfo(vertex));
             }
 
-            foreach (var kvp in _edgeControls)
+            foreach (var pair in _edgeControls)
             {
-                var edge = kvp.Key;
-                var control = kvp.Value;
+                var edge = pair.Key;
+                var control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, LayoutAlgorithm.GetEdgeInfo(edge));
             }

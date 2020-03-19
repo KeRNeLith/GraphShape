@@ -39,12 +39,12 @@ namespace GraphShape.Controls
                 if (tryKeepControls && !IsCompoundMode)
                 {
                     //remove the old graph elements
-                    foreach (var kvp in _edgeControls.ToList())
+                    foreach (var pair in _edgeControls.ToList())
                     {
                         bool remove = false;
                         try
                         {
-                            remove = !Graph.ContainsEdge(kvp.Key.Source, kvp.Key.Target) || !Graph.ContainsEdge(kvp.Key);
+                            remove = !Graph.ContainsEdge(pair.Key.Source, pair.Key.Target) || !Graph.ContainsEdge(pair.Key);
                         }
                         catch
                         {
@@ -52,14 +52,14 @@ namespace GraphShape.Controls
 
                         if (remove)
                         {
-                            RemoveEdgeControl(kvp.Key);
+                            RemoveEdgeControl(pair.Key);
                         }
                     }
-                    foreach (var kvp in _vertexControls.ToList())
+                    foreach (var pair in _vertexControls.ToList())
                     {
-                        if (!Graph.ContainsVertex(kvp.Key))
+                        if (!Graph.ContainsVertex(pair.Key))
                         {
-                            RemoveVertexControl(kvp.Key);
+                            RemoveVertexControl(pair.Key);
                         }
                     }
                 }

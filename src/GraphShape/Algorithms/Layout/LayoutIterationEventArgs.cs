@@ -178,18 +178,18 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="message">Message representing the status of the algorithm.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
-        /// <param name="vertexInfos">Extra vertices information.</param>
+        /// <param name="verticesInfos">Extra vertices information.</param>
         /// <param name="edgeInfos">Extra edges information.</param>
         public LayoutIterationEventArgs(
             int iteration,
             double statusInPercent,
             [NotNull] string message,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] IDictionary<TVertex, TVertexInfo> vertexInfos,
+            [CanBeNull] IDictionary<TVertex, TVertexInfo> verticesInfos,
             [CanBeNull] IDictionary<TEdge, TEdgeInfo> edgeInfos)
             : base(iteration, statusInPercent, message, verticesPositions)
         {
-            VerticesInfos = vertexInfos;
+            VerticesInfos = verticesInfos;
             EdgesInfos = edgeInfos;
         }
 

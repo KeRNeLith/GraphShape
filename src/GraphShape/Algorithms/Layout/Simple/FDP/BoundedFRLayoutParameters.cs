@@ -1,70 +1,86 @@
 ﻿using System;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
     /// <summary>
-    /// Parameters of the Fruchterman-Reingold Algorithm (FDP), bounded version.
+    /// Fruchterman-Reingold layout algorithm parameters (FDP), bounded version.
     /// </summary>
     public class BoundedFRLayoutParameters : FRLayoutParametersBase
     {
-        #region Properties, Parameters
-        //some of the parameters declared with 'internal' modifier to 'speed up'
-
         private double _width = 100;
-        private double _height = 100;
-        private double _k;
 
         /// <summary>
         /// Width of the bounding box.
         /// </summary>
         public double Width
         {
-            get { return _width; }
+            get => _width;
             set
             {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Width)} must be positive or 0.");
+
+                if (NearEqual(_width, value))
+                    return;
+
                 _width = value;
                 UpdateParameters();
                 OnPropertyChanged();
             }
         }
 
+        private double _height = 100;
+
         /// <summary>
         /// Height of the bounding box.
         /// </summary>
         public double Height
         {
-            get { return _height; }
+            get => _height;
             set
             {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Height)} must be positive or 0.");
+
+                if (NearEqual(_height, value))
+                    return;
+
                 _height = value;
                 UpdateParameters();
                 OnPropertyChanged();
             }
         }
 
-        /// <summary>
-        /// Constant. <code>IdealEdgeLength = sqrt(height * width / vertexCount)</code>
-        /// </summary>
-        public override double K
-        {
-            get { return _k; }
-        }
+        private double _k;
 
         /// <summary>
-        /// Gets the initial temperature of the mass.
+        /// IdealEdgeLength = sqrt(height * width / vertexCount).
         /// </summary>
-        public override double InitialTemperature
-        {
-            get { return Math.Min(Width, Height) / 10; }
-        }
+        public override double K => _k;
 
-        protected override void UpdateParameters()
+        private void CalculateK()
         {
             _k = Math.Sqrt(_width * Height / VertexCount);
             OnPropertyChanged(nameof(K));
+        }
+
+        /// <inheritdoc />
+        public override double InitialTemperature => Math.Min(Width, Height) / 10;
+
+        /// <inheritdoc />
+        protected override void UpdateParameters()
+        {
+            CalculateK();
             base.UpdateParameters();
         }
 
-        #endregion
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoundedFRLayoutParameters"/> class.
+        /// </summary>
+        public BoundedFRLayoutParameters()
+        {
+            CalculateK();
+        }
     }
 }

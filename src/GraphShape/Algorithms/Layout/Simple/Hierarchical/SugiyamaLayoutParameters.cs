@@ -1,212 +1,150 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+﻿using System;
+using static GraphShape.Utils.MathUtils;
+
+namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
-	public enum PositionCalculationMethodTypes
-	{
-		/// <summary>
-		/// Barycenters of the vertices computed based on the 
-		/// indexes of the vertices.
-		/// </summary>
-		IndexBased,
+    /// <summary>
+    /// Sugiyama layout algorithm parameters.
+    /// </summary>
+    public class SugiyamaLayoutParameters : LayoutParametersBase
+    {
+        private float _verticalGap = 10;
 
-		/// <summary>
-		/// Barycenters of the vertices computed based on
-		/// the vertex sizes and positions.
-		/// </summary>
-		PositionBased
-	}
+        /// <summary>
+        /// Minimal vertical gap between the vertices.
+        /// </summary>
+        public float VerticalGap
+        {
+            get => _verticalGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VerticalGap)} must be positive or 0.");
 
-	/// <summary>
-	/// Parameters of the Sugiyama layout.
-	/// </summary>
-	public class SugiyamaLayoutParameters : LayoutParametersBase
-	{
-		#region Helper Types
-		public enum PromptingConstraintType
-		{
-			Compulsory,
-			Recommendation,
-			Irrelevant
-		}
-		#endregion
+                if (NearEqual(_verticalGap, value))
+                    return;
 
-		internal float  _horizontalgap = 10;
-		internal float  _verticalgap = 10;
-		private bool    _dirty = true;
-		private int     _phase1IterationCount = 8;
-		private int     _phase2IterationCount = 5;
-		private bool    _minimizeHierarchicalEdgeLong = true;
-		private PositionCalculationMethodTypes _positionCalculationMethod = PositionCalculationMethodTypes.PositionBased;
-		private bool	_simplify = true;
-		private bool	_baryCenteringByPosition;
-		private PromptingConstraintType _promptingConstraint = PromptingConstraintType.Recommendation;
-		private float _maxWidth = float.MaxValue;
+                _verticalGap = value;
+                OnPropertyChanged();
+            }
+        }
 
-		/// <summary>
-		/// Minimal horizontal gap between the vertices.
-		/// </summary>
-		public float HorizontalGap
-		{
-			get { return _horizontalgap; }
-			set
-			{
-				if ( _horizontalgap != value )
-				{
-					_horizontalgap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        private float _horizontalGap = 10;
 
-		public float MaxWidth
-		{
-			get { return _maxWidth; }
-			set
-			{
-				if ( _maxWidth != value )
-				{
-					_maxWidth = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Minimal horizontal gap between the vertices.
+        /// </summary>
+        public float HorizontalGap
+        {
+            get => _horizontalGap;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(HorizontalGap)} must be positive or 0.");
 
-		public bool BaryCenteringByPosition
-		{
-			get { return _baryCenteringByPosition; }
-			set
-			{
-				if ( _baryCenteringByPosition != value )
-				{
-					_baryCenteringByPosition = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                if (NearEqual(_horizontalGap, value))
+                    return;
 
-		/// <summary>
-		/// Minimal vertical gap between the vertices.
-		/// </summary>
-		public float VerticalGap
-		{
-			get { return _verticalgap; }
-			set
-			{
-				if ( _verticalgap != value )
-				{
-					_verticalgap = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                _horizontalGap = value;
+                OnPropertyChanged();
+            }
+        }
 
-		/// <summary>
-		/// Start with a dirty round (allow to increase the number of the edge-crossings, but 
-		/// try to put the vertices to it's barycenter).
-		/// </summary>
-		public bool DirtyRound
-		{
-			get { return _dirty; }
-			set
-			{
-				if ( _dirty != value )
-				{
-					_dirty = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        private bool _dirty = true;
 
-		/// <summary>
-		/// Maximum iteration count in the Phase 1 of the Sugiyama algo.
-		/// </summary>
-		public int Phase1IterationCount
-		{
-			get { return _phase1IterationCount; }
-			set
-			{
-				if ( _phase1IterationCount != value )
-				{
-					_phase1IterationCount = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Starts with a dirty round (allow to increase the number of the edge-crossings, but 
+        /// try to put the vertices to it's barycenter).
+        /// </summary>
+        public bool DirtyRound
+        {
+            get => _dirty;
+            set
+            {
+                if (_dirty == value)
+                    return;
 
-		/// <summary>
-		/// Maximum iteration count in the Phase 2 of the Sugiyama algo.
-		/// </summary>
-		public int Phase2IterationCount
-		{
-			get { return _phase2IterationCount; }
-			set
-			{
-				if ( _phase2IterationCount != value )
-				{
-					_phase2IterationCount = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                _dirty = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        private int _phase1IterationCount = 8;
 
-		public bool MinimizeHierarchicalEdgeLong
-		{
-			get { return _minimizeHierarchicalEdgeLong; }
-			set
-			{
-				if ( _minimizeHierarchicalEdgeLong != value )
-				{
-					_minimizeHierarchicalEdgeLong = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+        /// <summary>
+        /// Maximum iteration count in the Phase 1 of the Sugiyama algorithm.
+        /// </summary>
+        public int Phase1IterationCount
+        {
+            get => _phase1IterationCount;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Phase1IterationCount)} must be positive or 0.");
 
-		public PositionCalculationMethodTypes PositionCalculationMethod
-		{
-			get { return _positionCalculationMethod; }
-			set
-			{
-				if ( value != _positionCalculationMethod )
-				{
-					_positionCalculationMethod = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                if (_phase1IterationCount == value)
+                    return;
 
-		/// <summary>
-		/// Gets or sets the 'Simplify' parameter.
-		/// If true than the edges which directly goes to a vertex which could 
-		/// be reached on another path (which is not directly goes to that vertex, there's some plus vertices)
-		/// will not be count in the layout algorithm.
-		/// </summary>
-		public bool Simplify
-		{
-			get { return _simplify; }
-			set
-			{
-				if ( _simplify != value )
-				{
-					_simplify = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
+                _phase1IterationCount = value;
+                OnPropertyChanged();
+            }
+        }
 
-		/// <summary>
-		/// Prompting constraint type for the starting positions.
-		/// </summary>
-		public PromptingConstraintType Prompting
-		{
-			get { return _promptingConstraint; }
-			set
-			{
-				if ( _promptingConstraint != value )
-				{
-					_promptingConstraint = value;
-                    OnPropertyChanged();
-				}
-			}
-		}
-	}
+        private int _phase2IterationCount = 5;
+
+        /// <summary>
+        /// Maximum iteration count in the Phase 2 of the Sugiyama algorithm.
+        /// </summary>
+        public int Phase2IterationCount
+        {
+            get => _phase2IterationCount;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Phase2IterationCount)} must be positive or 0.");
+
+                if (_phase2IterationCount == value)
+                    return;
+
+                _phase2IterationCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _minimizeHierarchicalEdgeLong = true;
+
+        /// <summary>
+        /// Indicates if algorithm should try to minimize hierarchical edge length.
+        /// </summary>
+        public bool MinimizeHierarchicalEdgeLong
+        {
+            get => _minimizeHierarchicalEdgeLong;
+            set
+            {
+                if (_minimizeHierarchicalEdgeLong == value)
+                    return;
+
+                _minimizeHierarchicalEdgeLong = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private PositionCalculationMethodTypes _positionCalculationMethod = PositionCalculationMethodTypes.PositionBased;
+
+        /// <summary>
+        /// Layout calculation method.
+        /// </summary>
+        public PositionCalculationMethodTypes PositionCalculationMethod
+        {
+            get => _positionCalculationMethod;
+            set
+            {
+                if (_positionCalculationMethod == value)
+                    return;
+
+                _positionCalculationMethod = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

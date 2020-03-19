@@ -1,177 +1,222 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using GraphShape.Utils;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
 {
-	public class ISOMLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, ISOMLayoutParameters>
+    /// <summary>
+    /// Inverted Self-Organizing Map (ISOM) layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public class ISOMLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, ISOMLayoutParameters>
         where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
-	{
-		#region Private fields
-		private Queue<TVertex> _queue;
-		private Dictionary<TVertex, ISOMData> _isomDataDict;
-		private readonly Random _rnd = new Random( DateTime.Now.Millisecond );
-		private Point _tempPos;
-		private double adaptation;
-		private int radius;
-		#endregion
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        private class ISOMData
+        {
+            public bool Visited { get; set; }
+            public double Distance { get; set; }
+        }
 
-		#region Constructors
+        [NotNull, ItemNotNull]
+        private readonly Queue<TVertex> _queue;
+        
+        [NotNull]
+        private readonly Dictionary<TVertex, ISOMData> _isomDataDict;
+        
+        [NotNull]
+        private readonly Random _random = new Random(DateTime.Now.Millisecond);
+        
+        private Point _tempPos;
+        
+        private double _adaptation;
 
-		public ISOMLayoutAlgorithm( TGraph visitedGraph, ISOMLayoutParameters oldParameters )
-			: base( visitedGraph )
-		{
-			Init( oldParameters );
-		}
+        private int _radius;
 
-		public ISOMLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions,
-		                            ISOMLayoutParameters oldParameters )
-			: base( visitedGraph, verticesPositions, oldParameters )
-		{
-			Init( oldParameters );
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ISOMLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters oldParameters)
+            : this(visitedGraph, null, oldParameters)
+        {
+        }
 
-		protected void Init( ISOMLayoutParameters oldParameters )
-		{
-			//init _parameters
-			base.InitParameters( oldParameters );
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ISOMLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public ISOMLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] ISOMLayoutParameters oldParameters)
+            : base(visitedGraph, verticesPositions, oldParameters)
+        {
+            _queue = new Queue<TVertex>();
+            _isomDataDict = new Dictionary<TVertex, ISOMData>();
+            _adaptation = Parameters.InitialAdaptation;
+        }
 
-			_queue = new Queue<TVertex>();
-			_isomDataDict = new Dictionary<TVertex, ISOMData>();
-			adaptation = Parameters.InitialAdaption;
-		}
-		#endregion
+        #region AlgorithmBase
 
-		protected override void InternalCompute()
-		{
-			//initialize vertex positions
-			InitializeWithRandomPositions( Parameters.Width, Parameters.Height );
+        /// <inheritdoc />
+        protected override void Initialize()
+        {
+            base.Initialize();
 
-			//initialize ISOM data
-			foreach ( var vertex in VisitedGraph.Vertices )
-			{
-				ISOMData isomData;
-				if ( !_isomDataDict.TryGetValue( vertex, out isomData ) )
-				{
-					isomData = new ISOMData();
-					_isomDataDict[vertex] = isomData;
-				}
-			}
+            // Initialize vertex positions
+            InitializeWithRandomPositions(Parameters.Width, Parameters.Height);
 
-			radius = Parameters.InitialRadius;
-			for ( int epoch = 0; epoch < Parameters.MaxEpoch; epoch++ )
-			{
-				Adjust();
+            // Initialize ISOM data
+            foreach (TVertex vertex in VisitedGraph.Vertices)
+            {
+                if (!_isomDataDict.ContainsKey(vertex))
+                {
+                    _isomDataDict[vertex] = new ISOMData();
+                }
+            }
 
-				//Update Parameters
-				double factor = Math.Exp( -1 * Parameters.CoolingFactor * ( 1.0 * epoch / Parameters.MaxEpoch ) );
-				adaptation = Math.Max( Parameters.MinAdaption, factor * Parameters.InitialAdaption );
-				if ( radius > Parameters.MinRadius && epoch % Parameters.RadiusConstantTime == 0 )
-				{
-					radius--;
-				}
+            _radius = Parameters.InitialRadius;
+        }
 
-				//report
-				if ( ReportOnIterationEndNeeded )
-					OnIterationEnded( epoch, (double)epoch / (double)Parameters.MaxEpoch, "Iteration " + epoch + " finished.", true );
-                else if (ReportOnProgressChangedNeeded)
-                    OnProgressChanged( (double)epoch / (double)Parameters.MaxEpoch * 100 );
-			}
-		}
+        /// <inheritdoc />
+        protected override void InternalCompute()
+        {
+            if (VisitedGraph.VertexCount <= 1)
+                return;
 
-		/// <summary>
-		/// Rántsunk egyet az összes ponton.
-		/// </summary>
-		protected void Adjust()
-		{
-			_tempPos = new Point();
+            for (int epoch = 0; epoch < Parameters.MaxEpoch; ++epoch)
+            {
+                Adjust();
 
-			//get a random point in the container
-			_tempPos.X = 0.1 * Parameters.Width + ( _rnd.NextDouble() * 0.8 * Parameters.Width );
-			_tempPos.Y = 0.1 * Parameters.Height + ( _rnd.NextDouble() * 0.8 * Parameters.Height );
+                // Update Parameters
+                double factor = Math.Exp(-1 * Parameters.CoolingFactor * (1.0 * epoch / Parameters.MaxEpoch));
+                _adaptation = Math.Max(Parameters.MinAdaptation, factor * Parameters.InitialAdaptation);
+                if (_radius > Parameters.MinRadius && epoch % Parameters.RadiusConstantTime == 0)
+                {
+                    --_radius;
+                }
 
-			//find the closest vertex to this random point
-			TVertex closest = GetClosest( _tempPos );
+                // Report
+                if (ReportOnIterationEndNeeded)
+                {
+                    OnIterationEnded(
+                        epoch,
+                        epoch / (double)Parameters.MaxEpoch,
+                        $"Iteration {epoch} finished.",
+                        true);
+                }
+                if (ReportOnProgressChangedNeeded)
+                {
+                    OnProgressChanged(epoch / (double)Parameters.MaxEpoch * 100);
+                }
+            }
+        }
 
-			//adjust the vertices to the selected vertex
-			foreach ( TVertex v in VisitedGraph.Vertices )
-			{
-				ISOMData vid = _isomDataDict[v];
-				vid.Distance = 0;
-				vid.Visited = false;
-			}
-			AdjustVertex( closest );
-		}
+        #endregion
 
-		private void AdjustVertex( TVertex closest )
-		{
-			_queue.Clear();
-			ISOMData vid = _isomDataDict[closest];
-			vid.Distance = 0;
-			vid.Visited = true;
-			_queue.Enqueue( closest );
+        /// <summary>
+        /// Adjust all vertices to a random chosen one.
+        /// </summary>
+        protected void Adjust()
+        {
+            // Get a random point in the container
+            _tempPos = new Point
+            {
+                X = 0.1 * Parameters.Width + _random.NextDouble() * 0.8 * Parameters.Width,
+                Y = 0.1 * Parameters.Height + _random.NextDouble() * 0.8 * Parameters.Height
+            };
 
-			while ( _queue.Count > 0 )
-			{
-				TVertex current = _queue.Dequeue();
-				ISOMData currentVid = _isomDataDict[current];
-				Point pos = VerticesPositions[current];
+            // Find the closest vertex to this random point
+            TVertex closest = GetClosest(_tempPos);
 
-				Vector force = _tempPos - pos;
-				double factor = adaptation / Math.Pow( 2, currentVid.Distance );
+            // Adjust the vertices to the selected vertex
+            foreach (TVertex vertex in VisitedGraph.Vertices)
+            {
+                ISOMData data = _isomDataDict[vertex];
+                data.Distance = 0;
+                data.Visited = false;
+            }
 
-				pos += factor * force;
-				VerticesPositions[current] = pos;
+            AdjustVertex(closest);
+        }
 
-				//ha még a hatókörön belül van
-				if ( currentVid.Distance < radius )
-				{
-					//akkor a szomszedokra is hatassal vagyunk
-					foreach ( TVertex neighbour in VisitedGraph.GetNeighbors<TVertex, TEdge>( current ) )
-					{
-						ISOMData nvid = _isomDataDict[neighbour];
-						if ( !nvid.Visited )
-						{
-							nvid.Visited = true;
-							nvid.Distance = currentVid.Distance + 1;
-							_queue.Enqueue( neighbour );
-						}
-					}
-				}
-			}
-		}
+        private void AdjustVertex([NotNull] TVertex closest)
+        {
+            Debug.Assert(closest != null);
 
-		/// <summary>
-		/// Finds the the closest vertex to the given position.
-		/// </summary>
-		/// <param name="tempPos">The position.</param>
-		/// <returns>Returns with the reference of the closest vertex.</returns>
-		private TVertex GetClosest( Point tempPos )
-		{
-			TVertex vertex = default( TVertex );
-			double distance = double.MaxValue;
+            _queue.Clear();
+            ISOMData vid = _isomDataDict[closest];
+            vid.Distance = 0;
+            vid.Visited = true;
+            _queue.Enqueue(closest);
 
-			//find the closest vertex
-			foreach ( TVertex v in VisitedGraph.Vertices )
-			{
-				double d = ( tempPos - VerticesPositions[v] ).Length;
-				if ( d < distance )
-				{
-					vertex = v;
-					distance = d;
-				}
-			}
-			return vertex;
-		}
+            while (_queue.Count > 0)
+            {
+                TVertex current = _queue.Dequeue();
+                ISOMData currentData = _isomDataDict[current];
+                Point position = VerticesPositions[current];
 
-		private class ISOMData
-		{
-			public Vector Force = new Vector();
-			public bool Visited = false;
-			public double Distance = 0.0;
-		}
-	}
+                Vector force = _tempPos - position;
+                double factor = _adaptation / Math.Pow(2, currentData.Distance);
+
+                position += factor * force;
+                VerticesPositions[current] = position;
+
+                // If it is in the radius
+                if (currentData.Distance < _radius)
+                {
+                    // Also consider neighbors
+                    foreach (TVertex neighbor in VisitedGraph.GetNeighbors(current))
+                    {
+                        ISOMData neighborData = _isomDataDict[neighbor];
+                        if (!neighborData.Visited)
+                        {
+                            neighborData.Visited = true;
+                            neighborData.Distance = currentData.Distance + 1;
+                            _queue.Enqueue(neighbor);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Finds the the closest vertex to the given position.
+        /// </summary>
+        /// <param name="tempPos">The position.</param>
+        /// <returns>Returns with the reference of the closest vertex.</returns>
+        [Pure]
+        [NotNull]
+        private TVertex GetClosest(Point tempPos)
+        {
+            TVertex closest = default(TVertex);
+            double distance = double.MaxValue;
+
+            // Find the closest vertex
+            foreach (TVertex vertex in VisitedGraph.Vertices)
+            {
+                double d = (tempPos - VerticesPositions[vertex]).Length;
+                if (d < distance)
+                {
+                    closest = vertex;
+                    distance = d;
+                }
+            }
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // Justification: algorithm run only if graph has more that one vertex
+            return closest;
+        }
+    }
 }

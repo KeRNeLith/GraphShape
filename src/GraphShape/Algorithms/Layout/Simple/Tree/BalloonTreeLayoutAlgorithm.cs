@@ -1,141 +1,174 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using QuikGraph;
+using System.Diagnostics;
 using System.Windows;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
+    /// <summary>
+    /// Balloon tree layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
 	public class BalloonTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, BalloonTreeLayoutParameters>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
-	{
-		protected readonly TVertex root;
-		private readonly IDictionary<TVertex, Size> vertexSizes;
-		private readonly IDictionary<TVertex, BalloonData> datas = new Dictionary<TVertex, BalloonData>();
-		private HashSet<TVertex> visitedVertices = new HashSet<TVertex>();
+        where TEdge : IEdge<TVertex>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        [NotNull]
+        private readonly TVertex _root;
 
-		private class BalloonData
-		{
-			public int d;
-			public int r;
-			public float a;
-			public float c;
-			public float f;
-		}
+        [NotNull]
+        private readonly IDictionary<TVertex, BalloonData> _data = new Dictionary<TVertex, BalloonData>();
 
+        [NotNull, ItemNotNull]
+        private readonly HashSet<TVertex> _visitedVertices = new HashSet<TVertex>();
 
-		public BalloonTreeLayoutAlgorithm(
-			TGraph visitedGraph,
-			IDictionary<TVertex, Point> verticesPositions,
-			IDictionary<TVertex, Size> vertexSizes,
-			BalloonTreeLayoutParameters oldParameters,
-			TVertex selectedVertex )
-			: base( visitedGraph, verticesPositions, oldParameters )
-		{
-			this.root = selectedVertex;
-			this.vertexSizes = vertexSizes;
-		}
+        private class BalloonData
+        {
+            public int D;
+            public int R;
+            public float A;
+            public float C;
+            public float F;
+        }
 
-		protected override void InternalCompute()
-		{
-			InitializeData();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BalloonTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="selectedVertex">Root vertex.</param>
+        public BalloonTreeLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] BalloonTreeLayoutParameters oldParameters,
+            [NotNull] TVertex selectedVertex)
+            : base(visitedGraph, verticesPositions, oldParameters)
+        {
+            if (selectedVertex == null)
+                throw new ArgumentNullException(nameof(selectedVertex));
 
-			FirstWalk( root );
+            _root = selectedVertex;
+        }
 
-			visitedVertices.Clear();
+        #region AlgorithmBase
 
-			SecondWalk( root, null, 0, 0, 1, 0 );
+        /// <inheritdoc />
+        protected override void Initialize()
+        {
+            InitializeData();
+        }
 
-			NormalizePositions();
-		}
+        /// <inheritdoc />
+        protected override void InternalCompute()
+        {
+            FirstWalk(_root);
 
-		private void FirstWalk( TVertex v )
-		{
-			var data = datas[v];
-			visitedVertices.Add( v );
-			data.d = 0;
+            _visitedVertices.Clear();
 
-			float s = 0;
+            SecondWalk(_root, 0, 0, 1, 0);
 
-			foreach ( var edge in VisitedGraph.OutEdges( v ) )
-			{
-				var otherVertex = edge.Target;
-				var otherData = datas[otherVertex];
+            NormalizePositions();
+        }
 
-				if ( !visitedVertices.Contains( otherVertex ) )
-				{
-					FirstWalk( otherVertex );
-					data.d = Math.Max( data.d, otherData.r );
-					otherData.a = (float)Math.Atan( ( (float)otherData.r ) / ( data.d + otherData.r ) );
-					s += otherData.a;
-				}
-			}
+        #endregion
 
+        private void InitializeData()
+        {
+            foreach (TVertex vertex in VisitedGraph.Vertices)
+            {
+                _data[vertex] = new BalloonData();
+            }
 
-			AdjustChildren( v, data, s );
-			SetRadius( v, data );
-		}
+            _visitedVertices.Clear();
+        }
 
-		private void SecondWalk( TVertex v, TVertex r, double x, double y, float l, float t )
-		{
-			Point pos = new Point( x, y );
-			VerticesPositions[v] = pos;
-			visitedVertices.Add( v );
-			BalloonData data = datas[v];
+        private void FirstWalk([NotNull] TVertex vertex)
+        {
+            Debug.Assert(vertex != null);
 
-			float dd = l * data.d;
-			float p = (float)( t + Math.PI );
-			int degree = VisitedGraph.OutDegree( v );
-			float fs = ( degree == 0 ? 0 : data.f / degree );
-			float pr = 0;
+            BalloonData data = _data[vertex];
+            _visitedVertices.Add(vertex);
+            data.D = 0;
 
-			foreach ( var edge in VisitedGraph.OutEdges( v ) )
-			{
-				var otherVertex = edge.Target;
-				if ( visitedVertices.Contains( otherVertex ) )
-					continue;
+            float s = 0;
 
-				var otherData = datas[otherVertex];
-				float aa = data.c * otherData.a;
-				float rr = (float)( data.d * Math.Tan( aa ) / ( 1 - Math.Tan( aa ) ) );
-				p += pr + aa + fs;
+            foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
+            {
+                TVertex otherVertex = edge.Target;
+                BalloonData otherData = _data[otherVertex];
 
-				float xx = (float)( ( l * rr + dd ) * Math.Cos( p ) );
-				float yy = (float)( ( l * rr + dd ) * Math.Sign( p ) );
-				pr = aa; ;
-				SecondWalk( otherVertex, v, x + xx, y + yy, l * data.c, p );
-			}
-		}
+                if (!_visitedVertices.Contains(otherVertex))
+                {
+                    FirstWalk(otherVertex);
+                    data.D = Math.Max(data.D, otherData.R);
+                    otherData.A = (float)Math.Atan((float)otherData.R / (data.D + otherData.R));
+                    s += otherData.A;
+                }
+            }
 
-		private void SetRadius( TVertex v, BalloonData data )
-		{
-			data.r = (int)Math.Max( data.d / 2, Parameters.minRadius );
-		}
+            AdjustChildren(data, s);
+            SetRadius(data);
+        }
 
-		private void AdjustChildren( TVertex v, BalloonData data, float s )
-		{
-			if ( s > Math.PI )
-			{
-				data.c = (float)Math.PI / s;
-				data.f = 0;
-			}
-			else
-			{
-				data.c = 1;
-				data.f = (float)Math.PI - s;
-			}
-		}
+        private void SecondWalk([NotNull] TVertex vertex, double x, double y, float l, float t)
+        {
+            Debug.Assert(vertex != null);
 
-		private void InitializeData()
-		{
-			foreach ( var v in VisitedGraph.Vertices )
-				datas[v] = new BalloonData();
+            var position = new Point(x, y);
+            VerticesPositions[vertex] = position;
+            _visitedVertices.Add(vertex);
+            BalloonData data = _data[vertex];
 
-			visitedVertices.Clear();
-		}
-	}
+            float dd = l * data.D;
+            float p = (float)(t + Math.PI);
+            int degree = VisitedGraph.OutDegree(vertex);
+            float fs = degree == 0 ? 0 : data.F / degree;
+            float pr = 0;
+
+            foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
+            {
+                TVertex otherVertex = edge.Target;
+                if (_visitedVertices.Contains(otherVertex))
+                    continue;
+
+                BalloonData otherData = _data[otherVertex];
+                float aa = data.C * otherData.A;
+                float rr = (float)(data.D * Math.Tan(aa) / (1 - Math.Tan(aa)));
+                p += pr + aa + fs;
+
+                float xx = (float)((l * rr + dd) * Math.Cos(p));
+                float yy = (l * rr + dd) * Math.Sign(p);
+                pr = aa;
+                SecondWalk(otherVertex, x + xx, y + yy, l * data.C, p);
+            }
+        }
+
+        private void SetRadius([NotNull] BalloonData data)
+        {
+            Debug.Assert(data != null);
+
+            data.R = Math.Max(data.D / 2, Parameters.MinRadius);
+        }
+
+        private static void AdjustChildren([NotNull] BalloonData data, float s)
+        {
+            Debug.Assert(data != null);
+
+            if (s > Math.PI)
+            {
+                data.C = (float)Math.PI / s;
+                data.F = 0;
+            }
+            else
+            {
+                data.C = 1;
+                data.F = (float)Math.PI - s;
+            }
+        }
+    }
 }

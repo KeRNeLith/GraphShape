@@ -94,6 +94,12 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             Assert.IsNull(
                 factory.CreateAlgorithm(
+                    "NotExist",
+                    simpleContext,
+                    new CircularLayoutParameters()));
+
+            Assert.IsNull(
+                factory.CreateAlgorithm(
                     "Circular",
                     nullGraphContext,
                     new CircularLayoutParameters()));
@@ -182,7 +188,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             ILayoutParameters createdParameters = factory.CreateParameters(string.Empty, circularParameters);
             Assert.IsNull(createdParameters);
 
-            createdParameters = factory.CreateParameters("NotExists", circularParameters);
+            createdParameters = factory.CreateParameters("NotExist", circularParameters);
             Assert.IsNull(createdParameters);
 
             createdParameters = factory.CreateParameters("Circular", null);

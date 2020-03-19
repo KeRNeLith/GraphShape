@@ -36,7 +36,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="sizes">Vertices sizes.</param>
         /// <param name="mode">Layout mode.</param>
         public LayoutContext(
-            TGraph graph,
+            [CanBeNull] TGraph graph,
             [CanBeNull] IDictionary<TVertex, Point> positions,
             [NotNull] IDictionary<TVertex, Size> sizes,
             LayoutMode mode)

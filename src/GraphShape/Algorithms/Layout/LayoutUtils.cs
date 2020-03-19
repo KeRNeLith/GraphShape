@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using JetBrains.Annotations;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout
 {
@@ -115,7 +116,7 @@ namespace GraphShape.Algorithms.Layout
                     fi = Math.Max(fi, sides[i]);
             }
 
-            if (Math.Abs(fi) < double.Epsilon)
+            if (IsZero(fi))
             {
                 fi = double.PositiveInfinity;
                 for (int i = 0; i < 4; ++i)

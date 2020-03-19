@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GraphShape.Algorithms.Layout.Simple.Tree
+﻿namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
+    /// <summary>
+    /// Enumeration of possible spanning tree generation mode.
+    /// </summary>
     public enum SpanningTreeGeneration
     {
-        BFS, 
+        /// <summary>
+        /// BFS (Breadth-First Search).
+        /// </summary>
+        BFS,
+
+        /// <summary>
+        /// DFS (Depth-First Search).
+        /// </summary>
         DFS
     }
 }

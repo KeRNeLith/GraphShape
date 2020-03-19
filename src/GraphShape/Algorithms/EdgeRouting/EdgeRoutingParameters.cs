@@ -3,7 +3,7 @@
 namespace GraphShape.Algorithms.EdgeRouting
 {
     /// <summary>
-    /// Base class for edge routing algorithm parameters.
+    /// Edge routing algorithm parameters.
     /// </summary>
     public class EdgeRoutingParameters : NotifierObject, IEdgeRoutingParameters
     {

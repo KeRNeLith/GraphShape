@@ -1,66 +1,84 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using QuikGraph;
-using System.Diagnostics.Contracts;
 using GraphShape.Algorithms.Layout.Simple.Tree;
+using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.Layout.Contextual
 {
-    public enum DoubleTreeVertexType
-    {
-        Backward,
-        Forward,
-        Center
-    }
-
-    public class DoubleTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, DoubleTreeVertexType, object, DoubleTreeLayoutParameters>
+    /// <summary>
+    /// Double tree layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type</typeparam>
+    public class DoubleTreeLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, DoubleTreeVertexType, object, DoubleTreeLayoutParameters>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        readonly TVertex root;
-        readonly IDictionary<TVertex, Size> vertexSizes;
+        [NotNull]
+        private readonly TVertex _root;
 
-        protected override DoubleTreeLayoutParameters DefaultParameters
+        [NotNull]
+        private readonly IDictionary<TVertex, Size> _verticesSizes;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DoubleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="selectedVertex">Root vertex.</param>
+        public DoubleTreeLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
+            [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
+            [CanBeNull] DoubleTreeLayoutParameters oldParameters,
+            [NotNull] TVertex selectedVertex)
+            : base(visitedGraph, verticesPositions, oldParameters)
         {
-            get { return new DoubleTreeLayoutParameters(); }
+            _root = selectedVertex ?? throw new ArgumentNullException(nameof(selectedVertex));
+            _verticesSizes = verticesSizes ?? new Dictionary<TVertex, Size>();
         }
 
-        public DoubleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> verticesPositions, IDictionary<TVertex, Size> vertexSizes, DoubleTreeLayoutParameters oldParameters, TVertex selectedVertex )
-            : base( visitedGraph, verticesPositions, oldParameters )
-        {
-            root = selectedVertex;
-            this.vertexSizes = ( vertexSizes ?? new Dictionary<TVertex, Size>() );
-        }
+        /// <inheritdoc />
+        protected override DoubleTreeLayoutParameters DefaultParameters { get; } = new DoubleTreeLayoutParameters();
 
+        #region AlgorithmBase
+
+        /// <inheritdoc />
         protected override void InternalCompute()
         {
-            //
             // Separate the two sides
-            //
-            HashSet<TVertex> side1, side2;
-            SeparateSides( VisitedGraph, root, out side1, out side2 );
+            SeparateSides(
+                VisitedGraph,
+                _root,
+                out HashSet<TVertex> side1,
+                out HashSet<TVertex> side2);
 
             #region Build the temporary graph for the two sides
 
             //
             // The IN side
             //
-            //on the IN side we should reverse the edges
+            // on the IN side we should reverse the edges
             var graph1 = new BidirectionalGraph<TVertex, Edge<TVertex>>();
-            graph1.AddVertexRange( side1 );
-            foreach ( var v in side1 )
+            graph1.AddVertexRange(side1);
+            foreach (TVertex vertex in side1)
             {
-                VerticesInfos[v] = DoubleTreeVertexType.Backward;
-                foreach ( var e in VisitedGraph.InEdges( v ) )
+                VerticesInfos[vertex] = DoubleTreeVertexType.Backward;
+                foreach (TEdge edge in VisitedGraph.InEdges(vertex))
                 {
-                    if ( !side1.Contains( e.Source ) || e.Source.Equals( e.Target ) )
+                    if (!side1.Contains(edge.Source) || edge.Source.Equals(edge.Target))
                         continue;
 
-                    //reverse the edge
-                    graph1.AddEdge( new Edge<TVertex>( e.Target, e.Source ) );
+                    // Reverse the edge
+                    graph1.AddEdge(new Edge<TVertex>(edge.Target, edge.Source));
                 }
             }
 
@@ -68,26 +86,27 @@ namespace GraphShape.Algorithms.Layout.Contextual
             // The OUT side
             //
             var graph2 = new BidirectionalGraph<TVertex, TEdge>();
-            graph2.AddVertexRange( side2 );
-            foreach ( var v in side2 )
+            graph2.AddVertexRange(side2);
+            foreach (TVertex vertex in side2)
             {
-                VerticesInfos[v] = DoubleTreeVertexType.Forward;
-                foreach ( var e in VisitedGraph.OutEdges( v ) )
+                VerticesInfos[vertex] = DoubleTreeVertexType.Forward;
+                foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
                 {
-                    if ( !side2.Contains( e.Target ) || e.Source.Equals( e.Target ) )
+                    if (!side2.Contains(edge.Target) || edge.Source.Equals(edge.Target))
                         continue;
 
-                    //simply add the edge
-                    graph2.AddEdge( e );
+                    // Simply add the edge
+                    graph2.AddEdge(edge);
                 }
             }
 
-            VerticesInfos[root] = DoubleTreeVertexType.Center;
+            VerticesInfos[_root] = DoubleTreeVertexType.Center;
+
             #endregion
 
             LayoutDirection side2Direction = Parameters.Direction;
             LayoutDirection side1Direction = Parameters.Direction;
-            switch ( side2Direction )
+            switch (side2Direction)
             {
                 case LayoutDirection.BottomToTop:
                     side1Direction = LayoutDirection.TopToBottom;
@@ -103,94 +122,105 @@ namespace GraphShape.Algorithms.Layout.Contextual
                     break;
             }
 
-            //
             // SimpleTree layout on the two side
-            //
-            var side1LayoutAlg = new SimpleTreeLayoutAlgorithm<TVertex, Edge<TVertex>, BidirectionalGraph<TVertex, Edge<TVertex>>>(
-                graph1, VerticesPositions, vertexSizes,
+            var side1LayoutAlgorithm = new SimpleTreeLayoutAlgorithm<TVertex, Edge<TVertex>, BidirectionalGraph<TVertex, Edge<TVertex>>>(
+                graph1,
+                VerticesPositions,
+                _verticesSizes,
                 new SimpleTreeLayoutParameters
-                    {
-                        LayerGap = Parameters.LayerGap,
-                        VertexGap = Parameters.VertexGap,
-                        Direction = side1Direction,
-                        SpanningTreeGeneration = SpanningTreeGeneration.BFS
-                    } );
-            var side2LayoutAlg = new SimpleTreeLayoutAlgorithm<TVertex, TEdge, BidirectionalGraph<TVertex, TEdge>>(
-                graph2, VerticesPositions, vertexSizes,
+                {
+                    LayerGap = Parameters.LayerGap,
+                    VertexGap = Parameters.VertexGap,
+                    Direction = side1Direction,
+                    SpanningTreeGeneration = SpanningTreeGeneration.BFS
+                });
+
+            var side2LayoutAlgorithm = new SimpleTreeLayoutAlgorithm<TVertex, TEdge, BidirectionalGraph<TVertex, TEdge>>(
+                graph2,
+                VerticesPositions,
+                _verticesSizes,
                 new SimpleTreeLayoutParameters
-                    {
-                        LayerGap = Parameters.LayerGap,
-                        VertexGap = Parameters.VertexGap,
-                        Direction = side2Direction,
-                        SpanningTreeGeneration = SpanningTreeGeneration.BFS
-                    } );
+                {
+                    LayerGap = Parameters.LayerGap,
+                    VertexGap = Parameters.VertexGap,
+                    Direction = side2Direction,
+                    SpanningTreeGeneration = SpanningTreeGeneration.BFS
+                });
 
-            side1LayoutAlg.Compute();
-            side2LayoutAlg.Compute();
+            side1LayoutAlgorithm.Compute();
+            side2LayoutAlgorithm.Compute();
 
-            //
             // Merge the layouts
-            //
-            var side2Translate = side1LayoutAlg.VerticesPositions[root] - side2LayoutAlg.VerticesPositions[root];
-            foreach ( var v in side1 )
-                VerticesPositions[v] = side1LayoutAlg.VerticesPositions[v];
+            Vector side2Translate = side1LayoutAlgorithm.VerticesPositions[_root] - side2LayoutAlgorithm.VerticesPositions[_root];
+            foreach (TVertex vertex in side1)
+                VerticesPositions[vertex] = side1LayoutAlgorithm.VerticesPositions[vertex];
 
-            foreach ( var v in side2 )
-                VerticesPositions[v] = side2LayoutAlg.VerticesPositions[v] + side2Translate;
+            foreach (TVertex vertex in side2)
+                VerticesPositions[vertex] = side2LayoutAlgorithm.VerticesPositions[vertex] + side2Translate;
+
             NormalizePositions();
         }
 
-        /// <summary>
-        /// Separates the points of the graph according to the given <paramref name="selectedVertex"/>.
-        /// </summary>
-        /// <param name="graph"></param>
-        /// <param name="selectedVertex"></param>
-        /// <param name="side1"></param>
-        /// <param name="side2"></param>
-        public static void SeparateSides( TGraph graph, TVertex selectedVertex, out HashSet<TVertex> side1, out HashSet<TVertex> side2 )
-        {
-            var visitedVertices = new HashSet<TVertex> { selectedVertex };
+        #endregion
 
-            //create the set of the side 1 and 2
-            side1 = new HashSet<TVertex> { selectedVertex };
-            side2 = new HashSet<TVertex> { selectedVertex };
+        /// <summary>
+        /// Separates the points of the graph according to the given <paramref name="splitVertex"/>.
+        /// </summary>
+        /// <param name="graph">Graph to split.</param>
+        /// <param name="splitVertex">Split vertex.</param>
+        /// <param name="side1">First side.</param>
+        /// <param name="side2">Second side.</param>
+        private static void SeparateSides(
+            [NotNull] TGraph graph,
+            [NotNull] TVertex splitVertex,
+            [NotNull, ItemNotNull] out HashSet<TVertex> side1,
+            [NotNull, ItemNotNull] out HashSet<TVertex> side2)
+        {
+            Debug.Assert(graph != null);
+            Debug.Assert(splitVertex != null);
+
+            var visitedVertices = new HashSet<TVertex> { splitVertex };
+
+            // Create the set of the side 1 and 2
+            side1 = new HashSet<TVertex> { splitVertex };
+            side2 = new HashSet<TVertex> { splitVertex };
 
             var queue1 = new Queue<TVertex>();
             var queue2 = new Queue<TVertex>();
-            queue1.Enqueue( selectedVertex );
-            queue2.Enqueue( selectedVertex );
+            queue1.Enqueue(splitVertex);
+            queue2.Enqueue(splitVertex);
 
             do
             {
-                //get the next layer of vertices on the IN side
-                for ( int i = 0, n = queue1.Count; i < n; i++ )
+                // Get the next layer of vertices on the IN side
+                for (int i = 0, n = queue1.Count; i < n; ++i)
                 {
-                    var vertex = queue1.Dequeue();
-                    foreach ( var edge in graph.InEdges( vertex ) )
+                    TVertex vertex = queue1.Dequeue();
+                    foreach (TEdge edge in graph.InEdges(vertex))
                     {
-                        if ( ( graph.ContainsVertex( edge.Source ) && visitedVertices.Add( edge.Source ) ) || vertex.Equals( selectedVertex ) )
+                        if ((graph.ContainsVertex(edge.Source) && visitedVertices.Add(edge.Source)) || vertex.Equals(splitVertex))
                         {
-                            queue1.Enqueue( edge.Source );
-                            side1.Add( edge.Source );
+                            queue1.Enqueue(edge.Source);
+                            side1.Add(edge.Source);
                         }
                     }
                 }
 
-                //get the next layer of vertices on the OUT side
-                for ( int i = 0, n = queue2.Count; i < n; i++ )
+                // Get the next layer of vertices on the OUT side
+                for (int i = 0, n = queue2.Count; i < n; ++i)
                 {
-                    var vertex = queue2.Dequeue();
-                    foreach ( var edge in graph.OutEdges( vertex ) )
+                    TVertex vertex = queue2.Dequeue();
+                    foreach (TEdge edge in graph.OutEdges(vertex))
                     {
-                        if ( ( graph.ContainsVertex( edge.Target ) && visitedVertices.Add( edge.Target ) ) || vertex.Equals( selectedVertex ) )
+                        if ((graph.ContainsVertex(edge.Target) && visitedVertices.Add(edge.Target)) || vertex.Equals(splitVertex))
                         {
-                            queue2.Enqueue( edge.Target );
-                            side2.Add( edge.Target );
+                            queue2.Enqueue(edge.Target);
+                            side2.Add(edge.Target);
                         }
                     }
                 }
-            } while ( queue1.Count > 0 || queue2.Count > 0 );
-            //we got the 2 sides
+            } while (queue1.Count > 0 || queue2.Count > 0);
+            // We got the 2 sides
         }
     }
 }

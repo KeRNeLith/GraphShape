@@ -1,38 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
-using System.Diagnostics.Contracts;
-using System.Diagnostics;
+using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Compound.FDP
 {
-    /// <typeparam name="TVertex">The type of the vertices.</typeparam>
-    /// <typeparam name="TEdge">The type of the edges.</typeparam>
-    /// <typeparam name="TGraph">The type of the graph.</typeparam>
-    public partial class CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph> :
-        DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, CompoundFDPLayoutParameters>,
-        ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph>
+    /// <summary>
+    /// Compound FDP layout algorithm.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public partial class CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, CompoundFDPLayoutParameters>
+        , ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        /*[ContractInvariantMethod]
-        private void InvariantContracts()
-        {
-            Contract.Invariant(1 <= _phase && _phase <= 3);
-            Contract.Invariant(_treeGrowingStep > 0);
-        }*/
+        private double _temperature;
 
-        private double _temperature = 0;
-        private double _temperatureDelta; //need to be initialized
-        private readonly double _temperatureLambda = 0.99;
-        private readonly Random rnd = new Random(DateTime.Now.Millisecond);
+        private const double TemperatureLambda = 0.99;
+
+        [NotNull]
+        private readonly Random _random = new Random(DateTime.Now.Millisecond);
 
         /// <summary>
-        /// <para>Phase of the layout process.</para>
-        /// <para>Values: 1,2,3</para>
+        /// Phase of the layout process.
+        /// Values: 1,2,3.
         /// </summary>
         private int _phase = 1;
 
@@ -42,28 +41,25 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         private int _step;
 
         /// <summary>
-        /// The maximal iteration count in the phases.
+        /// The maximum number of iteration in the phases.
         /// </summary>
-        private /*readonly*/ int[] _maxIterationCounts = new int[3] { 30, 70, 50 };
+        private int[] _maxIterationCounts;
+
+        ///// <summary>
+        ///// The error thresholds for the phases (calculated inside the <see cref="Init"/> method).
+        ///// </summary>
+        //private readonly double[] _errorThresholds = new double[3];
 
         /// <summary>
-        /// The error thresholds for the phases (calculated inside the Init method).
-        /// </summary>
-        private readonly double[] _errorThresholds = new double[3];
-
-        /// <summary>
-        /// Indicates whether the removed tree-node 
+        /// Indicates whether the removed tree-node
         /// has been grown back or not.
         /// </summary>
-        private bool _allTreesGrown
-        {
-            get { return _removedRootTreeNodeLevels.Count == 0; }
-        }
+        private bool AllTreesGrown => _removedRootTreeNodeLevels.Count == 0;
 
         /// <summary>
         /// Grows back a tree-node level in every 'treeGrowingStep'th step.
         /// </summary>
-        private int _treeGrowingStep = 5;
+        private const int TreeGrowingStep = 5;
 
         /// <summary>
         /// The magnitude of the gravity force calculated in the init phased.
@@ -77,31 +73,38 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
         private double _phaseDependentRepulsionMultiplier = 1.0;
 
-        /// <summary>
-        /// This method is the skeleton of the layout algorithm.
-        /// </summary>
+        #region AlgorithmBase
+
+        /// <inheritdoc />
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            Init(_verticesSizes, _verticesBorders, _layoutTypes);
+
+            // Phases:
+            // 1: Layout the skeleton graph without app. specific and gravitation forces.
+            // 2: Add the removed tree nodes and apply app. specific and gravitation forces.
+            // 3: Stabilization
+
+            // For optimization purposes
+            _maxIterationCounts = new[]
+            {
+                Parameters.Phase1Iterations,
+                Parameters.Phase2Iterations,
+                Parameters.Phase3Iterations
+            };
+        }
+
+        /// <inheritdoc />
         protected override void InternalCompute()
         {
-            //call initialize
-            Init(_vertexSizes, _vertexBorders, _layoutTypes);
-
-            //Phases:
-            //1: layout the skeleton graph without app. specific and gravitation forces.
-            //2: add the removed tree nodes and apply app. specific and gravitation forces.
-            //3: stabilization
-
-            /* ********* FOR OPTIMIZATION PURPOSES ********** */
-            _maxIterationCounts = new int[3];
-            _maxIterationCounts[0] = Parameters.Phase1Iterations;
-            _maxIterationCounts[1] = Parameters.Phase2Iterations;
-            _maxIterationCounts[2] = Parameters.Phase3Iterations;
-
-            var _temperatureMultipliers = new double[3]
-                                              {
-                                                  1.0, 
-                                                  Parameters.Phase2TemperatureInitialMultiplier,
-                                                  Parameters.Phase3TemperatureInitialMultiplier
-                                              };
+            var temperatureMultipliers = new[]
+            {
+                1.0,
+                Parameters.Phase2TemperatureInitialMultiplier,
+                Parameters.Phase3TemperatureInitialMultiplier
+            };
 
             double initialTemperature = Math.Sqrt(_compoundGraph.VertexCount) * Parameters.IdealEdgeLength;
             double minimalTemperature = initialTemperature * 0.1;
@@ -109,17 +112,18 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
             _gravityCenterCalculated = false;
 
-            for (_phase = 1; _phase <= 3; _phase++)
+            for (_phase = 1; _phase <= 3; ++_phase)
             {
-                _temperature = initialTemperature * _temperatureMultipliers[_phase - 1];
+                _temperature = initialTemperature * temperatureMultipliers[_phase - 1];
                 _phaseDependentRepulsionMultiplier = _phase < 2 ? 0.5 : 1.0;
                 //TODO put back the error and its threshold
-                /*double error = _errorThresholds[_phase] + 1;*/
-                for (_step = _maxIterationCounts[_phase - 1];
-                     (_step > 0 && true/*error > _errorThresholds[_phase - 1] */) || (_phase == 2 && !_allTreesGrown);
-                     _step--)
+                //double error = _errorThresholds[_phase] + 1;
+                for (
+                    _step = _maxIterationCounts[_phase - 1];
+                    (_step > 0 /*&& error > _errorThresholds[_phase - 1] */) || _phase == 2 && !AllTreesGrown;
+                    --_step)
                 {
-                    /*error = 0;*/
+                    //error = 0;
 
                     ApplySpringForces();
                     ApplyRepulsionForces();
@@ -133,57 +137,56 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                     if (ReportOnIterationEndNeeded)
                         SavePositions();
 
-                    CalcNodePositionsAndSizes();
+                    CalculateNodePositionsAndSizes();
 
-                    if (_phase == 2 && !_allTreesGrown && _step % _treeGrowingStep == 0)
+                    if (_phase == 2 && !AllTreesGrown && _step % TreeGrowingStep == 0)
                         GrowTreesOneLevel();
 
-                    _temperature *= _temperatureLambda;
+                    _temperature *= TemperatureLambda;
                     _temperature = Math.Max(_temperature, minimalTemperature);
                 }
+
                 if (!_gravityCenterCalculated)
                 {
                     _rootCompoundVertex.RecalculateBounds();
                     _gravityCenterCalculated = true;
                 }
-                //if (_phase == 1)
+
                 _temperature *= Parameters.TemperatureDecreasing;
             }
+
             SavePositions();
         }
 
+        #endregion
+
         private void SavePositions()
         {
-            foreach (var vertex in _vertexDatas.Keys)
+            foreach (TVertex vertex in _verticesData.Keys)
             {
-                var v = _vertexDatas[vertex];
-                VerticesPositions[vertex] = v.Position;
+                VertexData vertexData = _verticesData[vertex];
+                VerticesPositions[vertex] = vertexData.Position;
             }
 
-            /*var iterationEndedArgs = 
-                new CompoundLayoutIterationEventArgs<TVertex, TEdge>(
-                    0, 0, string.Empty, 
-                    VerticesPositions,
-                    InnerCanvasSizes);*/
+            // Build the test vertex infos
+            Dictionary<TVertex, TestingCompoundVertexInfo> vertexInfos = _verticesData.ToDictionary(
+                pair => pair.Key,
+                pair => new TestingCompoundVertexInfo(
+                    pair.Value.SpringForce,
+                    pair.Value.RepulsionForce,
+                    pair.Value.GravitationForce,
+                    pair.Value.ApplicationForce));
 
-            //build the test vertex infos
-            var vertexInfos = _vertexDatas.ToDictionary(
-                kvp => kvp.Key,
-                kvp => new TestingCompoundVertexInfo(
-                    kvp.Value.SpringForce,
-                    kvp.Value.RepulsionForce,
-                    kvp.Value.GravitationForce,
-                    kvp.Value.ApplicationForce));
+            var iterationEndedArgs = new TestingCompoundLayoutIterationEventArgs<TVertex, TEdge, TestingCompoundVertexInfo, object>(
+                0,
+                0,
+                $"Phase: {_phase}, Steps: {_step}",
+                VerticesPositions,
+                InnerCanvasSizes,
+                vertexInfos,
+                _rootCompoundVertex.InnerCanvasCenter);
 
-            var iterationEndedArgs =
-                new TestingCompoundLayoutIterationEventArgs<TVertex, TEdge, TestingCompoundVertexInfo, object>(
-                    0, 0, string.Format("Phase: {0}, Steps: {1}", _phase, _step),
-                    VerticesPositions,
-                    InnerCanvasSizes,
-                    vertexInfos,
-                    _rootCompoundVertex.InnerCanvasCenter);
-
-            //raise the event
+            // Raise the event
             OnIterationEnded(iterationEndedArgs);
         }
 
@@ -192,120 +195,124 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             if (_removedRootTreeNodeLevels.Count <= 0)
                 return;
 
-            var treeNodeDatas = _removedRootTreeNodeLevels.Pop();
-            foreach (var tnd in treeNodeDatas)
+            IList<RemovedTreeNodeData> treeNodeData = _removedRootTreeNodeLevels.Pop();
+            foreach (RemovedTreeNodeData data in treeNodeData)
             {
-                _removedRootTreeNodes.Remove(tnd.Vertex);
-                _removedRootTreeEdges.Remove(tnd.Edge);
-                _levels[0].Add(tnd.Vertex);
-                _compoundGraph.AddVertex(tnd.Vertex);
-                _compoundGraph.AddEdge(tnd.Edge);
+                _removedRootTreeNodes.Remove(data.Vertex);
+                _removedRootTreeEdges.Remove(data.Edge);
+                Levels[0].Add(data.Vertex);
+                _compoundGraph.AddVertex(data.Vertex);
+                _compoundGraph.AddEdge(data.Edge);
 
-                var otherVertex = tnd.Edge.GetOtherVertex(tnd.Vertex);
-                _vertexDatas[tnd.Vertex].Position = _vertexDatas[otherVertex].Position;
+                TVertex otherVertex = data.Edge.GetOtherVertex(data.Vertex);
+                _verticesData[data.Vertex].Position = _verticesData[otherVertex].Position;
             }
         }
 
+        [Pure]
         private Vector GetSpringForce(double idealLength, Point uPos, Point vPos, Size uSize, Size vSize)
         {
-            var positionVector = (uPos - vPos);
-            if (positionVector.Length == 0)
+            Vector positionVector = uPos - vPos;
+            if (IsZero(positionVector.Length))
             {
-                var compensationVector = new Vector(rnd.NextDouble(), rnd.NextDouble());
+                var compensationVector = new Vector(_random.NextDouble(), _random.NextDouble());
                 positionVector = compensationVector * 2;
                 uPos += compensationVector;
                 vPos -= compensationVector;
             }
             positionVector.Normalize();
 
-            //get the clipping points
-            var c_u = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
-            var c_v = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
+            // Get the clipping points
+            Point clippingPointU = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
+            Point clippingPointV = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
-            Vector F = (c_u - c_v);
-            bool isSameDirection = LayoutUtils.IsSameDirection(positionVector, F);
-            double length = 0;
+            Vector force = clippingPointU - clippingPointV;
+            bool isSameDirection = LayoutUtils.IsSameDirection(positionVector, force);
+            double length;
             if (isSameDirection)
-                length = F.Length - idealLength;
+                length = force.Length - idealLength;
             else
-                length = F.Length + idealLength;
+                length = force.Length + idealLength;
 
-            if (F.Length == 0)
-                F = -positionVector;
-            F.Normalize();
+            if (IsZero(force.Length))
+                force = -positionVector;
+            force.Normalize();
             if (length > 0)
-                F *= -1;
+                force *= -1;
 
-            var Fs = Math.Pow(length / (idealLength), 2) / Parameters.ElasticConstant * F;
-            return Fs;
+            Vector springForce = Math.Pow(length / idealLength, 2) / Parameters.ElasticConstant * force;
+            return springForce;
         }
 
         private Vector GetRepulsionForce(Point uPos, Point vPos, Size uSize, Size vSize, double repulsionRange)
         {
-            var positionVector = (uPos - vPos);
-            if (positionVector.Length == 0)
+            Vector positionVector = uPos - vPos;
+            if (IsZero(positionVector.Length))
             {
-                var compensationVector = new Vector(rnd.NextDouble(), rnd.NextDouble());
+                var compensationVector = new Vector(_random.NextDouble(), _random.NextDouble());
                 positionVector = compensationVector * 2;
                 uPos += compensationVector;
                 vPos -= compensationVector;
             }
             positionVector.Normalize();
 
-            var c_u = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
-            var c_v = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
+            Point clippingPointU = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
+            Point clippingPointV = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
-            var F = c_u - c_v;
-            var isSameDirection = LayoutUtils.IsSameDirection(positionVector, F);
-            var Fr = new Vector();
+            Vector force = clippingPointU - clippingPointV;
+            var isSameDirection = LayoutUtils.IsSameDirection(positionVector, force);
 
-            if (isSameDirection && F.Length > repulsionRange)
+            if (isSameDirection && force.Length > repulsionRange)
                 return new Vector();
-            double length = Math.Max(1, F.Length);
-            //double length = F.LengthSquared;
+
+            double length = Math.Max(1, force.Length);
             length = Math.Pow(isSameDirection ? length / (Parameters.IdealEdgeLength * 2.0) : 1 / length, 2);
-            Fr = Parameters.RepulsionConstant / length * positionVector * _phaseDependentRepulsionMultiplier;
-            return Fr;
+            Vector repulsionForce = Parameters.RepulsionConstant / length * positionVector * _phaseDependentRepulsionMultiplier;
+            return repulsionForce;
         }
 
         /// <summary>
-        /// Applies the attraction forces (between the end nodes
-        /// of the edges).
+        /// Applies the attraction forces (between the end nodes of the edges).
         /// </summary>
         private void ApplySpringForces()
         {
-            foreach (var edge in VisitedGraph.Edges)
+            foreach (TEdge edge in VisitedGraph.Edges)
             {
-                if (!_allTreesGrown && (_removedRootTreeNodes.Contains(edge.Source) || _removedRootTreeNodes.Contains(edge.Target)))
+                if (!AllTreesGrown && (_removedRootTreeNodes.Contains(edge.Source) || _removedRootTreeNodes.Contains(edge.Target)))
                     continue;
-                //get the ideal edge length
+
+                // Get the ideal edge length
                 double idealLength = Parameters.IdealEdgeLength;
-                var u = _vertexDatas[edge.Source];
-                var v = _vertexDatas[edge.Target];
-                var multiplier = (u.Level + v.Level) / 2.0 + 1;
+                VertexData u = _verticesData[edge.Source];
+                VertexData v = _verticesData[edge.Target];
+                double multiplier = (u.Level + v.Level) / 2.0 + 1;
                 if (IsInterGraphEdge(edge))
                 {
-                    //idealLength *= (u.Level + v.Level + 1) * Parameters.NestingFactor;
                     idealLength *= 1 + (u.Level + v.Level + 1) * Parameters.NestingFactor;
-                    //multiplier = 1;
                 }
 
-                var Fs = GetSpringForce(idealLength, u.Position, v.Position, u.Size, v.Size) * multiplier;
+                Vector springForce = GetSpringForce(idealLength, u.Position, v.Position, u.Size, v.Size) * multiplier;
 
-                //aggregate the forces
-                if ((u.IsFixedToParent && u.MovableParent == null) ^ (v.IsFixedToParent && v.MovableParent == null))
-                    Fs *= 2;
+                // Aggregate the forces
+                if ((u.IsFixedToParent && u.MovableParent is null) ^ (v.IsFixedToParent && v.MovableParent is null))
+                    springForce *= 2;
+
                 if (!u.IsFixedToParent)
-                    u.SpringForce += Fs /* * u.Mass / (u.Mass + v.Mass)*/;
+                {
+                    u.SpringForce += springForce;
+                }
                 else if (u.MovableParent != null)
                 {
-                    u.MovableParent.SpringForce += Fs;
+                    u.MovableParent.SpringForce += springForce;
                 }
+
                 if (!v.IsFixedToParent)
-                    v.SpringForce -= Fs /* * v.Mass / (u.Mass + v.Mass)*/;
+                {
+                    v.SpringForce -= springForce;
+                }
                 else if (v.MovableParent != null)
                 {
-                    v.MovableParent.SpringForce -= Fs;
+                    v.MovableParent.SpringForce -= springForce;
                 }
             }
         }
@@ -315,31 +322,37 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// </summary>
         private void ApplyRepulsionForces()
         {
-            var repulsionRange = Parameters.IdealEdgeLength * Parameters.SeparationMultiplier;
-            for (int i = _levels.Count - 1; i >= 0; i--)
+            double repulsionRange = Parameters.IdealEdgeLength * Parameters.SeparationMultiplier;
+            for (int i = Levels.Count - 1; i >= 0; --i)
             {
                 var checkedVertices = new HashSet<TVertex>();
-                foreach (var uVertex in _levels[i])
+                foreach (TVertex uVertex in Levels[i])
                 {
                     checkedVertices.Add(uVertex);
-                    var u = _vertexDatas[uVertex];
-                    foreach (var vVertex in _levels[i])
+                    VertexData uData = _verticesData[uVertex];
+                    foreach (TVertex vVertex in Levels[i])
                     {
                         if (checkedVertices.Contains(vVertex))
                             continue;
-                        var v = _vertexDatas[vVertex];
 
-                        if (u.Parent != v.Parent)
-                            continue; //the two vertex not in the same graph
+                        VertexData vData = _verticesData[vVertex];
 
-                        var Fr = GetRepulsionForce(u.Position, v.Position, u.Size, v.Size, repulsionRange) * Math.Pow(u.Level + 1,2);
+                        if (uData.Parent != vData.Parent)
+                            continue; // The two vertices are not in the same graph
 
-                        if (u.IsFixedToParent ^ v.IsFixedToParent)
-                            Fr *= 2;
-                        if (!u.IsFixedToParent)
-                            u.RepulsionForce += Fr /** u.Mass / (u.Mass + v.Mass)*/;
-                        if (!v.IsFixedToParent)
-                            v.RepulsionForce -= Fr /** v.Mass / (u.Mass + v.Mass)*/;
+                        Vector repulsionForce = GetRepulsionForce(
+                            uData.Position,
+                            vData.Position,
+                            uData.Size,
+                            vData.Size,
+                            repulsionRange) * Math.Pow(uData.Level + 1, 2);
+
+                        if (uData.IsFixedToParent ^ vData.IsFixedToParent)
+                            repulsionForce *= 2;
+                        if (!uData.IsFixedToParent)
+                            uData.RepulsionForce += repulsionForce;
+                        if (!vData.IsFixedToParent)
+                            vData.RepulsionForce -= repulsionForce;
                     }
                 }
             }
@@ -350,21 +363,21 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// </summary>
         private void ApplyGravitationForces()
         {
-            for (int i = _levels.Count - 1; i >= 0; i--)
+            for (int i = Levels.Count - 1; i >= 0; --i)
             {
-                foreach (var uVertex in _levels[i])
+                foreach (TVertex uVertex in Levels[i])
                 {
-                    var u = _vertexDatas[uVertex];
-                    var center = u.Parent.InnerCanvasCenter;
+                    VertexData uData = _verticesData[uVertex];
+                    Point center = uData.Parent.InnerCanvasCenter;
 
-                    var Fg = center - u.Position;
-                    if (Fg.Length == 0)
+                    Vector gravitationForce = center - uData.Position;
+                    if (IsZero(gravitationForce.Length))
                         continue;
 
-                    double length = Math.Max(1, Fg.Length / (Parameters.IdealEdgeLength * 2.0));
-                    Fg.Normalize();
-                    Fg *= Parameters.GravitationFactor * _gravityForceMagnitude * Math.Pow(u.Level + 1,2) / Math.Pow(length, 0.25);
-                    u.GravitationForce += Fg;
+                    double length = Math.Max(1, gravitationForce.Length / (Parameters.IdealEdgeLength * 2.0));
+                    gravitationForce.Normalize();
+                    gravitationForce *= Parameters.GravitationFactor * _gravityForceMagnitude * Math.Pow(uData.Level + 1, 2) / Math.Pow(length, 0.25);
+                    uData.GravitationForce += gravitationForce;
                 }
             }
         }
@@ -376,21 +389,23 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         {
         }
 
-        private void CalcNodePositionsAndSizes()
+        private void CalculateNodePositionsAndSizes()
         {
-            for (int i = _levels.Count - 1; i >= 0; i--)
+            for (int i = Levels.Count - 1; i >= 0; --i)
             {
-                foreach (var uVertex in _levels[i])
+                foreach (TVertex uVertex in Levels[i])
                 {
-                    var u = _vertexDatas[uVertex];
-                    var force = u.ApplyForce(_temperature * Math.Max(1, _step) / 100.0 * Parameters.DisplacementLimitMultiplier);
+                    VertexData uData = _verticesData[uVertex];
+                    uData.ApplyForce(_temperature * Math.Max(1, _step) / 100.0 * Parameters.DisplacementLimitMultiplier);
                 }
             }
         }
 
-        private bool IsInterGraphEdge(TEdge e)
+        [Pure]
+        private bool IsInterGraphEdge([NotNull] TEdge edge)
         {
-            return _vertexDatas[e.Source].Parent != _vertexDatas[e.Target].Parent;
+            Debug.Assert(edge != null);
+            return _verticesData[edge.Source].Parent != _verticesData[edge.Target].Parent;
         }
     }
 }

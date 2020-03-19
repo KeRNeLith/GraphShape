@@ -1,39 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
 {
-    public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph> : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, SimpleTreeLayoutParameters>
+    public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        class Layer
+        private class Layer
         {
-            public double Size;
-            public double NextPosition;
-            public readonly IList<TVertex> Vertices = new List<TVertex>();
-            public double LastTranslate;
+            public double Size { get; set; }
+
+            public double NextPosition { get; set; }
+
+            [NotNull, ItemNotNull]
+            public IList<TVertex> Vertices { get; } = new List<TVertex>();
+
+            public double LastTranslate { get; set; }
 
             public Layer()
             {
                 LastTranslate = 0;
             }
 
-            /* Width and Height Optimization */
+            // Width and Height Optimization
 
         }
 
-        class VertexData
+        private class VertexData
         {
-            public TVertex parent;
-            public double translate;
-            public double position;
+            [CanBeNull]
+            public TVertex Parent { get; set; }
 
-            /* Width and Height Optimization */
+            public double Translate { get; set; }
+
+            public double Position { get; set; }
+
+            // Width and Height Optimization
 
         }
     }

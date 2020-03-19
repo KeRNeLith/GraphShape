@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
@@ -11,18 +10,21 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
+        /// <summary>
+        /// List of alternating <see cref="SegmentContainer"/> and <see cref="SugiVertex"/>.
+        /// </summary>
         protected class AlternatingLayer : List<IData>, ICloneable
         {
             /// <summary>
             /// This method ensures that the layer is a real alternating
-            /// layer: starts with a SegmentContainer followed by a Vertex,
-            /// another SegmentContainer, another Vertex, ... ending wiht 
-            /// a SegmentContainer.
+            /// layer: starts with a <see cref="SegmentContainer"/> followed by a Vertex,
+            /// another <see cref="SegmentContainer"/>, another Vertex, ... ending with 
+            /// a <see cref="SegmentContainer"/>.
             /// </summary>
             public void EnsureAlternatingAndPositions()
             {
                 bool shouldBeAContainer = true;
-                for (int i = 0; i < Count; i++, shouldBeAContainer = !shouldBeAContainer)
+                for (int i = 0; i < Count; ++i, shouldBeAContainer = !shouldBeAContainer)
                 {
                     if (shouldBeAContainer && this[i] is SugiVertex)
                     {
@@ -30,14 +32,16 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     }
                     else
                     {
-                        while (i < Count && !shouldBeAContainer && this[i] is SegmentContainer)
+                        while (i < Count
+                               && !shouldBeAContainer
+                               && this[i] is SegmentContainer actualContainer)
                         {
-                            //the previous one must be a container too
-                            var prevContainer = this[i - 1] as SegmentContainer;
-                            var actualContainer = this[i] as SegmentContainer;
+                            // The previous one must be a container too
+                            var prevContainer = (SegmentContainer)this[i - 1];
                             prevContainer.Join(actualContainer);
                             RemoveAt(i);
                         }
+
                         if (i >= Count)
                             break;
                     }
@@ -45,51 +49,57 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 if (shouldBeAContainer)
                 {
-                    //the last element in the alternating layer 
-                    //should be a container, but it's not
-                    //so add an empty one
+                    // The last element in the alternating layer 
+                    // should be a container, but it's not
+                    // So add an empty one
                     Add(new SegmentContainer());
                 }
             }
 
+            /// <summary>
+            /// Ensures items positions.
+            /// </summary>
             protected void EnsurePositions()
             {
-                //assign positions to vertices on the actualLayer (L_i)
-                for (int i = 1; i < this.Count; i += 2)
+                // Assign positions to vertices on the actualLayer (L_i)
+                for (int i = 1; i < Count; i += 2)
                 {
-                    var precedingContainer = this[i - 1] as SegmentContainer;
-                    var vertex = this[i] as SugiVertex;
+                    var precedingContainer = (SegmentContainer)this[i - 1];
+                    var vertex = (SugiVertex)this[i];
                     if (i == 1)
                     {
                         vertex.Position = precedingContainer.Count;
                     }
                     else
                     {
-                        var previousVertex = this[i - 2] as SugiVertex;
+                        var previousVertex = (SugiVertex)this[i - 2];
                         vertex.Position = previousVertex.Position + precedingContainer.Count + 1;
                     }
                 }
 
-                //assign positions to containers on the actualLayer (L_i+1)
-                for (int i = 0; i < this.Count; i += 2)
+                // Assign positions to containers on the actualLayer (L_i+1)
+                for (int i = 0; i < Count; i += 2)
                 {
-                    var container = this[i] as SegmentContainer;
+                    var container = (SegmentContainer)this[i];
                     if (i == 0)
                     {
                         container.Position = 0;
                     }
                     else
                     {
-                        var precedingVertex = this[i - 1] as SugiVertex;
+                        var precedingVertex = (SugiVertex)this[i - 1];
                         container.Position = precedingVertex.Position + 1;
                     }
                 }
             }
 
+            /// <summary>
+            /// Sets positions to list items.
+            /// </summary>
             public void SetPositions()
             {
                 int nextPosition = 0;
-                for (int i = 0; i < this.Count; i++)
+                for (int i = 0; i < Count; ++i)
                 {
                     var segmentContainer = this[i] as SegmentContainer;
                     var vertex = this[i] as SugiVertex;
@@ -106,25 +116,28 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 }
             }
 
+            /// <inheritdoc cref="ICloneable.Clone"/>
+            [Pure]
+            [NotNull]
             public AlternatingLayer Clone()
             {
                 var clonedLayer = new AlternatingLayer();
-                foreach (var item in this)
+                foreach (IData item in this)
                 {
-                    var cloneableItem = item as ICloneable;
-                    if (cloneableItem != null)
-                        clonedLayer.Add(cloneableItem.Clone() as IData);
+                    if (item is ICloneable cloneable)
+                        clonedLayer.Add(cloneable.Clone() as IData);
                     else
                         clonedLayer.Add(item);
                 }
                 return clonedLayer;
             }
 
-            #region ICloneable Members
+            #region ICloneable
 
+            /// <inheritdoc />
             object ICloneable.Clone()
             {
-                return this.Clone();
+                return Clone();
             }
 
             #endregion

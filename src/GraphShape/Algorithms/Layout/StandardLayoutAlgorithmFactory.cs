@@ -164,7 +164,7 @@ namespace GraphShape.Algorithms.Layout
                     return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(
                         compoundContext.Graph,
                         compoundContext.Sizes,
-                        compoundContext.VertexBorders,
+                        compoundContext.VerticesBorders,
                         compoundContext.LayoutTypes,
                         compoundContext.Positions,
                         parameters as CompoundFDPLayoutParameters);
@@ -180,26 +180,30 @@ namespace GraphShape.Algorithms.Layout
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
 
-            if (string.Equals(algorithmType, CircularAlgorithm))
-                return oldParameters.CreateNewParameters<CircularLayoutParameters>();
-            if (string.Equals(algorithmType, TreeAlgorithm))
-                return oldParameters.CreateNewParameters<SimpleTreeLayoutParameters>();
-            if (string.Equals(algorithmType, FRAlgorithm))
-                return oldParameters.CreateNewParameters<FreeFRLayoutParameters>();
-            if (string.Equals(algorithmType, BoundedFRAlgorithm))
-                return oldParameters.CreateNewParameters<BoundedFRLayoutParameters>();
-            if (string.Equals(algorithmType, KKAlgorithm))
-                return oldParameters.CreateNewParameters<KKLayoutParameters>();
-            if (string.Equals(algorithmType, ISOMAlgorithm))
-                return oldParameters.CreateNewParameters<ISOMLayoutParameters>();
-            if (string.Equals(algorithmType, LinLogAlgorithm))
-                return oldParameters.CreateNewParameters<LinLogLayoutParameters>();
-            //if (string.Equals(algorithmType, SugiyamaAlgorithm))
-            //    return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
-            if (string.Equals(algorithmType, EfficientSugiyamaAlgorithm))
-                return oldParameters.CreateNewParameters<EfficientSugiyamaLayoutParameters>();
-            if (string.Equals(algorithmType, CompoundFDPAlgorithm))
-                return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
+            switch (algorithmType)
+            {
+                case CircularAlgorithm:
+                    return oldParameters.CreateNewParameters<CircularLayoutParameters>();
+                case TreeAlgorithm:
+                    return oldParameters.CreateNewParameters<SimpleTreeLayoutParameters>();
+                case FRAlgorithm:
+                    return oldParameters.CreateNewParameters<FreeFRLayoutParameters>();
+                case BoundedFRAlgorithm:
+                    return oldParameters.CreateNewParameters<BoundedFRLayoutParameters>();
+                case KKAlgorithm:
+                    return oldParameters.CreateNewParameters<KKLayoutParameters>();
+                case ISOMAlgorithm:
+                    return oldParameters.CreateNewParameters<ISOMLayoutParameters>();
+                case LinLogAlgorithm:
+                    return oldParameters.CreateNewParameters<LinLogLayoutParameters>();
+                //case SugiyamaAlgorithm:
+                //    return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
+                case EfficientSugiyamaAlgorithm:
+                    return oldParameters.CreateNewParameters<EfficientSugiyamaLayoutParameters>();
+                case CompoundFDPAlgorithm:
+                    return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
+            }
+
             return null;
         }
 
