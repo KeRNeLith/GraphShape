@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Tests", "tests\GraphShape.Tests\GraphShape.Tests.csproj", "{8F34D487-2FAA-4B4B-9099-D027579A74E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphShape.Sample", "src\GraphShape.Sample\GraphShape.Sample.csproj", "{C32CDAAA-E963-4638-BD38-A621B2078083}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphShape.Sample", "samples\GraphShape.Sample\GraphShape.Sample.csproj", "{C32CDAAA-E963-4638-BD38-A621B2078083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

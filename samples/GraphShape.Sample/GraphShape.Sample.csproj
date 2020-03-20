@@ -56,11 +56,11 @@
     <PackageReference Include="WPFToolkit" Version="3.5.50211.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GraphShape.Controls\GraphShape.Controls.csproj">
+    <ProjectReference Include="..\..\src\GraphShape.Controls\GraphShape.Controls.csproj">
       <Project>{90d874f2-486e-477e-93a9-ffa6fc92a2f4}</Project>
       <Name>GraphShape.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GraphShape\GraphShape.csproj">
+    <ProjectReference Include="..\..\src\GraphShape\GraphShape.csproj">
       <Project>{9c59c516-fca0-4fcf-ae11-e20f0f1b1949}</Project>
       <Name>GraphShape</Name>
     </ProjectReference>
