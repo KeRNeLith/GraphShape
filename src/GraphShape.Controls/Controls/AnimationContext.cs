@@ -1,15 +1,23 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
 
 namespace GraphShape.Controls
 {
+    /// <summary>
+    /// Animation context.
+    /// </summary>
     public class AnimationContext : IAnimationContext
     {
-        public GraphCanvas GraphCanvas { get; private set; }
+        /// <inheritdoc />
+        public GraphCanvas GraphCanvas { get; }
 
-        public AnimationContext( GraphCanvas canvas )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AnimationContext"/> class.
+        /// </summary>
+        /// <param name="canvas">Graph canvas.</param>
+        public AnimationContext([NotNull] GraphCanvas canvas)
         {
-            GraphCanvas = canvas;
+            GraphCanvas = canvas ?? throw new ArgumentNullException(nameof(canvas));
         }
     }
 }

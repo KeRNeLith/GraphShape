@@ -167,20 +167,20 @@ namespace GraphShape.Algorithms.Layout
             bool normalizePositions)
         {
             // Copy the actual positions
-            IDictionary<TVertex, Point> vertexPositions;
+            IDictionary<TVertex, Point> verticesPositions;
             lock (SyncRoot)
             {
-                vertexPositions = new Dictionary<TVertex, Point>(VerticesPositions);
+                verticesPositions = new Dictionary<TVertex, Point>(VerticesPositions);
             }
 
             if (normalizePositions)
-                LayoutUtils.NormalizePositions(vertexPositions);
+                LayoutUtils.NormalizePositions(verticesPositions);
 
             ILayoutIterationEventArgs<TVertex> args = CreateLayoutIterationEventArgs(
                 iteration,
                 statusInPercent,
                 message,
-                vertexPositions);
+                verticesPositions);
             OnIterationEnded(args);
         }
     }

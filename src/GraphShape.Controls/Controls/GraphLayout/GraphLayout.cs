@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.Drawing;
-using System.Windows;
 using System.Linq;
+using System.Windows;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Highlight;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.OverlapRemoval;
+using JetBrains.Annotations;
 using QuikGraph;
 using Point = System.Windows.Point;
 using Size = System.Windows.Size;
@@ -18,17 +18,22 @@ using Size = System.Windows.Size;
 namespace GraphShape.Controls
 {
     /// <summary>
-    /// For general purposes, with general types.
+    /// Default graph layout control.
     /// </summary>
+    /// <remarks>For general purposes, with general types.</remarks>
     public class GraphLayout : GraphLayout<object, IEdge<object>, IBidirectionalGraph<object, IEdge<object>>>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphLayout"/> class.
+        /// </summary>
         public GraphLayout()
         {
-            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            if (DesignerProperties.GetIsInDesignMode(this))
             {
-                var g = new BidirectionalGraph<object, IEdge<object>>();
+                var graph = new BidirectionalGraph<object, IEdge<object>>();
                 var vertices = new object[] { "S", "A", "M", "P", "L", "E" };
-                var edges = new IEdge<object>[] {
+                var edges = new IEdge<object>[]
+                {
                     new Edge<object>(vertices[0], vertices[1]),
                     new Edge<object>(vertices[1], vertices[2]),
                     new Edge<object>(vertices[1], vertices[3]),
@@ -36,512 +41,653 @@ namespace GraphShape.Controls
                     new Edge<object>(vertices[0], vertices[4]),
                     new Edge<object>(vertices[4], vertices[5])
                 };
-                g.AddVerticesAndEdgeRange(edges);
+
+                graph.AddVerticesAndEdgeRange(edges);
                 OverlapRemovalAlgorithmType = "FSA";
                 LayoutAlgorithmType = "FR";
-                Graph = g;
+                Graph = graph;
             }
         }
     }
 
     /// <summary>
-    /// THE layout control. Support layout, edge routing and overlap removal algorithms, with multiple layout states.
+    /// Graph layout control. Support layout, edge routing and overlap removal algorithms, with multiple layout states.
     /// </summary>
-    /// <typeparam name="TVertex">Type of the vertices.</typeparam>
-    /// <typeparam name="TEdge">Type of the edges.</typeparam>
-    /// <typeparam name="TGraph">Type of the graph.</typeparam>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
     public partial class GraphLayout<TVertex, TEdge, TGraph> : GraphCanvas
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
     {
-        protected readonly Dictionary<TEdge, EdgeControl> _edgeControls = new Dictionary<TEdge, EdgeControl>();
-        private readonly Queue<TEdge> _edgesAdded = new Queue<TEdge>();
-        private readonly Queue<TEdge> _edgesRemoved = new Queue<TEdge>();
-        private readonly List<LayoutState<TVertex, TEdge>> _layoutStates = new List<LayoutState<TVertex, TEdge>>();
-        private readonly TimeSpan _notificationLayoutDelay = new TimeSpan(0, 0, 0, 0, 5); // 5 ms
+        [NotNull]
         private readonly object _notificationSyncRoot = new object();
-        protected readonly Dictionary<TVertex, VertexControl> _vertexControls = new Dictionary<TVertex, VertexControl>();
+
+        [NotNull, ItemNotNull]
+        private readonly List<LayoutState<TVertex, TEdge>> _layoutStates = new List<LayoutState<TVertex, TEdge>>();
+
+        private readonly TimeSpan _notificationLayoutDelay = new TimeSpan(0, 0, 0, 0, 5); // 5 ms
+
+        /// <summary>
+        /// Edges controls.
+        /// </summary>
+        [NotNull]
+        protected readonly Dictionary<TEdge, EdgeControl> EdgesControls = new Dictionary<TEdge, EdgeControl>();
+        
+        [NotNull, ItemNotNull]
+        private readonly Queue<TEdge> _edgesAdded = new Queue<TEdge>();
+
+        [NotNull, ItemNotNull]
+        private readonly Queue<TEdge> _edgesRemoved = new Queue<TEdge>();
+
+        /// <summary>
+        /// Vertices controls.
+        /// </summary>
+        [NotNull]
+        protected readonly Dictionary<TVertex, VertexControl> VerticesControls = new Dictionary<TVertex, VertexControl>();
+
+        [NotNull, ItemNotNull]
         private readonly Queue<TVertex> _verticesAdded = new Queue<TVertex>();
+
+        [NotNull, ItemNotNull]
         private readonly Queue<TVertex> _verticesRemoved = new Queue<TVertex>();
-        private readonly Stopwatch stopWatch = new Stopwatch();
+        
+        [NotNull]
+        private readonly Stopwatch _stopWatch = new Stopwatch();
+        
         private DateTime _lastNotificationTimestamp = DateTime.Now;
 
-        protected IDictionary<TVertex, SizeF> _sizes;
-        protected BackgroundWorker _worker;
+        /// <summary>
+        /// Vertices sizes.
+        /// </summary>
+        [CanBeNull]
+        protected IDictionary<TVertex, SizeF> Sizes;
+        
+        /// <summary>
+        /// Background worker to run layout algorithm.
+        /// </summary>
+        protected BackgroundWorker Worker;
 
-        protected IDictionary<TVertex, SizeF> VertexSizes
+        /// <inheritdoc cref="Sizes"/>
+        [NotNull]
+        protected IDictionary<TVertex, SizeF> VerticesSizes
         {
             get
             {
-                if (_sizes == null)
+                if (Sizes is null)
                 {
                     InvalidateMeasure();
                     UpdateLayout();
-                    _sizes = new Dictionary<TVertex, SizeF>();
-                    foreach (var pair in _vertexControls)
+                    Sizes = new Dictionary<TVertex, SizeF>();
+
+                    foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                     {
-                        var size = pair.Value.DesiredSize;
-                        _sizes.Add(pair.Key, new SizeF(
-                                                 (double.IsNaN(size.Width) ? 0 : (float)size.Width),
-                                                 (double.IsNaN(size.Height) ? 0 : (float)size.Height)));
+                        Size size = pair.Value.DesiredSize;
+                        Sizes.Add(
+                            pair.Key,
+                            new SizeF(
+                                double.IsNaN(size.Width) ? 0 : (float)size.Width,
+                                double.IsNaN(size.Height) ? 0 : (float)size.Height));
                     }
                 }
-                return _sizes;
+
+                return Sizes;
             }
         }
 
-
         #region Layout
 
+        private class AsyncThreadArgument
+        {
+            [NotNull]
+            public ILayoutAlgorithm<TVertex, TEdge, TGraph> Algorithm { get; }
+            
+            public bool ShowAllStates { get; }
+
+            public AsyncThreadArgument(
+                [NotNull] ILayoutAlgorithm<TVertex, TEdge, TGraph> algorithm,
+                bool showAllStates)
+            {
+                Algorithm = algorithm;
+                ShowAllStates = showAllStates;
+            }
+        }
+
+        /// <summary>
+        /// Current <see cref="Algorithms.Layout.LayoutMode"/>.
+        /// </summary>
         protected Algorithms.Layout.LayoutMode ActualLayoutMode
         {
             get
             {
-                if (LayoutMode == LayoutMode.Compound ||
-                     LayoutMode == LayoutMode.Automatic && Graph != null && Graph is ICompoundGraph<TVertex, TEdge>)
+                if (LayoutMode == LayoutMode.Compound || LayoutMode == LayoutMode.Automatic && Graph is ICompoundGraph<TVertex, TEdge>)
                     return Algorithms.Layout.LayoutMode.Compound;
-
                 return Algorithms.Layout.LayoutMode.Simple;
             }
         }
 
-        protected bool IsCompoundMode
-        {
-            get { return ActualLayoutMode == Algorithms.Layout.LayoutMode.Compound; }
-        }
+        /// <summary>
+        /// Indicates if <see cref="ActualLayoutMode"/> is a <see cref="Algorithms.Layout.LayoutMode.Compound"/> mode.
+        /// </summary>
+        protected bool IsCompoundMode => ActualLayoutMode == Algorithms.Layout.LayoutMode.Compound;
 
-        protected virtual bool CanLayout
-        {
-            get { return true; }
-        }
+        /// <summary>
+        /// Indicates if layout can be done.
+        /// </summary>
+        protected virtual bool CanLayout { get; } = true;
 
+        /// <inheritdoc />
         public override void ContinueLayout()
         {
             Layout(true);
         }
 
+        /// <inheritdoc />
         public override void Relayout()
         {
-            //clear the states before
+            // Clear the states before
             _layoutStates.Clear();
             Layout(false);
         }
 
+        /// <summary>
+        /// Cancels layout computing.
+        /// </summary>
         public void CancelLayout()
         {
-            if (_worker != null && _worker.IsBusy && _worker.WorkerSupportsCancellation)
-                _worker.CancelAsync();
+            if (Worker != null && Worker.IsBusy && Worker.WorkerSupportsCancellation)
+                Worker.CancelAsync();
         }
 
+        /// <summary>
+        /// Re-compute edge routing.
+        /// </summary>
         public void RecalculateEdgeRouting()
         {
-            foreach (var state in _layoutStates)
-                state.RouteInfos = RouteEdges(state.OverlapRemovedPositions, GetLatestVertexSizes());
+            foreach (LayoutState<TVertex, TEdge> state in _layoutStates)
+            {
+                state.RouteInfos = RouteEdges(state.OverlapRemovedPositions, GetLatestVerticesSizes());
+            }
+
             ChangeState(StateIndex);
         }
 
+        /// <summary>
+        /// Re-compute overlap removal.
+        /// </summary>
         public void RecalculateOverlapRemoval()
         {
-            foreach (var state in _layoutStates)
-                state.OverlapRemovedPositions = OverlapRemoval(state.Positions, GetLatestVertexSizes());
+            foreach (LayoutState<TVertex, TEdge> state in _layoutStates)
+            {
+                state.OverlapRemovedPositions = OverlapRemoval(state.Positions, GetLatestVerticesSizes());
+            }
+
             ChangeState(StateIndex);
         }
 
-        protected virtual ILayoutContext<TVertex, TEdge, TGraph> CreateLayoutContext(
-            IDictionary<TVertex, Point> positions, IDictionary<TVertex, Size> sizes)
-        {
-            if (!CanLayout)
-                return null;
-
-            if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
-                return new LayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode);
-            else
-            {
-                var borders = (from pair in _vertexControls
-                               where pair.Value is CompoundVertexControl
-                               select pair).ToDictionary(
-                    pair => pair.Key,
-                    pair => ((CompoundVertexControl)pair.Value).VertexBorderThickness);
-
-                var layoutTypes = (from pair in _vertexControls
-                                   where pair.Value is CompoundVertexControl
-                                   select pair).ToDictionary(
-                    pair => pair.Key,
-                    pair => ((CompoundVertexControl)pair.Value).LayoutMode);
-
-                return new CompoundLayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode, borders, layoutTypes);
-            }
-        }
-
+        /// <summary>
+        /// Creates a <see cref="IHighlightContext{TVertex,TEdge,TGraph}"/> from given parameters.
+        /// </summary>
+        /// <returns>Created <see cref="IHighlightContext{TVertex,TEdge,TGraph}"/>.</returns>
+        [Pure]
+        [NotNull]
         protected virtual IHighlightContext<TVertex, TEdge, TGraph> CreateHighlightContext()
         {
             return new HighlightContext<TVertex, TEdge, TGraph>(Graph);
         }
 
+        /// <summary>
+        /// Creates a <see cref="IOverlapRemovalContext{TVertex}"/> from given parameters.
+        /// </summary>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="sizes">Vertices sizes.</param>
+        /// <returns>Created <see cref="IOverlapRemovalContext{TVertex}"/>.</returns>
+        [Pure]
+        [NotNull]
         protected virtual IOverlapRemovalContext<TVertex> CreateOverlapRemovalContext(
-            IDictionary<TVertex, Point> positions, IDictionary<TVertex, Size> sizes)
+            [NotNull] IDictionary<TVertex, Point> positions,
+            [NotNull] IDictionary<TVertex, Size> sizes)
         {
+            if (positions is null)
+                throw new ArgumentNullException(nameof(positions));
+            if (sizes is null)
+                throw new ArgumentNullException(nameof(sizes));
+
             var rectangles = new Dictionary<TVertex, Rect>();
-            foreach (var vertex in Graph.Vertices)
+            foreach (TVertex vertex in Graph.Vertices)
             {
-                Point position;
-                Size size;
-                if (!positions.TryGetValue(vertex, out position) || !sizes.TryGetValue(vertex, out size))
+                if (!positions.TryGetValue(vertex, out Point position) || !sizes.TryGetValue(vertex, out Size size))
                     continue;
 
-                rectangles[vertex] =
-                    new Rect(
-                        position.X - size.Width * (float)0.5,
-                        position.Y - size.Height * (float)0.5,
-                        size.Width,
-                        size.Height);
+                rectangles[vertex] = new Rect(
+                    position.X - size.Width * (float)0.5,
+                    position.Y - size.Height * (float)0.5,
+                    size.Width,
+                    size.Height);
             }
 
             return new OverlapRemovalContext<TVertex>(rectangles);
         }
 
+        /// <summary>
+        /// Creates a <see cref="ILayoutContext{TVertex,TEdge,TGraph}"/> from given parameters.
+        /// </summary>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="sizes">Vertices sizes.</param>
+        /// <returns>Created <see cref="ILayoutContext{TVertex,TEdge,TGraph}"/>, null if <see cref="CanLayout"/> is false.</returns>
+        [Pure]
+        protected virtual ILayoutContext<TVertex, TEdge, TGraph> CreateLayoutContext(
+            [CanBeNull] IDictionary<TVertex, Point> positions,
+            [NotNull] IDictionary<TVertex, Size> sizes)
+        {
+            if (sizes is null)
+                throw new ArgumentNullException(nameof(sizes));
+
+            if (!CanLayout)
+                return null;
+
+            if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
+                return new LayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode);
+
+            Dictionary<TVertex, Thickness> borders = VerticesControls
+                .Where(pair => pair.Value is CompoundVertexControl)
+                .ToDictionary(
+                    pair => pair.Key,
+                    pair => ((CompoundVertexControl)pair.Value).VertexBorderThickness);
+
+            Dictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes = VerticesControls
+                .Where(pair => pair.Value is CompoundVertexControl)
+                .ToDictionary(
+                    pair => pair.Key,
+                    pair => ((CompoundVertexControl)pair.Value).LayoutMode);
+
+            return new CompoundLayoutContext<TVertex, TEdge, TGraph>(Graph, positions, sizes, ActualLayoutMode, borders, layoutTypes);
+        }
+
+        /// <summary>
+        /// Layouts the current <see cref="Graph"/>.
+        /// </summary>
+        /// <param name="continueLayout">
+        /// Indicates if we should continue layout.
+        /// If layout is continued it gets the relative position of every vertex
+        /// otherwise it's gets it only for the vertices with fixed parents.
+        /// </param>
         protected virtual void Layout(bool continueLayout)
         {
-            if (Graph == null || Graph.VertexCount == 0 || !LayoutAlgorithmFactory.IsValidAlgorithm(LayoutAlgorithmType) || !CanLayout)
-                return; //no graph to layout, or wrong layout algorithm
+            if (Graph is null || Graph.VertexCount == 0 || !LayoutAlgorithmFactory.IsValidAlgorithm(LayoutAlgorithmType) || !CanLayout)
+                return; // No graph to layout, or wrong layout algorithm
 
             UpdateLayout();
-            if (!this.IsLoaded)
+            if (!IsLoaded)
             {
-                RoutedEventHandler handler = null;
-                handler = new RoutedEventHandler((s, e) =>
+                void Handler(object sender, RoutedEventArgs args)
                 {
                     Layout(continueLayout);
-                    var gl = (GraphLayout<TVertex, TEdge, TGraph>)e.Source;
-                    gl.Loaded -= handler;
-                });
-                this.Loaded += handler;
+                    var graphLayout = (GraphLayout<TVertex, TEdge, TGraph>)args.Source;
+                    graphLayout.Loaded -= Handler;
+                }
+
+                Loaded += Handler;
                 return;
             }
 
-            //get the actual positions if we want to continue the layout
-            IDictionary<TVertex, Point> oldPositions = GetOldVertexPositions(continueLayout);
-            IDictionary<TVertex, Size> oldSizes = GetLatestVertexSizes();
+            // Get the actual positions if we want to continue the layout
+            IDictionary<TVertex, Point> oldPositions = GetOldVerticesPositions(continueLayout);
+            IDictionary<TVertex, Size> oldSizes = GetLatestVerticesSizes();
 
-            //create the context
-            var layoutContext = CreateLayoutContext(oldPositions, oldSizes);
+            // Create the context
+            ILayoutContext<TVertex, TEdge, TGraph> layoutContext = CreateLayoutContext(oldPositions, oldSizes);
 
-            //create the layout algorithm using the factory
-            LayoutAlgorithm = LayoutAlgorithmFactory.CreateAlgorithm(LayoutAlgorithmType, layoutContext,
-                                                                      LayoutParameters);
+            // Create the layout algorithm using the factory
+            LayoutAlgorithm = LayoutAlgorithmFactory.CreateAlgorithm(
+                LayoutAlgorithmType,
+                layoutContext,
+                LayoutParameters);
 
             if (AsyncCompute)
             {
-                //Asynchronous computing - progress report & anything else
-                //if there's a running progress than cancel that
+                // Asynchronous computing - progress report & anything else
+                // If there's a running progress than cancel that
                 CancelLayout();
 
-                _worker = new BackgroundWorker
-                              {
-                                  WorkerSupportsCancellation = true,
-                                  WorkerReportsProgress = true
-                              };
+                Worker = new BackgroundWorker
+                {
+                    WorkerSupportsCancellation = true,
+                    WorkerReportsProgress = true
+                };
 
-                //run the algorithm on a background thread
-                _worker.DoWork += ((sender, e) =>
-                                       {
-                                           var worker = (BackgroundWorker)sender;
-                                           var argument = (AsyncThreadArgument)e.Argument;
-                                           if (argument.showAllStates)
-                                               argument.algorithm.IterationEnded +=
-                                                   ((s, args) =>
-                                                        {
-                                                            var iterArgs = args;
-                                                            if (iterArgs != null)
-                                                            {
-                                                                worker.ReportProgress(
-                                                                    (int)Math.Round(iterArgs.StatusInPercent), iterArgs);
-                                                                iterArgs.Abort = worker.CancellationPending;
-                                                            }
-                                                        });
-                                           else
-                                               argument.algorithm.ProgressChanged +=
-                                                   ((s, percent) => worker.ReportProgress((int)Math.Round(percent)));
-                                           argument.algorithm.Compute();
-                                       });
+                // Run the algorithm on a background thread
+                Worker.DoWork += (sender, args) =>
+                {
+                    var worker = (BackgroundWorker)sender;
+                    var argument = (AsyncThreadArgument)args.Argument;
+                    if (argument.ShowAllStates)
+                    {
+                        argument.Algorithm.IterationEnded += (s, a) =>
+                        {
+                            ILayoutIterationEventArgs<TVertex> iterationsArgs = a;
+                            if (iterationsArgs != null)
+                            {
+                                worker.ReportProgress((int)Math.Round(iterationsArgs.StatusInPercent), iterationsArgs);
+                                iterationsArgs.Abort = worker.CancellationPending;
+                            }
+                        };
+                    }
+                    else
+                    {
+                        argument.Algorithm.ProgressChanged += (s, percent) => worker.ReportProgress((int)Math.Round(percent));
+                    }
 
-                //progress changed if an iteration ended
-                _worker.ProgressChanged +=
-                    ((s, e) =>
-                         {
-                             if (e.UserState == null)
-                                 LayoutStatusPercent = e.ProgressPercentage;
-                             else
-                                 OnLayoutIterationFinished(e.UserState as ILayoutIterationEventArgs<TVertex>);
-                         });
+                    argument.Algorithm.Compute();
+                };
 
-                //background thread finished if the iteration ended
-                _worker.RunWorkerCompleted += ((s, e) =>
-                                                    {
-                                                        OnLayoutFinished();
-                                                        _worker = null;
-                                                    });
+                // Progress changed if an iteration ended
+                Worker.ProgressChanged += (sender, args) =>
+                {
+                    if (args.UserState is null)
+                        LayoutStatusPercent = args.ProgressPercentage;
+                    else
+                        OnLayoutIterationFinished(args.UserState as ILayoutIterationEventArgs<TVertex>);
+                };
+
+                // Background thread finished if the iteration ended
+                Worker.RunWorkerCompleted += (sender, args) =>
+                {
+                    OnLayoutFinished();
+                    Worker = null;
+                };
 
                 OnLayoutStarted();
-                _worker.RunWorkerAsync(new AsyncThreadArgument
-                                           {
-                                               algorithm = LayoutAlgorithm,
-                                               showAllStates = ShowAllStates
-                                           });
+                Worker.RunWorkerAsync(new AsyncThreadArgument(LayoutAlgorithm, ShowAllStates));
             }
             else
             {
-                //Syncronous computing - no progress report
-                LayoutAlgorithm.Started += ((s, e) => OnLayoutStarted());
+                // Synchronous computing - no progress report
+                LayoutAlgorithm.Started += (sender, args) => OnLayoutStarted();
                 if (ShowAllStates)
-                    LayoutAlgorithm.IterationEnded += ((s, e) => OnLayoutIterationFinished(e));
-                LayoutAlgorithm.Finished += ((s, e) => OnLayoutFinished());
+                    LayoutAlgorithm.IterationEnded += (sender, args) => OnLayoutIterationFinished(args);
+                LayoutAlgorithm.Finished += (sender, args) => OnLayoutFinished();
 
                 LayoutAlgorithm.Compute();
             }
         }
 
-        private IDictionary<TVertex, Point> GetOldVertexPositions(bool continueLayout)
+        [Pure]
+        [CanBeNull]
+        private IDictionary<TVertex, Point> GetOldVerticesPositions(bool continueLayout)
         {
             if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
             {
-                return continueLayout ? GetLatestVertexPositions() : null;
+                return continueLayout ? GetLatestVerticesPositions() : null;
             }
-            else
-            {
-                return GetRelativePositions(continueLayout);
-            }
+
+            return GetRelativePositions(continueLayout);
         }
 
-        private IDictionary<TVertex, Point> GetLatestVertexPositions()
+        [Pure]
+        [NotNull]
+        private IDictionary<TVertex, Point> GetLatestVerticesPositions()
         {
-            IDictionary<TVertex, Point> vertexPositions = new Dictionary<TVertex, Point>(_vertexControls.Count);
+            IDictionary<TVertex, Point> verticesPositions = new Dictionary<TVertex, Point>(VerticesControls.Count);
 
-            //go through the vertex presenters and get the actual layoutpositions
+            // Go through the vertices presenters and get the actual layout positions
             if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
             {
-                foreach (var vc in _vertexControls)
+                foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                 {
-                    var x = GetX(vc.Value);
-                    var y = GetY(vc.Value);
-                    vertexPositions[vc.Key] =
-                        new Point(
-                            double.IsNaN(x) ? 0.0 : x,
-                            double.IsNaN(y) ? 0.0 : y);
+                    double x = GetX(pair.Value);
+                    double y = GetY(pair.Value);
+                    verticesPositions[pair.Key] = new Point(
+                        double.IsNaN(x) ? 0.0 : x,
+                        double.IsNaN(y) ? 0.0 : y);
                 }
             }
             else
             {
-                Point topLeft = new Point(0, 0);
-                foreach (var vc in _vertexControls)
+                var topLeft = new Point(0, 0);
+                foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                 {
-                    Point position = vc.Value.TranslatePoint(topLeft, this);
-                    position.X += vc.Value.ActualWidth / 2;
-                    position.Y += vc.Value.ActualHeight / 2;
-                    vertexPositions[vc.Key] = position;
+                    Point position = pair.Value.TranslatePoint(topLeft, this);
+                    position.X += pair.Value.ActualWidth / 2;
+                    position.Y += pair.Value.ActualHeight / 2;
+                    verticesPositions[pair.Key] = position;
                 }
             }
 
-            return vertexPositions;
+            return verticesPositions;
         }
 
-        private Point GetRelativePosition(VertexControl vc, UIElement relativeTo)
+        [Pure]
+        private static Point GetRelativePosition([NotNull] VertexControl vertexControl, [CanBeNull] UIElement relativeTo)
         {
-            return vc.TranslatePoint(new Point(vc.ActualWidth / 2.0, vc.ActualHeight / 2.0), relativeTo);
+            Debug.Assert(vertexControl != null);
+
+            return vertexControl.TranslatePoint(new Point(vertexControl.ActualWidth / 2.0, vertexControl.ActualHeight / 2.0), relativeTo);
         }
 
-        private Point GetRelativePosition(VertexControl vc)
+        [Pure]
+        private Point GetRelativePosition([NotNull] VertexControl vertexControl)
         {
-            return GetRelativePosition(vc, this);
+            Debug.Assert(vertexControl != null);
+
+            return GetRelativePosition(vertexControl, this);
         }
 
+        [Pure]
+        [NotNull]
         private IDictionary<TVertex, Point> GetRelativePositions(bool continueLayout)
         {
-            //if layout is continued it gets the relative position of every vertex
-            //otherwise it's gets it only for the vertices with fixed parents
-            var posDict = new Dictionary<TVertex, Point>(_vertexControls.Count);
+            // If layout is continued it gets the relative position of every vertex
+            // otherwise it's gets it only for the vertices with fixed parents
+            var verticesPositions = new Dictionary<TVertex, Point>(VerticesControls.Count);
             if (continueLayout)
             {
-                foreach (var pair in _vertexControls)
+                foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                 {
-                    posDict[pair.Key] = GetRelativePosition(pair.Value);
+                    verticesPositions[pair.Key] = GetRelativePosition(pair.Value);
                 }
             }
             else
             {
-                foreach (var pair in _vertexControls)
+                foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls.Where(pair => pair.Value is CompoundVertexControl))
                 {
-                    if (!(pair.Value is CompoundVertexControl))
-                        continue;
-
-                    var cvc = (CompoundVertexControl)pair.Value;
-                    foreach (var vc in cvc.Vertices)
+                    var compoundVertexControl = (CompoundVertexControl)pair.Value;
+                    foreach (VertexControl vertexControl in compoundVertexControl.Vertices)
                     {
-                        posDict[(TVertex)vc.Vertex] = GetRelativePosition(vc, cvc);
+                        verticesPositions[(TVertex)vertexControl.Vertex] = GetRelativePosition(vertexControl, compoundVertexControl);
                     }
                 }
             }
-            return posDict;
+
+            return verticesPositions;
         }
 
-        private IDictionary<TVertex, Size> GetLatestVertexSizes()
+        [NotNull]
+        private IDictionary<TVertex, Size> GetLatestVerticesSizes()
         {
             if (!IsMeasureValid)
                 Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
 
-            IDictionary<TVertex, Size> vertexSizes =
-                new Dictionary<TVertex, Size>(_vertexControls.Count);
+            IDictionary<TVertex, Size> verticesSizes = new Dictionary<TVertex, Size>(VerticesControls.Count);
 
-            //go through the vertex presenters and get the actual layoutpositions
-            foreach (var vc in _vertexControls)
-                vertexSizes[vc.Key] = new Size(vc.Value.ActualWidth, vc.Value.ActualHeight);
+            // Go through the vertices presenters and get the actual layout positions
+            foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
+                verticesSizes[pair.Key] = new Size(pair.Value.ActualWidth, pair.Value.ActualHeight);
 
-            return vertexSizes;
+            return verticesSizes;
         }
 
+        /// <summary>
+        /// Layout process started callback.
+        /// </summary>
         protected void OnLayoutStarted()
         {
-            stopWatch.Reset();
-            stopWatch.Start();
+            _stopWatch.Reset();
+            _stopWatch.Start();
             LayoutStatusPercent = 0.0;
         }
 
-        protected virtual void OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex> iterArgs)
+        /// <summary>
+        /// Layout process iteration ended callback.
+        /// </summary>
+        /// <param name="iterationArgs">Iteration arguments.</param>
+        protected virtual void OnLayoutIterationFinished([CanBeNull] ILayoutIterationEventArgs<TVertex> iterationArgs)
         {
-            if (iterArgs == null || iterArgs.VerticesPositions == null)
+            if (iterationArgs?.VerticesPositions is null)
             {
-                if (LayoutAlgorithm is ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph>)
-                {
-                    var la = (ICompoundLayoutAlgorithm<TVertex, TEdge, TGraph>)LayoutAlgorithm;
-                }
-                else
-                {
-
-                }
                 OnLayoutIterationFinished(LayoutAlgorithm.VerticesPositions, null);
-                SetLayoutInformations();
+                SetLayoutInformation();
             }
             else
             {
-                //TODO compound layout
-                OnLayoutIterationFinished(iterArgs.VerticesPositions, iterArgs.Message);
-                LayoutStatusPercent = iterArgs.StatusInPercent;
-                SetLayoutInformations(iterArgs as ILayoutInfoIterationEventArgs<TVertex, TEdge>);
+                // TODO compound layout
+                OnLayoutIterationFinished(iterationArgs.VerticesPositions, iterationArgs.Message);
+                LayoutStatusPercent = iterationArgs.StatusInPercent;
+                SetLayoutInformation(iterationArgs as ILayoutInfoIterationEventArgs<TVertex, TEdge>);
             }
         }
 
+        /// <summary>
+        /// Layout process iteration ended callback.
+        /// </summary>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="message">Iteration information message.</param>
         protected virtual void OnLayoutIterationFinished(
-            IDictionary<TVertex, Point> vertexPositions,
-            string message)
+            [NotNull] IDictionary<TVertex, Point> positions,
+            [CanBeNull] string message)
         {
-            var sizes = GetLatestVertexSizes();
-            var overlapRemovedPositions = OverlapRemoval(vertexPositions, sizes);
-            var edgeRoutingInfos = RouteEdges(overlapRemovedPositions, sizes);
+            if (positions is null)
+                throw new ArgumentNullException(nameof(positions));
+
+            IDictionary<TVertex, Size> sizes = GetLatestVerticesSizes();
+            IDictionary<TVertex, Point> overlapRemovedPositions = OverlapRemoval(positions, sizes);
+            IDictionary<TEdge, Point[]> edgeRoutingInfos = RouteEdges(overlapRemovedPositions, sizes);
 
             var state = new LayoutState<TVertex, TEdge>(
-                vertexPositions,
+                positions,
                 overlapRemovedPositions,
                 edgeRoutingInfos,
-                stopWatch.Elapsed,
+                _stopWatch.Elapsed,
                 _layoutStates.Count,
-                (message ?? string.Empty));
+                message ?? string.Empty);
 
             _layoutStates.Add(state);
             StateCount = _layoutStates.Count;
         }
 
+        /// <summary>
+        /// Layout process ended callback.
+        /// </summary>
         protected virtual void OnLayoutFinished()
         {
-            stopWatch.Stop();
+            _stopWatch.Stop();
             OnLayoutIterationFinished(null);
             StateIndex = StateCount - 1;
 
-            //animating to the finish state
+            // Animating to the finish state
             if (StateIndex == 0)
                 ChangeState(StateIndex);
 
             LayoutStatusPercent = 100;
         }
 
-        private void SetLayoutInformations(ILayoutInfoIterationEventArgs<TVertex, TEdge> iterArgs)
+        private void SetLayoutInformation([CanBeNull] ILayoutInfoIterationEventArgs<TVertex, TEdge> iterationArgs)
         {
-            if (iterArgs == null)
+            if (iterationArgs is null)
                 return;
 
-            foreach (var pair in _vertexControls)
+            foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
             {
-                var vertex = pair.Key;
-                var control = pair.Value;
+                TVertex vertex = pair.Key;
+                VertexControl control = pair.Value;
 
-                GraphElementBehaviour.SetLayoutInfo(control, iterArgs.GetVertexInfo(vertex));
+                GraphElementBehaviour.SetLayoutInfo(control, iterationArgs.GetVertexInfo(vertex));
             }
 
-            foreach (var pair in _edgeControls)
+            foreach (KeyValuePair<TEdge, EdgeControl> pair in EdgesControls)
             {
-                var edge = pair.Key;
-                var control = pair.Value;
+                TEdge edge = pair.Key;
+                EdgeControl control = pair.Value;
 
-                GraphElementBehaviour.SetLayoutInfo(control, iterArgs.GetEdgeInfo(edge));
+                GraphElementBehaviour.SetLayoutInfo(control, iterationArgs.GetEdgeInfo(edge));
             }
         }
 
-        private void SetLayoutInformations()
+        private void SetLayoutInformation()
         {
-            if (LayoutAlgorithm == null)
+            if (LayoutAlgorithm is null)
                 return;
 
-            foreach (var pair in _vertexControls)
+            foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
             {
-                var vertex = pair.Key;
-                var control = pair.Value;
+                TVertex vertex = pair.Key;
+                VertexControl control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, LayoutAlgorithm.GetVertexInfo(vertex));
             }
 
-            foreach (var pair in _edgeControls)
+            foreach (KeyValuePair<TEdge, EdgeControl> pair in EdgesControls)
             {
-                var edge = pair.Key;
-                var control = pair.Value;
+                TEdge edge = pair.Key;
+                EdgeControl control = pair.Value;
 
                 GraphElementBehaviour.SetLayoutInfo(control, LayoutAlgorithm.GetEdgeInfo(edge));
             }
         }
 
-        protected IDictionary<TVertex, Point> OverlapRemoval(IDictionary<TVertex, Point> positions,
-                                                              IDictionary<TVertex, Size> sizes)
+        /// <summary>
+        /// Runs overlap removal algorithm.
+        /// </summary>
+        /// <param name="positions">Vertices positions.</param>
+        /// <param name="sizes">Vertices sizes.</param>
+        /// <returns>
+        /// Vertices positions after overlap removal process (if run),
+        /// otherwise return input <paramref name="positions"/>.
+        /// </returns>
+        [CanBeNull]
+        protected IDictionary<TVertex, Point> OverlapRemoval(
+            [CanBeNull] IDictionary<TVertex, Point> positions,
+            [CanBeNull] IDictionary<TVertex, Size> sizes)
         {
-            if (positions == null || sizes == null)
-                return positions; //not valid positions or sizes
+            if (positions is null || sizes is null)
+                return positions; // Not valid positions or sizes
 
             bool isValidAlgorithm = OverlapRemovalAlgorithmFactory.IsValidAlgorithm(OverlapRemovalAlgorithmType);
             if (OverlapRemovalConstraint == AlgorithmConstraints.Skip
-                 ||
-                 (OverlapRemovalConstraint == AlgorithmConstraints.Automatic &&
-                   (!LayoutAlgorithmFactory.NeedOverlapRemoval(LayoutAlgorithmType) || !isValidAlgorithm))
-                 || (OverlapRemovalConstraint == AlgorithmConstraints.Must && !isValidAlgorithm))
+                ||
+                OverlapRemovalConstraint == AlgorithmConstraints.Automatic &&
+                (!LayoutAlgorithmFactory.NeedOverlapRemoval(LayoutAlgorithmType) || !isValidAlgorithm)
+                ||
+                OverlapRemovalConstraint == AlgorithmConstraints.Must && !isValidAlgorithm)
+            {
                 return positions;
+            }
 
-            //create the algorithm parameters based on the old parameters
-            OverlapRemovalParameters = OverlapRemovalAlgorithmFactory.CreateParameters(OverlapRemovalAlgorithmType,
-                                                                                        OverlapRemovalParameters);
+            // Create the algorithm parameters based on the old parameters
+            OverlapRemovalParameters = OverlapRemovalAlgorithmFactory.CreateParameters(
+                OverlapRemovalAlgorithmType,
+                OverlapRemovalParameters);
 
-            //create the context - rectangles, ...
-            var context = CreateOverlapRemovalContext(positions, sizes);
+            // Create the context - rectangles, ...
+            IOverlapRemovalContext<TVertex> context = CreateOverlapRemovalContext(positions, sizes);
 
-            //create the concreate algorithm
-            OverlapRemovalAlgorithm = OverlapRemovalAlgorithmFactory.CreateAlgorithm(OverlapRemovalAlgorithmType,
-                                                                                      context, OverlapRemovalParameters);
+            // Create the concrete algorithm
+            OverlapRemovalAlgorithm = OverlapRemovalAlgorithmFactory.CreateAlgorithm(
+                OverlapRemovalAlgorithmType,
+                context,
+                OverlapRemovalParameters);
+
             if (OverlapRemovalAlgorithm != null)
             {
                 OverlapRemovalAlgorithm.Compute();
 
                 var result = new Dictionary<TVertex, Point>();
-                foreach (var res in OverlapRemovalAlgorithm.Rectangles)
+                foreach (KeyValuePair<TVertex, Rect> res in OverlapRemovalAlgorithm.Rectangles)
                 {
                     result[res.Key] = new Point(
-                        (res.Value.Left + res.Value.Size.Width * 0.5),
-                        (res.Value.Top + res.Value.Size.Height * 0.5));
+                        res.Value.Left + res.Value.Size.Width * 0.5,
+                        res.Value.Top + res.Value.Size.Height * 0.5);
                 }
 
                 return result;
@@ -551,52 +697,64 @@ namespace GraphShape.Controls
         }
 
         /// <summary>
-        /// This method runs the proper edge routing algorithm.
+        /// Runs the proper edge routing algorithm.
         /// </summary>
-        /// <param name="positions">The vertex positions.</param>
-        /// <param name="sizes">The sizes of the vertices.</param>
+        /// <param name="positions">The vertices positions.</param>
+        /// <param name="sizes">The vertices sizes.</param>
         /// <returns>The routes of the edges.</returns>
-        protected IDictionary<TEdge, Point[]> RouteEdges(IDictionary<TVertex, Point> positions,
-                                                          IDictionary<TVertex, Size> sizes)
+        [CanBeNull]
+        protected IDictionary<TEdge, Point[]> RouteEdges(
+            [CanBeNull] IDictionary<TVertex, Point> positions,
+            [NotNull] IDictionary<TVertex, Size> sizes)
         {
+            if (sizes is null)
+                throw new ArgumentNullException(nameof(sizes));
+
             IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph> algorithm = null;
             bool isValidAlgorithmType = EdgeRoutingAlgorithmFactory.IsValidAlgorithm(EdgeRoutingAlgorithmType);
 
             if (EdgeRoutingConstraint == AlgorithmConstraints.Must && isValidAlgorithmType)
             {
-                //an EdgeRouting algorithm must be used
-                EdgeRoutingParameters = EdgeRoutingAlgorithmFactory.CreateParameters(EdgeRoutingAlgorithmType,
-                                                                                      EdgeRoutingParameters);
+                // An edge routing algorithm must be used
+                EdgeRoutingParameters = EdgeRoutingAlgorithmFactory.CreateParameters(
+                    EdgeRoutingAlgorithmType,
+                    EdgeRoutingParameters);
 
-                var context = CreateLayoutContext(positions, sizes);
+                ILayoutContext<TVertex, TEdge, TGraph> context = CreateLayoutContext(positions, sizes);
 
-                algorithm = EdgeRoutingAlgorithmFactory.CreateAlgorithm(EdgeRoutingAlgorithmType, context,
-                                                                         EdgeRoutingParameters);
+                algorithm = EdgeRoutingAlgorithmFactory.CreateAlgorithm(
+                    EdgeRoutingAlgorithmType,
+                    context,
+                    EdgeRoutingParameters);
                 algorithm.Compute();
             }
             else if (EdgeRoutingConstraint == AlgorithmConstraints.Automatic)
             {
-                if (!LayoutAlgorithmFactory.NeedEdgeRouting(LayoutAlgorithmType) &&
-                     LayoutAlgorithm is IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>)
-                    //the layout algorithm routes the edges
+                if (!LayoutAlgorithmFactory.NeedEdgeRouting(LayoutAlgorithmType)
+                    && LayoutAlgorithm is IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>)
+                {
+                    // The layout algorithm routes the edges
                     algorithm = LayoutAlgorithm as IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>;
+                }
                 else if (isValidAlgorithmType)
                 {
-                    //the selected EdgeRouting algorithm will route the edges
-                    EdgeRoutingParameters = EdgeRoutingAlgorithmFactory.CreateParameters(EdgeRoutingAlgorithmType,
-                                                                                          EdgeRoutingParameters);
-                    var context = CreateLayoutContext(positions, sizes);
-                    algorithm = EdgeRoutingAlgorithmFactory.CreateAlgorithm(EdgeRoutingAlgorithmType, context,
-                                                                             EdgeRoutingParameters);
+                    // The selected EdgeRouting algorithm will route the edges
+                    EdgeRoutingParameters = EdgeRoutingAlgorithmFactory.CreateParameters(
+                        EdgeRoutingAlgorithmType,
+                        EdgeRoutingParameters);
+
+                    ILayoutContext<TVertex, TEdge, TGraph> context = CreateLayoutContext(positions, sizes);
+                    algorithm = EdgeRoutingAlgorithmFactory.CreateAlgorithm(
+                        EdgeRoutingAlgorithmType,
+                        context,
+                        EdgeRoutingParameters);
+
                     algorithm.Compute();
                 }
             }
 
-            if (algorithm == null)
-                return null;
-
-            //route the edges
-            return algorithm.EdgeRoutes;
+            // Route the edges
+            return algorithm?.EdgeRoutes;
         }
 
         /// <summary>
@@ -605,52 +763,38 @@ namespace GraphShape.Controls
         /// <param name="stateIndex">The index of the shown layout state.</param>
         protected void ChangeState(int stateIndex)
         {
-            var activeState = _layoutStates[stateIndex];
+            LayoutState<TVertex, TEdge> activeState = _layoutStates[stateIndex];
 
             LayoutState = activeState;
 
-            var positions = activeState.OverlapRemovedPositions;
-
-            //Animate the vertices
+            IDictionary<TVertex, Point> positions = activeState.OverlapRemovedPositions;
             if (positions != null)
             {
-                Point pos;
-                foreach (var v in Graph.Vertices)
+                // Animate the vertices
+                foreach (TVertex vertex in Graph.Vertices)
                 {
-                    VertexControl vp;
-                    if (!_vertexControls.TryGetValue(v, out vp))
+                    if (!VerticesControls.TryGetValue(vertex, out VertexControl control))
                         continue;
 
-                    if (positions.TryGetValue(v, out pos))
-                        RunMoveAnimation(vp, pos.X, pos.Y);
+                    if (positions.TryGetValue(vertex, out Point pos))
+                        RunMoveAnimation(control, pos.X, pos.Y);
                 }
             }
 
-            //Change the edge routes
-            if (activeState.RouteInfos != null)
+            IDictionary<TEdge, Point[]> routeInfos = activeState.RouteInfos;
+            if (routeInfos != null)
             {
-                foreach (var e in Graph.Edges)
+                // Change the edge routes
+                foreach (TEdge edge in Graph.Edges)
                 {
-                    EdgeControl ec;
-                    if (!_edgeControls.TryGetValue(e, out ec))
+                    if (!EdgesControls.TryGetValue(edge, out EdgeControl control))
                         continue;
 
-                    Point[] routePoints;
-                    activeState.RouteInfos.TryGetValue(e, out routePoints);
-                    ec.RoutePoints = routePoints;
+                    control.RoutePoints = routeInfos.TryGetValue(edge, out Point[] routePoints)
+                        ? routePoints
+                        : null;
                 }
             }
-        }
-
-        public void RefreshHighlight()
-        {
-            //TODO doit
-        }
-
-        private class AsyncThreadArgument
-        {
-            public ILayoutAlgorithm<TVertex, TEdge, TGraph> algorithm;
-            public bool showAllStates;
         }
 
         #endregion

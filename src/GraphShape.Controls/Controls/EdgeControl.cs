@@ -2,104 +2,157 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
-using GraphShape.Helpers;
+using JetBrains.Annotations;
 
 namespace GraphShape.Controls
 {
-	public class EdgeControl : Control, IPoolObject, IDisposable
-	{
-		#region Dependency Properties
+    /// <summary>
+    /// Edge control.
+    /// </summary>
+    public class EdgeControl : Control, IPoolObject, IDisposable
+    {
+        static EdgeControl()
+        {
+            // Override the StyleKey property
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(EdgeControl),
+                new FrameworkPropertyMetadata(typeof(EdgeControl)));
+        }
 
-		public static readonly DependencyProperty SourceProperty = DependencyProperty.Register( "Source",
-																							   typeof( VertexControl ),
-																							   typeof( EdgeControl ),
-																							   new UIPropertyMetadata( null ) );
+        #region Dependency Properties
 
-		public static readonly DependencyProperty TargetProperty = DependencyProperty.Register( "Target",
-																							   typeof( VertexControl ),
-																							   typeof( EdgeControl ),
-																							   new UIPropertyMetadata( null ) );
+        #region Source
 
-		public static readonly DependencyProperty RoutePointsProperty = DependencyProperty.Register( "RoutePoints",
-																									typeof( Point[] ),
-																									typeof( EdgeControl ),
-																									new UIPropertyMetadata(
-																										null ) );
+        /// <summary>
+        /// Source vertex.
+        /// </summary>
+        public VertexControl Source
+        {
+            get => (VertexControl)GetValue(SourceProperty);
+            internal set => SetValue(SourceProperty, value);
+        }
 
-		public static readonly DependencyProperty EdgeProperty = DependencyProperty.Register( "Edge", typeof( object ),
-																							 typeof( EdgeControl ),
-																							 new PropertyMetadata( null ) );
+        /// <summary>
+        /// Source vertex dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+            nameof(Source), typeof(VertexControl), typeof(EdgeControl), new UIPropertyMetadata(null));
 
-        public static readonly DependencyProperty StrokeThicknessProperty = Shape.StrokeThicknessProperty.AddOwner( typeof(EdgeControl),
-                                                                                                                    new UIPropertyMetadata(2.0) );
+        #endregion
 
-		#endregion
+        #region Target
 
-		#region Properties
-		public VertexControl Source
-		{
-			get { return (VertexControl)GetValue( SourceProperty ); }
-			internal set { SetValue( SourceProperty, value ); }
-		}
+        /// <summary>
+        /// Target vertex.
+        /// </summary>
+        public VertexControl Target
+        {
+            get => (VertexControl)GetValue(TargetProperty);
+            internal set => SetValue(TargetProperty, value);
+        }
 
-		public VertexControl Target
-		{
-			get { return (VertexControl)GetValue( TargetProperty ); }
-			internal set { SetValue( TargetProperty, value ); }
-		}
+        /// <summary>
+        /// Target vertex dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty TargetProperty = DependencyProperty.Register(
+            nameof(Target), typeof(VertexControl), typeof(EdgeControl), new UIPropertyMetadata(null));
 
-		public Point[] RoutePoints
-		{
-			get { return (Point[])GetValue( RoutePointsProperty ); }
-			set { SetValue( RoutePointsProperty, value ); }
-		}
+        #endregion
 
-		public object Edge
-		{
-			get { return GetValue( EdgeProperty ); }
-			set { SetValue( EdgeProperty, value ); }
-		}
+        #region RoutePoints
 
+        /// <summary>
+        /// Route points.
+        /// </summary>
+        public Point[] RoutePoints
+        {
+            get => (Point[])GetValue(RoutePointsProperty);
+            set => SetValue(RoutePointsProperty, value);
+        }
+
+        /// <summary>
+        /// Route points dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty RoutePointsProperty = DependencyProperty.Register(
+            nameof(RoutePoints), typeof(Point[]), typeof(EdgeControl), new UIPropertyMetadata(null));
+
+        #endregion
+
+        #region Edge
+
+        /// <summary>
+        /// Edge.
+        /// </summary>
+        public object Edge
+        {
+            get => GetValue(EdgeProperty);
+            set => SetValue(EdgeProperty, value);
+        }
+
+        /// <summary>
+        /// Edge dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty EdgeProperty = DependencyProperty.Register(
+            nameof(Edge), typeof(object), typeof(EdgeControl), new PropertyMetadata(null));
+
+        #endregion
+
+        #region StrokeThickness
+
+        /// <summary>
+        /// Stroke thickness.
+        /// </summary>
         public double StrokeThickness
         {
-            get { return (double)GetValue(StrokeThicknessProperty); }
-            set { SetValue(StrokeThicknessProperty, value); }
+            get => (double)GetValue(StrokeThicknessProperty);
+            set => SetValue(StrokeThicknessProperty, value);
         }
+
+        /// <summary>
+        /// Stroke thickness dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty StrokeThicknessProperty = Shape.StrokeThicknessProperty.AddOwner(
+            typeof(EdgeControl), new UIPropertyMetadata(2.0));
+
         #endregion
-        
-		static EdgeControl()
-		{
-			//override the StyleKey
-			DefaultStyleKeyProperty.OverrideMetadata( typeof( EdgeControl ), new FrameworkPropertyMetadata( typeof( EdgeControl ) ) );
-		}
 
-		#region IPoolObject Members
+        #endregion
 
-		public void Reset()
-		{
-			Edge = null;
-			RoutePoints = null;
-			Source = null;
-			Target = null;
-		}
+        #region IPoolObject
 
-		public void Terminate()
-		{
-			//nothing to do, there are no unmanaged resources
-		}
+        /// <inheritdoc />
+        public void Reset()
+        {
+            Edge = null;
+            RoutePoints = null;
+            Source = null;
+            Target = null;
+        }
 
-		public event DisposingHandler Disposing;
+        /// <inheritdoc />
+        public void Terminate()
+        {
+            // Nothing to do, there are no unmanaged resources
+        }
 
-		#endregion
+        /// <inheritdoc />
+        public event DisposingHandler Disposing;
 
-		#region IDisposable Members
+        #endregion
 
-		public void Dispose()
-		{
-			if ( Disposing != null )
-				Disposing( this );
-		}
+        #region IDisposable
 
-		#endregion
-	}
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Disposing?.Invoke(this);
+        }
+
+        #endregion
+    }
 }

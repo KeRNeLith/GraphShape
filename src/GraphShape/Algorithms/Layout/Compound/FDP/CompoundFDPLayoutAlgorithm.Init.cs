@@ -20,12 +20,12 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// - Random initial positions (if the position is not null)
         /// - Remove the 'tree-nodes' from the root graph (level 0)
         /// </summary>
-        /// <param name="vertexSizes">The dictionary of the inner canvas sizes of the compound vertices.</param>
-        /// <param name="vertexBorders">The dictionary of the border thickness of the compound vertices.</param>
+        /// <param name="verticesSizes">The dictionary of the inner canvas sizes of the compound vertices.</param>
+        /// <param name="verticesBorders">The dictionary of the border thickness of the compound vertices.</param>
         /// <param name="layoutTypes">The dictionary of the layout types of the compound vertices.</param>
         private void Init(
-            [NotNull] IDictionary<TVertex, Size> vertexSizes,
-            [NotNull] IDictionary<TVertex, Thickness> vertexBorders,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes)
         {
             InitializeWithRandomPositions(100, 100);
@@ -35,8 +35,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
             InitialLevels();
 
-            InitSimpleVertices(vertexSizes);
-            InitCompoundVertices(vertexBorders, vertexSizes, layoutTypes, movableParentUpdateQueue);
+            InitSimpleVertices(verticesSizes);
+            InitCompoundVertices(verticesBorders, verticesSizes, layoutTypes, movableParentUpdateQueue);
 
             SetLevelIndices();
 
@@ -146,12 +146,12 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <summary>
         /// Initializes the data of the simple vertices.
         /// </summary>
-        /// <param name="vertexSizes">Dictionary of the vertex sizes.</param>
-        private void InitSimpleVertices([NotNull] IDictionary<TVertex, Size> vertexSizes)
+        /// <param name="verticesSizes">Dictionary of the vertex sizes.</param>
+        private void InitSimpleVertices([NotNull] IDictionary<TVertex, Size> verticesSizes)
         {
             foreach (TVertex vertex in _compoundGraph.SimpleVertices)
             {
-                vertexSizes.TryGetValue(vertex, out Size vertexSize);
+                verticesSizes.TryGetValue(vertex, out Size vertexSize);
 
                 VerticesPositions.TryGetValue(vertex, out Point position);
 
@@ -169,15 +169,15 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <summary>
         /// Initializes the data of the compound vertices.
         /// </summary>
-        /// <param name="vertexBorders">Dictionary of the border thicknesses.</param>
-        /// <param name="vertexSizes">Dictionary of the vertex sizes.</param>
+        /// <param name="verticesBorders">Dictionary of the vertices border thicknesses.</param>
+        /// <param name="verticesSizes">Dictionary of the vertices sizes.</param>
         /// <param name="layoutTypes">Dictionary of the layout types.</param>
         /// <param name="movableParentUpdateQueue">
         /// The compound vertices with fixed layout should be added to this queue.
         /// </param>
         private void InitCompoundVertices(
-            [NotNull] IDictionary<TVertex, Thickness> vertexBorders,
-            [NotNull] IDictionary<TVertex, Size> vertexSizes,
+            [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
             [NotNull, ItemNotNull] Queue<TVertex> movableParentUpdateQueue)
         {
@@ -189,9 +189,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                         continue;
 
                     // Get the data of the vertex
-                    vertexBorders.TryGetValue(vertex, out Thickness border);
+                    verticesBorders.TryGetValue(vertex, out Thickness border);
 
-                    vertexSizes.TryGetValue(vertex, out Size vertexSize);
+                    verticesSizes.TryGetValue(vertex, out Size vertexSize);
                     layoutTypes.TryGetValue(vertex, out CompoundVertexInnerLayoutType layoutType);
 
                     if (layoutType == CompoundVertexInnerLayoutType.Fixed)

@@ -1,25 +1,30 @@
-﻿using System.Windows.Controls;
-using System;
+﻿using System;
+using System.Windows.Controls;
 using JetBrains.Annotations;
 
 namespace GraphShape.Controls
 {
     /// <summary>
-    /// Represents an entity able to perform animation transitions
+    /// Extensions for <see cref="ITransition"/>.
     /// </summary>
-    public interface ITransition
+    public static class TransitionExtensions
     {
         /// <summary>
         /// Runs the transition.
         /// </summary>
+        /// <param name="transition">Transition handler.</param>
         /// <param name="context">The context of the transition.</param>
         /// <param name="control">The control which the transition should be run on.</param>
         /// <param name="duration">The duration of the transition.</param>
-        /// <param name="endAction">The method that should be called when the transition finished.</param>
-        void Run(
+        public static void Run(
+            [NotNull] this ITransition transition,
             [NotNull] IAnimationContext context,
             [NotNull] Control control,
-            TimeSpan duration,
-            [CanBeNull, InstantHandle] Action<Control> endAction);
+            TimeSpan duration)
+        {
+            if (transition is null)
+                throw new ArgumentNullException(nameof(transition));
+            transition.Run(context, control, duration, null);
+        }
     }
 }

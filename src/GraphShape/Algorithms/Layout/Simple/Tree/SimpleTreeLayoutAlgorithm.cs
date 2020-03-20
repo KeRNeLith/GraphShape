@@ -39,16 +39,16 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="vertexSizes">Vertices sizes.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
         public SimpleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [NotNull] IDictionary<TVertex, Size> vertexSizes,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [CanBeNull] SimpleTreeLayoutParameters oldParameters)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
-            _sizes = new Dictionary<TVertex, Size>(vertexSizes);
+            _sizes = new Dictionary<TVertex, Size>(verticesSizes);
         }
 
         #region AlgorithmBase

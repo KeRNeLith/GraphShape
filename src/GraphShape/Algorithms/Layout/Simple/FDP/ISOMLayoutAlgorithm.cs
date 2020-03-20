@@ -74,7 +74,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         {
             base.Initialize();
 
-            // Initialize vertex positions
+            // Initialize vertices positions
             InitializeWithRandomPositions(Parameters.Width, Parameters.Height);
 
             // Initialize ISOM data

@@ -22,13 +22,13 @@ namespace GraphShape.Algorithms.Layout
         /// Gets the positions of every vertex after overlap removal
         /// in this state of the layout process.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         public IDictionary<TVertex, Point> OverlapRemovedPositions { get; set; }
 
         /// <summary>
         /// Gets the edge routes in this state of the layout process.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         public IDictionary<TEdge, Point[]> RouteInfos { get; set; }
 
         /// <summary>

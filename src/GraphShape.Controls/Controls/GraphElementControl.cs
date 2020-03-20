@@ -1,248 +1,366 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
+using JetBrains.Annotations;
 
 namespace GraphShape.Controls
 {
-	public class HighlightTriggeredEventArgs : RoutedEventArgs
-	{
-		public bool Cancel { get; set; }
-		public bool IsPositiveTrigger { get; private set; }
+    /// <summary>
+    /// Graph element behavior.
+    /// </summary>
+    public static class GraphElementBehaviour
+    {
+        static GraphElementBehaviour()
+        {
+            IsSemiHighlightedProperty = IsSemiHighlightedPropertyKey.DependencyProperty;
+            SemiHighlightInfoProperty = SemiHighlightInfoPropertyKey.DependencyProperty;
+            HighlightInfoProperty = HighlightInfoPropertyKey.DependencyProperty;
+            IsHighlightedProperty = IsHighlightedPropertyKey.DependencyProperty;
+        }
 
-		public HighlightTriggeredEventArgs( RoutedEvent evt, object source, bool isPositiveTrigger )
-			: base( evt, source )
-		{
-			Cancel = false;
-			IsPositiveTrigger = isPositiveTrigger;
-		}
-	}
+        #region Highlight event
 
-	public class HighlightInfoChangedEventArgs : RoutedEventArgs
-	{
-		public object OldHighlightInfo { get; private set; }
-		public object NewHighlightInfo { get; private set; }
+        /// <summary>
+        /// Highlight event.
+        /// </summary>
+        [NotNull]
+        public static readonly RoutedEvent HighlightEvent = EventManager.RegisterRoutedEvent(
+            "Highlight", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(GraphElementBehaviour));
 
-		public HighlightInfoChangedEventArgs( RoutedEvent evt, object source, object oldHighlightInfo, object newHighlightInfo )
-			: base( evt, source )
-		{
-			OldHighlightInfo = oldHighlightInfo;
-			NewHighlightInfo = newHighlightInfo;
-		}
-	}
+        /// <summary>
+        /// Adds a new <see cref="HighlightEvent"/> handler.
+        /// </summary>
+        public static void AddHighlightHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.AddHandler(HighlightEvent, handler);
+        }
 
-	public delegate void HighlightInfoChangedEventHandler( object sender, HighlightInfoChangedEventArgs args );
+        /// <summary>
+        /// Removes the given <paramref name="handler"/> from <see cref="HighlightEvent"/>.
+        /// </summary>
+        public static void RemoveHighlightHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.RemoveHandler(HighlightEvent, handler);
+        }
 
-	public delegate void HighlightTriggerEventHandler( object sender, HighlightTriggeredEventArgs args );
+        #endregion
 
-	public static class GraphElementBehaviour
-	{
-		public static readonly RoutedEvent HighlightEvent = EventManager.RegisterRoutedEvent( "Highlight", RoutingStrategy.Bubble, typeof( RoutedEventHandler ), typeof( GraphElementBehaviour ) );
-		public static void AddHighlightHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.AddHandler( HighlightEvent, handler );
-		}
+        #region Unhighlight event
 
-		public static void RemoveHighlightHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.RemoveHandler( HighlightEvent, handler );
-		}
+        /// <summary>
+        /// Unhighlight event.
+        /// </summary>
+        [NotNull]
+        public static readonly RoutedEvent UnhighlightEvent = EventManager.RegisterRoutedEvent(
+            "Unhighlight", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(GraphElementBehaviour));
 
-		public static readonly RoutedEvent UnhighlightEvent = EventManager.RegisterRoutedEvent( "Unhighlight", RoutingStrategy.Bubble, typeof( RoutedEventHandler ), typeof( GraphElementBehaviour ) );
-		public static void AddUnhighlightHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.AddHandler( UnhighlightEvent, handler );
-		}
+        /// <summary>
+        /// Adds a new <see cref="UnhighlightEvent"/> handler.
+        /// </summary>
+        public static void AddUnhighlightHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.AddHandler(UnhighlightEvent, handler);
+        }
 
-		public static void RemoveUnhighlightHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.RemoveHandler( UnhighlightEvent, handler );
-		}
+        /// <summary>
+        /// Removes the given <paramref name="handler"/> from <see cref="UnhighlightEvent"/>.
+        /// </summary>
+        public static void RemoveUnhighlightHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.RemoveHandler(UnhighlightEvent, handler);
+        }
 
-		internal static readonly RoutedEvent HighlightTriggeredEvent = EventManager.RegisterRoutedEvent( "HighlightTriggered", RoutingStrategy.Bubble, typeof( HighlightTriggerEventHandler ), typeof( GraphElementBehaviour ) );
-		public static void AddHighlightTriggeredHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.AddHandler( HighlightTriggeredEvent, handler );
-		}
+        #endregion
 
-		public static void RemoveHighlightTriggeredHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.RemoveHandler( HighlightTriggeredEvent, handler );
-		}
+        #region HighlightTriggered event
 
-		public static readonly RoutedEvent HighlightInfoChangedEvent = EventManager.RegisterRoutedEvent( "HighlightInfoChanged", RoutingStrategy.Bubble, typeof( HighlightInfoChangedEventHandler ), typeof( GraphElementBehaviour ) );
-		public static void AddHighlightInfoChangedHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.AddHandler( HighlightInfoChangedEvent, handler );
-		}
+        /// <summary>
+        /// Highlight trigger event.
+        /// </summary>
+        [NotNull]
+        internal static readonly RoutedEvent HighlightTriggeredEvent = EventManager.RegisterRoutedEvent(
+            "HighlightTriggered", RoutingStrategy.Bubble, typeof(HighlightTriggerEventHandler), typeof(GraphElementBehaviour));
 
-		public static void RemoveHighlightInfoChangedHandler( DependencyObject d, RoutedEventHandler handler )
-		{
-			UIElement e = d as UIElement;
-			if ( e != null )
-				e.RemoveHandler( HighlightInfoChangedEvent, handler );
-		}
+        /// <summary>
+        /// Adds a new <see cref="HighlightTriggeredEvent"/> handler.
+        /// </summary>
+        public static void AddHighlightTriggeredHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.AddHandler(HighlightTriggeredEvent, handler);
+        }
 
+        /// <summary>
+        /// Removes the given <paramref name="handler"/> from <see cref="HighlightTriggeredEvent"/>.
+        /// </summary>
+        public static void RemoveHighlightTriggeredHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.RemoveHandler(HighlightTriggeredEvent, handler);
+        }
 
+        #endregion
 
-		public static bool GetHighlightTrigger( DependencyObject obj )
-		{
-			return (bool)obj.GetValue( HighlightTriggerProperty );
-		}
+        #region HighlightInfoChanged event
 
-		public static void SetHighlightTrigger( DependencyObject obj, bool value )
-		{
-			obj.SetValue( HighlightTriggerProperty, value );
-		}
+        /// <summary>
+        /// Highlight information changed event.
+        /// </summary>
+        [NotNull]
+        public static readonly RoutedEvent HighlightInfoChangedEvent = EventManager.RegisterRoutedEvent(
+            "HighlightInfoChanged", RoutingStrategy.Bubble, typeof(HighlightInfoChangedEventHandler), typeof(GraphElementBehaviour));
 
-		// Using a DependencyProperty as the backing store for HighlightTrigger.  This enables animation, styling, binding, etc...
-		public static readonly DependencyProperty HighlightTriggerProperty =
-			DependencyProperty.RegisterAttached( "HighlightTrigger", typeof( bool ), typeof( GraphElementBehaviour ), new UIPropertyMetadata( false, null, HighlightTrigger_Coerce ) );
+        /// <summary>
+        /// Adds a new <see cref="HighlightInfoChangedEvent"/> handler.
+        /// </summary>
+        public static void AddHighlightInfoChangedHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.AddHandler(HighlightInfoChangedEvent, handler);
+        }
 
-		private static object HighlightTrigger_Coerce( DependencyObject d, object baseValue )
-		{
-			UIElement e = d as UIElement;
-			if ( e == null )
-				return baseValue;
+        /// <summary>
+        /// Removes the given <paramref name="handler"/> from <see cref="HighlightInfoChangedEvent"/>.
+        /// </summary>
+        public static void RemoveHighlightInfoChangedHandler(DependencyObject d, RoutedEventHandler handler)
+        {
+            if (d is UIElement uiElement)
+                uiElement.RemoveHandler(HighlightInfoChangedEvent, handler);
+        }
 
-			if ( (bool)baseValue == GetHighlightTrigger( d ) )
-				return baseValue;
+        #endregion
 
-			var args = new HighlightTriggeredEventArgs( HighlightTriggeredEvent, d, (bool)baseValue );
+        #region HighlightTrigger
+
+        /// <summary>
+        /// Highlight trigger dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty HighlightTriggerProperty = DependencyProperty.RegisterAttached(
+            "HighlightTrigger", typeof(bool), typeof(GraphElementBehaviour), new UIPropertyMetadata(false, null, CoerceHighlightTrigger));
+
+        /// <summary>
+        /// Gets the <see cref="HighlightTriggerProperty"/> value.
+        /// </summary>
+        public static bool GetHighlightTrigger(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HighlightTriggerProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="HighlightTriggerProperty"/> value.
+        /// </summary>
+        public static void SetHighlightTrigger(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HighlightTriggerProperty, value);
+        }
+
+        private static object CoerceHighlightTrigger(DependencyObject d, object baseValue)
+        {
+            var control = d as UIElement;
+            if (control is null)
+                return baseValue;
+
+            if ((bool)baseValue == GetHighlightTrigger(d))
+                return baseValue;
+
+            var args = new HighlightTriggeredEventArgs(HighlightTriggeredEvent, d, (bool)baseValue);
             try
             {
-                e.RaiseEvent(args);
+                control.RaiseEvent(args);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Exception during HighlightTrigger_Coerce - likely the graph is still animating: " + ex);
+                Debug.WriteLine($"Exception during CoerceHighlightTrigger - likely the graph is still animating: {ex}");
             }
 
-			return args.Cancel ? GetHighlightTrigger( d ) : baseValue;
-		}
+            return args.Cancel ? GetHighlightTrigger(d) : baseValue;
+        }
 
-		public static readonly DependencyProperty IsHighlightedProperty;
-		private static readonly DependencyPropertyKey IsHighlightedPropertyKey =
-			DependencyProperty.RegisterAttachedReadOnly( "IsHighlighted", typeof( bool ), typeof( GraphElementBehaviour ), new UIPropertyMetadata( false, IsHighlighted_PropertyChanged ) );
+        #endregion
 
+        #region IsHighlighted
 
+        /// <summary>
+        /// Is highlighted dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty IsHighlightedProperty;
 
-		public static bool GetIsHighlighted( DependencyObject obj )
-		{
-			return (bool)obj.GetValue( IsHighlightedProperty );
-		}
+        /// <summary>
+        /// Is highlighted property key.
+        /// </summary>
+        [NotNull]
+        private static readonly DependencyPropertyKey IsHighlightedPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
+            "IsHighlighted", typeof(bool), typeof(GraphElementBehaviour), new UIPropertyMetadata(false, OnIsHighlightedPropertyChanged));
 
-		internal static void SetIsHighlighted( DependencyObject obj, bool value )
-		{
-			obj.SetValue( IsHighlightedPropertyKey, value );
-		}
+        /// <summary>
+        /// Gets the <see cref="IsHighlightedProperty"/> value.
+        /// </summary>
+        public static bool GetIsHighlighted(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsHighlightedProperty);
+        }
 
-		// When the IsHighlighted Property changes we should raise the 
-		// Highlight and Unhighlight RoutedEvents.
-		private static void IsHighlighted_PropertyChanged( DependencyObject d, DependencyPropertyChangedEventArgs e )
-		{
-			UIElement control = d as UIElement;
-			if ( control == null )
-				return;
+        /// <summary>
+        /// Sets the <see cref="IsHighlightedProperty"/> value.
+        /// </summary>
+        internal static void SetIsHighlighted(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsHighlightedPropertyKey, value);
+        }
 
-			if ( (bool)e.NewValue )
-				control.RaiseEvent( new RoutedEventArgs( HighlightEvent, d ) );
-			else
-				control.RaiseEvent( new RoutedEventArgs( UnhighlightEvent, d ) );
-		}
+        // When the IsHighlighted Property changes we should raise the 
+        // Highlight and Unhighlight RoutedEvents.
+        private static void OnIsHighlightedPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
+        {
+            var control = d as UIElement;
+            if (control is null)
+                return;
 
-		public static readonly DependencyProperty HighlightInfoProperty;
-		private static readonly DependencyPropertyKey HighlightInfoPropertyKey =
-			DependencyProperty.RegisterAttachedReadOnly( "HighlightInfo", typeof( object ), typeof( GraphElementBehaviour ),
-												 new PropertyMetadata( null, HighlightInfo_PropertyChanged ) );
+            if ((bool)args.NewValue)
+                control.RaiseEvent(new RoutedEventArgs(HighlightEvent, d));
+            else
+                control.RaiseEvent(new RoutedEventArgs(UnhighlightEvent, d));
+        }
 
+        #endregion
 
+        #region HighlightInfo
 
-		public static object GetHighlightInfo( DependencyObject obj )
-		{
-			return (object)obj.GetValue( HighlightInfoProperty );
-		}
+        /// <summary>
+        /// Highlight information dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty HighlightInfoProperty;
 
-		internal static void SetHighlightInfo( DependencyObject obj, object value )
-		{
-			obj.SetValue( HighlightInfoPropertyKey, value );
-		}
+        /// <summary>
+        /// Highlight information property key.
+        /// </summary>
+        [NotNull]
+        private static readonly DependencyPropertyKey HighlightInfoPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
+            "HighlightInfo", typeof(object), typeof(GraphElementBehaviour), new PropertyMetadata(null, OnHighlightInfoPropertyChanged));
 
-		private static void HighlightInfo_PropertyChanged( DependencyObject d, DependencyPropertyChangedEventArgs e )
-		{
-			UIElement control = d as UIElement;
-			if ( control == null )
-				return;
+        /// <summary>
+        /// Gets the <see cref="HighlightInfoProperty"/> value.
+        /// </summary>
+        public static object GetHighlightInfo(DependencyObject obj)
+        {
+            return obj.GetValue(HighlightInfoProperty);
+        }
 
-			control.RaiseEvent( new HighlightInfoChangedEventArgs( HighlightInfoChangedEvent, d, e.OldValue, e.NewValue ) );
-		}
+        /// <summary>
+        /// Sets the <see cref="HighlightInfoProperty"/> value.
+        /// </summary>
+        internal static void SetHighlightInfo(DependencyObject obj, object value)
+        {
+            obj.SetValue(HighlightInfoPropertyKey, value);
+        }
 
-		public static readonly DependencyProperty IsSemiHighlightedProperty;
-		private static readonly DependencyPropertyKey IsSemiHighlightedPropertyKey =
-			DependencyProperty.RegisterAttachedReadOnly( "IsSemiHighlighted", typeof( bool ), typeof( GraphElementBehaviour ),
-												 new PropertyMetadata( false ) );
+        private static void OnHighlightInfoPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
+        {
+            var control = d as UIElement;
+            control?.RaiseEvent(
+                new HighlightInfoChangedEventArgs(HighlightInfoChangedEvent, d, args.OldValue, args.NewValue));
+        }
 
+        #endregion
 
+        #region IsSemiHighlighted
 
-		public static bool GetIsSemiHighlighted( DependencyObject obj )
-		{
-			return (bool)obj.GetValue( IsSemiHighlightedProperty );
-		}
+        /// <summary>
+        /// Is semi highlighted property key.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty IsSemiHighlightedProperty;
 
-		internal static void SetIsSemiHighlighted( DependencyObject obj, bool value )
-		{
-			obj.SetValue( IsSemiHighlightedPropertyKey, value );
-		}
+        /// <summary>
+        /// Is semi highlighted dependency property.
+        /// </summary>
+        [NotNull]
+        private static readonly DependencyPropertyKey IsSemiHighlightedPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
+            "IsSemiHighlighted", typeof(bool), typeof(GraphElementBehaviour), new PropertyMetadata(false));
 
-		public static readonly DependencyProperty SemiHighlightInfoProperty;
-		private static readonly DependencyPropertyKey SemiHighlightInfoPropertyKey =
-			DependencyProperty.RegisterAttachedReadOnly( "SemiHighlightInfo", typeof( object ), typeof( GraphElementBehaviour ), new PropertyMetadata( null ) );
+        /// <summary>
+        /// Gets the <see cref="IsSemiHighlightedProperty"/> value.
+        /// </summary>
+        public static bool GetIsSemiHighlighted(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsSemiHighlightedProperty);
+        }
 
+        /// <summary>
+        /// Sets the <see cref="IsSemiHighlightedProperty"/> value.
+        /// </summary>
+        internal static void SetIsSemiHighlighted(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsSemiHighlightedPropertyKey, value);
+        }
 
+        #endregion
 
-		public static object GetSemiHighlightInfo( DependencyObject obj )
-		{
-			return (object)obj.GetValue( SemiHighlightInfoProperty );
-		}
+        #region SemiHighlightInfo
 
-		internal static void SetSemiHighlightInfo( DependencyObject obj, object value )
-		{
-			obj.SetValue( SemiHighlightInfoPropertyKey, value );
-		}
+        /// <summary>
+        /// Semi highlight information dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty SemiHighlightInfoProperty;
 
-		public static readonly DependencyProperty LayoutInfoProperty =
-			DependencyProperty.RegisterAttached( "LayoutInfo", typeof( object ), typeof( GraphElementBehaviour ), new UIPropertyMetadata( null ) );
+        /// <summary>
+        /// Semi highlight information property key.
+        /// </summary>
+        [NotNull]
+        private static readonly DependencyPropertyKey SemiHighlightInfoPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
+            "SemiHighlightInfo", typeof(object), typeof(GraphElementBehaviour), new PropertyMetadata(null));
+        
+        /// <summary>
+        /// Gets the <see cref="SemiHighlightInfoProperty"/> value.
+        /// </summary>
+        public static object GetSemiHighlightInfo(DependencyObject obj)
+        {
+            return obj.GetValue(SemiHighlightInfoProperty);
+        }
 
-		public static object GetLayoutInfo( DependencyObject obj )
-		{
-			return (object)obj.GetValue( LayoutInfoProperty );
-		}
+        /// <summary>
+        /// Sets the <see cref="SemiHighlightInfoProperty"/> value.
+        /// </summary>
+        internal static void SetSemiHighlightInfo(DependencyObject obj, object value)
+        {
+            obj.SetValue(SemiHighlightInfoPropertyKey, value);
+        }
 
-		public static void SetLayoutInfo( DependencyObject obj, object value )
-		{
-			obj.SetValue( LayoutInfoProperty, value );
-		}
+        #endregion
 
-		static GraphElementBehaviour()
-		{
-			IsSemiHighlightedProperty = IsSemiHighlightedPropertyKey.DependencyProperty;
-			SemiHighlightInfoProperty = SemiHighlightInfoPropertyKey.DependencyProperty;
-			HighlightInfoProperty = HighlightInfoPropertyKey.DependencyProperty;
-			IsHighlightedProperty = IsHighlightedPropertyKey.DependencyProperty;
-		}
-	}
+        #region LayoutInfo
+
+        /// <summary>
+        /// Layout information dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty LayoutInfoProperty = DependencyProperty.RegisterAttached(
+            "LayoutInfo", typeof(object), typeof(GraphElementBehaviour), new UIPropertyMetadata(null));
+
+        /// <summary>
+        /// Gets the <see cref="LayoutInfoProperty"/> value.
+        /// </summary>
+        public static object GetLayoutInfo(DependencyObject obj)
+        {
+            return obj.GetValue(LayoutInfoProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="LayoutInfoProperty"/> value.
+        /// </summary>
+        public static void SetLayoutInfo(DependencyObject obj, object value)
+        {
+            obj.SetValue(LayoutInfoProperty, value);
+        }
+
+        #endregion
+    }
 }

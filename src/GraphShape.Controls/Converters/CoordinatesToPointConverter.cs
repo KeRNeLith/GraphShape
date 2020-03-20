@@ -1,29 +1,47 @@
 ﻿using System;
 using System.Windows.Data;
-using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 
-namespace GraphShape.Converters
+namespace GraphShape.Controls.Converters
 {
-	public class CoordinatesToPointConverter : IMultiValueConverter
-	{
-		public object Convert( object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture )
-		{
-			Debug.Assert( values != null && values.Length == 2, "CoordinatesToPointConverter.Convert should get 2 values as input: X and Y coordinates" );
+    /// <summary>
+    /// Converter or coordinates to <see cref="Point"/> and vice versa.
+    /// </summary>
+    public class CoordinatesToPointConverter : IMultiValueConverter
+    {
+        #region IMultiValueConverter
 
-			double x = (double)values[0];
-			double y = (double)values[1];
+        /// <inheritdoc />
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values is null)
+                return default(Point);
 
-			return new Point( x, y );
-		}
+            if (values.Length != 2)
+            {
+                throw new ArgumentException(
+                    $"{nameof(CoordinatesToPointConverter)} must have 2 parameters: X and Y coordinates.",
+                    nameof(values));
+            }
 
-		public object[] ConvertBack( object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture )
-		{
-			Debug.Assert( !( value is Point ), "CoordinatesToPointConverter.ConvertBack should get a Point object as input." );
+            double x = (double)values[0];
+            double y = (double)values[1];
 
-			var point = (Point)value;
+            return new Point(x, y);
+        }
 
-			return new object[] { point.X, point.Y };
-		}
-	}
+        /// <inheritdoc />
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            if (value is Point point)
+                return new object[] {point.X, point.Y};
+
+            throw new ArgumentException(
+                $"{nameof(CoordinatesToPointConverter)} back conversion must have 1 parameter: a {nameof(Point)}.",
+                nameof(value));
+        }
+
+        #endregion
+    }
 }

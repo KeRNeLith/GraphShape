@@ -4,26 +4,26 @@ using JetBrains.Annotations;
 namespace GraphShape.Controls
 {
     /// <summary>
-    /// Handler for an object position changed event.
+    /// Handler for an object highlight trigger changed event.
     /// </summary>
     /// <param name="sender">Event sender.</param>
     /// <param name="args">Event arguments.</param>
-    public delegate void PositionChangedEventHandler([NotNull] object sender, [NotNull] PositionChangedEventArgs args);
+    public delegate void HighlightTriggerEventHandler([NotNull] object sender, [NotNull] HighlightTriggeredEventArgs args);
 
     /// <summary>
-    /// Object position changed event arguments.
+    /// Highlight triggered event arguments.
     /// </summary>
-    public class PositionChangedEventArgs : RoutedEventArgs
+    public class HighlightTriggeredEventArgs : RoutedEventArgs
     {
         /// <summary>
-        /// X displacement.
+        /// Indicates if event has been canceled or not.
         /// </summary>
-        public double XChange { get; }
-        
+        public bool Cancel { get; set; }
+
         /// <summary>
-        /// Y displacement.
+        /// Highlight triggered?
         /// </summary>
-        public double YChange { get; }
+        public bool IsPositiveTrigger { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PositionChangedEventArgs"/> class.
@@ -33,17 +33,14 @@ namespace GraphShape.Controls
         /// An alternate source that will be reported when the event is handled.
         /// This pre-populates the <see cref="RoutedEventArgs.Source" /> property.
         /// </param>
-        /// <param name="xChange">X displacement.</param>
-        /// <param name="yChange">Y displacement.</param>
-        public PositionChangedEventArgs(
+        /// <param name="isPositiveTrigger">Indicates if trigger has been triggered.</param>
+        public HighlightTriggeredEventArgs(
             [NotNull] RoutedEvent routedEvent,
             [NotNull] object source,
-            double xChange,
-            double yChange)
+            bool isPositiveTrigger)
             : base(routedEvent, source)
         {
-            XChange = xChange;
-            YChange = yChange;
+            IsPositiveTrigger = isPositiveTrigger;
         }
     }
 }

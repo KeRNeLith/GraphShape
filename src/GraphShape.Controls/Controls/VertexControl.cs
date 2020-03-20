@@ -1,60 +1,86 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
-using System;
-using GraphShape.Helpers;
+using JetBrains.Annotations;
 
 namespace GraphShape.Controls
 {
-	/// <summary>
-	/// Logical representation of a vertex.
-	/// </summary>
-	public class VertexControl : Control, IPoolObject, IDisposable
-	{
-		public object Vertex
-		{
-			get { return GetValue( VertexProperty ); }
-			set { SetValue( VertexProperty, value ); }
-		}
-
-		public static readonly DependencyProperty VertexProperty =
-			DependencyProperty.Register( "Vertex", typeof( object ), typeof( VertexControl ), new UIPropertyMetadata( null ) );
-
-
-        public GraphCanvas RootCanvas
+    /// <summary>
+    /// Vertex control.
+    /// </summary>
+    public class VertexControl : Control, IPoolObject, IDisposable
+    {
+        static VertexControl()
         {
-            get { return (GraphCanvas)GetValue(RootCanvasProperty); }
-            set { SetValue(RootCanvasProperty, value); }
+            // Override the StyleKey property
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(VertexControl),
+                new FrameworkPropertyMetadata(typeof(VertexControl)));
         }
 
-        public static readonly DependencyProperty RootCanvasProperty =
-            DependencyProperty.Register("RootCanvas", typeof(GraphCanvas), typeof(VertexControl), new UIPropertyMetadata(null));
+        #region Vertex
 
-		static VertexControl()
-		{
-			//override the StyleKey Property
-			DefaultStyleKeyProperty.OverrideMetadata( typeof( VertexControl ), new FrameworkPropertyMetadata( typeof( VertexControl ) ) );
-		}
+        /// <summary>
+        /// Vertex object.
+        /// </summary>
+        public object Vertex
+        {
+            get => GetValue(VertexProperty);
+            set => SetValue(VertexProperty, value);
+        }
 
-		#region IPoolObject Members
+        /// <summary>
+        /// Vertex dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty VertexProperty = DependencyProperty.Register(
+            nameof(Vertex), typeof(object), typeof(VertexControl), new UIPropertyMetadata(null));
 
-		public void Reset()
-		{
-			Vertex = null;
-		}
+        #endregion
 
-		public void Terminate()
-		{
-			//nothing to do, there are no unmanaged resources
-		}
+        #region RootCanvas
 
-		public event DisposingHandler Disposing;
+        /// <summary>
+        /// Root canvas.
+        /// </summary>
+        public GraphCanvas RootCanvas
+        {
+            get => (GraphCanvas)GetValue(RootCanvasProperty);
+            set => SetValue(RootCanvasProperty, value);
+        }
 
-		public void Dispose()
-		{
-			if ( Disposing != null )
-				Disposing( this );
-		}
+        /// <summary>
+        /// Root canvas dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty RootCanvasProperty = DependencyProperty.Register(
+            nameof(RootCanvas), typeof(GraphCanvas), typeof(VertexControl), new UIPropertyMetadata(null));
 
-		#endregion
-	}
+        #endregion
+
+        #region IPoolObject
+
+        /// <inheritdoc />
+        public void Reset()
+        {
+            Vertex = null;
+        }
+
+        /// <inheritdoc />
+        public void Terminate()
+        {
+            // Nothing to do, there are no unmanaged resources
+        }
+
+        /// <inheritdoc />
+        public event DisposingHandler Disposing;
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Disposing?.Invoke(this);
+        }
+
+        #endregion
+    }
 }

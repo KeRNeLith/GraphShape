@@ -1,55 +1,70 @@
 ﻿using System.Collections.Generic;
-using QuikGraph;
 using System.Windows;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Contextual;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Controls
 {
-	public class ContextualGraphLayout<TVertex, TEdge, TGraph> : GraphLayout<TVertex, TEdge, TGraph>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
-	{
-		#region Dependency Properties
-		/// <summary>
-		/// Gets or sets the SelectedVertex which influences the Context.
-		/// </summary>
-		public TVertex SelectedVertex
-		{
-			get { return (TVertex)GetValue( SelectedVertexProperty ); }
-			set { SetValue( SelectedVertexProperty, value ); }
-		}
+    /// <summary>
+    /// Contextual Graph layout control.
+    /// </summary>
+    /// <typeparam name="TVertex">Vertex type.</typeparam>
+    /// <typeparam name="TEdge">Edge type.</typeparam>
+    /// <typeparam name="TGraph">Graph type.</typeparam>
+    public class ContextualGraphLayout<TVertex, TEdge, TGraph> : GraphLayout<TVertex, TEdge, TGraph>
+        where TVertex : class
+        where TEdge : IEdge<TVertex>
+        where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
+    {
+        static ContextualGraphLayout()
+        {
+            LayoutAlgorithmFactoryProperty.OverrideMetadata(
+                typeof(ContextualGraphLayout<TVertex, TEdge, TGraph>),
+                new PropertyMetadata(new ContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph>(), null, CoerceLayoutAlgorithmFactory));
+        }
 
-		public static readonly DependencyProperty SelectedVertexProperty = DependencyProperty.Register( "SelectedVertex", typeof( TVertex ), typeof( ContextualGraphLayout<TVertex, TEdge, TGraph> ), new UIPropertyMetadata( default( TVertex ), SelectedVertex_PropertyChanged ) );
+        #region SelectedVertex
 
-		private static void SelectedVertex_PropertyChanged( DependencyObject obj, DependencyPropertyChangedEventArgs args )
-		{
-			var gl = obj as ContextualGraphLayout<TVertex, TEdge, TGraph>;
-			if ( gl == null )
-				return;
+        /// <summary>
+        /// Gets or sets the <see cref="SelectedVertex"/> which influences the context.
+        /// </summary>
+        public TVertex SelectedVertex
+        {
+            get => (TVertex)GetValue(SelectedVertexProperty);
+            set => SetValue(SelectedVertexProperty, value);
+        }
 
-			//refresh the layout on context change
-			gl.Relayout();
-		}
-		#endregion
+        /// <summary>
+        /// Selected vertex dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty SelectedVertexProperty = DependencyProperty.Register(
+            nameof(SelectedVertex),
+            typeof(TVertex),
+            typeof(ContextualGraphLayout<TVertex, TEdge, TGraph>),
+            new UIPropertyMetadata(default(TVertex), OnSelectedVertexPropertyChanged));
 
-		static ContextualGraphLayout() 
-		{
-			LayoutAlgorithmFactoryProperty.OverrideMetadata( typeof( ContextualGraphLayout<TVertex, TEdge, TGraph> ), new PropertyMetadata( new ContextualLayoutAlgorithmFactory<TVertex, TEdge, TGraph>(), null, LayoutAlgorithmFactory_Coerce ) );
-		}
+        private static void OnSelectedVertexPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
+        {
+            var graphLayout = d as ContextualGraphLayout<TVertex, TEdge, TGraph>;
 
-		protected override ILayoutContext<TVertex, TEdge, TGraph> CreateLayoutContext( IDictionary<TVertex, Point> positions, IDictionary<TVertex, Size> sizes )
-		{
-			return new ContextualLayoutContext<TVertex, TEdge, TGraph>( Graph, SelectedVertex, positions, sizes );
-		}
+            // Refresh the layout on context change
+            graphLayout?.Relayout();
+        }
 
-		protected override bool CanLayout
-		{
-            get
-		    {
-		        return SelectedVertex != null && base.CanLayout;
-		    }
-		}
-	}
+        #endregion
+
+        /// <inheritdoc />
+        protected override ILayoutContext<TVertex, TEdge, TGraph> CreateLayoutContext(
+            IDictionary<TVertex, Point> positions,
+            IDictionary<TVertex, Size> sizes)
+        {
+            return new ContextualLayoutContext<TVertex, TEdge, TGraph>(Graph, SelectedVertex, positions, sizes);
+        }
+
+        /// <inheritdoc />
+        protected override bool CanLayout => SelectedVertex != null && base.CanLayout;
+    }
 }

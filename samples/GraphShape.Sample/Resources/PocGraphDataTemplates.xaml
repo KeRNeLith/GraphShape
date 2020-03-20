@@ -3,10 +3,10 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:sample="clr-namespace:GraphShape.Sample" 
 	xmlns:graphShapeControls="clr-namespace:GraphShape.Controls;assembly=GraphShape.Controls" 
-	xmlns:converters="clr-namespace:GraphShape.Converters;assembly=GraphShape.Controls"
+	xmlns:converters="clr-namespace:GraphShape.Controls.Converters;assembly=GraphShape.Controls"
 	xmlns:wpfExtensionsAttachedBehaviours="clr-namespace:WPFExtensions.AttachedBehaviours;assembly=WPFExtensions">
 	
-	<converters:EdgeRouteToPathConverter x:Key="routeToPathConverter" />
+	<converters:EdgeRouteToPathConverter x:Key="RouteToPathConverter" />
 	
 	<SolidColorBrush x:Key="HighlightedVertexBorderBrush" Color="Transparent" />
 	<SolidColorBrush x:Key="HighlightedVertexBackgroundBrush" Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" />
@@ -91,7 +91,7 @@
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
-                                    <MultiBinding Converter="{StaticResource routeToPathConverter}">
+                                    <MultiBinding Converter="{StaticResource RouteToPathConverter}">
                                         <Binding RelativeSource="{RelativeSource TemplatedParent}"
                                                  Path="Source.(graphShapeControls:GraphCanvas.X)" />
                                         <Binding RelativeSource="{RelativeSource TemplatedParent}"

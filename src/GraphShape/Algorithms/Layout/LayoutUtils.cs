@@ -52,30 +52,30 @@ namespace GraphShape.Algorithms.Layout
         }
 
         /// <summary>
-        /// Normalizes the given <paramref name="vertexPositions"/>.
+        /// Normalizes the given <paramref name="verticesPositions"/>.
         /// </summary>
         /// <typeparam name="TVertex">Vertex type.</typeparam>
-        /// <param name="vertexPositions">Vertices positions to normalize.</param>
-        public static void NormalizePositions<TVertex>([CanBeNull] IDictionary<TVertex, Point> vertexPositions)
+        /// <param name="verticesPositions">Vertices positions to normalize.</param>
+        public static void NormalizePositions<TVertex>([CanBeNull] IDictionary<TVertex, Point> verticesPositions)
         {
-            if (vertexPositions is null || vertexPositions.Count == 0)
+            if (verticesPositions is null || verticesPositions.Count == 0)
                 return;
 
             // Get the topLeft position
             var topLeft = new Point(float.PositiveInfinity, float.PositiveInfinity);
-            foreach (Point position in vertexPositions.Values)
+            foreach (Point position in verticesPositions.Values)
             {
                 topLeft.X = Math.Min(topLeft.X, position.X);
                 topLeft.Y = Math.Min(topLeft.Y, position.Y);
             }
 
             // Translate with the topLeft position
-            foreach (TVertex vertex in vertexPositions.Keys.ToArray())
+            foreach (TVertex vertex in verticesPositions.Keys.ToArray())
             {
-                Point pos = vertexPositions[vertex];
+                Point pos = verticesPositions[vertex];
                 pos.X -= topLeft.X;
                 pos.Y -= topLeft.Y;
-                vertexPositions[vertex] = pos;
+                verticesPositions[vertex] = pos;
             }
         }
 

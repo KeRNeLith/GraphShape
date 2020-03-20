@@ -1,28 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using GraphShape.Utils;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape.Controls
 {
-    public partial class GraphLayout<TVertex, TEdge, TGraph> : GraphCanvas
+    public partial class GraphLayout<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : class, IBidirectionalGraph<TVertex, TEdge>
     {
+        /// <summary>
+        /// Removes the given <paramref name="vertex"/> from graph.
+        /// </summary>
+        /// <param name="vertex">Vertex to remove.</param>
+        protected virtual void RemoveVertexControl([NotNull] TVertex vertex)
+        {
+            RunDestructionTransition(VerticesControls[vertex], false);
+            VerticesControls.Remove(vertex);
+        }
 
+        /// <summary>
+        /// Removes the given <paramref name="edge"/> from graph.
+        /// </summary>
+        /// <param name="edge">Edge to remove.</param>
+        protected virtual void RemoveEdgeControl([NotNull] TEdge edge)
+        {
+            RunDestructionTransition(EdgesControls[edge], false);
+            EdgesControls.Remove(edge);
+        }
+
+        /// <summary>
+        /// Removes all vertices and edges from graph.
+        /// </summary>
         protected void RemoveAllGraphElement()
         {
-            foreach (var vertex in _vertexControls.Keys.ToArray())
+            foreach (TVertex vertex in VerticesControls.Keys.ToArray())
                 RemoveVertexControl(vertex);
-            foreach (var edge in _edgeControls.Keys.ToArray())
+
+            foreach (TEdge edge in EdgesControls.Keys.ToArray())
                 RemoveEdgeControl(edge);
-            _vertexControls.Clear();
-            _edgeControls.Clear();
+
+            VerticesControls.Clear();
+            EdgesControls.Clear();
         }
 
         /// <summary>
@@ -30,7 +56,7 @@ namespace GraphShape.Controls
         /// </summary>
         protected void RecreateGraphElements(bool tryKeepControls)
         {
-            if (Graph == null)
+            if (Graph is null)
             {
                 RemoveAllGraphElement();
             }
@@ -38,16 +64,18 @@ namespace GraphShape.Controls
             {
                 if (tryKeepControls && !IsCompoundMode)
                 {
-                    //remove the old graph elements
-                    foreach (var pair in _edgeControls.ToList())
+                    // Remove the old graph elements
+                    foreach (KeyValuePair<TEdge, EdgeControl> pair in EdgesControls.ToArray())
                     {
                         bool remove = false;
                         try
                         {
-                            remove = !Graph.ContainsEdge(pair.Key.Source, pair.Key.Target) || !Graph.ContainsEdge(pair.Key);
+                            remove = !Graph.ContainsEdge(pair.Key.Source, pair.Key.Target)
+                                     || !Graph.ContainsEdge(pair.Key);
                         }
                         catch
                         {
+                            // ignored
                         }
 
                         if (remove)
@@ -55,7 +83,8 @@ namespace GraphShape.Controls
                             RemoveEdgeControl(pair.Key);
                         }
                     }
-                    foreach (var pair in _vertexControls.ToList())
+
+                    foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls.ToArray())
                     {
                         if (!Graph.ContainsVertex(pair.Key))
                         {
@@ -68,37 +97,34 @@ namespace GraphShape.Controls
                     RemoveAllGraphElement();
                 }
 
-                //
-                // Presenters for vertices
-                //
-                foreach (var vertex in Graph.Vertices)
-                    if (!_vertexControls.ContainsKey(vertex))
+                // Vertices controls
+                foreach (TVertex vertex in Graph.Vertices)
+                {
+                    if (!VerticesControls.ContainsKey(vertex))
                         CreateVertexControl(vertex);
+                }
 
-                //
-                // Presenters for edges
-                //
-                foreach (var edge in Graph.Edges)
-                    if (!_edgeControls.ContainsKey(edge))
+                // Edges controls
+                foreach (TEdge edge in Graph.Edges)
+                {
+                    if (!EdgesControls.ContainsKey(edge))
                         CreateEdgeControl(edge);
+                }
 
-                //
-                // subscribe to events of the Graph mutations
-                //
+                // Subscribe to events of the Graph mutations
                 if (!IsCompoundMode)
                 {
-                    var mutableGraph = Graph as IMutableBidirectionalGraph<TVertex, TEdge>;
-                    if (mutableGraph != null)
+                    if (Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
                     {
-                        mutableGraph.VertexAdded += OnMutableGraph_VertexAdded;
-                        mutableGraph.VertexRemoved += OnMutableGraph_VertexRemoved;
-                        mutableGraph.EdgeAdded += OnMutableGraph_EdgeAdded;
-                        mutableGraph.EdgeRemoved += OnMutableGraph_EdgeRemoved;
+                        mutableGraph.VertexAdded += OnMutableGraphVertexAdded;
+                        mutableGraph.VertexRemoved += OnMutableGraphVertexRemoved;
+                        mutableGraph.EdgeAdded += OnMutableGraphEdgeAdded;
+                        mutableGraph.EdgeRemoved += OnMutableGraphEdgeRemoved;
                     }
                 }
             }
 
-            _sizes = null;
+            Sizes = null;
         }
 
         private void DoNotificationLayout()
@@ -107,224 +133,267 @@ namespace GraphShape.Controls
             {
                 _lastNotificationTimestamp = DateTime.Now;
             }
-            if (_worker != null)
+
+            if (Worker != null)
                 return;
 
-            _worker = new BackgroundWorker();
-            _worker.DoWork += (s, e) =>
+            Worker = new BackgroundWorker();
+            Worker.DoWork += (sender, args) =>
             {
-                var w = (BackgroundWorker)s;
+                var worker = (BackgroundWorker)sender;
                 lock (_notificationSyncRoot)
                 {
-                    while ((DateTime.Now - _lastNotificationTimestamp) < _notificationLayoutDelay)
+                    while (DateTime.Now - _lastNotificationTimestamp < _notificationLayoutDelay)
                     {
                         Thread.Sleep(_notificationLayoutDelay);
-                        if (w.CancellationPending)
+                        if (worker.CancellationPending)
                             break;
                     }
                 }
             };
-            _worker.RunWorkerCompleted += (s, e) =>
+
+            Worker.RunWorkerCompleted += (sender, args) =>
             {
-                _worker = null;
+                Worker = null;
                 OnMutation();
                 ContinueLayout();
-                if (HighlightAlgorithm != null)
-                    HighlightAlgorithm.ResetHighlight();
+                HighlightAlgorithm?.ResetHighlight();
             };
-            _worker.RunWorkerAsync();
+
+            Worker.RunWorkerAsync();
         }
 
         private void OnMutation()
         {
             while (_edgesRemoved.Count > 0)
             {
-                var edge = _edgesRemoved.Dequeue();
+                TEdge edge = _edgesRemoved.Dequeue();
                 RemoveEdgeControl(edge);
             }
+
             while (_verticesRemoved.Count > 0)
             {
-                var vertex = _verticesRemoved.Dequeue();
+                TVertex vertex = _verticesRemoved.Dequeue();
                 RemoveVertexControl(vertex);
             }
-            var verticesToInitPos = _verticesAdded.ToList();
+
+            TVertex[] verticesToInitPos = _verticesAdded.ToArray();
             while (_verticesAdded.Count > 0)
             {
-                var vertex = _verticesAdded.Dequeue();
+                TVertex vertex = _verticesAdded.Dequeue();
                 CreateVertexControl(vertex);
             }
+
             while (_edgesAdded.Count > 0)
             {
-                var edge = _edgesAdded.Dequeue();
+                TEdge edge = _edgesAdded.Dequeue();
                 CreateEdgeControl(edge);
             }
-            foreach (var vertex in verticesToInitPos)
+
+            foreach (TVertex vertex in verticesToInitPos)
             {
                 InitializePosition(vertex);
             }
         }
 
-        private void OnMutableGraph_EdgeRemoved(TEdge edge)
+        private void OnMutableGraphEdgeRemoved([NotNull] TEdge edge)
         {
-            if (_edgeControls.ContainsKey(edge))
+            if (EdgesControls.ContainsKey(edge))
             {
                 _edgesRemoved.Enqueue(edge);
                 DoNotificationLayout();
             }
         }
 
-        private void OnMutableGraph_EdgeAdded(TEdge edge)
+        private void OnMutableGraphEdgeAdded([NotNull] TEdge edge)
         {
             _edgesAdded.Enqueue(edge);
             DoNotificationLayout();
         }
 
-        private void OnMutableGraph_VertexRemoved(TVertex vertex)
+        private void OnMutableGraphVertexRemoved([NotNull] TVertex vertex)
         {
-            if (_vertexControls.ContainsKey(vertex))
+            if (VerticesControls.ContainsKey(vertex))
             {
                 _verticesRemoved.Enqueue(vertex);
                 DoNotificationLayout();
             }
         }
 
-        private void OnMutableGraph_VertexAdded(TVertex vertex)
+        private void OnMutableGraphVertexAdded([NotNull] TVertex vertex)
         {
             _verticesAdded.Enqueue(vertex);
             DoNotificationLayout();
         }
 
-        public VertexControl GetVertexControl(TVertex vertex)
+        /// <summary>
+        /// Gets the <see cref="VertexControl"/> corresponding to the given <paramref name="vertex"/>.
+        /// </summary>
+        /// <param name="vertex">Graph vertex.</param>
+        /// <returns>The corresponding <see cref="VertexControl"/>, null otherwise.</returns>
+        [Pure]
+        [CanBeNull]
+        public VertexControl GetVertexControl([NotNull] TVertex vertex)
         {
-            VertexControl vc = null;
-            _vertexControls.TryGetValue(vertex, out vc);
-            return vc;
+            return VerticesControls.TryGetValue(vertex, out VertexControl control)
+                ? control
+                : null;
         }
 
-        protected VertexControl GetOrCreateVertexControl(TVertex vertex)
+        /// <summary>
+        /// Gets or creates a <see cref="VertexControl"/> for the given <paramref name="vertex"/>.
+        /// </summary>
+        /// <param name="vertex">Graph vertex.</param>
+        /// <returns>A <see cref="VertexControl"/>.</returns>
+        [NotNull]
+        protected VertexControl GetOrCreateVertexControl([NotNull] TVertex vertex)
         {
-            if (!_vertexControls.ContainsKey(vertex))
-                CreateVertexControl(vertex);
-
-            return _vertexControls[vertex];
+            VertexControl vertexControl = GetVertexControl(vertex);
+            if (vertexControl is null)
+                return CreateVertexControl(vertex);
+            return vertexControl;
         }
 
-        protected virtual void CreateVertexControl(TVertex vertex)
+        /// <summary>
+        /// Creates a <see cref="VertexControl"/> for the given <paramref name="vertex"/>.
+        /// </summary>
+        /// <param name="vertex">Graph vertex.</param>
+        /// <returns>A <see cref="VertexControl"/>.</returns>
+        [NotNull]
+        protected virtual VertexControl CreateVertexControl([NotNull] TVertex vertex)
         {
-            VertexControl presenter;
             var compoundGraph = Graph as ICompoundGraph<TVertex, TEdge>;
 
+            VertexControl vertexControl;
             if (IsCompoundMode && compoundGraph != null && compoundGraph.IsCompoundVertex(vertex))
             {
-                var compoundPresenter = new CompoundVertexControl
+                var compoundVertexControl = new CompoundVertexControl
                 {
                     Vertex = vertex,
                     DataContext = vertex,
                 };
-                compoundPresenter.Expanded += CompoundVertexControl_ExpandedOrCollapsed;
-                compoundPresenter.Collapsed += CompoundVertexControl_ExpandedOrCollapsed;
-                presenter = compoundPresenter;
+                vertexControl = compoundVertexControl;
             }
             else
             {
                 // Create the Control of the vertex
-                presenter = new VertexControl
+                vertexControl = new VertexControl
                 {
                     Vertex = vertex,
                     DataContext = vertex,
                 };
             }
 
-            //var presenter = _vertexPool.GetObject();
-            //presenter.Vertex = vertex;
-            _vertexControls[vertex] = presenter;
-            presenter.RootCanvas = this;
+            VerticesControls[vertex] = vertexControl;
+            vertexControl.RootCanvas = this;
 
             if (IsCompoundMode && compoundGraph != null && compoundGraph.IsChildVertex(vertex))
             {
-                var parent = compoundGraph.GetParent(vertex);
+                TVertex parent = compoundGraph.GetParent(vertex);
+
+                Debug.Assert(parent != null, "Vertex considered as child one has no parent.");
+
                 var parentControl = GetOrCreateVertexControl(parent) as CompoundVertexControl;
 
                 Debug.Assert(parentControl != null);
 
-                parentControl.Vertices.Add(presenter);
+                parentControl.Vertices.Add(vertexControl);
             }
             else
             {
-                //add the presenter to the GraphLayout
-                Children.Add(presenter);
+                // Add the presenter to the GraphLayout
+                Children.Add(vertexControl);
             }
 
-            //Measuring & Arrange
-            presenter.InvalidateMeasure();
-            SetHighlightProperties(vertex, presenter);
-            RunCreationTransition(presenter);
+            // Measure & Arrange
+            vertexControl.InvalidateMeasure();
+            SetHighlightProperties(vertex, vertexControl);
+            RunCreationTransition(vertexControl);
+
+            return vertexControl;
         }
 
-        protected virtual void InitializePosition(TVertex vertex)
+        /// <summary>
+        /// Initializes the position of the given <paramref name="vertex"/>.
+        /// </summary>
+        /// <param name="vertex">Graph vertex.</param>
+        protected virtual void InitializePosition([NotNull] TVertex vertex)
         {
-            VertexControl presenter = _vertexControls[vertex];
-            //initialize position
+            VertexControl vertexControl = VerticesControls[vertex];
+            // Initialize position
             if (Graph.ContainsVertex(vertex) && Graph.Degree(vertex) > 0)
             {
-                var pos = new Point();
+                var position = default(Point);
                 int count = 0;
-                foreach (var neighbour in Graph.GetNeighbors(vertex))
+                foreach (TVertex neighbor in Graph.GetNeighbors(vertex))
                 {
-                    VertexControl neighbourControl;
-                    if (_vertexControls.TryGetValue(neighbour, out neighbourControl))
+                    if (VerticesControls.TryGetValue(neighbor, out VertexControl neighborControl))
                     {
-                        double x = GetX(neighbourControl);
-                        double y = GetY(neighbourControl);
-                        pos.X += double.IsNaN(x) ? 0.0 : x;
-                        pos.Y += double.IsNaN(y) ? 0.0 : y;
-                        count++;
+                        double x = GetX(neighborControl);
+                        double y = GetY(neighborControl);
+                        position.X += double.IsNaN(x) ? 0.0 : x;
+                        position.Y += double.IsNaN(y) ? 0.0 : y;
+                        ++count;
                     }
                 }
+
                 if (count > 0)
                 {
-                    pos.X /= count;
-                    pos.Y /= count;
-                    SetX(presenter, pos.X);
-                    SetY(presenter, pos.Y);
+                    position.X /= count;
+                    position.Y /= count;
+                    SetX(vertexControl, position.X);
+                    SetY(vertexControl, position.Y);
                 }
             }
         }
 
-        private void CompoundVertexControl_ExpandedOrCollapsed(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Gets the <see cref="EdgeControl"/> corresponding to the given <paramref name="edge"/>.
+        /// </summary>
+        /// <param name="edge">Graph edge.</param>
+        /// <returns>The corresponding <see cref="EdgeControl"/>, null otherwise.</returns>
+        [Pure]
+        [CanBeNull]
+        public EdgeControl GetEdgeControl([NotNull] TEdge edge)
         {
-            //TODO relayout perhaps
+            return EdgesControls.TryGetValue(edge, out EdgeControl control)
+                ? control
+                : null;
         }
 
-        public EdgeControl GetEdgeControl(TEdge edge)
+        /// <summary>
+        /// Gets or creates a <see cref="EdgeControl"/> for the given <paramref name="edge"/>.
+        /// </summary>
+        /// <param name="edge">Graph edge.</param>
+        /// <returns>A <see cref="EdgeControl"/>.</returns>
+        [NotNull]
+        protected EdgeControl GetOrCreateEdgeControl([NotNull] TEdge edge)
         {
-            EdgeControl ec = null;
-            _edgeControls.TryGetValue(edge, out ec);
-            return ec;
+            EdgeControl edgeControl = GetEdgeControl(edge);
+            if (edgeControl is null)
+                return CreateEdgeControl(edge);
+            return edgeControl;
         }
 
-        protected EdgeControl GetOrCreateEdgeControl(TEdge edge)
-        {
-            if (!_edgeControls.ContainsKey(edge))
-                CreateEdgeControl(edge);
-
-            return _edgeControls[edge];
-        }
-
-        protected virtual void CreateEdgeControl(TEdge edge)
+        /// <summary>
+        /// Creates a <see cref="EdgeControl"/> for the given <paramref name="edge"/>.
+        /// </summary>
+        /// <param name="edge">Graph edge.</param>
+        /// <returns>A <see cref="EdgeControl"/>.</returns>
+        [NotNull]
+        protected virtual EdgeControl CreateEdgeControl([NotNull] TEdge edge)
         {
             var edgeControl = new EdgeControl
             {
                 Edge = edge,
                 DataContext = edge
             };
-            //var edgeControl = _edgePool.GetObject();
-            //edgeControl.Edge = edge;
-            _edgeControls[edge] = edgeControl;
 
-            //set the Source and the Target
-            edgeControl.Source = _vertexControls[edge.Source];
-            edgeControl.Target = _vertexControls[edge.Target];
+            EdgesControls[edge] = edgeControl;
+
+            // Set the Source and the Target
+            edgeControl.Source = VerticesControls[edge.Source];
+            edgeControl.Target = VerticesControls[edge.Target];
 
             if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
                 Children.Insert(0, edgeControl);
@@ -332,18 +401,8 @@ namespace GraphShape.Controls
                 Children.Add(edgeControl);
             SetHighlightProperties(edge, edgeControl);
             RunCreationTransition(edgeControl);
-        }
 
-        protected virtual void RemoveVertexControl(TVertex vertex)
-        {
-            RunDestructionTransition(_vertexControls[vertex], false);
-            _vertexControls.Remove(vertex);
+            return edgeControl;
         }
-
-        protected virtual void RemoveEdgeControl(TEdge edge)
-        {
-            RunDestructionTransition(_edgeControls[edge], false);
-            _edgeControls.Remove(edge);
-        }
-	}
+    }
 }
