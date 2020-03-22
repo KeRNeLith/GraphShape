@@ -438,7 +438,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 }
 
                 /// <summary>
-                /// Gets the cache instance.
+                /// Gets the instance.
                 /// </summary>
                 public static MeasureComparer Instance { get; } = InstanceHandler.InternalInstance;
 
@@ -474,7 +474,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 }
 
                 /// <summary>
-                /// Gets the cache instance.
+                /// Gets the instance.
                 /// </summary>
                 public static PositionComparer Instance { get; } = InstanceHandler.InternalInstance;
 
@@ -510,7 +510,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 }
 
                 /// <summary>
-                /// Gets the cache instance.
+                /// Gets the instance.
                 /// </summary>
                 public static MeasureAndPermutationIndexComparer Instance { get; } = InstanceHandler.InternalInstance;
 

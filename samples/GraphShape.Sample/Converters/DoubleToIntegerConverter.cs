@@ -1,23 +1,39 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Data;
 
 namespace GraphShape.Sample.Converters
 {
-	public class IntegerToDoubleConverter : IValueConverter
-	{
-		#region IValueConverter Members
+    /// <summary>
+    /// Converter from <see cref="int"/> to <see cref="double"/> and vice versa.
+    /// </summary>
+    internal class IntegerToDoubleConverter : IValueConverter
+    {
+        #region IValueConverter
 
-		public object Convert( object value, Type targetType, object parameter, System.Globalization.CultureInfo culture )
-		{
-			double r = (int)value;
-			return r;
-		}
+        /// <inheritdoc />
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is int integer)
+                return (double)integer;
 
-		public object ConvertBack( object value, Type targetType, object parameter, System.Globalization.CultureInfo culture )
-		{
-			return Math.Round( (double)value );
-		}
+            throw new ArgumentException(
+                $"{nameof(IntegerToDoubleConverter)} must take an int in parameter.",
+                nameof(value));
+        }
 
-		#endregion
-	}
+        /// <inheritdoc />
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+
+            if (value is double d)
+                return Math.Round(d);
+
+            throw new ArgumentException(
+                $"{nameof(IntegerToDoubleConverter)} back conversion must take a double in parameter.",
+                nameof(value));
+        }
+
+        #endregion
+    }
 }

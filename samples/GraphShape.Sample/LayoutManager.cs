@@ -1,85 +1,96 @@
-﻿using System.Windows;
-using System.Collections.Generic;
-using GraphShape.Sample.ViewModel;
+﻿using System.Collections.Generic;
+using System.Windows;
+using GraphShape.Sample.Controls;
+using JetBrains.Annotations;
 
 namespace GraphShape.Sample
 {
-	public class LayoutManager : DependencyObject
-	{
-		private static LayoutManager instance;
+    /// <summary>
+    /// Layout manager.
+    /// </summary>
+    internal class LayoutManager : DependencyObject
+    {
+        #region Singleton management
 
-		public static LayoutManager Instance
-		{
-			get
-			{
-				if (instance == null)
-					instance = new LayoutManager();
+        private LayoutManager()
+        {
+        }
 
-				return instance;
-			}
-		}
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        public static LayoutManager Instance { get; } = InstanceHandler.InternalInstance;
 
-		protected LayoutManager()
-		{
+        private static class InstanceHandler
+        {
+            // Explicit static constructor to tell C# compiler
+            // not to mark type as beforefieldinit
+            static InstanceHandler()
+            {
+            }
 
-		}
+            internal static readonly LayoutManager InternalInstance = new LayoutManager();
+        }
 
-		public void ContinueLayout()
-		{
-			foreach (var layout in graphLayouts)
-			{
-				layout.ContinueLayout();
-			}
-		}
+        #endregion
 
-		public void Relayout()
-		{
-			foreach (var layout in graphLayouts)
-			{
-				layout.Relayout();
-			}
-		}
+        [NotNull, ItemNotNull]
+        private readonly HashSet<PocGraphLayout> _graphLayouts = new HashSet<PocGraphLayout>();
 
-		protected readonly HashSet<PocGraphLayout> graphLayouts = new HashSet<PocGraphLayout>();
+        public void ContinueLayout()
+        {
+            foreach (PocGraphLayout layout in _graphLayouts)
+            {
+                layout.ContinueLayout();
+            }
+        }
 
-		public static readonly DependencyProperty ManagedLayoutProperty =
-			DependencyProperty.RegisterAttached("ManagedLayout", typeof(bool), typeof(LayoutManager), new PropertyMetadata(false, ManagedLayout_PropertyChanged));
+        public void Relayout()
+        {
+            foreach (PocGraphLayout layout in _graphLayouts)
+            {
+                layout.Relayout();
+            }
+        }
 
-		[AttachedPropertyBrowsableForChildren]
-		public static bool GetManagedLayout(DependencyObject obj)
-		{
-			return (bool)obj.GetValue(ManagedLayoutProperty);
-		}
+        public static readonly DependencyProperty ManagedLayoutProperty = DependencyProperty.RegisterAttached(
+            "ManagedLayout", typeof(bool), typeof(LayoutManager), new PropertyMetadata(false, OnManagedLayoutPropertyChanged));
 
-		public static void SetManagedLayout(DependencyObject obj, bool value)
-		{
-			obj.SetValue(ManagedLayoutProperty, value);
-		}
+        [AttachedPropertyBrowsableForChildren]
+        public static bool GetManagedLayout(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(ManagedLayoutProperty);
+        }
 
-		protected static void ManagedLayout_PropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-		{
-			var graphLayout = obj as PocGraphLayout;
-			if (graphLayout == null)
-				return;
+        public static void SetManagedLayout(DependencyObject obj, bool value)
+        {
+            obj.SetValue(ManagedLayoutProperty, value);
+        }
 
-			if ((bool)e.NewValue)
-			{
-				//the layout became managed
-				Instance.graphLayouts.Add(graphLayout);
-				graphLayout.Unloaded += GraphLayout_Unloaded;
-			}
-			else if ((bool)e.OldValue && (((bool)e.NewValue) == false) && Instance.graphLayouts.Contains(graphLayout))
-			{
-				//the layout became unmanaged
-				Instance.graphLayouts.Remove(graphLayout);
-				graphLayout.Unloaded -= GraphLayout_Unloaded;
-			}
-		}
+        protected static void OnManagedLayoutPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
+        {
+            var graphLayout = d as PocGraphLayout;
+            if (graphLayout is null)
+                return;
 
-		private static void GraphLayout_Unloaded(object s, RoutedEventArgs args)
-		{
-			if (s is PocGraphLayout)
-				Instance.graphLayouts.Remove(s as PocGraphLayout);
-		}
-	}
+            if ((bool)args.NewValue)
+            {
+                // The layout became managed
+                Instance._graphLayouts.Add(graphLayout);
+                graphLayout.Unloaded += OnGraphLayoutUnloaded;
+            }
+            else if ((bool)args.OldValue && (bool)args.NewValue == false && Instance._graphLayouts.Contains(graphLayout))
+            {
+                // The layout became unmanaged
+                Instance._graphLayouts.Remove(graphLayout);
+                graphLayout.Unloaded -= OnGraphLayoutUnloaded;
+            }
+        }
+
+        private static void OnGraphLayoutUnloaded(object sender, RoutedEventArgs args)
+        {
+            if (sender is PocGraphLayout graphLayout)
+                Instance._graphLayouts.Remove(graphLayout);
+        }
+    }
 }

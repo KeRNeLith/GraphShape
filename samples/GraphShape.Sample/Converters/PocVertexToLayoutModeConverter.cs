@@ -1,28 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Windows.Data;
 using GraphShape.Algorithms.Layout.Compound;
 
-namespace GraphShape.Sample
+namespace GraphShape.Sample.Converters
 {
-    public class PocVertexToLayoutModeConverter : IValueConverter
+    /// <summary>
+    /// Converter from vertex to <see cref="CompoundVertexInnerLayoutType"/>.
+    /// </summary>
+    internal class PocVertexToLayoutModeConverter : IValueConverter
     {
-        #region IValueConverter Members
+        #region IValueConverter
 
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        /// <inheritdoc />
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var vertex = value as string;
             if (vertex == "2" || vertex == "3")
                 return CompoundVertexInnerLayoutType.Fixed;
-            else
-                return CompoundVertexInnerLayoutType.Automatic;
+            return CompoundVertexInnerLayoutType.Automatic;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        /// <inheritdoc />
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException($"{nameof(CompoundVertexInnerLayoutType)} to vertex conversion not supported.");
         }
 
         #endregion

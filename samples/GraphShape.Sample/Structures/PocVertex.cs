@@ -1,26 +1,33 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using JetBrains.Annotations;
+
 namespace GraphShape.Sample
 {
-	/// <summary>
-	/// A simple identifiable vertex.
-	/// </summary>
-	[DebuggerDisplay( "{ID}" )]
-	public class PocVertex
-	{
-		public string ID
-		{
-			get;
-			private set;
-		}
+    /// <summary>
+    /// A simple identifiable vertex.
+    /// </summary>
+    [DebuggerDisplay("{" + nameof(ID) + "}")]
+    internal class PocVertex
+    {
+        /// <summary>
+        /// Vertex ID.
+        /// </summary>
+        [NotNull]
+        public string ID { get; }
 
-		public PocVertex( string id )
-		{
-			ID = id;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PocVertex"/> class.
+        /// </summary>
+        public PocVertex([NotNull] string id)
+        {
+            ID = id ?? throw new ArgumentNullException(nameof(id));
+        }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return ID;
         }
-	}
+    }
 }

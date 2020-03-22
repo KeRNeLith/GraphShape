@@ -60,7 +60,7 @@
         </Setter>
         <Setter
             Property="controls:GraphElementBehaviour.HighlightTrigger"
-            Value="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" />
+            Value="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MinWidth" Value="1" />
         <Setter Property="MinHeight" Value="1" />
         <Setter Property="Background" Value="Red" />
@@ -119,16 +119,16 @@
         </Setter>
         <Setter
             Property="controls:GraphElementBehaviour.HighlightTrigger"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=IsMouseOver}" />
+            Value="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" />
         <Setter
             Property="behaviors:DragBehaviour.IsDragEnabled"
             Value="True" />
         <Setter
             Property="behaviors:DragBehaviour.X"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=(controls:GraphCanvas.X),Mode=TwoWay}" />
+            Value="{Binding Path=(controls:GraphCanvas.X), RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
         <Setter
             Property="behaviors:DragBehaviour.Y"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=(controls:GraphCanvas.Y),Mode=TwoWay}" />
+            Value="{Binding Path=(controls:GraphCanvas.Y), RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Style.Triggers>
@@ -207,16 +207,16 @@
         
         <Setter
             Property="controls:GraphElementBehaviour.HighlightTrigger"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=IsMouseOver}" />
+            Value="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" />
         <Setter
             Property="behaviors:DragBehaviour.IsDragEnabled"
             Value="True" />
         <Setter
             Property="behaviors:DragBehaviour.X"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=(controls:GraphCanvas.X),Mode=TwoWay}" />
+            Value="{Binding Path=(controls:GraphCanvas.X), RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
         <Setter
             Property="behaviors:DragBehaviour.Y"
-            Value="{Binding RelativeSource={RelativeSource Self},Path=(controls:GraphCanvas.Y),Mode=TwoWay}" />
+            Value="{Binding Path=(controls:GraphCanvas.Y), RelativeSource={RelativeSource Self}, Mode=TwoWay}" />
         <Setter Property="BorderThickness" Value="2" />
         <Setter Property="BorderBrush" Value="Silver" />
         <Setter Property="Background">

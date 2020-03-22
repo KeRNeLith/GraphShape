@@ -1,52 +1,55 @@
-using System;
-using System.Windows.Input;
 using System.Windows;
-using GraphShape.Sample.ViewModel;
-using WPFExtensions.Controls;
+using System.Windows.Input;
+using GraphShape.Sample.ViewModels;
+using JetBrains.Annotations;
 
 namespace GraphShape.Sample
 {
     /// <summary>
-    /// Main window of the Proof of Concept application for the GraphLayout control.
+    /// Main window of the Proof of Concept application for the <see cref="GraphShape.Controls.GraphLayout"/> control.
     /// </summary>
-    public partial class MainWindow
+    internal partial class MainWindow
     {
-        readonly LayoutAnalyzerViewModel analyzerViewModel = new LayoutAnalyzerViewModel();
+        [NotNull]
+        private readonly LayoutAnalyzerViewModel _analyzerViewModel = new LayoutAnalyzerViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            DataContext = analyzerViewModel;
+            DataContext = _analyzerViewModel;
         }
 
-        private void NotificationTest_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void OnTestGraphSampleExecuted(object sender, ExecutedRoutedEventArgs args)
         {
-            var testWindow = new TestWindow();
-            testWindow.Show();
+            var window = new TestGraphSampleWindow();
+            window.Show();
         }
 
-        private void Exit_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void OnTestContextualLayoutExecuted(object sender, ExecutedRoutedEventArgs args)
+        {
+            if (_analyzerViewModel.SelectedGraphModel is null)
+                return;
+
+            var window = new TestContextualLayoutWindow(_analyzerViewModel.SelectedGraphModel.Graph);
+            window.Show();
+        }
+
+        private void OnTestCompoundLayoutExecuted(object sender, ExecutedRoutedEventArgs args)
+        {
+            var window = new TestCompoundLayoutWindow();
+            window.Show();
+        }
+
+        private void OnTestPlainCompoundLayoutExecuted(object sender, ExecutedRoutedEventArgs args)
+        {
+            var window = new TestPlainCompoundLayoutWindow();
+            window.Show();
+        }
+
+        private void OnExitExecuted(object sender, ExecutedRoutedEventArgs args)
         {
             Application.Current.Shutdown();
-        }
-
-        private void ContextualLayoutTest_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var window = new TestContextualLayout(analyzerViewModel.SelectedGraphModel.Graph);
-            window.Show();
-        }
-
-        private void CompoundLayoutTest_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var window = new TestCompoundLayout();
-            window.Show();
-        }
-
-        private void AnimatedCompoundLayoutTest_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            var window = new PlainCompoundLayoutTest();
-            window.Show();
         }
     }
 }

@@ -2,14 +2,10 @@
 
 namespace GraphShape.Sample
 {
-	public class PocGraph : BidirectionalGraph<PocVertex, PocEdge>
-	{
-		public PocGraph() { }
-
-		public PocGraph(bool allowParallelEdges)
-			: base(allowParallelEdges) { }
-
-		public PocGraph(bool allowParallelEdges, int vertexCapacity)
-			: base(allowParallelEdges, vertexCapacity) { }
-	}
+    /// <summary>
+    /// Simple bidirectional graph.
+    /// </summary>
+    internal class PocGraph : BidirectionalGraph<PocVertex, PocEdge>
+    {
+    }
 }

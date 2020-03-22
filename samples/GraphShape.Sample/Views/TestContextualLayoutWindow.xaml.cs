@@ -1,57 +1,70 @@
-﻿using System.Windows;
-using System.Linq;
+﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
-using GraphShape.Controls;
+using JetBrains.Annotations;
 
 namespace GraphShape.Sample
 {
-	public class PocContextualGraphLayout : ContextualGraphLayout<PocVertex, PocEdge, PocGraph> { }
-
-	/// <summary>
-	/// Interaction logic for TestContextualLayout.xaml
+    /// <summary>
+	/// Interaction logic for TestContextualLayoutWindow.xaml
 	/// </summary>
-	public partial class TestContextualLayout : INotifyPropertyChanged
-	{
-		public PocGraph Graph
-		{
-			get; private set;
-		}
+    internal partial class TestContextualLayoutWindow : INotifyPropertyChanged
+    {
+        [NotNull]
+        public PocGraph Graph { get; }
 
-		private PocVertex selectedVertex;
-		public PocVertex SelectedVertex
-		{
-			get
-			{
-				return selectedVertex;
-			}
-			set
-			{
-				selectedVertex = value;
-				if (PropertyChanged != null)
-					PropertyChanged(this, new PropertyChangedEventArgs("SelectedVertex"));
-			}
-		}
+        [CanBeNull]
+        private PocVertex _selectedVertex;
 
-		public TestContextualLayout(PocGraph graph)
-		{
-			InitializeComponent();
+        [CanBeNull]
+        public PocVertex SelectedVertex
+        {
+            get => _selectedVertex;
+            set
+            {
+                if (_selectedVertex == value)
+                    return;
 
-			Graph = graph;
-			SelectedVertex = graph.Vertices.FirstOrDefault();
-			DataContext = this;
-		}
+                _selectedVertex = value;
+                OnPropertyChanged(nameof(SelectedVertex));
+            }
+        }
 
-		#region INotifyPropertyChanged Members
+        public TestContextualLayoutWindow([NotNull] PocGraph graph)
+        {
+            InitializeComponent();
 
-		public event PropertyChangedEventHandler PropertyChanged;
+            Graph = graph ?? throw new ArgumentNullException(nameof(graph));
+            SelectedVertex = graph.Vertices.FirstOrDefault();
+            DataContext = this;
+        }
 
-		#endregion
+        private void OnSelectedVertexChangeClick(object sender, RoutedEventArgs args)
+        {
+            if (args.Source is Button button)
+                SelectedVertex = button.Tag as PocVertex;
+        }
 
-		private void SelectedVertexChange_Click(object sender, RoutedEventArgs e)
-		{
-			var btn = e.Source as Button;
-			SelectedVertex = btn.Tag as PocVertex;
-		}
-	}
+        #region INotifyPropertyChanged
+
+        /// <inheritdoc />
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises a <see cref="PropertyChanged"/> event for the given <paramref name="propertyName"/>.
+        /// </summary>
+        /// <param name="propertyName">Property name.</param>
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged(string propertyName)
+        {
+            Debug.Assert(propertyName != null);
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+    }
 }

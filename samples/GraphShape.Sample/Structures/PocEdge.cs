@@ -1,24 +1,28 @@
 ﻿using QuikGraph;
 using System.Diagnostics;
+using JetBrains.Annotations;
 
 namespace GraphShape.Sample
 {
-	/// <summary>
-	/// A simple identifiable edge.
-	/// </summary>
-	[DebuggerDisplay( "{Source.ID} -> {Target.ID}" )]
-	public class PocEdge : Edge<PocVertex>
-	{
-		public string ID
-		{
-			get;
-			private set;
-		}
+    /// <summary>
+    /// A simple identifiable edge.
+    /// </summary>
+    [DebuggerDisplay("{" + nameof(Source) + "." + nameof(PocVertex.ID) + "} -> {" + nameof(Target) + "." + nameof(PocVertex.ID) + "}")]
+    internal class PocEdge : Edge<PocVertex>
+    {
+        /// <summary>
+        /// Edge ID.
+        /// </summary>
+        [NotNull]
+        public string ID { get; }
 
-		public PocEdge( string id, PocVertex source, PocVertex target )
-			: base( source, target )
-		{
-			ID = id;
-		}
-	}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PocEdge"/> class.
+        /// </summary>
+        public PocEdge([NotNull] string id, [NotNull] PocVertex source, [NotNull] PocVertex target)
+            : base(source, target)
+        {
+            ID = id;
+        }
+    }
 }

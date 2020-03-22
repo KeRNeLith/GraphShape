@@ -1,34 +1,36 @@
 ﻿using System.Linq;
-using GraphShape.Sample.Model;
+using GraphShape.Sample.ViewModels;
 
-namespace GraphShape.Sample.ViewModel
+namespace GraphShape.Sample.ViewModels
 {
-	public partial class LayoutAnalyzerViewModel
-	{
-		partial void CreateSampleGraphs()
-		{
-			#region SimpleTree
+    internal partial class LayoutAnalyzerViewModel
+    {
+        private void CreateSampleGraph()
+        {
+            #region SimpleTree
 
-			var graph = new PocGraph();
+            var graph = new PocGraph();
 
-			for (int i = 0; i < 8; i++)
-			{
-				var v = new PocVertex(i.ToString());
-				graph.AddVertex(v);
-			}
+            for (int i = 0; i < 8; ++i)
+            {
+                var vertex = new PocVertex(i.ToString());
+                graph.AddVertex(vertex);
+            }
 
-			graph.AddEdge(new PocEdge("0to1", graph.Vertices.ElementAt(0), graph.Vertices.ElementAt(1)));
-			graph.AddEdge(new PocEdge("1to2", graph.Vertices.ElementAt(1), graph.Vertices.ElementAt(2)));
-			graph.AddEdge(new PocEdge("2to3", graph.Vertices.ElementAt(2), graph.Vertices.ElementAt(3)));
-			graph.AddEdge(new PocEdge("2to4", graph.Vertices.ElementAt(2), graph.Vertices.ElementAt(4)));
-			graph.AddEdge(new PocEdge("0to5", graph.Vertices.ElementAt(0), graph.Vertices.ElementAt(5)));
-			graph.AddEdge(new PocEdge("1to7", graph.Vertices.ElementAt(1), graph.Vertices.ElementAt(7)));
-            graph.AddEdge(new PocEdge("4to6", graph.Vertices.ElementAt(4), graph.Vertices.ElementAt(6)));
-            graph.AddEdge(new PocEdge("0to4", graph.Vertices.ElementAt(0), graph.Vertices.ElementAt(4)));
+            PocVertex[] vertices = graph.Vertices.ToArray();
 
-            GraphModels.Add(new GraphModel("Fa", graph));
+            graph.AddEdge(new PocEdge("0to1", vertices[0], vertices[1]));
+            graph.AddEdge(new PocEdge("1to2", vertices[1], vertices[2]));
+            graph.AddEdge(new PocEdge("2to3", vertices[2], vertices[3]));
+            graph.AddEdge(new PocEdge("2to4", vertices[2], vertices[4]));
+            graph.AddEdge(new PocEdge("0to5", vertices[0], vertices[5]));
+            graph.AddEdge(new PocEdge("1to7", vertices[1], vertices[7]));
+            graph.AddEdge(new PocEdge("4to6", vertices[4], vertices[6]));
+            graph.AddEdge(new PocEdge("0to4", vertices[0], vertices[4]));
 
-			#endregion
-		}
-	}
+            GraphModels.Add(new GraphViewModel("Fa", graph));
+
+            #endregion
+        }
+    }
 }

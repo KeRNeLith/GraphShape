@@ -85,44 +85,5 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
                 OnPropertyChanged();
             }
         }
-
-        private bool _optimizeWidthAndHeight;
-
-        /// <summary>
-        /// Indicates if optimization concerns width and height.
-        /// </summary>
-        public bool OptimizeWidthAndHeight
-        {
-            get => _optimizeWidthAndHeight;
-            set
-            {
-                if (_optimizeWidthAndHeight == value)
-                    return;
-
-                _optimizeWidthAndHeight = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private double _widthPerHeight = 1.0;
-
-        /// <summary>
-        /// Ratio width/height.
-        /// </summary>
-        public double WidthPerHeight
-        {
-            get => _widthPerHeight;
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(WidthPerHeight)} must be positive or 0.");
-
-                if (NearEqual(_widthPerHeight, value))
-                    return;
-
-                _widthPerHeight = value;
-                OnPropertyChanged();
-            }
-        }
     }
 }

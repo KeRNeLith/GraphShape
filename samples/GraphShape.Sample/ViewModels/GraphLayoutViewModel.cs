@@ -1,46 +1,37 @@
-﻿using System.ComponentModel;
-using GraphShape.Controls;
+﻿using GraphShape.Utils;
 
-namespace GraphShape.Sample.ViewModel
+namespace GraphShape.Sample.ViewModels
 {
-	public class PocGraphLayout : GraphLayout<PocVertex, PocEdge, PocGraph> { }
+    internal class GraphLayoutViewModel : NotifierObject
+    {
+        private string _layoutAlgorithmType;
 
-	public class GraphLayoutViewModel : INotifyPropertyChanged
-	{
-		private string layoutAlgorithmType;
-		private PocGraph graph;
+        public string LayoutAlgorithmType
+        {
+            get => _layoutAlgorithmType;
+            set
+            {
+                if (_layoutAlgorithmType == value)
+                    return;
 
-		public string LayoutAlgorithmType
-		{
-			get { return layoutAlgorithmType; }
-			set
-			{
-				if (value != layoutAlgorithmType)
-				{
-					layoutAlgorithmType = value;
-					NotifyChanged("LayoutAlgorithmType");
-				}
-			}
-		}
+                _layoutAlgorithmType = value;
+                OnPropertyChanged();
+            }
+        }
 
-		public PocGraph Graph
-		{
-			get { return graph; }
-			set
-			{
-				if (value != graph)
-				{
-					graph = value;
-					NotifyChanged("Graph");
-				}
-			}
-		}
+        private PocGraph _graph;
 
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void NotifyChanged(string propertyName)
-		{
-			if (PropertyChanged != null)
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
+        public PocGraph Graph
+        {
+            get => _graph;
+            set
+            {
+                if (_graph == value)
+                    return;
+
+                _graph = value;
+                OnPropertyChanged();
+            }
+        }
+    }
 }

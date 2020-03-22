@@ -1,451 +1,529 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using GraphShape.Algorithms.Layout;
-using QuikGraph;
-using System.ComponentModel;
-using System.Threading;
 using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.Layout.Compound.FDP;
+using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape.Sample
 {
     /// <summary>
-    /// Interaction logic for PlainCompoundLayoutTest.xaml
+    /// Interaction logic for TestPlainCompoundLayoutWindow.xaml
     /// </summary>
-    public partial class PlainCompoundLayoutTest
+    internal partial class TestPlainCompoundLayoutWindow
     {
-        private static readonly int BIG_GRAPH = 0;
-        private static readonly int SMALL_GRAPH = 1;
-        private static readonly int FLAT_GRAPH = 2;
-        private static readonly int REP_GRAPH = 3;
-        private static readonly int STAR_GRAPH = 4;
-        private static readonly int COMBINED_GRAPH = 5;
+        private const int BigGraph = 0;
+        private const int SmallGraph = 1;
+        private const int FlatGraph = 2;
+        private const int RepGraph = 3;
+        private const int StarGraph = 4;
+        private const int CombinedGraph = 5;
 
-        private int inspectedGraph = STAR_GRAPH;
-        private bool _paused = false;
+        private bool _paused;
 
-        private CompoundGraph<object, IEdge<object>>[] graphs;
-        private CompoundFDPLayoutParameters parameters = new CompoundFDPLayoutParameters();
+        [NotNull, ItemNotNull]
+        private readonly CompoundGraph<object, IEdge<object>>[] _graphs;
 
-        public PlainCompoundLayoutTest()
+        [NotNull]
+        private readonly CompoundFDPLayoutParameters _parameters = new CompoundFDPLayoutParameters();
+
+        public TestPlainCompoundLayoutWindow()
         {
             InitializeComponent();
-            InitGraphs();
-            //ShowGraph(inspectedGraph);
-            DataContext = parameters;
+            _graphs = InitGraphs();
+
+            DataContext = _parameters;
         }
 
-        private void Relayout_Click(object sender, RoutedEventArgs e)
+        #region Helpers
+
+        [NotNull, ItemNotNull]
+        private static string[] InitVertices([NotNull] IMutableVertexSet<object> graph, int vertexCount)
         {
-            ShowGraph(cbGraph.SelectedIndex);
+            var vertices = new string[vertexCount];
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                vertices[i] = i.ToString();
+                graph.AddVertex(vertices[i]);
+            }
+
+            return vertices;
         }
 
-        private readonly IDictionary<object, Rectangle> _rectDict = new Dictionary<object, Rectangle>();
-        private readonly IDictionary<object, Line> _lineDict = new Dictionary<object, Line>();
+        [Pure]
+        [NotNull]
+        private static Line CreateLine(Point startPoint, Vector vector, [NotNull] Brush color)
+        {
+            Debug.Assert(color != null);
+
+            return new Line
+            {
+                X1 = startPoint.X,
+                X2 = startPoint.X + vector.X,
+                Y1 = startPoint.Y,
+                Y2 = startPoint.Y + vector.Y,
+                Fill = color,
+                Stroke = color,
+                StrokeThickness = 1
+            };
+        }
+
+        #endregion
+
+        [NotNull]
+        private readonly IDictionary<object, Rectangle> _rectangles = new Dictionary<object, Rectangle>();
+
+        [NotNull]
+        private readonly IDictionary<object, Line> _lines = new Dictionary<object, Line>();
+
+        [NotNull, ItemNotNull]
         private readonly IList<Line> _forceLines = new List<Line>();
 
         private void ShowGraph(int graphIndex)
         {
-            CompoundGraph<object, IEdge<object>> g = graphs[graphIndex];
-            _rectDict.Clear();
-            _lineDict.Clear();
-            lc.Children.Clear();
-            var origo = new Ellipse();
-            origo.Width = 100;
-            origo.Height = 100;
-            origo.Fill = Brushes.Black;
-            origo.OpacityMask = new RadialGradientBrush(Colors.Black, Colors.Transparent);
+            CompoundGraph<object, IEdge<object>> graph = _graphs[graphIndex];
+
+            _rectangles.Clear();
+            _lines.Clear();
+            Layout.Children.Clear();
+
+            var origo = new Ellipse
+            {
+                Width = 100,
+                Height = 100,
+                Fill = System.Windows.Media.Brushes.Black,
+                OpacityMask = new RadialGradientBrush(Colors.Black, Colors.Transparent)
+            };
+
             Canvas.SetLeft(origo, -5);
             Canvas.SetTop(origo, -5);
-            lc.Children.Add(origo);
+            Layout.Children.Add(origo);
+
             var sizes = new Dictionary<object, Size>();
             var borders = new Dictionary<object, Thickness>();
             var layoutType = new Dictionary<object, CompoundVertexInnerLayoutType>();
 
-            var s = new Size(20, 20);
-            foreach (var v in g.SimpleVertices)
+            var size = new Size(20, 20);
+            foreach (object vertex in graph.SimpleVertices)
             {
-                sizes[v] = s;
+                sizes[vertex] = size;
             }
 
-            var b = new Thickness(5, 10, 5, 5);
-            foreach (var v in g.CompoundVertices)
+            var thickness = new Thickness(5, 10, 5, 5);
+            foreach (object vertex in graph.CompoundVertices)
             {
-                sizes[v] = new Size();
-                borders[v] = b;
-                layoutType[v] = CompoundVertexInnerLayoutType.Automatic;
+                sizes[vertex] = default;
+                borders[vertex] = thickness;
+                layoutType[vertex] = CompoundVertexInnerLayoutType.Automatic;
             }
 
-            var worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += (sender, e) =>
-                                 {
-                                     var layoutAlgorithm =
-                                         new CompoundFDPLayoutAlgorithm
-                                             <object, IEdge<object>, ICompoundGraph<object, IEdge<object>>>(
-                                             g, sizes, borders, layoutType, null,
-                                             parameters);
-                                     layoutAlgorithm.IterationEnded += (o, evt) =>
-                                     {
-                                         var args = evt as TestingCompoundLayoutIterationEventArgs<object, IEdge<object>, TestingCompoundVertexInfo, object>;
-                                         var positions = args.VerticesPositions;
-                                         var innerSizes = (args as ICompoundLayoutIterationEventArgs<object>).InnerCanvasSizes;
-                                         var vertexInfos = args.VerticesInfos;
+            var worker = new BackgroundWorker
+            {
+                WorkerReportsProgress = true
+            };
 
-                                         Dispatcher.Invoke(new Action(delegate
-                                                                          {
-                                                                              var pDict = new Dictionary<object, Point>();
+            worker.DoWork += (sender, args) =>
+            {
+                var layoutAlgorithm = new CompoundFDPLayoutAlgorithm<object, IEdge<object>, ICompoundGraph<object, IEdge<object>>>(
+                    graph,
+                    sizes,
+                    borders,
+                    layoutType,
+                    null,
+                    _parameters);
 
-                                                                              var compoundVerticesToCheck =
-                                                                                  new Queue<object>();
-                                                                              var compoundVertices = new List<object>();
-                                                                              var root =
-                                                                                  g.CompoundVertices.Where(
-                                                                                      cv => g.GetParent(cv) == null);
-                                                                              foreach (var r in root)
-                                                                                  compoundVerticesToCheck.Enqueue(r);
-                                                                              while (compoundVerticesToCheck.Count > 0)
-                                                                              {
-                                                                                  var next = compoundVerticesToCheck.Dequeue();
-                                                                                  if (!g.IsCompoundVertex(next))
-                                                                                      continue;
-                                                                                  compoundVertices.Add(next);
-                                                                                  foreach (
-                                                                                      var childrenVertex in
-                                                                                          g.GetChildrenVertices(next))
-                                                                                  {
-                                                                                      compoundVerticesToCheck.Enqueue(
-                                                                                          childrenVertex);
-                                                                                  }
-                                                                              }
+                layoutAlgorithm.IterationEnded += (s, iterationArgs) =>
+                {
+                    var testIterationArgs = iterationArgs as TestingCompoundLayoutIterationEventArgs<object, IEdge<object>, TestingCompoundVertexInfo, object>;
 
-                                                                              //draw the compound vertices
-                                                                              foreach (var v in compoundVertices)
-                                                                              {
-                                                                                  var size = innerSizes[v];
-                                                                                  size.Width += b.Left + b.Right;
-                                                                                  size.Height += b.Top + b.Bottom;
+                    IDictionary<object, Point> positions = testIterationArgs?.VerticesPositions;
+                    if (positions is null)
+                        return;
 
-                                                                                  var pos = positions[v];
-                                                                                  pDict[v] = pos;
-                                                                                  AddRect(v, pos, size);
-                                                                              }
+                    IDictionary<object, Size> innerSizes = ((ICompoundLayoutIterationEventArgs<object>)testIterationArgs).InnerCanvasSizes;
+                    IDictionary<object, TestingCompoundVertexInfo> verticesInfos = testIterationArgs.VerticesInfos;
 
-                                                                              //draw the simple vertices
-                                                                              foreach (var v in g.SimpleVertices)
-                                                                              {
-                                                                                  var pos = positions[v];
-                                                                                  pDict[v] = pos;
-                                                                                  AddRect(v, pos, s);
-                                                                              }
+                    Dispatcher.Invoke(() =>
+                    {
+                        var points = new Dictionary<object, Point>();
 
-                                                                              //draw the simple edges
-                                                                              foreach (var edge in g.Edges)
-                                                                              {
-                                                                                  var pos1 = pDict[edge.Source];
-                                                                                  var pos2 = pDict[edge.Target];
-                                                                                  AddLine(edge, pos1, pos2, true);
-                                                                              }
+                        var compoundVerticesToCheck = new Queue<object>();
+                        var compoundVertices = new List<object>();
+                        var roots = graph.CompoundVertices.Where(vertex => graph.GetParent(vertex) is null);
+                        foreach (object root in roots)
+                            compoundVerticesToCheck.Enqueue(root);
 
-                                                                              //draw the containment edges
-                                                                              /*foreach (var v in g.CompoundVertices)
-                                                                              {
-                                                                                  var pos1 = pDict[v];
-                                                                                  foreach (var c in g.GetChildrenVertices(v))
-                                                                                  {
-                                                                                      var pos2 = pDict[c];
-                                                                                      AddLine(c, pos1, pos2, false);
-                                                                                  }
-                                                                              }*/
+                        while (compoundVerticesToCheck.Count > 0)
+                        {
+                            object next = compoundVerticesToCheck.Dequeue();
+                            if (!graph.IsCompoundVertex(next))
+                                continue;
 
-                                                                              //draw the lines of the forces
-                                                                              foreach (var forceLine in _forceLines)
-                                                                                  lc.Children.Remove(forceLine);
+                            compoundVertices.Add(next);
+                            foreach (object childrenVertex in graph.GetChildrenVertices(next))
+                            {
+                                compoundVerticesToCheck.Enqueue(childrenVertex);
+                            }
+                        }
 
-                                                                              var springColor = Brushes.Orange;
-                                                                              var repulsionColor = Brushes.Red;
-                                                                              var gravityColor = Brushes.Green;
-                                                                              var applicationColor = Brushes.Yellow;
+                        // Draw the compound vertices
+                        foreach (object vertex in compoundVertices)
+                        {
+                            Size innerSize = innerSizes[vertex];
+                            innerSize.Width += thickness.Left + thickness.Right;
+                            innerSize.Height += thickness.Top + thickness.Bottom;
 
-                                                                              foreach (var pair in vertexInfos)
-                                                                              {
-                                                                                  var line = CreateLine(pDict[pair.Key],
-                                                                                                        pair.Value.SpringForce,
-                                                                                                        springColor);
-                                                                                  lc.Children.Add(line);
-                                                                                  _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[pair.Key],
-                                                                                             pair.Value.RepulsionForce,
-                                                                                             repulsionColor);
-                                                                                  lc.Children.Add(line);
-                                                                                  _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[pair.Key],
-                                                                                             pair.Value.GravityForce,
-                                                                                             gravityColor);
-                                                                                  lc.Children.Add(line);
-                                                                                  _forceLines.Add(line);
-                                                                                  line = CreateLine(pDict[pair.Key],
-                                                                                             pair.Value.ApplicationForce,
-                                                                                             applicationColor);
-                                                                                  lc.Children.Add(line);
-                                                                                  _forceLines.Add(line);
-                                                                              }
+                            Point pos = positions[vertex];
+                            points[vertex] = pos;
+                            AddRectangle(vertex, pos, innerSize);
+                        }
 
+                        // Draw the simple vertices
+                        foreach (object vertex in graph.SimpleVertices)
+                        {
+                            Point pos = positions[vertex];
+                            points[vertex] = pos;
+                            AddRectangle(vertex, pos, size);
+                        }
 
-                                                                              //set the position of the gravity center
-                                                                              Animate(origo, Canvas.LeftProperty, args.GravitationCenter.X - origo.Width / 2.0, animationDuration);
-                                                                              Animate(origo, Canvas.TopProperty, args.GravitationCenter.Y - origo.Height / 2.0, animationDuration);
-                                                                              txtMessage.Text = args.Message;
-                                                                          }));
-                                         do
-                                         {
-                                             Thread.Sleep((int) animationDuration.TimeSpan.TotalMilliseconds);
-                                         } while (_paused);
-                                     };
-                                     layoutAlgorithm.Compute();
-                                 };
+                        // Draw the simple edges
+                        foreach (IEdge<object> edge in graph.Edges)
+                        {
+                            Point pos1 = points[edge.Source];
+                            Point pos2 = points[edge.Target];
+                            AddLine(edge, pos1, pos2, true);
+                        }
+
+                        // Draw the containment edges
+                        foreach (object vertex in graph.CompoundVertices)
+                        {
+                            Point pos1 = points[vertex];
+                            foreach (object child in graph.GetChildrenVertices(vertex))
+                            {
+                                Point pos2 = points[child];
+                                AddLine(child, pos1, pos2, false);
+                            }
+                        }
+
+                        // Draw the lines of the forces
+                        foreach (Line forceLine in _forceLines)
+                            Layout.Children.Remove(forceLine);
+
+                        SolidColorBrush springColor = System.Windows.Media.Brushes.Orange;
+                        SolidColorBrush repulsionColor = System.Windows.Media.Brushes.Red;
+                        SolidColorBrush gravityColor = System.Windows.Media.Brushes.Green;
+                        SolidColorBrush applicationColor = System.Windows.Media.Brushes.Yellow;
+
+                        foreach (KeyValuePair<object, TestingCompoundVertexInfo> pair in verticesInfos)
+                        {
+                            Line line = CreateLine(points[pair.Key], pair.Value.SpringForce, springColor);
+                            Layout.Children.Add(line);
+                            _forceLines.Add(line);
+
+                            line = CreateLine(points[pair.Key], pair.Value.RepulsionForce, repulsionColor);
+                            Layout.Children.Add(line);
+                            _forceLines.Add(line);
+
+                            line = CreateLine(points[pair.Key], pair.Value.GravityForce, gravityColor);
+                            Layout.Children.Add(line);
+                            _forceLines.Add(line);
+
+                            line = CreateLine(points[pair.Key], pair.Value.ApplicationForce, applicationColor);
+                            Layout.Children.Add(line);
+                            _forceLines.Add(line);
+                        }
+
+                        // Set the position of the gravity center
+                        Animate(
+                            origo,
+                            Canvas.LeftProperty,
+                            testIterationArgs.GravitationCenter.X - origo.Width / 2.0,
+                            _animationDuration);
+                        Animate(
+                            origo,
+                            Canvas.TopProperty,
+                            testIterationArgs.GravitationCenter.Y - origo.Height / 2.0,
+                            _animationDuration);
+                        TxtMessage.Text = testIterationArgs.Message;
+                    });
+
+                    do
+                    {
+                        Thread.Sleep((int)_animationDuration.TimeSpan.TotalMilliseconds);
+                    } while (_paused);
+                };
+
+                layoutAlgorithm.Compute();
+            };
+
             worker.RunWorkerAsync();
         }
 
-        private static Line CreateLine(Point startPoint, Vector vector, Brush color)
+        [Pure]
+        [NotNull, ItemNotNull]
+        private static CompoundGraph<object, IEdge<object>>[] InitGraphs()
         {
-            return new Line
-                       {
-                           X1 = startPoint.X,
-                           X2 = startPoint.X + vector.X,
-                           Y1 = startPoint.Y,
-                           Y2 = startPoint.Y + vector.Y,
-                           Fill = color,
-                           Stroke = color,
-                           StrokeThickness = 1
-                       };
-        }
-
-        private void InitGraphs()
-        {
-            graphs = new CompoundGraph<object, IEdge<object>>[10];
+            var graphs = new CompoundGraph<object, IEdge<object>>[6];
 
             #region Big graph
-            var g = new CompoundGraph<object, IEdge<object>>();
 
-            string[] vertices = InitVertices(g, 20);
+            var graph = new CompoundGraph<object, IEdge<object>>();
 
-            for (int i = 6; i < 15; i++)
+            string[] vertices = InitVertices(graph, 20);
+
+            for (int i = 6; i < 15; ++i)
             {
-                g.AddChildVertex(vertices[i % 5], vertices[i]);
+                graph.AddChildVertex(vertices[i % 5], vertices[i]);
             }
-            g.AddChildVertex(vertices[5], vertices[4]);
-            g.AddChildVertex(vertices[5], vertices[2]);
-            g.AddChildVertex(vertices[16], vertices[0]);
-            g.AddChildVertex(vertices[16], vertices[1]);
-            g.AddChildVertex(vertices[16], vertices[3]);
 
-            g.AddEdge(new Edge<object>(vertices[0], vertices[1]));
-            g.AddEdge(new Edge<object>(vertices[0], vertices[2]));
-            g.AddEdge(new Edge<object>(vertices[2], vertices[4]));
-            g.AddEdge(new Edge<object>(vertices[0], vertices[7]));
-            g.AddEdge(new Edge<object>(vertices[8], vertices[7]));
-            graphs[BIG_GRAPH] = g;
+            graph.AddChildVertex(vertices[5], vertices[4]);
+            graph.AddChildVertex(vertices[5], vertices[2]);
+            graph.AddChildVertex(vertices[16], vertices[0]);
+            graph.AddChildVertex(vertices[16], vertices[1]);
+            graph.AddChildVertex(vertices[16], vertices[3]);
+
+            graph.AddEdge(new Edge<object>(vertices[0], vertices[1]));
+            graph.AddEdge(new Edge<object>(vertices[0], vertices[2]));
+            graph.AddEdge(new Edge<object>(vertices[2], vertices[4]));
+            graph.AddEdge(new Edge<object>(vertices[0], vertices[7]));
+            graph.AddEdge(new Edge<object>(vertices[8], vertices[7]));
+
+            graphs[BigGraph] = graph;
+
             #endregion
 
             #region Small graph
 
-            g = new CompoundGraph<object, IEdge<object>>();
-            vertices = InitVertices(g, 10);
+            graph = new CompoundGraph<object, IEdge<object>>();
+            vertices = InitVertices(graph, 10);
 
-            //add the containments
-            g.AddChildVertex(vertices[0], vertices[1]);
-            g.AddChildVertex(vertices[0], vertices[2]);
-            g.AddChildVertex(vertices[3], vertices[4]);
-            g.AddChildVertex(vertices[3], vertices[5]);
-            g.AddChildVertex(vertices[3], vertices[6]);
-            g.AddChildVertex(vertices[3], vertices[7]);
-            g.AddChildVertex(vertices[3], vertices[8]);
-            g.AddChildVertex(vertices[3], vertices[9]);
+            // Add the containements
+            graph.AddChildVertex(vertices[0], vertices[1]);
+            graph.AddChildVertex(vertices[0], vertices[2]);
+            graph.AddChildVertex(vertices[3], vertices[4]);
+            graph.AddChildVertex(vertices[3], vertices[5]);
+            graph.AddChildVertex(vertices[3], vertices[6]);
+            graph.AddChildVertex(vertices[3], vertices[7]);
+            graph.AddChildVertex(vertices[3], vertices[8]);
+            graph.AddChildVertex(vertices[3], vertices[9]);
 
-            //add the edges
-            g.AddEdge(new Edge<object>(vertices[2], vertices[4]));
-            g.AddEdge(new Edge<object>(vertices[1], vertices[5]));
+            // Add the edges
+            graph.AddEdge(new Edge<object>(vertices[2], vertices[4]));
+            graph.AddEdge(new Edge<object>(vertices[1], vertices[5]));
             //g.AddEdge(new Edge<object>(vertices[0], vertices[1]));
 
-            graphs[SMALL_GRAPH] = g;
+            graphs[SmallGraph] = graph;
+
             #endregion
 
             #region Flat graph
 
-            g = new CompoundGraph<object, IEdge<object>>();
-            vertices = InitVertices(g, 10);
+            graph = new CompoundGraph<object, IEdge<object>>();
+            vertices = InitVertices(graph, 10);
 
-            g.AddEdge(new Edge<object>(vertices[0], vertices[1]));
-            g.AddEdge(new Edge<object>(vertices[1], vertices[2]));
-            g.AddEdge(new Edge<object>(vertices[2], vertices[3]));
-            g.AddEdge(new Edge<object>(vertices[3], vertices[0]));
-            g.AddEdge(new Edge<object>(vertices[1], vertices[3]));
-            g.AddEdge(new Edge<object>(vertices[2], vertices[0]));
+            graph.AddEdge(new Edge<object>(vertices[0], vertices[1]));
+            graph.AddEdge(new Edge<object>(vertices[1], vertices[2]));
+            graph.AddEdge(new Edge<object>(vertices[2], vertices[3]));
+            graph.AddEdge(new Edge<object>(vertices[3], vertices[0]));
+            graph.AddEdge(new Edge<object>(vertices[1], vertices[3]));
+            graph.AddEdge(new Edge<object>(vertices[2], vertices[0]));
 
-            graphs[FLAT_GRAPH] = g;
+            graphs[FlatGraph] = graph;
+
             #endregion
 
             #region Repulsion graph
-            g = new CompoundGraph<object, IEdge<object>>();
-            vertices = InitVertices(g, 50);
 
-            graphs[REP_GRAPH] = g;
+            graph = new CompoundGraph<object, IEdge<object>>();
+            InitVertices(graph, 50);
+
+            graphs[RepGraph] = graph;
+
             #endregion
 
             #region Star
 
-            g = new CompoundGraph<object, IEdge<object>>();
-            vertices = InitVertices(g, 13);
+            graph = new CompoundGraph<object, IEdge<object>>();
+            vertices = InitVertices(graph, 13);
 
-            for (int i = 1; i < 13; i++ )
-                g.AddEdge(new Edge<object>(vertices[0], vertices[i]));
+            for (int i = 1; i < 13; ++i)
+                graph.AddEdge(new Edge<object>(vertices[0], vertices[i]));
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; ++i)
             {
-                g.AddEdge(new Edge<object>(vertices[i * 3 + 1], vertices[i * 3 + 2]));
-                g.AddEdge(new Edge<object>(vertices[i * 3 + 1], vertices[i * 3 + 3]));
-                g.AddEdge(new Edge<object>(vertices[i * 3 + 2], vertices[i * 3 + 3]));
+                graph.AddEdge(new Edge<object>(vertices[i * 3 + 1], vertices[i * 3 + 2]));
+                graph.AddEdge(new Edge<object>(vertices[i * 3 + 1], vertices[i * 3 + 3]));
+                graph.AddEdge(new Edge<object>(vertices[i * 3 + 2], vertices[i * 3 + 3]));
             }
-            graphs[STAR_GRAPH] = g;
+
+            graphs[StarGraph] = graph;
+
             #endregion
 
             #region Combined
 
-            g = new CompoundGraph<object, IEdge<object>>();
-            vertices = InitVertices(g, 51);
+            graph = new CompoundGraph<object, IEdge<object>>();
+            vertices = InitVertices(graph, 51);
 
-            //add the containments
-            g.AddChildVertex(vertices[0], vertices[1]);
-            g.AddChildVertex(vertices[0], vertices[2]);
+            // Add the containements
+            graph.AddChildVertex(vertices[0], vertices[1]);
+            graph.AddChildVertex(vertices[0], vertices[2]);
 
-            //add the edges
-            g.AddEdge(new Edge<object>(vertices[2], vertices[3]));
-            g.AddEdge(new Edge<object>(vertices[3], vertices[4]));
+            // Add the edges
+            graph.AddEdge(new Edge<object>(vertices[2], vertices[3]));
+            graph.AddEdge(new Edge<object>(vertices[3], vertices[4]));
 
-            g.AddEdge(new Edge<object>(vertices[10], vertices[11]));
-            g.AddEdge(new Edge<object>(vertices[11], vertices[12]));
-            g.AddEdge(new Edge<object>(vertices[12], vertices[13]));
-            g.AddEdge(new Edge<object>(vertices[13], vertices[10]));
+            graph.AddEdge(new Edge<object>(vertices[10], vertices[11]));
+            graph.AddEdge(new Edge<object>(vertices[11], vertices[12]));
+            graph.AddEdge(new Edge<object>(vertices[12], vertices[13]));
+            graph.AddEdge(new Edge<object>(vertices[13], vertices[10]));
 
-            for (int i = 6; i < 15; i++)
+            for (int i = 6; i < 15; ++i)
             {
-                g.AddChildVertex(vertices[i % 5 + 20], vertices[i + 20]);
+                graph.AddChildVertex(vertices[i % 5 + 20], vertices[i + 20]);
             }
-            g.AddChildVertex(vertices[25], vertices[24]);
-            g.AddChildVertex(vertices[25], vertices[22]);
-            g.AddChildVertex(vertices[36], vertices[20]);
-            g.AddChildVertex(vertices[36], vertices[21]);
-            g.AddChildVertex(vertices[36], vertices[23]);
 
-            g.AddEdge(new Edge<object>(vertices[20], vertices[21]));
-            g.AddEdge(new Edge<object>(vertices[20], vertices[22]));
-            g.AddEdge(new Edge<object>(vertices[22], vertices[24]));
-            g.AddEdge(new Edge<object>(vertices[20], vertices[27]));
-            g.AddEdge(new Edge<object>(vertices[28], vertices[27]));
-            
-            g.AddEdge(new Edge<object>(vertices[4], vertices[39]));
-            g.AddEdge(new Edge<object>(vertices[39], vertices[40]));
-            g.AddEdge(new Edge<object>(vertices[39], vertices[41]));
-            g.AddEdge(new Edge<object>(vertices[39], vertices[42]));
-            g.AddEdge(new Edge<object>(vertices[42], vertices[43]));
-            g.AddEdge(new Edge<object>(vertices[42], vertices[44]));
+            graph.AddChildVertex(vertices[25], vertices[24]);
+            graph.AddChildVertex(vertices[25], vertices[22]);
+            graph.AddChildVertex(vertices[36], vertices[20]);
+            graph.AddChildVertex(vertices[36], vertices[21]);
+            graph.AddChildVertex(vertices[36], vertices[23]);
 
-            g.AddEdge(new Edge<object>(vertices[1], vertices[45]));
-            g.AddEdge(new Edge<object>(vertices[45], vertices[46]));
-            g.AddEdge(new Edge<object>(vertices[45], vertices[47]));
-            g.AddEdge(new Edge<object>(vertices[45], vertices[48]));
-            g.AddEdge(new Edge<object>(vertices[48], vertices[49]));
-            g.AddEdge(new Edge<object>(vertices[48], vertices[50]));
+            graph.AddEdge(new Edge<object>(vertices[20], vertices[21]));
+            graph.AddEdge(new Edge<object>(vertices[20], vertices[22]));
+            graph.AddEdge(new Edge<object>(vertices[22], vertices[24]));
+            graph.AddEdge(new Edge<object>(vertices[20], vertices[27]));
+            graph.AddEdge(new Edge<object>(vertices[28], vertices[27]));
 
-            graphs[COMBINED_GRAPH] = g;
+            graph.AddEdge(new Edge<object>(vertices[4], vertices[39]));
+            graph.AddEdge(new Edge<object>(vertices[39], vertices[40]));
+            graph.AddEdge(new Edge<object>(vertices[39], vertices[41]));
+            graph.AddEdge(new Edge<object>(vertices[39], vertices[42]));
+            graph.AddEdge(new Edge<object>(vertices[42], vertices[43]));
+            graph.AddEdge(new Edge<object>(vertices[42], vertices[44]));
+
+            graph.AddEdge(new Edge<object>(vertices[1], vertices[45]));
+            graph.AddEdge(new Edge<object>(vertices[45], vertices[46]));
+            graph.AddEdge(new Edge<object>(vertices[45], vertices[47]));
+            graph.AddEdge(new Edge<object>(vertices[45], vertices[48]));
+            graph.AddEdge(new Edge<object>(vertices[48], vertices[49]));
+            graph.AddEdge(new Edge<object>(vertices[48], vertices[50]));
+
+            graphs[CombinedGraph] = graph;
+
             #endregion
 
+            return graphs;
         }
 
-        private string[] InitVertices(CompoundGraph<object, IEdge<object>> g, int vertexCount)
+        private Duration _animationDuration = new Duration(TimeSpan.FromMilliseconds(100));
+
+        private void AddLine([NotNull] object lineKey, Point pos1, Point pos2, bool b)
         {
-            var vertices = new string[vertexCount];
-            for (int i = 0; i < vertexCount; i++)
+            Debug.Assert(lineKey != null);
+
+            Line line;
+            if (_lines.ContainsKey(lineKey))
             {
-                vertices[i] = i.ToString();
-                g.AddVertex(vertices[i]);
+                line = _lines[lineKey];
             }
-            return vertices;
-        }
-
-        private Duration animationDuration = new Duration(TimeSpan.FromMilliseconds(100));
-
-        private void AddLine(object lineKey, Point pos1, Point pos2, bool b)
-        {
-            Line line = null;
-            if (_lineDict.ContainsKey(lineKey))
-                line = _lineDict[lineKey];
             else
             {
                 line = new Line();
-                _lineDict[lineKey] = line;
-                lc.Children.Add(line);
+                _lines[lineKey] = line;
+                Layout.Children.Add(line);
                 line.StrokeThickness = 2;
-                if (b)
-                    line.Stroke = Brushes.Black;
-                else line.Stroke = Brushes.Silver;
+                line.Stroke = b ? System.Windows.Media.Brushes.Black : System.Windows.Media.Brushes.Silver;
             }
-            Animate(line, Line.X1Property, pos1.X, animationDuration);
-            Animate(line, Line.Y1Property, pos1.Y, animationDuration);
-            Animate(line, Line.X2Property, pos2.X, animationDuration);
-            Animate(line, Line.Y2Property, pos2.Y, animationDuration);
+
+            Animate(line, Line.X1Property, pos1.X, _animationDuration);
+            Animate(line, Line.Y1Property, pos1.Y, _animationDuration);
+            Animate(line, Line.X2Property, pos2.X, _animationDuration);
+            Animate(line, Line.Y2Property, pos2.Y, _animationDuration);
         }
 
-        private static Brush[] brushes = new Brush[] { Brushes.Red, Brushes.Yellow, Brushes.Green, Brushes.BlueViolet, Brushes.Violet, Brushes.Teal, Brushes.Blue };
-        private static int bIndex = 0;
-
-        private void AddRect(object rectKey, Point point, Size size)
+        [NotNull, ItemNotNull]
+        private static readonly Brush[] Brushes =
         {
+            System.Windows.Media.Brushes.Red,
+            System.Windows.Media.Brushes.Yellow,
+            System.Windows.Media.Brushes.Green,
+            System.Windows.Media.Brushes.BlueViolet,
+            System.Windows.Media.Brushes.Violet,
+            System.Windows.Media.Brushes.Teal,
+            System.Windows.Media.Brushes.Blue
+        };
+
+        private static int _brushIndex;
+
+        private void AddRectangle([NotNull] object rectKey, Point point, Size size)
+        {
+            Debug.Assert(rectKey != null);
+
             point.X -= size.Width / 2;
             point.Y -= size.Height / 2;
-            Rectangle rect = null;
-            if (_rectDict.ContainsKey(rectKey))
-                rect = _rectDict[rectKey];
+            Rectangle rect;
+            if (_rectangles.ContainsKey(rectKey))
+            {
+                rect = _rectangles[rectKey];
+            }
             else
             {
                 rect = new Rectangle();
-                _rectDict[rectKey] = rect;
-                lc.Children.Add(rect);
-                rect.Fill = brushes[bIndex];
-                rect.Stroke = Brushes.Black;
+                _rectangles[rectKey] = rect;
+                Layout.Children.Add(rect);
+                rect.Fill = Brushes[_brushIndex];
+                rect.Stroke = System.Windows.Media.Brushes.Black;
                 rect.StrokeThickness = 1;
-                bIndex = (bIndex + 1) % brushes.Length;
+                _brushIndex = (_brushIndex + 1) % Brushes.Length;
                 rect.Opacity = 0.7;
             }
-            Animate(rect, FrameworkElement.WidthProperty, size.Width, animationDuration);
-            Animate(rect, FrameworkElement.HeightProperty, size.Height, animationDuration);
-            Animate(rect, Canvas.LeftProperty, point.X, animationDuration);
-            Animate(rect, Canvas.TopProperty, point.Y, animationDuration);
+
+            Animate(rect, WidthProperty, size.Width, _animationDuration);
+            Animate(rect, HeightProperty, size.Height, _animationDuration);
+            Animate(rect, Canvas.LeftProperty, point.X, _animationDuration);
+            Animate(rect, Canvas.TopProperty, point.Y, _animationDuration);
         }
 
-        private void Animate(FrameworkElement obj, DependencyProperty property, double toValue, Duration duration)
+        private static void Animate(
+            [NotNull] UIElement obj,
+            [NotNull] DependencyProperty property,
+            double toValue,
+            Duration duration)
         {
+            Debug.Assert(obj != null);
+            Debug.Assert(property != null);
+
             double fromValue = (double)obj.GetValue(property);
             if (double.IsNaN(fromValue))
                 fromValue = 0;
+
             var animation = new DoubleAnimation(fromValue, toValue, duration, FillBehavior.HoldEnd)
-                                {
-                                    AccelerationRatio = 0.3,
-                                    DecelerationRatio = 0.3
-                                };
+            {
+                AccelerationRatio = 0.3,
+                DecelerationRatio = 0.3
+            };
+
             obj.BeginAnimation(property, animation);
         }
 
-        private void Pause_Click(object sender, RoutedEventArgs e)
+        private void OnPauseClick(object sender, RoutedEventArgs args)
         {
-            this._paused = !this._paused;
+            _paused = !_paused;
+        }
+
+        private void OnRelayoutClick(object sender, RoutedEventArgs args)
+        {
+            ShowGraph(GraphComboBox.SelectedIndex);
         }
     }
 }

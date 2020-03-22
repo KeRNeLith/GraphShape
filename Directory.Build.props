@@ -3,8 +3,7 @@
   <PropertyGroup>
     <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
 
-    <!-- TODO enable this -->
-    <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
     <Owners>Alexandre Rabérin</Owners>
     <Authors>Alexandre Rabérin</Authors>

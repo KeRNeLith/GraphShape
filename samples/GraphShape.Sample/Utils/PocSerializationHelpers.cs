@@ -1,39 +1,54 @@
 ﻿using QuikGraph.Serialization;
 using System.Xml;
+using JetBrains.Annotations;
 
-namespace GraphShape.Sample
+namespace GraphShape.Sample.Utils
 {
-	public static class PocSerializeHelper
-	{
-		public static PocGraph LoadGraph( string filename )
-		{
-			//open the file of the graph
-			var reader = XmlReader.Create( filename );
+    /// <summary>
+    /// Serialization helpers related to <see cref="PocGraph"/>.
+    /// </summary>
+    internal static class PocSerializeHelper
+    {
+        /// <summary>
+        /// Loads a graph from file.
+        /// </summary>
+        [Pure]
+        [NotNull]
+        public static PocGraph LoadGraph([NotNull] string filePath)
+        {
+            // Open the file of the graph
+            using (XmlReader reader = XmlReader.Create(filePath))
+            {
+                // Create the serializer
+                var serializer = new GraphMLDeserializer<PocVertex, PocEdge, PocGraph>();
 
-			//create the serializer
-			var serializer = new GraphMLDeserializer<PocVertex, PocEdge, PocGraph>();
+                // Graph where the vertices and edges should be put in
+                var pocGraph = new PocGraph();
 
-			//graph where the vertices and edges should be put in
-			var pocGraph = new PocGraph();
+                // Deserialize the graph
+                serializer.Deserialize(
+                    reader,
+                    pocGraph,
+                    id => new PocVertex(id),
+                    (source, target, id) => new PocEdge(id, source, target));
 
-			//deserialize the graph
-			serializer.Deserialize( reader, pocGraph,
-			                        id => new PocVertex( id ),
-			                        ( source, target, id ) => new PocEdge( id, source, target ) );
+                return pocGraph;
+            }
+        }
 
-			return pocGraph;
-		}
+        /// <summary>
+        /// Saves a graph to file.
+        /// </summary>
+        public static void SaveGraph([NotNull] PocGraph graph, [NotNull] string filePath)
+        {
+            // Create the xml writer
+            using (var writer = XmlWriter.Create(filePath))
+            {
+                var serializer = new GraphMLSerializer<PocVertex, PocEdge, PocGraph>();
 
-		public static void SaveGraph( PocGraph graph, string filename )
-		{
-			//create the xml writer
-			using ( var writer = XmlWriter.Create( filename ) )
-			{
-				var serializer = new GraphMLSerializer<PocVertex, PocEdge, PocGraph>();
-
-				//serialize the graph
-				serializer.Serialize( writer, graph, v => v.ID, e => e.ID );
-			}
-		}
-	}
+                // Serialize the graph
+                serializer.Serialize(writer, graph, v => v.ID, e => e.ID);
+            }
+        }
+    }
 }

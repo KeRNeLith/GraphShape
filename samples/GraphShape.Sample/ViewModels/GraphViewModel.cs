@@ -1,14 +1,34 @@
-﻿namespace GraphShape.Sample.Model
-{
-	public class GraphModel
-	{
-		public string Name { get; private set; }
-		public PocGraph Graph { get; private set; }
+﻿using System;
+using JetBrains.Annotations;
 
-		public GraphModel(string name, PocGraph graph)
-		{
-			Name = name;
-			Graph = graph;
-		}
-	}
+namespace GraphShape.Sample.ViewModels
+{
+    /// <summary>
+    /// Graph entry model.
+    /// </summary>
+    internal class GraphViewModel
+    {
+        /// <summary>
+        /// Graph name.
+        /// </summary>
+        [NotNull]
+        public string Name { get; }
+        
+        /// <summary>
+        /// Graph.
+        /// </summary>
+        [NotNull]
+        public PocGraph Graph { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphViewModel"/> class.
+        /// </summary>
+        public GraphViewModel(
+            [NotNull] string name,
+            [NotNull] PocGraph graph)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Graph = graph ?? throw new ArgumentNullException(nameof(graph));
+        }
+    }
 }
