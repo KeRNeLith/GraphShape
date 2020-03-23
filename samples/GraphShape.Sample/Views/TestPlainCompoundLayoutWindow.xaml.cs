@@ -319,7 +319,6 @@ namespace GraphShape.Sample
             // Add the edges
             graph.AddEdge(new Edge<object>(vertices[2], vertices[4]));
             graph.AddEdge(new Edge<object>(vertices[1], vertices[5]));
-            //g.AddEdge(new Edge<object>(vertices[0], vertices[1]));
 
             graphs[SmallGraph] = graph;
 
@@ -463,7 +462,7 @@ namespace GraphShape.Sample
             System.Windows.Media.Brushes.Blue
         };
 
-        private static int _brushIndex;
+        private int _brushIndex;
 
         private void AddRectangle([NotNull] object rectKey, Point point, Size size)
         {

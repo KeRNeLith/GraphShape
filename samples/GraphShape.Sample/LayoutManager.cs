@@ -79,7 +79,7 @@ namespace GraphShape.Sample
                 Instance._graphLayouts.Add(graphLayout);
                 graphLayout.Unloaded += OnGraphLayoutUnloaded;
             }
-            else if ((bool)args.OldValue && (bool)args.NewValue == false && Instance._graphLayouts.Contains(graphLayout))
+            else if ((bool)args.OldValue && !(bool)args.NewValue && Instance._graphLayouts.Contains(graphLayout))
             {
                 // The layout became unmanaged
                 Instance._graphLayouts.Remove(graphLayout);

@@ -52,7 +52,7 @@ namespace GraphShape.Algorithms.Layout.Compound
         public IDictionary<TVertex, TVertexInfo> VerticesInfos { get; }
 
         /// <inheritdoc />
-        public IDictionary<TEdge, TEdgeInfo> EdgesInfos => null;
+        public IDictionary<TEdge, TEdgeInfo> EdgesInfos { get; } = new Dictionary<TEdge, TEdgeInfo>();
 
         /// <inheritdoc />
         public override object GetVertexInfo(TVertex vertex)

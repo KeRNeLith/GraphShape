@@ -221,8 +221,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                     var weightedEdge = edge as WeightedEdge<TVertex>;
                     double weight = weightedEdge?.Weight ?? 1;
                     vertex.Attractions[attractionIndex] = new LinLogEdge(verticesMap[edge.Source], weight);
-                    //TODO look at this line below
-                    //vertex.RepulsionWeight += weight;
+                    // TODO update repulsion weight?
                     ++vertex.RepulsionWeight;
                     ++attractionIndex;
                 }
@@ -232,7 +231,6 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                     var weightedEdge = edge as WeightedEdge<TVertex>;
                     double weight = weightedEdge?.Weight ?? 1;
                     vertex.Attractions[attractionIndex] = new LinLogEdge(verticesMap[edge.Target], weight);
-                    //vertex.RepulsionWeight += weight;
                     ++vertex.RepulsionWeight;
                     ++attractionIndex;
                 }

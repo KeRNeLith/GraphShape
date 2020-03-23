@@ -21,10 +21,6 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
     {
         #region Variables needed for the layout
 
-        /// <summary>
-        /// Minimal distances between the vertices.
-        /// </summary>
-        private double[,] _distances;
         private double[,] _edgeLengths;
         private double[,] _springConstants;
 
@@ -35,9 +31,6 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Positions of the vertices, stored by indices.
         /// </summary>
         private Point[] _positions;
-
-        private double _diameter;
-        private double _idealEdgeLength;
 
         #endregion
 
@@ -72,7 +65,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         {
             base.Initialize();
 
-            _distances = new double[VisitedGraph.VertexCount, VisitedGraph.VertexCount];
+            // Minimal distances between the vertices
             _edgeLengths = new double[VisitedGraph.VertexCount, VisitedGraph.VertexCount];
             _springConstants = new double[VisitedGraph.VertexCount, VisitedGraph.VertexCount];
             _vertices = new TVertex[VisitedGraph.VertexCount];
@@ -91,13 +84,13 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             }
 
             // Calculate the diameter of the graph
-            _diameter = VisitedGraph.GetDiameter<TVertex, TEdge, TGraph>(out _distances);
+            double diameter = VisitedGraph.GetDiameter<TVertex, TEdge, TGraph>(out double[,] distances);
 
             // L0 is the length of a side of the display area
             double l0 = Math.Min(Parameters.Width, Parameters.Height);
 
             // Ideal length = L0 / max d_i,j
-            _idealEdgeLength = l0 / _diameter * Parameters.LengthFactor;
+            double idealEdgeLength = l0 / diameter * Parameters.LengthFactor;
 
             // Calculate the ideal distance between the nodes
             for (int i = 0; i < VisitedGraph.VertexCount - 1; ++i)
@@ -105,15 +98,15 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 for (int j = i + 1; j < VisitedGraph.VertexCount; ++j)
                 {
                     // Distance between non-adjacent vertices
-                    double dist = _diameter * Parameters.DisconnectedMultiplier;
+                    double dist = diameter * Parameters.DisconnectedMultiplier;
 
                     // Calculate the minimal distance between the vertices
-                    if (!NearEqual(_distances[i, j], double.MaxValue))
-                        dist = Math.Min(_distances[i, j], dist);
-                    if (!NearEqual(_distances[j, i], double.MaxValue))
-                        dist = Math.Min(_distances[j, i], dist);
-                    _distances[i, j] = _distances[j, i] = dist;
-                    _edgeLengths[i, j] = _edgeLengths[j, i] = _idealEdgeLength * dist;
+                    if (!NearEqual(distances[i, j], double.MaxValue))
+                        dist = Math.Min(distances[i, j], dist);
+                    if (!NearEqual(distances[j, i], double.MaxValue))
+                        dist = Math.Min(distances[j, i], dist);
+                    distances[i, j] = distances[j, i] = dist;
+                    _edgeLengths[i, j] = _edgeLengths[j, i] = idealEdgeLength * dist;
                     _springConstants[i, j] = _springConstants[j, i] = Parameters.K / Math.Pow(dist, 2);
                 }
             }
@@ -308,12 +301,10 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
                     dxm += k * (1 - l / d) * dx;
                     dym += k * (1 - l / d) * dy;
-                    //TODO isn't it wrong?
+                    // TODO isn't it wrong?
                     d2xm += k * (1 - l * Math.Pow(dy, 2) / ddd);
-                    //d2E_d2xm += k_mi * ( 1 - l_mi / d + l_mi * dx * dx / ddd );
                     dxmdym += k * l * dx * dy / ddd;
-                    //d2E_d2ym += k_mi * ( 1 - l_mi / d + l_mi * dy * dy / ddd );
-                    //TODO isn't it wrong?
+                    // TODO isn't it wrong?
                     d2ym += k * (1 - l * Math.Pow(dx, 2) / ddd);
                 }
             }

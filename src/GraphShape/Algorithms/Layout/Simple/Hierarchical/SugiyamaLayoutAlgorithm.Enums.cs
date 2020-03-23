@@ -9,15 +9,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         [Flags]
-        private enum Barycenter
+        private enum Barycenters
         {
             Up = 1,
             Down = 2,
             Sub = 4
         }
 
-        [Flags]
-        private enum CrossCount
+        private enum CrossCounts
         {
             Up = 1,
             Down = 2

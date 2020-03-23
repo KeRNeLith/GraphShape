@@ -75,11 +75,25 @@ namespace GraphShape.Controls
         /// <inheritdoc />
         public event DisposingHandler Disposing;
 
+        #region IDisposable
+
         /// <inheritdoc />
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose this object.
+        /// </summary>
+        /// <param name="disposing">Indicates if called by dispose or finalizer.</param>
+        protected virtual void Dispose(bool disposing)
+        {
             Disposing?.Invoke(this);
         }
+
+        #endregion
 
         #endregion
     }

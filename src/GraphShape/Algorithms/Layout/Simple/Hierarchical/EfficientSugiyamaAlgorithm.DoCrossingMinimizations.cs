@@ -698,13 +698,11 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 return bestCrossCount;
             }
 
-            {
-                var edgePairs = new List<CrossCounterPair>();
-                edgePairs.AddRange(virtualEdgePairs);
-                edgePairs.AddRange(ConvertRealEdgesToCrossCounterPairs(realEdges, true));
+            var pairs = new List<CrossCounterPair>();
+            pairs.AddRange(virtualEdgePairs);
+            pairs.AddRange(ConvertRealEdgesToCrossCounterPairs(realEdges, true));
 
-                return BiLayerCrossCount(edgePairs, firstLayerSize, secondLayerSize);
-            }
+            return BiLayerCrossCount(pairs, firstLayerSize, secondLayerSize);
         }
 
         private static void ReinsertVerticesIntoLayer(

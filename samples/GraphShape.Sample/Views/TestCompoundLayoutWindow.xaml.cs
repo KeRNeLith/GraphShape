@@ -46,7 +46,6 @@ namespace GraphShape.Sample
             graph.AddEdge(new Edge<object>(vertices[2], vertices[4]));
             graph.AddEdge(new Edge<object>(vertices[0], vertices[7]));
             graph.AddEdge(new Edge<object>(vertices[8], vertices[7]));
-            //g.AddEdge(new Edge<object>(vertices[13], vertices[12]));
             graph.AddEdge(new Edge<object>(vertices[3], vertices[20]));
             graph.AddEdge(new Edge<object>(vertices[20], vertices[21]));
             graph.AddEdge(new Edge<object>(vertices[20], vertices[22]));

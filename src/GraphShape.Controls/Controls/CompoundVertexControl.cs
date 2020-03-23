@@ -13,9 +13,6 @@ namespace GraphShape.Controls
     {
         static CompoundVertexControl()
         {
-            // Readonly DPs
-            VerticesProperty = VerticesPropertyKey.DependencyProperty;
-
             // Override the StyleKey property
             DefaultStyleKeyProperty.OverrideMetadata(
                 typeof(CompoundVertexControl),
@@ -71,17 +68,17 @@ namespace GraphShape.Controls
         }
 
         /// <summary>
-        /// Vertices dependency property.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty VerticesProperty;
-
-        /// <summary>
         /// Vertices property key.
         /// </summary>
         [NotNull]
         protected static readonly DependencyPropertyKey VerticesPropertyKey = DependencyProperty.RegisterReadOnly(
             nameof(Vertices), typeof(ObservableCollection<VertexControl>), typeof(CompoundVertexControl), new UIPropertyMetadata(null));
+
+        /// <summary>
+        /// Vertices dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty VerticesProperty = VerticesPropertyKey.DependencyProperty;
 
         #endregion
 

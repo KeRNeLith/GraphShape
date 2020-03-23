@@ -360,14 +360,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// <param name="start">The index of the layer where the sweeping starts.</param>
         /// <param name="end">The index of the layer where the sweeping ends.</param>
         /// <param name="step">Step count.</param>
-        /// <param name="barycenter">Kind of the barycentering (Up/Down-barycenter).</param>
+        /// <param name="barycenters">Kind of the barycentering (Up/Down-barycenters).</param>
         /// <param name="dirty">If this is a dirty sweep.</param>
         /// <param name="byRealPosition"></param>
-        private bool SugiyamaPhase1Sweep(int start, int end, int step, Barycenter barycenter, bool dirty, bool byRealPosition)
+        private bool SugiyamaPhase1Sweep(int start, int end, int step, Barycenters barycenters, bool dirty, bool byRealPosition)
         {
             bool hasOptimization = false;
-            CrossCount crossCounting = barycenter == Barycenter.Up ? CrossCount.Up : CrossCount.Down;
-            bool sourceByMeasure = crossCounting == CrossCount.Down;
+            CrossCounts crossCounting = barycenters == Barycenters.Up ? CrossCounts.Up : CrossCounts.Down;
+            bool sourceByMeasure = crossCounting == CrossCounts.Down;
             for (int i = start; i != end; i += step)
             {
                 VertexLayer layer = _layers[i];
@@ -380,8 +380,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     originalCrossing = layer.CalculateCrossCount(crossCounting);
                 }
 
-                // Measure the vertices by the given barycenter
-                layer.Measure(barycenter, byRealPosition);
+                // Measure the vertices by the given barycenters
+                layer.Measure(barycenters, byRealPosition);
 
                 if (!dirty)
                 {
@@ -397,7 +397,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 if (byRealPosition)
                 {
-                    HorizontalPositionAssignmentOnLayer(i, barycenter);
+                    HorizontalPositionAssignmentOnLayer(i, barycenters);
                     CopyPositionsSilent(false);
                 }
                 else
@@ -405,30 +405,30 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     CopyPositions();
                 }
 
-                OnIterationEnded($" Phase 1 sweepstep finished [{barycenter}-barycentering on layer {i}]");
+                OnIterationEnded($" Phase 1 sweepstep finished [{barycenters}-barycentering on layer {i}]");
             }
 
             return hasOptimization;
         }
 
         /// <returns>
-        /// The index of the layer which is not ordered by <paramref name="barycenter"/> anymore.
+        /// The index of the layer which is not ordered by <paramref name="barycenters"/> anymore.
         /// If all of the layers ordered, and phase2 sweep done it returns with -1.
         /// </returns>
-        private int SugiyamaPhase2Sweep(int start, int end, int step, Barycenter barycenter, bool byRealPosition)
+        private int SugiyamaPhase2Sweep(int start, int end, int step, Barycenters barycenters, bool byRealPosition)
         {
-            CrossCount crossCountDirection = barycenter == Barycenter.Up ? CrossCount.Up : CrossCount.Down;
+            CrossCounts crossCountsDirection = barycenters == Barycenters.Up ? CrossCounts.Up : CrossCounts.Down;
             for (int i = start; i != end; i += step)
             {
                 VertexLayer layer = _layers[i];
 
                 // Switch the vertices with the same barycenters, if and only if there will be less barycenters
-                layer.Measure(barycenter, byRealPosition);
-                layer.FindBestPermutation(crossCountDirection);
+                layer.Measure(barycenters, byRealPosition);
+                layer.FindBestPermutation(crossCountsDirection);
 
                 if (byRealPosition)
                 {
-                    HorizontalPositionAssignmentOnLayer(i, barycenter);
+                    HorizontalPositionAssignmentOnLayer(i, barycenters);
                     CopyPositionsSilent(false);
                 }
                 else
@@ -436,12 +436,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     CopyPositions();
                 }
 
-                OnIterationEnded($" Phase 2 sweepstep finished [{barycenter}-barycentering on layer {i}]");
+                OnIterationEnded($" Phase 2 sweepstep finished [{barycenters}-barycentering on layer {i}]");
 
                 if (i + step != end)
                 {
                     VertexLayer nextLayer = _layers[i + step];
-                    if (!nextLayer.IsOrderedByBarycenters(barycenter, byRealPosition))
+                    if (!nextLayer.IsOrderedByBarycenters(barycenters, byRealPosition))
                         return i + step;
                 }
             }
@@ -455,12 +455,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 return;
 
             const bool dirty = true;
-            SugiyamaPhase1Sweep(1, _layers.Count, 1, Barycenter.Up, dirty, byRealPosition);
-            SugiyamaPhase1Sweep(_layers.Count - 2, -1, -1, Barycenter.Down, dirty, byRealPosition);
+            SugiyamaPhase1Sweep(1, _layers.Count, 1, Barycenters.Up, dirty, byRealPosition);
+            SugiyamaPhase1Sweep(_layers.Count - 2, -1, -1, Barycenters.Down, dirty, byRealPosition);
         }
 
         [Pure]
-        private bool SugiyamaPhase1(int startLayerIndex, Barycenter startBaryCentering, bool byRealPosition)
+        private bool SugiyamaPhase1(int startLayerIndex, Barycenters startBaryCentering, bool byRealPosition)
         {
             if (_layers.Count < 2)
                 return false;
@@ -468,13 +468,13 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             const bool dirty = false;
             bool sweepDownOptimized = false;
 
-            if (startBaryCentering == Barycenter.Up)
+            if (startBaryCentering == Barycenters.Up)
             {
                 sweepDownOptimized = SugiyamaPhase1Sweep(
                     startLayerIndex == -1 ? 1 : startLayerIndex,
                     _layers.Count,
                     1,
-                    Barycenter.Up,
+                    Barycenters.Up,
                     dirty,
                     byRealPosition);
 
@@ -485,31 +485,26 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 startLayerIndex == -1 ? _layers.Count - 2 : startLayerIndex,
                 -1,
                 -1,
-                Barycenter.Down,
+                Barycenters.Down,
                 dirty,
                 byRealPosition);
 
             return sweepUpOptimized || sweepDownOptimized;
         }
 
-        private bool SugiyamaPhase2(out int unorderedLayerIndex, out Barycenter baryCentering, bool byRealPosition)
+        private void SugiyamaPhase2(out int unorderedLayerIndex, out Barycenters barycenters, bool byRealPosition)
         {
             // Sweeping up
-            unorderedLayerIndex = SugiyamaPhase2Sweep(1, _layers.Count, 1, Barycenter.Up, byRealPosition);
+            unorderedLayerIndex = SugiyamaPhase2Sweep(1, _layers.Count, 1, Barycenters.Up, byRealPosition);
             if (unorderedLayerIndex != -1)
             {
-                baryCentering = Barycenter.Up;
-                return false;
+                barycenters = Barycenters.Up;
+                return;
             }
 
             // Sweeping down
-            unorderedLayerIndex = SugiyamaPhase2Sweep(_layers.Count - 2, -1, -1, Barycenter.Down, byRealPosition);
-            baryCentering = Barycenter.Down;
-            if (unorderedLayerIndex != -1)
-                return false;
-
-            // Phase 2 done
-            return true;
+            unorderedLayerIndex = SugiyamaPhase2Sweep(_layers.Count - 2, -1, -1, Barycenters.Down, byRealPosition);
+            barycenters = Barycenters.Down;
         }
 
         private void SugiyamaLayout()
@@ -527,7 +522,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             double maxIterations = iteration1Left * iteration2Left;
 
             int startLayerIndex = -1;
-            Barycenter startBarycentering = Barycenter.Up;
+            Barycenters startBarycentering = Barycenters.Up;
 
             while (changed && (iteration1Left > 0 || iteration2Left > 0))
             {
@@ -541,7 +536,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 }
 
                 startLayerIndex = -1;
-                startBarycentering = Barycenter.Up;
+                startBarycentering = Barycenters.Up;
 
                 // Phase 2
                 if (iteration2Left > 0)
@@ -582,12 +577,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 (b.Size.Width + a.Size.Width) * 0.5 + plusGap + Parameters.HorizontalGap - (b.RealPosition.X - a.RealPosition.X));
         }
 
-        private void HorizontalPositionAssignmentOnLayer(int layerIndex, Barycenter barycenter)
+        private void HorizontalPositionAssignmentOnLayer(int layerIndex, Barycenters barycenters)
         {
             VertexLayer layer = _layers[layerIndex];
 
             // Compute where the vertices should be placed
-            layer.Measure(barycenter, true);
+            layer.Measure(barycenters, true);
             layer.CalculateSubPriorities();
 
             // Set the RealPositions to NaN
@@ -750,22 +745,22 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
         }
 
-        private void HorizontalPositionAssignmentSweep(int start, int end, int step, Barycenter barycenter)
+        private void HorizontalPositionAssignmentSweep(int start, int end, int step, Barycenters barycenters)
         {
             for (int i = start; i != end; i += step)
-                HorizontalPositionAssignmentOnLayer(i, barycenter);
+                HorizontalPositionAssignmentOnLayer(i, barycenters);
         }
 
         private void HorizontalPositionAssignment()
         {
             // Sweeping up & down, assigning the positions for the vertices in the order of the priorities
-            // positions computed with the barycenter method, based on the real positions
+            // positions computed with the barycenters method, based on the real positions
             AssignPriorities();
 
             if (_layers.Count > 1)
             {
-                HorizontalPositionAssignmentSweep(1, _layers.Count, 1, Barycenter.Up);
-                HorizontalPositionAssignmentSweep(_layers.Count - 2, -1, -1, Barycenter.Down);
+                HorizontalPositionAssignmentSweep(1, _layers.Count, 1, Barycenters.Up);
+                HorizontalPositionAssignmentSweep(_layers.Count - 2, -1, -1, Barycenters.Down);
             }
         }
 

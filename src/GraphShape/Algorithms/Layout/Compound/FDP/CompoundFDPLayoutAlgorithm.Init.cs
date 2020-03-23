@@ -115,12 +115,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
                 // Find the not fixed predecessor
                 TVertex movableVertex = fixedLayoutCompoundVertex;
-                for (; ; )
+                while (movableVertex != null)
                 {
                     // If the vertex hasn't parent
-                    if (movableVertex is null)
-                        break;
-
                     TVertex parent = _compoundGraph.GetParent(movableVertex);
                     if (parent is null)
                         break;

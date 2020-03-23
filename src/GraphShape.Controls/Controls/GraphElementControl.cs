@@ -10,14 +10,6 @@ namespace GraphShape.Controls
     /// </summary>
     public static class GraphElementBehaviour
     {
-        static GraphElementBehaviour()
-        {
-            IsSemiHighlightedProperty = IsSemiHighlightedPropertyKey.DependencyProperty;
-            SemiHighlightInfoProperty = SemiHighlightInfoPropertyKey.DependencyProperty;
-            HighlightInfoProperty = HighlightInfoPropertyKey.DependencyProperty;
-            IsHighlightedProperty = IsHighlightedPropertyKey.DependencyProperty;
-        }
-
         #region Highlight event
 
         /// <summary>
@@ -186,17 +178,17 @@ namespace GraphShape.Controls
         #region IsHighlighted
 
         /// <summary>
-        /// Is highlighted dependency property.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty IsHighlightedProperty;
-
-        /// <summary>
         /// Is highlighted property key.
         /// </summary>
         [NotNull]
         private static readonly DependencyPropertyKey IsHighlightedPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
             "IsHighlighted", typeof(bool), typeof(GraphElementBehaviour), new UIPropertyMetadata(false, OnIsHighlightedPropertyChanged));
+
+        /// <summary>
+        /// Is highlighted dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty IsHighlightedProperty = IsHighlightedPropertyKey.DependencyProperty;
 
         /// <summary>
         /// Gets the <see cref="IsHighlightedProperty"/> value.
@@ -233,17 +225,17 @@ namespace GraphShape.Controls
         #region HighlightInfo
 
         /// <summary>
-        /// Highlight information dependency property.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty HighlightInfoProperty;
-
-        /// <summary>
         /// Highlight information property key.
         /// </summary>
         [NotNull]
         private static readonly DependencyPropertyKey HighlightInfoPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
             "HighlightInfo", typeof(object), typeof(GraphElementBehaviour), new PropertyMetadata(null, OnHighlightInfoPropertyChanged));
+
+        /// <summary>
+        /// Highlight information dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty HighlightInfoProperty = HighlightInfoPropertyKey.DependencyProperty;
 
         /// <summary>
         /// Gets the <see cref="HighlightInfoProperty"/> value.
@@ -273,17 +265,17 @@ namespace GraphShape.Controls
         #region IsSemiHighlighted
 
         /// <summary>
-        /// Is semi highlighted property key.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty IsSemiHighlightedProperty;
-
-        /// <summary>
         /// Is semi highlighted dependency property.
         /// </summary>
         [NotNull]
         private static readonly DependencyPropertyKey IsSemiHighlightedPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
             "IsSemiHighlighted", typeof(bool), typeof(GraphElementBehaviour), new PropertyMetadata(false));
+
+        /// <summary>
+        /// Is semi highlighted property key.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty IsSemiHighlightedProperty = IsSemiHighlightedPropertyKey.DependencyProperty;
 
         /// <summary>
         /// Gets the <see cref="IsSemiHighlightedProperty"/> value.
@@ -306,18 +298,18 @@ namespace GraphShape.Controls
         #region SemiHighlightInfo
 
         /// <summary>
-        /// Semi highlight information dependency property.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty SemiHighlightInfoProperty;
-
-        /// <summary>
         /// Semi highlight information property key.
         /// </summary>
         [NotNull]
         private static readonly DependencyPropertyKey SemiHighlightInfoPropertyKey = DependencyProperty.RegisterAttachedReadOnly(
             "SemiHighlightInfo", typeof(object), typeof(GraphElementBehaviour), new PropertyMetadata(null));
-        
+
+        /// <summary>
+        /// Semi highlight information dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty SemiHighlightInfoProperty = SemiHighlightInfoPropertyKey.DependencyProperty;
+
         /// <summary>
         /// Gets the <see cref="SemiHighlightInfoProperty"/> value.
         /// </summary>

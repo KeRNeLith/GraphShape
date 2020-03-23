@@ -112,15 +112,12 @@ namespace GraphShape.Controls
                 }
 
                 // Subscribe to events of the Graph mutations
-                if (!IsCompoundMode)
+                if (!IsCompoundMode && Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
                 {
-                    if (Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
-                    {
-                        mutableGraph.VertexAdded += OnMutableGraphVertexAdded;
-                        mutableGraph.VertexRemoved += OnMutableGraphVertexRemoved;
-                        mutableGraph.EdgeAdded += OnMutableGraphEdgeAdded;
-                        mutableGraph.EdgeRemoved += OnMutableGraphEdgeRemoved;
-                    }
+                    mutableGraph.VertexAdded += OnMutableGraphVertexAdded;
+                    mutableGraph.VertexRemoved += OnMutableGraphVertexRemoved;
+                    mutableGraph.EdgeAdded += OnMutableGraphEdgeAdded;
+                    mutableGraph.EdgeRemoved += OnMutableGraphEdgeRemoved;
                 }
             }
 

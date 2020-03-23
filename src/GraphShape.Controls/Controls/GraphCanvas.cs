@@ -11,11 +11,6 @@ namespace GraphShape.Controls
     /// </summary>
     public class GraphCanvas : Panel
     {
-        static GraphCanvas()
-        {
-            TranslationProperty = TranslationPropertyKey.DependencyProperty;
-        }
-
         #region Attached Dependency Property registrations
 
         /// <summary>
@@ -292,17 +287,17 @@ namespace GraphShape.Controls
         }
 
         /// <summary>
-        /// Translation dependency property.
-        /// </summary>
-        [NotNull]
-        public static readonly DependencyProperty TranslationProperty;
-
-        /// <summary>
         /// Translation property key.
         /// </summary>
         [NotNull]
         protected static readonly DependencyPropertyKey TranslationPropertyKey = DependencyProperty.RegisterReadOnly(
             nameof(Translation), typeof(Vector), typeof(GraphCanvas), new UIPropertyMetadata(default(Vector)));
+
+        /// <summary>
+        /// Translation dependency property.
+        /// </summary>
+        [NotNull]
+        public static readonly DependencyProperty TranslationProperty = TranslationPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -321,9 +316,9 @@ namespace GraphShape.Controls
         /// <summary>
         /// Arranges the size of the control.
         /// </summary>
-        /// <param name="arrangeSize">The arranged size of the control.</param>
+        /// <param name="finalSize">The arranged size of the control.</param>
         /// <returns>The size of the control.</returns>
-        protected override Size ArrangeOverride(Size arrangeSize)
+        protected override Size ArrangeOverride(Size finalSize)
         {
             var translate = new Vector(-_topLeft.X, -_topLeft.Y);
             Vector graphSize = _bottomRight - _topLeft;
@@ -376,9 +371,9 @@ namespace GraphShape.Controls
         /// Overridden measure. It calculates a size where all of 
         /// of the vertices are visible.
         /// </summary>
-        /// <param name="constraint">The size constraint.</param>
+        /// <param name="arrangeSize">The size constraint.</param>
         /// <returns>The calculated size.</returns>
-        protected override Size MeasureOverride(Size constraint)
+        protected override Size MeasureOverride(Size arrangeSize)
         {
             _topLeft = new Point(double.PositiveInfinity, double.PositiveInfinity);
             _bottomRight = new Point(double.NegativeInfinity, double.NegativeInfinity);
@@ -386,7 +381,7 @@ namespace GraphShape.Controls
             foreach (UIElement child in InternalChildren)
             {
                 // Measure the child
-                child.Measure(constraint);
+                child.Measure(arrangeSize);
 
                 // Get the position of the vertex
                 double left = GetX(child);

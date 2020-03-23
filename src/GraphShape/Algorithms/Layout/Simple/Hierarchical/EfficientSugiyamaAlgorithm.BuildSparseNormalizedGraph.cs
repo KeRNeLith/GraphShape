@@ -322,10 +322,9 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 {
                     layerInfo.LayerHeight = Math.Max(vertex.Size.Height, layerInfo.LayerHeight);
                     layerInfo.LayerWidth += vertex.Size.Width;
-                    if (_whOptVertexInfos.TryGetValue(vertex, out WHOptimizationVertexInfo vertexInfo))
+                    if (_whOptVertexInfos.TryGetValue(vertex, out WHOptimizationVertexInfo vertexInfo) && vertexInfo.ValuePerCost >= 0)
                     {
-                        if (vertexInfo.ValuePerCost >= 0)
-                            layerInfo.Vertices.Enqueue(vertexInfo);
+                        layerInfo.Vertices.Enqueue(vertexInfo);
                     }
                 }
 

@@ -45,11 +45,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// </summary>
         private int[] _maxIterationCounts;
 
-        ///// <summary>
-        ///// The error thresholds for the phases (calculated inside the <see cref="Init"/> method).
-        ///// </summary>
-        //private readonly double[] _errorThresholds = new double[3];
-
         /// <summary>
         /// Indicates whether the removed tree-node
         /// has been grown back or not.
@@ -116,11 +111,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             {
                 _temperature = initialTemperature * temperatureMultipliers[_phase - 1];
                 _phaseDependentRepulsionMultiplier = _phase < 2 ? 0.5 : 1.0;
-                //TODO put back the error and its threshold
-                //double error = _errorThresholds[_phase] + 1;
                 for (
                     _step = _maxIterationCounts[_phase - 1];
-                    (_step > 0 /*&& error > _errorThresholds[_phase - 1] */) || _phase == 2 && !AllTreesGrown;
+                    _step > 0 || _phase == 2 && !AllTreesGrown;
                     --_step)
                 {
                     //error = 0;

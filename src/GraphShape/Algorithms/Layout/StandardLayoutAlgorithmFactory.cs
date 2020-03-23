@@ -157,18 +157,16 @@ namespace GraphShape.Algorithms.Layout
             }
 
             if (context.Mode == LayoutMode.Compound
-                && context is ICompoundLayoutContext<TVertex, TEdge, TGraph> compoundContext)
+                && context is ICompoundLayoutContext<TVertex, TEdge, TGraph> compoundContext
+                && string.Equals(algorithmType, CompoundFDPAlgorithm))
             {
-                if (string.Equals(algorithmType, CompoundFDPAlgorithm))
-                {
-                    return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(
-                        compoundContext.Graph,
-                        compoundContext.Sizes,
-                        compoundContext.VerticesBorders,
-                        compoundContext.LayoutTypes,
-                        compoundContext.Positions,
-                        parameters as CompoundFDPLayoutParameters);
-                }
+                return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(
+                    compoundContext.Graph,
+                    compoundContext.Sizes,
+                    compoundContext.VerticesBorders,
+                    compoundContext.LayoutTypes,
+                    compoundContext.Positions,
+                    parameters as CompoundFDPLayoutParameters);
             }
 
             return null;

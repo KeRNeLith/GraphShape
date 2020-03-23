@@ -55,14 +55,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
             [Pure]
             public int CalculateCrossCount(
-                CrossCount crossCountDirection,
+                CrossCounts crossCountsDirection,
                 bool sourcesByMeasure = false,
                 bool targetsByMeasure = false)
             {
                 int crossCount = 0;
 
-                bool calculateUpCrossings = (crossCountDirection & CrossCount.Up) == CrossCount.Up;
-                bool calculateDownCrossings = (crossCountDirection & CrossCount.Down) == CrossCount.Down;
+                bool calculateUpCrossings = (crossCountsDirection & CrossCounts.Up) == CrossCounts.Up;
+                bool calculateDownCrossings = (crossCountsDirection & CrossCounts.Down) == CrossCounts.Down;
 
                 if (calculateUpCrossings)
                     crossCount += CalculateCrossings(UpEdges, sourcesByMeasure, targetsByMeasure);
@@ -170,12 +170,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             /// Computes the measures for every vertex in the layer by the given barycenters.
             /// </summary>
             /// <param name="barycenters">The barycenters.</param>
-            /// <param name="byRealPosition">If true, the barycenters will be computed based on the RealPosition.X value of the vertices. Otherwise the barycenter will be computed based on the value of the Position field (which is basically the index of the vertex inside the layer).</param>
-            public void Measure(Barycenter barycenters, bool byRealPosition)
+            /// <param name="byRealPosition">If true, the barycenters will be computed based on the RealPosition.X value of the vertices. Otherwise the barycenters will be computed based on the value of the Position field (which is basically the index of the vertex inside the layer).</param>
+            public void Measure(Barycenters barycenters, bool byRealPosition)
             {
-                bool computeUpBarycenter = (barycenters & Barycenter.Up) == Barycenter.Up;
-                bool computeDownBarycenter = (barycenters & Barycenter.Down) == Barycenter.Down;
-                bool computeSubBarycenter = (barycenters & Barycenter.Sub) == Barycenter.Sub;
+                bool computeUpBarycenter = (barycenters & Barycenters.Up) == Barycenters.Up;
+                bool computeDownBarycenter = (barycenters & Barycenters.Down) == Barycenters.Down;
+                bool computeSubBarycenter = (barycenters & Barycenters.Sub) == Barycenters.Sub;
 
                 int divCount = 0;
                 if (computeUpBarycenter)
@@ -216,13 +216,13 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
 
             /// <summary>
-            /// Computes the barycenter of the given <paramref name="vertex"/>
+            /// Computes the barycenters of the given <paramref name="vertex"/>
             /// based on positions of the vertices on other side of the given <paramref name="edges"/>.
             /// </summary>
-            /// <param name="vertex">The vertex which barycenter will be computed.</param>
+            /// <param name="vertex">The vertex which barycenters will be computed.</param>
             /// <param name="edges">The edges used for the computation.</param>
             /// <param name="byRealPosition"></param>
-            /// <returns>The computed barycenter.</returns>
+            /// <returns>The computed barycenters.</returns>
             private static double ComputeBarycenter(
                 [NotNull] SugiVertex vertex,
                 [NotNull, ItemNotNull] IEnumerable<SugiEdge> edges,
@@ -265,7 +265,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             /// <returns>
             /// Returns with true if the vertices in this layer ordered by the given <paramref name="barycenters"/>.
             /// </returns>
-            public bool IsOrderedByBarycenters(Barycenter barycenters, bool byRealPosition)
+            public bool IsOrderedByBarycenters(Barycenters barycenters, bool byRealPosition)
             {
                 if (Count == 0)
                     return true;
@@ -360,7 +360,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             /// It does that in the brute-force way (every permutation will be analyzed).
             /// Vertices should be sorted by it's measures.
             /// </summary>
-            public void FindBestPermutation(CrossCount crossCounting)
+            public void FindBestPermutation(CrossCounts crossCounting)
             {
                 int bestKnownCrossCount = CalculateCrossCount(crossCounting);
 
@@ -396,7 +396,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 while (Swap(verticesWithSameMeasure))
                 {
-                    // Sort the vertices with the same measure by barycenter
+                    // Sort the vertices with the same measure by barycenters
                     Sort(MeasureAndPermutationIndexComparer.Instance);
                     ReassignPositions();
 
