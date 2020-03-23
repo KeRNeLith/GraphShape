@@ -99,7 +99,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             if (layer is null)
             {
                 alternatingLayer = new AlternatingLayer();
-                alternatingLayer.AddRange(_layers[startLayerIndex]);
+                alternatingLayer.AddRange(
+                    _layers[startLayerIndex]
+#if !SUPPORTS_ENUMERABLE_COVARIANT
+                        .OfType<IData>()
+#endif
+                    );
                 alternatingLayer.EnsureAlternatingAndPositions();
                 AddAlternatingLayerToSparseCompactionGraph(alternatingLayer, startLayerIndex);
                 _alternatingLayers[startLayerIndex] = alternatingLayer;
@@ -379,9 +384,24 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
 
             if (vertexStack.Count > 0)
-                newAlternatingLayer.AddRange(vertexStack);
+            {
+                newAlternatingLayer.AddRange(
+                    vertexStack
+#if !SUPPORTS_ENUMERABLE_COVARIANT
+                        .OfType<IData>()
+#endif
+                    );
+            }
+
             if (segmentContainerStack.Count > 0)
-                newAlternatingLayer.AddRange(segmentContainerStack);
+            {
+                newAlternatingLayer.AddRange(
+                    segmentContainerStack
+#if !SUPPORTS_ENUMERABLE_COVARIANT
+                        .OfType<IData>()
+#endif
+                    );
+            }
 
             return newAlternatingLayer;
         }

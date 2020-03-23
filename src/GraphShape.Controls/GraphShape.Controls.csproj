@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net40</TargetFrameworks>
-    <!-- TODO Support net20;net30;net35;net45 netstandard old ; netstandard2.0-->
+    <TargetFrameworks>net35</TargetFrameworks>
     <UseWpf>true</UseWpf>
 
     <GeneratePackageOnBuild>$(Generate_GraphShape_Controls)</GeneratePackageOnBuild>
@@ -20,7 +19,7 @@
     <Description>GraphShape WPF controls.
 
 Supported platforms:
-- .NET Framework 4.0
+- .NET Framework 3.5+
 
 Supports Source Link</Description>
 
@@ -38,9 +37,9 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
   </PropertyGroup>
 
   <!-- Targets defines -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
-    <AssemblyTitle>GraphShape.Controls .NET 4.0</AssemblyTitle>
-    <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <AssemblyTitle>GraphShape.Controls .NET 3.5</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET35;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->
