@@ -41,6 +41,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\src\Libraries\RibbonControlsLibrary.dll</HintPath>
     </Reference>
+    <PackageReference Include="WPFExtensions" Version="1.0.0" />
     <PackageReference Include="WPFToolkit" Version="3.5.50211.1" />
   </ItemGroup>
 
