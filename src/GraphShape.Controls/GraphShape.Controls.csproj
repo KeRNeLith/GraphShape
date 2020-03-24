@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net35</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45</TargetFrameworks>
     <UseWpf>true</UseWpf>
 
     <GeneratePackageOnBuild>$(Generate_GraphShape_Controls)</GeneratePackageOnBuild>
@@ -40,6 +40,14 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
   <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
     <AssemblyTitle>GraphShape.Controls .NET 3.5</AssemblyTitle>
     <DefineConstants>$(DefineConstants);NET35;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <AssemblyTitle>GraphShape.Controls .NET 4.0</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <AssemblyTitle>GraphShape.Controls .NET 4.5</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET45;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->
