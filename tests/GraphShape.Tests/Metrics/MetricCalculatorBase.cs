@@ -1,29 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
 
-namespace Palesz.QuickGraph.Test.Metrics
+namespace GraphShape.Tests
 {
-	public abstract class MetricCalculatorBase<TVertex, TEdge, TGraph> : IMetricCalculator<TVertex, TEdge, TGraph>
-		where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
-	{
-		public TGraph Graph { get; private set; }
-		public IDictionary<TVertex, Point> Positions { get; private set; }
-		public IDictionary<TVertex, Size> Sizes { get; private set; }
-		public IDictionary<TEdge, Point[]> EdgeRoutes { get; private set; }
+    /// <summary>
+    /// Base class for metrics.
+    /// </summary>
+    public abstract class MetricCalculatorBase<TVertex, TEdge, TGraph> : IMetricCalculator
+        where TEdge : IEdge<TVertex>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        [NotNull]
+        public TGraph Graph { get; }
 
-		public MetricCalculatorBase( TGraph graph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, IDictionary<TEdge, Point[]> edgeRoutes )
-		{
-			Graph = graph;
-			Positions = vertexPositions;
-			Sizes = vertexSizes;
-			EdgeRoutes = edgeRoutes;
-		}
+        [NotNull]
+        public IDictionary<TVertex, Point> Positions { get; }
 
-		public abstract void Calculate();
-	}
+        [NotNull]
+        public IDictionary<TVertex, Size> Sizes { get; }
+
+        [NotNull]
+        public IDictionary<TEdge, Point[]> EdgeRoutes { get; }
+
+        protected MetricCalculatorBase(
+            [NotNull] TGraph graph,
+            [NotNull] IDictionary<TVertex, Point> verticesPositions,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] IDictionary<TEdge, Point[]> edgeRoutes)
+        {
+            Graph = graph;
+            Positions = verticesPositions;
+            Sizes = verticesSizes;
+            EdgeRoutes = edgeRoutes;
+        }
+
+        /// <inheritdoc />
+        public abstract void Calculate();
+    }
 }

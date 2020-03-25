@@ -1,51 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
+using JetBrains.Annotations;
 using QuikGraph;
 
-namespace Palesz.QuickGraph.Test.Metrics
+namespace GraphShape.Tests
 {
-	public class OverlapMetricCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
-		where TEdge : IEdge<TVertex>
-		where TGraph : IBidirectionalGraph<TVertex, TEdge>
-	{
-		public OverlapMetricCalculator( TGraph graph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, IDictionary<TEdge, Point[]> edgeRoutes )
-			: base( graph, vertexPositions, vertexSizes, edgeRoutes ) { }
+    /// <summary>
+    /// Overlap metric.
+    /// </summary>
+    internal class OverlapMetricCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
+        where TEdge : IEdge<TVertex>
+        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+    {
+        public OverlapMetricCalculator(
+            [NotNull] TGraph graph,
+            [NotNull] IDictionary<TVertex, Point> verticesPositions,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] IDictionary<TEdge, Point[]> edgeRoutes)
+            : base(graph, verticesPositions, verticesSizes, edgeRoutes)
+        {
+        }
 
-		public int OverlapCount { get; private set; }
-		public double OverlappedArea { get; private set; }
+        public int OverlapCount { get; private set; }
 
-		public override void Calculate()
-		{
-			var vertices = Graph.Vertices.ToArray();
-			for ( int i = 0; i < vertices.Length - 1; i++ )
-			{
-				for ( int j = i + 1; j < vertices.Length; j++ )
-				{
-					var v1 = vertices[i];
-					var v2 = vertices[j];
+        public double OverlappedArea { get; private set; }
 
-					var p1 = Positions[v1];
-					var p2 = Positions[v2];
-					
-					var s1 = Sizes[v1];
-					var s2 = Sizes[v2];
+        /// <inheritdoc />
+        public override void Calculate()
+        {
+            TVertex[] vertices = Graph.Vertices.ToArray();
+            for (int i = 0; i < vertices.Length - 1; ++i)
+            {
+                for (int j = i + 1; j < vertices.Length; ++j)
+                {
+                    TVertex vertex1 = vertices[i];
+                    TVertex vertex2 = vertices[j];
 
-					Rect r1 = new Rect( p1.X - s1.Width / 2, p1.Y - s1.Height / 2, p1.X + s1.Width / 2, p1.Y + s1.Height / 2 );
-					Rect r2 = new Rect( p2.X - s1.Width / 2, p2.Y - s1.Height / 2, p2.X + s1.Width / 2, p2.Y + s1.Height / 2 );
+                    Point pos1 = Positions[vertex1];
+                    Point pos2 = Positions[vertex2];
 
-					//check whether the vertices overlaps or not
-					r1.Intersect( r2 );
+                    Size size1 = Sizes[vertex1];
+                    Size size2 = Sizes[vertex2];
 
-					if ( r1.Width > 0 && r1.Height > 0 )
-					{
-						OverlapCount++;
-						OverlappedArea += r1.Width * r1.Height;
-					}
-				}
-			}
-		}
-	}
+                    var zone1 = new Rect(
+                        pos1.X - size1.Width / 2,
+                        pos1.Y - size1.Height / 2,
+                        pos1.X + size1.Width / 2,
+                        pos1.Y + size1.Height / 2);
+                    var zone2 = new Rect(
+                        pos2.X - size2.Width / 2,
+                        pos2.Y - size2.Height / 2,
+                        pos2.X + size2.Width / 2,
+                        pos2.Y + size2.Height / 2);
+
+                    // Check whether the vertices overlaps or not
+                    zone1.Intersect(zone2);
+
+                    if (zone1.Width > 0 && zone1.Height > 0)
+                    {
+                        ++OverlapCount;
+                        OverlappedArea += zone1.Width * zone1.Height;
+                    }
+                }
+            }
+        }
+    }
 }

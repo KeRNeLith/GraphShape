@@ -1,15 +1,14 @@
-﻿using GraphShape.Algorithms.EdgeRouting;
+using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Layout;
 using QuikGraph;
 using System.Windows;
 using System.Collections.Generic;
 using System;
 using System.Xml.Serialization;
-using Palesz.QuickGraph.Test.Metrics;
 using System.Diagnostics;
 using System.Xml;
 using System.Linq;
-using Palesz.QuickGraph.Test.Generators;
+using GraphShape.Algorithms.Layout.Simple.Circular;
 
 namespace GraphShape.Tests.MetricTests
 {
