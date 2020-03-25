@@ -106,7 +106,7 @@ namespace GraphShape.Tests.MetricTests
 			//5 tree egy parameterhalmazhoz
 			//mind az 5 tree-n vegigmegy az osszes algoritmus, es atlagokat szamol a metrikakra
 
-			var tree = GraphGenerator.CreateTree<string, Edge<string>>( 20, 2, ( i ) => i.ToString(), ( s, t ) => new Edge<string>( s, t ) );
+			var tree = GraphFactory.CreateTree<string, Edge<string>>( 20, 2, ( i ) => i.ToString(), ( s, t ) => new Edge<string>( s, t ) );
 			var vertexSizes = tree.Vertices.ToDictionary<string, string, Size>(
 				( s ) => s, ( s ) => new Size( 20, 20 ) );
 			LayoutResults res = new LayoutResults();

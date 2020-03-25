@@ -1,117 +1,164 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using JetBrains.Annotations;
 using QuikGraph;
 
-namespace Palesz.QuickGraph.Test.Generators
+namespace GraphShape.Tests
 {
-	public static class GraphGenerator
-	{
+    /// <summary>
+    /// Graph Factory.
+    /// </summary>
+    internal static class GraphFactory
+    {
+        /// <summary>
+        /// Creates a Tree graph.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="componentCount">Number of tree branches.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        /// <param name="edgeFactory">Edge factory.</param>
+        /// <param name="random">Random number generator.</param>
+        [Pure]
+        [NotNull]
+        public static IBidirectionalGraph<TVertex, TEdge> CreateTree<TVertex, TEdge>(
+            int vertexCount,
+            int componentCount,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory,
+            [NotNull, InstantHandle] Func<TVertex, TVertex, TEdge> edgeFactory,
+            [NotNull] Random random)
+            where TEdge : IEdge<TVertex>
+        {
+            var treeGraph = new BidirectionalGraph<TVertex, TEdge>(false, vertexCount);
+            for (int i = 0; i < componentCount; ++i)
+            {
+                treeGraph.AddVertex(vertexFactory(i));
+            }
 
-		public static IBidirectionalGraph<TVertex, TEdge> CreateTree<TVertex, TEdge>( int vertexCount, int componentCount, Func<int, TVertex> vertexFactory, Func<TVertex, TVertex, TEdge> edgeFactory )
-			where TEdge : IEdge<TVertex>
-		{
-			BidirectionalGraph<TVertex, TEdge> treeGraph = new BidirectionalGraph<TVertex, TEdge>( false, vertexCount );
+            for (int n = treeGraph.VertexCount; n < vertexCount; ++n)
+            {
+                int parentIndex = random.Next(treeGraph.VertexCount);
+                TVertex parent = treeGraph.Vertices.ElementAt(parentIndex);
 
-			for ( int i = 0; i < componentCount; i++ )
-			{
-				treeGraph.AddVertex( vertexFactory( i ) );
-			}
+                TVertex child = vertexFactory(n);
+                treeGraph.AddVertex(child);
+                treeGraph.AddEdge(edgeFactory(parent, child));
+            }
 
-			Random rnd = new Random( DateTime.Now.Millisecond );
+            return treeGraph;
+        }
 
-			for ( int n = treeGraph.VertexCount; n < vertexCount; n++ )
-			{
-				int parentNum = rnd.Next( treeGraph.VertexCount );
-				TVertex parent = treeGraph.Vertices.ElementAt( parentNum );
+        /// <summary>
+        /// Creates a DAG graph.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="edgeCount">Total number of edges.</param>
+        /// <param name="maxParent">Maximum number of parent per vertex.</param>
+        /// <param name="maxChild">Maximum number of child per vertex.</param>
+        /// <param name="parallelEdgeAllowed">Allows parallel edges or not.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        /// <param name="edgeFactory">Edge factory.</param>
+        /// <param name="random">Random number generator.</param>
+        [Pure]
+        [NotNull]
+        public static IBidirectionalGraph<TVertex, TEdge> CreateDAG<TVertex, TEdge>(
+            int vertexCount,
+            int edgeCount,
+            int maxParent,
+            int maxChild,
+            bool parallelEdgeAllowed,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory,
+            [NotNull, InstantHandle] Func<TVertex, TVertex, TEdge> edgeFactory,
+            [NotNull] Random random)
+            where TEdge : IEdge<TVertex>
+        {
+            var dagGraph = new BidirectionalGraph<TVertex, TEdge>(parallelEdgeAllowed, vertexCount);
 
-				TVertex child = vertexFactory( n );
-				treeGraph.AddVertex( child );
-				treeGraph.AddEdge( edgeFactory( parent, child ) );
-			}
+            var verticesMap = new Dictionary<int, TVertex>();
 
-			return treeGraph;
-		}
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                TVertex vertex = vertexFactory(i);
+                verticesMap[i] = vertex;
+                dagGraph.AddVertex(vertex);
+            }
 
-		public static IBidirectionalGraph<TVertex, TEdge> CreateDAG<TVertex, TEdge>( int vertexCount, int edgeCount, int maxParent, int maxChild, bool parallelEdgeAllowed, Func<int, TVertex> vertexFactory, Func<TVertex, TVertex, TEdge> edgeFactory )
-			where TEdge : IEdge<TVertex>
-		{
-			BidirectionalGraph<TVertex, TEdge> dagGraph = new BidirectionalGraph<TVertex, TEdge>( false, vertexCount );
+            for (int i = 0; i < edgeCount; ++i)
+            {
+                TVertex parent;
+                TVertex child;
+                do
+                {
+                    int childIndex = random.Next(vertexCount - 1) + 1;
+                    int parentIndex = random.Next(childIndex);
+                    child = verticesMap[childIndex];
+                    parent = verticesMap[parentIndex];
+                } while (!parallelEdgeAllowed && dagGraph.ContainsEdge(parent, child)
+                         || dagGraph.OutDegree(parent) >= maxChild
+                         || dagGraph.InDegree(child) >= maxParent);
 
-			Dictionary<int, TVertex> vertexMap = new Dictionary<int, TVertex>();
+                // Create the edge between the 2 vertex
+                dagGraph.AddEdge(edgeFactory(parent, child));
+            }
 
-			for ( int i = 0; i < vertexCount; i++ )
-			{
-				TVertex v = vertexFactory( i );
-				vertexMap[i] = v;
-				dagGraph.AddVertex( v );
-			}
+            return dagGraph;
+        }
 
-			Random rnd = new Random( DateTime.Now.Millisecond );
-			int childIndex;
-			int parentIndex;
-			TVertex child;
-			TVertex parent;
-			for ( int i = 0; i < edgeCount; i++ )
-			{
-				do
-				{
-					childIndex = rnd.Next( vertexCount - 1 ) + 1;
-					parentIndex = rnd.Next( childIndex );
-					child = vertexMap[childIndex];
-					parent = vertexMap[parentIndex];
-				} while ( ( !parallelEdgeAllowed && dagGraph.ContainsEdge( parent, child ) ) ||
-					dagGraph.OutDegree( parent ) >= maxChild ||
-					dagGraph.InDegree( child ) >= maxParent );
+        /// <summary>
+        /// Creates a general graph.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="edgeCount">Total number of edges.</param>
+        /// <param name="maxDegree">Maximum degree per vertex.</param>
+        /// <param name="parallelEdgeAllowed">Allows parallel edges or not.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        /// <param name="edgeFactory">Edge factory.</param>
+        /// <param name="random">Random number generator.</param>
+        [Pure]
+        [NotNull]
+        public static IBidirectionalGraph<TVertex, TEdge> CreateGeneralGraph<TVertex, TEdge>(
+            int vertexCount,
+            int edgeCount,
+            int maxDegree,
+            bool parallelEdgeAllowed,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory,
+            [NotNull, InstantHandle] Func<TVertex, TVertex, TEdge> edgeFactory,
+            [NotNull] Random random)
+            where TEdge : IEdge<TVertex>
+        {
+            var graph = new BidirectionalGraph<TVertex, TEdge>(parallelEdgeAllowed, vertexCount);
 
-				//create the edge between the 2 vertex
-				TEdge e = edgeFactory( parent, child );
-				dagGraph.AddEdge( e );
-			}
+            var verticesMap = new Dictionary<int, TVertex>();
 
-			return dagGraph;
-		}
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                TVertex vertex = vertexFactory(i);
+                verticesMap[i] = vertex;
+                graph.AddVertex(vertex);
+            }
 
+            for (int i = 0; i < edgeCount; ++i)
+            {
+                int childIndex;
+                int parentIndex;
+                TVertex child;
+                TVertex parent;
+                do
+                {
+                    childIndex = random.Next(vertexCount);
+                    parentIndex = random.Next(vertexCount);
+                    child = verticesMap[childIndex];
+                    parent = verticesMap[parentIndex];
+                } while (childIndex == parentIndex
+                         || !parallelEdgeAllowed && graph.ContainsEdge(parent, child)
+                         || graph.Degree(parent) >= maxDegree
+                         || graph.Degree(child) >= maxDegree);
 
-		public static IBidirectionalGraph<TVertex, TEdge> CreateGeneralGraph<TVertex, TEdge>( int vertexCount, int edgeCount, int maxDegree, bool parallelEdgeAllowed, Func<int, TVertex> vertexFactory, Func<TVertex, TVertex, TEdge> edgeFactory )
-			where TEdge : IEdge<TVertex>
-		{
-			BidirectionalGraph<TVertex, TEdge> graph = new BidirectionalGraph<TVertex, TEdge>( false, vertexCount );
+                // Create the edge between the 2 vertex
+                graph.AddEdge(edgeFactory(parent, child));
+            }
 
-			Dictionary<int, TVertex> vertexMap = new Dictionary<int, TVertex>();
-
-			for ( int i = 0; i < vertexCount; i++ )
-			{
-				TVertex v = vertexFactory( i );
-				vertexMap[i] = v;
-				graph.AddVertex( v );
-			}
-
-			Random rnd = new Random( DateTime.Now.Millisecond );
-			int childIndex;
-			int parentIndex;
-			TVertex child;
-			TVertex parent;
-			for ( int i = 0; i < edgeCount; i++ )
-			{
-				do
-				{
-					childIndex = rnd.Next( vertexCount );
-					parentIndex = rnd.Next( vertexCount );
-					child = vertexMap[childIndex];
-					parent = vertexMap[parentIndex];
-				} while ( childIndex == parentIndex ||
-					( !parallelEdgeAllowed && graph.ContainsEdge( parent, child ) ) ||
-					graph.Degree( parent ) >= maxDegree ||
-					graph.Degree( child ) >= maxDegree );
-
-				//create the edge between the 2 vertex
-				TEdge e = edgeFactory( parent, child );
-				graph.AddEdge( e );
-			}
-
-			return graph;
-		}
-	}
+            return graph;
+        }
+    }
 }

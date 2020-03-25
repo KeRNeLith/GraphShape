@@ -52,6 +52,7 @@
 
     <!-- R# Code Style -->
     <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=BFS/@EntryIndexedValue">BFS</s:String>
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=DAG/@EntryIndexedValue">DAG</s:String>
     <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=DFS/@EntryIndexedValue">DFS</s:String>
     <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=FR/@EntryIndexedValue">FR</s:String>
     <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=FSA/@EntryIndexedValue">FSA</s:String>
