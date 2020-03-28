@@ -8,13 +8,13 @@ using QuikGraph;
 namespace GraphShape.Tests
 {
     /// <summary>
-    /// Edge related metrics.
+    /// Edge crossing metric.
     /// </summary>
-    internal class EdgeMetricCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
+    internal class EdgeCrossingCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        public EdgeMetricCalculator(
+        public EdgeCrossingCalculator(
             [NotNull] TGraph graph,
             [NotNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
@@ -29,20 +29,14 @@ namespace GraphShape.Tests
         public double MaximumEdgeLength { get; private set; }
         public double AverageEdgeLength { get; private set; }
 
-        public double MinimumAngle { get; private set; }
-        public double MaximumAngle { get; private set; }
-        public double AverageAngle { get; private set; }
-
         /// <inheritdoc />
         public override void Calculate()
         {
             TEdge[] edges = Graph.Edges.ToArray();
             var edgePoints = new List<Point>[edges.Length];
 
-            int segmentCount = 0;
-
             // Create the points of the edges
-            for (int i = 0; i < edges.Length - 1; ++i)
+            for (int i = 0; i < edges.Length; ++i)
             {
                 TEdge edge = edges[i];
                 List<Point> points = EdgeRoutes.TryGetValue(edge, out Point[] route) && route != null && route.Length > 0
@@ -54,14 +48,15 @@ namespace GraphShape.Tests
                     points.AddRange(route);
                 points.Add(Positions[edge.Target]);
 
-                for (int j = 0; j < points.Count - 1; ++j)
+                edgePoints[i] = points;
+
+                for (int j = 1; j < points.Count; ++j)
                 {
                     double length = (points[j] - points[j - 1]).Length;
 
                     MinimumEdgeLength = Math.Min(MinimumEdgeLength, length);
                     MaximumEdgeLength = Math.Max(MaximumEdgeLength, length);
                     AverageEdgeLength += length;
-                    ++segmentCount;
                 }
             }
 
@@ -75,50 +70,43 @@ namespace GraphShape.Tests
 
                     for (int ii = 0; ii < edgePoints1.Count - 1; ++ii)
                     {
-                        Point p11 = edgePoints1[ii];
-                        Point p12 = edgePoints1[ii + 1];
-                        if (p12.X < p11.X)
-                        {
-                            Point p = p12;
-                            p12 = p11;
-                            p11 = p;
-                        }
+                        Point pA = edgePoints1[ii];
+                        Point pB = edgePoints1[ii + 1];
 
                         for (int jj = 0; jj < edgePoints2.Count - 1; ++jj)
                         {
-                            Point p21 = edgePoints2[jj];
-                            Point p22 = edgePoints2[jj + 1];
-                            if (p22.X < p21.X)
-                            {
-                                Point p = p22;
-                                p22 = p21;
-                                p21 = p;
-                            }
+                            Point pC = edgePoints2[jj];
+                            Point pD = edgePoints2[jj + 1];
 
-                            p11.X = p21.X = Math.Max(p11.X, p21.X);
-                            p12.X = p22.X = Math.Min(p12.X, p22.X);
+                            if (pB.Equals(pC) || pA.Equals(pC) || pA.Equals(pD) || pB.Equals(pD))
+                                continue;   // Ignore if source and/or target are the same
 
-                            if ((p11.Y - p21.Y) * (p12.Y - p22.Y) < 0)
-                            {
-                                // The edges crosses each other
+                            // [AB]
+                            double xA = pA.X;
+                            double yA = pA.Y;
+                            double xB = pB.X;
+                            double yB = pB.Y;
+
+                            // [CD]
+                            double xC = pC.X;
+                            double yC = pC.Y;
+                            double xD = pD.X;
+                            double yD = pD.Y;
+
+                            // The edges crosses each other
+                            bool segmentCrossing =
+                                ((xC - xA) * (yB - yA) + (yC - yA) * (xA - xB) < 0) ^
+                                ((xD - xA) * (yB - yA) + (yD - yA) * (xA - xB) < 0)
+                                &&
+                                ((xA - xC) * (yD - yC) + (yA - yC) * (xC - xD) < 0) ^
+                                ((xB - xC) * (yD - yC) + (yB - yC) * (xC - xD) < 0);
+
+                            if (segmentCrossing)
                                 ++CrossCount;
-
-                                Vector v1 = p11 - p12;
-                                Vector v2 = p21 - p22;
-
-                                double angle = Math.Acos(Math.Abs((v1.X * v2.X + v1.Y * v2.Y) / (v1.Length * v2.Length)));
-
-                                MinimumAngle = Math.Min(MinimumAngle, angle);
-                                MaximumAngle = Math.Max(MaximumAngle, angle);
-                                AverageAngle += angle;
-                            }
                         }
                     }
                 }
             }
-
-            AverageAngle /= segmentCount;
-            AverageEdgeLength /= segmentCount;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace GraphShape.Tests
         {
         }
 
+        public Point TopLeft { get; private set; }
+        public Point BottomRight { get; private set; }
         public double Area { get; private set; }
         public double Ratio { get; private set; }
 
@@ -61,6 +63,8 @@ namespace GraphShape.Tests
 
             Vector layoutAreaSize = bottomRight - topLeft;
 
+            TopLeft = topLeft;
+            BottomRight = bottomRight;
             Area = layoutAreaSize.LengthSquared;
             Ratio = layoutAreaSize.X / layoutAreaSize.Y;
         }

@@ -46,13 +46,13 @@ namespace GraphShape.Tests
                     var zone1 = new Rect(
                         pos1.X - size1.Width / 2,
                         pos1.Y - size1.Height / 2,
-                        pos1.X + size1.Width / 2,
-                        pos1.Y + size1.Height / 2);
+                        size1.Width,
+                        size1.Height);
                     var zone2 = new Rect(
                         pos2.X - size2.Width / 2,
                         pos2.Y - size2.Height / 2,
-                        pos2.X + size2.Width / 2,
-                        pos2.Y + size2.Height / 2);
+                        size2.Width,
+                        size2.Height);
 
                     // Check whether the vertices overlaps or not
                     zone1.Intersect(zone2);
