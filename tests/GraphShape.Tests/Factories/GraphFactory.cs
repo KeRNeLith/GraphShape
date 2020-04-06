@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -156,6 +156,44 @@ namespace GraphShape.Tests
 
                 // Create the edge between the 2 vertex
                 graph.AddEdge(edgeFactory(parent, child));
+            }
+
+            return graph;
+        }
+
+        /// <summary>
+        /// Creates a <paramref name="vertexCount"/> complete graph.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        /// <param name="edgeFactory">Edge factory.</param>
+        [Pure]
+        [NotNull]
+        public static IBidirectionalGraph<TVertex, TEdge> CreateCompleteGraph<TVertex, TEdge>(
+            int vertexCount,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory,
+            [NotNull, InstantHandle] Func<TVertex, TVertex, TEdge> edgeFactory)
+            where TEdge : IEdge<TVertex>
+        {
+            var graph = new BidirectionalGraph<TVertex, TEdge>(false, vertexCount);
+
+            var verticesMap = new Dictionary<int, TVertex>();
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                TVertex vertex = vertexFactory(i);
+                verticesMap[i] = vertex;
+                graph.AddVertex(vertex);
+            }
+
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                for (int j = 0; j < vertexCount; ++j)
+                {
+                    if (i != j)
+                    {
+                        graph.AddEdge(edgeFactory(verticesMap[i], verticesMap[j]));
+                    }
+                }
             }
 
             return graph;

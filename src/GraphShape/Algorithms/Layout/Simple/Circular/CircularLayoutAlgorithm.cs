@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -42,49 +43,98 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
         /// <inheritdoc />
         protected override void InternalCompute()
         {
-            // Calculate the size of the circle
-            double perimeter = 0;
-            var halfSize = new double[VisitedGraph.VertexCount];
-            int i = 0;
-            foreach (TVertex vertex in VisitedGraph.Vertices)
+            switch (VisitedGraph.VertexCount)
             {
-                Size size = _verticesSizes[vertex];
-                halfSize[i] = Math.Sqrt(size.Width * size.Width + size.Height * size.Height) * 0.5;
-                perimeter += halfSize[i] * 2;
-                ++i;
+                case 2:
+                    TwoVerticesCircularLayout();
+                    break;
+                case 3:
+                    ThreeVerticesCircularLayout();
+                    break;
+                default:
+                    CircularLayout();
+                    break;
             }
 
-            double radius = perimeter / (2 * Math.PI);
+            #region Local functions
 
-            // Pre-calculation
-            double angle = 0;
-            double a;
-            i = 0;
-            foreach (TVertex vertex in VisitedGraph.Vertices)
+            void TwoVerticesCircularLayout()
             {
-                a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
-                angle += a;
+                TVertex[] vertices = VisitedGraph.Vertices.ToArray();
+                VerticesPositions[vertices[0]] = default(Point);
+                VerticesPositions[vertices[1]] = new Point(_verticesSizes[vertices[0]].Width * 1.3, 0);
+            }
+
+            void ThreeVerticesCircularLayout()
+            {
+                double maxWidth = _verticesSizes.Values.Max(size => size.Width);
+                double maxHeight = _verticesSizes.Values.Max(size => size.Height);
+                double radius = Math.Max(maxWidth, maxHeight) * 1.3;
+
+                double angle = 0;
+                foreach (TVertex vertex in VisitedGraph.Vertices)
+                {
+                    VerticesPositions[vertex] = new Point(
+                        Math.Cos(angle) * radius + radius,
+                        Math.Sin(angle) * radius + radius);
+                    angle += 2 * Math.PI / 3;   // 120°
+                }
+            }
+
+            void CircularLayout()
+            {
+                // Calculate the size of the circle
+                double perimeter = 0;
+                var halfSize = new double[VisitedGraph.VertexCount];
+                int i = 0;
+                foreach (TVertex vertex in VisitedGraph.Vertices)
+                {
+                    Size size = _verticesSizes[vertex];
+                    halfSize[i] = Math.Sqrt(size.Width * size.Width + size.Height * size.Height) * 0.5;
+                    perimeter += halfSize[i] * 2;
+                    ++i;
+                }
+
+                double radius = perimeter / (2 * Math.PI);
+
+                // Pre-calculation
+                double angle = 0;
+                double a;
+                i = 0;
+                foreach (TVertex vertex in VisitedGraph.Vertices)
+                {
+                    a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
+                    angle += a;
+                    if (ReportOnIterationEndNeeded)
+                    {
+                        VerticesPositions[vertex] = new Point(
+                            Math.Cos(angle) * radius + radius,
+                            Math.Sin(angle) * radius + radius);
+                    }
+                    angle += a;
+                }
+
                 if (ReportOnIterationEndNeeded)
-                    VerticesPositions[vertex] = new Point(Math.Cos(angle) * radius + radius, Math.Sin(angle) * radius + radius);
-                angle += a;
+                    OnIterationEnded(0, 50, "Pre-calculation done.", false);
+
+                // Recalculate radius
+                radius = angle / (2 * Math.PI) * radius;
+
+                // Calculation
+                angle = 0;
+                i = 0;
+                foreach (TVertex vertex in VisitedGraph.Vertices)
+                {
+                    a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
+                    angle += a;
+                    VerticesPositions[vertex] = new Point(
+                        Math.Cos(angle) * radius + radius,
+                        Math.Sin(angle) * radius + radius);
+                    angle += a;
+                }
             }
 
-            if (ReportOnIterationEndNeeded)
-                OnIterationEnded(0, 50, "Pre-calculation done.", false);
-
-            // Recalculate radius
-            radius = angle / (2 * Math.PI) * radius;
-
-            // Calculation
-            angle = 0;
-            i = 0;
-            foreach (TVertex vertex in VisitedGraph.Vertices)
-            {
-                a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
-                angle += a;
-                VerticesPositions[vertex] = new Point(Math.Cos(angle) * radius + radius, Math.Sin(angle) * radius + radius);
-                angle += a;
-            }
+            #endregion
         }
 
         #endregion
