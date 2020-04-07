@@ -25,6 +25,20 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
         /// Initializes a new instance of the <see cref="CircularLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public CircularLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [CanBeNull] CircularLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, verticesSizes, oldParameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CircularLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
@@ -35,7 +49,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
             [CanBeNull] CircularLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
-            _verticesSizes = verticesSizes;
+            _verticesSizes = verticesSizes ?? throw new ArgumentNullException(nameof(verticesSizes));
         }
 
         #region AlgorithmBase

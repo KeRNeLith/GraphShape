@@ -6,8 +6,9 @@ using GraphShape.Algorithms.Layout.Simple.Circular;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
-namespace GraphShape.Tests
+namespace GraphShape.Tests.Algorithms
 {
     /// <summary>
     /// Tests related to layout algorithms.
@@ -89,6 +90,98 @@ namespace GraphShape.Tests
         }
 
         #endregion
+
+        [Test]
+        public void Constructor()
+        {
+            var verticesPositions = new Dictionary<string, Point>();
+            var verticesSizes = new Dictionary<string, Size>();
+            var graph = new BidirectionalGraph<string, Edge<string>>();
+            var algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            AssertAlgorithmProperties(algorithm, graph);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm.IterationEnded += (sender, args) => { };
+            AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm.ProgressChanged += (sender, args) => { };
+            AssertAlgorithmProperties(algorithm, graph, expectedReportProgress: true);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm.IterationEnded += (sender, args) => { };
+            algorithm.ProgressChanged += (sender, args) => { };
+            AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true, expectedReportProgress: true);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, verticesSizes);
+            AssertAlgorithmProperties(algorithm, graph);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes);
+            AssertAlgorithmProperties(algorithm, graph, verticesPositions);
+
+            var parameters = new CircularLayoutParameters();
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes, parameters);
+            AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
+
+            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes, parameters);
+            AssertAlgorithmProperties(algorithm, graph, verticesPositions, parameters: parameters);
+        }
+
+        [Test]
+        public void Constructor_Throws()
+        {
+            var verticesPositions = new Dictionary<string, Point>();
+            var verticesSizes = new Dictionary<string, Size>();
+            var graph = new BidirectionalGraph<string, Edge<string>>();
+            var parameters = new CircularLayoutParameters();
+
+            // ReSharper disable ObjectCreationAsStatement
+            // ReSharper disable AssignNullToNotNullAttribute
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null));
+
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, parameters));
+
+
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, (IDictionary<string, Size>)null));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, (IDictionary<string, Size>)null));
+
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null));
+
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, null, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, null, parameters));
+
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes, parameters));
+            Assert.Throws<ArgumentNullException>(
+                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null, parameters));
+            // ReSharper restore AssignNullToNotNullAttribute
+            // ReSharper restore ObjectCreationAsStatement
+        }
 
         [NotNull, ItemNotNull]
         private static IEnumerable<TestCaseData> CircularLayoutTestCases
@@ -224,7 +317,6 @@ namespace GraphShape.Tests
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
             var algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
                 graph,
-                null,
                 verticesSizes,
                 new CircularLayoutParameters());
 
