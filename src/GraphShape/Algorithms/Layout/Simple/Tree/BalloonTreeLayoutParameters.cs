@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
@@ -48,6 +49,18 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
                 _border = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _minRadius;
+            yield return _border;
         }
     }
 }

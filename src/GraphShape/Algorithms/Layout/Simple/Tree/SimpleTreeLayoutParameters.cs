@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Tree
@@ -8,6 +9,24 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
     /// </summary>
     public class SimpleTreeLayoutParameters : LayoutParametersBase
     {
+        private LayoutDirection _direction = LayoutDirection.TopToBottom;
+
+        /// <summary>
+        /// Direction of the layout.
+        /// </summary>
+        public LayoutDirection Direction
+        {
+            get => _direction;
+            set
+            {
+                if (_direction == value)
+                    return;
+
+                _direction = value;
+                OnPropertyChanged();
+            }
+        }
+
         private double _vertexGap = 10;
 
         /// <summary>
@@ -50,24 +69,6 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             }
         }
 
-        private LayoutDirection _direction = LayoutDirection.TopToBottom;
-
-        /// <summary>
-        /// Direction of the layout.
-        /// </summary>
-        public LayoutDirection Direction
-        {
-            get => _direction;
-            set
-            {
-                if (_direction == value)
-                    return;
-
-                _direction = value;
-                OnPropertyChanged();
-            }
-        }
-
         private SpanningTreeGeneration _spanningTreeGeneration = SpanningTreeGeneration.DFS;
 
         /// <summary>
@@ -84,6 +85,20 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
                 _spanningTreeGeneration = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _direction;
+            yield return _vertexGap;
+            yield return _layerGap;
+            yield return _spanningTreeGeneration;
         }
     }
 }

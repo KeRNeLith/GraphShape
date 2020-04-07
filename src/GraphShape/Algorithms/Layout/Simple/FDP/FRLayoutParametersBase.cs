@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
@@ -177,6 +178,22 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         protected FRLayoutParametersBase()
         {
             CalculateConstants();
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _vertexCount;
+            yield return _attractionMultiplier;
+            yield return _repulsiveMultiplier;
+            yield return _iterationLimit;
+            yield return _lambda;
+            yield return _coolingFunction;
         }
     }
 }

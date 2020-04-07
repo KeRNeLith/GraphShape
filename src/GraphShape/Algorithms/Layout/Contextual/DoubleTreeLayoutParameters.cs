@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Contextual
@@ -66,6 +67,19 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 _layerGap = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _direction;
+            yield return _vertexGap;
+            yield return _layerGap;
         }
     }
 }

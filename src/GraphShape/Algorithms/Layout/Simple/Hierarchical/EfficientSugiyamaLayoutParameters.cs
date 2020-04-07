@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
@@ -164,6 +165,24 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 _edgeRouting = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _direction;
+            yield return _layerDistance;
+            yield return _vertexDistance;
+            yield return _positionMode;
+            yield return _optimizeWidth;
+            yield return _widthPerHeight;
+            yield return _minimizeEdgeLength;
+            yield return _edgeRouting;
         }
     }
 }

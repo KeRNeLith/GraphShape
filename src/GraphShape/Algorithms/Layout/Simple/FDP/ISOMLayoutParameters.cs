@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
@@ -192,6 +193,25 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 _coolingFactor = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _width;
+            yield return _height;
+            yield return _maxEpoch;
+            yield return _radiusConstantTime;
+            yield return _initialRadius;
+            yield return _minRadius;
+            yield return _initialAdaptation;
+            yield return _minAdaptation;
+            yield return _coolingFactor;
         }
     }
 }

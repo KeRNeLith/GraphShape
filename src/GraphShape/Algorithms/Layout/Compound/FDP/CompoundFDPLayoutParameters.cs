@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Compound.FDP
@@ -285,6 +286,30 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                 _separationMultiplier = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _idealEdgeLength;
+            yield return _elasticConstant;
+            yield return _repulsionConstant;
+            yield return _nestingFactor;
+            yield return _gravitationFactor;
+            yield return _phase1Iterations;
+            yield return _phase2Iterations;
+            yield return _phase3Iterations;
+            yield return _phase2TemperatureInitialMultiplier;
+            yield return _phase3TemperatureInitialMultiplier;
+            yield return _temperatureDecreasing;
+            yield return _temperatureFactor;
+            yield return _displacementLimitMultiplier;
+            yield return _separationMultiplier;
         }
     }
 }

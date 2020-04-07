@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
@@ -145,6 +146,23 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 _positionCalculationMethod = value;
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override IEnumerable<object> GetEqualityElements()
+        {
+            foreach (object element in base.GetEqualityElements())
+            {
+                yield return element;
+            }
+
+            yield return _verticalGap;
+            yield return _horizontalGap;
+            yield return _dirty;
+            yield return _phase1IterationCount;
+            yield return _phase2IterationCount;
+            yield return _minimizeHierarchicalEdgeLong;
+            yield return _positionCalculationMethod;
         }
     }
 }
