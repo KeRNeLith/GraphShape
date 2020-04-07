@@ -73,9 +73,6 @@ Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GITHUB_ACCESS_TO
 git config --global user.email $env:GITHUB_EMAIL
 git config --global user.name "KeRNeLith"
 
-$env:VSINSTALLDIR="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community"
-$env:VisualStudioVersion="15.0"
-
 "Generating documentation site..."
 docfx ./docs/docfx.json
 
