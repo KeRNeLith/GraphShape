@@ -32,7 +32,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] CircularLayoutParameters oldParameters)
+            [CanBeNull] CircularLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
             _verticesSizes = verticesSizes;

@@ -5,6 +5,7 @@ using GraphShape.Algorithms;
 using JetBrains.Annotations;
 using QuikGraph;
 using NUnit.Framework;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms
 {
@@ -12,7 +13,7 @@ namespace GraphShape.Tests.Algorithms
     /// Tests for <see cref="LayeredTopologicalSortAlgorithm{TVertex,TEdge}"/>.
     ///</summary>
     [TestFixture]
-    internal class LayeredTopologicalSortAlgorithmTests : AlgorithmTestsBase
+    internal class LayeredTopologicalSortAlgorithmTests
     {
         #region Test helpers
 

@@ -5,13 +5,14 @@ using System.Windows;
 using GraphShape.Algorithms.OverlapRemoval;
 using JetBrains.Annotations;
 using NUnit.Framework;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms.OverlapRemoval
 {
     /// <summary>
     /// Base class for FSA algorithm tests.
     /// </summary>
-    internal class FSAAlgorithmTestsBase : AlgorithmTestsBase
+    internal class FSAAlgorithmTestsBase
     {
         #region Test helpers
 

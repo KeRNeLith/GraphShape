@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
 using QuikGraph.Algorithms;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms.Layout
 {
@@ -14,7 +15,7 @@ namespace GraphShape.Tests.Algorithms.Layout
     /// and <see cref="LayoutAlgorithm{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/>.
     /// </summary>
     [TestFixture]
-    internal class LayoutAlgorithmBaseTests : AlgorithmTestsBase
+    internal class LayoutAlgorithmBaseTests
     {
         #region Test classes
 

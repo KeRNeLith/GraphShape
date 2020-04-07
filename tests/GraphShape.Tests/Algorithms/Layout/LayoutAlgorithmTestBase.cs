@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
 
-namespace GraphShape.Tests
+namespace GraphShape.Tests.Algorithms
 {
     /// <summary>
     /// Base class for tests related to layout algorithms.

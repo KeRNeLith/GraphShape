@@ -5,6 +5,7 @@ using GraphShape.Algorithms.EdgeRouting;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms.EdgeRouting
 {
@@ -12,7 +13,7 @@ namespace GraphShape.Tests.Algorithms.EdgeRouting
     /// Tests for <see cref="EdgeRoutingAlgorithmBase{TVertex,TEdge,TGraph}"/>.
     /// </summary>
     [TestFixture]
-    internal class EdgeRoutingAlgorithmTests : AlgorithmTestsBase
+    internal class EdgeRoutingAlgorithmTests
     {
         #region Tests classes
 

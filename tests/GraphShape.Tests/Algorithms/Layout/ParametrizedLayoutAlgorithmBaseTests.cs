@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
 using QuikGraph.Algorithms;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms.Layout
 {
@@ -16,7 +17,7 @@ namespace GraphShape.Tests.Algorithms.Layout
     /// and <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo,TParameters}"/>.
     /// </summary>
     [TestFixture]
-    internal class ParameterizedLayoutAlgorithmBaseTests : AlgorithmTestsBase
+    internal class ParameterizedLayoutAlgorithmBaseTests
     {
         #region Test classes
 
@@ -133,7 +134,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<TestVertex, Point>();
             var graph = new AdjacencyGraph<TestVertex, Edge<TestVertex>>();
             var algorithm = new TestSimpleParameterizedLayoutAlgorithm(graph);
-            AssertAlgorithmProperties(algorithm, graph, verticesPositions);
+            AssertAlgorithmProperties(algorithm, graph);
 
             algorithm = new TestSimpleParameterizedLayoutAlgorithm(graph);
             algorithm.IterationEnded += (sender, args) => { };
@@ -169,44 +170,7 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var parameters = new TestLayoutParameters();
             algorithm = new TestSimpleParameterizedLayoutAlgorithm(graph, null, parameters);
-            AssertAlgorithmProperties(algorithm, graph, p: parameters);
-
-            #region Local function
-
-            void AssertAlgorithmProperties<TVertex, TEdge, TGraph, TParameters>(
-                ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters> algo,
-                TGraph g,
-                IDictionary<TVertex, Point> pos = null,
-                bool expectedReportIterationEnd = false,
-                bool expectedReportProgress = false,
-                TParameters p = null)
-                where TEdge : IEdge<TVertex>
-                where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-                where TParameters : class, ILayoutParameters
-            {
-                AssertAlgorithmState(algo);
-                Assert.AreSame(g, algo.VisitedGraph);
-                if (pos is null)
-                    Assert.IsNotNull(algo.VerticesPositions);
-                else
-                    CollectionAssert.AreEqual(pos, algo.VerticesPositions);
-                Assert.AreEqual(expectedReportIterationEnd, algo.ReportOnIterationEndNeeded);
-                Assert.AreEqual(expectedReportProgress, algo.ReportOnProgressChangedNeeded);
-                Assert.IsNotNull(algo.TraceSource);
-                if (p is null)
-                {
-                    Assert.IsNotNull(algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                else
-                {
-                    Assert.AreEqual(p, algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                Assert.IsNotNull(algo.TraceSource);
-            }
-
-            #endregion
+            AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
         }
 
         [Test]
@@ -215,7 +179,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<TestVertex, Point>();
             var graph = new AdjacencyGraph<TestVertex, Edge<TestVertex>>();
             var algorithm = new TestDefaultSimpleParameterizedLayoutAlgorithm(graph);
-            AssertAlgorithmProperties(algorithm, graph, verticesPositions);
+            AssertAlgorithmProperties(algorithm, graph);
 
             algorithm = new TestDefaultSimpleParameterizedLayoutAlgorithm(graph);
             algorithm.IterationEnded += (sender, args) => { };
@@ -251,44 +215,7 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var parameters = new TestLayoutParameters();
             algorithm = new TestDefaultSimpleParameterizedLayoutAlgorithm(graph, null, parameters);
-            AssertAlgorithmProperties(algorithm, graph, p: parameters);
-
-            #region Local function
-
-            void AssertAlgorithmProperties<TVertex, TEdge, TGraph, TParameters>(
-                DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParameters> algo,
-                TGraph g,
-                IDictionary<TVertex, Point> pos = null,
-                bool expectedReportIterationEnd = false,
-                bool expectedReportProgress = false,
-                TParameters p = null)
-                where TEdge : IEdge<TVertex>
-                where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-                where TParameters : class, ILayoutParameters, new()
-            {
-                AssertAlgorithmState(algo);
-                Assert.AreSame(g, algo.VisitedGraph);
-                if (pos is null)
-                    Assert.IsNotNull(algo.VerticesPositions);
-                else
-                    CollectionAssert.AreEqual(pos, algo.VerticesPositions);
-                Assert.AreEqual(expectedReportIterationEnd, algo.ReportOnIterationEndNeeded);
-                Assert.AreEqual(expectedReportProgress, algo.ReportOnProgressChangedNeeded);
-                Assert.IsNotNull(algo.TraceSource);
-                if (p is null)
-                {
-                    Assert.IsNotNull(algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                else
-                {
-                    Assert.AreEqual(p, algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                Assert.IsNotNull(algo.TraceSource);
-            }
-
-            #endregion
+            AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
         }
 
         [Test]
@@ -297,7 +224,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<TestVertex, Point>();
             var graph = new AdjacencyGraph<TestVertex, Edge<TestVertex>>();
             var algorithm = new TestComplexParameterizedLayoutAlgorithm(graph);
-            AssertAlgorithmProperties(algorithm, graph, verticesPositions);
+            AssertAlgorithmProperties(algorithm, graph);
 
             algorithm = new TestComplexParameterizedLayoutAlgorithm(graph);
             algorithm.IterationEnded += (sender, args) => { };
@@ -333,46 +260,7 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var parameters = new TestLayoutParameters();
             algorithm = new TestComplexParameterizedLayoutAlgorithm(graph, null, parameters);
-            AssertAlgorithmProperties(algorithm, graph, p: parameters);
-
-            #region Local function
-
-            void AssertAlgorithmProperties<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParameters>(
-                ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParameters> algo,
-                TGraph g,
-                IDictionary<TVertex, Point> pos = null,
-                bool expectedReportIterationEnd = false,
-                bool expectedReportProgress = false,
-                TParameters p = null)
-                where TEdge : IEdge<TVertex>
-                where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-                where TParameters : class, ILayoutParameters
-            {
-                AssertAlgorithmState(algo);
-                Assert.AreSame(g, algo.VisitedGraph);
-                if (pos is null)
-                    Assert.IsNotNull(algo.VerticesPositions);
-                else
-                    CollectionAssert.AreEqual(pos, algo.VerticesPositions);
-                Assert.AreEqual(expectedReportIterationEnd, algo.ReportOnIterationEndNeeded);
-                Assert.AreEqual(expectedReportProgress, algo.ReportOnProgressChangedNeeded);
-                Assert.IsNotNull(algo.TraceSource);
-                if (p is null)
-                {
-                    Assert.IsNotNull(algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                else
-                {
-                    Assert.AreEqual(p, algo.Parameters);
-                    Assert.AreSame(algo.Parameters, algo.GetParameters());
-                }
-                Assert.IsNotNull(algo.TraceSource);
-                CollectionAssert.IsEmpty(algo.VerticesInfos);
-                CollectionAssert.IsEmpty(algo.EdgesInfos);
-            }
-
-            #endregion
+            AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
         }
 
         [Test]

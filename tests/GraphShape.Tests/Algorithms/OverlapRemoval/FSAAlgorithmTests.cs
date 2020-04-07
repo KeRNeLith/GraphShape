@@ -5,6 +5,7 @@ using System.Windows;
 using GraphShape.Algorithms.OverlapRemoval;
 using JetBrains.Annotations;
 using NUnit.Framework;
+using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
 namespace GraphShape.Tests.Algorithms.OverlapRemoval
 {
