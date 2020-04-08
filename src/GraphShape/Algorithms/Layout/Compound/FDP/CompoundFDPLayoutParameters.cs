@@ -234,24 +234,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             }
         }
 
-        private double _temperatureFactor = 0.95;
-
-        /// <summary>
-        /// Temperature factor.
-        /// </summary>
-        public double TemperatureFactor
-        {
-            get => _temperatureFactor;
-            set
-            {
-                if (NearEqual(_temperatureFactor, value))
-                    return;
-
-                _temperatureFactor = value;
-                OnPropertyChanged();
-            }
-        }
-
         private double _displacementLimitMultiplier = 0.5;
 
         /// <summary>
@@ -307,7 +289,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             yield return _phase2TemperatureInitialMultiplier;
             yield return _phase3TemperatureInitialMultiplier;
             yield return _temperatureDecreasing;
-            yield return _temperatureFactor;
             yield return _displacementLimitMultiplier;
             yield return _separationMultiplier;
         }

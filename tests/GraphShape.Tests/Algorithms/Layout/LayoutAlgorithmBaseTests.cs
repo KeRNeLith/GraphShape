@@ -11,8 +11,8 @@ using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
-    /// Tests for <see cref="LayoutAlgorithm{TVertex, TEdge, TGraph}"/>
-    /// and <see cref="LayoutAlgorithm{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/>.
+    /// Tests for <see cref="LayoutAlgorithmBase{TVertex, TEdge, TGraph}"/>
+    /// and <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/>.
     /// </summary>
     [TestFixture]
     internal class LayoutAlgorithmBaseTests

@@ -6,7 +6,7 @@ using GraphShape.Utils;
 using JetBrains.Annotations;
 using NUnit.Framework;
 
-namespace GraphShape.Tests.Algorithms
+namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
     /// Tests related to <see cref="LayoutUtils"/>.

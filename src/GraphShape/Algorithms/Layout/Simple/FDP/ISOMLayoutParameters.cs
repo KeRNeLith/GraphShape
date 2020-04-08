@@ -54,7 +54,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         private int _maxEpoch = 2000;
 
         /// <summary>
-        /// Maximum iteration number.
+        /// Maximum number of iteration.
         /// </summary>
         public int MaxEpoch
         {

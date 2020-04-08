@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
@@ -60,19 +61,38 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         public override double K => _k;
 
-        private void CalculateK()
+        private void UpdateK()
         {
-            _k = Math.Sqrt(_width * Height / VertexCount);
+            _k = Math.Sqrt(_width * _height / VertexCount);
             OnPropertyChanged(nameof(K));
         }
 
+        private double _initialTemperature;
+
+        [Pure]
+        private double ComputeInitialTemperature()
+        {
+            return Math.Min(_width, _height) / 10;
+        }
+
+        private void UpdateInitialTemperature()
+        {
+            double newTemperature = ComputeInitialTemperature();
+            if (NearEqual(_initialTemperature, newTemperature))
+                return;
+
+            _initialTemperature = newTemperature;
+            OnPropertyChanged(nameof(InitialTemperature));
+        }
+
         /// <inheritdoc />
-        public override double InitialTemperature => Math.Min(Width, Height) / 10;
+        public override double InitialTemperature => _initialTemperature;
 
         /// <inheritdoc />
         protected override void UpdateParameters()
         {
-            CalculateK();
+            UpdateK();
+            UpdateInitialTemperature();
             base.UpdateParameters();
         }
 
@@ -81,7 +101,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         public BoundedFRLayoutParameters()
         {
-            CalculateK();
+            UpdateK();
         }
 
         /// <inheritdoc />

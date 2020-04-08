@@ -31,7 +31,7 @@
             DockPanel.Dock="Top" />
 
         <UniformGrid
-            Rows="9"
+            Rows="8"
             Columns="2">
             <TextBlock Text="Ideal Edge Length" />
             <TextBox Text="{Binding IdealEdgeLength, Mode=TwoWay}" />
@@ -45,8 +45,6 @@
             <TextBox Text="{Binding GravitationFactor, Mode=TwoWay}" />
             <TextBlock Text="Temperature Decreasing" />
             <TextBox Text="{Binding TemperatureDecreasing, Mode=TwoWay}" />
-            <TextBlock Text="Temperature Factor" />
-            <TextBox Text="{Binding TemperatureFactor, Mode=TwoWay}" />
             <TextBlock Text="Displacement Limit Multiplier" />
             <TextBox Text="{Binding DisplacementLimitMultiplier, Mode=TwoWay}" />
             <TextBlock Text="Separation Multiplier" />

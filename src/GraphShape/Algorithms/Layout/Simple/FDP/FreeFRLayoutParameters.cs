@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using GraphShape.Utils;
+using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
 
 namespace GraphShape.Algorithms.Layout.Simple.FDP
@@ -12,8 +14,26 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// <inheritdoc />
         public override double K => _idealEdgeLength;
 
+        private double _initialTemperature;
+
+        [Pure]
+        private double ComputeInitialTemperature()
+        {
+            return Math.Sqrt(Math.Pow(_idealEdgeLength, 2) * VertexCount);
+        }
+
+        private void UpdateInitialTemperature()
+        {
+            double newTemperature = ComputeInitialTemperature();
+            if (NearEqual(_initialTemperature, newTemperature))
+                return;
+
+            _initialTemperature = newTemperature;
+            OnPropertyChanged(nameof(InitialTemperature));
+        }
+
         /// <inheritdoc />
-        public override double InitialTemperature => Math.Sqrt(Math.Pow(_idealEdgeLength, 2) * VertexCount);
+        public override double InitialTemperature => _initialTemperature;
 
         private double _idealEdgeLength = 10;
 
@@ -33,8 +53,24 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
                 _idealEdgeLength = value;
                 UpdateParameters();
+                OnPropertyChanged(nameof(K));
                 OnPropertyChanged();
             }
+        }
+
+        /// <inheritdoc />
+        protected override void UpdateParameters()
+        {
+            UpdateInitialTemperature();
+            base.UpdateParameters();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FreeFRLayoutParameters"/> class.
+        /// </summary>
+        public FreeFRLayoutParameters()
+        {
+            _initialTemperature = ComputeInitialTemperature();
         }
 
         /// <inheritdoc />

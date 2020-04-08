@@ -8,7 +8,7 @@ using NUnit.Framework;
 using QuikGraph;
 using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 
-namespace GraphShape.Tests.Algorithms
+namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
     /// Tests related to layout algorithms.
