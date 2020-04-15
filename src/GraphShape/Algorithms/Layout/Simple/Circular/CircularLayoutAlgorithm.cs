@@ -49,7 +49,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
             [CanBeNull] CircularLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
-            _verticesSizes = verticesSizes ?? throw new ArgumentNullException(nameof(verticesSizes));
+            _verticesSizes = new Dictionary<TVertex, Size>(verticesSizes);
         }
 
         #region AlgorithmBase

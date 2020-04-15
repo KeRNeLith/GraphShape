@@ -2,7 +2,8 @@
 using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
-using GraphShape.Algorithms.Layout.Simple.Circular;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout.Simple.Tree;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
@@ -11,80 +12,71 @@ using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
-    /// Tests related to <see cref="CircularLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
+    /// Tests related to <see cref="SimpleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
     /// </summary>
     [TestFixture]
-    internal class CircularLayoutTests : LayoutAlgorithmTestBase
+    internal class TreeLayoutTests : LayoutAlgorithmTestBase
     {
         #region Test helpers
 
-        private static void CheckCircularLayout<TVertex, TEdge>(
-            [NotNull] CircularLayoutAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> algorithm)
+        private static void CheckTreeLayout<TVertex, TEdge>(
+            [NotNull] SimpleTreeLayoutAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> algorithm,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes)
+            where TVertex : class
             where TEdge : IEdge<TVertex>
         {
-            IDictionary<TVertex, Point> verticesPositions = algorithm.VerticesPositions;
-            if (verticesPositions.Count < 3)
-                return;
+            var slices = new Dictionary<double, HashSet<double>>();
 
-            const double epsilon = 1.0;
-            Point[] positions = algorithm.VerticesPositions.Values.ToArray();
-            FindCircle(positions[0], positions[1], positions[2], out Point center, out double radius);
-
-            foreach (Point position in positions)
+            TVertex[] vertices = algorithm.VisitedGraph.Vertices.ToArray();
+            for (int i = 0; i < vertices.Length - 1; ++i)
             {
-                Assert.AreEqual(radius, (center - position).Length, epsilon);
+                TVertex vertexI = vertices[i];
+                Point posI = algorithm.VerticesPositions[vertexI];
+                for (int j = i + 1; j < vertices.Length; ++j)
+                {
+                    TVertex vertexJ = vertices[j];
+                    Point posJ = algorithm.VerticesPositions[vertexJ];
+                    if (algorithm.Parameters.Direction.IsHorizontal())
+                    {
+                        CheckSpacingAndAddSlice(posI.Y, verticesSizes[vertexI].Height / 2);
+                        CheckSpacingAndAddSlice(posJ.Y, verticesSizes[vertexJ].Height / 2);
+
+                        CheckSpacingAndAddLayerToSlice(posI.Y, posI.X, verticesSizes[vertexI].Width / 2);
+                        CheckSpacingAndAddLayerToSlice(posJ.Y, posJ.X, verticesSizes[vertexJ].Width / 2);
+                    }
+                    else if (algorithm.Parameters.Direction.IsVertical())
+                    {
+                        CheckSpacingAndAddSlice(posI.X, verticesSizes[vertexI].Width / 2);
+                        CheckSpacingAndAddSlice(posJ.X, verticesSizes[vertexJ].Width / 2);
+
+                        CheckSpacingAndAddLayerToSlice(posI.X, posI.Y, verticesSizes[vertexI].Height / 2);
+                        CheckSpacingAndAddLayerToSlice(posJ.X, posJ.Y, verticesSizes[vertexJ].Height / 2);
+                    }
+                    else
+                    {
+                        throw new NotSupportedException("Not supported layout direction.");
+                    }
+                }
             }
 
-            #region Local function
+            #region Local functions
 
-            void FindCircle(Point p1, Point p2, Point p3, out Point middle, out double r)
+            // ReSharper disable ParameterOnlyUsedForPreconditionCheck.Local
+            void CheckSpacingAndAddSlice(double slicePos, double size)
             {
-                double x1 = p1.X;
-                double y1 = p1.Y;
-                double x2 = p2.X;
-                double y2 = p2.Y;
-                double x3 = p3.X;
-                double y3 = p3.Y;
-
-                double x12 = x1 - x2;
-                double x13 = x1 - x3;
-
-                double y12 = y1 - y2;
-                double y13 = y1 - y3;
-
-                double y31 = y3 - y1;
-                double y21 = y2 - y1;
-
-                double x31 = x3 - x1;
-                double x21 = x2 - x1;
-
-                // x1^2 - x3^2 
-                double sx13 = Math.Pow(x1, 2) - Math.Pow(x3, 2);
-
-                // y1^2 - y3^2 
-                double sy13 = Math.Pow(y1, 2) - Math.Pow(y3, 2);
-
-                double sx21 = Math.Pow(x2, 2) - Math.Pow(x1, 2);
-
-                double sy21 = Math.Pow(y2, 2) - Math.Pow(y1, 2);
-
-                double f = (sx13 * x12 + sy13 * x12 + sx21 * x13 + sy21 * x13)
-                           / (2 * (y31 * x12 - y21 * x13));
-                double g = (sx13 * y12 + sy13 * y12 + sx21 * y13 + sy21 * y13)
-                           / (2 * (x31 * y12 - x21 * y13));
-
-                double c = -Math.Pow(x1, 2) - Math.Pow(y1, 2) - 2 * g * x1 - 2 * f * y1;
-
-                // Equation of circle be x^2 + y^2 + 2*g*x + 2*f*y + c = 0 
-                // where centre is (h = -g, k = -f) and radius r 
-                // as r^2 = h^2 + k^2 - c
-                double h = -g;
-                double k = -f;
-                double squareRadius = h * h + k * k - c;
-
-                r = Math.Round(Math.Sqrt(squareRadius), 5);
-                middle = new Point(h, k);
+                if (!slices.ContainsKey(slicePos))
+                {
+                    Assert.IsTrue(slices.All(pair => Math.Abs(slicePos - pair.Key) + size >= algorithm.Parameters.VertexGap));
+                    slices.Add(slicePos, new HashSet<double>());
+                }
             }
+
+            void CheckSpacingAndAddLayerToSlice(double slicePos, double layerPos, double size)
+            {
+                Assert.IsTrue(slices.TryGetValue(slicePos, out HashSet<double> layerPositions));
+                Assert.IsTrue(layerPositions.All(lPos => Math.Abs(layerPos - lPos) + size >= algorithm.Parameters.LayerGap));
+            }
+            // ReSharper restore ParameterOnlyUsedForPreconditionCheck.Local
 
             #endregion
         }
@@ -97,33 +89,33 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<string, Point>();
             var verticesSizes = new Dictionary<string, Size>();
             var graph = new BidirectionalGraph<string, Edge<string>>();
-            var algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            var algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
             AssertAlgorithmProperties(algorithm, graph);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
             algorithm.IterationEnded += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportProgress: true);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
             algorithm.IterationEnded += (sender, args) => { };
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true, expectedReportProgress: true);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, verticesSizes);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, verticesSizes);
             AssertAlgorithmProperties(algorithm, graph);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions);
 
-            var parameters = new CircularLayoutParameters();
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes, parameters);
+            var parameters = new SimpleTreeLayoutParameters();
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes, parameters);
             AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
 
-            algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes, parameters);
+            algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes, parameters);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions, parameters: parameters);
         }
 
@@ -133,58 +125,58 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<string, Point>();
             var verticesSizes = new Dictionary<string, Size>();
             var graph = new BidirectionalGraph<string, Edge<string>>();
-            var parameters = new CircularLayoutParameters();
+            var parameters = new SimpleTreeLayoutParameters();
 
             // ReSharper disable ObjectCreationAsStatement
             // ReSharper disable AssignNullToNotNullAttribute
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null));
 
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, parameters));
 
 
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, (IDictionary<string, Size>)null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, (IDictionary<string, Size>)null));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, (IDictionary<string, Size>)null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, (IDictionary<string, Size>)null));
 
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null));
 
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, null, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, verticesSizes, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, null, null, parameters));
 
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null, parameters));
+                () => new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, null, parameters));
             // ReSharper restore AssignNullToNotNullAttribute
             // ReSharper restore ObjectCreationAsStatement
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> CircularLayoutTestCases
+        private static IEnumerable<TestCaseData> SimpleTreeLayoutTestCases
         {
             [UsedImplicitly]
             get
@@ -320,7 +312,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 {
                     TestName = "DAG graph 25 vertices/25 edges (Parallel edge)"
                 };
-                
+
                 IBidirectionalGraph<string, Edge<string>> generalGraph = GraphFactory.CreateGeneralGraph(
                     30,
                     15,
@@ -336,20 +328,37 @@ namespace GraphShape.Tests.Algorithms.Layout
             }
         }
 
-        [TestCaseSource(nameof(CircularLayoutTestCases))]
-        public void CircularLayoutAlgorithm(
+        [TestCaseSource(nameof(SimpleTreeLayoutTestCases))]
+        public void SimpleTreeLayoutAlgorithm(
             [NotNull] IBidirectionalGraph<string, Edge<string>> graph,
             int maxCrossCount)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
-            var algorithm = new CircularLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
-                graph,
-                verticesSizes,
-                new CircularLayoutParameters());
 
-            LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes);
-            results.CheckResult(maxCrossCount);
-            CheckCircularLayout(algorithm);
+            var parameters = new SimpleTreeLayoutParameters
+            {
+                LayerGap = 15,
+                VertexGap = 20
+            };
+
+            foreach (LayoutDirection direction in Enum.GetValues(typeof(LayoutDirection)))
+            {
+                parameters.Direction = direction;
+
+                foreach (SpanningTreeGeneration treeGen in Enum.GetValues(typeof(SpanningTreeGeneration)))
+                {
+                    parameters.SpanningTreeGeneration = treeGen;
+
+                    var algorithm = new SimpleTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
+                        graph,
+                        verticesSizes,
+                        parameters);
+
+                    LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes);
+                    results.CheckResult(maxCrossCount);
+                    CheckTreeLayout(algorithm, verticesSizes);
+                }
+            }
         }
     }
 }

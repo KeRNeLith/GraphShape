@@ -30,7 +30,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         private double _vertexGap = 10;
 
         /// <summary>
-        /// Minimum vertical gap between vertices.
+        /// Minimum gap between vertices.
         /// </summary>
         public double VertexGap
         {
@@ -51,7 +51,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         private double _layerGap = 10;
 
         /// <summary>
-        /// Minimum horizontal gap between layers.
+        /// Minimum gap between layers.
         /// </summary>
         public double LayerGap
         {

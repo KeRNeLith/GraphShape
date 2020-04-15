@@ -24,7 +24,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         private BidirectionalGraph<TVertex, Edge<TVertex>> _spanningTree;
 
         [NotNull]
-        private readonly IDictionary<TVertex, Size> _sizes;
+        private readonly IDictionary<TVertex, Size> _verticesSizes;
 
         [NotNull]
         private readonly IDictionary<TVertex, VertexData> _data = new Dictionary<TVertex, VertexData>();
@@ -38,6 +38,20 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// Initializes a new instance of the <see cref="SimpleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public SimpleTreeLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [CanBeNull] SimpleTreeLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, verticesSizes, oldParameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
@@ -45,10 +59,10 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] SimpleTreeLayoutParameters oldParameters)
+            [CanBeNull] SimpleTreeLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
-            _sizes = new Dictionary<TVertex, Size>(verticesSizes);
+            _verticesSizes = new Dictionary<TVertex, Size>(verticesSizes);
         }
 
         #region AlgorithmBase
@@ -56,13 +70,16 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// <inheritdoc />
         protected override void InternalCompute()
         {
+            if (VisitedGraph.VertexCount == 0)
+                return;
+
             if (Parameters.Direction == LayoutDirection.LeftToRight
                 || Parameters.Direction == LayoutDirection.RightToLeft)
             {
                 // Change the sizes
-                foreach (KeyValuePair<TVertex, Size> sizePair in _sizes.ToArray())
+                foreach (KeyValuePair<TVertex, Size> sizePair in _verticesSizes.ToArray())
                 {
-                    _sizes[sizePair.Key] = new Size(sizePair.Value.Height, sizePair.Value.Width);
+                    _verticesSizes[sizePair.Key] = new Size(sizePair.Value.Height, sizePair.Value.Width);
                 }
             }
 
@@ -124,7 +141,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             }
 
             Layer layer = _layers[l];
-            Size size = _sizes[vertex];
+            Size size = _verticesSizes[vertex];
             var d = new VertexData { Parent = parent };
             _data[vertex] = d;
 
@@ -184,7 +201,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             {
                 foreach (TVertex vertex in layer.Vertices)
                 {
-                    Size size = _sizes[vertex];
+                    Size size = _verticesSizes[vertex];
                     VertexData d = _data[vertex];
                     if (d.Parent != null)
                     {

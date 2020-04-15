@@ -74,7 +74,7 @@
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
-                Text="Vertical Gap" />
+                Text="Vertex Gap" />
             <StackPanel Orientation="Horizontal"
                         Grid.Column="1"
                         Grid.Row="1">
