@@ -26,16 +26,16 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="translateY">Translates the generated y coordinate.</param>
         /// <param name="vertices">Vertices to fill positions.</param>
         /// <param name="verticesPositions">Initial vertices positions.</param>
+        /// <param name="random">Random number generator to use.</param>
         public static void FillWithRandomPositions<TVertex>(
             double width,
             double height,
             double translateX,
             double translateY,
             [NotNull, ItemNotNull] IEnumerable<TVertex> vertices,
-            [NotNull] IDictionary<TVertex, Point> verticesPositions)
+            [NotNull] IDictionary<TVertex, Point> verticesPositions,
+            [NotNull] Random random)
         {
-            var random = new Random(DateTime.Now.Millisecond);
-
             // Initialize with random position
             foreach (TVertex vertex in vertices)
             {

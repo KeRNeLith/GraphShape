@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using JetBrains.Annotations;
 using QuikGraph;
+using QuikGraph.Utils;
 
 namespace GraphShape.Algorithms.Layout
 {
@@ -85,6 +87,19 @@ namespace GraphShape.Algorithms.Layout
             }
         }
 
+        [CanBeNull]
+        private Random _rand;
+
+        /// <summary>
+        /// Gets or sets the random number generator used to initialize positions randomly.
+        /// </summary>
+        [NotNull]
+        public Random Rand
+        {
+            get => _rand ?? (_rand = new CryptoRandom((int)DateTime.Now.Ticks));
+            set => _rand = value;
+        }
+
         /// <summary>
         /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
         /// It does NOT modify the position of the other vertices.
@@ -118,7 +133,8 @@ namespace GraphShape.Algorithms.Layout
                 translateX,
                 translateY,
                 VisitedGraph.Vertices,
-                VerticesPositions);
+                VerticesPositions,
+                Rand);
         }
 
         /// <summary>

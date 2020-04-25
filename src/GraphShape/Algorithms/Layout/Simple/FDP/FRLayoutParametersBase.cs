@@ -115,23 +115,23 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             }
         }
 
-        private int _iterationLimit = 200;
+        private int _maxIterations = 200;
 
         /// <summary>
-        /// Limit of the iterations.
+        /// Maximum number of the iterations.
         /// </summary>
-        public int IterationLimit
+        public int MaxIterations
         {
-            get => _iterationLimit;
+            get => _maxIterations;
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(IterationLimit)} must be positive or 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxIterations)} must be positive or 0.");
 
-                if (_iterationLimit == value)
+                if (_maxIterations == value)
                     return;
 
-                _iterationLimit = value;
+                _maxIterations = value;
                 OnPropertyChanged();
             }
         }
@@ -191,7 +191,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             yield return _vertexCount;
             yield return _attractionMultiplier;
             yield return _repulsiveMultiplier;
-            yield return _iterationLimit;
+            yield return _maxIterations;
             yield return _lambda;
             yield return _coolingFunction;
         }

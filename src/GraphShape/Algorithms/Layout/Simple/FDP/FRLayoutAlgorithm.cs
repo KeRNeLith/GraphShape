@@ -29,21 +29,12 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        public FRLayoutAlgorithm([NotNull] TGraph visitedGraph)
-            : base(visitedGraph)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
-        /// </summary>
-        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
         public FRLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
-            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] FRLayoutParametersBase oldParameters)
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions = null,
+            [CanBeNull] FRLayoutParametersBase oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
         }
@@ -80,7 +71,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             double minimalTemperature = Parameters.InitialTemperature * 0.01;
             _temperature = Parameters.InitialTemperature;
             for (int i = 0;
-                i < Parameters.IterationLimit
+                i < Parameters.MaxIterations
                 && _temperature > minimalTemperature
                 && State != QuikGraph.Algorithms.ComputationState.PendingAbortion;
                 ++i)
@@ -91,7 +82,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 switch (Parameters.CoolingFunction)
                 {
                     case FRCoolingFunction.Linear:
-                        _temperature *= 1.0 - i / (double)Parameters.IterationLimit;
+                        _temperature *= 1.0 - i / (double)Parameters.MaxIterations;
                         break;
                     case FRCoolingFunction.Exponential:
                         _temperature *= Parameters.Lambda;
@@ -101,7 +92,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 // Iteration ended, do some report
                 if (ReportOnIterationEndNeeded)
                 {
-                    double statusInPercent = i / (double)Parameters.IterationLimit;
+                    double statusInPercent = i / (double)Parameters.MaxIterations;
                     OnIterationEnded(i, statusInPercent, string.Empty, true);
                 }
             }
@@ -110,7 +101,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         #endregion
 
         /// <summary>
-        /// First force application iteration.
+        /// Compute one force application iteration.
         /// </summary>
         protected void IterateOne()
         {
@@ -119,12 +110,10 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             #region Repulsive forces
 
-            var force = new Vector(0, 0);
             foreach (TVertex v in VisitedGraph.Vertices)
             {
-                force.X = 0;
-                force.Y = 0;
-                
+                var force = default(Vector);
+
                 Point posV = VerticesPositions[v];
                 foreach (TVertex u in VisitedGraph.Vertices)
                 {
@@ -152,6 +141,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 TVertex source = edge.Source;
                 TVertex target = edge.Target;
 
+                if (edge.IsSelfEdge())
+                    continue;
+
                 // Compute attraction point between 2 vertices
                 Vector delta = VerticesPositions[source] - VerticesPositions[target];
                 double length = Math.Max(delta.Length, double.Epsilon);
@@ -170,15 +162,18 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 Point position = VerticesPositions[vertex];
 
                 Vector delta = forces[vertex];
-                double length = Math.Max(delta.Length, double.Epsilon);
-                delta = delta / length * Math.Min(delta.Length, _temperature);
+                if (delta != default(Vector))
+                {
+                    double length = Math.Max(delta.Length, double.Epsilon);
+                    delta = delta / length * Math.Min(length, _temperature);
 
-                position += delta;
+                    position += delta;
 
-                // Ensure bounds
-                position.X = Math.Min(_maxWidth, Math.Max(0, position.X));
-                position.Y = Math.Min(_maxHeight, Math.Max(0, position.Y));
-                VerticesPositions[vertex] = position;
+                    // Ensure bounds
+                    position.X = Math.Min(_maxWidth, Math.Max(0, position.X));
+                    position.Y = Math.Min(_maxHeight, Math.Max(0, position.Y));
+                    VerticesPositions[vertex] = position;
+                }
             }
 
             #endregion

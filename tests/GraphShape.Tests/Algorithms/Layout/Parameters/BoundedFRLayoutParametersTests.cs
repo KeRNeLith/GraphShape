@@ -63,13 +63,13 @@ namespace GraphShape.Tests.Algorithms.Layout
             CollectionAssert.IsEmpty(expectedPropertyNames);
 
             expectedPropertyNames = null;
-            parameters.IterationLimit = 200;
+            parameters.MaxIterations = 200;
 
             expectedPropertyNames = new HashSet<string>
             {
-                nameof(BoundedFRLayoutParameters.IterationLimit)
+                nameof(BoundedFRLayoutParameters.MaxIterations)
             };
-            parameters.IterationLimit = 150;
+            parameters.MaxIterations = 150;
             CollectionAssert.IsEmpty(expectedPropertyNames);
 
             expectedPropertyNames = null;
@@ -125,7 +125,7 @@ namespace GraphShape.Tests.Algorithms.Layout
         {
             var parameters = new BoundedFRLayoutParameters();
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.VertexCount = -1);
-            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.IterationLimit = -1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.MaxIterations = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.Height = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.Width = -1);
         }
@@ -142,7 +142,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters.VertexCount = 20;
             parameters.AttractionMultiplier = 1.5;
             parameters.RepulsiveMultiplier = 0.7;
-            parameters.IterationLimit = 150;
+            parameters.MaxIterations = 150;
             parameters.Lambda = 0.9;
             parameters.CoolingFunction = FRCoolingFunction.Linear;
             parameters.Height = 150;

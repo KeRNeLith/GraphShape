@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using GraphShape.Algorithms.Layout;
@@ -84,7 +85,8 @@ namespace GraphShape.Tests.Algorithms.Layout
                 translateX,
                 translateY,
                 verticesArray,
-                verticesPositions);
+                verticesPositions,
+                new Random(123));
 
             Assert.GreaterOrEqual(verticesPositions.Count, verticesArray.Length);
             foreach (int vertex in verticesArray)
