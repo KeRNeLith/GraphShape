@@ -119,14 +119,16 @@ test_script:
       # Directory.Parent.Parent = tests\TestProject.Tests\bin
       # Directory.Parent.Parent.Parent = tests\TestProject.Tests
       
-      $testAssemblies = (ls tests\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" -and [System.IO.Path]::GetFileNameWithoutExtension($_.FullName) -Match $_.Directory.Parent.Parent.Parent.Name } | % FullName | sort-object -Unique)
+      $testAssemblies = (ls tests\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" -and [System.IO.Path]::GetFileNameWithoutExtension($_.FullName) -Match $_.Directory.Parent.Parent.Parent.Name } | % FullName | sort-object -Unique);
       
+      $testsPassed = $false;
       if ($env:IsFullIntegrationBuild -eq $true)
       {
           $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString();
           $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString();
           
-          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -target:"$nunitConsole" -targetargs:"$testAssemblies --result=\`"TestResult.xml\`"" -returntargetcode -log:Warn -output:coverage.xml
+          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -target:"$nunitConsole" -targetargs:"$testAssemblies --result=\`"TestResult.xml\`"" -returntargetcode -log:Warn -output:coverage.xml;
+          $testsPassed = $?;
           
           & $sonarScanner end /d:"sonar.login=$env:SONARQUBE_TOKEN"
           
@@ -134,13 +136,19 @@ test_script:
       }
       else
       {
-          & $nunitConsole $testAssemblies
+          & $nunitConsole $testAssemblies;
+          $testsPassed = $?;
       }
       
       # Upload results to AppVeyor
       
       $wc = New-Object 'System.Net.WebClient';
       $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit3/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestResult.xml));
+      
+      if (!$testsPassed)
+      {
+          throw "Unit tests failed";
+      }
 
 # Artifacts
 artifacts:
