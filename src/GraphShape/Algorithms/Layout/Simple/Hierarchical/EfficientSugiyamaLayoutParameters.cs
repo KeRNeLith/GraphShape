@@ -29,44 +29,44 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
         }
 
-        private double _layerDistance = 15.0;
+        private double _layerGap = 15.0;
 
         /// <summary>
         /// Distance between layers.
         /// </summary>
-        public double LayerDistance
+        public double LayerGap
         {
-            get => _layerDistance;
+            get => _layerGap;
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LayerDistance)} must be positive or 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(LayerGap)} must be positive or 0.");
 
-                if (NearEqual(_layerDistance, value))
+                if (NearEqual(_layerGap, value))
                     return;
 
-                _layerDistance = value;
+                _layerGap = value;
                 OnPropertyChanged();
             }
         }
 
-        private double _vertexDistance = 15.0;
+        private double _sliceGap = 15.0;
 
         /// <summary>
-        /// Distance between vertices.
+        /// Distance between slices.
         /// </summary>
-        public double VertexDistance
+        public double SliceGap
         {
-            get => _vertexDistance;
+            get => _sliceGap;
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(VertexDistance)} must be positive or 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(SliceGap)} must be positive or 0.");
 
-                if (NearEqual(_vertexDistance, value))
+                if (NearEqual(_sliceGap, value))
                     return;
 
-                _vertexDistance = value;
+                _sliceGap = value;
                 OnPropertyChanged();
             }
         }
@@ -176,8 +176,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
 
             yield return _direction;
-            yield return _layerDistance;
-            yield return _vertexDistance;
+            yield return _layerGap;
+            yield return _sliceGap;
             yield return _positionMode;
             yield return _optimizeWidth;
             yield return _widthPerHeight;

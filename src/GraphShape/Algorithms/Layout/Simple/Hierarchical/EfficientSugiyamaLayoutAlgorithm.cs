@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using GraphShape.Algorithms.EdgeRouting;
 using JetBrains.Annotations;
@@ -52,12 +53,24 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// Initializes a new instance of the <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public EfficientSugiyamaLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, null, oldParameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
         public EfficientSugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters)
+            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
             : this(visitedGraph, null, verticesSizes, oldParameters)
         {
         }
@@ -73,7 +86,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters)
+            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
             _verticesSizes = verticesSizes;
@@ -111,14 +124,41 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// <inheritdoc />
         protected override void InternalCompute()
         {
-            CopyToWorkingGraph();
+            switch (VisitedGraph.VertexCount)
+            {
+                case 0:
+                    return;
+                case 1:
+                    VerticesPositions[VisitedGraph.Vertices.First()] = default(Point);
+                    return;
+                default:
+                    RunSugiyama();
+                    return;
+            }
 
-            // First step
-            PrepareGraph();
+            #region Local function
 
-            BuildSparseNormalizedGraph();
-            DoCrossingMinimizations();
-            CalculatePositions();
+            void RunSugiyama()
+            {
+                CopyToWorkingGraph();
+
+                // First step
+                PrepareGraph();
+
+                // Graph is only made of isolated vertices
+                if (_graph.IsEdgesEmpty)
+                {
+                    CalculateOnlyIsolatedVerticesPositions();
+                }
+                else
+                {
+                    BuildSparseNormalizedGraph();
+                    DoCrossingMinimizations();
+                    CalculatePositions();
+                }
+            }
+
+            #endregion
         }
 
         #endregion

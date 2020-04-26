@@ -77,34 +77,88 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             SavePositions();
         }
 
+        private void CalculateOnlyIsolatedVerticesPositions()
+        {
+            PutBackIsolatedVertices();
+
+            // Make a cubic display of all isolated vertices
+            int nbVerticesPerSide = (int) Math.Ceiling(Math.Sqrt(VisitedGraph.VertexCount));
+
+            double maxWidth = _verticesSizes?.Max(v => v.Value.Width) ?? 0;
+            double maxHeight = _verticesSizes?.Max(v => v.Value.Height) ?? 0;
+
+            int vertexCounter = 1; 
+            double xOffset = 0;
+            double yOffset = 0;
+
+            if (IsVerticalLayout())
+            {
+                foreach (SugiVertex vertex in _isolatedVertices)
+                {
+                    VerticesPositions[vertex.OriginalVertex] = new Point(xOffset, yOffset);
+
+                    yOffset += Parameters.LayerGap + maxHeight;
+
+                    if (vertexCounter % nbVerticesPerSide == 0)
+                    {
+                        xOffset += Parameters.SliceGap + maxWidth;
+                        yOffset = 0;
+                    }
+
+                    ++vertexCounter;
+                }
+            }
+            else
+            {
+                foreach (SugiVertex vertex in _isolatedVertices)
+                {
+                    VerticesPositions[vertex.OriginalVertex] = new Point(xOffset, yOffset);
+
+                    xOffset += Parameters.LayerGap + maxWidth;
+
+                    if (vertexCounter % nbVerticesPerSide == 0)
+                    {
+                        yOffset += Parameters.SliceGap + maxHeight;
+                        xOffset = 0;
+                    }
+
+                    ++vertexCounter;
+                }
+            }
+        }
+
         private void PutBackIsolatedVertices()
         {
             _sparseCompactionGraph.AddVertexRange(_isolatedVertices);
             _graph.AddVertexRange(_isolatedVertices);
 
-            int layer = 0;
-            SugiVertex prevIsolatedVertex = null;
-            foreach (SugiVertex isolatedVertex in _isolatedVertices)
+            // Null if no edge exist (only isolated vertices graph)
+            if (_sparseCompactionByLayerBackup != null)
             {
-                _layers[layer].Add(isolatedVertex);
-                isolatedVertex.LayerIndex = layer;
-                isolatedVertex.Position = _layers[layer].Count - 1;
-
-                Edge<Data> lastOnLayer = _sparseCompactionByLayerBackup[layer].LastOrDefault();
-                if (lastOnLayer != null)
+                int layer = 0;
+                SugiVertex prevIsolatedVertex = null;
+                foreach (SugiVertex isolatedVertex in _isolatedVertices)
                 {
-                    var edge = new Edge<Data>(lastOnLayer.Target, isolatedVertex);
+                    _layers[layer].Add(isolatedVertex);
+                    isolatedVertex.LayerIndex = layer;
+                    isolatedVertex.Position = _layers[layer].Count - 1;
+
+                    Edge<Data> lastOnLayer = _sparseCompactionByLayerBackup[layer].LastOrDefault();
+                    var edge = lastOnLayer is null
+                        ? new Edge<Data>(_layers[layer][0], isolatedVertex)
+                        : new Edge<Data>(lastOnLayer.Target, isolatedVertex);
+
                     _sparseCompactionByLayerBackup[layer].Add(edge);
                     _sparseCompactionGraph.AddEdge(edge);
-                }
 
-                if (layer > 0 && prevIsolatedVertex != null)
-                {
-                    _graph.AddEdge(new SugiEdge(default(TEdge), prevIsolatedVertex, isolatedVertex));
-                }
+                    if (layer > 0 && prevIsolatedVertex != null)
+                    {
+                        _graph.AddEdge(new SugiEdge(default(TEdge), prevIsolatedVertex, isolatedVertex));
+                    }
 
-                layer = (layer + 1) % _layers.Count;
-                prevIsolatedVertex = isolatedVertex;
+                    layer = (layer + 1) % _layers.Count;
+                    prevIsolatedVertex = isolatedVertex;
+                }
             }
         }
 
@@ -152,12 +206,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 orthogonalRoutePoints[sourceIndex] = new Point
                 {
                     X = sourceVertex.SlicePosition,
-                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0
+                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerGap / 2.0
                 };
                 orthogonalRoutePoints[targetIndex] = new Point
                 {
                     X = targetVertex.SlicePosition,
-                    Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerDistance / 2.0
+                    Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerGap / 2.0
                 };
 
                 EdgeRoutes[edge] = orthogonalRoutePoints;
@@ -205,7 +259,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 _layerSizes[i] = _layers[i].Max(v => IsVerticalLayout() ? v.Size.Height : v.Size.Width);
             }
 
-            double layerDistance = Parameters.LayerDistance;
+            double layerDistance = Parameters.LayerGap;
             _layerPositions = new double[_layers.Count];
             _layerPositions[0] = 0;
             for (int i = 1; i < _layers.Count; ++i)
@@ -393,7 +447,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             if (!double.IsNaN(v.SlicePositions[modeIndex]))
                 return;
 
-            double delta = Parameters.VertexDistance;
+            double delta = Parameters.SliceGap;
             v.SlicePositions[modeIndex] = 0;
             Data w = v;
             do

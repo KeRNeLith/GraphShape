@@ -43,7 +43,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         private void RemoveLoops()
         {
-            _graph.RemoveEdgeIf(edge => edge.Source == edge.Target);
+            _graph.RemoveEdgeIf(edge => edge.IsSelfEdge());
         }
 
         private void RemoveIsolatedVertices()

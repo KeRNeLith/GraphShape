@@ -14,9 +14,6 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
-        [NotNull]
-        private readonly Random _random = new Random(DateTime.Now.Millisecond);
-
         private int[] _crossCounts;
 
         [ItemCanBeNull]
@@ -637,13 +634,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 {
                     sortedVertexList = new List<SugiVertex>(verticesWithSameMeasure.Count);
                     var stack = new Stack<SugiVertex>(verticesWithSameMeasure.Count);
-                    var random = new Random(DateTime.Now.Millisecond);
                     foreach (SugiVertex vertex in verticesWithSameMeasure)
                     {
-                        if (stack.Count > 0 && (!NearEqual(stack.Peek().MeasuredPosition, vertex.MeasuredPosition) || random.NextDouble() > 0.8))
+                        if (stack.Count > 0 && (!NearEqual(stack.Peek().MeasuredPosition, vertex.MeasuredPosition) || Rand.NextDouble() > 0.8))
                         {
                             while (stack.Count > 0)
+                            {
                                 sortedVertexList.Add(stack.Pop());
+                            }
                         }
                         stack.Push(vertex);
                     }
@@ -864,7 +862,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             int endIndex = startIndex + count;
             for (int i = startIndex; i < endIndex; ++i)
             {
-                vertices[i].PermutationIndex = _random.Next(count);
+                vertices[i].PermutationIndex = Rand.Next(count);
             }
 
             return true;

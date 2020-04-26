@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using GraphShape.Algorithms.EdgeRouting;
@@ -39,14 +39,14 @@ namespace GraphShape.Tests.Algorithms.Layout
                 Assert.IsTrue(PositionsSet);
                 if (maxOverlapped == 0)
                 {
-                    Assert.AreEqual(0, OverlapCount);
+                    Assert.AreEqual(0, OverlapCount, "At least one overlap.");
                     Assert.AreEqual(0, OverlappedArea);
                 }
                 else
                 {
-                    Assert.LessOrEqual(OverlapCount, maxOverlapped);
+                    Assert.LessOrEqual(OverlapCount, maxOverlapped, "Exceed the maximum overlap count.");
                 }
-                Assert.LessOrEqual(CrossCount, maxCrossCount);
+                Assert.LessOrEqual(CrossCount, maxCrossCount, "Exceed the maximum edge crossing count.");
             }
         }
 

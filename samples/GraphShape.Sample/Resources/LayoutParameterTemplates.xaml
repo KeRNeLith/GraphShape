@@ -40,7 +40,7 @@
         <TextBlock Text="No parameter" />
     </DataTemplate>
 
-    <!--SimpleTreeLayoutParameters-->
+    <!-- SimpleTreeLayoutParameters -->
     <DataTemplate DataType="{x:Type simpleTreeLayout:SimpleTreeLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -68,7 +68,7 @@
                     Minimum="0"
                     Maximum="50"
                     Value="{Binding Path=LayerGap, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=LayerGap, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=LayerGap, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -83,7 +83,7 @@
                     Minimum="0"
                     Maximum="50"
                     Value="{Binding Path=VertexGap, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=VertexGap, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=VertexGap, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -148,6 +148,7 @@
                     Maximum="5"
                     Value="{Binding Path=AttractionMultiplier, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider1, Mode=Default}"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center" />
@@ -170,6 +171,7 @@
                     Maximum="5"
                     Value="{Binding Path=RepulsiveMultiplier, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider2, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -208,6 +210,7 @@
                     Maximum="1000"
                     Value="{Binding Path=Width, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -227,6 +230,7 @@
                     Maximum="1000"
                     Value="{Binding Path=Height, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider1, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -257,6 +261,7 @@
                     Maximum="5"
                     Value="{Binding Path=AttractionMultiplier, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider2, Mode=Default}"
                     TextWrapping="Wrap"
                     VerticalAlignment="Center" />
@@ -279,6 +284,7 @@
                     Maximum="5"
                     Value="{Binding Path=RepulsiveMultiplier, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider3, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -317,6 +323,7 @@
                     Maximum="1000"
                     Value="{Binding Path=Width, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -336,6 +343,7 @@
                     Maximum="1000"
                     Value="{Binding Path=Height, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider1, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -366,6 +374,7 @@
                     Maximum="5"
                     Value="{Binding Path=DisconnectedMultiplier, Mode=TwoWay}" />
                 <TextBlock
+                    Margin="5 0 0 0"
                     Text="{Binding Path=Value, ElementName=slider2, Mode=Default}"
                     TextWrapping="Wrap" />
             </StackPanel>
@@ -408,6 +417,7 @@
                         Maximum="1000"
                         Value="{Binding Path=Width, Mode=TwoWay}" />
                     <TextBlock
+                        Margin="5 0 0 0"
                         Text="{Binding Path=Value, ElementName=slider, Mode=Default}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -427,6 +437,7 @@
                         Maximum="1000"
                         Value="{Binding Path=Height, Mode=TwoWay}" />
                     <TextBlock
+                        Margin="5 0 0 0"
                         Text="{Binding Path=Value, ElementName=slider2, Mode=Default}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -455,6 +466,7 @@
                         Maximum="100"
                         Value="{Binding Path=RadiusConstantTime, Mode=TwoWay}" />
                     <TextBlock
+                        Margin="5 0 0 0"
                         Text="{Binding Path=Value, ElementName=slider3, Mode=Default}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -474,6 +486,7 @@
                         Maximum="5"
                         Value="{Binding Path=InitialRadius, Mode=TwoWay}" />
                     <TextBlock
+                        Margin="5 0 0 0"
                         Text="{Binding Path=Value, ElementName=slider4, Mode=Default}"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -545,7 +558,7 @@
                     Minimum="0"
                     Maximum="5"
                     Value="{Binding Path=AttractionExponent, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=AttractionExponent, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=AttractionExponent, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -561,7 +574,7 @@
                     Minimum="0"
                     Maximum="5"
                     Value="{Binding Path=RepulsiveExponent, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=RepulsiveExponent, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=RepulsiveExponent, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -577,7 +590,7 @@
                     Minimum="0"
                     Maximum="5"
                     Value="{Binding Path=GravitationMultiplier, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=GravitationMultiplier, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=GravitationMultiplier, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -618,25 +631,32 @@
             <TextBox
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="{Binding Path=LayerDistance, Mode=TwoWay}" />
+                Text="{Binding Path=LayerGap, Mode=TwoWay}" />
 
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
-                Text="Vertex gap" />
+                Text="Slice gap" />
             <TextBox
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding Path=VertexDistance, Mode=TwoWay}" />
+                Text="{Binding Path=SliceGap, Mode=TwoWay}" />
 
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
                 Text="Position Mode" />
-            <TextBox
+            <StackPanel
                 Grid.Row="2"
                 Grid.Column="1"
-                Text="{Binding Path=PositionMode, Mode=TwoWay}" />
+                Orientation="Horizontal">
+                <Slider
+                    MinWidth="100"
+                    Minimum="-1"
+                    Maximum="3"
+                    Value="{Binding Path=PositionMode, Mode=TwoWay}" />
+                <TextBlock Margin="5 0 0 0" Text="{Binding Path=PositionMode, Mode=OneWay}" />
+            </StackPanel>
 
             <TextBlock
                 Grid.Row="3"
@@ -706,7 +726,7 @@
                     Minimum="0"
                     Maximum="50"
                     Value="{Binding Path=HorizontalGap, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=HorizontalGap, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=HorizontalGap, Mode=TwoWay}" />
             </StackPanel>
 
             <TextBlock
@@ -722,7 +742,7 @@
                     Minimum="0"
                     Maximum="50"
                     Value="{Binding Path=VerticalGap, Mode=TwoWay}" />
-                <TextBox Text="{Binding Path=VerticalGap, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=VerticalGap, Mode=TwoWay}" />
             </StackPanel>
         </Grid>
     </DataTemplate>

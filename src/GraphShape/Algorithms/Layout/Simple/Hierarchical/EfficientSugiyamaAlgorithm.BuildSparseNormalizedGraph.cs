@@ -139,7 +139,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         private void CreateDummyVerticesAndSegments()
         {
-            foreach (SugiEdge edge in _graph.Edges.ToList())
+            foreach (SugiEdge edge in _graph.Edges.ToArray())
             {
                 int sourceLayerIndex = edge.Source.LayerIndex;
                 int targetLayerIndex = edge.Target.LayerIndex;
@@ -265,7 +265,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             {
                 foreach (SugiVertex vertex in _layers[insertedLayerIndex - 1])
                 {
-                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerDistance;
+                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
                 }
 
                 ++c;
@@ -274,7 +274,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             {
                 foreach (SugiVertex vertex in _layers[insertedLayerIndex])
                 {
-                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerDistance;
+                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
                 }
 
                 ++c;
@@ -304,7 +304,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 height = Math.Max(height, repositionedVertex.Vertex.Size.Height);
             }
 
-            _actualHeight += height + Parameters.LayerDistance;
+            _actualHeight += height + Parameters.LayerGap;
             _actualWidth = _whOptLayerInfos.Max(li => li.LayerWidth);
 
             return true;
@@ -328,7 +328,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     }
                 }
 
-                layerInfo.LayerWidth += Math.Max(0, layer.Count - 1) * Parameters.VertexDistance;
+                layerInfo.LayerWidth += Math.Max(0, layer.Count - 1) * Parameters.SliceGap;
                 _actualWidth = Math.Max(layerInfo.LayerWidth, _actualWidth);
 
                 var verticesList = new List<WHOptimizationVertexInfo>();
@@ -344,7 +344,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 verticesList.Sort((v1, v2) => Math.Sign(v2.ValuePerCost - v1.ValuePerCost));
 
-                _actualHeight += layerInfo.LayerHeight + Parameters.LayerDistance;
+                _actualHeight += layerInfo.LayerHeight + Parameters.LayerGap;
                 layerInfo.Vertices.Clear();
 
                 foreach (WHOptimizationVertexInfo vertexInfo in verticesList)
@@ -355,8 +355,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 _whOptLayerInfos.Add(layerInfo);
             }
 
-            _actualHeight -= Parameters.LayerDistance;
-            _actualWidth -= Parameters.VertexDistance;
+            _actualHeight -= Parameters.LayerGap;
+            _actualWidth -= Parameters.SliceGap;
         }
 
         private void CreateVertexWHOptimizationInfos()
@@ -368,8 +368,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 var whOptInfo = new WHOptimizationVertexInfo(
                     vertex,
-                    vertex.Size.Width - Math.Max(0, _graph.InDegree(vertex) - 1) * Parameters.VertexDistance,
-                    vertex.Size.Width - Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.VertexDistance);
+                    vertex.Size.Width - Math.Max(0, _graph.InDegree(vertex) - 1) * Parameters.SliceGap,
+                    vertex.Size.Width - Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.SliceGap);
 
                 _whOptVertexInfos[vertex] = whOptInfo;
             }

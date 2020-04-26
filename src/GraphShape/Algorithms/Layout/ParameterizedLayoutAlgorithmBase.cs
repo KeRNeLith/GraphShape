@@ -91,7 +91,7 @@ namespace GraphShape.Algorithms.Layout
         private Random _rand;
 
         /// <summary>
-        /// Gets or sets the random number generator used to initialize positions randomly.
+        /// Gets or sets the random number generator used to initialize positions randomly (and eventually during algorithm computation).
         /// </summary>
         [NotNull]
         public Random Rand

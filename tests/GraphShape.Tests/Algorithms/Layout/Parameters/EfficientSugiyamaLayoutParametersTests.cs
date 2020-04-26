@@ -33,16 +33,16 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters.Direction = LayoutDirection.BottomToTop;
 
             expectedPropertyName = null;
-            parameters.LayerDistance = 15;
+            parameters.LayerGap = 15;
 
-            expectedPropertyName = nameof(EfficientSugiyamaLayoutParameters.LayerDistance);
-            parameters.LayerDistance = 42;
+            expectedPropertyName = nameof(EfficientSugiyamaLayoutParameters.LayerGap);
+            parameters.LayerGap = 42;
 
             expectedPropertyName = null;
-            parameters.VertexDistance = 15;
+            parameters.SliceGap = 15;
 
-            expectedPropertyName = nameof(EfficientSugiyamaLayoutParameters.VertexDistance);
-            parameters.VertexDistance = 42;
+            expectedPropertyName = nameof(EfficientSugiyamaLayoutParameters.SliceGap);
+            parameters.SliceGap = 42;
 
             expectedPropertyName = null;
             parameters.PositionMode = -1;
@@ -79,8 +79,8 @@ namespace GraphShape.Tests.Algorithms.Layout
         public void InvalidParameters()
         {
             var parameters = new EfficientSugiyamaLayoutParameters();
-            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.LayerDistance = -1);
-            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.VertexDistance = -1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.LayerGap = -1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.SliceGap = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.PositionMode = 4);
         }
 
@@ -94,8 +94,8 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             parameters = new EfficientSugiyamaLayoutParameters();
             parameters.Direction = LayoutDirection.LeftToRight;
-            parameters.LayerDistance = 50;
-            parameters.VertexDistance = 50;
+            parameters.LayerGap = 50;
+            parameters.SliceGap = 50;
             parameters.PositionMode = 2;
             parameters.OptimizeWidth = true;
             parameters.WidthPerHeight = 1.1;
