@@ -160,7 +160,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     7,
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t));
-                yield return new TestCaseData(completeGraph, 15, 6)
+                yield return new TestCaseData(completeGraph, 15, 3)
                 {
                     TestName = "Complete graph"
                 };
@@ -246,7 +246,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             {
             };
 
-            LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes);
+            LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes, true);
             results.CheckResult(maxCrossCount, maxOverlapped);
         }
     }

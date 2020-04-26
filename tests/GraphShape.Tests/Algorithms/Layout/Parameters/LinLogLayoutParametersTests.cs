@@ -44,17 +44,17 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters.GravitationMultiplier = 0.2;
 
             expectedPropertyName = null;
-            parameters.IterationCount = 100;
+            parameters.MaxIterations = 100;
 
-            expectedPropertyName = nameof(LinLogLayoutParameters.IterationCount);
-            parameters.IterationCount = 200;
+            expectedPropertyName = nameof(LinLogLayoutParameters.MaxIterations);
+            parameters.MaxIterations = 200;
         }
 
         [Test]
         public void InvalidParameters()
         {
             var parameters = new LinLogLayoutParameters();
-            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.IterationCount = -1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.MaxIterations = -1);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters.AttractionExponent= 1.2;
             parameters.RepulsiveExponent = 1;
             parameters.GravitationMultiplier = 0.2;
-            parameters.IterationCount = 150;
+            parameters.MaxIterations = 150;
             clonedParameters = (LinLogLayoutParameters)parameters.Clone();
 
             Assert.AreEqual(parameters, clonedParameters);

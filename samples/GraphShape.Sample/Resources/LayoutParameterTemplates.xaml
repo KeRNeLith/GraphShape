@@ -583,13 +583,13 @@
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="0"
-                Text="Iteration Count" />
+                Text="Max Iterations" />
             <Slider
                 Grid.Row="3"
                 Grid.Column="1"
                 Minimum="0"
                 Maximum="1000"
-                Value="{Binding Path=IterationCount, Mode=TwoWay}" />
+                Value="{Binding Path=MaxIterations, Mode=TwoWay}" />
         </Grid>
     </DataTemplate>
 

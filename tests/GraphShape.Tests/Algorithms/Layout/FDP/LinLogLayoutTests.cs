@@ -10,40 +10,40 @@ using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
-    /// Tests related to <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
+    /// Tests related to <see cref="LinLogLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
     /// </summary>
     [TestFixture]
-    internal class FRLayoutTests : LayoutAlgorithmTestBase
+    internal class LinLogLayoutTests : LayoutAlgorithmTestBase
     {
         [Test]
         public void Constructor()
         {
             var verticesPositions = new Dictionary<string, Point>();
             var graph = new BidirectionalGraph<string, Edge<string>>();
-            var algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            var algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             AssertAlgorithmProperties(algorithm, graph);
 
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.IterationEnded += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true);
 
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportProgress: true);
 
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.IterationEnded += (sender, args) => { };
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true, expectedReportProgress: true);
 
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions);
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions);
 
-            var parameters = new BoundedFRLayoutParameters();
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters);
+            var parameters = new LinLogLayoutParameters();
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters);
             AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
 
-            algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, parameters);
+            algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, parameters);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions, parameters: parameters);
         }
 
@@ -51,20 +51,20 @@ namespace GraphShape.Tests.Algorithms.Layout
         public void Constructor_Throws()
         {
             var verticesPositions = new Dictionary<string, Point>();
-            var parameters = new FreeFRLayoutParameters();
+            var parameters = new LinLogLayoutParameters();
 
             // ReSharper disable ObjectCreationAsStatement
             // ReSharper disable AssignNullToNotNullAttribute
             Assert.Throws<ArgumentNullException>(
-                () => new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, parameters));
+                () => new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, parameters));
+                () => new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, parameters));
             // ReSharper restore AssignNullToNotNullAttribute
             // ReSharper restore ObjectCreationAsStatement
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> FRLayoutTestCases
+        private static IEnumerable<TestCaseData> LinLogLayoutTestCases
         {
             [UsedImplicitly]
             get
@@ -160,7 +160,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     7,
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t));
-                yield return new TestCaseData(completeGraph, 140)
+                yield return new TestCaseData(completeGraph, 110)
                 {
                     TestName = "Complete graph"
                 };
@@ -171,7 +171,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t),
                     new Random(123));
-                yield return new TestCaseData(tree, 40)
+                yield return new TestCaseData(tree, 0)
                 {
                     TestName = "Tree graph 20 vertices/2 branches"
                 };
@@ -182,7 +182,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t),
                     new Random(123));
-                yield return new TestCaseData(tree, 50)
+                yield return new TestCaseData(tree, 0)
                 {
                     TestName = "Tree graph 25 vertices/5 branches"
                 };
@@ -196,7 +196,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t),
                     new Random(123));
-                yield return new TestCaseData(dag, 60)
+                yield return new TestCaseData(dag, 5)
                 {
                     TestName = "DAG graph 25 vertices/25 edges (Parallel edge)"
                 };
@@ -209,46 +209,37 @@ namespace GraphShape.Tests.Algorithms.Layout
                     i => i.ToString(),
                     (s, t) => new Edge<string>(s, t),
                     new Random(123));
-                yield return new TestCaseData(generalGraph, 25)
+                yield return new TestCaseData(generalGraph, 0)
                 {
                     TestName = "Generic graph 30 vertices/15 edges (Parallel edge)"
                 };
             }
         }
 
-        [TestCaseSource(nameof(FRLayoutTestCases))]
-        public void FRLayoutAlgorithm(
+        [TestCaseSource(nameof(LinLogLayoutTestCases))]
+        public void LinLogLayoutAlgorithm(
             [NotNull] IBidirectionalGraph<string, Edge<string>> graph,
             int maxCrossCount)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
 
-            var parameters = new BoundedFRLayoutParameters
+            var parameters = new LinLogLayoutParameters();
+
+            int iteration = 1;
+            var algorithm = new LinLogLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
+                graph,
+                parameters)
             {
-                Width = 1000,
-                Height = 1000
+                Rand = new Random(12345)
+            };
+            algorithm.IterationEnded += (sender, args) =>
+            {
+                Assert.LessOrEqual(args.Iteration, parameters.MaxIterations);
+                Assert.AreEqual(iteration++, args.Iteration);
             };
 
-            foreach (FRCoolingFunction func in Enum.GetValues(typeof(FRCoolingFunction)))
-            {
-                parameters.CoolingFunction = func;
-
-                int iteration = 0;
-                var algorithm = new FRLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
-                    graph,
-                    parameters)
-                {
-                    Rand = new Random(12345)
-                };
-                algorithm.IterationEnded += (sender, args) =>
-                {
-                    Assert.LessOrEqual(args.Iteration, parameters.MaxIterations);
-                    Assert.AreEqual(iteration++, args.Iteration);
-                };
-
-                LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes, true);
-                results.CheckResult(maxCrossCount);
-            }
+            LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes, true);
+            results.CheckResult(maxCrossCount);
         }
     }
 }

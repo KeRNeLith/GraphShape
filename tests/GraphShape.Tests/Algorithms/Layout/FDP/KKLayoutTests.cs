@@ -246,7 +246,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     Assert.AreEqual(iteration++, args.Iteration);
                 };
 
-                LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes);
+                LayoutResults results = ExecuteLayoutAlgorithm(algorithm, verticesSizes, true);
                 results.CheckResult(maxCrossCount);
             }
         }

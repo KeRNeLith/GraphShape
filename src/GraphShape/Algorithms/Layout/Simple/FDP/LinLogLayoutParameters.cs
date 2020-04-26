@@ -63,23 +63,23 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             }
         }
 
-        private int _iterationCount = 100;
+        private int _maxIterations = 100;
 
         /// <summary>
-        /// Number of iteration to perform.
+        /// Maximum number of the iterations.
         /// </summary>
-        public int IterationCount
+        public int MaxIterations
         {
-            get => _iterationCount;
+            get => _maxIterations;
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(IterationCount)} must be positive or 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxIterations)} must be positive or 0.");
 
-                if (_iterationCount == value)
+                if (_maxIterations == value)
                     return;
 
-                _iterationCount = value;
+                _maxIterations = value;
                 OnPropertyChanged();
             }
         }
@@ -95,7 +95,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             yield return _attractionExponent;
             yield return _repulsiveExponent;
             yield return _gravitationMultiplier;
-            yield return _iterationCount;
+            yield return _maxIterations;
         }
     }
 }

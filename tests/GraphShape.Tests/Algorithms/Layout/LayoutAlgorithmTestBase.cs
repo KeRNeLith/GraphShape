@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.OverlapRemoval;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;
@@ -63,13 +64,42 @@ namespace GraphShape.Tests.Algorithms.Layout
         [NotNull]
         protected static LayoutResults ExecuteLayoutAlgorithm<TVertex, TEdge>(
             [NotNull] ILayoutAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> algorithm,
-            [NotNull] IDictionary<TVertex, Size> vertexSizes)
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            bool requireOverlapRemoval = false)
             where TVertex : class
             where TEdge : IEdge<TVertex>
         {
             var results = new LayoutResults();
 
             Assert.DoesNotThrow(algorithm.Compute);
+            IDictionary<TVertex, Point> verticesPositions = algorithm.VerticesPositions;
+
+            if (requireOverlapRemoval)
+            {
+                var rectangles = new Dictionary<TVertex, Rect>();
+                foreach (TVertex vertex in algorithm.VisitedGraph.Vertices)
+                {
+                    Point position = algorithm.VerticesPositions[vertex];
+                    Size size = verticesSizes[vertex];
+                    rectangles[vertex] = new Rect(
+                        position.X - size.Width * (float)0.5,
+                        position.Y - size.Height * (float)0.5,
+                        size.Width,
+                        size.Height);
+                }
+
+                var overlapRemoval = new FSAAlgorithm<TVertex>(
+                    rectangles,
+                    new OverlapRemovalParameters());
+                Assert.DoesNotThrow(overlapRemoval.Compute);
+
+                foreach (KeyValuePair<TVertex, Rect> pair in overlapRemoval.Rectangles)
+                {
+                    verticesPositions[pair.Key] = new Point(
+                        pair.Value.Left + pair.Value.Size.Width * 0.5,
+                        pair.Value.Top + pair.Value.Size.Height * 0.5);
+                }
+            }
 
             IDictionary<TEdge, Point[]> edgeRoutes =
                 algorithm is IEdgeRoutingAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> routingAlgorithm
@@ -79,8 +109,8 @@ namespace GraphShape.Tests.Algorithms.Layout
             // Compute metrics
             var positionsMetric = new PositionsMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
-                algorithm.VerticesPositions,
-                vertexSizes,
+                verticesPositions,
+                verticesSizes,
                 edgeRoutes);
             positionsMetric.Calculate();
             results.PositionsSet = positionsMetric.PositionsSet;
@@ -88,8 +118,8 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var overlapMetric = new OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
-                algorithm.VerticesPositions,
-                vertexSizes,
+                verticesPositions,
+                verticesSizes,
                 edgeRoutes);
             overlapMetric.Calculate();
 
@@ -99,8 +129,8 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var areaMetric = new LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
-                algorithm.VerticesPositions,
-                vertexSizes,
+                verticesPositions,
+                verticesSizes,
                 edgeRoutes);
             areaMetric.Calculate();
             results.TopLeft = areaMetric.TopLeft;
@@ -110,8 +140,8 @@ namespace GraphShape.Tests.Algorithms.Layout
 
             var edgeMetric = new EdgeCrossingCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
-                algorithm.VerticesPositions,
-                vertexSizes,
+                verticesPositions,
+                verticesSizes,
                 edgeRoutes);
             edgeMetric.Calculate();
             results.CrossCount = edgeMetric.CrossCount;

@@ -66,8 +66,11 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="LinLogLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        public LinLogLayoutAlgorithm([NotNull] TGraph visitedGraph)
-            : base(visitedGraph)
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public LinLogLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] LinLogLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, oldParameters)
         {
         }
 
@@ -80,7 +83,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         public LinLogLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] LinLogLayoutParameters oldParameters)
+            [CanBeNull] LinLogLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
         }
@@ -88,42 +91,48 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         #region AlgorithmBase
 
         /// <inheritdoc />
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            InitializeWithRandomPositions(1, 1, -0.5, -0.5);
+        }
+
+        /// <inheritdoc />
         protected override void InternalCompute()
         {
             if (VisitedGraph.VertexCount <= 1)
                 return;
-
-            InitializeWithRandomPositions(1, 1, -0.5, -0.5);
 
             InitAlgorithm();
 
             double finalRepulsiveExponent = Parameters.RepulsiveExponent;
             double finalAttractionExponent = Parameters.AttractionExponent;
 
-            for (int step = 1; step <= Parameters.IterationCount; ++step)
+            for (int step = 1; step <= Parameters.MaxIterations; ++step)
             {
                 ComputeBarycenter();
                 QuadTree quadTree = BuildQuadTree();
 
                 #region Define cooling function
 
-                if (Parameters.IterationCount >= 50 && finalRepulsiveExponent < 1.0)
+                if (Parameters.MaxIterations >= 50 && finalRepulsiveExponent < 1.0)
                 {
                     Parameters.AttractionExponent = finalAttractionExponent;
                     Parameters.RepulsiveExponent = finalRepulsiveExponent;
-                    if (step <= 0.6 * Parameters.IterationCount)
+                    if (step <= 0.6 * Parameters.MaxIterations)
                     {
                         // Use energy model with few local minimum
                         Parameters.AttractionExponent += 1.1 * (1.0 - finalRepulsiveExponent);
                         Parameters.RepulsiveExponent += 0.9 * (1.0 - finalRepulsiveExponent);
                     }
-                    else if (step <= 0.9 * Parameters.IterationCount)
+                    else if (step <= 0.9 * Parameters.MaxIterations)
                     {
                         // Gradually move to final energy model
                         Parameters.AttractionExponent +=
-                            1.1 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.IterationCount) / 0.3;
+                            1.1 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.MaxIterations) / 0.3;
                         Parameters.RepulsiveExponent +=
-                            0.9 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.IterationCount) / 0.3;
+                            0.9 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.MaxIterations) / 0.3;
                     }
                 }
 
@@ -270,7 +279,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             CopyPositions();
             OnIterationEnded(
                 step,
-                step / (double)Parameters.IterationCount * 100,
+                step / (double)Parameters.MaxIterations * 100,
                 $"Iteration {step} finished.",
                 true);
         }

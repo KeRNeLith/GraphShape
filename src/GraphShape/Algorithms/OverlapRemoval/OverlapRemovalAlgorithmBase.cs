@@ -71,6 +71,9 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// <inheritdoc />
         protected sealed override void InternalCompute()
         {
+            if (WrappedRectangles.Count == 0)
+                return;
+
             AddGaps();
 
             RemoveOverlap();
