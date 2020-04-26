@@ -31,9 +31,6 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         [NotNull]
         private readonly Dictionary<TVertex, ISOMData> _isomDataDict;
         
-        [NotNull]
-        private readonly Random _random = new Random(DateTime.Now.Millisecond);
-        
         private Point _tempPos;
         
         private double _adaptation;
@@ -45,7 +42,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters oldParameters)
+        public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters oldParameters = null)
             : this(visitedGraph, null, oldParameters)
         {
         }
@@ -59,7 +56,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         public ISOMLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] ISOMLayoutParameters oldParameters)
+            [CanBeNull] ISOMLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
             _queue = new Queue<TVertex>();
@@ -95,12 +92,12 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             if (VisitedGraph.VertexCount <= 1)
                 return;
 
-            for (int epoch = 0; epoch < Parameters.MaxEpoch; ++epoch)
+            for (int epoch = 0; epoch < Parameters.MaxEpochs; ++epoch)
             {
                 Adjust();
 
                 // Update Parameters
-                double factor = Math.Exp(-1 * Parameters.CoolingFactor * (1.0 * epoch / Parameters.MaxEpoch));
+                double factor = Math.Exp(-1 * Parameters.CoolingFactor * (1.0 * epoch / Parameters.MaxEpochs));
                 _adaptation = Math.Max(Parameters.MinAdaptation, factor * Parameters.InitialAdaptation);
                 if (_radius > Parameters.MinRadius && epoch % Parameters.RadiusConstantTime == 0)
                 {
@@ -112,13 +109,13 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 {
                     OnIterationEnded(
                         epoch,
-                        epoch / (double)Parameters.MaxEpoch,
+                        epoch / (double)Parameters.MaxEpochs,
                         $"Iteration {epoch} finished.",
                         true);
                 }
                 if (ReportOnProgressChangedNeeded)
                 {
-                    OnProgressChanged(epoch / (double)Parameters.MaxEpoch * 100);
+                    OnProgressChanged(epoch / (double)Parameters.MaxEpochs * 100);
                 }
             }
         }
@@ -133,8 +130,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             // Get a random point in the container
             _tempPos = new Point
             {
-                X = 0.1 * Parameters.Width + _random.NextDouble() * 0.8 * Parameters.Width,
-                Y = 0.1 * Parameters.Height + _random.NextDouble() * 0.8 * Parameters.Height
+                X = 0.1 * Parameters.Width + Rand.NextDouble() * 0.8 * Parameters.Width,
+                Y = 0.1 * Parameters.Height + Rand.NextDouble() * 0.8 * Parameters.Height
             };
 
             // Find the closest vertex to this random point

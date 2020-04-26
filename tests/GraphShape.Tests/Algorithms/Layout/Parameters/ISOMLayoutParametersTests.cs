@@ -38,10 +38,10 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters.Height = 400;
 
             expectedPropertyName = null;
-            parameters.MaxEpoch = 2000;
+            parameters.MaxEpochs = 2000;
 
-            expectedPropertyName = nameof(ISOMLayoutParameters.MaxEpoch);
-            parameters.MaxEpoch = 400;
+            expectedPropertyName = nameof(ISOMLayoutParameters.MaxEpochs);
+            parameters.MaxEpochs = 400;
 
             expectedPropertyName = null;
             parameters.RadiusConstantTime = 100;
@@ -86,7 +86,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             var parameters = new ISOMLayoutParameters();
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.Width = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.Height = -1);
-            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.MaxEpoch = -1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => parameters.MaxEpochs = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.RadiusConstantTime = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.InitialRadius = -1);
             Assert.Throws<ArgumentOutOfRangeException>(() => parameters.MinRadius = -1);
@@ -105,7 +105,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             parameters = new ISOMLayoutParameters();
             parameters.Width= 400;
             parameters.Height = 400;
-            parameters.MaxEpoch = 250;
+            parameters.MaxEpochs = 250;
             parameters.RadiusConstantTime = 150;
             parameters.InitialRadius = 10;
             parameters.MinRadius = 5;

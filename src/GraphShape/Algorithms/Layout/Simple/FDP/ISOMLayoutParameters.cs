@@ -51,23 +51,23 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             }
         }
 
-        private int _maxEpoch = 2000;
+        private int _maxEpochs = 2000;
 
         /// <summary>
-        /// Maximum number of iteration.
+        /// Maximum number of iterations.
         /// </summary>
-        public int MaxEpoch
+        public int MaxEpochs
         {
-            get => _maxEpoch;
+            get => _maxEpochs;
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxEpoch)} must be positive or 0.");
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MaxEpochs)} must be positive or 0.");
 
-                if (_maxEpoch == value)
+                if (_maxEpochs == value)
                     return;
 
-                _maxEpoch = value;
+                _maxEpochs = value;
                 OnPropertyChanged();
             }
         }
@@ -205,7 +205,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             yield return _width;
             yield return _height;
-            yield return _maxEpoch;
+            yield return _maxEpochs;
             yield return _radiusConstantTime;
             yield return _initialRadius;
             yield return _minRadius;

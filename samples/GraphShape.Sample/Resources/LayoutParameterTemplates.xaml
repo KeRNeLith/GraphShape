@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -434,11 +434,11 @@
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"
-                    Text="Max Epoch" />
+                    Text="Max Epochs" />
                 <TextBox
                     Grid.Row="2"
                     Grid.Column="1"
-                    Text="{Binding Path=MaxEpoch, Mode=TwoWay}" />
+                    Text="{Binding Path=MaxEpochs, Mode=TwoWay}" />
 
                 <TextBlock
                     Grid.Row="3"
