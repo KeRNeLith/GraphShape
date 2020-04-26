@@ -29,11 +29,23 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        public FRLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [CanBeNull] FRLayoutParametersBase oldParameters = null)
+            : this(visitedGraph, null, oldParameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
         public FRLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
-            [CanBeNull] IDictionary<TVertex, Point> verticesPositions = null,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [CanBeNull] FRLayoutParametersBase oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {

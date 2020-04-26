@@ -39,7 +39,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public KKLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] KKLayoutParameters oldParameters)
+        public KKLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] KKLayoutParameters oldParameters = null)
             : this(visitedGraph, null, oldParameters)
         {
         }
@@ -53,7 +53,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         public KKLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] KKLayoutParameters oldParameters)
+            [CanBeNull] KKLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
         }
@@ -201,7 +201,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
         [Pure]
         // ReSharper disable InconsistentNaming
-        private double ComputeEnergy(double l_ij, double k_ij, double dx, double dy)
+        private static double ComputeEnergy(double l_ij, double k_ij, double dx, double dy)
         // ReSharper restore InconsistentNaming
         {
             return k_ij / 2 *
@@ -313,8 +313,13 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             dymdxm = dxmdym;
 
             double denominator = d2xm * d2ym - dxmdym * dymdxm;
-            double deltaX = (dxmdym * dym - d2ym * dxm) / denominator;
-            double deltaY = (dymdxm * dxm - d2xm * dym) / denominator;
+            double deltaX = 0;
+            double deltaY = 0;
+            if (!IsZero(denominator))
+            {
+                deltaX = (dxmdym * dym - d2ym * dxm) / denominator;
+                deltaY = (dymdxm * dxm - d2xm * dym) / denominator;
+            }
 
             return new Vector(deltaX, deltaY);
         }
