@@ -89,10 +89,17 @@ namespace GraphShape.Tests.Algorithms.Layout
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
-                graph.AddVerticesAndEdge(new Edge<string>("0", "1"));
+                graph.AddVertexRange(new[] { "0", "1" });
                 yield return new TestCaseData(graph, 0, 0)
                 {
                     TestName = "Two vertices graph"
+                };
+
+                graph = new BidirectionalGraph<string, Edge<string>>();
+                graph.AddVerticesAndEdge(new Edge<string>("0", "1"));
+                yield return new TestCaseData(graph, 0, 0)
+                {
+                    TestName = "Two linked vertices graph"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -212,6 +219,14 @@ namespace GraphShape.Tests.Algorithms.Layout
                 yield return new TestCaseData(generalGraph, 0, 0)
                 {
                     TestName = "Generic graph 30 vertices/15 edges (Parallel edge)"
+                };
+
+                IBidirectionalGraph<string, Edge<string>> isolatedVerticesGraph = GraphFactory.CreateIsolatedVerticesGraph<string, Edge<string>>(
+                    15,
+                    i => i.ToString());
+                yield return new TestCaseData(isolatedVerticesGraph, 0, 0)
+                {
+                    TestName = "Isolated vertices graph (15 vertices)"
                 };
             }
         }

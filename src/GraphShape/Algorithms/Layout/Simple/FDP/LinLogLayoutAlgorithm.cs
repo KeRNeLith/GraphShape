@@ -101,7 +101,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// <inheritdoc />
         protected override void InternalCompute()
         {
-            if (VisitedGraph.VertexCount <= 1)
+            if (VisitedGraph.VertexCount < 2)
                 return;
 
             InitAlgorithm();

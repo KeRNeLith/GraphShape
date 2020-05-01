@@ -89,7 +89,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// <inheritdoc />
         protected override void InternalCompute()
         {
-            if (VisitedGraph.VertexCount <= 1)
+            if (VisitedGraph.VertexCount < 2)
                 return;
 
             for (int epoch = 0; epoch < Parameters.MaxEpochs; ++epoch)

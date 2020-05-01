@@ -12,6 +12,28 @@ namespace GraphShape.Tests
     internal static class GraphFactory
     {
         /// <summary>
+        /// Creates a graph fully composed of isolated vertices.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        [Pure]
+        [NotNull]
+        public static IBidirectionalGraph<TVertex, TEdge> CreateIsolatedVerticesGraph<TVertex, TEdge>(
+            int vertexCount,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory)
+            where TEdge : IEdge<TVertex>
+        {
+            var graph = new BidirectionalGraph<TVertex, TEdge>(false, vertexCount);
+
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                graph.AddVertex(vertexFactory(i));
+            }
+
+            return graph;
+        }
+
+        /// <summary>
         /// Creates a Tree graph.
         /// </summary>
         /// <param name="vertexCount">Total number of vertices.</param>
