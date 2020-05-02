@@ -34,9 +34,14 @@ namespace GraphShape.Tests.Algorithms.Layout
             public double MaximumEdgeLength { get; set; }
             public double AverageEdgeLength { get; set; }
 
-            public void CheckResult(int maxCrossCount, int maxOverlapped = 0)
+            public void CheckPositions()
             {
                 Assert.IsTrue(PositionsSet);
+            }
+
+            public void CheckResult(int maxCrossCount, int maxOverlapped = 0)
+            {
+                CheckPositions();
                 if (maxOverlapped == 0)
                 {
                     Assert.AreEqual(0, OverlapCount, "At least one overlap.");

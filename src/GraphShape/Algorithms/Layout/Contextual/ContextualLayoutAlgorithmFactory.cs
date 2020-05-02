@@ -56,8 +56,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
                     return new BalloonTreeLayoutAlgorithm<TVertex, TEdge, TGraph>(
                         layoutContext.Graph,
                         layoutContext.Positions,
-                        parameters as BalloonTreeLayoutParameters,
-                        layoutContext.SelectedVertex);
+                        layoutContext.SelectedVertex,
+                        parameters as BalloonTreeLayoutParameters);
             }
 
             return null;
