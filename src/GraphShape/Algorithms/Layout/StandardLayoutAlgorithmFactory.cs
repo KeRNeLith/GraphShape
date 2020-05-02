@@ -40,7 +40,7 @@ namespace GraphShape.Algorithms.Layout
         [NotNull]
         private const string LinLogAlgorithm = "LinLog";
         [NotNull]
-        private const string EfficientSugiyamaAlgorithm = "EfficientSugiyama";
+        private const string SugiyamaAlgorithm = "Sugiyama";
         [NotNull]
         private const string CompoundFDPAlgorithm = "CompoundFDP";
         // ReSharper restore InconsistentNaming
@@ -49,8 +49,8 @@ namespace GraphShape.Algorithms.Layout
         public IEnumerable<string> AlgorithmTypes { get; } = new[]
         {
             CircularAlgorithm, TreeAlgorithm, FRAlgorithm, BoundedFRAlgorithm,
-            KKAlgorithm, ISOMAlgorithm, LinLogAlgorithm,
-            EfficientSugiyamaAlgorithm, CompoundFDPAlgorithm
+            KKAlgorithm, ISOMAlgorithm, LinLogAlgorithm, SugiyamaAlgorithm,
+            CompoundFDPAlgorithm
         };
 
         /// <inheritdoc />
@@ -119,13 +119,13 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as LinLogLayoutParameters);
                 }
-                if (string.Equals(algorithmType, EfficientSugiyamaAlgorithm))
+                if (string.Equals(algorithmType, SugiyamaAlgorithm))
                 {
-                    return new EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>(
+                    return new SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>(
                         context.Graph,
                         context.Positions,
                         context.Sizes,
-                        parameters as EfficientSugiyamaLayoutParameters);
+                        parameters as SugiyamaLayoutParameters);
                 }
                 if (string.Equals(algorithmType, CompoundFDPAlgorithm))
                 {
@@ -179,8 +179,8 @@ namespace GraphShape.Algorithms.Layout
                     return oldParameters.CreateNewParameters<ISOMLayoutParameters>();
                 case LinLogAlgorithm:
                     return oldParameters.CreateNewParameters<LinLogLayoutParameters>();
-                case EfficientSugiyamaAlgorithm:
-                    return oldParameters.CreateNewParameters<EfficientSugiyamaLayoutParameters>();
+                case SugiyamaAlgorithm:
+                    return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
                 case CompoundFDPAlgorithm:
                     return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
             }
@@ -216,8 +216,8 @@ namespace GraphShape.Algorithms.Layout
                 return ISOMAlgorithm;
             if (algorithm is LinLogLayoutAlgorithm<TVertex, TEdge, TGraph>)
                 return LinLogAlgorithm;
-            if (algorithm is EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>)
-                return EfficientSugiyamaAlgorithm;
+            if (algorithm is SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>)
+                return SugiyamaAlgorithm;
             if (algorithm is CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>)
                 return CompoundFDPAlgorithm;
             return string.Empty;
@@ -229,7 +229,7 @@ namespace GraphShape.Algorithms.Layout
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
             return IsValidAlgorithm(algorithmType)
-                   && algorithmType != EfficientSugiyamaAlgorithm;
+                   && algorithmType != SugiyamaAlgorithm;
         }
 
         /// <inheritdoc />
@@ -240,9 +240,8 @@ namespace GraphShape.Algorithms.Layout
             return IsValidAlgorithm(algorithmType)
                    && algorithmType != CircularAlgorithm
                    && algorithmType != TreeAlgorithm
-                   && algorithmType != EfficientSugiyamaAlgorithm
+                   && algorithmType != SugiyamaAlgorithm
                    && algorithmType != CompoundFDPAlgorithm;
         }
     }
 }
-

@@ -5,9 +5,9 @@ using static GraphShape.Utils.MathUtils;
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
     /// <summary>
-    /// Efficient Sugiyama layout algorithm parameters.
+    /// Sugiyama layout algorithm parameters.
     /// </summary>
-    public class EfficientSugiyamaLayoutParameters : LayoutParametersBase
+    public class SugiyamaLayoutParameters : LayoutParametersBase
     {
         internal const int MaxPermutations = 50;
 

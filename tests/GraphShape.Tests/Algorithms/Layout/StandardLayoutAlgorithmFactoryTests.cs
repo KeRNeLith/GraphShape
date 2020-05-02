@@ -81,7 +81,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 new[]
                 {
                     "Circular", "Tree", "FR", "BoundedFR", "KK",
-                    "ISOM", "LinLog", "EfficientSugiyama", "CompoundFDP"
+                    "ISOM", "LinLog", "Sugiyama", "CompoundFDP"
                 },
                 factory.AlgorithmTypes);
 
@@ -146,11 +146,11 @@ namespace GraphShape.Tests.Algorithms.Layout
                     simpleContext,
                     new LinLogLayoutParameters()));
 
-            Assert.IsInstanceOf<EfficientSugiyamaLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>>(
+            Assert.IsInstanceOf<SugiyamaLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>>(
                 factory.CreateAlgorithm(
-                    "EfficientSugiyama",
+                    "Sugiyama",
                     simpleContext,
-                    new EfficientSugiyamaLayoutParameters()));
+                    new SugiyamaLayoutParameters()));
 
             Assert.IsInstanceOf<CompoundFDPLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>>(
                 factory.CreateAlgorithm(
@@ -275,18 +275,18 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsInstanceOf<LinLogLayoutParameters>(createdParameters);
             Assert.AreNotSame(linLogParameters, createdParameters);
 
-            var efficientSugiyamaParameters = new EfficientSugiyamaLayoutParameters();
-            createdParameters = factory.CreateParameters("EfficientSugiyama", null);
-            Assert.IsInstanceOf<EfficientSugiyamaLayoutParameters>(createdParameters);
-            Assert.AreNotSame(efficientSugiyamaParameters, createdParameters);
+            var sugiyamaParameters = new SugiyamaLayoutParameters();
+            createdParameters = factory.CreateParameters("Sugiyama", null);
+            Assert.IsInstanceOf<SugiyamaLayoutParameters>(createdParameters);
+            Assert.AreNotSame(sugiyamaParameters, createdParameters);
 
-            createdParameters = factory.CreateParameters("EfficientSugiyama", testParameters);
-            Assert.IsInstanceOf<EfficientSugiyamaLayoutParameters>(createdParameters);
+            createdParameters = factory.CreateParameters("Sugiyama", testParameters);
+            Assert.IsInstanceOf<SugiyamaLayoutParameters>(createdParameters);
             Assert.AreNotSame(treeParameters, createdParameters);
 
-            createdParameters = factory.CreateParameters("EfficientSugiyama", efficientSugiyamaParameters);
-            Assert.IsInstanceOf<EfficientSugiyamaLayoutParameters>(createdParameters);
-            Assert.AreNotSame(efficientSugiyamaParameters, createdParameters);
+            createdParameters = factory.CreateParameters("Sugiyama", sugiyamaParameters);
+            Assert.IsInstanceOf<SugiyamaLayoutParameters>(createdParameters);
+            Assert.AreNotSame(sugiyamaParameters, createdParameters);
 
             var compoundFDPParameters = new CompoundFDPLayoutParameters();
             createdParameters = factory.CreateParameters("CompoundFDP", null);
@@ -312,8 +312,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.IsValidAlgorithm("KK"));
             Assert.IsTrue(factory.IsValidAlgorithm("ISOM"));
             Assert.IsTrue(factory.IsValidAlgorithm("LinLog"));
-            Assert.IsFalse(factory.IsValidAlgorithm("Sugiyama"));
-            Assert.IsTrue(factory.IsValidAlgorithm("EfficientSugiyama"));
+            Assert.IsTrue(factory.IsValidAlgorithm("Sugiyama"));
             Assert.IsTrue(factory.IsValidAlgorithm("CompoundFDP"));
 
 
@@ -341,8 +340,8 @@ namespace GraphShape.Tests.Algorithms.Layout
             var algorithm8 = new LinLogLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph);
             Assert.AreEqual("LinLog", factory.GetAlgorithmType(algorithm8));
 
-            var algorithm9 = new EfficientSugiyamaLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph, positions, sizes, efficientSugiyamaParameters);
-            Assert.AreEqual("EfficientSugiyama", factory.GetAlgorithmType(algorithm9));
+            var algorithm9 = new SugiyamaLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph, positions, sizes, sugiyamaParameters);
+            Assert.AreEqual("Sugiyama", factory.GetAlgorithmType(algorithm9));
 
             var algorithm10 = new CompoundFDPLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph, sizes, borders, layoutTypes);
             Assert.AreEqual("CompoundFDP", factory.GetAlgorithmType(algorithm10));
@@ -356,7 +355,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.NeedEdgeRouting("KK"));
             Assert.IsTrue(factory.NeedEdgeRouting("ISOM"));
             Assert.IsTrue(factory.NeedEdgeRouting("LinLog"));
-            Assert.IsFalse(factory.NeedEdgeRouting("EfficientSugiyama"));
+            Assert.IsFalse(factory.NeedEdgeRouting("Sugiyama"));
             Assert.IsTrue(factory.NeedEdgeRouting("CompoundFDP"));
 
 
@@ -368,7 +367,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.NeedOverlapRemoval("KK"));
             Assert.IsTrue(factory.NeedOverlapRemoval("ISOM"));
             Assert.IsTrue(factory.NeedOverlapRemoval("LinLog"));
-            Assert.IsFalse(factory.NeedOverlapRemoval("EfficientSugiyama"));
+            Assert.IsFalse(factory.NeedOverlapRemoval("Sugiyama"));
             Assert.IsFalse(factory.NeedOverlapRemoval("CompoundFDP"));
         }
 

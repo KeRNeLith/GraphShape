@@ -6,7 +6,7 @@ using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
-    public partial class EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
+    public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>

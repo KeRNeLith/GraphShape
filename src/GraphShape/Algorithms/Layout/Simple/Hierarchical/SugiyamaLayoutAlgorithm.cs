@@ -8,13 +8,13 @@ using QuikGraph;
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {
     /// <summary>
-    /// Efficient Sugiyama layout algorithm.
+    /// Sugiyama layout algorithm.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
     /// <typeparam name="TGraph">Graph type.</typeparam>
-    public partial class EfficientSugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
-        : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, EfficientSugiyamaLayoutParameters>
+    public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
+        : DefaultParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, SugiyamaLayoutParameters>
         , IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
@@ -50,43 +50,43 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         private readonly IList<IList<SugiVertex>> _layers = new List<IList<SugiVertex>>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// Initializes a new instance of the <see cref="SugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public EfficientSugiyamaLayoutAlgorithm(
+        public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
-            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
+            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
             : this(visitedGraph, null, null, oldParameters)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// Initializes a new instance of the <see cref="SugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public EfficientSugiyamaLayoutAlgorithm(
+        public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
+            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
             : this(visitedGraph, null, verticesSizes, oldParameters)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// Initializes a new instance of the <see cref="SugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public EfficientSugiyamaLayoutAlgorithm(
+        public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] EfficientSugiyamaLayoutParameters oldParameters = null)
+            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
             _verticesSizes = verticesSizes;

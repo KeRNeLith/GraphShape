@@ -11,10 +11,10 @@ using static GraphShape.Tests.Algorithms.AlgorithmTestHelpers;
 namespace GraphShape.Tests.Algorithms.Layout
 {
     /// <summary>
-    /// Tests related to <see cref="EfficientSugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
+    /// Tests related to <see cref="SugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.
     /// </summary>
     [TestFixture]
-    internal class EfficientSugiyamaLayoutTests : LayoutAlgorithmTestBase
+    internal class SugiyamaLayoutTests : LayoutAlgorithmTestBase
     {
         [Test]
         public void Constructor()
@@ -22,42 +22,42 @@ namespace GraphShape.Tests.Algorithms.Layout
             var verticesPositions = new Dictionary<string, Point>();
             var verticesSizes = new Dictionary<string, Size>();
             var graph = new BidirectionalGraph<string, Edge<string>>();
-            var algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            var algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             AssertAlgorithmProperties(algorithm, graph);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.IterationEnded += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportProgress: true);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph);
             algorithm.IterationEnded += (sender, args) => { };
             algorithm.ProgressChanged += (sender, args) => { };
             AssertAlgorithmProperties(algorithm, graph, expectedReportIterationEnd: true, expectedReportProgress: true);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesSizes);
             AssertAlgorithmProperties(algorithm, graph);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions);
 
-            var parameters = new EfficientSugiyamaLayoutParameters();
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, parameters);
+            var parameters = new SugiyamaLayoutParameters();
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, parameters);
             AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, null, parameters);
             AssertAlgorithmProperties(algorithm, graph, parameters: parameters);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null, parameters);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, null, parameters);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions, parameters: parameters);
 
-            algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes, parameters);
+            algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(graph, verticesPositions, verticesSizes, parameters);
             AssertAlgorithmProperties(algorithm, graph, verticesPositions, parameters: parameters);
         }
 
@@ -66,22 +66,22 @@ namespace GraphShape.Tests.Algorithms.Layout
         {
             var verticesPositions = new Dictionary<string, Point>();
             var verticesSizes = new Dictionary<string, Size>();
-            var parameters = new EfficientSugiyamaLayoutParameters();
+            var parameters = new SugiyamaLayoutParameters();
 
             // ReSharper disable ObjectCreationAsStatement
             // ReSharper disable AssignNullToNotNullAttribute
             Assert.Throws<ArgumentNullException>(
-                () => new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, parameters));
+                () => new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes, parameters));
+                () => new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesSizes, parameters));
             Assert.Throws<ArgumentNullException>(
-                () => new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes, parameters));
+                () => new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(null, verticesPositions, verticesSizes, parameters));
             // ReSharper restore AssignNullToNotNullAttribute
             // ReSharper restore ObjectCreationAsStatement
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> EfficientSugiyamaLayoutTestCases
+        private static IEnumerable<TestCaseData> SugiyamaLayoutTestCases
         {
             [UsedImplicitly]
             get
@@ -248,15 +248,15 @@ namespace GraphShape.Tests.Algorithms.Layout
             }
         }
 
-        [TestCaseSource(nameof(EfficientSugiyamaLayoutTestCases))]
-        public void EfficientSugiyamaLayoutAlgorithm(
+        [TestCaseSource(nameof(SugiyamaLayoutTestCases))]
+        public void SugiyamaLayoutAlgorithm(
             [NotNull] IBidirectionalGraph<string, Edge<string>> graph,
             int maxCrossCount,
             int maxOverlapped)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
 
-            var parameters = new EfficientSugiyamaLayoutParameters();
+            var parameters = new SugiyamaLayoutParameters();
 
             foreach (LayoutDirection direction in Enum.GetValues(typeof(LayoutDirection)))
             {
@@ -274,7 +274,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                         {
                             parameters.MinimizeEdgeLength = minimizeEdgeLength;
                     
-                            var algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
+                            var algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
                                 graph,
                                 verticesSizes,
                                 parameters)
@@ -291,7 +291,7 @@ namespace GraphShape.Tests.Algorithms.Layout
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> EfficientSugiyamaLayoutEdgeRoutingTestCases
+        private static IEnumerable<TestCaseData> SugiyamaLayoutEdgeRoutingTestCases
         {
             [UsedImplicitly]
             get
@@ -458,17 +458,17 @@ namespace GraphShape.Tests.Algorithms.Layout
             }
         }
 
-        [TestCaseSource(nameof(EfficientSugiyamaLayoutEdgeRoutingTestCases))]
-        public void EfficientSugiyamaLayoutAlgorithmEdgeRouting([NotNull] IBidirectionalGraph<string, Edge<string>> graph)
+        [TestCaseSource(nameof(SugiyamaLayoutEdgeRoutingTestCases))]
+        public void SugiyamaLayoutAlgorithmEdgeRouting([NotNull] IBidirectionalGraph<string, Edge<string>> graph)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
 
-            var parameters = new EfficientSugiyamaLayoutParameters();
+            var parameters = new SugiyamaLayoutParameters();
 
             foreach (SugiyamaEdgeRouting routing in Enum.GetValues(typeof(SugiyamaEdgeRouting)))
             {
                 parameters.EdgeRouting = routing;
-                var algorithm = new EfficientSugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
+                var algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
                     graph,
                     verticesSizes,
                     parameters)

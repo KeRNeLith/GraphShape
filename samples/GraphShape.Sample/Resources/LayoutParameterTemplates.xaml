@@ -606,8 +606,8 @@
         </Grid>
     </DataTemplate>
 
-    <!-- Efficient Sugiyama DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleHierarchicalLayout:EfficientSugiyamaLayoutParameters}">
+    <!-- Sugiyama DataTemplate -->
+    <DataTemplate DataType="{x:Type simpleHierarchicalLayout:SugiyamaLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
