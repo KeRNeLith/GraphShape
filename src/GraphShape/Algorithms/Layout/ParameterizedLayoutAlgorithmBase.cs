@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -32,12 +31,6 @@ namespace GraphShape.Algorithms.Layout
         }
 
         /// <summary>
-        /// Algorithm tracker.
-        /// </summary>
-        [NotNull]
-        public TraceSource TraceSource { get; protected set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
@@ -61,7 +54,6 @@ namespace GraphShape.Algorithms.Layout
             : base(visitedGraph, verticesPositions)
         {
             InitParameters(oldParameters);
-            TraceSource = new TraceSource("LayoutAlgorithm", SourceLevels.All);
         }
 
         #region Initializers

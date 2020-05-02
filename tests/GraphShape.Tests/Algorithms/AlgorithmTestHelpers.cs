@@ -53,7 +53,6 @@ namespace GraphShape.Tests.Algorithms
                 CollectionAssert.AreEqual(positions, algorithm.VerticesPositions);
             Assert.AreEqual(expectedReportIterationEnd, algorithm.ReportOnIterationEndNeeded);
             Assert.AreEqual(expectedReportProgress, algorithm.ReportOnProgressChangedNeeded);
-            Assert.IsNotNull(algorithm.TraceSource);
             if (parameters is null)
             {
                 Assert.IsNotNull(algorithm.Parameters);
@@ -64,7 +63,6 @@ namespace GraphShape.Tests.Algorithms
                 Assert.AreEqual(parameters, algorithm.Parameters);
                 Assert.AreSame(algorithm.Parameters, algorithm.GetParameters());
             }
-            Assert.IsNotNull(algorithm.TraceSource);
         }
 
         public static void AssertAlgorithmProperties<TVertex, TEdge, TGraph, TParameters>(
@@ -86,7 +84,6 @@ namespace GraphShape.Tests.Algorithms
                 CollectionAssert.AreEqual(positions, algorithm.VerticesPositions);
             Assert.AreEqual(expectedReportIterationEnd, algorithm.ReportOnIterationEndNeeded);
             Assert.AreEqual(expectedReportProgress, algorithm.ReportOnProgressChangedNeeded);
-            Assert.IsNotNull(algorithm.TraceSource);
             if (parameters is null)
             {
                 Assert.IsNotNull(algorithm.Parameters);
@@ -97,7 +94,6 @@ namespace GraphShape.Tests.Algorithms
                 Assert.AreEqual(parameters, algorithm.Parameters);
                 Assert.AreSame(algorithm.Parameters, algorithm.GetParameters());
             }
-            Assert.IsNotNull(algorithm.TraceSource);
         }
 
         public static void AssertAlgorithmProperties<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParameters>(
@@ -119,7 +115,6 @@ namespace GraphShape.Tests.Algorithms
                 CollectionAssert.AreEqual(positions, algorithm.VerticesPositions);
             Assert.AreEqual(expectedReportIterationEnd, algorithm.ReportOnIterationEndNeeded);
             Assert.AreEqual(expectedReportProgress, algorithm.ReportOnProgressChangedNeeded);
-            Assert.IsNotNull(algorithm.TraceSource);
             if (parameters is null)
             {
                 Assert.IsNotNull(algorithm.Parameters);
@@ -130,7 +125,6 @@ namespace GraphShape.Tests.Algorithms
                 Assert.AreEqual(parameters, algorithm.Parameters);
                 Assert.AreSame(algorithm.Parameters, algorithm.GetParameters());
             }
-            Assert.IsNotNull(algorithm.TraceSource);
             CollectionAssert.IsEmpty(algorithm.VerticesInfos);
             CollectionAssert.IsEmpty(algorithm.EdgesInfos);
         }
