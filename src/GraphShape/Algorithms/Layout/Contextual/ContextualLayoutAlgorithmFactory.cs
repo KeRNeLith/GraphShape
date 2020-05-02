@@ -34,6 +34,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
         {
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
+            if (context is null)
+                throw new ArgumentNullException(nameof(context));
 
             var layoutContext = context as ContextualLayoutContext<TVertex, TEdge, TGraph>;
             if (layoutContext is null)
@@ -104,7 +106,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
         {
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
-            return true;
+            return IsValidAlgorithm(algorithmType);
         }
 
         /// <inheritdoc />
