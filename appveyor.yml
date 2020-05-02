@@ -119,7 +119,7 @@ test_script:
       # Directory.Parent.Parent = tests\TestProject.Tests\bin
       # Directory.Parent.Parent.Parent = tests\TestProject.Tests
       
-      $testAssemblies = (ls tests\*.Tests\bin\$env:Configuration\*\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" -and [System.IO.Path]::GetFileNameWithoutExtension($_.FullName) -Match $_.Directory.Parent.Parent.Parent.Name } | % FullName | sort-object -Unique);
+      $testAssemblies = (ls tests\*.Tests\bin\$env:Configuration\net*5\*Tests.dll | Where-Object { $_ -Match "net*" -and $_ -NotMatch "netcoreapp*" -and [System.IO.Path]::GetFileNameWithoutExtension($_.FullName) -Match $_.Directory.Parent.Parent.Parent.Name } | % FullName | sort-object -Unique);
       
       $testsPassed = $false;
       if ($env:IsFullIntegrationBuild -eq $true)
