@@ -50,8 +50,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
                         layoutContext.Graph,
                         layoutContext.Positions,
                         layoutContext.Sizes,
-                        parameters as DoubleTreeLayoutParameters,
-                        layoutContext.SelectedVertex);
+                        layoutContext.SelectedVertex,
+                        parameters as DoubleTreeLayoutParameters);
                 case BalloonTreeAlgorithm:
                     return new BalloonTreeLayoutAlgorithm<TVertex, TEdge, TGraph>(
                         layoutContext.Graph,

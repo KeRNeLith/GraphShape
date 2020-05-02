@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using QuikGraph;
 using GraphShape.Algorithms.Layout.Simple.Tree;
@@ -30,6 +31,22 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// Initializes a new instance of the <see cref="DoubleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesSizes">Vertices sizes.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="selectedVertex">Root vertex.</param>
+        public DoubleTreeLayoutAlgorithm(
+            [NotNull] TGraph visitedGraph,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] TVertex selectedVertex,
+            [CanBeNull] DoubleTreeLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, verticesSizes, selectedVertex, oldParameters)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DoubleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
+        /// </summary>
+        /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
@@ -37,13 +54,16 @@ namespace GraphShape.Algorithms.Layout.Contextual
         public DoubleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] DoubleTreeLayoutParameters oldParameters,
-            [NotNull] TVertex selectedVertex)
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] TVertex selectedVertex,
+            [CanBeNull] DoubleTreeLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
             _root = selectedVertex ?? throw new ArgumentNullException(nameof(selectedVertex));
-            _verticesSizes = verticesSizes ?? new Dictionary<TVertex, Size>();
+            if (!visitedGraph.ContainsVertex(selectedVertex))
+                throw new ArgumentException("The provided vertex is not part of the graph.", nameof(selectedVertex));
+
+            _verticesSizes = verticesSizes ?? throw new ArgumentNullException(nameof(verticesSizes));
         }
 
         /// <inheritdoc />
@@ -74,7 +94,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 VerticesInfos[vertex] = DoubleTreeVertexType.Backward;
                 foreach (TEdge edge in VisitedGraph.InEdges(vertex))
                 {
-                    if (!side1.Contains(edge.Source) || edge.Source.Equals(edge.Target))
+                    if (!side1.Contains(edge.Source) || edge.IsSelfEdge())
                         continue;
 
                     // Reverse the edge
@@ -92,7 +112,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 VerticesInfos[vertex] = DoubleTreeVertexType.Forward;
                 foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
                 {
-                    if (!side2.Contains(edge.Target) || edge.Source.Equals(edge.Target))
+                    if (!side2.Contains(edge.Target) || edge.IsSelfEdge())
                         continue;
 
                     // Simply add the edge
@@ -196,7 +216,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 for (int i = 0, n = queue1.Count; i < n; ++i)
                 {
                     TVertex vertex = queue1.Dequeue();
-                    foreach (TEdge edge in graph.InEdges(vertex))
+                    foreach (TEdge edge in graph.InEdges(vertex).Where(e => !e.IsSelfEdge()))
                     {
                         if ((graph.ContainsVertex(edge.Source) && visitedVertices.Add(edge.Source)) || vertex.Equals(splitVertex))
                         {
@@ -210,7 +230,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 for (int i = 0, n = queue2.Count; i < n; ++i)
                 {
                     TVertex vertex = queue2.Dequeue();
-                    foreach (TEdge edge in graph.OutEdges(vertex))
+                    foreach (TEdge edge in graph.OutEdges(vertex).Where(e => !e.IsSelfEdge()))
                     {
                         if ((graph.ContainsVertex(edge.Target) && visitedVertices.Add(edge.Target)) || vertex.Equals(splitVertex))
                         {
