@@ -204,7 +204,7 @@ namespace GraphShape
                 List<TVertex> verticesToClean = null;
                 foreach (KeyValuePair<TVertex, List<TVertex>> pair in _childrenRegistry)
                 {
-                    pair.Value.RemoveAll(v => Equals(v, vertex));
+                    pair.Value.RemoveAll(v => EqualityComparer<TVertex>.Default.Equals(v, vertex));
                     if (pair.Value.Count == 0)
                     {
                         if (verticesToClean is null)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using GraphShape.Algorithms.EdgeRouting;
@@ -1025,7 +1026,7 @@ namespace GraphShape.Controls
                     // ignored
                 }
 
-                if (Equals(edge, default(TEdge)) || !Graph.ContainsEdge(edge))
+                if (EqualityComparer<TEdge>.Default.Equals(edge, default(TEdge)) || !Graph.ContainsEdge(edge))
                     return;
 
                 if (args.IsPositiveTrigger)

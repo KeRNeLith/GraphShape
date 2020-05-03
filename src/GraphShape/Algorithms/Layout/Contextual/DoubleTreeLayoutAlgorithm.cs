@@ -218,7 +218,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
                     TVertex vertex = queue1.Dequeue();
                     foreach (TEdge edge in graph.InEdges(vertex).Where(e => !e.IsSelfEdge()))
                     {
-                        if ((graph.ContainsVertex(edge.Source) && visitedVertices.Add(edge.Source)) || vertex.Equals(splitVertex))
+                        if ((graph.ContainsVertex(edge.Source) && visitedVertices.Add(edge.Source))
+                            || EqualityComparer<TVertex>.Default.Equals(vertex, splitVertex))
                         {
                             queue1.Enqueue(edge.Source);
                             side1.Add(edge.Source);
@@ -232,7 +233,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
                     TVertex vertex = queue2.Dequeue();
                     foreach (TEdge edge in graph.OutEdges(vertex).Where(e => !e.IsSelfEdge()))
                     {
-                        if ((graph.ContainsVertex(edge.Target) && visitedVertices.Add(edge.Target)) || vertex.Equals(splitVertex))
+                        if ((graph.ContainsVertex(edge.Target) && visitedVertices.Add(edge.Target))
+                            || EqualityComparer<TVertex>.Default.Equals(vertex, splitVertex))
                         {
                             queue2.Enqueue(edge.Target);
                             side2.Add(edge.Target);

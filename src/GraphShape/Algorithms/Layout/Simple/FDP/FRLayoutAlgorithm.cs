@@ -130,7 +130,7 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 foreach (TVertex u in VisitedGraph.Vertices)
                 {
                     // Doesn't repulse itself
-                    if (u.Equals(v))
+                    if (EqualityComparer<TVertex>.Default.Equals(u, v))
                         continue;
 
                     // Calculate repulsive force

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -70,8 +71,11 @@ namespace GraphShape.Algorithms.Highlight
             foreach (TEdge edge in Controller.Graph.InEdges(vertex))
             {
                 Controller.SemiHighlightEdge(edge, "InEdge");
-                if (Equals(edge.Source, vertex) || Controller.IsHighlightedVertex(edge.Source))
+                if (EqualityComparer<TVertex>.Default.Equals(edge.Source, vertex)
+                    || Controller.IsHighlightedVertex(edge.Source))
+                {
                     continue;
+                }
 
                 Controller.SemiHighlightVertex(edge.Source, "Source");
             }
@@ -80,8 +84,11 @@ namespace GraphShape.Algorithms.Highlight
             foreach (TEdge edge in Controller.Graph.OutEdges(vertex))
             {
                 Controller.SemiHighlightEdge(edge, "OutEdge");
-                if (Equals(edge.Target, vertex) || Controller.IsHighlightedVertex(edge.Target))
+                if (EqualityComparer<TVertex>.Default.Equals(edge.Target, vertex)
+                    || Controller.IsHighlightedVertex(edge.Target))
+                {
                     continue;
+                }
 
                 Controller.SemiHighlightVertex(edge.Target, "Target");
             }
