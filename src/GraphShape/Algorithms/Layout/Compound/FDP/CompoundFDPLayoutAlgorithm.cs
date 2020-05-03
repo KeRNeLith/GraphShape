@@ -26,9 +26,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
         private const double TemperatureLambda = 0.99;
 
-        [NotNull]
-        private readonly Random _random = new Random(DateTime.Now.Millisecond);
-
         /// <summary>
         /// Phase of the layout process.
         /// Values: 1,2,3.
@@ -94,6 +91,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <inheritdoc />
         protected override void InternalCompute()
         {
+            if (VisitedGraph.VertexCount == 0)
+                return;
+
             var temperatureMultipliers = new[]
             {
                 1.0,
@@ -208,7 +208,7 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             Vector positionVector = uPos - vPos;
             if (IsZero(positionVector.Length))
             {
-                var compensationVector = new Vector(_random.NextDouble(), _random.NextDouble());
+                var compensationVector = new Vector(Rand.NextDouble(), Rand.NextDouble());
                 positionVector = compensationVector * 2;
                 uPos += compensationVector;
                 vPos -= compensationVector;
@@ -242,7 +242,7 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             Vector positionVector = uPos - vPos;
             if (IsZero(positionVector.Length))
             {
-                var compensationVector = new Vector(_random.NextDouble(), _random.NextDouble());
+                var compensationVector = new Vector(Rand.NextDouble(), Rand.NextDouble());
                 positionVector = compensationVector * 2;
                 uPos += compensationVector;
                 vPos -= compensationVector;

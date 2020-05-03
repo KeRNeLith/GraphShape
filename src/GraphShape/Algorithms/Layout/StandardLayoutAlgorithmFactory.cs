@@ -131,10 +131,10 @@ namespace GraphShape.Algorithms.Layout
                 {
                     return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(
                         context.Graph,
+                        context.Positions,
                         context.Sizes,
                         new Dictionary<TVertex, Thickness>(),
                         new Dictionary<TVertex, CompoundVertexInnerLayoutType>(),
-                        context.Positions,
                         parameters as CompoundFDPLayoutParameters);
                 }
 
@@ -147,10 +147,10 @@ namespace GraphShape.Algorithms.Layout
             {
                 return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(
                     compoundContext.Graph,
+                    compoundContext.Positions,
                     compoundContext.Sizes,
                     compoundContext.VerticesBorders,
                     compoundContext.LayoutTypes,
-                    compoundContext.Positions,
                     parameters as CompoundFDPLayoutParameters);
             }
 

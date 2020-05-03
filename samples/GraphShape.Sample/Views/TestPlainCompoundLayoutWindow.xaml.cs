@@ -138,7 +138,6 @@ namespace GraphShape.Sample
                     sizes,
                     borders,
                     layoutType,
-                    null,
                     _parameters);
 
                 layoutAlgorithm.IterationEnded += (s, iterationArgs) =>

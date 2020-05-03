@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -9,7 +9,7 @@ namespace GraphShape.Tests
     /// <summary>
     /// Graph Factory.
     /// </summary>
-    internal static class GraphFactory
+    public static class GraphFactory
     {
         /// <summary>
         /// Creates a graph fully composed of isolated vertices.
@@ -216,6 +216,74 @@ namespace GraphShape.Tests
                         graph.AddEdge(edgeFactory(verticesMap[i], verticesMap[j]));
                     }
                 }
+            }
+
+            return graph;
+        }
+
+        /// <summary>
+        /// Creates a <paramref name="vertexCount"/> complete graph.
+        /// </summary>
+        /// <param name="vertexCount">Total number of vertices.</param>
+        /// <param name="edgeCount">Total number of edges.</param>
+        /// <param name="vertexFactory">Vertex factory.</param>
+        /// <param name="edgeFactory">Edge factory.</param>
+        /// <param name="random">Random number generator.</param>
+        [Pure]
+        [NotNull]
+        public static ICompoundGraph<TVertex, TEdge> CreateCompoundGraph<TVertex, TEdge>(
+            int vertexCount,
+            int edgeCount,
+            [NotNull, InstantHandle] Func<int, TVertex> vertexFactory,
+            [NotNull, InstantHandle] Func<TVertex, TVertex, TEdge> edgeFactory,
+            [NotNull] Random random)
+            where TEdge : IEdge<TVertex>
+        {
+            var graph = new CompoundGraph<TVertex, TEdge>(false, vertexCount);
+
+            var verticesMap = new Dictionary<int, TVertex>();
+            for (int i = 0; i < vertexCount; ++i)
+            {
+                TVertex vertex = vertexFactory(i);
+                verticesMap[i] = vertex;
+                graph.AddVertex(vertex);
+            }
+
+            for (int i = 0; i < vertexCount / 3; ++i)
+            {
+                int vertexIndex1;
+                int vertexIndex2;
+                TVertex vertex1;
+                TVertex vertex2;
+                do
+                {
+                    vertexIndex1 = random.Next(vertexCount);
+                    vertexIndex2 = random.Next(vertexCount);
+                    vertex1 = verticesMap[vertexIndex1];
+                    vertex2 = verticesMap[vertexIndex2];
+                } while (vertexIndex1 == vertexIndex2
+                         || graph.IsChildVertex(vertex2));
+
+                graph.AddChildVertex(vertex1, vertex2);
+            }
+
+            for (int i = 0; i < edgeCount; ++i)
+            {
+                int childIndex;
+                int parentIndex;
+                TVertex child;
+                TVertex parent;
+                do
+                {
+                    childIndex = random.Next(vertexCount);
+                    parentIndex = random.Next(vertexCount);
+                    child = verticesMap[childIndex];
+                    parent = verticesMap[parentIndex];
+                } while (childIndex == parentIndex
+                         || graph.ContainsEdge(parent, child));
+
+                // Create the edge between the 2 vertex
+                graph.AddEdge(edgeFactory(parent, child));
             }
 
             return graph;

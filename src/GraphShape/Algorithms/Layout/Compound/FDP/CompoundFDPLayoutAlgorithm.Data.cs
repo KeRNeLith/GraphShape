@@ -104,12 +104,14 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
+        /// <param name="oldParameters">Optional algorithm parameters.</param>
         public CompoundFDPLayoutAlgorithm(
-            TGraph visitedGraph,
-            IDictionary<TVertex, Size> verticesSizes,
-            IDictionary<TVertex, Thickness> verticesBorders,
-            IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes)
-            : this(visitedGraph, verticesSizes, verticesBorders, layoutTypes, null, null)
+            [NotNull] TGraph visitedGraph,
+            [NotNull] IDictionary<TVertex, Size> verticesSizes,
+            [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
+            [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
+            [CanBeNull] CompoundFDPLayoutParameters oldParameters = null)
+            : this(visitedGraph, null, verticesSizes, verticesBorders, layoutTypes, oldParameters)
         {
         }
 
@@ -117,29 +119,26 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// Initializes a new instance of the <see cref="CompoundFDPLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
-        /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="oldParameters">Optional algorithm parameters.</param>
         public CompoundFDPLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
+            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] CompoundFDPLayoutParameters oldParameters)
+            [CanBeNull] CompoundFDPLayoutParameters oldParameters = null)
             : base(visitedGraph, verticesPositions, oldParameters)
         {
-            if (visitedGraph == null)
-                throw new ArgumentNullException(nameof(visitedGraph));
-
             _verticesSizes = verticesSizes ?? throw new ArgumentNullException(nameof(verticesSizes));
             _verticesBorders = verticesBorders ?? throw new ArgumentNullException(nameof(verticesBorders));
             _layoutTypes = layoutTypes ?? throw new ArgumentNullException(nameof(layoutTypes));
 
-            _compoundGraph = VisitedGraph is ICompoundGraph<TVertex, TEdge> graph
-                ? new CompoundGraph<TVertex, TEdge>(graph)
+            _compoundGraph = VisitedGraph is ICompoundGraph<TVertex, TEdge> compoundGraph
+                ? new CompoundGraph<TVertex, TEdge>(compoundGraph)
                 : new CompoundGraph<TVertex, TEdge>(VisitedGraph);
         }
 
@@ -153,7 +152,9 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         [Pure]
         public int LevelOfVertex([NotNull] TVertex vertex)
         {
-            return _verticesData[vertex].Level;
+            if (_verticesData.TryGetValue(vertex, out VertexData data))
+                return data.Level;
+            throw new VertexNotFoundException("Vertex is not present in the treated graph.");
         }
 
         #region ICompoundLayoutAlgorithm<TVertex,TEdge,TGraph>
