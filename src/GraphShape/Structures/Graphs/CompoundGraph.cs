@@ -78,11 +78,9 @@ namespace GraphShape
             AddVertexRange(graph.Vertices);
 
             // Copy the containment information
-            foreach (TVertex vertex in graph.Vertices.Where(graph.IsChildVertex))
+            foreach (TVertex vertex in graph.CompoundVertices)
             {
-                TVertex parent = graph.GetParent(vertex);
-                // ReSharper disable once AssignNullToNotNullAttribute, Justification: Is a child vertex so must have a parent
-                AddChildVertex(parent, vertex);
+                AddChildVertexRange(vertex, graph.GetChildrenVertices(vertex));
             }
 
             // Copy the edges
@@ -112,6 +110,19 @@ namespace GraphShape
         /// <inheritdoc />
         public IEnumerable<TVertex> CompoundVertices => _childrenRegistry.Keys;
 
+        private bool AddChildVertexInternal([NotNull] TVertex parent, [NotNull] TVertex child, [NotNull, ItemNotNull] ICollection<TVertex> children)
+        {
+            if (_parentRegistry.TryGetValue(child, out TVertex currentParent))
+            {
+                if (EqualityComparer<TVertex>.Default.Equals(currentParent, parent))
+                    return false;
+                throw new InvalidOperationException($"Cannot set {child} as child vertex of {parent}, {child} already has a parent vertex.");
+            }
+            _parentRegistry[child] = parent;
+            children.Add(child);
+            return true;
+        }
+
         /// <inheritdoc />
         public bool AddChildVertex(TVertex parent, TVertex child)
         {
@@ -119,9 +130,7 @@ namespace GraphShape
                 throw new VertexNotFoundException("Parent vertex must already be part of the graph.");
             if (!ContainsVertex(child))
                 AddVertex(child);
-            _parentRegistry[child] = parent;
-            GetChildrenList(parent, true).Add(child);
-            return true;
+            return AddChildVertexInternal(parent, child, GetChildrenList(parent, true));
         }
 
         /// <inheritdoc />
@@ -132,10 +141,9 @@ namespace GraphShape
             TVertex[] childrenArray = children.ToArray();
             int count = AddVertexRange(childrenArray);
             IList<TVertex> childrenList = GetChildrenList(parent, true);
-            foreach (TVertex vertex in childrenArray)
+            foreach (TVertex child in childrenArray)
             {
-                _parentRegistry[vertex] = parent;
-                childrenList.Add(vertex);
+                AddChildVertexInternal(parent, child, childrenList);
             }
             return count;
         }

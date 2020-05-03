@@ -219,11 +219,11 @@ namespace GraphShape.Tests.Structures
             CollectionAssert.Contains(graph.Vertices, 7);
             Assert.IsTrue(graph.IsCompoundVertex(5));
 
-            // 4 child of 2 (again)
+            // 4 child of 2 (again) => Does nothing
             Assert.IsTrue(graph.IsChildVertex(4));
             Assert.IsTrue(graph.IsCompoundVertex(2));
 
-            Assert.IsTrue(graph.AddChildVertex(2, 4));
+            Assert.IsFalse(graph.AddChildVertex(2, 4));
 
             Assert.IsTrue(graph.IsChildVertex(4));
             Assert.IsTrue(graph.IsCompoundVertex(2));
@@ -232,7 +232,8 @@ namespace GraphShape.Tests.Structures
         [Test]
         public void AddChildVertex_Throws()
         {
-            var parent = new TestVertex("1");
+            var parent = new TestVertex("parent");
+            var parent2 = new TestVertex("parent2");
             var child = new TestVertex("2");
             var graph = new CompoundGraph<TestVertex, Edge<TestVertex>>();
 
@@ -244,6 +245,11 @@ namespace GraphShape.Tests.Structures
             Assert.Throws<ArgumentNullException>(() => graph.AddChildVertex(parent, null));
             Assert.Throws<ArgumentNullException>(() => graph.AddChildVertex(null, null));
             // ReSharper restore AssignNullToNotNullAttribute
+
+            Assert.DoesNotThrow(() => graph.AddChildVertex(parent, child));
+
+            graph.AddVertex(parent2);
+            Assert.Throws<InvalidOperationException>(() => graph.AddChildVertex(parent2, child));
         }
 
         [Test]
@@ -296,14 +302,14 @@ namespace GraphShape.Tests.Structures
             Assert.IsTrue(graph.IsCompoundVertex(2));
             Assert.IsTrue(graph.IsCompoundVertex(5));
 
-            // 1 & 4 (again) children of 2
-            Assert.IsTrue(graph.IsChildVertex(1));  // Child of another vertex also
+            // 3 & 4 (again) children of 2 => Does nothing
+            Assert.IsTrue(graph.IsChildVertex(3));
             Assert.IsTrue(graph.IsChildVertex(4));
             Assert.IsTrue(graph.IsCompoundVertex(2));
 
-            Assert.AreEqual(0 /* Already in */, graph.AddChildVertexRange(2, new[] { 1, 4 }));
+            Assert.AreEqual(0 /* Already in */, graph.AddChildVertexRange(2, new[] { 3, 4 }));
 
-            Assert.IsTrue(graph.IsChildVertex(1));
+            Assert.IsTrue(graph.IsChildVertex(3));
             Assert.IsTrue(graph.IsChildVertex(4));
             Assert.IsTrue(graph.IsCompoundVertex(2));
         }
@@ -311,9 +317,10 @@ namespace GraphShape.Tests.Structures
         [Test]
         public void AddChildVertexRange_Throws()
         {
-            var parent = new TestVertex("1");
-            var child1 = new TestVertex("2");
-            var child2 = new TestVertex("3");
+            var parent = new TestVertex("parent");
+            var parent2 = new TestVertex("parent2");
+            var child1 = new TestVertex("child1");
+            var child2 = new TestVertex("child2");
             var graph = new CompoundGraph<TestVertex, Edge<TestVertex>>();
 
             Assert.Throws<VertexNotFoundException>(() => graph.AddChildVertexRange(parent, new[] { child1, child2 }));
@@ -325,6 +332,11 @@ namespace GraphShape.Tests.Structures
             Assert.Throws<ArgumentNullException>(() => graph.AddChildVertexRange(null, null));
             Assert.Throws<ArgumentNullException>(() => graph.AddChildVertexRange(parent, new[] { child1, null, child2 }));
             // ReSharper restore AssignNullToNotNullAttribute
+
+            Assert.DoesNotThrow(() => graph.AddChildVertex(parent, child2));
+
+            graph.AddVertex(parent2);
+            Assert.Throws<InvalidOperationException>(() => graph.AddChildVertexRange(parent2, new[] { child1, child2 }));
         }
 
         [Test]
@@ -488,11 +500,11 @@ namespace GraphShape.Tests.Structures
             CheckChildren(5, new[] { 6, 7 });
             CheckChildren(6);
 
-            // 4 child of 2 (again)
+            // 4 child of 2 (again) => Does nothing
             graph.AddChildVertex(2, 4);
 
             CheckChildren(1);
-            CheckChildren(2, new[] { 4, 4 });
+            CheckChildren(2, new[] { 4 });
             CheckChildren(3);
             CheckChildren(4);
             CheckChildren(5, new[] { 6, 7 });
