@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
-using System.Windows;
 using GraphShape.Utils;
 using JetBrains.Annotations;
 using QuikGraph;

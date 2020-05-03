@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Contextual;
 using NUnit.Framework;

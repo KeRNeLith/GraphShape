@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Collections.Generic;
 using GraphShape.Algorithms.Layout.Simple.FDP;
 using JetBrains.Annotations;

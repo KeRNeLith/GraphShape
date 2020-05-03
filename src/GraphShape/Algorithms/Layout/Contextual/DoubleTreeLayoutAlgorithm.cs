@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using QuikGraph;
 using GraphShape.Algorithms.Layout.Simple.Tree;
 using JetBrains.Annotations;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.Layout.Compound.FDP;
 using GraphShape.Algorithms.Layout.Simple.Circular;

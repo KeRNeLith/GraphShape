@@ -280,9 +280,9 @@ namespace GraphShape.Controls
         /// <summary>
         /// Translation.
         /// </summary>
-        public Vector Translation
+        public System.Windows.Vector Translation
         {
-            get => (Vector)GetValue(TranslationProperty);
+            get => (System.Windows.Vector)GetValue(TranslationProperty);
             protected set => SetValue(TranslationPropertyKey, value);
         }
 
@@ -291,7 +291,7 @@ namespace GraphShape.Controls
         /// </summary>
         [NotNull]
         protected static readonly DependencyPropertyKey TranslationPropertyKey = DependencyProperty.RegisterReadOnly(
-            nameof(Translation), typeof(Vector), typeof(GraphCanvas), new UIPropertyMetadata(default(Vector)));
+            nameof(Translation), typeof(System.Windows.Vector), typeof(GraphCanvas), new UIPropertyMetadata(default(System.Windows.Vector)));
 
         /// <summary>
         /// Translation dependency property.
@@ -306,36 +306,36 @@ namespace GraphShape.Controls
         /// <summary>
         /// The position of the topLeft corner of the most top-left vertex.
         /// </summary>
-        private Point _topLeft;
+        private System.Windows.Point _topLeft;
 
         /// <summary>
         /// The position of the bottom right corner of the most  bottom-right vertex.
         /// </summary>
-        private Point _bottomRight;
+        private System.Windows.Point _bottomRight;
 
         /// <summary>
         /// Arranges the size of the control.
         /// </summary>
         /// <param name="finalSize">The arranged size of the control.</param>
         /// <returns>The size of the control.</returns>
-        protected override Size ArrangeOverride(Size finalSize)
+        protected override System.Windows.Size ArrangeOverride(System.Windows.Size finalSize)
         {
-            var translate = new Vector(-_topLeft.X, -_topLeft.Y);
-            Vector graphSize = _bottomRight - _topLeft;
+            var translate = new System.Windows.Vector(-_topLeft.X, -_topLeft.Y);
+            System.Windows.Vector graphSize = _bottomRight - _topLeft;
 
             if (double.IsNaN(graphSize.X)
                 || double.IsNaN(graphSize.Y)
                 || double.IsInfinity(graphSize.X)
                 || double.IsInfinity(graphSize.Y))
             {
-                translate = new Vector(0, 0);
+                translate = new System.Windows.Vector(0, 0);
             }
 
             Translation = translate;
 
             graphSize = InternalChildren.Count > 0
-                ? new Vector(double.NegativeInfinity, double.NegativeInfinity)
-                : default(Vector);
+                ? new System.Windows.Vector(double.NegativeInfinity, double.NegativeInfinity)
+                : default(System.Windows.Vector);
 
             // Translate with the topLeft
             foreach (UIElement child in InternalChildren)
@@ -358,13 +358,16 @@ namespace GraphShape.Controls
                     x -= child.DesiredSize.Width * 0.5;
                     y -= child.DesiredSize.Height * 0.5;
                 }
-                child.Arrange(new Rect(new Point(x, y), child.DesiredSize));
+                child.Arrange(
+                    new System.Windows.Rect(
+                        new System.Windows.Point(x, y),
+                        child.DesiredSize));
 
                 graphSize.X = Math.Max(0, Math.Max(graphSize.X, x + child.DesiredSize.Width));
                 graphSize.Y = Math.Max(0, Math.Max(graphSize.Y, y + child.DesiredSize.Height));
             }
 
-            return new Size(graphSize.X, graphSize.Y);
+            return new System.Windows.Size(graphSize.X, graphSize.Y);
         }
 
         /// <summary>
@@ -373,10 +376,10 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="arrangeSize">The size constraint.</param>
         /// <returns>The calculated size.</returns>
-        protected override Size MeasureOverride(Size arrangeSize)
+        protected override System.Windows.Size MeasureOverride(System.Windows.Size arrangeSize)
         {
-            _topLeft = new Point(double.PositiveInfinity, double.PositiveInfinity);
-            _bottomRight = new Point(double.NegativeInfinity, double.NegativeInfinity);
+            _topLeft = new System.Windows.Point(double.PositiveInfinity, double.PositiveInfinity);
+            _bottomRight = new System.Windows.Point(double.NegativeInfinity, double.NegativeInfinity);
 
             foreach (UIElement child in InternalChildren)
             {
@@ -405,7 +408,7 @@ namespace GraphShape.Controls
                 _bottomRight.Y = Math.Max(_bottomRight.Y, top + halfHeight - Origo.Y);
             }
 
-            var graphSize = (Size)(_bottomRight - _topLeft);
+            var graphSize = (System.Windows.Size)(_bottomRight - _topLeft);
             graphSize.Width = Math.Max(0, graphSize.Width);
             graphSize.Height = Math.Max(0, graphSize.Height);
 
@@ -414,7 +417,7 @@ namespace GraphShape.Controls
                 || double.IsInfinity(graphSize.Width)
                 || double.IsInfinity(graphSize.Height))
             {
-                return default(Size);
+                return default(System.Windows.Size);
             }
 
             return graphSize;

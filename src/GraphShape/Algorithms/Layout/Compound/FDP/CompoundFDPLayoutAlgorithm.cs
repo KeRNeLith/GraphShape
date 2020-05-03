@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using JetBrains.Annotations;
 using QuikGraph;
 using static GraphShape.Utils.MathUtils;

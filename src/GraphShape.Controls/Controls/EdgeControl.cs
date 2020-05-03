@@ -66,9 +66,9 @@ namespace GraphShape.Controls
         /// <summary>
         /// Route points.
         /// </summary>
-        public Point[] RoutePoints
+        public System.Windows.Point[] RoutePoints
         {
-            get => (Point[])GetValue(RoutePointsProperty);
+            get => (System.Windows.Point[])GetValue(RoutePointsProperty);
             set => SetValue(RoutePointsProperty, value);
         }
 
@@ -77,7 +77,7 @@ namespace GraphShape.Controls
         /// </summary>
         [NotNull]
         public static readonly DependencyProperty RoutePointsProperty = DependencyProperty.Register(
-            nameof(RoutePoints), typeof(Point[]), typeof(EdgeControl), new UIPropertyMetadata(null));
+            nameof(RoutePoints), typeof(System.Windows.Point[]), typeof(EdgeControl), new UIPropertyMetadata(null));
 
         #endregion
 

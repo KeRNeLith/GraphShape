@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Windows;
 using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.Layout

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using GraphShape.Algorithms.Layout;
+using GraphShape.Controls.Extensions;
 
 namespace GraphShape.Controls.Converters
 {
@@ -52,22 +53,22 @@ namespace GraphShape.Controls.Converters
                 values[7] != DependencyProperty.UnsetValue ? (double)values[7] : 0.0);
 
             // Get the route information
-            Point[] routeInformation = values[8] != DependencyProperty.UnsetValue ? (Point[])values[8] : null;
+            System.Windows.Point[] routeInformation = values[8] != DependencyProperty.UnsetValue ? (System.Windows.Point[])values[8] : null;
 
             #endregion
 
             bool hasRouteInfo = routeInformation != null && routeInformation.Length > 0;
 
             // Create the path
-            Point p1 = LayoutUtils.GetClippingPoint(
+            System.Windows.Point p1 = LayoutUtils.GetClippingPoint(
                 sourceSize,
                 sourcePos,
-                hasRouteInfo ? routeInformation[0] : targetPos);
+                hasRouteInfo ? routeInformation[0].ToGraphShapePoint() : targetPos).ToPoint();
 
-            Point p2 = LayoutUtils.GetClippingPoint(
+            System.Windows.Point p2 = LayoutUtils.GetClippingPoint(
                 targetSize,
                 targetPos,
-                hasRouteInfo ? routeInformation[routeInformation.Length - 1] : sourcePos);
+                hasRouteInfo ? routeInformation[routeInformation.Length - 1].ToGraphShapePoint() : sourcePos).ToPoint();
 
 
             var segments = new PathSegment[1 + (hasRouteInfo ? routeInformation.Length : 0)];
@@ -78,10 +79,10 @@ namespace GraphShape.Controls.Converters
                     segments[i] = new LineSegment(routeInformation[i], true);
             }
 
-            Point pLast = hasRouteInfo ? routeInformation[routeInformation.Length - 1] : p1;
-            Vector v = pLast - p2;
+            System.Windows.Point pLast = hasRouteInfo ? routeInformation[routeInformation.Length - 1] : p1;
+            System.Windows.Vector v = pLast - p2;
             v = v / v.Length * 5;
-            Vector n = new Vector(-v.Y, v.X) * 0.3;
+            var n = new System.Windows.Vector(-v.Y, v.X) * 0.3;
 
             segments[segments.Length - 1] = new LineSegment(p2 + v, true);
 

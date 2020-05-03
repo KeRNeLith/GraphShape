@@ -10,10 +10,9 @@ using GraphShape.Algorithms.Highlight;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.OverlapRemoval;
+using GraphShape.Controls.Extensions;
 using JetBrains.Annotations;
 using QuikGraph;
-using Point = System.Windows.Point;
-using Size = System.Windows.Size;
 
 namespace GraphShape.Controls
 {
@@ -123,7 +122,7 @@ namespace GraphShape.Controls
 
                     foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                     {
-                        Size size = pair.Value.DesiredSize;
+                        System.Windows.Size size = pair.Value.DesiredSize;
                         Sizes.Add(
                             pair.Key,
                             new SizeF(
@@ -445,13 +444,13 @@ namespace GraphShape.Controls
             }
             else
             {
-                var topLeft = new Point(0, 0);
+                var topLeft = default(System.Windows.Point);
                 foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                 {
-                    Point position = pair.Value.TranslatePoint(topLeft, this);
+                    System.Windows.Point position = pair.Value.TranslatePoint(topLeft, this);
                     position.X += pair.Value.ActualWidth / 2;
                     position.Y += pair.Value.ActualHeight / 2;
-                    verticesPositions[pair.Key] = position;
+                    verticesPositions[pair.Key] = position.ToGraphShapePoint();
                 }
             }
 
@@ -459,15 +458,17 @@ namespace GraphShape.Controls
         }
 
         [Pure]
-        private static Point GetRelativePosition([NotNull] VertexControl vertexControl, [CanBeNull] UIElement relativeTo)
+        private static System.Windows.Point GetRelativePosition([NotNull] VertexControl vertexControl, [CanBeNull] UIElement relativeTo)
         {
             Debug.Assert(vertexControl != null);
 
-            return vertexControl.TranslatePoint(new Point(vertexControl.ActualWidth / 2.0, vertexControl.ActualHeight / 2.0), relativeTo);
+            return vertexControl.TranslatePoint(
+                new System.Windows.Point(vertexControl.ActualWidth / 2.0, vertexControl.ActualHeight / 2.0),
+                relativeTo);
         }
 
         [Pure]
-        private Point GetRelativePosition([NotNull] VertexControl vertexControl)
+        private System.Windows.Point GetRelativePosition([NotNull] VertexControl vertexControl)
         {
             Debug.Assert(vertexControl != null);
 
@@ -485,7 +486,7 @@ namespace GraphShape.Controls
             {
                 foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
                 {
-                    verticesPositions[pair.Key] = GetRelativePosition(pair.Value);
+                    verticesPositions[pair.Key] = GetRelativePosition(pair.Value).ToGraphShapePoint();
                 }
             }
             else
@@ -495,7 +496,7 @@ namespace GraphShape.Controls
                     var compoundVertexControl = (CompoundVertexControl)pair.Value;
                     foreach (VertexControl vertexControl in compoundVertexControl.Vertices)
                     {
-                        verticesPositions[(TVertex)vertexControl.Vertex] = GetRelativePosition(vertexControl, compoundVertexControl);
+                        verticesPositions[(TVertex)vertexControl.Vertex] = GetRelativePosition(vertexControl, compoundVertexControl).ToGraphShapePoint();
                     }
                 }
             }
@@ -507,7 +508,7 @@ namespace GraphShape.Controls
         private IDictionary<TVertex, Size> GetLatestVerticesSizes()
         {
             if (!IsMeasureValid)
-                Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                Measure(new System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
 
             IDictionary<TVertex, Size> verticesSizes = new Dictionary<TVertex, Size>(VerticesControls.Count);
 
@@ -791,7 +792,7 @@ namespace GraphShape.Controls
                         continue;
 
                     control.RoutePoints = routeInfos.TryGetValue(edge, out Point[] routePoints)
-                        ? routePoints
+                        ? routePoints.ToPoints().ToArray()
                         : null;
                 }
             }

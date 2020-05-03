@@ -1,4 +1,3 @@
-using System.Windows;
 using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval

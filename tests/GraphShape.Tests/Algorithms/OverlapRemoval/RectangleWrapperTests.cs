@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using GraphShape.Algorithms.OverlapRemoval;
 using NUnit.Framework;
 

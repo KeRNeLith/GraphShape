@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows;
 using GraphShape.Algorithms.EdgeRouting;
 using JetBrains.Annotations;
 using NUnit.Framework;

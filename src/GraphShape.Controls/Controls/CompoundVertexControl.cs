@@ -174,8 +174,8 @@ namespace GraphShape.Controls
                         if (control == childVertexControl)
                             continue;
 
-                        var childCenterPos = new Point(control.ActualWidth / 2, control.ActualHeight / 2);
-                        Point translatedChildCenterPos = control.TranslatePoint(childCenterPos, control.RootCanvas);
+                        var childCenterPos = new System.Windows.Point(control.ActualWidth / 2, control.ActualHeight / 2);
+                        System.Windows.Point translatedChildCenterPos = control.TranslatePoint(childCenterPos, control.RootCanvas);
                         
                         GraphCanvas.SetX(control, translatedChildCenterPos.X - control.RootCanvas.Translation.X);
                         GraphCanvas.SetY(control, translatedChildCenterPos.Y - control.RootCanvas.Translation.Y);
@@ -203,7 +203,7 @@ namespace GraphShape.Controls
                 if (InnerCanvas is null)
                     return default(Thickness);
 
-                Point innerCanvasPosition = InnerCanvas.TranslatePoint(default(Point), this);
+                System.Windows.Point innerCanvasPosition = InnerCanvas.TranslatePoint(default(System.Windows.Point), this);
                 Size innerCanvasSize = InnerCanvasSize;
                 var size = new Size(ActualWidth, ActualHeight);
 

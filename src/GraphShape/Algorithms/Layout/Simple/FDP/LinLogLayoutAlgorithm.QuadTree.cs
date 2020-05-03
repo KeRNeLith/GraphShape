@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using JetBrains.Annotations;
 using QuikGraph;
 

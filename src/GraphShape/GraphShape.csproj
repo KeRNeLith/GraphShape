@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;net45</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netstandard2.0</TargetFrameworks>
 
     <GeneratePackageOnBuild>$(Generate_GraphShape_Core)</GeneratePackageOnBuild>
 
@@ -51,13 +51,12 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
     <AssemblyTitle>GraphShape .NET 4.5</AssemblyTitle>
     <DefineConstants>$(DefineConstants);NET45;SUPPORTS_ENUMERABLE_COVARIANT;SUPPORTS_CALLER_NAME;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <AssemblyTitle>GraphShape .NET Standard 2.0</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NETSTANDARD2_0;SUPPORTS_ENUMERABLE_COVARIANT;SUPPORTS_CALLER_NAME;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
 
   <!-- Dependencies -->
-  <ItemGroup>
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="QuikGraph" Version="2.0.0" />
   </ItemGroup>

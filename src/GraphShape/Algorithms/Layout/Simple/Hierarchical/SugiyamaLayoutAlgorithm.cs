@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
+using QuikGraph;
 using GraphShape.Algorithms.EdgeRouting;
 using JetBrains.Annotations;
-using QuikGraph;
 
 namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 {

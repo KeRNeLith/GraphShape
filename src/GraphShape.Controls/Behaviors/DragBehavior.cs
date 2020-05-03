@@ -210,7 +210,7 @@ namespace GraphShape.Controls.Behaviors
             // We are starting the drag
             SetIsDragging(obj, true);
 
-            Point position = args.GetPosition(obj as IInputElement);
+            System.Windows.Point position = args.GetPosition(obj as IInputElement);
 
             // Save the position of the mouse to the start position
             SetOriginalX(obj, position.X);
@@ -240,7 +240,7 @@ namespace GraphShape.Controls.Behaviors
             if (!GetIsDragging(obj))
                 return;
 
-            Point position = args.GetPosition(obj as IInputElement);
+            System.Windows.Point position = args.GetPosition(obj as IInputElement);
             double horizontalChange = position.X - GetOriginalX(obj);
             double verticalChange = position.Y - GetOriginalY(obj);
 
