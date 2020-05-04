@@ -259,8 +259,6 @@ namespace GraphShape.Tests.Algorithms.Layout
         [TestCaseSource(nameof(BalloonTreeLayoutTestCases))]
         public void BalloonTreeLayoutAlgorithm([NotNull] IBidirectionalGraph<string, Edge<string>> graph)
         {
-            IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
-
             var parameters = new BalloonTreeLayoutParameters();
 
             var algorithm = new BalloonTreeLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(

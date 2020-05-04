@@ -15,9 +15,14 @@
     <FileVersion>1.0.0</FileVersion>
 
     <Copyright>Copyright © 2019</Copyright>
-    <Description>GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
+    <Description>GraphShape is a .NET graph layout framework based on Graph#.
+It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP).
+
+It also provide overlap removal algorithms such as FSA (or One Way FSA) algorithms.
 
 Supported platforms:
+- .NET Standard 2.0+
+- .NET Core 2.0+
 - .NET Framework 3.5+
 
 Supports Source Link</Description>
