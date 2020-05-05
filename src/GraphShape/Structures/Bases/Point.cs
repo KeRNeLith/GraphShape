@@ -98,6 +98,12 @@ namespace GraphShape
             return X.GetHashCode() ^ Y.GetHashCode();
         }
 
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"{_x};{_y}";
+        }
+
         /// <summary>
         /// Translates the specified <see cref="Point" /> by the specified <see cref="Vector" /> and returns the result.
         /// </summary>

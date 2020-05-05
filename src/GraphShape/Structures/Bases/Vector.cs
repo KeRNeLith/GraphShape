@@ -98,6 +98,12 @@ namespace GraphShape
             return X.GetHashCode() ^ Y.GetHashCode();
         }
 
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"{_x};{_y}";
+        }
+
         /// <summary>
         /// Gets the length of this vector.
         /// </summary>

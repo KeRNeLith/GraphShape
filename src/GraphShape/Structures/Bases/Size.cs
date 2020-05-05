@@ -128,5 +128,11 @@ namespace GraphShape
         {
             return IsEmpty ? 0 : Width.GetHashCode() ^ Height.GetHashCode();
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return IsEmpty ? "Empty" : $"{_width};{_height}";
+        }
     }
 }

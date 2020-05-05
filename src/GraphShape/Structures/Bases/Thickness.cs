@@ -88,5 +88,11 @@ namespace GraphShape
         {
             return Left.GetHashCode() ^ Top.GetHashCode() ^ Right.GetHashCode() ^ Bottom.GetHashCode();
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"{Left},{Top},{Right},{Bottom}";
+        }
     }
 }

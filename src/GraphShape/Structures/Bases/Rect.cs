@@ -190,6 +190,12 @@ namespace GraphShape
                 X.GetHashCode() ^ Y.GetHashCode() ^ Width.GetHashCode() ^ Height.GetHashCode();
         }
 
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return IsEmpty ? "Empty" : $"{_x};{_y};{_width};{_height}";
+        }
+
         /// <summary>
         /// The position of the top-left corner of the rectangle.
         /// </summary>

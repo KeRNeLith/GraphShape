@@ -66,5 +66,18 @@ namespace GraphShape.Tests
             Assert.AreNotEqual(thickness1.GetHashCode(), thickness3.GetHashCode());
             Assert.AreEqual(thickness3.GetHashCode(), thickness4.GetHashCode());
         }
+
+        [Test]
+        public void ThicknessToString()
+        {
+            var thickness = new Thickness();
+            Assert.AreEqual("0,0,0,0", thickness.ToString());
+
+            thickness = new Thickness(1, 2, 3, 4);
+            Assert.AreEqual("1,2,3,4", thickness.ToString());
+
+            thickness = new Thickness(-2, 1, -1, 2);
+            Assert.AreEqual("-2,1,-1,2", thickness.ToString());
+        }
     }
 }
