@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;
+    <title>Class FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;
+    <meta name="title" content="Class FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -71,100 +71,95 @@
             <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3">
   
   
-  <h1 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3" class="text-break">Class FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;
+  <h1 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3" class="text-break">Class FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Fruchterman-Reingold layout algorithm.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html">AlgorithmBase</a></div>
-    <div class="level2"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html">LayoutAlgorithmBase</a>&lt;Vertex, Edge, Graph&gt;</div>
-    <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html">ParameterizedLayoutAlgorithmBase</a>&lt;Vertex, Edge, Graph, <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a>&gt;</div>
-    <div class="level4"><span class="xref">FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;</span></div>
+    <div class="level2"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html">LayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html">ParameterizedLayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a>&gt;</div>
+    <div class="level4"><span class="xref">FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;Vertex, Edge, Graph&gt;</div>
-    <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;Graph&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a>&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
+    <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;TGraph&gt;</div>
     <div><span class="xref">QuikGraph.Algorithms.IComputation</span></div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm</a>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a>&gt;</div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Parameters">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.Parameters</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Parameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.Parameters</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.GetParameters()</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.GetParameters()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_TraceSource">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.TraceSource</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.DefaultParameters</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.DefaultParameters</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.InitParameters(FRLayoutParametersBase)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.InitParameters(FRLayoutParametersBase)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Rand">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.Rand</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.InitializeWithRandomPositions(Double, Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.InitializeWithRandomPositions(Double, Double)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.InitializeWithRandomPositions(Double, Double, Double, Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.InitializeWithRandomPositions(Double, Double, Double, Double)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.NormalizePositions()</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.NormalizePositions()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.NormalizePositions(IDictionary&lt;Vertex, Point&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_GraphShape_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;Vertex, Point&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VisitedGraph</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VertexPositions">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.VertexPositions</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VerticesPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VerticesPositions</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.VisitedGraph</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ProgressChanged</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.IterationEnded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.ProgressChanged</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnProgressChangedNeeded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.ReportOnIterationEndNeeded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.ReportOnProgressChangedNeeded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetVertexInfo(TVertex)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;Vertex&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetEdgeInfo(TEdge)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.OnProgressChanged(Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.GetVertexInfo(Vertex)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;Vertex, Edge, Graph&gt;.GetEdgeInfo(Edge)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_SyncRoot">AlgorithmBase.SyncRoot</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
@@ -197,10 +192,7 @@
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Clean">AlgorithmBase.Clean()</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -228,7 +220,7 @@
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FRLayoutAlgorithm&lt;Vertex, Edge, Graph&gt; : ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, FRLayoutParametersBase&gt;, IAlgorithm, ILayoutAlgorithm&lt;Vertex, Edge, Graph&gt;, IAlgorithm&lt;Graph&gt;, IComputation, IParameterizedLayoutAlgorithm&lt;FRLayoutParametersBase&gt;, IParameterizedLayoutAlgorithm where Vertex : class where Edge : IEdge&lt;Vertex&gt; where Graph : IVertexAndEdgeListGraph&lt;Vertex, Edge&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, FRLayoutParametersBase&gt;, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TEdge : IEdge&lt;TVertex&gt; where TGraph : IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -240,16 +232,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="parametername">Vertex</span></td>
-        <td></td>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="parametername">Edge</span></td>
-        <td></td>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="parametername">Graph</span></td>
-        <td></td>
+        <td><span class="parametername">TGraph</span></td>
+        <td><p>Graph type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -257,18 +252,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.%23ctor(%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.%23ctor(%602%2CGraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L27">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L32">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor(`2)">FRLayoutAlgorithm(Graph)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor(`2,GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)">FRLayoutAlgorithm(TGraph, FRLayoutParametersBase)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm-3.html">FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FRLayoutAlgorithm(Graph visitedGraph)</code></pre>
+    <pre><code class="lang-csharp hljs">public FRLayoutAlgorithm(TGraph visitedGraph, FRLayoutParametersBase oldParameters = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,26 +277,34 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Graph</span></td>
+        <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Point%7D%2CGraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Point%7D%2CGraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L30">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L45">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Point},GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)">FRLayoutAlgorithm(Graph, IDictionary&lt;Vertex, Point&gt;, FRLayoutParametersBase)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase)">FRLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Point&gt;, FRLayoutParametersBase)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm-3.html">FRLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FRLayoutAlgorithm(Graph visitedGraph, IDictionary&lt;Vertex, Point&gt; vertexPositions, FRLayoutParametersBase parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public FRLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; verticesPositions, FRLayoutParametersBase oldParameters = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -313,19 +317,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Graph</span></td>
+        <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;Vertex, <span class="xref">System.Windows.Point</span>&gt;</td>
-        <td><span class="parametername">vertexPositions</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Point.html">Point</a>&gt;</td>
+        <td><span class="parametername">verticesPositions</span></td>
+        <td><p>Vertices positions.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a></td>
-        <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -336,11 +343,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_DefaultParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.DefaultParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L21">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L54">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_DefaultParameters_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.DefaultParameters*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_DefaultParameters" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.DefaultParameters">DefaultParameters</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Default algorithm parameters to use if no parameters provided at construction.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -362,19 +370,37 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase&lt;Vertex, Edge, Graph, GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase&gt;.DefaultParameters</span></div>
+  <div><span class="xref">GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase&gt;.DefaultParameters</span></div>
   <h3 id="methods">Methods
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_Initialize.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L59">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_Initialize_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.Initialize*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_Initialize" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Called on algorithm initialization step.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Initialize">AlgorithmBase.Initialize()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_InternalCompute.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.InternalCompute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L37">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L79">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_InternalCompute_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.InternalCompute*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_InternalCompute" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.InternalCompute">InternalCompute()</h4>
-  <div class="markdown level1 summary"><p>It computes the layout of the vertices.</p>
+  <div class="markdown level1 summary"><p>Algorithm compute step.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -388,11 +414,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_IterateOne.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603.IterateOne%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L85">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L117">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_IterateOne_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.IterateOne*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3_IterateOne" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm`3.IterateOne">IterateOne()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Compute one force application iteration.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -403,6 +430,12 @@
       <a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a>
   </div>
   <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, TParameters&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
+  </div>
+  <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
   </div>
   <div>
@@ -411,18 +444,15 @@
   <div>
       <span class="xref">QuikGraph.Algorithms.IComputation</span>
   </div>
-  <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm&lt;TParam&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a>
-  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -435,7 +465,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutAlgorithm_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutAlgorithm.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

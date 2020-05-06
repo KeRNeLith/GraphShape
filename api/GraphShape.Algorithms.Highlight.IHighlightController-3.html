@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IHighlightController&lt;TVertex, TEdge, TGraph&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,14 +73,16 @@
   
   <h1 id="GraphShape_Algorithms_Highlight_IHighlightController_3" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3" class="text-break">Interface IHighlightController&lt;TVertex, TEdge, TGraph&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents an highlight controller.
+Able to set/remove highlight, check highlighting of entity.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.Highlight.html">GraphShape.Algorithms.Highlight</a></h6>
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Highlight_IHighlightController_3_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IHighlightController&lt;TVertex, TEdge, TGraph&gt;
-    where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : class, IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IHighlightController&lt;TVertex, TEdge, out TGraph&gt;
+    where TEdge : IEdge&lt;TVertex&gt; where TGraph : class, IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -93,15 +95,18 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TGraph</span></td>
-        <td></td>
+        <td><p>Graph type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -112,11 +117,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_Graph.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.Graph%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L11">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L21">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_Graph_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.Graph*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_Graph" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.Graph">Graph</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Graph concerned by the highlighting.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -142,11 +148,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedEdges.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.HighlightedEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L15">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L38">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedEdges_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightedEdges*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedEdges" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightedEdges">HighlightedEdges</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set of highlighted edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -172,11 +179,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedVertices.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.HighlightedVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L13">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L26">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedVertices_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightedVertices*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightedVertices" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightedVertices">HighlightedVertices</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set of highlighted vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -202,11 +210,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedEdges.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.SemiHighlightedEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L16">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L44">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedEdges_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightedEdges*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedEdges" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightedEdges">SemiHighlightedEdges</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set of semi-highlighted edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -232,11 +241,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedVertices.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.SemiHighlightedVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L14">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L32">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedVertices_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightedVertices*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightedVertices" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightedVertices">SemiHighlightedVertices</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set of semi-highlighted vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -264,11 +274,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightEdge__1_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.HighlightEdge(%601%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L29">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L138">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightEdge__1_System_Object_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightEdge(`1,System.Object)">HighlightEdge(TEdge, Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Asks to highlight the given <code data-dev-comment-type="paramref" class="paramref">edge</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -287,12 +298,14 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to highlight.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">highlightInfo</span></td>
-        <td></td>
+        <td><p>Additional highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -301,11 +314,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightVertex__0_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.HighlightVertex(%600%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L27">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L124">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_HighlightVertex__0_System_Object_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.HighlightVertex(`0,System.Object)">HighlightVertex(TVertex, Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Asks to highlight the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -324,12 +338,14 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to highlight.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">highlightInfo</span></td>
-        <td></td>
+        <td><p>Additional highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -338,11 +354,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsHighlightedEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L22">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L88">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge__1_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedEdge(`1)">IsHighlightedEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">edge</code> is highlighted.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -361,7 +378,8 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -376,7 +394,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">edge</code> is highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -385,11 +404,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge__1_System_Object__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsHighlightedEdge(%601%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L23">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L98">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedEdge__1_System_Object__" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedEdge(`1,System.Object@)">IsHighlightedEdge(TEdge, out Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">edge</code> is highlighted.
+It semi-highlighted, provides additional <code data-dev-comment-type="paramref" class="paramref">highlightInfo</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -408,12 +429,14 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to check.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">highlightInfo</span></td>
-        <td></td>
+        <td><p>Additional highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -428,7 +451,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">edge</code> is highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -437,11 +461,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsHighlightedVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L18">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L52">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex__0_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedVertex(`0)">IsHighlightedVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is highlighted.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -460,7 +485,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -475,7 +501,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">vertex</code> is highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -484,11 +511,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex__0_System_Object__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsHighlightedVertex(%600%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L19">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L62">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsHighlightedVertex__0_System_Object__" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsHighlightedVertex(`0,System.Object@)">IsHighlightedVertex(TVertex, out Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is highlighted.
+It highlighted, provides additional <code data-dev-comment-type="paramref" class="paramref">highlightInfo</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -507,12 +536,14 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">highlightInfo</span></td>
-        <td></td>
+        <td><p>Additional highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -527,7 +558,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">vertex</code> is highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -536,11 +568,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsSemiHighlightedEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L24">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L106">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge__1_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedEdge(`1)">IsSemiHighlightedEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">edge</code> is semi-highlighted.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -559,7 +592,8 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -574,7 +608,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">edge</code> is semi-highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -583,11 +618,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge__1_System_Object__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsSemiHighlightedEdge(%601%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L25">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L116">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedEdge__1_System_Object__" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedEdge(`1,System.Object@)">IsSemiHighlightedEdge(TEdge, out Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">edge</code> is semi-highlighted.
+It semi-highlighted, provides additional <code data-dev-comment-type="paramref" class="paramref">semiHighlightInfo</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -606,12 +643,14 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to check.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">semiHighlightInfo</span></td>
-        <td></td>
+        <td><p>Additional semi-highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -626,7 +665,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">edge</code> is semi-highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -635,11 +675,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsSemiHighlightedVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L20">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L70">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex__0_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedVertex(`0)">IsSemiHighlightedVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is semi-highlighted.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -658,7 +699,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -673,7 +715,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">vertex</code> is semi-highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -682,11 +725,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex__0_System_Object__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.IsSemiHighlightedVertex(%600%2CSystem.Object%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L21">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L80">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_IsSemiHighlightedVertex__0_System_Object__" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.IsSemiHighlightedVertex(`0,System.Object@)">IsSemiHighlightedVertex(TVertex, out Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is semi-highlighted.
+It semi-highlighted, provides additional <code data-dev-comment-type="paramref" class="paramref">semiHighlightInfo</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -705,12 +750,14 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">semiHighlightInfo</span></td>
-        <td></td>
+        <td><p>Additional semi-highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -725,7 +772,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <code data-dev-comment-type="paramref" class="paramref">vertex</code> is semi-highlighted, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -734,11 +782,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.RemoveHighlightFromEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L34">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L163">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveHighlightFromEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromEdge__1_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveHighlightFromEdge(`1)">RemoveHighlightFromEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes the highlight of the given <code data-dev-comment-type="paramref" class="paramref">edge</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -757,7 +806,8 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge from which removing highlight.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -766,11 +816,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.RemoveHighlightFromVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L32">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L151">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveHighlightFromVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveHighlightFromVertex__0_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveHighlightFromVertex(`0)">RemoveHighlightFromVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes the highlight of the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -789,7 +840,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex from which removing highlight.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -798,11 +850,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.RemoveSemiHighlightFromEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L35">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L169">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveSemiHighlightFromEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromEdge__1_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveSemiHighlightFromEdge(`1)">RemoveSemiHighlightFromEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes the semi-highlight of the given <code data-dev-comment-type="paramref" class="paramref">edge</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -821,7 +874,8 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge from which removing highlight.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -830,11 +884,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.RemoveSemiHighlightFromVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L33">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L157">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveSemiHighlightFromVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_RemoveSemiHighlightFromVertex__0_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.RemoveSemiHighlightFromVertex(`0)">RemoveSemiHighlightFromVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes the semi-highlight of the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -853,7 +908,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex from which removing semi-highlight.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -862,11 +918,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightEdge__1_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.SemiHighlightEdge(%601%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L30">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L145">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightEdge_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightEdge*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightEdge__1_System_Object_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightEdge(`1,System.Object)">SemiHighlightEdge(TEdge, Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Asks to semi-highlight the given <code data-dev-comment-type="paramref" class="paramref">edge</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -885,12 +942,14 @@
       <tr>
         <td><span class="xref">TEdge</span></td>
         <td><span class="parametername">edge</span></td>
-        <td></td>
+        <td><p>Edge to semi-highlight.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">semiHighlightInfo</span></td>
-        <td></td>
+        <td><p>Additional semi-highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -899,11 +958,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightVertex__0_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603.SemiHighlightVertex(%600%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L28">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L131">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightVertex_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightVertex*"></a>
   <h4 id="GraphShape_Algorithms_Highlight_IHighlightController_3_SemiHighlightVertex__0_System_Object_" data-uid="GraphShape.Algorithms.Highlight.IHighlightController`3.SemiHighlightVertex(`0,System.Object)">SemiHighlightVertex(TVertex, Object)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Asks to semi-highlight the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -922,21 +982,26 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to highlight.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">semiHighlightInfo</span></td>
-        <td></td>
+        <td><p>Additional semi-highlight information.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -949,7 +1014,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Highlight_IHighlightController_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Highlight.IHighlightController%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Highlight/IHighlightController.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Highlight/IHighlightController.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

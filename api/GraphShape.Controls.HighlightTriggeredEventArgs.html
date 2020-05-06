@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HighlightTriggeredEventArgs
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_Controls_HighlightTriggeredEventArgs" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs" class="text-break">Class HighlightTriggeredEventArgs
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Highlight triggered event arguments.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -140,15 +141,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_HighlightTriggeredEventArgs__ctor_System_Windows_RoutedEvent_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Controls.HighlightTriggeredEventArgs.%23ctor(System.Windows.RoutedEvent%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/GraphElementControl.cs/#L13">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/HighlightTriggeredEventArgs.cs/#L37">View Source</a>
   </span>
   <a id="GraphShape_Controls_HighlightTriggeredEventArgs__ctor_" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.#ctor*"></a>
   <h4 id="GraphShape_Controls_HighlightTriggeredEventArgs__ctor_System_Windows_RoutedEvent_System_Object_System_Boolean_" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Boolean)">HighlightTriggeredEventArgs(RoutedEvent, Object, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Controls.PositionChangedEventArgs.html">PositionChangedEventArgs</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HighlightTriggeredEventArgs(RoutedEvent evt, object source, bool isPositiveTrigger)</code></pre>
+    <pre><code class="lang-csharp hljs">public HighlightTriggeredEventArgs(RoutedEvent routedEvent, object source, bool isPositiveTrigger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -162,18 +164,22 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Windows.RoutedEvent</span></td>
-        <td><span class="parametername">evt</span></td>
-        <td></td>
+        <td><span class="parametername">routedEvent</span></td>
+        <td><p>The routed event identifier for this instance of the <span class="xref">System.Windows.RoutedEventArgs</span> class.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">source</span></td>
-        <td></td>
+        <td><p>An alternate source that will be reported when the event is handled.
+This pre-populates the <span class="xref">System.Windows.RoutedEventArgs.Source</span> property.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">isPositiveTrigger</span></td>
-        <td></td>
+        <td><p>Indicates if trigger has been triggered.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -184,11 +190,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_HighlightTriggeredEventArgs_Cancel.md&amp;value=---%0Auid%3A%20GraphShape.Controls.HighlightTriggeredEventArgs.Cancel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/GraphElementControl.cs/#L10">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/HighlightTriggeredEventArgs.cs/#L21">View Source</a>
   </span>
   <a id="GraphShape_Controls_HighlightTriggeredEventArgs_Cancel_" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.Cancel*"></a>
   <h4 id="GraphShape_Controls_HighlightTriggeredEventArgs_Cancel" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.Cancel">Cancel</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates if event has been canceled or not.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -214,11 +221,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_HighlightTriggeredEventArgs_IsPositiveTrigger.md&amp;value=---%0Auid%3A%20GraphShape.Controls.HighlightTriggeredEventArgs.IsPositiveTrigger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/GraphElementControl.cs/#L11">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/HighlightTriggeredEventArgs.cs/#L26">View Source</a>
   </span>
   <a id="GraphShape_Controls_HighlightTriggeredEventArgs_IsPositiveTrigger_" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.IsPositiveTrigger*"></a>
   <h4 id="GraphShape_Controls_HighlightTriggeredEventArgs_IsPositiveTrigger" data-uid="GraphShape.Controls.HighlightTriggeredEventArgs.IsPositiveTrigger">IsPositiveTrigger</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Highlight triggered?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -241,10 +249,13 @@
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -257,7 +268,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_HighlightTriggeredEventArgs.md&amp;value=---%0Auid%3A%20GraphShape.Controls.HighlightTriggeredEventArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/GraphElementControl.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/HighlightTriggeredEventArgs.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

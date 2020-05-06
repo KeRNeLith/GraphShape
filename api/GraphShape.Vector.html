@@ -1,0 +1,1063 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct Vector
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct Vector
+   ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Vector">
+  
+  
+  <h1 id="GraphShape_Vector" data-uid="GraphShape.Vector" class="text-break">Struct Vector
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a displacement in 2D space.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GraphShape.Vector.html">Vector</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.html">GraphShape</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Vector_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public struct Vector : IEquatable&lt;Vector&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector__ctor_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.%23ctor(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L41">View Source</a>
+  </span>
+  <a id="GraphShape_Vector__ctor_" data-uid="GraphShape.Vector.#ctor*"></a>
+  <h4 id="GraphShape_Vector__ctor_System_Double_System_Double_" data-uid="GraphShape.Vector.#ctor(System.Double,System.Double)">Vector(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector(double x, double y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>X component value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>Y component value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Length.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L111">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Length_" data-uid="GraphShape.Vector.Length*"></a>
+  <h4 id="GraphShape_Vector_Length" data-uid="GraphShape.Vector.Length">Length</h4>
+  <div class="markdown level1 summary"><p>Gets the length of this vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Length { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The length of this vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_LengthSquared.md&amp;value=---%0Auid%3A%20GraphShape.Vector.LengthSquared%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L117">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_LengthSquared_" data-uid="GraphShape.Vector.LengthSquared*"></a>
+  <h4 id="GraphShape_Vector_LengthSquared" data-uid="GraphShape.Vector.LengthSquared">LengthSquared</h4>
+  <div class="markdown level1 summary"><p>Gets the squared length of this vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double LengthSquared { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The squared length of this vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_X.md&amp;value=---%0Auid%3A%20GraphShape.Vector.X%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L21">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_X_" data-uid="GraphShape.Vector.X*"></a>
+  <h4 id="GraphShape_Vector_X" data-uid="GraphShape.Vector.X">X</h4>
+  <div class="markdown level1 summary"><p>X component value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double X { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Y.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Y%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L30">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Y_" data-uid="GraphShape.Vector.Y*"></a>
+  <h4 id="GraphShape_Vector_Y" data-uid="GraphShape.Vector.Y">Y</h4>
+  <div class="markdown level1 summary"><p>Y component value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Y { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Equals_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Equals(GraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L90">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Equals_" data-uid="GraphShape.Vector.Equals*"></a>
+  <h4 id="GraphShape_Vector_Equals_GraphShape_Vector_" data-uid="GraphShape.Vector.Equals(GraphShape.Vector)">Equals(Vector)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Vector other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Equals_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Equals(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L75">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Equals_" data-uid="GraphShape.Vector.Equals*"></a>
+  <h4 id="GraphShape_Vector_Equals_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.Equals(GraphShape.Vector,GraphShape.Vector)">Equals(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Compares the two specified <a class="xref" href="GraphShape.Vector.html">Vector</a>s for equality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Equals(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>The first <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>The second <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if both <a class="xref" href="GraphShape.Vector.html">Vector</a> are equal, otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Equals_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L82">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Equals_" data-uid="GraphShape.Vector.Equals*"></a>
+  <h4 id="GraphShape_Vector_Equals_System_Object_" data-uid="GraphShape.Vector.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_GetHashCode.md&amp;value=---%0Auid%3A%20GraphShape.Vector.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L96">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_GetHashCode_" data-uid="GraphShape.Vector.GetHashCode*"></a>
+  <h4 id="GraphShape_Vector_GetHashCode" data-uid="GraphShape.Vector.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_Normalize.md&amp;value=---%0Auid%3A%20GraphShape.Vector.Normalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L122">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_Normalize_" data-uid="GraphShape.Vector.Normalize*"></a>
+  <h4 id="GraphShape_Vector_Normalize" data-uid="GraphShape.Vector.Normalize">Normalize()</h4>
+  <div class="markdown level1 summary"><p>Normalizes this vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Normalize()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_ToString.md&amp;value=---%0Auid%3A%20GraphShape.Vector.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L102">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_ToString_" data-uid="GraphShape.Vector.ToString*"></a>
+  <h4 id="GraphShape_Vector_ToString" data-uid="GraphShape.Vector.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.ToString()</span></div>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Addition_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Addition(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L147">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Addition_" data-uid="GraphShape.Vector.op_Addition*"></a>
+  <h4 id="GraphShape_Vector_op_Addition_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Addition(GraphShape.Vector,GraphShape.Vector)">Addition(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Adds two vectors and returns the result as a vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator +(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>The first vector to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>The second vector to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>The sum of <code data-dev-comment-type="paramref" class="paramref">vector1</code> and <code data-dev-comment-type="paramref" class="paramref">vector2</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Division_GraphShape_Vector_System_Double_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Division(GraphShape.Vector%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L195">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Division_" data-uid="GraphShape.Vector.op_Division*"></a>
+  <h4 id="GraphShape_Vector_op_Division_GraphShape_Vector_System_Double_" data-uid="GraphShape.Vector.op_Division(GraphShape.Vector,System.Double)">Division(Vector, Double)</h4>
+  <div class="markdown level1 summary"><p>Divides the specified vector by the specified scalar and returns the resulting vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator /(Vector vector, double scalar)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>The vector to divide.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scalar</span></td>
+        <td><p>The scalar by which <code data-dev-comment-type="paramref" class="paramref">vector</code> will be divided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>The result of dividing <code data-dev-comment-type="paramref" class="paramref">vector</code> by <code data-dev-comment-type="paramref" class="paramref">scalar</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Equality_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Equality(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L53">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Equality_" data-uid="GraphShape.Vector.op_Equality*"></a>
+  <h4 id="GraphShape_Vector_op_Equality_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Equality(GraphShape.Vector,GraphShape.Vector)">Equality(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Indicates whether both <a class="xref" href="GraphShape.Vector.html">Vector</a> are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>First <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>Second <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if both <a class="xref" href="GraphShape.Vector.html">Vector</a> are equal, otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Inequality_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Inequality(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L64">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Inequality_" data-uid="GraphShape.Vector.op_Inequality*"></a>
+  <h4 id="GraphShape_Vector_op_Inequality_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Inequality(GraphShape.Vector,GraphShape.Vector)">Inequality(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Indicates whether both <a class="xref" href="GraphShape.Vector.html">Vector</a> are not equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>First <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>Second <a class="xref" href="GraphShape.Vector.html">Vector</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if both <a class="xref" href="GraphShape.Vector.html">Vector</a> are equal, otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Multiply_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Multiply(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L211">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Multiply_" data-uid="GraphShape.Vector.op_Multiply*"></a>
+  <h4 id="GraphShape_Vector_op_Multiply_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Multiply(GraphShape.Vector,GraphShape.Vector)">Multiply(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Calculates the dot product of the two specified vector structures and returns the result as a <span class="xref">System.Double</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double operator *(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>The first vector to multiply.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>The second vector to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>Returns a <span class="xref">System.Double</span> containing the scalar dot product of <code data-dev-comment-type="paramref" class="paramref">vector1</code>
+and <code data-dev-comment-type="paramref" class="paramref">vector2</code>, which is calculated using the following formula:
+vector1.X * vector2.X + vector1.Y * vector2.Y</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Multiply_GraphShape_Vector_System_Double_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Multiply(GraphShape.Vector%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L171">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Multiply_" data-uid="GraphShape.Vector.op_Multiply*"></a>
+  <h4 id="GraphShape_Vector_op_Multiply_GraphShape_Vector_System_Double_" data-uid="GraphShape.Vector.op_Multiply(GraphShape.Vector,System.Double)">Multiply(Vector, Double)</h4>
+  <div class="markdown level1 summary"><p>Multiplies the specified vector by the specified scalar and returns the resulting vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator *(Vector vector, double scalar)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>The vector to multiply.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scalar</span></td>
+        <td><p>The scalar to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>The result of multiplying <code data-dev-comment-type="paramref" class="paramref">vector</code> and <code data-dev-comment-type="paramref" class="paramref">scalar</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Multiply_System_Double_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Multiply(System.Double%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L183">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Multiply_" data-uid="GraphShape.Vector.op_Multiply*"></a>
+  <h4 id="GraphShape_Vector_op_Multiply_System_Double_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Multiply(System.Double,GraphShape.Vector)">Multiply(Double, Vector)</h4>
+  <div class="markdown level1 summary"><p>Multiplies the specified scalar by the specified vector and returns the resulting vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator *(double scalar, Vector vector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">scalar</span></td>
+        <td><p>The scalar to multiply.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>The vector to multiply.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>The result of multiplying <code data-dev-comment-type="paramref" class="paramref">scalar</code> and <code data-dev-comment-type="paramref" class="paramref">vector</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_Subtraction_GraphShape_Vector_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_Subtraction(GraphShape.Vector%2CGraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L159">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_Subtraction_" data-uid="GraphShape.Vector.op_Subtraction*"></a>
+  <h4 id="GraphShape_Vector_op_Subtraction_GraphShape_Vector_GraphShape_Vector_" data-uid="GraphShape.Vector.op_Subtraction(GraphShape.Vector,GraphShape.Vector)">Subtraction(Vector, Vector)</h4>
+  <div class="markdown level1 summary"><p>Subtracts one specified vector from another.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator -(Vector vector1, Vector vector2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector1</span></td>
+        <td><p>The vector from which <code data-dev-comment-type="paramref" class="paramref">vector2</code> is subtracted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector2</span></td>
+        <td><p>The vector to subtract from <code data-dev-comment-type="paramref" class="paramref">vector1</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>The difference between <code data-dev-comment-type="paramref" class="paramref">vector1</code> and <code data-dev-comment-type="paramref" class="paramref">vector2</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector_op_UnaryNegation_GraphShape_Vector_.md&amp;value=---%0Auid%3A%20GraphShape.Vector.op_UnaryNegation(GraphShape.Vector)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L135">View Source</a>
+  </span>
+  <a id="GraphShape_Vector_op_UnaryNegation_" data-uid="GraphShape.Vector.op_UnaryNegation*"></a>
+  <h4 id="GraphShape_Vector_op_UnaryNegation_GraphShape_Vector_" data-uid="GraphShape.Vector.op_UnaryNegation(GraphShape.Vector)">UnaryNegation(Vector)</h4>
+  <div class="markdown level1 summary"><p>Negates the specified vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector operator -(Vector vector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><span class="parametername">vector</span></td>
+        <td><p>The vector to negate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GraphShape.Vector.html">Vector</a></td>
+        <td><p>A vector with <a class="xref" href="GraphShape.Vector.html#GraphShape_Vector_X">X</a> and <a class="xref" href="GraphShape.Vector.html#GraphShape_Vector_Y">Y</a> values opposite of the <a class="xref" href="GraphShape.Vector.html#GraphShape_Vector_X">X</a> and <a class="xref" href="GraphShape.Vector.html#GraphShape_Vector_Y">Y</a> values of <code data-dev-comment-type="paramref" class="paramref">vector</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Vector.md&amp;value=---%0Auid%3A%20GraphShape.Vector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Vector.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3" class="text-break">Class DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Double tree layout algorithm.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -87,8 +88,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm</a>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters.html">DoubleTreeLayoutParameters</a>&gt;</div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters.html">DoubleTreeLayoutParameters</a>&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-5.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeVertexType.html">DoubleTreeVertexType</a>, <span class="xref">System.Object</span>&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;TGraph&gt;</div>
@@ -97,22 +98,16 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_vertexInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.vertexInfos</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_GraphShape_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_edgeInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.edgeInfos</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_InfoIterationEnded">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.InfoIterationEnded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_VertexInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.VertexInfos</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_VerticesInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.VerticesInfos</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_EdgeInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.EdgeInfos</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_IterationEnded">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.IterationEnded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_EdgesInfos">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.EdgesInfos</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-6.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_6_GetVertexInfo__0_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, Object, DoubleTreeLayoutParameters&gt;.GetVertexInfo(TVertex)</a>
@@ -127,13 +122,13 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.GetParameters()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_TraceSource">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.TraceSource</a>
-    </div>
-    <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.DefaultParameters</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.InitParameters(DoubleTreeLayoutParameters)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Rand">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.Rand</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.InitializeWithRandomPositions(Double, Double)</a>
@@ -145,37 +140,28 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.NormalizePositions()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.NormalizePositions(IDictionary&lt;TVertex, Point&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_GraphShape_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VertexPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VertexPositions</a>
-    </div>
-    <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VisitedGraph</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VerticesPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VerticesPositions</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ProgressChanged</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnProgressChangedNeeded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetVertexInfo(TVertex)</a>
@@ -184,13 +170,16 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetEdgeInfo(TEdge)</a>
     </div>
     <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_SyncRoot">AlgorithmBase.SyncRoot</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
@@ -223,10 +212,10 @@
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Initialize">AlgorithmBase.Initialize()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Clean">AlgorithmBase.Clean()</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -254,7 +243,7 @@
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, object, DoubleTreeLayoutParameters&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;DoubleTreeLayoutParameters&gt;, IParameterizedLayoutAlgorithm, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, object&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, object, DoubleTreeLayoutParameters&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, DoubleTreeLayoutParameters&gt;, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph, DoubleTreeVertexType, object&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -267,15 +256,18 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TGraph</span></td>
-        <td></td>
+        <td><p>Graph type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -283,18 +275,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point__System_Collections_Generic_IDictionary__0_System_Windows_Size__GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Point%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D%2CGraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size___0_GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Point%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Size%7D%2C%600%2CGraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L31">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L53">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point__System_Collections_Generic_IDictionary__0_System_Windows_Size__GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters__0_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Point},System.Collections.Generic.IDictionary{`0,System.Windows.Size},GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters,`0)">DoubleTreeLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Point&gt;, IDictionary&lt;TVertex, Size&gt;, DoubleTreeLayoutParameters, TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size___0_GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size},`0,GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters)">DoubleTreeLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Point&gt;, IDictionary&lt;TVertex, Size&gt;, TVertex, DoubleTreeLayoutParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm-3.html">DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DoubleTreeLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; vertexPositions, IDictionary&lt;TVertex, Size&gt; vertexSizes, DoubleTreeLayoutParameters oldParameters, TVertex selectedVertex)</code></pre>
+    <pre><code class="lang-csharp hljs">public DoubleTreeLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; verticesPositions, IDictionary&lt;TVertex, Size&gt; verticesSizes, TVertex selectedVertex, DoubleTreeLayoutParameters oldParameters = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -309,27 +302,84 @@
       <tr>
         <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Point</span>&gt;</td>
-        <td><span class="parametername">vertexPositions</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Point.html">Point</a>&gt;</td>
+        <td><span class="parametername">verticesPositions</span></td>
+        <td><p>Vertices positions.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
-        <td><span class="parametername">vertexSizes</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters.html">DoubleTreeLayoutParameters</a></td>
-        <td><span class="parametername">oldParameters</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Size.html">Size</a>&gt;</td>
+        <td><span class="parametername">verticesSizes</span></td>
+        <td><p>Vertices sizes.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">selectedVertex</span></td>
-        <td></td>
+        <td><p>Root vertex.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters.html">DoubleTreeLayoutParameters</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Size___0_GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Size%7D%2C%600%2CGraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L36">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.#ctor*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Size___0_GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutParameters_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Size},`0,GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters)">DoubleTreeLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, TVertex, DoubleTreeLayoutParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm-3.html">DoubleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DoubleTreeLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; verticesSizes, TVertex selectedVertex, DoubleTreeLayoutParameters oldParameters = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">visitedGraph</span></td>
+        <td><p>Graph to layout.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Size.html">Size</a>&gt;</td>
+        <td><span class="parametername">verticesSizes</span></td>
+        <td><p>Vertices sizes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">selectedVertex</span></td>
+        <td><p>Root vertex.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutParameters.html">DoubleTreeLayoutParameters</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -340,11 +390,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_DefaultParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.DefaultParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L26">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L69">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_DefaultParameters_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.DefaultParameters*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_DefaultParameters" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.DefaultParameters">DefaultParameters</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Default algorithm parameters to use if no parameters provided at construction.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -374,11 +425,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_InternalCompute.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.InternalCompute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L38">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L74">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_InternalCompute_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.InternalCompute*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_InternalCompute" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.InternalCompute">InternalCompute()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Algorithm compute step.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -386,63 +438,15 @@
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_InternalCompute">AlgorithmBase.InternalCompute()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_SeparateSides__2__0_System_Collections_Generic_HashSet__0___System_Collections_Generic_HashSet__0___.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603.SeparateSides(%602%2C%600%2CSystem.Collections.Generic.HashSet%7B%600%7D%40%2CSystem.Collections.Generic.HashSet%7B%600%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L150">View Source</a>
-  </span>
-  <a id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_SeparateSides_" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.SeparateSides*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3_SeparateSides__2__0_System_Collections_Generic_HashSet__0___System_Collections_Generic_HashSet__0___" data-uid="GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm`3.SeparateSides(`2,`0,System.Collections.Generic.HashSet{`0}@,System.Collections.Generic.HashSet{`0}@)">SeparateSides(TGraph, TVertex, out HashSet&lt;TVertex&gt;, out HashSet&lt;TVertex&gt;)</h4>
-  <div class="markdown level1 summary"><p>Separates the points of the graph according to the given <code data-dev-comment-type="paramref" class="paramref">selectedVertex</code>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void SeparateSides(TGraph graph, TVertex selectedVertex, out HashSet&lt;TVertex&gt; side1, out HashSet&lt;TVertex&gt; side2)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TGraph</span></td>
-        <td><span class="parametername">graph</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">selectedVertex</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;TVertex&gt;</td>
-        <td><span class="parametername">side1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;TVertex&gt;</td>
-        <td><span class="parametername">side2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm&lt;TParam&gt;</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, TParameters&gt;</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
   </div>
   <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-5.html">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo&gt;</a>
@@ -458,10 +462,13 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -474,7 +481,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Contextual_DoubleTreeLayoutAlgorithm_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Contextual/DoubleTreeLayoutAlgorithm.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

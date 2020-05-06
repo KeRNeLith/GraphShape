@@ -8,7 +8,7 @@
     <title>GraphShape documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="GraphShape documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -84,10 +84,6 @@
 <td><a href="https://sonarcloud.io/dashboard?id=graphshape"><img src="https://sonarcloud.io/api/project_badges/measure?project=graphshape&amp;metric=alert_status" alt="Quality Gate"></a></td>
 </tr>
 <tr>
-<td><strong>Nuget</strong></td>
-<td><a href="https://www.nuget.org/packages/GraphShape"><img src="https://img.shields.io/nuget/v/graphshape.svg" alt="Nuget downloads"></a></td>
-</tr>
-<tr>
 <td><strong>License</strong></td>
 <td><a href="https://github.com/KeRNeLith/GraphShape/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license"></a></td>
 </tr>
@@ -95,28 +91,35 @@
 </table>
 <h2 id="introduction">Introduction</h2>
 <p><strong>GraphShape</strong> is a .NET library that mainly provide graph layout framework.
-It contains some layout algorithms and a GraphLayout control for WPF applications.</p>
-<p>(It is based on the <a href="https://archive.codeplex.com/?p=graphsharp">GraphSharp</a> library)</p>
-<p>See the library <a href="https://kernelith.github.io/GraphShape/">documentation</a>.</p>
-<hr>
+It contains several overlap removal and layout algorithms that allow various kind of layouts and has also a module with customizable controls for WPF applications visualization.</p>
+<p>Based on the <a href="https://archive.codeplex.com/?p=graphsharp">GraphSharp</a> library, it has be reworked add some improvements to it.</p>
+<p>Main features:</p>
+<ul>
+<li>Several layout algorithms (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP).</li>
+<li>Overlap removal algorithms (FSA or One Way FSA).</li>
+<li>Customizable WPF controls for visualization.</li>
+</ul>
 <h2 id="targets">Targets</h2>
 <ul>
-<li><a href="#"><img src="https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.0-blue.svg" alt=".NET Framework"></a></li>
+<li>.NET Standard 2.0+</li>
+<li>.NET Core 2.0+</li>
+<li>.NET Framework 3.5+</li>
 </ul>
-<hr>
-<h2 id="dependencies">Dependencies</h2>
-<p>TBD</p>
-<h3 id="notes">Notes</h3>
+<p>Supports Source Link</p>
+<h2 id="notes">Notes</h2>
 <ul>
 <li><p>It uses NUnit3 for unit testing (not published).</p>
 </li>
 <li><p>The library code is published annotated with JetBrains annotations.</p>
 </li>
 </ul>
-<hr>
-<h2 id="installation">Installation</h2>
-<p>GraphShape is available on <a href="https://www.nuget.org/packages/GraphShape">NuGet</a></p>
+<h2 id="packages">Packages</h2>
+<p>GraphShape is available on <a href="https://www.nuget.org">NuGet</a> in several modules.</p>
+<p><a href="https://www.nuget.org/packages/GraphShape"><img src="https://img.shields.io/nuget/v/graphshape.svg" alt="Nuget Status"></a> <a href="https://www.nuget.org/packages/GraphShape">GraphShape</a> (Core)</p>
 <pre><code>PM&gt; Install-Package GraphShape
+</code></pre>
+<p><a href="https://www.nuget.org/packages/GraphShape.Controls"><img src="https://img.shields.io/nuget/v/graphshape.svg" alt="Nuget Status"></a> <a href="https://www.nuget.org/packages/GraphShape.Controls">GraphShape.Controls</a></p>
+<pre><code>PM&gt; Install-Package GraphShape.Controls
 </code></pre>
 <img src="images/graphshape_logo.png" width="128" height="128" style="display: block; margin-left: auto; margin-right: auto">
 </article>

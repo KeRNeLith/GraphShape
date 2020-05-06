@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EdgeRoutingParameters
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,12 +73,14 @@
   
   <h1 id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters" class="text-break">Class EdgeRoutingParameters
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Edge routing algorithm parameters.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">EdgeRoutingParameters</span></div>
+    <div class="level1"><a class="xref" href="GraphShape.Utils.NotifierObject.html">NotifierObject</a></div>
+    <div class="level2"><span class="xref">EdgeRoutingParameters</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -89,6 +91,12 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="GraphShape.Utils.NotifierObject.html#GraphShape_Utils_NotifierObject_PropertyChanged">NotifierObject.PropertyChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Utils.NotifierObject.html#GraphShape_Utils_NotifierObject_OnPropertyChanged_System_String_">NotifierObject.OnPropertyChanged(String)</a>
+    </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
     </div>
@@ -115,7 +123,7 @@
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EdgeRoutingParameters : IEdgeRoutingParameters, IAlgorithmParameters, ICloneable, INotifyPropertyChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public class EdgeRoutingParameters : NotifierObject, IEdgeRoutingParameters, IAlgorithmParameters, ICloneable, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
@@ -124,7 +132,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_Clone.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L5">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L11">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_Clone_" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.Clone*"></a>
   <h4 id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_Clone" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.Clone">Clone()</h4>
@@ -149,69 +157,6 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_NotifyChanged_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.NotifyChanged(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L10">View Source</a>
-  </span>
-  <a id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_NotifyChanged_" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.NotifyChanged*"></a>
-  <h4 id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_NotifyChanged_System_String_" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.NotifyChanged(System.String)">NotifyChanged(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void NotifyChanged(string propertyName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">propertyName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_PropertyChanged.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.PropertyChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L16">View Source</a>
-  </span>
-  <h4 id="GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters_PropertyChanged" data-uid="GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters.PropertyChanged">PropertyChanged</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event PropertyChangedEventHandler PropertyChanged</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ComponentModel.PropertyChangedEventHandler</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="GraphShape.Algorithms.EdgeRouting.IEdgeRoutingParameters.html">IEdgeRoutingParameters</a>
@@ -227,10 +172,16 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Algorithms.FactoryHelpers.html#GraphShape_Algorithms_FactoryHelpers_CreateNewParameters__1_GraphShape_Algorithms_IAlgorithmParameters_">FactoryHelpers.CreateNewParameters&lt;TParam&gt;(IAlgorithmParameters)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -243,7 +194,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_EdgeRouting_EdgeRoutingParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.EdgeRouting.EdgeRoutingParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L3" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/EdgeRouting/EdgeRoutingParameters.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

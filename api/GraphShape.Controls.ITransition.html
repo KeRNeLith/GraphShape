@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ITransition
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_Controls_ITransition" data-uid="GraphShape.Controls.ITransition" class="text-break">Interface ITransition
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents an entity able to perform animation transitions</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Controls.html">GraphShape.Controls</a></h6>
   <h6><strong>Assembly</strong>: GraphShape.Controls.dll</h6>
@@ -85,56 +86,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_.md&amp;value=---%0Auid%3A%20GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext%2CSystem.Windows.Controls.Control%2CSystem.TimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/ITransition.cs/#L14">View Source</a>
-  </span>
-  <a id="GraphShape_Controls_ITransition_Run_" data-uid="GraphShape.Controls.ITransition.Run*"></a>
-  <h4 id="GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_" data-uid="GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan)">Run(IAnimationContext, Control, TimeSpan)</h4>
-  <div class="markdown level1 summary"><p>Runs the transition.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Run(IAnimationContext context, Control control, TimeSpan duration)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GraphShape.Controls.IAnimationContext.html">IAnimationContext</a></td>
-        <td><span class="parametername">context</span></td>
-        <td><p>The context of the transition.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Windows.Controls.Control</span></td>
-        <td><span class="parametername">control</span></td>
-        <td><p>The control which the transition should be run on.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
-        <td><span class="parametername">duration</span></td>
-        <td><p>The duration of the transition.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__.md&amp;value=---%0Auid%3A%20GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext%2CSystem.Windows.Controls.Control%2CSystem.TimeSpan%2CSystem.Action%7BSystem.Windows.Controls.Control%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/ITransition.cs/#L23">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Interfaces/ITransition.cs/#L19">View Source</a>
   </span>
   <a id="GraphShape_Controls_ITransition_Run_" data-uid="GraphShape.Controls.ITransition.Run*"></a>
   <h4 id="GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__" data-uid="GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})">Run(IAnimationContext, Control, TimeSpan, Action&lt;Control&gt;)</h4>
@@ -143,7 +98,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Run(IAnimationContext context, Control control, TimeSpan duration, Action&lt;Control&gt; endMethod)</code></pre>
+    <pre><code class="lang-csharp hljs">void Run(IAnimationContext context, Control control, TimeSpan duration, Action&lt;Control&gt; endAction)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -175,7 +130,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Windows.Controls.Control</span>&gt;</td>
-        <td><span class="parametername">endMethod</span></td>
+        <td><span class="parametername">endAction</span></td>
         <td><p>The method that should be called when the transition finished.</p>
 </td>
       </tr>
@@ -183,10 +138,16 @@
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Controls.TransitionExtensions.html#GraphShape_Controls_TransitionExtensions_Run_GraphShape_Controls_ITransition_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_">TransitionExtensions.Run(ITransition, IAnimationContext, Control, TimeSpan)</a>
   </div>
 </article>
           </div>
@@ -199,7 +160,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_ITransition.md&amp;value=---%0Auid%3A%20GraphShape.Controls.ITransition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/ITransition.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Interfaces/ITransition.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

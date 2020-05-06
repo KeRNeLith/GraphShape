@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ICompoundGraph&lt;TVertex, TEdge&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_ICompoundGraph_2" data-uid="GraphShape.ICompoundGraph`2" class="text-break">Interface ICompoundGraph&lt;TVertex, TEdge&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents a graph with parent/children relationships between vertices.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -167,11 +168,13 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -182,11 +185,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_CompoundVertices.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.CompoundVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L18">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L24">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_CompoundVertices_" data-uid="GraphShape.ICompoundGraph`2.CompoundVertices*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_CompoundVertices" data-uid="GraphShape.ICompoundGraph`2.CompoundVertices">CompoundVertices</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the set of compound vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -212,11 +216,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_SimpleVertices.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.SimpleVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L19">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L18">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_SimpleVertices_" data-uid="GraphShape.ICompoundGraph`2.SimpleVertices*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_SimpleVertices" data-uid="GraphShape.ICompoundGraph`2.SimpleVertices">SimpleVertices</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the set of simple vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -244,11 +249,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_AddChildVertex__0__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.AddChildVertex(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L10">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L34">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_AddChildVertex_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_AddChildVertex__0__0_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertex(`0,`0)">AddChildVertex(TVertex, TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds the <code data-dev-comment-type="paramref" class="paramref">child</code> vertex to the graph if not already inside and sets
+it as child vertex of <code data-dev-comment-type="paramref" class="paramref">parent</code> vertex.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -267,12 +274,14 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">parent</span></td>
-        <td></td>
+        <td><p>Parent vertex.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">child</span></td>
-        <td></td>
+        <td><p>Vertex to add as child.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -287,7 +296,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if vertex is added as child with success, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -296,11 +306,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_AddChildVertexRange__0_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.AddChildVertexRange(%600%2CSystem.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L11">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L43">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_AddChildVertexRange_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertexRange*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_AddChildVertexRange__0_System_Collections_Generic_IEnumerable__0__" data-uid="GraphShape.ICompoundGraph`2.AddChildVertexRange(`0,System.Collections.Generic.IEnumerable{`0})">AddChildVertexRange(TVertex, IEnumerable&lt;TVertex&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds the set of <code data-dev-comment-type="paramref" class="paramref">children</code> vertices to the graph if not already inside and sets
+them as children vertices of <code data-dev-comment-type="paramref" class="paramref">parent</code> vertex.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -319,12 +331,14 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">parent</span></td>
-        <td></td>
+        <td><p>Parent vertex.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
         <td><span class="parametername">children</span></td>
-        <td></td>
+        <td><p>Vertices to add as children.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -339,7 +353,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The number of vertices added to the graph.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -348,11 +363,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetChildrenCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetChildrenCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L15">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L76">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetChildrenCount_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenCount*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetChildrenCount__0_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenCount(`0)">GetChildrenCount(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of children vertices of the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -371,7 +387,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to get its children count.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -386,7 +403,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>Number of children vertices.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -395,11 +413,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetChildrenVertices__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetChildrenVertices(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L14">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L67">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetChildrenVertices_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenVertices*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetChildrenVertices__0_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenVertices(`0)">GetChildrenVertices(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the children vertices of the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -418,7 +437,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to get its children.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -433,7 +453,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
-        <td></td>
+        <td><p>Children vertices.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -442,11 +463,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetParent__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetParent(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L12">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L50">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetParent_" data-uid="GraphShape.ICompoundGraph`2.GetParent*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetParent__0_" data-uid="GraphShape.ICompoundGraph`2.GetParent(`0)">GetParent(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the parent vertex of the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -465,7 +487,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to get the parent.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -480,7 +503,8 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td></td>
+        <td><p>Parent vertex if there is one, null otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -489,11 +513,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_IsChildVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.IsChildVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L13">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L59">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_IsChildVertex_" data-uid="GraphShape.ICompoundGraph`2.IsChildVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_IsChildVertex__0_" data-uid="GraphShape.ICompoundGraph`2.IsChildVertex(`0)">IsChildVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is a child vertex of another one.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -512,7 +537,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -527,7 +553,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex is a child one, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -536,11 +563,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_IsCompoundVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.IsCompoundVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L16">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L84">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_IsCompoundVertex_" data-uid="GraphShape.ICompoundGraph`2.IsCompoundVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_IsCompoundVertex__0_" data-uid="GraphShape.ICompoundGraph`2.IsCompoundVertex(`0)">IsCompoundVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is a compound vertex (child vertex).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -559,7 +587,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -574,46 +603,47 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex is a compound one, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetNeighbours__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelper.GetNeighbours&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelpers.GetNeighbors&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetOutNeighbours__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelper.GetOutNeighbours&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelpers.GetOutNeighbors&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Collections_Generic_List___0__System_Collections_Generic_List___0__">GraphHelper.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, List&lt;TVertex&gt;, List&lt;TVertex&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___">GraphHelpers.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex[], TVertex[])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetSources__2_QuikGraph_IBidirectionalGraph___0___1__">GraphHelper.GetSources&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelpers.Convert&lt;TVertex, TEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TNewGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelper.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelpers.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
   </div>
 </article>
           </div>
@@ -626,7 +656,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/ICompoundGraph.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

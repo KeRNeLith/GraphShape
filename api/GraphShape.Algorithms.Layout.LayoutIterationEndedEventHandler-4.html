@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Delegate LayoutIterationEndedEventHandler&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,14 +73,15 @@
   
   <h1 id="GraphShape_Algorithms_Layout_LayoutIterationEndedEventHandler_4" data-uid="GraphShape.Algorithms.Layout.LayoutIterationEndedEventHandler`4" class="text-break">Delegate LayoutIterationEndedEventHandler&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Handler for a layout iteration ended.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.Layout.html">GraphShape.Algorithms.Layout</a></h6>
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Layout_LayoutIterationEndedEventHandler_4_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate void LayoutIterationEndedEventHandler&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt;(object sender, ILayoutInfoIterationEventArgs&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt; e)
-    where TVertex : class where TEdge : IEdge&lt;TVertex&gt;;</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate void LayoutIterationEndedEventHandler&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt;(object sender, ILayoutInfoIterationEventArgs&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt; args)
+    where TEdge : IEdge&lt;TVertex&gt;;</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -95,12 +96,14 @@
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">sender</span></td>
-        <td></td>
+        <td><p>Event sender.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutInfoIterationEventArgs-4.html">ILayoutInfoIterationEventArgs</a>&lt;TVertex, TEdge, TVertexInfo, TEdgeInfo&gt;</td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Event arguments.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -115,28 +118,35 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TVertexInfo</span></td>
-        <td></td>
+        <td><p>Vertex information type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdgeInfo</span></td>
-        <td></td>
+        <td><p>Edge information type.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -149,7 +159,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_LayoutIterationEndedEventHandler_4.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.LayoutIterationEndedEventHandler%604%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ILayoutAlgorithm.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Algorithms/Layout/LayoutDelegates.cs/#L32" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

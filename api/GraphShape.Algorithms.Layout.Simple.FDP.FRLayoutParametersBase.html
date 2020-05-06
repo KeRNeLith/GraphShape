@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FRLayoutParametersBase
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,16 +73,17 @@
   
   <h1 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase" class="text-break">Class FRLayoutParametersBase
   </h1>
-  <div class="markdown level0 summary"><p>Parameters base for the Fruchterman-Reingold Algorithm (FDP).</p>
+  <div class="markdown level0 summary"><p>Base class for Fruchterman-Reingold algorithm parameters (FDP).</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html">LayoutParametersBase</a></div>
-    <div class="level2"><span class="xref">FRLayoutParametersBase</span></div>
-      <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.BoundedFRLayoutParameters.html">BoundedFRLayoutParameters</a></div>
-      <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FreeFRLayoutParameters.html">FreeFRLayoutParameters</a></div>
+    <div class="level1"><a class="xref" href="GraphShape.Utils.NotifierObject.html">NotifierObject</a></div>
+    <div class="level2"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html">LayoutParametersBase</a></div>
+    <div class="level3"><span class="xref">FRLayoutParametersBase</span></div>
+      <div class="level4"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.BoundedFRLayoutParameters.html">BoundedFRLayoutParameters</a></div>
+      <div class="level4"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FreeFRLayoutParameters.html">FreeFRLayoutParameters</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -94,28 +95,28 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_Equals_System_Object_">LayoutParametersBase.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_GetHashCode">LayoutParametersBase.GetHashCode()</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_Clone">LayoutParametersBase.Clone()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_PropertyChanged">LayoutParametersBase.PropertyChanged</a>
+      <a class="xref" href="GraphShape.Utils.NotifierObject.html#GraphShape_Utils_NotifierObject_PropertyChanged">NotifierObject.PropertyChanged</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_NotifyPropertyChanged_System_String_">LayoutParametersBase.NotifyPropertyChanged(String)</a>
+      <a class="xref" href="GraphShape.Utils.NotifierObject.html#GraphShape_Utils_NotifierObject_OnPropertyChanged_System_String_">NotifierObject.OnPropertyChanged(String)</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -137,16 +138,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase__ctor.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L145">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L178">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase__ctor_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.#ctor*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase__ctor" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.#ctor">FRLayoutParametersBase()</h4>
-  <div class="markdown level1 summary"><p>Default constructor</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html">FRLayoutParametersBase</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FRLayoutParametersBase()</code></pre>
+    <pre><code class="lang-csharp hljs">protected FRLayoutParametersBase()</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -155,11 +156,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_AttractionMultiplier.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.AttractionMultiplier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L71">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L80">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_AttractionMultiplier_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.AttractionMultiplier*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_AttractionMultiplier" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.AttractionMultiplier">AttractionMultiplier</h4>
-  <div class="markdown level1 summary"><p>Multiplier of the attraction. Default value is 2.</p>
+  <div class="markdown level1 summary"><p>Multiplier of the attraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -186,11 +187,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfAttraction.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfAttraction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L66">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L73">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfAttraction_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfAttraction*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfAttraction" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfAttraction">ConstantOfAttraction</h4>
-  <div class="markdown level1 summary"><p>Constant. <pre><code>Equals with K * attractionMultiplier</code></pre></p>
+  <div class="markdown level1 summary"><p>Constant <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html#GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_K">K</a> * <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html#GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_AttractionMultiplier">AttractionMultiplier</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -217,11 +218,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfRepulsion.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfRepulsion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L85">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L97">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfRepulsion_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfRepulsion*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_ConstantOfRepulsion" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.ConstantOfRepulsion">ConstantOfRepulsion</h4>
-  <div class="markdown level1 summary"><p>Constant. Equals with <pre><code>Pow(K * repulsiveMultiplier, 2)</code></pre></p>
+  <div class="markdown level1 summary"><p>Constant (<a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html#GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_K">K</a> * <a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html#GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_RepulsiveMultiplier">RepulsiveMultiplier</a>².</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -248,11 +249,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_CoolingFunction.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.CoolingFunction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L130">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L162">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_CoolingFunction_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.CoolingFunction*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_CoolingFunction" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.CoolingFunction">CoolingFunction</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the cooling function which could be Linear or Exponential.</p>
+  <div class="markdown level1 summary"><p>Cooling function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -279,7 +280,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_InitialTemperature.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.InitialTemperature%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L61">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L68">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_InitialTemperature_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.InitialTemperature*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_InitialTemperature" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.InitialTemperature">InitialTemperature</h4>
@@ -307,41 +308,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_IterationLimit.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.IterationLimit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L104">View Source</a>
-  </span>
-  <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_IterationLimit_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.IterationLimit*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_IterationLimit" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.IterationLimit">IterationLimit</h4>
-  <div class="markdown level1 summary"><p>Limit of the iterations. Default value is 200.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int IterationLimit { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_K.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.K%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L56">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L63">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_K_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.K*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_K" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.K">K</h4>
@@ -372,11 +342,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_Lambda.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.Lambda%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L117">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L144">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_Lambda_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.Lambda*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_Lambda" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.Lambda">Lambda</h4>
-  <div class="markdown level1 summary"><p>Lambda for the cooling. Default value is 0.95.</p>
+  <div class="markdown level1 summary"><p>Lambda for the cooling.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -400,14 +370,45 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_MaxIterations.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.MaxIterations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L123">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_MaxIterations_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.MaxIterations*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_MaxIterations" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.MaxIterations">MaxIterations</h4>
+  <div class="markdown level1 summary"><p>Maximum number of the iterations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxIterations { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_RepulsiveMultiplier.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.RepulsiveMultiplier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L90">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L104">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_RepulsiveMultiplier_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.RepulsiveMultiplier*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_RepulsiveMultiplier" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.RepulsiveMultiplier">RepulsiveMultiplier</h4>
-  <div class="markdown level1 summary"><p>Multiplier of the repulsion. Default value is 1.</p>
+  <div class="markdown level1 summary"><p>Multiplier of the repulsion.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -433,14 +434,49 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_GetEqualityElements.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.GetEqualityElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L184">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_GetEqualityElements_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.GetEqualityElements*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_GetEqualityElements" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.GetEqualityElements">GetEqualityElements()</h4>
+  <div class="markdown level1 summary"><p>Gets elements to take into account when comparing this <a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html">LayoutParametersBase</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override IEnumerable&lt;object&gt; GetEqualityElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td><p>Elements to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="GraphShape.Algorithms.Layout.LayoutParametersBase.html#GraphShape_Algorithms_Layout_LayoutParametersBase_GetEqualityElements">LayoutParametersBase.GetEqualityElements()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_UpdateParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.UpdateParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L35">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L43">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_UpdateParameters_" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.UpdateParameters*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase_UpdateParameters" data-uid="GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.UpdateParameters">UpdateParameters()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Updates computed parameters based on other parameters.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -461,13 +497,16 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Algorithms.FactoryHelpers.html#GraphShape_Algorithms_FactoryHelpers_CreateNewParameters__1_GraphShape_Algorithms_IAlgorithmParameters_">FactoryHelpers.CreateNewParameters&lt;TParam&gt;(IAlgorithmParameters)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.FactoryHelper.html#GraphShape_Algorithms_FactoryHelper_CreateNewParameter__1_GraphShape_Algorithms_Layout_ILayoutParameters_">FactoryHelper.CreateNewParameter&lt;TParam&gt;(ILayoutParameters)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -480,7 +519,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Simple_FDP_FRLayoutParametersBase.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Simple/FDP/FRLayoutParametersBase.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

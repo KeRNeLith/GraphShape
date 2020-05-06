@@ -1,0 +1,1453 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GraphHelpers
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GraphHelpers
+   ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GraphShape.Utils.GraphHelpers">
+  
+  
+  <h1 id="GraphShape_Utils_GraphHelpers" data-uid="GraphShape.Utils.GraphHelpers" class="text-break">Class GraphHelpers
+  </h1>
+  <div class="markdown level0 summary"><p>Helpers to deal with graphs.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GraphHelpers</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Utils.html">GraphShape.Utils</a></h6>
+  <h6><strong>Assembly</strong>: GraphShape.dll</h6>
+  <h5 id="GraphShape_Utils_GraphHelpers_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GraphHelpers</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%603(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L410">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_" data-uid="GraphShape.Utils.GraphHelpers.Convert``3(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``2)">Convert&lt;TVertex, TEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TNewGraph)</h4>
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into the <code data-dev-comment-type="paramref" class="paramref">newGraph</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TNewGraph Convert&lt;TVertex, TEdge, TNewGraph&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; oldGraph, TNewGraph newGraph)
+    where TEdge : IEdge&lt;TVertex&gt; where TNewGraph : IMutableVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><span class="parametername">oldGraph</span></td>
+        <td><p>Graph to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><span class="parametername">newGraph</span></td>
+        <td><p>Graph that will be filled with converted content.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><p>The converted graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Old vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Old edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewGraph</span></td>
+        <td><p>Converted graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%603(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2CSystem.Func%7B%60%601%2C%60%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L464">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__" data-uid="GraphShape.Utils.GraphHelpers.Convert``3(QuikGraph.IVertexAndEdgeListGraph{``0,``1},System.Func{``1,``2})">Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.
+Uses <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to convert edges if provided. Performs a direct cast otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TVertex, TNewEdge&gt; Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt; oldGraph, Func&lt;TOldEdge, TNewEdge&gt; edgeConverter)
+    where TOldEdge : IEdge&lt;TVertex&gt; where TNewEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TOldEdge&gt;</td>
+        <td><span class="parametername">oldGraph</span></td>
+        <td><p>Graph to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldEdge, TNewEdge&gt;</td>
+        <td><span class="parametername">edgeConverter</span></td>
+        <td><p>Function to convert edges from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldEdge</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewEdge</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TNewEdge&gt;</td>
+        <td><p>The converted graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Old vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOldEdge</span></td>
+        <td><p>Old edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewEdge</span></td>
+        <td><p>New edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%604(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%603%2CSystem.Func%7B%60%601%2C%60%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L385">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__" data-uid="GraphShape.Utils.GraphHelpers.Convert``4(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``3,System.Func{``1,``2})">Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into the <code data-dev-comment-type="paramref" class="paramref">newGraph</code>.
+Uses <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to convert edges if provided. Performs a direct cast otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TNewGraph Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt; oldGraph, TNewGraph newGraph, Func&lt;TOldEdge, TNewEdge&gt; edgeConverter)
+    where TOldEdge : IEdge&lt;TVertex&gt; where TNewEdge : IEdge&lt;TVertex&gt; where TNewGraph : IMutableVertexAndEdgeListGraph&lt;TVertex, TNewEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TOldEdge&gt;</td>
+        <td><span class="parametername">oldGraph</span></td>
+        <td><p>Graph to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><span class="parametername">newGraph</span></td>
+        <td><p>Graph that will be filled with converted content.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldEdge, TNewEdge&gt;</td>
+        <td><span class="parametername">edgeConverter</span></td>
+        <td><p>Function to convert edges from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldEdge</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewEdge</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><p>The converted graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Old vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOldEdge</span></td>
+        <td><p>Old edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewEdge</span></td>
+        <td><p>New edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewGraph</span></td>
+        <td><p>Converted graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%604(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2CSystem.Func%7B%60%600%2C%60%602%7D%2CSystem.Func%7B%60%601%2C%60%603%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L437">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__" data-uid="GraphShape.Utils.GraphHelpers.Convert``4(QuikGraph.IVertexAndEdgeListGraph{``0,``1},System.Func{``0,``2},System.Func{``1,``3})">Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.
+Uses <code data-dev-comment-type="paramref" class="paramref">vertexConverter</code> and <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to
+convert vertices and edges if provided. Performs a direct cast otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TNewVertex, TNewEdge&gt; Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(this IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt; oldGraph, Func&lt;TOldVertex, TNewVertex&gt; vertexConverter, Func&lt;TOldEdge, TNewEdge&gt; edgeConverter)
+    where TOldEdge : IEdge&lt;TOldVertex&gt; where TNewEdge : IEdge&lt;TNewVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TOldVertex, TOldEdge&gt;</td>
+        <td><span class="parametername">oldGraph</span></td>
+        <td><p>Graph to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldVertex, TNewVertex&gt;</td>
+        <td><span class="parametername">vertexConverter</span></td>
+        <td><p>Function to convert vertices from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldVertex</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewVertex</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldEdge, TNewEdge&gt;</td>
+        <td><span class="parametername">edgeConverter</span></td>
+        <td><p>Function to convert edges from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldEdge</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewEdge</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TNewVertex, TNewEdge&gt;</td>
+        <td><p>The converted graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TOldVertex</span></td>
+        <td><p>Old vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOldEdge</span></td>
+        <td><p>Old edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewVertex</span></td>
+        <td><p>New vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewEdge</span></td>
+        <td><p>New edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%605(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%604%2CSystem.Func%7B%60%600%2C%60%602%7D%2CSystem.Func%7B%60%601%2C%60%603%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L344">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__" data-uid="GraphShape.Utils.GraphHelpers.Convert``5(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``4,System.Func{``0,``2},System.Func{``1,``3})">Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into the <code data-dev-comment-type="paramref" class="paramref">newGraph</code>.
+Uses <code data-dev-comment-type="paramref" class="paramref">vertexConverter</code> and <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to
+convert vertices and edges if provided. Performs a direct cast otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TNewGraph Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(this IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt; oldGraph, TNewGraph newGraph, Func&lt;TOldVertex, TNewVertex&gt; vertexConverter, Func&lt;TOldEdge, TNewEdge&gt; edgeConverter)
+    where TOldEdge : IEdge&lt;TOldVertex&gt; where TNewEdge : IEdge&lt;TNewVertex&gt; where TNewGraph : IMutableVertexAndEdgeListGraph&lt;TNewVertex, TNewEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TOldVertex, TOldEdge&gt;</td>
+        <td><span class="parametername">oldGraph</span></td>
+        <td><p>Graph to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><span class="parametername">newGraph</span></td>
+        <td><p>Graph that will be filled with converted content.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldVertex, TNewVertex&gt;</td>
+        <td><span class="parametername">vertexConverter</span></td>
+        <td><p>Function to convert vertices from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldVertex</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewVertex</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TOldEdge, TNewEdge&gt;</td>
+        <td><span class="parametername">edgeConverter</span></td>
+        <td><p>Function to convert edges from <code data-dev-comment-type="typeparamref" class="typeparamref">TOldEdge</code> to <code data-dev-comment-type="typeparamref" class="typeparamref">TNewEdge</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TNewGraph</span></td>
+        <td><p>The converted graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TOldVertex</span></td>
+        <td><p>Old vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOldEdge</span></td>
+        <td><p>Old edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewVertex</span></td>
+        <td><p>New vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewEdge</span></td>
+        <td><p>New edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TNewGraph</span></td>
+        <td><p>Converted graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L484">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph_" data-uid="GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__" data-uid="GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1})">CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Copies this graph into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> one.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TVertex, TEdge&gt; CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; graph)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>Graph to copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><p><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> initialized from <code data-dev-comment-type="paramref" class="paramref">graph</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__2_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___1__System_String_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%602(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%601%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L218">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__2_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___1__System_String_System_String_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.String,System.String)">CreateGraph&lt;TVertex, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+and edges constructed by getting values of properties <code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code>
+and <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> on type <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TVertex, Edge&lt;TVertex&gt;&gt; CreateGraph&lt;TVertex, TEdgeData&gt;(IEnumerable&lt;TVertex&gt; vertices, IEnumerable&lt;TEdgeData&gt; edgesData, string sourcePropertyName, string targetPropertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td><p>The set of the vertices.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdgeData&gt;</td>
+        <td><span class="parametername">edgesData</span></td>
+        <td><p>The set of data used to construct graph edges.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sourcePropertyName</span></td>
+        <td><p>Name of the property to get value from <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code> to construct edge source.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">targetPropertyName</span></td>
+        <td><p>Name of the property to get value from <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code> to construct edge target.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, <span class="xref">QuikGraph.Edge</span>&lt;TVertex&gt;&gt;</td>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeData</span></td>
+        <td><p>Type of the object used to construct edges.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%603(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%602%7D%2CSystem.Func%7B%60%602%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L318">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``2},System.Func{``2,``1})">CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, Func&lt;TEdgeData, TEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+and edges constructed using <code data-dev-comment-type="paramref" class="paramref">edgeFactory</code>.
+Note: The graph will allow parallel edges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TVertex, TEdge&gt; CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt; vertices, IEnumerable&lt;TEdgeData&gt; edgesData, Func&lt;TEdgeData, TEdge&gt; edgeFactory)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td><p>The set of the vertices.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdgeData&gt;</td>
+        <td><span class="parametername">edgesData</span></td>
+        <td><p>The set of data used to construct graph edges.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdgeData, TEdge&gt;</td>
+        <td><span class="parametername">edgeFactory</span></td>
+        <td><p>Factory method to convert an edge data into an edge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeData</span></td>
+        <td><p>Type of the object used to construct edges.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%603(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%602%7D%2CSystem.Func%7B%60%602%2C%60%601%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L279">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__System_Boolean_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``2},System.Func{``2,``1},System.Boolean)">CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, Func&lt;TEdgeData, TEdge&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+and edges constructed using <code data-dev-comment-type="paramref" class="paramref">edgeFactory</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BidirectionalGraph&lt;TVertex, TEdge&gt; CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt; vertices, IEnumerable&lt;TEdgeData&gt; edgesData, Func&lt;TEdgeData, TEdge&gt; edgeFactory, bool allowParallelEdges)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td><p>The set of the vertices.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdgeData&gt;</td>
+        <td><span class="parametername">edgesData</span></td>
+        <td><p>The set of data used to construct graph edges.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TEdgeData, TEdge&gt;</td>
+        <td><span class="parametername">edgeFactory</span></td>
+        <td><p>Factory method to convert an edge data into an edge.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">allowParallelEdges</span></td>
+        <td><p>Indicates if parallel edges are allowed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdgeData</span></td>
+        <td><p>Type of the object used to construct edges.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDiameter__3___2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDiameter%60%603(%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L156">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetDiameter_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetDiameter__3___2_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter``3(``2)">GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</h4>
+  <div class="markdown level1 summary"><p>Gets the diameter of the <code data-dev-comment-type="paramref" class="paramref">graph</code>.
+Note: The diameter is the greatest distance between two vertices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double GetDiameter&lt;TVertex, TEdge, TGraph&gt;(this TGraph graph)
+    where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The diameter of the <code data-dev-comment-type="paramref" class="paramref">graph</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td><p>Graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDiameter%60%603(%60%602%2CSystem.Double%5B0%3A%2C0%3A%5D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L175">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetDiameter_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter``3(``2,System.Double[0:,0:]@)">GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</h4>
+  <div class="markdown level1 summary"><p>Gets the diameter of the <code data-dev-comment-type="paramref" class="paramref">graph</code>.
+Note: The diameter is the greatest distance between two vertices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double GetDiameter&lt;TVertex, TEdge, TGraph&gt;(this TGraph graph, out double[, ] distances)
+    where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span>[,]</td>
+        <td><span class="parametername">distances</span></td>
+        <td><p>Will give distances between every vertex-pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The diameter of the <code data-dev-comment-type="paramref" class="paramref">graph</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td><p>Graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDistances__3___2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDistances%60%603(%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L100">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetDistances_" data-uid="GraphShape.Utils.GraphHelpers.GetDistances*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetDistances__3___2_" data-uid="GraphShape.Utils.GraphHelpers.GetDistances``3(``2)">GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</h4>
+  <div class="markdown level1 summary"><p>Gets the distances between the vertices of the <code data-dev-comment-type="paramref" class="paramref">graph</code>.
+Note: The distance is the number of edges between 2 vertices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[, ] GetDistances&lt;TVertex, TEdge, TGraph&gt;(this TGraph graph)
+    where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TGraph</span></td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span>[,]</td>
+        <td><p>The distances between every vertex-pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TGraph</span></td>
+        <td><p>Graph type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetEdgesBetween%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%600%5B%5D%2C%60%600%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L66">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetEdgesBetween_" data-uid="GraphShape.Utils.GraphHelpers.GetEdgesBetween*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___" data-uid="GraphShape.Utils.GraphHelpers.GetEdgesBetween``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``0[],``0[])">GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex[], TVertex[])</h4>
+  <div class="markdown level1 summary"><p>Returns every edges which source is one of the vertices in the <code data-dev-comment-type="paramref" class="paramref">set1</code>
+and the target is one of the vertices in the <code data-dev-comment-type="paramref" class="paramref">set2</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TEdge&gt; GetEdgesBetween&lt;TVertex, TEdge&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; graph, TVertex[] set1, TVertex[] set2)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+      <tr>
+        <td>TVertex[]</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Source vertices set.</p>
+</td>
+      </tr>
+      <tr>
+        <td>TVertex[]</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Target vertices set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
+        <td><p>Edges with a source in <code data-dev-comment-type="paramref" class="paramref">set1</code> and a target in <code data-dev-comment-type="paramref" class="paramref">set2</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetNeighbors%60%602(QuikGraph.IBidirectionalGraph%7B%60%600%2C%60%601%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L26">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetNeighbors_" data-uid="GraphShape.Utils.GraphHelpers.GetNeighbors*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_" data-uid="GraphShape.Utils.GraphHelpers.GetNeighbors``2(QuikGraph.IBidirectionalGraph{``0,``1},``0)">GetNeighbors&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</h4>
+  <div class="markdown level1 summary"><p>Gets the neighbors (adjacent vertices) of the <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TVertex&gt; GetNeighbors&lt;TVertex, TEdge&gt;(this IBidirectionalGraph&lt;TVertex, TEdge&gt; graph, TVertex vertex)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IBidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>The vertex of which we want to get neighbors.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><p>Adjacent vertices of the <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetOutNeighbors%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L46">View Source</a>
+  </span>
+  <a id="GraphShape_Utils_GraphHelpers_GetOutNeighbors_" data-uid="GraphShape.Utils.GraphHelpers.GetOutNeighbors*"></a>
+  <h4 id="GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_" data-uid="GraphShape.Utils.GraphHelpers.GetOutNeighbors``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``0)">GetOutNeighbors&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</h4>
+  <div class="markdown level1 summary"><p>Gets the out neighbors (only adjacent vertices from out-edges) of the <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;TVertex&gt; GetOutNeighbors&lt;TVertex, TEdge&gt;(this IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; graph, TVertex vertex)
+    where TEdge : IEdge&lt;TVertex&gt;</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">QuikGraph.IVertexAndEdgeListGraph</span>&lt;TVertex, TEdge&gt;</td>
+        <td><span class="parametername">graph</span></td>
+        <td><p>The graph.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TVertex</span></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>The vertex of which we want to get neighbors.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
+        <td><p>Adjacent vertices of the <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TVertex</span></td>
+        <td><p>Vertex type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TEdge</span></td>
+        <td><p>Edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

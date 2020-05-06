@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;
+    <title>Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;
+    <meta name="title" content="Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -71,10 +71,9 @@
             <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4">
   
   
-  <h1 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4" class="text-break">Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;
+  <h1 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4" class="text-break">Class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Use this class as a base class for your layout algorithm
-if it's parameter class has a default contstructor.</p>
+  <div class="markdown level0 summary"><p>Base class for all <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-5.html">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo&gt;</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -82,15 +81,13 @@ if it's parameter class has a default contstructor.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html">AlgorithmBase</a></div>
     <div class="level2"><a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html">LayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph&gt;</div>
-    <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html">ParameterizedLayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph, TParam&gt;</div>
-    <div class="level4"><span class="xref">DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;</span></div>
+    <div class="level3"><a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html">ParameterizedLayoutAlgorithmBase</a>&lt;TVertex, TEdge, TGraph, TParameters&gt;</div>
+    <div class="level4"><span class="xref">DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;</span></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.html">CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
-      <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Contextual.RadialTreeLayoutAlgorithm-3.html">RadialTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Circular.CircularLayoutAlgorithm-3.html">CircularLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.ISOMLayoutAlgorithm-3.html">ISOMLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
-      <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutAlgorithm-3.html">KKLayoutAlgorithm&lt;Vertex, Edge, Graph&gt;</a></div>
+      <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutAlgorithm-3.html">KKLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.FDP.LinLogLayoutAlgorithm-3.html">LinLogLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
-      <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.EfficientSugiyamaLayoutAlgorithm-3.html">EfficientSugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.html">SugiyamaLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Tree.BalloonTreeLayoutAlgorithm-3.html">BalloonTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
       <div class="level5"><a class="xref" href="GraphShape.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutAlgorithm-3.html">SimpleTreeLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a></div>
@@ -98,70 +95,61 @@ if it's parameter class has a default contstructor.</p>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph, TParameters&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;TGraph&gt;</div>
     <div><span class="xref">QuikGraph.Algorithms.IComputation</span></div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm</a>&lt;TParam&gt;</div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Parameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.Parameters</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Parameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.Parameters</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.GetParameters()</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.GetParameters()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_TraceSource">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.TraceSource</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.DefaultParameters</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.DefaultParameters</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.InitParameters(TParameters)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.InitParameters(TParam)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Rand">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.Rand</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.InitializeWithRandomPositions(Double, Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.InitializeWithRandomPositions(Double, Double)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.InitializeWithRandomPositions(Double, Double, Double, Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.InitializeWithRandomPositions(Double, Double, Double, Double)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.NormalizePositions()</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.NormalizePositions()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.NormalizePositions(IDictionary&lt;TVertex, Point&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_GraphShape_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VertexPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VertexPositions</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VisitedGraph</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VerticesPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VerticesPositions</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ProgressChanged</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnProgressChangedNeeded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetVertexInfo(TVertex)</a>
@@ -170,19 +158,19 @@ if it's parameter class has a default contstructor.</p>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetEdgeInfo(TEdge)</a>
     </div>
     <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_SyncRoot">AlgorithmBase.SyncRoot</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
-    </div>
-    <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_InternalCompute">AlgorithmBase.InternalCompute()</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Abort">AlgorithmBase.Abort()</a>
@@ -212,10 +200,13 @@ if it's parameter class has a default contstructor.</p>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Initialize">AlgorithmBase.Initialize()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_InternalCompute">AlgorithmBase.InternalCompute()</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Clean">AlgorithmBase.Clean()</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -243,7 +234,7 @@ if it's parameter class has a default contstructor.</p>
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt; : ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;, IAlgorithm, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation, IParameterizedLayoutAlgorithm&lt;TParam&gt;, IParameterizedLayoutAlgorithm where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; where TParam : class, ILayoutParameters, new()</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt; : ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, TParameters&gt;, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TEdge : IEdge&lt;TVertex&gt; where TGraph : IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt; where TParameters : class, ILayoutParameters, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -256,22 +247,22 @@ if it's parameter class has a default contstructor.</p>
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td><p>The type of the vertices.</p>
+        <td><p>Vertex type.</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td><p>The type of the edges.</p>
+        <td><p>Edge type.</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">TGraph</span></td>
-        <td><p>The type of the graph.</p>
+        <td><p>Graph type.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="parametername">TParam</span></td>
-        <td><p>The type of the parameters. Must be based on the LayoutParametersBase.</p>
+        <td><span class="parametername">TParameters</span></td>
+        <td><p>Parameters type.</p>
 </td>
       </tr>
     </tbody>
@@ -283,11 +274,12 @@ if it's parameter class has a default contstructor.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase%604.%23ctor(%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L82">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L212">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.#ctor*"></a>
   <h4 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.#ctor(`2)">DefaultParameterizedLayoutAlgorithmBase(TGraph)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase-4.html">DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -306,24 +298,26 @@ if it's parameter class has a default contstructor.</p>
       <tr>
         <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point___3_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase%604.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Point%7D%2C%603)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point___3_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase%604.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Point%7D%2C%603)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L87">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L223">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Point___3_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Point},`3)">DefaultParameterizedLayoutAlgorithmBase(TGraph, IDictionary&lt;TVertex, Point&gt;, TParam)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point___3_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},`3)">DefaultParameterizedLayoutAlgorithmBase(TGraph, IDictionary&lt;TVertex, Point&gt;, TParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase-4.html">DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; vertexPositions, TParam oldParameters)</code></pre>
+    <pre><code class="lang-csharp hljs">protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; verticesPositions, TParameters oldParameters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -338,17 +332,20 @@ if it's parameter class has a default contstructor.</p>
       <tr>
         <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Point</span>&gt;</td>
-        <td><span class="parametername">vertexPositions</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Point.html">Point</a>&gt;</td>
+        <td><span class="parametername">verticesPositions</span></td>
+        <td><p>Vertices positions.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">TParam</span></td>
+        <td><span class="xref">TParameters</span></td>
         <td><span class="parametername">oldParameters</span></td>
-        <td></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -359,15 +356,16 @@ if it's parameter class has a default contstructor.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4_DefaultParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase%604.DefaultParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L92">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L232">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4_DefaultParameters_" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.DefaultParameters*"></a>
   <h4 id="GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4_DefaultParameters" data-uid="GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase`4.DefaultParameters">DefaultParameters</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Default algorithm parameters to use if no parameters provided at construction.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override TParam DefaultParameters { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected override TParameters DefaultParameters { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -379,16 +377,22 @@ if it's parameter class has a default contstructor.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TParam</span></td>
+        <td><span class="xref">TParameters</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParam&gt;.DefaultParameters</span></div>
+  <div><span class="xref">GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, TParameters&gt;.DefaultParameters</span></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, TParameters&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
   </div>
   <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
@@ -399,18 +403,15 @@ if it's parameter class has a default contstructor.</p>
   <div>
       <span class="xref">QuikGraph.Algorithms.IComputation</span>
   </div>
-  <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm&lt;TParam&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a>
-  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -423,7 +424,7 @@ if it's parameter class has a default contstructor.</p>
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_DefaultParameterizedLayoutAlgorithmBase_4.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase%604%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L76" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/ParameterizedLayoutAlgorithmBase.cs/#L202" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IMutableCompoundGraph&lt;TVertex, TEdge&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,10 +73,17 @@
   
   <h1 id="GraphShape_IMutableCompoundGraph_2" data-uid="GraphShape.IMutableCompoundGraph`2" class="text-break">Interface IMutableCompoundGraph&lt;TVertex, TEdge&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents a mutable graph with parent/children relationships between vertices.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_SimpleVertices">ICompoundGraph&lt;TVertex, TEdge&gt;.SimpleVertices</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_CompoundVertices">ICompoundGraph&lt;TVertex, TEdge&gt;.CompoundVertices</a>
+    </div>
     <div>
       <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_AddChildVertex__0__0_">ICompoundGraph&lt;TVertex, TEdge&gt;.AddChildVertex(TVertex, TVertex)</a>
     </div>
@@ -97,12 +104,6 @@
     </div>
     <div>
       <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_IsCompoundVertex__0_">ICompoundGraph&lt;TVertex, TEdge&gt;.IsCompoundVertex(TVertex)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_CompoundVertices">ICompoundGraph&lt;TVertex, TEdge&gt;.CompoundVertices</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.ICompoundGraph-2.html#GraphShape_ICompoundGraph_2_SimpleVertices">ICompoundGraph&lt;TVertex, TEdge&gt;.SimpleVertices</a>
     </div>
     <div>
       <span class="xref">QuikGraph.IMutableBidirectionalGraph&lt;TVertex, TEdge&gt;.RemoveInEdgeIf(TVertex, QuikGraph.EdgePredicate&lt;TVertex, TEdge&gt;)</span>
@@ -257,53 +258,52 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetNeighbours__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelper.GetNeighbours&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelpers.GetNeighbors&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetOutNeighbours__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelper.GetOutNeighbours&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelpers.GetOutNeighbors&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Collections_Generic_List___0__System_Collections_Generic_List___0__">GraphHelper.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, List&lt;TVertex&gt;, List&lt;TVertex&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___">GraphHelpers.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex[], TVertex[])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetSources__2_QuikGraph_IBidirectionalGraph___0___1__">GraphHelper.GetSources&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_AddEdgeRange__2_QuikGraph_IMutableEdgeListGraph___0___1__System_Collections_Generic_IEnumerable___1__">GraphHelper.AddEdgeRange&lt;TVertex, TEdge&gt;(IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IEnumerable&lt;TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelpers.Convert&lt;TVertex, TEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TNewGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph)</a>
-  </div>
-  <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelper.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelpers.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
   </div>
 </article>
           </div>
@@ -316,7 +316,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IMutableCompoundGraph_2.md&amp;value=---%0Auid%3A%20GraphShape.IMutableCompoundGraph%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/IMutableCompoundGraph.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IMutableCompoundGraph.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

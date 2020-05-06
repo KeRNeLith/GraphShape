@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3" class="text-break">Class CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Compound FDP layout algorithm.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -87,8 +88,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm</a>&lt;<a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.html">CompoundFDPLayoutParameters</a>&gt;</div>
-    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a></div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph, <a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.html">CompoundFDPLayoutParameters</a>&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.Layout.Compound.ICompoundLayoutAlgorithm-3.html">ICompoundLayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</div>
     <div><span class="xref">QuikGraph.Algorithms.IAlgorithm</span>&lt;TGraph&gt;</div>
@@ -106,13 +107,13 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_GetParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.GetParameters()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_TraceSource">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.TraceSource</a>
-    </div>
-    <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_DefaultParameters">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.DefaultParameters</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitParameters__3_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.InitParameters(CompoundFDPLayoutParameters)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_Rand">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.Rand</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_InitializeWithRandomPositions_System_Double_System_Double_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.InitializeWithRandomPositions(Double, Double)</a>
@@ -124,37 +125,28 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.NormalizePositions()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_NormalizePositions_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.NormalizePositions(IDictionary&lt;TVertex, Point&gt;)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_GraphShape_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_OnIterationEnded_System_Int32_System_Double_System_String_System_Boolean_">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.OnIterationEnded(Int32, Double, String, Boolean)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html#GraphShape_Algorithms_Layout_ParameterizedLayoutAlgorithmBase_4_CreateLayoutIterationEventArgs_System_Int32_System_Double_System_String_System_Collections_Generic_IDictionary__0_System_Windows_Point__">ParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;.CreateLayoutIterationEventArgs(Int32, Double, String, IDictionary&lt;TVertex, Point&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VertexPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VertexPositions</a>
-    </div>
-    <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VisitedGraph">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VisitedGraph</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_VerticesPositions">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.VerticesPositions</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ProgressChanged">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ProgressChanged</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_IterationEnded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.IterationEnded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnProgressChangedNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnProgressChangedNeeded</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_ReportOnIterationEndNeeded">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.ReportOnIterationEndNeeded</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetVertexInfo__0_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetVertexInfo(TVertex)</a>
@@ -163,13 +155,16 @@
       <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_GetEdgeInfo__1_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.GetEdgeInfo(TEdge)</a>
     </div>
     <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnProgressChanged_System_Double_">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnProgressChanged(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.html#GraphShape_Algorithms_Layout_LayoutAlgorithmBase_3_OnIterationEnded_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__">LayoutAlgorithmBase&lt;TVertex, TEdge, TGraph&gt;.OnIterationEnded(ILayoutIterationEventArgs&lt;TVertex&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_SyncRoot">AlgorithmBase.SyncRoot</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
@@ -202,10 +197,7 @@
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Clean">AlgorithmBase.Clean()</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -233,7 +225,7 @@
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;CompoundFDPLayoutParameters&gt;, IParameterizedLayoutAlgorithm, ICompoundLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; : DefaultParameterizedLayoutAlgorithmBase&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;, IAlgorithm, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, CompoundFDPLayoutParameters&gt;, IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ICompoundLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;, IAlgorithm&lt;TGraph&gt;, IComputation where TVertex : class where TEdge : IEdge&lt;TVertex&gt; where TGraph : IBidirectionalGraph&lt;TVertex, TEdge&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -246,17 +238,17 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td><p>The type of the vertices.</p>
+        <td><p>Vertex type.</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td><p>The type of the edges.</p>
+        <td><p>Edge type.</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">TGraph</span></td>
-        <td><p>The type of the graph.</p>
+        <td><p>Graph type.</p>
 </td>
       </tr>
     </tbody>
@@ -265,18 +257,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Thickness%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Point%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Size%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Thickness%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType%7D%2CGraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L106">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L126">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Size},System.Collections.Generic.IDictionary{`0,System.Windows.Thickness},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType})">CompoundFDPLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, IDictionary&lt;TVertex, Thickness&gt;, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Thickness},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType},GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)">CompoundFDPLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Point&gt;, IDictionary&lt;TVertex, Size&gt;, IDictionary&lt;TVertex, Thickness&gt;, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt;, CompoundFDPLayoutParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.html">CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CompoundFDPLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; vertexSizes, IDictionary&lt;TVertex, Thickness&gt; vertexBorders, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt; layoutTypes)</code></pre>
+    <pre><code class="lang-csharp hljs">public CompoundFDPLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Point&gt; verticesPositions, IDictionary&lt;TVertex, Size&gt; verticesSizes, IDictionary&lt;TVertex, Thickness&gt; verticesBorders, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt; layoutTypes, CompoundFDPLayoutParameters oldParameters = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -291,39 +284,56 @@
       <tr>
         <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
-        <td><span class="parametername">vertexSizes</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Point.html">Point</a>&gt;</td>
+        <td><span class="parametername">verticesPositions</span></td>
+        <td><p>Vertices positions.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Thickness</span>&gt;</td>
-        <td><span class="parametername">vertexBorders</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Size.html">Size</a>&gt;</td>
+        <td><span class="parametername">verticesSizes</span></td>
+        <td><p>Vertices sizes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Thickness.html">Thickness</a>&gt;</td>
+        <td><span class="parametername">verticesBorders</span></td>
+        <td><p>Vertices borders.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType.html">CompoundVertexInnerLayoutType</a>&gt;</td>
         <td><span class="parametername">layoutTypes</span></td>
-        <td></td>
+        <td><p>Layout types per vertex.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.html">CompoundFDPLayoutParameters</a></td>
+        <td><span class="parametername">oldParameters</span></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Size%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Thickness%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Point%7D%2CGraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.%23ctor(%602%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Size%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Thickness%7D%2CSystem.Collections.Generic.IDictionary%7B%600%2CGraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType%7D%2CGraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L115">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L107">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_System_Windows_Size__System_Collections_Generic_IDictionary__0_System_Windows_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__System_Collections_Generic_IDictionary__0_System_Windows_Point__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,System.Windows.Size},System.Collections.Generic.IDictionary{`0,System.Windows.Thickness},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType},System.Collections.Generic.IDictionary{`0,System.Windows.Point},GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)">CompoundFDPLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, IDictionary&lt;TVertex, Thickness&gt;, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt;, IDictionary&lt;TVertex, Point&gt;, CompoundFDPLayoutParameters)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Thickness__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_Compound_CompoundVertexInnerLayoutType__GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutParameters_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Thickness},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType},GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters)">CompoundFDPLayoutAlgorithm(TGraph, IDictionary&lt;TVertex, Size&gt;, IDictionary&lt;TVertex, Thickness&gt;, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt;, CompoundFDPLayoutParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.html">CompoundFDPLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CompoundFDPLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; vertexSizes, IDictionary&lt;TVertex, Thickness&gt; vertexBorders, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt; layoutTypes, IDictionary&lt;TVertex, Point&gt; vertexPositions, CompoundFDPLayoutParameters oldParameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public CompoundFDPLayoutAlgorithm(TGraph visitedGraph, IDictionary&lt;TVertex, Size&gt; verticesSizes, IDictionary&lt;TVertex, Thickness&gt; verticesBorders, IDictionary&lt;TVertex, CompoundVertexInnerLayoutType&gt; layoutTypes, CompoundFDPLayoutParameters oldParameters = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -338,32 +348,32 @@
       <tr>
         <td><span class="xref">TGraph</span></td>
         <td><span class="parametername">visitedGraph</span></td>
-        <td></td>
+        <td><p>Graph to layout.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
-        <td><span class="parametername">vertexSizes</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Size.html">Size</a>&gt;</td>
+        <td><span class="parametername">verticesSizes</span></td>
+        <td><p>Vertices sizes.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Thickness</span>&gt;</td>
-        <td><span class="parametername">vertexBorders</span></td>
-        <td></td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Thickness.html">Thickness</a>&gt;</td>
+        <td><span class="parametername">verticesBorders</span></td>
+        <td><p>Vertices borders.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType.html">CompoundVertexInnerLayoutType</a>&gt;</td>
         <td><span class="parametername">layoutTypes</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Point</span>&gt;</td>
-        <td><span class="parametername">vertexPositions</span></td>
-        <td></td>
+        <td><p>Layout types per vertex.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.html">CompoundFDPLayoutParameters</a></td>
         <td><span class="parametername">oldParameters</span></td>
-        <td></td>
+        <td><p>Optional algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -374,11 +384,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InnerCanvasSizes.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.InnerCanvasSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L142">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L162">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InnerCanvasSizes_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.InnerCanvasSizes*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InnerCanvasSizes" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.InnerCanvasSizes">InnerCanvasSizes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Inner canvas vertices sizes.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -394,7 +405,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <span class="xref">System.Windows.Size</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TVertex, <a class="xref" href="GraphShape.Size.html">Size</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -404,11 +415,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Levels.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.Levels%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L40">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L31">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Levels_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.Levels*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Levels" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.Levels">Levels</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The levels of the graph (generated by the containment associations).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -436,7 +448,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_ApplyApplicationSpecificForces.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.ApplyApplicationSpecificForces%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.cs/#L375">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.cs/#L380">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_ApplyApplicationSpecificForces_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.ApplyApplicationSpecificForces*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_ApplyApplicationSpecificForces" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.ApplyApplicationSpecificForces">ApplyApplicationSpecificForces()</h4>
@@ -449,14 +461,32 @@
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Initialize.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.cs/#L70">View Source</a>
+  </span>
+  <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Initialize_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.Initialize*"></a>
+  <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_Initialize" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Called on algorithm initialization step.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Initialize">AlgorithmBase.Initialize()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InternalCompute.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.InternalCompute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.cs/#L83">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.cs/#L91">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InternalCompute_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.InternalCompute*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_InternalCompute" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.InternalCompute">InternalCompute()</h4>
-  <div class="markdown level1 summary"><p>This method is the skeleton of the layout algorithm.</p>
+  <div class="markdown level1 summary"><p>Algorithm compute step.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -470,11 +500,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_LevelOfVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603.LevelOfVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L135">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Data.cs/#L151">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_LevelOfVertex_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.LevelOfVertex*"></a>
   <h4 id="GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3_LevelOfVertex__0_" data-uid="GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm`3.LevelOfVertex(`0)">LevelOfVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the level of a given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -493,7 +524,8 @@
       <tr>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
-        <td></td>
+        <td><p>Vertex to get its level.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -508,7 +540,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>Vertex level.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -517,10 +550,10 @@
       <a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-1.html">IParameterizedLayoutAlgorithm&lt;TParam&gt;</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-4.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph, TParameters&gt;</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm.html">IParameterizedLayoutAlgorithm</a>
+      <a class="xref" href="GraphShape.Algorithms.Layout.IParameterizedLayoutAlgorithm-3.html">IParameterizedLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
   </div>
   <div>
       <a class="xref" href="GraphShape.Algorithms.Layout.Compound.ICompoundLayoutAlgorithm-3.html">ICompoundLayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;</a>
@@ -536,10 +569,13 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -552,7 +588,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_Compound_FDP_CompoundFDPLayoutAlgorithm_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Init.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/Compound/FDP/CompoundFDPLayoutAlgorithm.Init.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

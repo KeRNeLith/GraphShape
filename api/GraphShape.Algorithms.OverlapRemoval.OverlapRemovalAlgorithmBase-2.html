@@ -5,12 +5,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OverlapRemovalAlgorithmBase&lt;TObject, TParam&gt;
+    <title>Class OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OverlapRemovalAlgorithmBase&lt;TObject, TParam&gt;
+    <meta name="title" content="Class OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -71,20 +71,21 @@
             <article class="content wrap" id="_content" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2">
   
   
-  <h1 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2" class="text-break">Class OverlapRemovalAlgorithmBase&lt;TObject, TParam&gt;
+  <h1 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2" class="text-break">Class OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Base class for all overlap removal algorithm.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html">AlgorithmBase</a></div>
-    <div class="level2"><span class="xref">OverlapRemovalAlgorithmBase&lt;TObject, TParam&gt;</span></div>
-      <div class="level3"><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.FSAAlgorithm-2.html">FSAAlgorithm&lt;TObject, TParam&gt;</a></div>
+    <div class="level2"><span class="xref">OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt;</span></div>
+      <div class="level3"><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.FSAAlgorithm-2.html">FSAAlgorithm&lt;TObject, TParameters&gt;</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-2.html">IOverlapRemovalAlgorithm</a>&lt;TObject, TParam&gt;</div>
+    <div><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-2.html">IOverlapRemovalAlgorithm</a>&lt;TObject, TParameters&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-1.html">IOverlapRemovalAlgorithm</a>&lt;TObject&gt;</div>
     <div><a class="xref" href="GraphShape.Algorithms.IAlgorithm.html">IAlgorithm</a></div>
   </div>
@@ -95,9 +96,6 @@
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_State">AlgorithmBase.State</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsAborting">AlgorithmBase.IsAborting</a>
     </div>
     <div>
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Compute">AlgorithmBase.Compute()</a>
@@ -130,10 +128,10 @@
       <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_">AlgorithmBase.OnAborted(EventArgs)</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_BeginComputation">AlgorithmBase.BeginComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Initialize">AlgorithmBase.Initialize()</a>
     </div>
     <div>
-      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_EndComputation">AlgorithmBase.EndComputation()</a>
+      <a class="xref" href="GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_Clean">AlgorithmBase.Clean()</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -161,7 +159,7 @@
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class OverlapRemovalAlgorithmBase&lt;TObject, TParam&gt; : AlgorithmBase, IOverlapRemovalAlgorithm&lt;TObject, TParam&gt;, IOverlapRemovalAlgorithm&lt;TObject&gt;, IAlgorithm where TObject : class where TParam : IOverlapRemovalParameters</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt; : AlgorithmBase, IOverlapRemovalAlgorithm&lt;TObject, TParameters&gt;, IOverlapRemovalAlgorithm&lt;TObject&gt;, IAlgorithm where TParameters : IOverlapRemovalParameters</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,11 +172,13 @@
     <tbody>
       <tr>
         <td><span class="parametername">TObject</span></td>
-        <td></td>
+        <td><p>Object type.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="parametername">TParam</span></td>
-        <td></td>
+        <td><span class="parametername">TParameters</span></td>
+        <td><p>Algorithm parameters type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -186,18 +186,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2__ctor_System_Collections_Generic_IDictionary__0_System_Windows_Rect___1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.%23ctor(System.Collections.Generic.IDictionary%7B%600%2CSystem.Windows.Rect%7D%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2__ctor_System_Collections_Generic_IDictionary__0_GraphShape_Rect___1_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.%23ctor(System.Collections.Generic.IDictionary%7B%600%2CGraphShape.Rect%7D%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L27">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L28">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2__ctor_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.#ctor*"></a>
-  <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2__ctor_System_Collections_Generic_IDictionary__0_System_Windows_Rect___1_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.#ctor(System.Collections.Generic.IDictionary{`0,System.Windows.Rect},`1)">OverlapRemovalAlgorithmBase(IDictionary&lt;TObject, Rect&gt;, TParam)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2__ctor_System_Collections_Generic_IDictionary__0_GraphShape_Rect___1_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.#ctor(System.Collections.Generic.IDictionary{`0,GraphShape.Rect},`1)">OverlapRemovalAlgorithmBase(IDictionary&lt;TObject, Rect&gt;, TParameters)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase-2.html">OverlapRemovalAlgorithmBase&lt;TObject, TParameters&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public OverlapRemovalAlgorithmBase(IDictionary&lt;TObject, Rect&gt; rectangles, TParam parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">protected OverlapRemovalAlgorithmBase(IDictionary&lt;TObject, Rect&gt; rectangles, TParameters parameters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,14 +211,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TObject, <span class="xref">System.Windows.Rect</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TObject, <a class="xref" href="GraphShape.Rect.html">Rect</a>&gt;</td>
         <td><span class="parametername">rectangles</span></td>
-        <td></td>
+        <td><p>Overlap rectangles.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">TParam</span></td>
+        <td><span class="xref">TParameters</span></td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><p>Algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -225,46 +228,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_originalRectangles.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.originalRectangles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_WrappedRectangles.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.WrappedRectangles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L11">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L21">View Source</a>
   </span>
-  <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_originalRectangles" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.originalRectangles">originalRectangles</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_WrappedRectangles" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.WrappedRectangles">WrappedRectangles</h4>
+  <div class="markdown level1 summary"><p>Wrapped rectangles.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IDictionary&lt;TObject, Rect&gt; originalRectangles</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TObject, <span class="xref">System.Windows.Rect</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_wrappedRectangles.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.wrappedRectangles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L24">View Source</a>
-  </span>
-  <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_wrappedRectangles" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.wrappedRectangles">wrappedRectangles</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected List&lt;RectangleWrapper&lt;TObject&gt;&gt; wrappedRectangles</code></pre>
+    <pre><code class="lang-csharp hljs">protected List&lt;RectangleWrapper&lt;TObject&gt;&gt; WrappedRectangles</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -288,15 +263,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Parameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.Parameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L17">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L58">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Parameters_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.Parameters*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Parameters" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.Parameters">Parameters</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Overlap removal parameters.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TParam Parameters { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TParameters Parameters { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -308,7 +284,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TParam</span></td>
+        <td><span class="xref">TParameters</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -318,11 +294,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Rectangles.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.Rectangles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L12">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L55">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Rectangles_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.Rectangles*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_Rectangles" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.Rectangles">Rectangles</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Overlap rectangles.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -338,7 +315,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TObject, <span class="xref">System.Windows.Rect</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TObject, <a class="xref" href="GraphShape.Rect.html">Rect</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -350,11 +327,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_AddGaps.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.AddGaps%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L56">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L91">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_AddGaps_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.AddGaps*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_AddGaps" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.AddGaps">AddGaps()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds gaps between rectangles.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -365,11 +343,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_GetParameters.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.GetParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L19">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L61">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_GetParameters_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.GetParameters*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_GetParameters" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.GetParameters">GetParameters()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets overlap removal parameters.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -386,7 +365,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalParameters.html">IOverlapRemovalParameters</a></td>
-        <td></td>
+        <td><p>Overlap removal parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -395,11 +375,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_InternalCompute.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.InternalCompute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L44">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L71">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_InternalCompute_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.InternalCompute*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_InternalCompute" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.InternalCompute">InternalCompute()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Algorithm compute step.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -412,11 +393,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveGaps.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.RemoveGaps%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L66">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L109">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveGaps_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.RemoveGaps*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveGaps" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.RemoveGaps">RemoveGaps()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes gaps between rectangles.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -427,11 +409,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveOverlap.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602.RemoveOverlap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L76">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L104">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveOverlap_" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.RemoveOverlap*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2_RemoveOverlap" data-uid="GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase`2.RemoveOverlap">RemoveOverlap()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes overlap.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -439,7 +422,7 @@
   </div>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-2.html">IOverlapRemovalAlgorithm&lt;TObject, TParam&gt;</a>
+      <a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-2.html">IOverlapRemovalAlgorithm&lt;TObject, TParameters&gt;</a>
   </div>
   <div>
       <a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithm-1.html">IOverlapRemovalAlgorithm&lt;TObject&gt;</a>
@@ -449,10 +432,13 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -465,7 +451,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_OverlapRemoval_OverlapRemovalAlgorithmBase_2.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.OverlapRemoval.OverlapRemovalAlgorithmBase%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/OverlapRemoval/OverlapRemovalAlgorithmBase.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

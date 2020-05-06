@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_SoftMutableHierarchicalGraph_2" data-uid="GraphShape.SoftMutableHierarchicalGraph`2" class="text-break">Class SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Hierarchical graph that implements soft mutability.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -123,6 +124,12 @@
       <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_RemoveEdge__1_">HierarchicalGraph&lt;TVertex, TEdge&gt;.RemoveEdge(TEdge)</a>
     </div>
     <div>
+      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_HierarchicalEdges">HierarchicalGraph&lt;TVertex, TEdge&gt;.HierarchicalEdges</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_HierarchicalEdgeCount">HierarchicalGraph&lt;TVertex, TEdge&gt;.HierarchicalEdgeCount</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_HierarchicalEdgesFor__0_">HierarchicalGraph&lt;TVertex, TEdge&gt;.HierarchicalEdgesFor(TVertex)</a>
     </div>
     <div>
@@ -141,6 +148,12 @@
       <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_OutHierarchicalEdgeCount__0_">HierarchicalGraph&lt;TVertex, TEdge&gt;.OutHierarchicalEdgeCount(TVertex)</a>
     </div>
     <div>
+      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_GeneralEdges">HierarchicalGraph&lt;TVertex, TEdge&gt;.GeneralEdges</a>
+    </div>
+    <div>
+      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_GeneralEdgeCount">HierarchicalGraph&lt;TVertex, TEdge&gt;.GeneralEdgeCount</a>
+    </div>
+    <div>
       <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_GeneralEdgesFor__0_">HierarchicalGraph&lt;TVertex, TEdge&gt;.GeneralEdgesFor(TVertex)</a>
     </div>
     <div>
@@ -157,18 +170,6 @@
     </div>
     <div>
       <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_OutGeneralEdgeCount__0_">HierarchicalGraph&lt;TVertex, TEdge&gt;.OutGeneralEdgeCount(TVertex)</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_HierarchicalEdges">HierarchicalGraph&lt;TVertex, TEdge&gt;.HierarchicalEdges</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_HierarchicalEdgeCount">HierarchicalGraph&lt;TVertex, TEdge&gt;.HierarchicalEdgeCount</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_GeneralEdges">HierarchicalGraph&lt;TVertex, TEdge&gt;.GeneralEdges</a>
-    </div>
-    <div>
-      <a class="xref" href="GraphShape.HierarchicalGraph-2.html#GraphShape_HierarchicalGraph_2_GeneralEdgeCount">HierarchicalGraph&lt;TVertex, TEdge&gt;.GeneralEdgeCount</a>
     </div>
     <div>
       <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;.ContainsVertex(TVertex)</span>
@@ -377,11 +378,13 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -392,11 +395,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2__ctor.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L46">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L24">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2__ctor_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2__ctor" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor">SoftMutableHierarchicalGraph()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.SoftMutableHierarchicalGraph-2.html">SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -407,11 +411,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.%23ctor(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L51">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L33">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2__ctor_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2__ctor_System_Boolean_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor(System.Boolean)">SoftMutableHierarchicalGraph(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.SoftMutableHierarchicalGraph-2.html">SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -430,7 +435,8 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">allowParallelEdges</span></td>
-        <td></td>
+        <td><p>Indicates if parallel edges are allowed.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -439,15 +445,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2__ctor_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.%23ctor(System.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L57">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L43">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2__ctor_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2__ctor_System_Boolean_System_Int32_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.#ctor(System.Boolean,System.Int32)">SoftMutableHierarchicalGraph(Boolean, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="GraphShape.SoftMutableHierarchicalGraph-2.html">SoftMutableHierarchicalGraph&lt;TVertex, TEdge&gt;</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SoftMutableHierarchicalGraph(bool allowParallelEdges, int vertexCapacity)</code></pre>
+    <pre><code class="lang-csharp hljs">public SoftMutableHierarchicalGraph(bool allowParallelEdges, int capacity)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -462,12 +469,14 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">allowParallelEdges</span></td>
-        <td></td>
+        <td><p>Indicates if parallel edges are allowed.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">vertexCapacity</span></td>
-        <td></td>
+        <td><span class="parametername">capacity</span></td>
+        <td><p>Vertex capacity.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -478,11 +487,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L178">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L151">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCount_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgeCount*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCount" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgeCount">HiddenEdgeCount</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of hidden edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -508,11 +518,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdges.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L173">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L148">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdges_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdges*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdges" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdges">HiddenEdges</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the set of hidden edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -538,11 +549,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertexCount.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenVertexCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L113">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L97">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertexCount_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenVertexCount*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertexCount" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenVertexCount">HiddenVertexCount</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of hidden vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -568,11 +580,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertices.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L108">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L94">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertices_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenVertices*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenVertices" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenVertices">HiddenVertices</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the set of hidden vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -600,15 +613,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCountOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenEdgeCountOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L168">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L214">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCountOf_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgeCountOf*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgeCountOf__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgeCountOf(`0)">HiddenEdgeCountOf(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the number of hidden edges connected to the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int HiddenEdgeCountOf(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public int HiddenEdgeCountOf(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -622,8 +636,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -638,7 +653,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>Number of hidden edges.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -647,15 +663,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgesOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HiddenEdgesOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L163">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L208">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgesOf_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgesOf*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HiddenEdgesOf__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HiddenEdgesOf(`0)">HiddenEdgesOf(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the hidden edges connected to the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HiddenEdgesOf(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;TEdge&gt; HiddenEdgesOf(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -669,8 +686,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -685,7 +703,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
-        <td></td>
+        <td><p>Hidden edges.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -694,15 +713,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L118">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L154">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdge_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdge*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdge__1_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdge(`1)">HideEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given <code data-dev-comment-type="paramref" class="paramref">edge</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge e)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge edge)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -716,8 +736,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TEdge</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>Edge to hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -732,7 +753,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the edge is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -741,15 +763,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdge__1_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdge(%601%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L123">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L160">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdge_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdge*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdge__1_System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdge(`1,System.String)">HideEdge(TEdge, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given <code data-dev-comment-type="paramref" class="paramref">edge</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to this hidden edge.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge e, string tag)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HideEdge(TEdge edge, string tag)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -763,13 +786,15 @@
     <tbody>
       <tr>
         <td><span class="xref">TEdge</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>Edge to hide.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden edge.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -784,7 +809,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the edge is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -793,11 +819,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L128">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L166">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdges*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1})">HideEdges(IEnumerable&lt;TEdge&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given set of <code data-dev-comment-type="paramref" class="paramref">edges</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -816,7 +843,8 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
         <td><span class="parametername">edges</span></td>
-        <td></td>
+        <td><p>Edges to hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -825,11 +853,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L133">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L172">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdges*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1},System.String)">HideEdges(IEnumerable&lt;TEdge&gt;, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given set of <code data-dev-comment-type="paramref" class="paramref">edges</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to this hidden edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -848,29 +877,32 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
         <td><span class="parametername">edges</span></td>
-        <td></td>
+        <td><p>Edges to hide.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden edges.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdgesIf_System_Func__1_System_Boolean__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdgesIf(System.Func%7B%601%2CSystem.Boolean%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideEdgesIf_System_Predicate__1__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideEdgesIf(System.Predicate%7B%601%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L138">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L178">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdgesIf_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdgesIf*"></a>
-  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdgesIf_System_Func__1_System_Boolean__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdgesIf(System.Func{`1,System.Boolean},System.String)">HideEdgesIf(Func&lt;TEdge, Boolean&gt;, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideEdgesIf_System_Predicate__1__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideEdgesIf(System.Predicate{`1},System.String)">HideEdgesIf(Predicate&lt;TEdge&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Hides edges matching the given <code data-dev-comment-type="paramref" class="paramref">predicate</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to these hidden edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void HideEdgesIf(Func&lt;TEdge, bool&gt; predicate, string tag)</code></pre>
+    <pre><code class="lang-csharp hljs">public void HideEdgesIf(Predicate&lt;TEdge&gt; predicate, string tag)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -883,14 +915,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;TEdge, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Predicate</span>&lt;TEdge&gt;</td>
         <td><span class="parametername">predicate</span></td>
-        <td></td>
+        <td><p>Hide predicate.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden edges.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -899,15 +933,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L68">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L100">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertex_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertex*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertex__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertex(`0)">HideVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -921,8 +956,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -937,7 +973,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -946,15 +983,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVertex__0_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVertex(%600%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L73">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L106">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertex_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertex*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertex__0_System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertex(`0,System.String)">HideVertex(TVertex, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given <code data-dev-comment-type="paramref" class="paramref">vertex</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to this hidden vertex.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex v, string tag)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HideVertex(TVertex vertex, string tag)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -968,13 +1006,15 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to hide.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden vertex.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -989,7 +1029,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -998,11 +1039,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L78">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L112">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertices*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0})">HideVertices(IEnumerable&lt;TVertex&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given set of <code data-dev-comment-type="paramref" class="paramref">vertices</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1021,7 +1063,8 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
         <td><span class="parametername">vertices</span></td>
-        <td></td>
+        <td><p>Vertices to hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1030,11 +1073,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L83">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L118">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertices*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0},System.String)">HideVertices(IEnumerable&lt;TVertex&gt;, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Hides the given set of <code data-dev-comment-type="paramref" class="paramref">vertices</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to these hidden vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1053,29 +1097,32 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TVertex&gt;</td>
         <td><span class="parametername">vertices</span></td>
-        <td></td>
+        <td><p>Vertices to hide.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden vertices.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVerticesIf_System_Func__0_System_Boolean__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVerticesIf(System.Func%7B%600%2CSystem.Boolean%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_HideVerticesIf_System_Predicate__0__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.HideVerticesIf(System.Predicate%7B%600%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L88">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L124">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_HideVerticesIf_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVerticesIf*"></a>
-  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVerticesIf_System_Func__0_System_Boolean__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVerticesIf(System.Func{`0,System.Boolean},System.String)">HideVerticesIf(Func&lt;TVertex, Boolean&gt;, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_HideVerticesIf_System_Predicate__0__System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.HideVerticesIf(System.Predicate{`0},System.String)">HideVerticesIf(Predicate&lt;TVertex&gt;, String)</h4>
+  <div class="markdown level1 summary"><p>Hides vertices matching the given <code data-dev-comment-type="paramref" class="paramref">predicate</code>, and gives a <code data-dev-comment-type="paramref" class="paramref">tag</code> associated to these hidden vertices.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void HideVerticesIf(Func&lt;TVertex, bool&gt; predicate, string tag)</code></pre>
+    <pre><code class="lang-csharp hljs">public void HideVerticesIf(Predicate&lt;TVertex&gt; predicate, string tag)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1088,47 +1135,34 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;TVertex, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Predicate</span>&lt;TVertex&gt;</td>
         <td><span class="parametername">predicate</span></td>
-        <td></td>
+        <td><p>Hide predicate.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag associated to the hidden vertices.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_Init.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.Init%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.IsHiddenEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L41">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L184">View Source</a>
   </span>
-  <a id="GraphShape_SoftMutableHierarchicalGraph_2_Init_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.Init*"></a>
-  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_Init" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.Init">Init()</h4>
-  <div class="markdown level1 summary"><p>Called from inside the constructor.</p>
+  <a id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenEdge*"></a>
+  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge__1_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenEdge(`1)">IsHiddenEdge(TEdge)</h4>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">edge</code> is hidden.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void Init()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.IsHiddenEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L143">View Source</a>
-  </span>
-  <a id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenEdge*"></a>
-  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenEdge__1_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenEdge(`1)">IsHiddenEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsHiddenEdge(TEdge e)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsHiddenEdge(TEdge edge)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1142,8 +1176,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TEdge</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>Edge to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1158,7 +1193,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the edge is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1167,15 +1203,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.IsHiddenVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L93">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L130">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenVertex_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenVertex*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_IsHiddenVertex__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.IsHiddenVertex(`0)">IsHiddenVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> is hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsHiddenVertex(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsHiddenVertex(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1189,8 +1226,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1205,7 +1243,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex is hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1214,11 +1253,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_Unhide_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.Unhide(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L183">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L220">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_Unhide_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.Unhide*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_Unhide_System_String_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.Unhide(System.String)">Unhide(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides all vertices and edges that were hidden with the given <code data-dev-comment-type="paramref" class="paramref">tag</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1237,7 +1277,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">tag</span></td>
-        <td></td>
+        <td><p>Tag to un-hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1252,7 +1293,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the tag has been un-hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1261,11 +1303,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideAll.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L188">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L226">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideAll_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideAll*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideAll" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideAll">UnhideAll()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides all hidden vertices and edges.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1282,7 +1325,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if operation succeed, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1291,15 +1335,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L148">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L190">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdge_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdge*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdge__1_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdge(`1)">UnhideEdge(TEdge)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides the given <code data-dev-comment-type="paramref" class="paramref">edge</code> if it is hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool UnhideEdge(TEdge e)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool UnhideEdge(TEdge edge)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1313,8 +1358,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TEdge</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>Edge to un-hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1329,7 +1375,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the edge has been un-hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1338,11 +1385,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L153">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L196">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdges_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdges*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdges(System.Collections.Generic.IEnumerable{`1})">UnhideEdges(IEnumerable&lt;TEdge&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides the given <code data-dev-comment-type="paramref" class="paramref">edges</code> if they are hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1361,24 +1409,26 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
         <td><span class="parametername">edges</span></td>
-        <td></td>
+        <td><p>Edges to un-hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdgesIf_System_Func__1_System_Boolean__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideEdgesIf(System.Func%7B%601%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdgesIf_System_Predicate__1__.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideEdgesIf(System.Predicate%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L158">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L202">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdgesIf_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdgesIf*"></a>
-  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdgesIf_System_Func__1_System_Boolean__" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdgesIf(System.Func{`1,System.Boolean})">UnhideEdgesIf(Func&lt;TEdge, Boolean&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideEdgesIf_System_Predicate__1__" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideEdgesIf(System.Predicate{`1})">UnhideEdgesIf(Predicate&lt;TEdge&gt;)</h4>
+  <div class="markdown level1 summary"><p>Un-hides edges matching the given <code data-dev-comment-type="paramref" class="paramref">predicate</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnhideEdgesIf(Func&lt;TEdge, bool&gt; predicate)</code></pre>
+    <pre><code class="lang-csharp hljs">public void UnhideEdgesIf(Predicate&lt;TEdge&gt; predicate)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1391,9 +1441,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Func</span>&lt;TEdge, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Predicate</span>&lt;TEdge&gt;</td>
         <td><span class="parametername">predicate</span></td>
-        <td></td>
+        <td><p>Un-hide predicate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1402,15 +1453,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L98">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L136">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertex_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideVertex*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertex__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideVertex(`0)">UnhideVertex(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> if it is hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool UnhideVertex(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool UnhideVertex(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1424,8 +1476,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to un-hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1440,7 +1493,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the vertex has been un-hidden, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1449,15 +1503,16 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertexAndEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.UnhideVertexAndEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L103">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L142">View Source</a>
   </span>
   <a id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertexAndEdges_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideVertexAndEdges*"></a>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_UnhideVertexAndEdges__0_" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.UnhideVertexAndEdges(`0)">UnhideVertexAndEdges(TVertex)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Un-hides the given <code data-dev-comment-type="paramref" class="paramref">vertex</code> and its connected edges if they are hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnhideVertexAndEdges(TVertex v)</code></pre>
+    <pre><code class="lang-csharp hljs">public void UnhideVertexAndEdges(TVertex vertex)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1471,8 +1526,9 @@
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><span class="parametername">v</span></td>
-        <td></td>
+        <td><span class="parametername">vertex</span></td>
+        <td><p>Vertex to un-hide.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1483,10 +1539,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_EdgeHidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.EdgeHidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L13">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L72">View Source</a>
   </span>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_EdgeHidden" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.EdgeHidden">EdgeHidden</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when an edge has been hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1512,10 +1569,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_EdgeUnhidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.EdgeUnhidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L18">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L81">View Source</a>
   </span>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_EdgeUnhidden" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.EdgeUnhidden">EdgeUnhidden</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when an edge has been unhidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1541,10 +1599,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_VertexHidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.VertexHidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L24">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L54">View Source</a>
   </span>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_VertexHidden" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.VertexHidden">VertexHidden</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when a vertex has been hidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1570,10 +1629,11 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2_VertexUnhidden.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602.VertexUnhidden%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L29">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L63">View Source</a>
   </span>
   <h4 id="GraphShape_SoftMutableHierarchicalGraph_2_VertexUnhidden" data-uid="GraphShape.SoftMutableHierarchicalGraph`2.VertexUnhidden">VertexUnhidden</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when a vertex has been unhidden.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1666,43 +1726,40 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetNeighbours__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelper.GetNeighbours&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_">GraphHelpers.GetNeighbors&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetOutNeighbours__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelper.GetOutNeighbours&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_">GraphHelpers.GetOutNeighbors&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Collections_Generic_List___0__System_Collections_Generic_List___0__">GraphHelper.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, List&lt;TVertex&gt;, List&lt;TVertex&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___">GraphHelpers.GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex[], TVertex[])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetSources__2_QuikGraph_IBidirectionalGraph___0___1__">GraphHelper.GetSources&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_AddEdgeRange__2_QuikGraph_IMutableEdgeListGraph___0___1__System_Collections_Generic_IEnumerable___1__">GraphHelper.AddEdgeRange&lt;TVertex, TEdge&gt;(IMutableEdgeListGraph&lt;TVertex, TEdge&gt;, IEnumerable&lt;TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelpers.Convert&lt;TVertex, TEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TNewGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__">GraphHelpers.Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__">GraphHelpers.Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_">GraphHelper.Convert&lt;TOldVertex, TOldEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph)</a>
-  </div>
-  <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelper.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__">GraphHelpers.CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</a>
   </div>
 </article>
           </div>
@@ -1715,7 +1772,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_SoftMutableHierarchicalGraph_2.md&amp;value=---%0Auid%3A%20GraphShape.SoftMutableHierarchicalGraph%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/SoftMutableHierarchicalGraph.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Graphs/SoftMutableHierarchicalGraph.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

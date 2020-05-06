@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StandardLayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3" class="text-break">Class StandardLayoutAlgorithmFactory&lt;TVertex, TEdge, TGraph&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Simple implementation of a layout algorithm factory.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -125,15 +126,18 @@
     <tbody>
       <tr>
         <td><span class="parametername">TVertex</span></td>
-        <td></td>
+        <td><p>Vertex type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TEdge</span></td>
-        <td></td>
+        <td><p>Edge type.</p>
+</td>
       </tr>
       <tr>
         <td><span class="parametername">TGraph</span></td>
-        <td></td>
+        <td><p>Graph type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -144,11 +148,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_AlgorithmTypes.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.AlgorithmTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L19">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L48">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_AlgorithmTypes_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.AlgorithmTypes*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_AlgorithmTypes" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.AlgorithmTypes">AlgorithmTypes</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The set of available algorithms.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -176,15 +181,17 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateAlgorithm_System_String_GraphShape_Algorithms_Layout_ILayoutContext__0__1__2__GraphShape_Algorithms_Layout_ILayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.CreateAlgorithm(System.String%2CGraphShape.Algorithms.Layout.ILayoutContext%7B%600%2C%601%2C%602%7D%2CGraphShape.Algorithms.Layout.ILayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L24">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L56">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateAlgorithm_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.CreateAlgorithm*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateAlgorithm_System_String_GraphShape_Algorithms_Layout_ILayoutContext__0__1__2__GraphShape_Algorithms_Layout_ILayoutParameters_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.CreateAlgorithm(System.String,GraphShape.Algorithms.Layout.ILayoutContext{`0,`1,`2},GraphShape.Algorithms.Layout.ILayoutParameters)">CreateAlgorithm(String, ILayoutContext&lt;TVertex, TEdge, TGraph&gt;, ILayoutParameters)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates an algorithm corresponding to given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code>,
+<code data-dev-comment-type="paramref" class="paramref">context</code> and <code data-dev-comment-type="paramref" class="paramref">parameters</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; CreateAlgorithm(string newAlgorithmType, ILayoutContext&lt;TVertex, TEdge, TGraph&gt; context, ILayoutParameters parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt; CreateAlgorithm(string algorithmType, ILayoutContext&lt;TVertex, TEdge, TGraph&gt; context, ILayoutParameters parameters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,18 +205,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">newAlgorithmType</span></td>
-        <td></td>
+        <td><span class="parametername">algorithmType</span></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutContext-3.html">ILayoutContext</a>&lt;TVertex, TEdge, TGraph&gt;</td>
         <td><span class="parametername">context</span></td>
-        <td></td>
+        <td><p>Creation context.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><p>Algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -224,7 +234,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
-        <td></td>
+        <td><p>Created algorithm.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -233,11 +244,13 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateParameters_System_String_GraphShape_Algorithms_Layout_ILayoutParameters_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.CreateParameters(System.String%2CGraphShape.Algorithms.Layout.ILayoutParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L102">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L160">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateParameters_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.CreateParameters*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_CreateParameters_System_String_GraphShape_Algorithms_Layout_ILayoutParameters_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.CreateParameters(System.String,GraphShape.Algorithms.Layout.ILayoutParameters)">CreateParameters(String, ILayoutParameters)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates algorithm parameters for an algorithm of given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code>
+and <code data-dev-comment-type="paramref" class="paramref">oldParameters</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -256,12 +269,14 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">algorithmType</span></td>
-        <td></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
         <td><span class="parametername">oldParameters</span></td>
-        <td></td>
+        <td><p>Old parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -276,7 +291,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutParameters.html">ILayoutParameters</a></td>
-        <td></td>
+        <td><p>New algorithm parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -285,11 +301,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_GetAlgorithmType_GraphShape_Algorithms_Layout_ILayoutAlgorithm__0__1__2__.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.GetAlgorithmType(GraphShape.Algorithms.Layout.ILayoutAlgorithm%7B%600%2C%601%2C%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L138">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L197">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_GetAlgorithmType_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.GetAlgorithmType*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_GetAlgorithmType_GraphShape_Algorithms_Layout_ILayoutAlgorithm__0__1__2__" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.GetAlgorithmType(GraphShape.Algorithms.Layout.ILayoutAlgorithm{`0,`1,`2})">GetAlgorithmType(ILayoutAlgorithm&lt;TVertex, TEdge, TGraph&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the algorithm type from a given <code data-dev-comment-type="paramref" class="paramref">algorithm</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -308,7 +325,8 @@
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutAlgorithm-3.html">ILayoutAlgorithm</a>&lt;TVertex, TEdge, TGraph&gt;</td>
         <td><span class="parametername">algorithm</span></td>
-        <td></td>
+        <td><p>Algorithm to get its type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -323,7 +341,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -332,11 +351,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_IsValidAlgorithm_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.IsValidAlgorithm(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L133">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L191">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_IsValidAlgorithm_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.IsValidAlgorithm*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_IsValidAlgorithm_System_String_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.IsValidAlgorithm(System.String)">IsValidAlgorithm(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code> is a valid one.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -355,7 +375,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">algorithmType</span></td>
-        <td></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -370,7 +391,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the algorithm type is valid, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -379,11 +401,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedEdgeRouting_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.NeedEdgeRouting(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L151">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L226">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedEdgeRouting_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.NeedEdgeRouting*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedEdgeRouting_System_String_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.NeedEdgeRouting(System.String)">NeedEdgeRouting(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates if the given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code> require edge routing.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -402,7 +425,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">algorithmType</span></td>
-        <td></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -417,7 +441,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the algorithm require edge routing, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -426,11 +451,12 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedOverlapRemoval_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603.NeedOverlapRemoval(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L156">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L235">View Source</a>
   </span>
   <a id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedOverlapRemoval_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.NeedOverlapRemoval*"></a>
   <h4 id="GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3_NeedOverlapRemoval_System_String_" data-uid="GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory`3.NeedOverlapRemoval(System.String)">NeedOverlapRemoval(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates if the given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code> require overlap removal.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -449,7 +475,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">algorithmType</span></td>
-        <td></td>
+        <td><p>Algorithm type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -464,7 +491,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the algorithm require overlap removal, false otherwise.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -474,10 +502,13 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -490,7 +521,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_Layout_StandardLayoutAlgorithmFactory_3.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/Layout/StandardLayoutAlgorithmFactory.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Delegate LayeredTopologicalSortAlgorithm&lt;TVertex, TEdge&gt;.LayerFinishedDelegate
    ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,13 +73,14 @@
   
   <h1 id="GraphShape_Algorithms_LayeredTopologicalSortAlgorithm_2_LayerFinishedDelegate" data-uid="GraphShape.Algorithms.LayeredTopologicalSortAlgorithm`2.LayerFinishedDelegate" class="text-break">Delegate LayeredTopologicalSortAlgorithm&lt;TVertex, TEdge&gt;.LayerFinishedDelegate
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Handler for <a class="xref" href="GraphShape.Algorithms.LayeredTopologicalSortAlgorithm-2.html#GraphShape_Algorithms_LayeredTopologicalSortAlgorithm_2_LayerFinished">LayerFinished</a> event.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Algorithms.html">GraphShape.Algorithms</a></h6>
   <h6><strong>Assembly</strong>: GraphShape.dll</h6>
   <h5 id="GraphShape_Algorithms_LayeredTopologicalSortAlgorithm_2_LayerFinishedDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate void LayerFinishedDelegate(object sender, LayeredTopologicalSortAlgorithm&lt;TVertex, TEdge&gt;.LayeredTopologicalSortEventArgs e);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate void LayerFinishedDelegate(object sender, LayeredTopologicalSortAlgorithm&lt;TVertex, TEdge&gt;.LayeredTopologicalSortEventArgs args);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -94,21 +95,26 @@
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">sender</span></td>
-        <td></td>
+        <td><p>Sender of the event.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.LayeredTopologicalSortAlgorithm-2.LayeredTopologicalSortEventArgs.html">LayeredTopologicalSortAlgorithm.LayeredTopologicalSortEventArgs</a>&lt;&gt;</td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Event arguments.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph)</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDistances__3___2_">GraphHelpers.GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
   </div>
   <div>
-      <a class="xref" href="GraphShape.GraphHelper.html#GraphShape_GraphHelper_GetDiameter__3___2_System_Double_0__0____">GraphHelper.GetDiameter&lt;Vertex, Edge, Graph&gt;(Graph, out Double[,])</a>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</a>
+  </div>
+  <div>
+      <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
   </div>
 </article>
           </div>
@@ -121,7 +127,7 @@
                     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Algorithms_LayeredTopologicalSortAlgorithm_2_LayerFinishedDelegate.md&amp;value=---%0Auid%3A%20GraphShape.Algorithms.LayeredTopologicalSortAlgorithm%602.LayerFinishedDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/LayeredTopologicalSortAlgorithm.cs/#L45" class="contribution-link">View Source</a>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Algorithms/LayeredTopologicalSortAlgorithm.cs/#L53" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
