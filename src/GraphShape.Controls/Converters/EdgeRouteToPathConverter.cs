@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Media;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Controls.Extensions;
+using JetBrains.Annotations;
 
 namespace GraphShape.Controls.Converters
 {
@@ -30,32 +31,13 @@ namespace GraphShape.Controls.Converters
                     nameof(values));
             }
 
-            #region Get the inputs
-
-            // Get the position of the source
-            var sourcePos = new Point(
-                values[0] != DependencyProperty.UnsetValue ? (double)values[0] : 0.0,
-                values[1] != DependencyProperty.UnsetValue ? (double)values[1] : 0.0);
-
-            // Get the size of the source
-            var sourceSize = new Size(
-                values[2] != DependencyProperty.UnsetValue ? (double)values[2] : 0.0,
-                values[3] != DependencyProperty.UnsetValue ? (double)values[3] : 0.0);
-
-            // Get the position of the target
-            var targetPos = new Point(
-                values[4] != DependencyProperty.UnsetValue ? (double)values[4] : 0.0,
-                values[5] != DependencyProperty.UnsetValue ? (double)values[5] : 0.0);
-
-            // Get the size of the target
-            var targetSize = new Size(
-                values[6] != DependencyProperty.UnsetValue ? (double)values[6] : 0.0,
-                values[7] != DependencyProperty.UnsetValue ? (double)values[7] : 0.0);
-
-            // Get the route information
-            System.Windows.Point[] routeInformation = values[8] != DependencyProperty.UnsetValue ? (System.Windows.Point[])values[8] : null;
-
-            #endregion
+            ExtractInputs(
+                values,
+                out Point sourcePos,
+                out Point targetPos,
+                out Size sourceSize,
+                out Size targetSize,
+                out System.Windows.Point[] routeInformation);
 
             bool hasRouteInfo = routeInformation != null && routeInformation.Length > 0;
 
@@ -76,7 +58,9 @@ namespace GraphShape.Controls.Converters
             {
                 // Append route points
                 for (int i = 0; i < routeInformation.Length; ++i)
+                {
                     segments[i] = new LineSegment(routeInformation[i], true);
+                }
             }
 
             System.Windows.Point pLast = hasRouteInfo ? routeInformation[routeInformation.Length - 1] : p1;
@@ -100,6 +84,38 @@ namespace GraphShape.Controls.Converters
             };
 
             return pathCollection;
+        }
+
+        private static void ExtractInputs(
+            [NotNull, ItemNotNull] object[] values,
+            out Point sourcePos,
+            out Point targetPos,
+            out Size sourceSize,
+            out Size targetSize,
+            out System.Windows.Point[] routeInformation)
+        {
+            // Get the position of the source
+            sourcePos = new Point(
+                values[0] != DependencyProperty.UnsetValue ? (double) values[0] : 0.0,
+                values[1] != DependencyProperty.UnsetValue ? (double) values[1] : 0.0);
+
+            // Get the size of the source
+            sourceSize = new Size(
+                values[2] != DependencyProperty.UnsetValue ? (double) values[2] : 0.0,
+                values[3] != DependencyProperty.UnsetValue ? (double) values[3] : 0.0);
+
+            // Get the position of the target
+            targetPos = new Point(
+                values[4] != DependencyProperty.UnsetValue ? (double) values[4] : 0.0,
+                values[5] != DependencyProperty.UnsetValue ? (double) values[5] : 0.0);
+
+            // Get the size of the target
+            targetSize = new Size(
+                values[6] != DependencyProperty.UnsetValue ? (double) values[6] : 0.0,
+                values[7] != DependencyProperty.UnsetValue ? (double) values[7] : 0.0);
+
+            // Get the route information
+            routeInformation = values[8] != DependencyProperty.UnsetValue ? (System.Windows.Point[]) values[8] : null;
         }
 
         /// <inheritdoc />

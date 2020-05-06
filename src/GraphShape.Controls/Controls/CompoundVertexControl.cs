@@ -149,6 +149,13 @@ namespace GraphShape.Controls
 
             compoundVertexControl._activePositionChangeReaction = true;
 
+            OnVertexMove(compoundVertexControl, args);
+
+            compoundVertexControl._activePositionChangeReaction = false;
+        }
+
+        private static void OnVertexMove([NotNull] CompoundVertexControl compoundVertexControl, [NotNull] PositionChangedEventArgs args)
+        {
             // We are moving the compound vertex itself
             if (compoundVertexControl == args.OriginalSource)
             {
@@ -176,14 +183,12 @@ namespace GraphShape.Controls
 
                         var childCenterPos = new System.Windows.Point(control.ActualWidth / 2, control.ActualHeight / 2);
                         System.Windows.Point translatedChildCenterPos = control.TranslatePoint(childCenterPos, control.RootCanvas);
-                        
+
                         GraphCanvas.SetX(control, translatedChildCenterPos.X - control.RootCanvas.Translation.X);
                         GraphCanvas.SetY(control, translatedChildCenterPos.Y - control.RootCanvas.Translation.Y);
                     }
                 }
             }
-
-            compoundVertexControl._activePositionChangeReaction = false;
         }
 
         #endregion

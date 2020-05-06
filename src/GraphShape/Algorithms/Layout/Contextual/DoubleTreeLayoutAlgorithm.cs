@@ -80,66 +80,16 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 out HashSet<TVertex> side1,
                 out HashSet<TVertex> side2);
 
-            #region Build the temporary graph for the two sides
-
-            //
-            // The IN side
-            //
-            // on the IN side we should reverse the edges
-            var graph1 = new BidirectionalGraph<TVertex, Edge<TVertex>>();
-            graph1.AddVertexRange(side1);
-            foreach (TVertex vertex in side1)
-            {
-                VerticesInfos[vertex] = DoubleTreeVertexType.Backward;
-                foreach (TEdge edge in VisitedGraph.InEdges(vertex))
-                {
-                    if (!side1.Contains(edge.Source) || edge.IsSelfEdge())
-                        continue;
-
-                    // Reverse the edge
-                    graph1.AddEdge(new Edge<TVertex>(edge.Target, edge.Source));
-                }
-            }
-
-            //
-            // The OUT side
-            //
-            var graph2 = new BidirectionalGraph<TVertex, TEdge>();
-            graph2.AddVertexRange(side2);
-            foreach (TVertex vertex in side2)
-            {
-                VerticesInfos[vertex] = DoubleTreeVertexType.Forward;
-                foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
-                {
-                    if (!side2.Contains(edge.Target) || edge.IsSelfEdge())
-                        continue;
-
-                    // Simply add the edge
-                    graph2.AddEdge(edge);
-                }
-            }
+            // Build the temporary graph for the two sides
+            BuildTemporaryGraphs(
+                side1,
+                side2,
+                out BidirectionalGraph<TVertex, Edge<TVertex>> graph1,
+                out BidirectionalGraph<TVertex, TEdge> graph2);
 
             VerticesInfos[_root] = DoubleTreeVertexType.Center;
 
-            #endregion
-
-            LayoutDirection side2Direction = Parameters.Direction;
-            LayoutDirection side1Direction = Parameters.Direction;
-            switch (side2Direction)
-            {
-                case LayoutDirection.BottomToTop:
-                    side1Direction = LayoutDirection.TopToBottom;
-                    break;
-                case LayoutDirection.LeftToRight:
-                    side1Direction = LayoutDirection.RightToLeft;
-                    break;
-                case LayoutDirection.RightToLeft:
-                    side1Direction = LayoutDirection.LeftToRight;
-                    break;
-                case LayoutDirection.TopToBottom:
-                    side1Direction = LayoutDirection.BottomToTop;
-                    break;
-            }
+            ComputeLayoutDirections(out LayoutDirection side1Direction, out LayoutDirection side2Direction);
 
             // SimpleTree layout on the two side
             var side1LayoutAlgorithm = new SimpleTreeLayoutAlgorithm<TVertex, Edge<TVertex>, BidirectionalGraph<TVertex, Edge<TVertex>>>(
@@ -178,6 +128,71 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 VerticesPositions[vertex] = side2LayoutAlgorithm.VerticesPositions[vertex] + side2Translate;
 
             NormalizePositions();
+        }
+
+        private void BuildTemporaryGraphs(
+            [NotNull] ICollection<TVertex> side1,
+            [NotNull] ICollection<TVertex> side2,
+            [NotNull] out BidirectionalGraph<TVertex, Edge<TVertex>> graph1,
+            [NotNull] out BidirectionalGraph<TVertex, TEdge> graph2)
+        {
+            //
+            // The IN side
+            //
+            // on the IN side we should reverse the edges
+            graph1 = new BidirectionalGraph<TVertex, Edge<TVertex>>();
+            graph1.AddVertexRange(side1);
+            foreach (TVertex vertex in side1)
+            {
+                VerticesInfos[vertex] = DoubleTreeVertexType.Backward;
+                foreach (TEdge edge in VisitedGraph.InEdges(vertex))
+                {
+                    if (!side1.Contains(edge.Source) || edge.IsSelfEdge())
+                        continue;
+
+                    // Reverse the edge
+                    graph1.AddEdge(new Edge<TVertex>(edge.Target, edge.Source));
+                }
+            }
+
+            //
+            // The OUT side
+            //
+            graph2 = new BidirectionalGraph<TVertex, TEdge>();
+            graph2.AddVertexRange(side2);
+            foreach (TVertex vertex in side2)
+            {
+                VerticesInfos[vertex] = DoubleTreeVertexType.Forward;
+                foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
+                {
+                    if (!side2.Contains(edge.Target) || edge.IsSelfEdge())
+                        continue;
+
+                    // Simply add the edge
+                    graph2.AddEdge(edge);
+                }
+            }
+        }
+
+        private void ComputeLayoutDirections(out LayoutDirection side1Direction, out LayoutDirection side2Direction)
+        {
+            side1Direction = Parameters.Direction;
+            side2Direction = Parameters.Direction;
+            switch (side2Direction)
+            {
+                case LayoutDirection.BottomToTop:
+                    side1Direction = LayoutDirection.TopToBottom;
+                    break;
+                case LayoutDirection.LeftToRight:
+                    side1Direction = LayoutDirection.RightToLeft;
+                    break;
+                case LayoutDirection.RightToLeft:
+                    side1Direction = LayoutDirection.LeftToRight;
+                    break;
+                case LayoutDirection.TopToBottom:
+                    side1Direction = LayoutDirection.BottomToTop;
+                    break;
+            }
         }
 
         #endregion

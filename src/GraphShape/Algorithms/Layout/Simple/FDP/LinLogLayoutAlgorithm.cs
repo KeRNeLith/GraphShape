@@ -113,83 +113,11 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 ComputeBarycenter();
                 QuadTree quadTree = BuildQuadTree();
 
-                #region Define cooling function
+                // Define cooling function
+                ComputeCoolingFunction(step, finalRepulsiveExponent, finalAttractionExponent);
 
-                if (Parameters.MaxIterations >= 50 && finalRepulsiveExponent < 1.0)
-                {
-                    Parameters.AttractionExponent = finalAttractionExponent;
-                    Parameters.RepulsiveExponent = finalRepulsiveExponent;
-                    if (step <= 0.6 * Parameters.MaxIterations)
-                    {
-                        // Use energy model with few local minimum
-                        Parameters.AttractionExponent += 1.1 * (1.0 - finalRepulsiveExponent);
-                        Parameters.RepulsiveExponent += 0.9 * (1.0 - finalRepulsiveExponent);
-                    }
-                    else if (step <= 0.9 * Parameters.MaxIterations)
-                    {
-                        // Gradually move to final energy model
-                        Parameters.AttractionExponent +=
-                            1.1 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.MaxIterations) / 0.3;
-                        Parameters.RepulsiveExponent +=
-                            0.9 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double)Parameters.MaxIterations) / 0.3;
-                    }
-                }
-
-                #endregion
-
-                #region Move each node
-
-                for (int i = 0; i < _vertices.Length; ++i)
-                {
-                    LinLogVertex vertex = _vertices[i];
-                    double oldEnergy = GetEnergy(i, quadTree);
-
-                    // Compute direction of the move of the node
-                    GetDirection(i, quadTree, out Vector bestDirection);
-
-                    // Line search: compute length of the move
-                    Point oldPosition = vertex.Position;
-
-                    double bestEnergy = oldEnergy;
-                    int bestMultiple = 0;
-                    bestDirection /= 32;
-                    // Determine the best multiple (for little moves)
-                    for (int multiple = 32;
-                        multiple >= 1 && (bestMultiple == 0 || bestMultiple / 2 == multiple);
-                        multiple /= 2)
-                    {
-                        vertex.Position = oldPosition + bestDirection * multiple;
-                        double curEnergy = GetEnergy(i, quadTree);
-                        if (curEnergy < bestEnergy)
-                        {
-                            bestEnergy = curEnergy;
-                            bestMultiple = multiple;
-                        }
-                    }
-
-                    // Try to determine a better multiple (for larger moves)
-                    for (int multiple = 64;
-                        multiple <= 128 && bestMultiple == multiple / 2;
-                        multiple *= 2)
-                    {
-                        vertex.Position = oldPosition + bestDirection * multiple;
-                        double curEnergy = GetEnergy(i, quadTree);
-                        if (curEnergy < bestEnergy)
-                        {
-                            bestEnergy = curEnergy;
-                            bestMultiple = multiple;
-                        }
-                    }
-
-                    // Best move
-                    vertex.Position = oldPosition + bestDirection * bestMultiple;
-                    if (bestMultiple > 0)
-                    {
-                        quadTree.MoveNode(oldPosition, vertex.Position, vertex.RepulsionWeight);
-                    }
-                }
-
-                #endregion
+                // Move each node
+                MoveNodes(quadTree);
 
                 if (ReportOnIterationEndNeeded)
                     Report(step);
@@ -197,6 +125,87 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             CopyPositions();
             NormalizePositions();
+        }
+
+        private void ComputeCoolingFunction(int step, double finalRepulsiveExponent, double finalAttractionExponent)
+        {
+            if (Parameters.MaxIterations >= 50 && finalRepulsiveExponent < 1.0)
+            {
+                Parameters.AttractionExponent = finalAttractionExponent;
+                Parameters.RepulsiveExponent = finalRepulsiveExponent;
+                if (step <= 0.6 * Parameters.MaxIterations)
+                {
+                    // Use energy model with few local minimum
+                    Parameters.AttractionExponent += 1.1 * (1.0 - finalRepulsiveExponent);
+                    Parameters.RepulsiveExponent += 0.9 * (1.0 - finalRepulsiveExponent);
+                }
+                else if (step <= 0.9 * Parameters.MaxIterations)
+                {
+                    // Gradually move to final energy model
+                    Parameters.AttractionExponent +=
+                        1.1 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double) Parameters.MaxIterations) / 0.3;
+                    Parameters.RepulsiveExponent +=
+                        0.9 * (1.0 - finalRepulsiveExponent) * (0.9 - step / (double) Parameters.MaxIterations) / 0.3;
+                }
+            }
+        }
+
+        private void MoveNodes([NotNull] QuadTree quadTree)
+        {
+            for (int i = 0; i < _vertices.Length; ++i)
+            {
+                MoveNode(quadTree, i);
+            }
+        }
+
+        private void MoveNode([NotNull] QuadTree quadTree, int index)
+        {
+            LinLogVertex vertex = _vertices[index];
+            double oldEnergy = GetEnergy(index, quadTree);
+
+            // Compute direction of the move of the node
+            GetDirection(index, quadTree, out Vector bestDirection);
+
+            // Line search: compute length of the move
+            Point oldPosition = vertex.Position;
+
+            double bestEnergy = oldEnergy;
+            int bestMultiple = 0;
+            bestDirection /= 32;
+            // Determine the best multiple (for little moves)
+            for (int multiple = 32;
+                multiple >= 1 && (bestMultiple == 0 || bestMultiple / 2 == multiple);
+                multiple /= 2)
+            {
+                vertex.Position = oldPosition + bestDirection * multiple;
+                double curEnergy = GetEnergy(index, quadTree);
+                if (curEnergy < bestEnergy)
+                {
+                    bestEnergy = curEnergy;
+                    bestMultiple = multiple;
+                }
+            }
+
+            // Try to determine a better multiple (for larger moves)
+            for (int multiple = 64;
+                multiple <= 128 && bestMultiple == multiple / 2;
+                multiple *= 2)
+            {
+                vertex.Position = oldPosition + bestDirection * multiple;
+                double curEnergy = GetEnergy(index, quadTree);
+                if (curEnergy < bestEnergy)
+                {
+                    bestEnergy = curEnergy;
+                    bestMultiple = multiple;
+                }
+            }
+
+            // Best move
+            vertex.Position = oldPosition + bestDirection * bestMultiple;
+            if (bestMultiple > 0)
+            {
+                quadTree.MoveNode(oldPosition, vertex.Position, vertex.RepulsionWeight);
+            }
         }
 
         #endregion

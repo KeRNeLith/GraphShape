@@ -106,6 +106,13 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
             _gravityCenterCalculated = false;
 
+            RunPhases(initialTemperature, temperatureMultipliers, minimalTemperature);
+
+            SavePositions();
+        }
+
+        private void RunPhases(double initialTemperature, [NotNull] double[] temperatureMultipliers, double minimalTemperature)
+        {
             for (_phase = 1; _phase <= 3; ++_phase)
             {
                 _temperature = initialTemperature * temperatureMultipliers[_phase - 1];
@@ -115,8 +122,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                     _step > 0 || _phase == 2 && !AllTreesGrown;
                     --_step)
                 {
-                    //error = 0;
-
                     ApplySpringForces();
                     ApplyRepulsionForces();
 
@@ -146,8 +151,6 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
 
                 _temperature *= Parameters.TemperatureDecreasing;
             }
-
-            SavePositions();
         }
 
         #endregion
@@ -284,28 +287,32 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                 }
 
                 Vector springForce = GetSpringForce(idealLength, u.Position, v.Position, u.Size, v.Size) * multiplier;
+                ApplySpringForce(u, v, springForce);
+            }
+        }
 
-                // Aggregate the forces
-                if ((u.IsFixedToParent && u.MovableParent is null) ^ (v.IsFixedToParent && v.MovableParent is null))
-                    springForce *= 2;
+        private static void ApplySpringForce([NotNull] VertexData u, [NotNull] VertexData v, Vector springForce)
+        {
+            // Aggregate the forces
+            if ((u.IsFixedToParent && u.MovableParent is null) ^ (v.IsFixedToParent && v.MovableParent is null))
+                springForce *= 2;
 
-                if (!u.IsFixedToParent)
-                {
-                    u.SpringForce += springForce;
-                }
-                else if (u.MovableParent != null)
-                {
-                    u.MovableParent.SpringForce += springForce;
-                }
+            if (!u.IsFixedToParent)
+            {
+                u.SpringForce += springForce;
+            }
+            else if (u.MovableParent != null)
+            {
+                u.MovableParent.SpringForce += springForce;
+            }
 
-                if (!v.IsFixedToParent)
-                {
-                    v.SpringForce -= springForce;
-                }
-                else if (v.MovableParent != null)
-                {
-                    v.MovableParent.SpringForce -= springForce;
-                }
+            if (!v.IsFixedToParent)
+            {
+                v.SpringForce -= springForce;
+            }
+            else if (v.MovableParent != null)
+            {
+                v.MovableParent.SpringForce -= springForce;
             }
         }
 
@@ -322,11 +329,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                 {
                     checkedVertices.Add(uVertex);
                     VertexData uData = _verticesData[uVertex];
-                    foreach (TVertex vVertex in Levels[i])
+                    foreach (TVertex vVertex in Levels[i].Where(v => !checkedVertices.Contains(v)))
                     {
-                        if (checkedVertices.Contains(vVertex))
-                            continue;
-
                         VertexData vData = _verticesData[vVertex];
 
                         if (uData.Parent != vData.Parent)
@@ -339,15 +343,20 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                             vData.Size,
                             repulsionRange) * Math.Pow(uData.Level + 1, 2);
 
-                        if (uData.IsFixedToParent ^ vData.IsFixedToParent)
-                            repulsionForce *= 2;
-                        if (!uData.IsFixedToParent)
-                            uData.RepulsionForce += repulsionForce;
-                        if (!vData.IsFixedToParent)
-                            vData.RepulsionForce -= repulsionForce;
+                        ApplyRepulsionForce(uData, vData, repulsionForce);
                     }
                 }
             }
+        }
+
+        private static void ApplyRepulsionForce([NotNull] VertexData u, [NotNull] VertexData v, Vector repulsionForce)
+        {
+            if (u.IsFixedToParent ^ v.IsFixedToParent)
+                repulsionForce *= 2;
+            if (!u.IsFixedToParent)
+                u.RepulsionForce += repulsionForce;
+            if (!v.IsFixedToParent)
+                v.RepulsionForce -= repulsionForce;
         }
 
         /// <summary>

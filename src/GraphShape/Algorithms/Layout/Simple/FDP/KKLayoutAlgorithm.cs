@@ -120,64 +120,68 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             for (int iteration = 0; iteration < Parameters.MaxIterations; ++iteration)
             {
-                #region An iteration
-
-                double maxDeltaM = double.NegativeInfinity;
-                int pm = -1;
-
-                // Get the 'p' with the max delta_m
-                for (int i = 0; i < n; ++i)
-                {
-                    double deltaM = CalculateEnergyGradient(i);
-                    if (maxDeltaM < deltaM)
-                    {
-                        maxDeltaM = deltaM;
-                        pm = i;
-                    }
-                }
-
-                if (pm == -1)
+                if (!RunIteration(n))
                     return;
-
-                // Calculate the delta_x & delta_y with the Newton-Raphson method
-                // There is an upper-bound for the while (deltaM > epsilon) {...} cycle (100)
-                for (int i = 0; i < 100; ++i)
-                {
-                    _positions[pm] += CalculateDeltaXY(pm);
-
-                    double deltaM = CalculateEnergyGradient(pm);
-                    // Real stop condition
-                    if (deltaM < double.Epsilon)
-                        break;
-                }
-
-                // What if some of the vertices would be exchanged?
-                if (Parameters.ExchangeVertices && maxDeltaM < double.Epsilon)
-                {
-                    double energy = CalculateEnergy();
-                    for (int i = 0; i < n - 1; ++i)
-                    {
-                        for (int j = i + 1; j < n; ++j)
-                        {
-                            double exchangedEnergy = CalculateEnergyIfExchanged(i, j);
-                            if (energy > exchangedEnergy)
-                            {
-                                Point p = _positions[i];
-                                _positions[i] = _positions[j];
-                                _positions[j] = p;
-                                return;
-                            }
-                        }
-                    }
-                }
-
-                #endregion
 
                 if (ReportOnIterationEndNeeded)
                     Report(iteration);
             }
 
             Report(Parameters.MaxIterations);
+        }
+
+        private bool RunIteration(int n)
+        {
+            double maxDeltaM = double.NegativeInfinity;
+            int pm = -1;
+
+            // Get the 'p' with the max delta_m
+            for (int i = 0; i < n; ++i)
+            {
+                double deltaM = CalculateEnergyGradient(i);
+                if (maxDeltaM < deltaM)
+                {
+                    maxDeltaM = deltaM;
+                    pm = i;
+                }
+            }
+
+            if (pm == -1)
+                return false;
+
+            // Calculate the delta_x & delta_y with the Newton-Raphson method
+            // There is an upper-bound for the while (deltaM > epsilon) {...} cycle (100)
+            for (int i = 0; i < 100; ++i)
+            {
+                _positions[pm] += CalculateDeltaXY(pm);
+
+                double deltaM = CalculateEnergyGradient(pm);
+                // Real stop condition
+                if (deltaM < double.Epsilon)
+                    break;
+            }
+
+            // What if some of the vertices would be exchanged?
+            if (Parameters.ExchangeVertices && maxDeltaM < double.Epsilon)
+            {
+                double energy = CalculateEnergy();
+                for (int i = 0; i < n - 1; ++i)
+                {
+                    for (int j = i + 1; j < n; ++j)
+                    {
+                        double exchangedEnergy = CalculateEnergyIfExchanged(i, j);
+                        if (energy > exchangedEnergy)
+                        {
+                            Point p = _positions[i];
+                            _positions[i] = _positions[j];
+                            _positions[j] = p;
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         #endregion

@@ -348,68 +348,78 @@ namespace GraphShape.Controls
             {
                 // Asynchronous computing - progress report & anything else
                 // If there's a running progress than cancel that
-                CancelLayout();
-
-                Worker = new BackgroundWorker
-                {
-                    WorkerSupportsCancellation = true,
-                    WorkerReportsProgress = true
-                };
-
-                // Run the algorithm on a background thread
-                Worker.DoWork += (sender, args) =>
-                {
-                    var worker = (BackgroundWorker)sender;
-                    var argument = (AsyncThreadArgument)args.Argument;
-                    if (argument.ShowAllStates)
-                    {
-                        argument.Algorithm.IterationEnded += (s, a) =>
-                        {
-                            ILayoutIterationEventArgs<TVertex> iterationsArgs = a;
-                            if (iterationsArgs != null)
-                            {
-                                worker.ReportProgress((int)Math.Round(iterationsArgs.StatusInPercent), iterationsArgs);
-                                iterationsArgs.Abort = worker.CancellationPending;
-                            }
-                        };
-                    }
-                    else
-                    {
-                        argument.Algorithm.ProgressChanged += (s, percent) => worker.ReportProgress((int)Math.Round(percent));
-                    }
-
-                    argument.Algorithm.Compute();
-                };
-
-                // Progress changed if an iteration ended
-                Worker.ProgressChanged += (sender, args) =>
-                {
-                    if (args.UserState is null)
-                        LayoutStatusPercent = args.ProgressPercentage;
-                    else
-                        OnLayoutIterationFinished(args.UserState as ILayoutIterationEventArgs<TVertex>);
-                };
-
-                // Background thread finished if the iteration ended
-                Worker.RunWorkerCompleted += (sender, args) =>
-                {
-                    OnLayoutFinished();
-                    Worker = null;
-                };
-
-                OnLayoutStarted();
-                Worker.RunWorkerAsync(new AsyncThreadArgument(LayoutAlgorithm, ShowAllStates));
+                RunAsynchronousLayout();
             }
             else
             {
                 // Synchronous computing - no progress report
-                LayoutAlgorithm.Started += (sender, args) => OnLayoutStarted();
-                if (ShowAllStates)
-                    LayoutAlgorithm.IterationEnded += (sender, args) => OnLayoutIterationFinished(args);
-                LayoutAlgorithm.Finished += (sender, args) => OnLayoutFinished();
-
-                LayoutAlgorithm.Compute();
+                RunSynchronousLayout();
             }
+        }
+
+        private void RunAsynchronousLayout()
+        {
+            CancelLayout();
+
+            Worker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true,
+                WorkerReportsProgress = true
+            };
+
+            // Run the algorithm on a background thread
+            Worker.DoWork += (sender, args) =>
+            {
+                var worker = (BackgroundWorker) sender;
+                var argument = (AsyncThreadArgument) args.Argument;
+                if (argument.ShowAllStates)
+                {
+                    argument.Algorithm.IterationEnded += (s, a) =>
+                    {
+                        ILayoutIterationEventArgs<TVertex> iterationsArgs = a;
+                        if (iterationsArgs != null)
+                        {
+                            worker.ReportProgress((int) Math.Round(iterationsArgs.StatusInPercent), iterationsArgs);
+                            iterationsArgs.Abort = worker.CancellationPending;
+                        }
+                    };
+                }
+                else
+                {
+                    argument.Algorithm.ProgressChanged += (s, percent) => worker.ReportProgress((int) Math.Round(percent));
+                }
+
+                argument.Algorithm.Compute();
+            };
+
+            // Progress changed if an iteration ended
+            Worker.ProgressChanged += (sender, args) =>
+            {
+                if (args.UserState is null)
+                    LayoutStatusPercent = args.ProgressPercentage;
+                else
+                    OnLayoutIterationFinished(args.UserState as ILayoutIterationEventArgs<TVertex>);
+            };
+
+            // Background thread finished if the iteration ended
+            Worker.RunWorkerCompleted += (sender, args) =>
+            {
+                OnLayoutFinished();
+                Worker = null;
+            };
+
+            OnLayoutStarted();
+            Worker.RunWorkerAsync(new AsyncThreadArgument(LayoutAlgorithm, ShowAllStates));
+        }
+
+        private void RunSynchronousLayout()
+        {
+            LayoutAlgorithm.Started += (sender, args) => OnLayoutStarted();
+            if (ShowAllStates)
+                LayoutAlgorithm.IterationEnded += (sender, args) => OnLayoutIterationFinished(args);
+            LayoutAlgorithm.Finished += (sender, args) => OnLayoutFinished();
+
+            LayoutAlgorithm.Compute();
         }
 
         [Pure]
@@ -771,30 +781,40 @@ namespace GraphShape.Controls
             IDictionary<TVertex, Point> positions = activeState.OverlapRemovedPositions;
             if (positions != null)
             {
-                // Animate the vertices
-                foreach (TVertex vertex in Graph.Vertices)
-                {
-                    if (!VerticesControls.TryGetValue(vertex, out VertexControl control))
-                        continue;
-
-                    if (positions.TryGetValue(vertex, out Point pos))
-                        RunMoveAnimation(control, pos.X, pos.Y);
-                }
+                ApplyVerticesPositions(positions);
             }
 
             IDictionary<TEdge, Point[]> routeInfos = activeState.RouteInfos;
             if (routeInfos != null)
             {
-                // Change the edge routes
-                foreach (TEdge edge in Graph.Edges)
-                {
-                    if (!EdgesControls.TryGetValue(edge, out EdgeControl control))
-                        continue;
+                ApplyEdgesRoutes(routeInfos);
+            }
+        }
 
-                    control.RoutePoints = routeInfos.TryGetValue(edge, out Point[] routePoints)
-                        ? routePoints.ToPoints().ToArray()
-                        : null;
-                }
+        private void ApplyVerticesPositions([NotNull] IDictionary<TVertex, Point> positions)
+        {
+            // Animate the vertices
+            foreach (TVertex vertex in Graph.Vertices)
+            {
+                if (!VerticesControls.TryGetValue(vertex, out VertexControl control))
+                    continue;
+
+                if (positions.TryGetValue(vertex, out Point pos))
+                    RunMoveAnimation(control, pos.X, pos.Y);
+            }
+        }
+
+        private void ApplyEdgesRoutes([NotNull] IDictionary<TEdge, Point[]> routeInfos)
+        {
+            // Change the edge routes
+            foreach (TEdge edge in Graph.Edges)
+            {
+                if (!EdgesControls.TryGetValue(edge, out EdgeControl control))
+                    continue;
+
+                control.RoutePoints = routeInfos.TryGetValue(edge, out Point[] routePoints)
+                    ? routePoints.ToPoints().ToArray()
+                    : null;
             }
         }
 

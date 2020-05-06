@@ -374,9 +374,9 @@ namespace GraphShape.Controls
         /// Overridden measure. It calculates a size where all of 
         /// of the vertices are visible.
         /// </summary>
-        /// <param name="arrangeSize">The size constraint.</param>
+        /// <param name="availableSize">The size constraint.</param>
         /// <returns>The calculated size.</returns>
-        protected override System.Windows.Size MeasureOverride(System.Windows.Size arrangeSize)
+        protected override System.Windows.Size MeasureOverride(System.Windows.Size availableSize)
         {
             _topLeft = new System.Windows.Point(double.PositiveInfinity, double.PositiveInfinity);
             _bottomRight = new System.Windows.Point(double.NegativeInfinity, double.NegativeInfinity);
@@ -384,7 +384,7 @@ namespace GraphShape.Controls
             foreach (UIElement child in InternalChildren)
             {
                 // Measure the child
-                child.Measure(arrangeSize);
+                child.Measure(availableSize);
 
                 // Get the position of the vertex
                 double left = GetX(child);

@@ -94,24 +94,29 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             // Minimize edge length
             if (Parameters.MinimizeEdgeLength)
             {
-                for (int i = _layers.Count - 1; i >= 0; --i)
+                MinimizeInitialLayersEdgeLength();
+            }
+        }
+
+        private void MinimizeInitialLayersEdgeLength()
+        {
+            for (int i = _layers.Count - 1; i >= 0; --i)
+            {
+                IList<SugiVertex> layer = _layers[i];
+                foreach (SugiVertex vertex in layer.ToArray())
                 {
-                    IList<SugiVertex> layer = _layers[i];
-                    foreach (SugiVertex vertex in layer.ToArray())
+                    if (_graph.OutDegree(vertex) == 0)
+                        continue;
+
+                    // Put the vertex above the descendant on the highest layer
+                    int newLayerIndex = _graph.OutEdges(vertex).Min(edge => edge.Target.LayerIndex - 1);
+
+                    if (newLayerIndex != vertex.LayerIndex)
                     {
-                        if (_graph.OutDegree(vertex) == 0)
-                            continue;
-
-                        // Put the vertex above the descendant on the highest layer
-                        int newLayerIndex = _graph.OutEdges(vertex).Min(edge => edge.Target.LayerIndex - 1);
-
-                        if (newLayerIndex != vertex.LayerIndex)
-                        {
-                            // We're changing layer
-                            layer.Remove(vertex);
-                            _layers[newLayerIndex].Add(vertex);
-                            vertex.LayerIndex = newLayerIndex;
-                        }
+                        // We're changing layer
+                        layer.Remove(vertex);
+                        _layers[newLayerIndex].Add(vertex);
+                        vertex.LayerIndex = newLayerIndex;
                     }
                 }
             }

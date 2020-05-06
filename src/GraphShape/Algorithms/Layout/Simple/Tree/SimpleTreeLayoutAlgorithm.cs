@@ -88,7 +88,6 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
                 : 1;
 
             GenerateSpanningTree();
-            //DoWidthAndHeightOptimization();
 
             // First layout the vertices with 0 in-edge
             foreach (TVertex source in _spanningTree.Vertices.Where(v => _spanningTree.InDegree(v) == 0))

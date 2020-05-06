@@ -1005,35 +1005,46 @@ namespace GraphShape.Controls
 
             if (args.OriginalSource is VertexControl vertexControl)
             {
-                var vertex = vertexControl.Vertex as TVertex;
-                if (vertex is null || !Graph.ContainsVertex(vertex))
-                    return;
-
-                if (args.IsPositiveTrigger)
-                    HighlightAlgorithm.OnVertexHighlighting(vertex);
-                else
-                    HighlightAlgorithm.OnVertexHighlightRemoving(vertex);
+                OnVertexHighlightTriggered(vertexControl, args);
             }
             else if (args.OriginalSource is EdgeControl edgeControl)
             {
-                var edge = default(TEdge);
-                try
-                {
-                    edge = (TEdge)edgeControl.Edge;
-                }
-                catch
-                {
-                    // ignored
-                }
-
-                if (EqualityComparer<TEdge>.Default.Equals(edge, default(TEdge)) || !Graph.ContainsEdge(edge))
-                    return;
-
-                if (args.IsPositiveTrigger)
-                    HighlightAlgorithm.OnEdgeHighlighting(edge);
-                else
-                    HighlightAlgorithm.OnEdgeHighlightRemoving(edge);
+                OnEdgeHighlightTriggered(edgeControl, args);
             }
+        }
+
+        private void OnVertexHighlightTriggered([NotNull] VertexControl vertexControl, [NotNull] HighlightTriggeredEventArgs args)
+        {
+            var vertex = vertexControl.Vertex as TVertex;
+            if (vertex is null || !Graph.ContainsVertex(vertex))
+                return;
+
+            if (args.IsPositiveTrigger)
+                HighlightAlgorithm.OnVertexHighlighting(vertex);
+            else
+                HighlightAlgorithm.OnVertexHighlightRemoving(vertex);
+        }
+
+        private void OnEdgeHighlightTriggered([NotNull] EdgeControl edgeControl, [NotNull] HighlightTriggeredEventArgs args)
+        {
+            var edge = default(TEdge);
+            try
+            {
+                edge = (TEdge)edgeControl.Edge;
+            }
+            catch
+            {
+                // ignored
+            }
+
+            // ReSharper disable once AssignNullToNotNullAttribute, Justification: Already checked.
+            if (EqualityComparer<TEdge>.Default.Equals(edge, default(TEdge)) || !Graph.ContainsEdge(edge))
+                return;
+
+            if (args.IsPositiveTrigger)
+                HighlightAlgorithm.OnEdgeHighlighting(edge);
+            else
+                HighlightAlgorithm.OnEdgeHighlightRemoving(edge);
         }
 
         private void OnRelayoutInduction(bool tryKeepControls)

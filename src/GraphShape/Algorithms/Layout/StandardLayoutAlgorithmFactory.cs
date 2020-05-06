@@ -65,6 +65,16 @@ namespace GraphShape.Algorithms.Layout
             if (context.Graph is null)
                 return null;
 
+            return CreateAlgorithmInternal(algorithmType, context, parameters);
+        }
+
+        [Pure]
+        [CanBeNull]
+        private static ILayoutAlgorithm<TVertex, TEdge, TGraph> CreateAlgorithmInternal(
+            [NotNull] string algorithmType,
+            [NotNull] ILayoutContext<TVertex, TEdge, TGraph> context,
+            [CanBeNull] ILayoutParameters parameters)
+        {
             if (context.Mode == LayoutMode.Simple)
             {
                 if (string.Equals(algorithmType, CircularAlgorithm))
@@ -75,6 +85,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Sizes,
                         parameters as CircularLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, TreeAlgorithm))
                 {
                     return new SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -83,6 +94,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Sizes,
                         parameters as SimpleTreeLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, FRAlgorithm))
                 {
                     return new FRLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -90,6 +102,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as FRLayoutParametersBase);
                 }
+
                 if (string.Equals(algorithmType, BoundedFRAlgorithm))
                 {
                     return new FRLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -97,6 +110,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as BoundedFRLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, KKAlgorithm))
                 {
                     return new KKLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -104,6 +118,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as KKLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, ISOMAlgorithm))
                 {
                     return new ISOMLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -111,6 +126,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as ISOMLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, LinLogAlgorithm))
                 {
                     return new LinLogLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -118,6 +134,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Positions,
                         parameters as LinLogLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, SugiyamaAlgorithm))
                 {
                     return new SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>(
@@ -126,6 +143,7 @@ namespace GraphShape.Algorithms.Layout
                         context.Sizes,
                         parameters as SugiyamaLayoutParameters);
                 }
+
                 if (string.Equals(algorithmType, CompoundFDPAlgorithm))
                 {
                     return new CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>(

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+#if DEBUG
 using System.Diagnostics;
+#endif
 using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
 

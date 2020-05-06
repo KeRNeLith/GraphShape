@@ -459,21 +459,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
             VertexTypes ignorableVertexType = straightSweep ? VertexTypes.QVertex : VertexTypes.PVertex;
             var verticesWithSameMeasure = new List<SugiVertex>();
-            var vertices = nextAlternatingLayer.OfType<SugiVertex>().ToArray();
+            SugiVertex[] vertices = nextAlternatingLayer.OfType<SugiVertex>().ToArray();
             int startIndex;
             int endIndex;
             maxRangeLength = 0;
             ranges = new List<int>();
             for (startIndex = 0; startIndex < vertices.Length; startIndex = endIndex + 1)
             {
-                for (
-                    endIndex = startIndex + 1;
-                    endIndex < vertices.Length
-                    && NearEqual(vertices[startIndex].MeasuredPosition, vertices[endIndex].MeasuredPosition);
-                    ++endIndex)
-                {
-                }
-                --endIndex;
+                endIndex = FindNearVertexEndIndex(startIndex, vertices);
 
                 if (endIndex > startIndex)
                 {
@@ -496,6 +489,21 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             }
 
             return verticesWithSameMeasure;
+        }
+
+        [Pure]
+        private static int FindNearVertexEndIndex(int startIndex, [NotNull, ItemNotNull] SugiVertex[] vertices)
+        {
+            int endIndex;
+            for (
+                endIndex = startIndex + 1;
+                endIndex < vertices.Length
+                && NearEqual(vertices[startIndex].MeasuredPosition, vertices[endIndex].MeasuredPosition);
+                ++endIndex)
+            {
+                // Nothing to do...
+            }
+            return --endIndex;
         }
 
         private void AddAlternatingLayerToSparseCompactionGraph(
@@ -590,8 +598,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         }
 
         private int DoCrossCountingAndOptimization(
-            AlternatingLayer alternatingLayer,
-            AlternatingLayer nextAlternatingLayer,
+            [ItemNotNull] AlternatingLayer alternatingLayer,
+            [ItemNotNull] AlternatingLayer nextAlternatingLayer,
             bool straightSweep,
             bool enableSameMeasureOptimization,
             bool reverseVerticesWithSameMeasure,
@@ -625,32 +633,9 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 foreach (SugiEdge realEdge in realEdges)
                     realEdge.SaveMarkedToTemp();
 
-                List<SugiVertex> sortedVertexList;
-                if (!reverseVerticesWithSameMeasure)
-                {
-                    sortedVertexList = new List<SugiVertex>(verticesWithSameMeasure);
-                }
-                else
-                {
-                    sortedVertexList = new List<SugiVertex>(verticesWithSameMeasure.Count);
-                    var stack = new Stack<SugiVertex>(verticesWithSameMeasure.Count);
-                    foreach (SugiVertex vertex in verticesWithSameMeasure)
-                    {
-                        if (stack.Count > 0 && (!NearEqual(stack.Peek().MeasuredPosition, vertex.MeasuredPosition) || Rand.NextDouble() > 0.8))
-                        {
-                            while (stack.Count > 0)
-                            {
-                                sortedVertexList.Add(stack.Pop());
-                            }
-                        }
-                        stack.Push(vertex);
-                    }
-
-                    while (stack.Count > 0)
-                    {
-                        sortedVertexList.Add(stack.Pop());
-                    }
-                }
+                List<SugiVertex> sortedVertexList = ComputeSortedVertexList(
+                    verticesWithSameMeasure,
+                    reverseVerticesWithSameMeasure);
 
                 int maxPermutations = SugiyamaLayoutParameters.MaxPermutations;
                 do
@@ -721,6 +706,44 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             pairs.AddRange(ConvertRealEdgesToCrossCounterPairs(realEdges, true));
 
             return BiLayerCrossCount(pairs, firstLayerSize, secondLayerSize);
+        }
+
+        [Pure]
+        [NotNull, ItemNotNull]
+        private List<SugiVertex> ComputeSortedVertexList(
+            [NotNull, ItemNotNull] ICollection<SugiVertex> verticesWithSameMeasure,
+            bool reverseVerticesWithSameMeasure)
+        {
+            List<SugiVertex> sortedVertexList;
+            if (!reverseVerticesWithSameMeasure)
+            {
+                sortedVertexList = new List<SugiVertex>(verticesWithSameMeasure);
+            }
+            else
+            {
+                sortedVertexList = new List<SugiVertex>(verticesWithSameMeasure.Count);
+                var stack = new Stack<SugiVertex>(verticesWithSameMeasure.Count);
+                foreach (SugiVertex vertex in verticesWithSameMeasure)
+                {
+                    if (stack.Count > 0 && (!NearEqual(stack.Peek().MeasuredPosition, vertex.MeasuredPosition) ||
+                                            Rand.NextDouble() > 0.8))
+                    {
+                        while (stack.Count > 0)
+                        {
+                            sortedVertexList.Add(stack.Pop());
+                        }
+                    }
+
+                    stack.Push(vertex);
+                }
+
+                while (stack.Count > 0)
+                {
+                    sortedVertexList.Add(stack.Pop());
+                }
+            }
+
+            return sortedVertexList;
         }
 
         private static void ReinsertVerticesIntoLayer(
@@ -881,6 +904,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 i > startIndex && vertices[i - 1].PermutationIndex >= vertices[i].PermutationIndex;
                 --i)
             {
+                // Nothing to do...
             }
 
             // All in reverse order
@@ -892,6 +916,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 j > startIndex + 1 && vertices[j - 1].PermutationIndex <= vertices[i - 1].PermutationIndex;
                 --j)
             {
+                // Nothing to do...
             }
 
             // Swap values i-1, j-1

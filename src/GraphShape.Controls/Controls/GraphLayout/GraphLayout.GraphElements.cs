@@ -38,7 +38,7 @@ namespace GraphShape.Controls
         /// <summary>
         /// Removes all vertices and edges from graph.
         /// </summary>
-        protected void RemoveAllGraphElement()
+        protected void RemoveAllGraphElements()
         {
             foreach (TVertex vertex in VerticesControls.Keys.ToArray())
                 RemoveVertexControl(vertex);
@@ -57,58 +57,21 @@ namespace GraphShape.Controls
         {
             if (Graph is null)
             {
-                RemoveAllGraphElement();
+                RemoveAllGraphElements();
             }
             else
             {
                 if (tryKeepControls && !IsCompoundMode)
                 {
                     // Remove the old graph elements
-                    foreach (KeyValuePair<TEdge, EdgeControl> pair in EdgesControls.ToArray())
-                    {
-                        bool remove = false;
-                        try
-                        {
-                            remove = !Graph.ContainsEdge(pair.Key.Source, pair.Key.Target)
-                                     || !Graph.ContainsEdge(pair.Key);
-                        }
-                        catch
-                        {
-                            // ignored
-                        }
-
-                        if (remove)
-                        {
-                            RemoveEdgeControl(pair.Key);
-                        }
-                    }
-
-                    foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls.ToArray())
-                    {
-                        if (!Graph.ContainsVertex(pair.Key))
-                        {
-                            RemoveVertexControl(pair.Key);
-                        }
-                    }
+                    RemoveGraphControls();
                 }
                 else
                 {
-                    RemoveAllGraphElement();
+                    RemoveAllGraphElements();
                 }
 
-                // Vertices controls
-                foreach (TVertex vertex in Graph.Vertices)
-                {
-                    if (!VerticesControls.ContainsKey(vertex))
-                        CreateVertexControl(vertex);
-                }
-
-                // Edges controls
-                foreach (TEdge edge in Graph.Edges)
-                {
-                    if (!EdgesControls.ContainsKey(edge))
-                        CreateEdgeControl(edge);
-                }
+                CreateGraphControls();
 
                 // Subscribe to events of the Graph mutations
                 if (!IsCompoundMode && Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
@@ -121,6 +84,53 @@ namespace GraphShape.Controls
             }
 
             Sizes = null;
+        }
+
+        private void RemoveGraphControls()
+        {
+            foreach (KeyValuePair<TEdge, EdgeControl> pair in EdgesControls.ToArray())
+            {
+                bool remove = false;
+                try
+                {
+                    remove = !Graph.ContainsEdge(pair.Key.Source, pair.Key.Target)
+                             || !Graph.ContainsEdge(pair.Key);
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                if (remove)
+                {
+                    RemoveEdgeControl(pair.Key);
+                }
+            }
+
+            foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls.ToArray())
+            {
+                if (!Graph.ContainsVertex(pair.Key))
+                {
+                    RemoveVertexControl(pair.Key);
+                }
+            }
+        }
+
+        private void CreateGraphControls()
+        {
+            // Vertices controls
+            foreach (TVertex vertex in Graph.Vertices)
+            {
+                if (!VerticesControls.ContainsKey(vertex))
+                    CreateVertexControl(vertex);
+            }
+
+            // Edges controls
+            foreach (TEdge edge in Graph.Edges)
+            {
+                if (!EdgesControls.ContainsKey(edge))
+                    CreateEdgeControl(edge);
+            }
         }
 
         private void DoNotificationLayout()
@@ -317,30 +327,41 @@ namespace GraphShape.Controls
         {
             VertexControl vertexControl = VerticesControls[vertex];
             // Initialize position
-            if (Graph.ContainsVertex(vertex) && Graph.Degree(vertex) > 0)
+            if (Graph.ContainsVertex(vertex)
+                && Graph.Degree(vertex) > 0
+                && TryComputePosition(vertex, out Point position))
             {
-                var position = default(Point);
-                int count = 0;
-                foreach (TVertex neighbor in Graph.GetNeighbors(vertex))
-                {
-                    if (VerticesControls.TryGetValue(neighbor, out VertexControl neighborControl))
-                    {
-                        double x = GetX(neighborControl);
-                        double y = GetY(neighborControl);
-                        position.X += double.IsNaN(x) ? 0.0 : x;
-                        position.Y += double.IsNaN(y) ? 0.0 : y;
-                        ++count;
-                    }
-                }
+                SetX(vertexControl, position.X);
+                SetY(vertexControl, position.Y);
+            }
+        }
 
-                if (count > 0)
+        [Pure]
+        private bool TryComputePosition(TVertex vertex, out Point position)
+        {
+            position = default(Point);
+            
+            int count = 0;
+            foreach (TVertex neighbor in Graph.GetNeighbors(vertex))
+            {
+                if (VerticesControls.TryGetValue(neighbor, out VertexControl neighborControl))
                 {
-                    position.X /= count;
-                    position.Y /= count;
-                    SetX(vertexControl, position.X);
-                    SetY(vertexControl, position.Y);
+                    double x = GetX(neighborControl);
+                    double y = GetY(neighborControl);
+                    position.X += double.IsNaN(x) ? 0.0 : x;
+                    position.Y += double.IsNaN(y) ? 0.0 : y;
+                    ++count;
                 }
             }
+
+            if (count > 0)
+            {
+                position.X /= count;
+                position.Y /= count;
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
