@@ -16,6 +16,7 @@
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape sample application.</Description>
 
+    <ApplicationIcon>icons\graphshape.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
@@ -25,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SplashScreen Include="Themes\GraphSharp.png" />
+    <SplashScreen Include="..\..\docs\images\graphshape_logo.png" />
   </ItemGroup>
 
   <!-- Dependencies -->

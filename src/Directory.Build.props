@@ -5,8 +5,8 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
-    <!-- TODO -->
-    <!-- <PackageIconUrl>https://raw.githubusercontent.com/KeRNeLith/GraphShape/master/docs/images/graphshape_logo.png</PackageIconUrl> -->
+    <PackageIcon>graphshape_logo.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/KeRNeLith/GraphShape/master/docs/images/graphshape_logo.png</PackageIconUrl>
 
     <!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
     <IncludeSymbols>true</IncludeSymbols>
@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="..\..\docs\images\graphshape_logo.png" Pack="true" Visible="false" PackagePath=""/>
   </ItemGroup>
 
   <!-- Source Link -->
