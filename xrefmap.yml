@@ -12163,23 +12163,23 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).Relayout
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.Relayout
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).Relayout
-- uid: GraphShape.Controls.GraphLayout`3.RemoveAllGraphElement
-  name: RemoveAllGraphElement()
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RemoveAllGraphElement
-  commentId: M:GraphShape.Controls.GraphLayout`3.RemoveAllGraphElement
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElement()
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElement()
-  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElement()
-  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElement()
-- uid: GraphShape.Controls.GraphLayout`3.RemoveAllGraphElement*
-  name: RemoveAllGraphElement
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RemoveAllGraphElement_
-  commentId: Overload:GraphShape.Controls.GraphLayout`3.RemoveAllGraphElement
+- uid: GraphShape.Controls.GraphLayout`3.RemoveAllGraphElements
+  name: RemoveAllGraphElements()
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RemoveAllGraphElements
+  commentId: M:GraphShape.Controls.GraphLayout`3.RemoveAllGraphElements
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElements()
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElements()
+  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElements()
+  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElements()
+- uid: GraphShape.Controls.GraphLayout`3.RemoveAllGraphElements*
+  name: RemoveAllGraphElements
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RemoveAllGraphElements_
+  commentId: Overload:GraphShape.Controls.GraphLayout`3.RemoveAllGraphElements
   isSpec: "True"
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElement
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElement
-  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElement
-  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElement
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElements
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElements
+  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveAllGraphElements
+  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveAllGraphElements
 - uid: GraphShape.Controls.GraphLayout`3.RemoveEdgeControl(`1)
   name: RemoveEdgeControl(TEdge)
   href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RemoveEdgeControl__1_
