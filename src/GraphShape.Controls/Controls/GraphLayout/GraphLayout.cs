@@ -11,6 +11,7 @@ using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.OverlapRemoval;
 using GraphShape.Controls.Extensions;
+using GraphShape.Controls.Utils;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -372,24 +373,53 @@ namespace GraphShape.Controls
             {
                 var worker = (BackgroundWorker) sender;
                 var argument = (AsyncThreadArgument) args.Argument;
-                if (argument.ShowAllStates)
+
+                using (AlgorithmScope())
                 {
-                    argument.Algorithm.IterationEnded += (s, a) =>
-                    {
-                        ILayoutIterationEventArgs<TVertex> iterationsArgs = a;
-                        if (iterationsArgs != null)
-                        {
-                            worker.ReportProgress((int) Math.Round(iterationsArgs.StatusInPercent), iterationsArgs);
-                            iterationsArgs.Abort = worker.CancellationPending;
-                        }
-                    };
-                }
-                else
-                {
-                    argument.Algorithm.ProgressChanged += (s, percent) => worker.ReportProgress((int) Math.Round(percent));
+                    argument.Algorithm.Compute();
                 }
 
-                argument.Algorithm.Compute();
+                #region Local functions
+
+                IDisposable AlgorithmScope()
+                {
+                    argument.Algorithm.Started += OnLayoutAlgorithmStarted;
+
+                    if (argument.ShowAllStates)
+                        argument.Algorithm.IterationEnded += OnAsynchronousLayoutAlgorithmIterationEnded;
+                    else
+                        argument.Algorithm.ProgressChanged += OnAsynchronousLayoutAlgorithmProgress;
+
+                    argument.Algorithm.Finished += OnLayoutAlgorithmFinished;
+
+                    return DisposableHelpers.Finally(() =>
+                    {
+                        argument.Algorithm.Finished -= OnLayoutAlgorithmFinished;
+
+                        if (argument.ShowAllStates)
+                            argument.Algorithm.IterationEnded -= OnAsynchronousLayoutAlgorithmIterationEnded;
+                        else
+                            argument.Algorithm.ProgressChanged -= OnAsynchronousLayoutAlgorithmProgress;
+                        
+                        argument.Algorithm.Started -= OnLayoutAlgorithmStarted;
+                    });
+                }
+
+                void OnAsynchronousLayoutAlgorithmIterationEnded(object _, ILayoutIterationEventArgs<TVertex> iterationsArgs)
+                {
+                    if (iterationsArgs != null)
+                    {
+                        worker.ReportProgress((int)Math.Round(iterationsArgs.StatusInPercent), iterationsArgs);
+                        iterationsArgs.Abort = worker.CancellationPending;
+                    }
+                }
+
+                void OnAsynchronousLayoutAlgorithmProgress(object _, double percent)
+                {
+                    worker.ReportProgress((int) Math.Round(percent));
+                }
+
+                #endregion
             };
 
             // Progress changed if an iteration ended
@@ -404,22 +434,57 @@ namespace GraphShape.Controls
             // Background thread finished if the iteration ended
             Worker.RunWorkerCompleted += (sender, args) =>
             {
-                OnLayoutFinished();
                 Worker = null;
             };
 
-            OnLayoutStarted();
             Worker.RunWorkerAsync(new AsyncThreadArgument(LayoutAlgorithm, ShowAllStates));
         }
 
         private void RunSynchronousLayout()
         {
-            LayoutAlgorithm.Started += (sender, args) => OnLayoutStarted();
-            if (ShowAllStates)
-                LayoutAlgorithm.IterationEnded += (sender, args) => OnLayoutIterationFinished(args);
-            LayoutAlgorithm.Finished += (sender, args) => OnLayoutFinished();
+            ILayoutAlgorithm<TVertex, TEdge, TGraph> layoutAlgorithm = LayoutAlgorithm;
+            using (AlgorithmScope(layoutAlgorithm))
+            {
+                layoutAlgorithm.Compute();
+            }
 
-            LayoutAlgorithm.Compute();
+            #region Local function
+
+            IDisposable AlgorithmScope(ILayoutAlgorithm<TVertex, TEdge, TGraph> algorithm)
+            {
+                algorithm.Started += OnLayoutAlgorithmStarted;
+                bool showAllStates = ShowAllStates;
+                if (showAllStates)
+                    algorithm.IterationEnded += OnSynchronousLayoutAlgorithmIterationEnded;
+                algorithm.Finished += OnLayoutAlgorithmFinished;
+
+                return DisposableHelpers.Finally(() =>
+                {
+                    LayoutAlgorithm.Finished -= OnLayoutAlgorithmFinished;
+                    if (showAllStates)
+                        LayoutAlgorithm.IterationEnded -= OnSynchronousLayoutAlgorithmIterationEnded;
+                    LayoutAlgorithm.Started -= OnLayoutAlgorithmStarted;
+                });
+            }
+
+            #endregion
+        }
+
+        private void OnLayoutAlgorithmStarted([NotNull] object sender, [NotNull] EventArgs args)
+        {
+            OnLayoutStarted();
+        }
+
+        private void OnSynchronousLayoutAlgorithmIterationEnded(
+            [NotNull] object sender,
+            [CanBeNull] ILayoutIterationEventArgs<TVertex> args)
+        {
+            OnLayoutIterationFinished(args);
+        }
+
+        private void OnLayoutAlgorithmFinished([NotNull] object sender, [NotNull] EventArgs args)
+        {
+            OnLayoutFinished();
         }
 
         [Pure]
@@ -552,7 +617,6 @@ namespace GraphShape.Controls
             }
             else
             {
-                // TODO compound layout
                 OnLayoutIterationFinished(iterationArgs.VerticesPositions, iterationArgs.Message);
                 LayoutStatusPercent = iterationArgs.StatusInPercent;
                 SetLayoutInformation(iterationArgs as ILayoutInfoIterationEventArgs<TVertex, TEdge>);
