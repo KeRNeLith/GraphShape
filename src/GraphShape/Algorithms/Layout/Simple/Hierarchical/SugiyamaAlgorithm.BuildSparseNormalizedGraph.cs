@@ -88,7 +88,11 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 // Assign the layer indexes
                 foreach (SugiVertex vertex in _layers[i])
+                {
+                    ThrowIfCancellationRequested();
+
                     vertex.LayerIndex = i;
+                }
             }
 
             // Minimize edge length
@@ -105,6 +109,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 IList<SugiVertex> layer = _layers[i];
                 foreach (SugiVertex vertex in layer.ToArray())
                 {
+                    ThrowIfCancellationRequested();
                     if (_graph.OutDegree(vertex) == 0)
                         continue;
 
@@ -236,6 +241,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             {
                 foreach (SugiVertex vertex in layer)
                 {
+                    ThrowIfCancellationRequested();
+
                     vertex.LayerIndex = i;
                 }
                 ++i;
@@ -325,6 +332,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 foreach (SugiVertex vertex in layer)
                 {
+                    ThrowIfCancellationRequested();
+
                     layerInfo.LayerHeight = Math.Max(vertex.Size.Height, layerInfo.LayerHeight);
                     layerInfo.LayerWidth += vertex.Size.Width;
                     if (_whOptVertexInfos.TryGetValue(vertex, out WHOptimizationVertexInfo vertexInfo) && vertexInfo.ValuePerCost >= 0)
@@ -339,6 +348,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 var verticesList = new List<WHOptimizationVertexInfo>();
                 foreach (WHOptimizationVertexInfo vertexInfo in layerInfo.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     if (!double.IsNaN(vertexInfo.ValuePerCost)
                         && !double.IsPositiveInfinity(vertexInfo.ValuePerCost)
                         && !double.IsNegativeInfinity(vertexInfo.ValuePerCost))

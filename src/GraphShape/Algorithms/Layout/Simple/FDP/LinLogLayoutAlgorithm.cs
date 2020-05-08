@@ -110,6 +110,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             for (int step = 1; step <= Parameters.MaxIterations; ++step)
             {
+                ThrowIfCancellationRequested();
+
                 ComputeBarycenter();
                 QuadTree quadTree = BuildQuadTree();
 

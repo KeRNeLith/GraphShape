@@ -159,6 +159,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 RectangleWrapper<TObject> u = WrappedRectangles[i];
                 for (int j = i + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
                     if (NearEqual(u.CenterX, v.CenterX))
                     {
@@ -177,6 +179,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 {
                     for (int j = k + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         Vector force = Force(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
                         if (force.X > delta)
                         {
@@ -187,6 +191,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
 
                 for (int j = k + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> r = WrappedRectangles[j];
                     r.Rectangle.Offset(delta, 0);
                 }
@@ -218,6 +224,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 int k = i;
                 for (int j = i + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
                     if (NearEqual(u.CenterX, v.CenterX))
                     {
@@ -239,6 +247,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                         double ggg = 0;
                         for (int j = 0; j < i; ++j)
                         {
+                            ThrowIfCancellationRequested();
+
                             Vector force = Force(WrappedRectangles[j].Rectangle, WrappedRectangles[m].Rectangle);
                             ggg = Math.Max(force.X + gamma[j], ggg);
                         }
@@ -255,6 +265,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 // and redefine left side
                 for (int m = i; m <= k; ++m)
                 {
+                    ThrowIfCancellationRequested();
+
                     gamma[m] = g;
                     RectangleWrapper<TObject> r = WrappedRectangles[m];
                     x[m] = r.Rectangle.Left + g;
@@ -271,6 +283,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 {
                     for (int j = k + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         Vector force = Force(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
                         if (force.X > delta)
                         {
@@ -286,6 +300,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
             double cost = 0;
             for (i = 0; i < n; ++i)
             {
+                ThrowIfCancellationRequested();
+
                 RectangleWrapper<TObject> r = WrappedRectangles[i];
                 double oldPos = r.Rectangle.Left;
                 double newPos = x[i];
@@ -339,6 +355,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 RectangleWrapper<TObject> u = WrappedRectangles[i];
                 for (int j = i; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
                     if (NearEqual(u.CenterY, v.CenterY))
                     {
@@ -357,6 +375,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 {
                     for (int j = k + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         Vector force = Force2(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
                         if (force.Y > delta)
                         {
@@ -367,6 +387,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
 
                 for (int j = k + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> r = WrappedRectangles[j];
                     r.Rectangle.Offset(0, delta);
                 }
@@ -396,6 +418,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 int k = i;
                 for (int j = i + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
                     if (NearEqual(u.CenterY, v.CenterY))
                     {
@@ -416,6 +440,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                         double ggg = 0;
                         for (int j = 0; j < i; ++j)
                         {
+                            ThrowIfCancellationRequested();
+
                             Vector f = Force2(WrappedRectangles[j].Rectangle, WrappedRectangles[m].Rectangle);
                             ggg = Math.Max(f.Y + gamma[j], ggg);
                         }
@@ -430,6 +456,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
 
                 for (int m = i; m <= k; ++m)
                 {
+                    ThrowIfCancellationRequested();
+
                     gamma[m] = g;
                     RectangleWrapper<TObject> r = WrappedRectangles[m];
                     y[m] = r.Rectangle.Top + g;
@@ -445,6 +473,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 {
                     for (int j = k + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         Vector force = Force(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
                         if (force.Y > delta)
                         {

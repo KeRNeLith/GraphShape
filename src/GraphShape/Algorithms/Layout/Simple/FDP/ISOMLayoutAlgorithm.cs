@@ -93,6 +93,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             for (int epoch = 0; epoch < Parameters.MaxEpochs; ++epoch)
             {
+                ThrowIfCancellationRequested();
+
                 Adjust();
 
                 // Update Parameters
@@ -159,6 +161,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             while (_queue.Count > 0)
             {
+                ThrowIfCancellationRequested();
+
                 TVertex current = _queue.Dequeue();
                 ISOMData currentData = _isomDataDict[current];
                 Point position = VerticesPositions[current];
@@ -175,6 +179,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                     // Also consider neighbors
                     foreach (TVertex neighbor in VisitedGraph.GetNeighbors(current))
                     {
+                        ThrowIfCancellationRequested();
+
                         ISOMData neighborData = _isomDataDict[neighbor];
                         if (!neighborData.Visited)
                         {

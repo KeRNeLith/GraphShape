@@ -122,6 +122,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                     _step > 0 || _phase == 2 && !AllTreesGrown;
                     --_step)
                 {
+                    ThrowIfCancellationRequested();
+
                     ApplySpringForces();
                     ApplyRepulsionForces();
 
@@ -331,6 +333,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
                     VertexData uData = _verticesData[uVertex];
                     foreach (TVertex vVertex in Levels[i].Where(v => !checkedVertices.Contains(v)))
                     {
+                        ThrowIfCancellationRequested();
+
                         VertexData vData = _verticesData[vVertex];
 
                         if (uData.Parent != vData.Parent)
@@ -368,6 +372,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             {
                 foreach (TVertex uVertex in Levels[i])
                 {
+                    ThrowIfCancellationRequested();
+
                     VertexData uData = _verticesData[uVertex];
                     Point center = uData.Parent.InnerCanvasCenter;
 
@@ -396,6 +402,8 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
             {
                 foreach (TVertex uVertex in Levels[i])
                 {
+                    ThrowIfCancellationRequested();
+
                     VertexData uData = _verticesData[uVertex];
                     uData.ApplyForce(_temperature * Math.Max(1, _step) / 100.0 * Parameters.DisplacementLimitMultiplier);
                 }

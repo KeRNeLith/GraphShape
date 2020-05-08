@@ -14,6 +14,21 @@ namespace GraphShape.Algorithms
 
         private int _cancelling;
 
+        /// <summary>
+        /// Gets a value indicating if a cancellation request is pending.
+        /// </summary>
+        protected bool IsCancelling => _cancelling > 0;
+
+        /// <summary>
+        /// Throws if a cancellation of the algorithm was requested.
+        /// </summary>
+        /// <exception cref="OperationCanceledException">If the algorithm <see cref="IsCancelling"/>.</exception>
+        protected void ThrowIfCancellationRequested()
+        {
+            if (IsCancelling)
+                throw new OperationCanceledException("Algorithm aborted.");
+        }
+
         /// <inheritdoc />
         public object SyncRoot { get; } = new object();
 
@@ -36,18 +51,18 @@ namespace GraphShape.Algorithms
         {
             BeginComputation();
 
-            Initialize();
-
             try
             {
+                Initialize();
+
                 InternalCompute();
             }
             finally
             {
                 Clean();
-            }
 
-            EndComputation();
+                EndComputation();
+            }
         }
 
         /// <inheritdoc />

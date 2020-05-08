@@ -102,6 +102,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
                 int i = 0;
                 foreach (TVertex vertex in VisitedGraph.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     Size size = _verticesSizes[vertex];
                     halfSize[i] = Math.Sqrt(size.Width * size.Width + size.Height * size.Height) * 0.5;
                     perimeter += halfSize[i] * 2;
@@ -116,6 +118,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
                 i = 0;
                 foreach (TVertex vertex in VisitedGraph.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
                     angle += a;
                     if (ReportOnIterationEndNeeded)
@@ -138,6 +142,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Circular
                 i = 0;
                 foreach (TVertex vertex in VisitedGraph.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     a = Math.Sin(halfSize[i] * 0.5 / radius) * 2;
                     angle += a;
                     VerticesPositions[vertex] = new Point(

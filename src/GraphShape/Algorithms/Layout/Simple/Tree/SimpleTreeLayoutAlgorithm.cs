@@ -117,12 +117,20 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             {
                 case SpanningTreeGeneration.BFS:
                     var bfs = new BreadthFirstSearchAlgorithm<TVertex, TEdge>(VisitedGraph, vb, new Dictionary<TVertex, GraphColor>());
-                    bfs.TreeEdge += e => _spanningTree.AddEdge(new Edge<TVertex>(e.Source, e.Target));
+                    bfs.TreeEdge += e =>
+                    {
+                        ThrowIfCancellationRequested();
+                        _spanningTree.AddEdge(new Edge<TVertex>(e.Source, e.Target));
+                    };
                     bfs.Compute();
                     break;
                 case SpanningTreeGeneration.DFS:
                     var dfs = new DepthFirstSearchAlgorithm<TVertex, TEdge>(VisitedGraph);
-                    dfs.TreeEdge += e => _spanningTree.AddEdge(new Edge<TVertex>(e.Source, e.Target));
+                    dfs.TreeEdge += e =>
+                    {
+                        ThrowIfCancellationRequested();
+                        _spanningTree.AddEdge(new Edge<TVertex>(e.Source, e.Target));
+                    };
                     dfs.Compute();
                     break;
             }
@@ -199,6 +207,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
             {
                 foreach (TVertex vertex in layer.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     Size size = _verticesSizes[vertex];
                     VertexData d = _data[vertex];
                     if (d.Parent != null)

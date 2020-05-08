@@ -120,6 +120,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
 
             for (int iteration = 0; iteration < Parameters.MaxIterations; ++iteration)
             {
+                ThrowIfCancellationRequested();
+
                 if (!RunIteration(n))
                     return;
 
@@ -138,6 +140,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             // Get the 'p' with the max delta_m
             for (int i = 0; i < n; ++i)
             {
+                ThrowIfCancellationRequested();
+
                 double deltaM = CalculateEnergyGradient(i);
                 if (maxDeltaM < deltaM)
                 {
@@ -169,6 +173,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 {
                     for (int j = i + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         double exchangedEnergy = CalculateEnergyIfExchanged(i, j);
                         if (energy > exchangedEnergy)
                         {

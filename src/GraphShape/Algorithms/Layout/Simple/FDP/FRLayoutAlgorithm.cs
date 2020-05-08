@@ -82,11 +82,11 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
             double minimalTemperature = Parameters.InitialTemperature * 0.01;
             _temperature = Parameters.InitialTemperature;
             for (int i = 0;
-                i < Parameters.MaxIterations
-                && _temperature > minimalTemperature
-                && State != QuikGraph.Algorithms.ComputationState.PendingAbortion;
+                i < Parameters.MaxIterations && _temperature > minimalTemperature;
                 ++i)
             {
+                ThrowIfCancellationRequested();
+
                 IterateOne();
 
                 // Make some cooling
@@ -128,6 +128,8 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
                 Point posV = VerticesPositions[v];
                 foreach (TVertex u in VisitedGraph.Vertices)
                 {
+                    ThrowIfCancellationRequested();
+
                     // Doesn't repulse itself
                     if (EqualityComparer<TVertex>.Default.Equals(u, v))
                         continue;

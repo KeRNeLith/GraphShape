@@ -62,6 +62,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 int k = i;
                 for (int j = i + 1; j < n; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[j];
                     if (NearEqual(u.CenterX, v.CenterX))
                     {
@@ -77,6 +79,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 double g = 0;
                 for (int z = i + 1; z <= k; ++z)
                 {
+                    ThrowIfCancellationRequested();
+
                     RectangleWrapper<TObject> v = WrappedRectangles[z];
                     v.Rectangle.X += (z - i) * 0.0001;
                 }
@@ -89,6 +93,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                         double ggg = 0;
                         for (int j = 0; j < i; ++j)
                         {
+                            ThrowIfCancellationRequested();
+
                             Vector force = Force(WrappedRectangles[j].Rectangle, WrappedRectangles[m].Rectangle);
                             ggg = Math.Max(force.X + gamma[j], ggg);
                         }
@@ -103,6 +109,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 // and redefine left side
                 for (int m = i; m <= k; ++m)
                 {
+                    ThrowIfCancellationRequested();
+
                     gamma[m] = g;
                     RectangleWrapper<TObject> r = WrappedRectangles[m];
                     x[m] = r.Rectangle.Left + g;
@@ -119,6 +127,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 {
                     for (int j = k + 1; j < n; ++j)
                     {
+                        ThrowIfCancellationRequested();
+
                         Vector force = Force(WrappedRectangles[m].Rectangle, WrappedRectangles[j].Rectangle);
                         if (force.X > delta)
                         {
@@ -142,6 +152,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
                 double diff = oldPos - newPos;
                 cost += diff * diff;
             }
+
             return cost;
         }
     }

@@ -45,6 +45,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             bool wasPhase2;
             do
             {
+                ThrowIfCancellationRequested();
+
                 prevCrossings = crossings;
                 if (phase == 1)
                     --phase1IterationLeft;
@@ -318,6 +320,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 int count = 0;
                 foreach (SugiEdge edge in edges)
                 {
+                    ThrowIfCancellationRequested();
+
                     SugiVertex otherVertex = edge.GetOtherVertex(vertex);
                     vertex.MeasuredPosition += otherVertex.Position;
                     ++count;
@@ -403,7 +407,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             return newAlternatingLayer;
         }
 
-        private static void PlaceQVertices(
+        private void PlaceQVertices(
             [NotNull, ItemNotNull] AlternatingLayer alternatingLayer,
             [NotNull, ItemNotNull] IEnumerable<SugiVertex> nextLayer,
             bool straightSweep)
@@ -429,6 +433,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 for (int j = 0; j < segmentContainer.Count; ++j)
                 {
+                    ThrowIfCancellationRequested();
+
                     Segment segment = segmentContainer[j];
                     SugiVertex vertex = straightSweep ? segment.QVertex : segment.PVertex;
                     if (!qVertices.Contains(vertex))
@@ -449,7 +455,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
         [Pure]
         [NotNull, ItemNotNull]
-        private static IList<SugiVertex> FindVerticesWithSameMeasure(
+        private List<SugiVertex> FindVerticesWithSameMeasure(
             [NotNull, ItemNotNull] AlternatingLayer nextAlternatingLayer,
             bool straightSweep,
             [NotNull] out IList<int> ranges,
@@ -466,6 +472,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
             ranges = new List<int>();
             for (startIndex = 0; startIndex < vertices.Length; startIndex = endIndex + 1)
             {
+                ThrowIfCancellationRequested();
+
                 endIndex = FindNearVertexEndIndex(startIndex, vertices);
 
                 if (endIndex > startIndex)
@@ -473,6 +481,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                     int rangeLength = 0;
                     for (int i = startIndex; i <= endIndex; ++i)
                     {
+                        ThrowIfCancellationRequested();
+
                         if (vertices[i].Type == ignorableVertexType || vertices[i].DoNotOptimize)
                             continue;
 
@@ -936,7 +946,7 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         }
 
         [Pure]
-        private static int BiLayerCrossCount(
+        private int BiLayerCrossCount(
             [CanBeNull, ItemNotNull] IEnumerable<CrossCounterPair> pairs,
             int firstLayerVertexCount,
             int secondLayerVertexCount)
@@ -978,6 +988,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                 foreach (CrossCounterPair pair in list)
                 {
+                    ThrowIfCancellationRequested();
+
                     // Get the radix where the pair should be inserted
                     r = radixByFirst[pair.First];
                     if (r is null)
@@ -1024,6 +1036,8 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
 
                     while (index > 0)
                     {
+                        ThrowIfCancellationRequested();
+
                         if (index % 2 > 0)
                         {
                             crossCount += tree[index + 1].Accumulator * pair.Weight;
