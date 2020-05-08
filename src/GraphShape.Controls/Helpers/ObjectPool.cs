@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using GraphShape.Controls;
 using JetBrains.Annotations;
 
@@ -10,7 +10,7 @@ namespace GraphShape.Helpers
     /// </summary>
     /// <typeparam name="T">Pool object type.</typeparam>
     public class ObjectPool<T>
-        where T : class, IPoolObject, new()
+        where T : IPoolObject, new()
     {
         private const int PoolSize = 1024;
 
@@ -66,7 +66,7 @@ namespace GraphShape.Helpers
         private T CreateObject()
         {
             if (_activePoolObjectCount >= _initialPoolSize && !_allowPoolGrowth)
-                return null;
+                return default(T);
 
             var newObject = new T();
             newObject.Disposing += OnPoolObjectDisposing;
@@ -82,8 +82,7 @@ namespace GraphShape.Helpers
         /// <param name="poolObject">The object which should be added to the pool.</param>
         private void Add([NotNull] T poolObject)
         {
-            if (poolObject is null)
-                throw new ArgumentNullException(nameof(poolObject));
+            Debug.Assert(poolObject != null);
 
             lock (_lock)
             {
@@ -110,6 +109,7 @@ namespace GraphShape.Helpers
                 else
                 {
                     poolObject.Terminate();
+                    poolObject.Disposing -= OnPoolObjectDisposing;
                 }
             }
         }
@@ -130,7 +130,7 @@ namespace GraphShape.Helpers
                 if (_pool.Count == 0)
                 {
                     if (!_allowPoolGrowth)
-                        return null;
+                        return default(T);
 
                     T newObject = CreateObject();
                     _pool.Clear();

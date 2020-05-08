@@ -38,5 +38,18 @@ namespace GraphShape.Controls.Extensions
         {
             return new Point(point.X, point.Y);
         }
+
+        /// <summary>
+        /// Converts a set of <see cref="System.Windows.Point"/>s into a set of <see cref="Point"/>s.
+        /// </summary>
+        [Pure]
+        [NotNull]
+        public static IEnumerable<Point> ToGraphShapePoints([NotNull] this IEnumerable<System.Windows.Point> points)
+        {
+            foreach (System.Windows.Point point in points)
+            {
+                yield return new Point(point.X, point.Y);
+            }
+        }
     }
 }
