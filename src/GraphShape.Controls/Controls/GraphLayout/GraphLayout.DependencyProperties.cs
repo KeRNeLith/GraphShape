@@ -742,6 +742,30 @@ namespace GraphShape.Controls
         private static void OnLayoutModePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
             var graphLayout = (GraphLayout<TVertex, TEdge, TGraph>)d;
+
+            // Check if we need to register or unregister watches on graph changes events
+            if (graphLayout.Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
+            {
+                var oldMode = (LayoutMode)args.OldValue; 
+                var newMode = (LayoutMode)args.NewValue;
+
+                bool wasCompoundMode = IsCompoundModeInternal(oldMode, graphLayout.Graph);
+                bool isCompoundMode = IsCompoundModeInternal(newMode, graphLayout.Graph);
+
+                // Update only if mode changed
+                if (wasCompoundMode != isCompoundMode)
+                {
+                    if (!wasCompoundMode)
+                    {
+                        graphLayout.UnregisterMutableGraphHandlers(mutableGraph);
+                    }
+                    else
+                    {
+                        graphLayout.RegisterMutableGraphHandlers(mutableGraph);
+                    }
+                }
+            }
+
             graphLayout.OnRelayoutInduction(false);
         }
 
@@ -982,14 +1006,45 @@ namespace GraphShape.Controls
         protected static void OnGraphPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
             var graphLayout = (GraphLayout<TVertex, TEdge, TGraph>)d;
-            var graph = args.NewValue as TGraph;
-            if (graph is null)
+
+            if (args.OldValue is TGraph oldGraph
+                && !IsCompoundModeInternal(graphLayout.LayoutMode, oldGraph)
+                && oldGraph is IMutableBidirectionalGraph<TVertex, TEdge> oldMutableGraph)
+            {
+                // Unsubscribe to events of the old graph mutations
+                graphLayout.UnregisterMutableGraphHandlers(oldMutableGraph);
+            }
+
+            var newGraph = args.NewValue as TGraph;
+            if (newGraph is null)
             {
                 graphLayout.LayoutMode = LayoutMode.Automatic;
                 return;
             }
 
+            if (!graphLayout.IsCompoundMode && newGraph is IMutableBidirectionalGraph<TVertex, TEdge> newMutableGraph)
+            {
+                // Subscribe to events of the new graph mutations
+                graphLayout.RegisterMutableGraphHandlers(newMutableGraph);
+            }
+
             graphLayout.OnRelayoutInduction(true);
+        }
+
+        private void RegisterMutableGraphHandlers([NotNull] IMutableBidirectionalGraph<TVertex, TEdge> graph)
+        {
+            graph.VertexAdded += OnMutableGraphVertexAdded;
+            graph.VertexRemoved += OnMutableGraphVertexRemoved;
+            graph.EdgeAdded += OnMutableGraphEdgeAdded;
+            graph.EdgeRemoved += OnMutableGraphEdgeRemoved;
+        }
+
+        private void UnregisterMutableGraphHandlers([NotNull] IMutableBidirectionalGraph<TVertex, TEdge> graph)
+        {
+            graph.VertexAdded -= OnMutableGraphVertexAdded;
+            graph.VertexRemoved -= OnMutableGraphVertexRemoved;
+            graph.EdgeAdded -= OnMutableGraphEdgeAdded;
+            graph.EdgeRemoved -= OnMutableGraphEdgeRemoved;
         }
 
         #endregion

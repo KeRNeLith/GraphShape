@@ -174,23 +174,35 @@ namespace GraphShape.Controls
             }
         }
 
+        [Pure]
+        private static Algorithms.Layout.LayoutMode GetLayoutMode(LayoutMode mode, [CanBeNull] TGraph graph)
+        {
+            if (mode == LayoutMode.Compound || mode == LayoutMode.Automatic && graph is ICompoundGraph<TVertex, TEdge>)
+                return Algorithms.Layout.LayoutMode.Compound;
+            return Algorithms.Layout.LayoutMode.Simple;
+        }
+
+        [Pure]
+        private static bool IsCompoundModeInternal(Algorithms.Layout.LayoutMode mode)
+        {
+            return mode == Algorithms.Layout.LayoutMode.Compound;
+        }
+
+        [Pure]
+        private static bool IsCompoundModeInternal(LayoutMode mode, [CanBeNull] TGraph graph)
+        {
+            return IsCompoundModeInternal(GetLayoutMode(mode, graph));
+        }
+
         /// <summary>
         /// Current <see cref="Algorithms.Layout.LayoutMode"/>.
         /// </summary>
-        protected Algorithms.Layout.LayoutMode ActualLayoutMode
-        {
-            get
-            {
-                if (LayoutMode == LayoutMode.Compound || LayoutMode == LayoutMode.Automatic && Graph is ICompoundGraph<TVertex, TEdge>)
-                    return Algorithms.Layout.LayoutMode.Compound;
-                return Algorithms.Layout.LayoutMode.Simple;
-            }
-        }
+        protected Algorithms.Layout.LayoutMode ActualLayoutMode => GetLayoutMode(LayoutMode, Graph);
 
         /// <summary>
         /// Indicates if <see cref="ActualLayoutMode"/> is a <see cref="Algorithms.Layout.LayoutMode.Compound"/> mode.
         /// </summary>
-        protected bool IsCompoundMode => ActualLayoutMode == Algorithms.Layout.LayoutMode.Compound;
+        protected bool IsCompoundMode => IsCompoundModeInternal(ActualLayoutMode);
 
         /// <summary>
         /// Indicates if layout can be done.
@@ -364,6 +376,8 @@ namespace GraphShape.Controls
                 LayoutAlgorithmType,
                 layoutContext,
                 LayoutParameters);
+            if (LayoutAlgorithm is null)
+                return;
 
             if (AsyncCompute)
             {
