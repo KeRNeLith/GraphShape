@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
+using System.Windows.Threading;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Highlight;
 using GraphShape.Algorithms.Layout;
@@ -135,6 +136,25 @@ namespace GraphShape.Controls
                 return Sizes;
             }
         }
+
+        #region Helpers
+
+        private void RunOnDispatcherThread([NotNull] Action action)
+        {
+            Debug.Assert(action != null);
+
+            Dispatcher dispatcher = Application.Current?.Dispatcher ?? Dispatcher;
+            if (dispatcher.CheckAccess())
+            {
+                action(); // Already on UI thread => direct call
+            }
+            else
+            {
+                dispatcher.Invoke(action);
+            }
+        }
+
+        #endregion
 
         #region Layout
 
@@ -386,9 +406,9 @@ namespace GraphShape.Controls
                     argument.Algorithm.Started += OnLayoutAlgorithmStarted;
 
                     if (argument.ShowAllStates)
-                        argument.Algorithm.IterationEnded += OnAsynchronousLayoutAlgorithmIterationEnded;
+                        argument.Algorithm.IterationEnded += OnLayoutAlgorithmIterationEnded;
                     else
-                        argument.Algorithm.ProgressChanged += OnAsynchronousLayoutAlgorithmProgress;
+                        argument.Algorithm.ProgressChanged += OnLayoutAlgorithmProgress;
 
                     argument.Algorithm.Finished += OnLayoutAlgorithmFinished;
 
@@ -397,15 +417,20 @@ namespace GraphShape.Controls
                         argument.Algorithm.Finished -= OnLayoutAlgorithmFinished;
 
                         if (argument.ShowAllStates)
-                            argument.Algorithm.IterationEnded -= OnAsynchronousLayoutAlgorithmIterationEnded;
+                            argument.Algorithm.IterationEnded -= OnLayoutAlgorithmIterationEnded;
                         else
-                            argument.Algorithm.ProgressChanged -= OnAsynchronousLayoutAlgorithmProgress;
-                        
+                            argument.Algorithm.ProgressChanged -= OnLayoutAlgorithmProgress;
+
                         argument.Algorithm.Started -= OnLayoutAlgorithmStarted;
                     });
                 }
 
-                void OnAsynchronousLayoutAlgorithmIterationEnded(object _, ILayoutIterationEventArgs<TVertex> iterationsArgs)
+                void OnLayoutAlgorithmStarted(object s, EventArgs _)
+                {
+                    RunOnDispatcherThread(OnLayoutStarted);
+                }
+
+                void OnLayoutAlgorithmIterationEnded(object _, ILayoutIterationEventArgs<TVertex> iterationsArgs)
                 {
                     if (iterationsArgs != null)
                     {
@@ -414,9 +439,14 @@ namespace GraphShape.Controls
                     }
                 }
 
-                void OnAsynchronousLayoutAlgorithmProgress(object _, double percent)
+                void OnLayoutAlgorithmProgress(object _, double percent)
                 {
                     worker.ReportProgress((int) Math.Round(percent));
+                }
+
+                void OnLayoutAlgorithmFinished(object s, EventArgs _)
+                {
+                    RunOnDispatcherThread(OnLayoutFinished);
                 }
 
                 #endregion
@@ -448,43 +478,41 @@ namespace GraphShape.Controls
                 layoutAlgorithm.Compute();
             }
 
-            #region Local function
+            #region Local functions
 
             IDisposable AlgorithmScope(ILayoutAlgorithm<TVertex, TEdge, TGraph> algorithm)
             {
                 algorithm.Started += OnLayoutAlgorithmStarted;
                 bool showAllStates = ShowAllStates;
                 if (showAllStates)
-                    algorithm.IterationEnded += OnSynchronousLayoutAlgorithmIterationEnded;
+                    algorithm.IterationEnded += OnLayoutAlgorithmIterationEnded;
                 algorithm.Finished += OnLayoutAlgorithmFinished;
 
                 return DisposableHelpers.Finally(() =>
                 {
                     LayoutAlgorithm.Finished -= OnLayoutAlgorithmFinished;
                     if (showAllStates)
-                        LayoutAlgorithm.IterationEnded -= OnSynchronousLayoutAlgorithmIterationEnded;
+                        LayoutAlgorithm.IterationEnded -= OnLayoutAlgorithmIterationEnded;
                     LayoutAlgorithm.Started -= OnLayoutAlgorithmStarted;
                 });
             }
 
+            void OnLayoutAlgorithmStarted(object sender, EventArgs args)
+            {
+                OnLayoutStarted();
+            }
+
+            void OnLayoutAlgorithmIterationEnded(object sender, ILayoutIterationEventArgs<TVertex> args)
+            {
+                OnLayoutIterationFinished(args);
+            }
+
+            void OnLayoutAlgorithmFinished(object sender, EventArgs args)
+            {
+                OnLayoutFinished();
+            }
+
             #endregion
-        }
-
-        private void OnLayoutAlgorithmStarted([NotNull] object sender, [NotNull] EventArgs args)
-        {
-            OnLayoutStarted();
-        }
-
-        private void OnSynchronousLayoutAlgorithmIterationEnded(
-            [NotNull] object sender,
-            [CanBeNull] ILayoutIterationEventArgs<TVertex> args)
-        {
-            OnLayoutIterationFinished(args);
-        }
-
-        private void OnLayoutAlgorithmFinished([NotNull] object sender, [NotNull] EventArgs args)
-        {
-            OnLayoutFinished();
         }
 
         [Pure]
