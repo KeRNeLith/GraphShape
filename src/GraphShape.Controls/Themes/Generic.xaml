@@ -6,7 +6,6 @@
     xmlns:converters="clr-namespace:GraphShape.Controls.Converters">
 
     <converters:EdgeRouteToPathConverter x:Key="RouteToPathConverter" />
-    <converters:PointArrayToString x:Key="PointsToStringConverter" />
 
     <!-- Default edge control template -->
     <Style TargetType="{x:Type controls:EdgeControl}">
