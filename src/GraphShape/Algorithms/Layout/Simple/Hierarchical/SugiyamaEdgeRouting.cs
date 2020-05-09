@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+﻿namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Enumeration of possible edge routing for Sugiyama layout algorithm.

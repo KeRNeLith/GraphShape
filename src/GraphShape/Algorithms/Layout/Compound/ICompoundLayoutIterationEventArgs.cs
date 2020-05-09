@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace GraphShape.Algorithms.Layout.Compound
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Represents a compound layout iteration event arguments.

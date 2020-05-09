@@ -1,5 +1,5 @@
 ﻿using System;
-using GraphShape.Algorithms.Layout.Simple.Tree;
+using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
 namespace GraphShape.Tests.Algorithms.Layout

@@ -1,4 +1,4 @@
-﻿using GraphShape.Algorithms.Layout.Simple.Circular;
+﻿using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
 namespace GraphShape.Tests.Algorithms.Layout

@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Compound
+﻿namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Enumeration of possible vertex inner layout type.

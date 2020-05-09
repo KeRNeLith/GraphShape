@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using QuikGraph;
 using JetBrains.Annotations;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Fruchterman-Reingold layout algorithm.

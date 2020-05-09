@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GraphShape.Algorithms.Layout.Simple.FDP;
+using GraphShape.Algorithms.Layout;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;

@@ -4,7 +4,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Compound.FDP
+namespace GraphShape.Algorithms.Layout
 {
     public partial class CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

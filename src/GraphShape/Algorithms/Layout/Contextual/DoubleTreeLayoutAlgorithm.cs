@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using QuikGraph;
-using GraphShape.Algorithms.Layout.Simple.Tree;
 using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.Layout.Contextual

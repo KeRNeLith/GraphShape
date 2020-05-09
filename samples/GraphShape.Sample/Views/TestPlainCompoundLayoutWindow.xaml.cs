@@ -9,8 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using GraphShape.Algorithms.Layout.Compound;
-using GraphShape.Algorithms.Layout.Compound.FDP;
+using GraphShape.Algorithms.Layout;
 using JetBrains.Annotations;
 using QuikGraph;
 

@@ -10,6 +10,7 @@ namespace GraphShape
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
+    [Serializable]
     public class SoftMutableHierarchicalGraph<TVertex, TEdge>
         : HierarchicalGraph<TVertex, TEdge>
         , ISoftMutableGraph<TVertex, TEdge>

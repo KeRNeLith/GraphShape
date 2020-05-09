@@ -4,7 +4,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.Circular
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Circular layout algorithm.

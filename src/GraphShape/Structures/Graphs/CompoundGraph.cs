@@ -12,6 +12,7 @@ namespace GraphShape
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
+    [Serializable]
     public class CompoundGraph<TVertex, TEdge> : BidirectionalGraph<TVertex, TEdge>, IMutableCompoundGraph<TVertex, TEdge>
         where TEdge : IEdge<TVertex>
     {

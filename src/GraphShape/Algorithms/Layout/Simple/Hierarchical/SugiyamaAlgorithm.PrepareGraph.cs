@@ -4,7 +4,7 @@ using QuikGraph;
 using QuikGraph.Algorithms;
 using QuikGraph.Algorithms.Search;
 
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout
 {
     public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

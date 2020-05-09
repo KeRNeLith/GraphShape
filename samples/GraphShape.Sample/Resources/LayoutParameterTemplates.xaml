@@ -3,10 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:layout="clr-namespace:GraphShape.Algorithms.Layout;assembly=GraphShape"
-    xmlns:overlapRemoval="clr-namespace:GraphShape.Algorithms.OverlapRemoval;assembly=GraphShape"
-    xmlns:simpleFdpLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.FDP;assembly=GraphShape"
-    xmlns:simpleHierarchicalLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.Hierarchical;assembly=GraphShape"
-    xmlns:simpleTreeLayout="clr-namespace:GraphShape.Algorithms.Layout.Simple.Tree;assembly=GraphShape">
+    xmlns:overlapRemoval="clr-namespace:GraphShape.Algorithms.OverlapRemoval;assembly=GraphShape">
 
     <ObjectDataProvider
         MethodName="GetValues"
@@ -22,7 +19,7 @@
         ObjectType="{x:Type system:Enum}"
         x:Key="TreeGenerationTypeEnum">
         <ObjectDataProvider.MethodParameters>
-            <x:Type TypeName="simpleTreeLayout:SpanningTreeGeneration" />
+            <x:Type TypeName="layout:SpanningTreeGeneration" />
         </ObjectDataProvider.MethodParameters>
     </ObjectDataProvider>
 
@@ -31,7 +28,7 @@
         ObjectType="{x:Type system:Enum}"
         x:Key="SugiyamaEdgeRoutingEnum">
         <ObjectDataProvider.MethodParameters>
-            <x:Type TypeName="simpleHierarchicalLayout:SugiyamaEdgeRouting" />
+            <x:Type TypeName="layout:SugiyamaEdgeRouting" />
         </ObjectDataProvider.MethodParameters>
     </ObjectDataProvider>
 
@@ -41,7 +38,7 @@
     </DataTemplate>
 
     <!-- SimpleTreeLayoutParameters -->
-    <DataTemplate DataType="{x:Type simpleTreeLayout:SimpleTreeLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:SimpleTreeLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -109,7 +106,7 @@
     </DataTemplate>
 
     <!-- Fruchterman-Reingold DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleFdpLayout:FreeFRLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:FreeFRLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -179,7 +176,7 @@
     </DataTemplate>
 
     <!-- Fruchterman-Reingold (Bounded) DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleFdpLayout:BoundedFRLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:BoundedFRLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -292,7 +289,7 @@
     </DataTemplate>
 
     <!-- Kamada-Kawai DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleFdpLayout:KKLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:KKLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -382,7 +379,7 @@
     </DataTemplate>
 
     <!-- Meyer's ISOM DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleFdpLayout:ISOMLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:ISOMLayoutParameters}">
         <StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -531,7 +528,7 @@
     </DataTemplate>
 
     <!-- LinLog DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleFdpLayout:LinLogLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:LinLogLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -607,7 +604,7 @@
     </DataTemplate>
 
     <!-- Sugiyama DataTemplate -->
-    <DataTemplate DataType="{x:Type simpleHierarchicalLayout:SugiyamaLayoutParameters}">
+    <DataTemplate DataType="{x:Type layout:SugiyamaLayoutParameters}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

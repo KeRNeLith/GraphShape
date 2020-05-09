@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using QuikGraph;
 
 namespace GraphShape
@@ -7,6 +8,7 @@ namespace GraphShape
     /// Edge implementation with a <see cref="Type"/>.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
+    [Serializable]
     public class TypedEdge<TVertex> : Edge<TVertex>, ITypedEdge<TVertex>
     {
         /// <inheritdoc />

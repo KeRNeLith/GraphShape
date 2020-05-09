@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using GraphShape.Controls;
 using JetBrains.Annotations;
 
-namespace GraphShape.Helpers
+namespace GraphShape.Controls
 {
     /// <summary>
     /// Pool of objects.

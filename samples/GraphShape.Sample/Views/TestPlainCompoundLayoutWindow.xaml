@@ -6,11 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:layout="clr-namespace:GraphShape.Algorithms.Layout;assembly=GraphShape"
     xmlns:wpfControls="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
-    xmlns:fdp="clr-namespace:GraphShape.Algorithms.Layout.Compound.FDP;assembly=GraphShape"
     Title="Plain Compound Layout"
     WindowState="Maximized"
-    d:DataContext="{d:DesignInstance fdp:CompoundFDPLayoutParameters}">
+    d:DataContext="{d:DesignInstance layout:CompoundFDPLayoutParameters}">
     <DockPanel>
         <StackPanel
             DockPanel.Dock="Top"

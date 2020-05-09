@@ -4,7 +4,7 @@ using QuikGraph;
 using GraphShape.Algorithms.EdgeRouting;
 using JetBrains.Annotations;
 
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Sugiyama layout algorithm.

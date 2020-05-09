@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GraphShape.Algorithms.Layout.Simple.FDP;
+using GraphShape.Algorithms.Layout;
 using NUnit.Framework;
 
 namespace GraphShape.Tests.Algorithms.Layout

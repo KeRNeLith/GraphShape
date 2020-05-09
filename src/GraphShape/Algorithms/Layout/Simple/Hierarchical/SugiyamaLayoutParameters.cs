@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Sugiyama layout algorithm parameters.

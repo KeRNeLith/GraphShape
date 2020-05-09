@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using GraphShape.Controls.Animations;
+using GraphShape.Controls.Extensions;
 using JetBrains.Annotations;
 
 namespace GraphShape.Controls

@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Tree
+﻿namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Enumeration of possible spanning tree generation mode.

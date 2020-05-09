@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using QuikGraph;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// LinLog layout algorithm.

@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Simple.Circular
+﻿namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Circular layout algorithm parameters.

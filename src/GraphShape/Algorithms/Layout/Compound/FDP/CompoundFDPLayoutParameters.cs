@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Compound.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Compound FDP layout algorithm parameters.

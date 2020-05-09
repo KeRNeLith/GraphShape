@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using GraphShape.Helpers;
 using NUnit.Framework;
 
 namespace GraphShape.Controls.Tests

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.Tree
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Balloon tree layout algorithm.

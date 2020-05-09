@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using GraphShape.Utils;
 using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Fruchterman-Reingold layout algorithm parameters (FDP).

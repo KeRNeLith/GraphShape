@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GraphShape.Algorithms.Layout.Compound;
-using GraphShape.Algorithms.Layout.Compound.FDP;
+using GraphShape.Algorithms.Layout;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;

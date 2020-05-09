@@ -5,7 +5,7 @@ using GraphShape.Utils;
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Inverted Self-Organizing Map (ISOM) layout algorithm.

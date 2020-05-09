@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout
 {
     public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

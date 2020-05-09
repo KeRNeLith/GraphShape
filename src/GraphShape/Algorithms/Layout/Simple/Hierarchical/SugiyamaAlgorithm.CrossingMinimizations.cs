@@ -7,7 +7,7 @@ using GraphShape.Utils;
 using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
+namespace GraphShape.Algorithms.Layout
 {
     public partial class SugiyamaLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class

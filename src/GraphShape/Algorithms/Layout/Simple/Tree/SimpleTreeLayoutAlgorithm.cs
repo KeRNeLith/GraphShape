@@ -7,7 +7,7 @@ using QuikGraph.Algorithms.Search;
 using QuikGraph.Collections;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.Tree
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Simple tree layout algorithm.

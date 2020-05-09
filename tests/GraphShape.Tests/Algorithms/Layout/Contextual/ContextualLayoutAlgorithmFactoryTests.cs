@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using GraphShape.Algorithms.Layout;
 using GraphShape.Algorithms.Layout.Contextual;
-using GraphShape.Algorithms.Layout.Simple.Tree;
 using GraphShape.Utils;
 using NUnit.Framework;
 using QuikGraph;

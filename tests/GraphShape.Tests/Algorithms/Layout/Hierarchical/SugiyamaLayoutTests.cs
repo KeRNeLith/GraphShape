@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using GraphShape.Algorithms.Layout;
-using GraphShape.Algorithms.Layout.Simple.Hierarchical;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using QuikGraph;

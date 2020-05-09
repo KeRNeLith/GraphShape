@@ -11,6 +11,7 @@ namespace GraphShape
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
     /// <typeparam name="TEdge">Edge type.</typeparam>
+    [Serializable]
     public class HierarchicalGraph<TVertex, TEdge>
         : BidirectionalGraph<TVertex, TEdge>
         , IHierarchicalBidirectionalGraph<TVertex, TEdge>

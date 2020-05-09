@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -7,6 +8,7 @@ namespace GraphShape
     /// Edge implementation with a weight.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
+    [Serializable]
     public class WeightedEdge<TVertex> : Edge<TVertex>
     {
         /// <summary>

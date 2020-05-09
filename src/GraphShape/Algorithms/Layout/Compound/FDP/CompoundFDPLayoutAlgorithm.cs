@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 using QuikGraph;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Compound.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Compound FDP layout algorithm.

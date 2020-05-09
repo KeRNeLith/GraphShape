@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
-using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout;
 using JetBrains.Annotations;
 
 namespace GraphShape.Controls

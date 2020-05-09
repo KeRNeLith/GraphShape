@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     public partial class LinLogLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>

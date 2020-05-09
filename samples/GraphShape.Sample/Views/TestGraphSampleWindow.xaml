@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:localControls="clr-namespace:GraphShape.Sample.Controls"
-    xmlns:isom="clr-namespace:GraphShape.Algorithms.Layout.Simple.FDP;assembly=GraphShape"
+    xmlns:layout="clr-namespace:GraphShape.Algorithms.Layout;assembly=GraphShape"
     xmlns:zoom="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
     Title="Sample Graph"
     Height="600"
@@ -44,7 +44,7 @@
                 ShowAllStates="false"
                 HighlightAlgorithmType="Simple">
                 <localControls:SampleGraphLayout.LayoutParameters>
-                    <isom:ISOMLayoutParameters
+                    <layout:ISOMLayoutParameters
                         Width="1200"
                         Height="1200" />
                 </localControls:SampleGraphLayout.LayoutParameters>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
-namespace GraphShape.Algorithms.Layout.Simple.FDP
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Kamada-Kawai layout algorithm parameters.

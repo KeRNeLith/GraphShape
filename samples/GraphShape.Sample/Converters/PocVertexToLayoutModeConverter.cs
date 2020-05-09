@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using GraphShape.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout;
 
 namespace GraphShape.Sample.Converters
 {

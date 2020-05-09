@@ -9,7 +9,6 @@ using System.Windows.Threading;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Highlight;
 using GraphShape.Algorithms.Layout;
-using GraphShape.Algorithms.Layout.Compound;
 using GraphShape.Algorithms.OverlapRemoval;
 using GraphShape.Controls.Extensions;
 using GraphShape.Controls.Utils;

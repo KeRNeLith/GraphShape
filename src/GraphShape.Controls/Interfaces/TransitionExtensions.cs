@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using JetBrains.Annotations;
 
-namespace GraphShape.Controls
+namespace GraphShape.Controls.Extensions
 {
     /// <summary>
     /// Extensions for <see cref="ITransition"/>.

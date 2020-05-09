@@ -1,12 +1,6 @@
 using System;
 using System.Collections.Generic;
 using GraphShape.Algorithms.Layout;
-using GraphShape.Algorithms.Layout.Compound;
-using GraphShape.Algorithms.Layout.Compound.FDP;
-using GraphShape.Algorithms.Layout.Simple.Circular;
-using GraphShape.Algorithms.Layout.Simple.FDP;
-using GraphShape.Algorithms.Layout.Simple.Hierarchical;
-using GraphShape.Algorithms.Layout.Simple.Tree;
 using GraphShape.Utils;
 using NUnit.Framework;
 using QuikGraph;

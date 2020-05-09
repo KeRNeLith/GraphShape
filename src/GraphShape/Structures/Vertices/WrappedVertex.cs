@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace GraphShape
 {
@@ -6,6 +7,7 @@ namespace GraphShape
     /// Vertex wrapper.
     /// </summary>
     /// <typeparam name="TVertex">Vertex type.</typeparam>
+    [Serializable]
     public class WrappedVertex<TVertex>
     {
         /// <summary>

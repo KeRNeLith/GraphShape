@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Algorithms.Layout.Simple.Tree
+namespace GraphShape.Algorithms.Layout
 {
     public partial class SimpleTreeLayoutAlgorithm<TVertex, TEdge, TGraph>
         where TVertex : class
