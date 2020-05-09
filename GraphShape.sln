@@ -2,11 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{4ED587F9-82E1-470A-8B57-B1B7D8CA4879}"
-	ProjectSection(SolutionItems) = preProject
-		Libraries\RibbonControlsLibrary.dll = Libraries\RibbonControlsLibrary.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{FAAD5B1C-1217-48D6-B1EF-7CAC0440D6A4}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
