@@ -44,15 +44,15 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         // ReSharper disable once NotNullMemberIsNotInitialized, Justification: Initialized in InitParameters
         protected ParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] TParameters oldParameters)
+            [CanBeNull] TParameters parameters)
             : base(visitedGraph, verticesPositions)
         {
-            InitParameters(oldParameters);
+            InitParameters(parameters);
         }
 
         #region Initializers
@@ -65,16 +65,19 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Initializes the parameters (cloning or creating new parameter object with default values).
         /// </summary>
-        /// <param name="oldParameters">Parameters from a previous layout. If it is null, the parameters will be set to the default ones.</param>
-        protected void InitParameters([CanBeNull] TParameters oldParameters)
+        /// <param name="parameters">
+        /// Parameters from a previous layout.
+        /// If it is null, the <see cref="Parameters"/> will be set to the default ones.
+        /// </param>
+        protected void InitParameters([CanBeNull] TParameters parameters)
         {
-            if (oldParameters is null)
+            if (parameters is null)
             {
                 Parameters = DefaultParameters;
             }
             else
             {
-                Parameters = (TParameters)oldParameters.Clone();
+                Parameters = (TParameters)parameters.Clone();
             }
         }
 
@@ -219,12 +222,12 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         protected DefaultParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] TParameters oldParameters)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] TParameters parameters)
+            : base(visitedGraph, verticesPositions, parameters)
         {
         }
 
@@ -262,12 +265,12 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         protected ParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] TParameters oldParameters)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] TParameters parameters)
+            : base(visitedGraph, verticesPositions, parameters)
         {
         }
 

@@ -31,14 +31,14 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         /// <param name="selectedVertex">Root vertex.</param>
         public DoubleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] TVertex selectedVertex,
-            [CanBeNull] DoubleTreeLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, verticesSizes, selectedVertex, oldParameters)
+            [CanBeNull] DoubleTreeLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, selectedVertex, parameters)
         {
         }
 
@@ -48,15 +48,15 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         /// <param name="selectedVertex">Root vertex.</param>
         public DoubleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] TVertex selectedVertex,
-            [CanBeNull] DoubleTreeLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] DoubleTreeLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _root = selectedVertex ?? throw new ArgumentNullException(nameof(selectedVertex));
             if (!visitedGraph.ContainsVertex(selectedVertex))

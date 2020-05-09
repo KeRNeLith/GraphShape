@@ -52,11 +52,11 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// Initializes a new instance of the <see cref="SugiyamaLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
-            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, null, oldParameters)
+            [CanBeNull] SugiyamaLayoutParameters parameters = null)
+            : this(visitedGraph, null, null, parameters)
         {
         }
 
@@ -65,12 +65,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, verticesSizes, oldParameters)
+            [CanBeNull] SugiyamaLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, parameters)
         {
         }
 
@@ -80,13 +80,13 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] SugiyamaLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] SugiyamaLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _verticesSizes = verticesSizes;
         }

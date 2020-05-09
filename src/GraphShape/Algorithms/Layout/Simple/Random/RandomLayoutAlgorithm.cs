@@ -27,13 +27,13 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesTypes">Vertices types.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public RandomLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [CanBeNull] IDictionary<TVertex, RandomVertexType> verticesTypes,
-            [CanBeNull] RandomLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, verticesSizes, verticesTypes, oldParameters)
+            [CanBeNull] RandomLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, verticesTypes, parameters)
         {
         }
 
@@ -44,14 +44,14 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesTypes">Vertices types.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public RandomLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [CanBeNull] IDictionary<TVertex, RandomVertexType> verticesTypes,
-            [CanBeNull] RandomLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] RandomLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _verticesSizes = new Dictionary<TVertex, Size>(verticesSizes);
             _verticesTypes = verticesTypes is null

@@ -187,7 +187,7 @@ namespace GraphShape.Algorithms.Layout
         }
 
         /// <inheritdoc />
-        public ILayoutParameters CreateParameters(string algorithmType, ILayoutParameters oldParameters)
+        public ILayoutParameters CreateParameters(string algorithmType, ILayoutParameters parameters)
         {
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
@@ -195,25 +195,25 @@ namespace GraphShape.Algorithms.Layout
             switch (algorithmType)
             {
                 case CircularAlgorithm:
-                    return oldParameters.CreateNewParameters<CircularLayoutParameters>();
+                    return parameters.CreateNewParameters<CircularLayoutParameters>();
                 case TreeAlgorithm:
-                    return oldParameters.CreateNewParameters<SimpleTreeLayoutParameters>();
+                    return parameters.CreateNewParameters<SimpleTreeLayoutParameters>();
                 case FRAlgorithm:
-                    return oldParameters.CreateNewParameters<FreeFRLayoutParameters>();
+                    return parameters.CreateNewParameters<FreeFRLayoutParameters>();
                 case BoundedFRAlgorithm:
-                    return oldParameters.CreateNewParameters<BoundedFRLayoutParameters>();
+                    return parameters.CreateNewParameters<BoundedFRLayoutParameters>();
                 case KKAlgorithm:
-                    return oldParameters.CreateNewParameters<KKLayoutParameters>();
+                    return parameters.CreateNewParameters<KKLayoutParameters>();
                 case ISOMAlgorithm:
-                    return oldParameters.CreateNewParameters<ISOMLayoutParameters>();
+                    return parameters.CreateNewParameters<ISOMLayoutParameters>();
                 case LinLogAlgorithm:
-                    return oldParameters.CreateNewParameters<LinLogLayoutParameters>();
+                    return parameters.CreateNewParameters<LinLogLayoutParameters>();
                 case SugiyamaAlgorithm:
-                    return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
+                    return parameters.CreateNewParameters<SugiyamaLayoutParameters>();
                 case CompoundFDPAlgorithm:
-                    return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
+                    return parameters.CreateNewParameters<CompoundFDPLayoutParameters>();
                 case RandomAlgorithm:
-                    return oldParameters.CreateNewParameters<RandomLayoutParameters>();
+                    return parameters.CreateNewParameters<RandomLayoutParameters>();
             }
 
             return null;

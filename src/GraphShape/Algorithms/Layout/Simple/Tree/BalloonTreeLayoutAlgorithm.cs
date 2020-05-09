@@ -39,12 +39,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="selectedVertex">Root vertex.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public BalloonTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] TVertex selectedVertex,
-            [CanBeNull] BalloonTreeLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, selectedVertex, oldParameters)
+            [CanBeNull] BalloonTreeLayoutParameters parameters = null)
+            : this(visitedGraph, null, selectedVertex, parameters)
         {
         }
 
@@ -54,13 +54,13 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="selectedVertex">Root vertex.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public BalloonTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] TVertex selectedVertex,
-            [CanBeNull] BalloonTreeLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] BalloonTreeLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             if (selectedVertex == null)
                 throw new ArgumentNullException(nameof(selectedVertex));

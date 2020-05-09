@@ -66,7 +66,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
         }
 
         /// <inheritdoc />
-        public ILayoutParameters CreateParameters(string algorithmType, ILayoutParameters oldParameters)
+        public ILayoutParameters CreateParameters(string algorithmType, ILayoutParameters parameters)
         {
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));
@@ -74,9 +74,9 @@ namespace GraphShape.Algorithms.Layout.Contextual
             switch (algorithmType)
             {
                 case DoubleTreeAlgorithm:
-                    return oldParameters.CreateNewParameters<DoubleTreeLayoutParameters>();
+                    return parameters.CreateNewParameters<DoubleTreeLayoutParameters>();
                 case BalloonTreeAlgorithm:
-                    return oldParameters.CreateNewParameters<BalloonTreeLayoutParameters>();
+                    return parameters.CreateNewParameters<BalloonTreeLayoutParameters>();
             }
 
             return null;

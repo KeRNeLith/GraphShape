@@ -54,8 +54,8 @@ namespace GraphShape.Tests.Algorithms.Layout
             public TestSimpleParameterizedLayoutAlgorithm(
                 [NotNull] AdjacencyGraph<TestVertex, Edge<TestVertex>> visitedGraph,
                 [CanBeNull] IDictionary<TestVertex, Point> verticesPositions,
-                [CanBeNull] TestLayoutParameters oldParameters)
-                : base(visitedGraph, verticesPositions, oldParameters)
+                [CanBeNull] TestLayoutParameters parameters)
+                : base(visitedGraph, verticesPositions, parameters)
             {
             }
 
@@ -81,8 +81,8 @@ namespace GraphShape.Tests.Algorithms.Layout
             public TestDefaultSimpleParameterizedLayoutAlgorithm(
                 [NotNull] AdjacencyGraph<TestVertex, Edge<TestVertex>> visitedGraph,
                 [CanBeNull] IDictionary<TestVertex, Point> verticesPositions,
-                [CanBeNull] TestLayoutParameters oldParameters)
-                : base(visitedGraph, verticesPositions, oldParameters)
+                [CanBeNull] TestLayoutParameters parameters)
+                : base(visitedGraph, verticesPositions, parameters)
             {
             }
 
@@ -108,8 +108,8 @@ namespace GraphShape.Tests.Algorithms.Layout
             public TestComplexParameterizedLayoutAlgorithm(
                 [NotNull] AdjacencyGraph<TestVertex, Edge<TestVertex>> visitedGraph,
                 [CanBeNull] IDictionary<TestVertex, Point> verticesPositions,
-                [CanBeNull] TestLayoutParameters oldParameters)
-                : base(visitedGraph, verticesPositions, oldParameters)
+                [CanBeNull] TestLayoutParameters parameters)
+                : base(visitedGraph, verticesPositions, parameters)
             {
             }
 

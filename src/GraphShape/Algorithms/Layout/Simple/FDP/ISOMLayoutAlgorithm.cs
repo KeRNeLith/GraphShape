@@ -40,9 +40,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="ISOMLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, oldParameters)
+        /// <param name="parameters">Optional algorithm parameters.</param>
+        public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters parameters = null)
+            : this(visitedGraph, null, parameters)
         {
         }
 
@@ -51,12 +51,12 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public ISOMLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] ISOMLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] ISOMLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _queue = new Queue<TVertex>();
             _isomDataDict = new Dictionary<TVertex, ISOMData>();

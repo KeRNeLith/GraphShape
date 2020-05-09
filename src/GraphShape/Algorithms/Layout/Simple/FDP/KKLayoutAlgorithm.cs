@@ -37,9 +37,9 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="KKLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
-        public KKLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] KKLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, oldParameters)
+        /// <param name="parameters">Optional algorithm parameters.</param>
+        public KKLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] KKLayoutParameters parameters = null)
+            : this(visitedGraph, null, parameters)
         {
         }
 
@@ -48,12 +48,12 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public KKLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] KKLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] KKLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
         }
 

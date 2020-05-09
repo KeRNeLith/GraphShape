@@ -103,14 +103,14 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public CompoundFDPLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            [CanBeNull] CompoundFDPLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, verticesSizes, verticesBorders, layoutTypes, oldParameters)
+            [CanBeNull] CompoundFDPLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, verticesBorders, layoutTypes, parameters)
         {
         }
 
@@ -122,15 +122,15 @@ namespace GraphShape.Algorithms.Layout.Compound.FDP
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public CompoundFDPLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            [CanBeNull] CompoundFDPLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] CompoundFDPLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _verticesSizes = verticesSizes ?? throw new ArgumentNullException(nameof(verticesSizes));
             _verticesBorders = verticesBorders ?? throw new ArgumentNullException(nameof(verticesBorders));

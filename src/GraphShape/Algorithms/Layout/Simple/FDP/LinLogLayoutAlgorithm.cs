@@ -65,11 +65,11 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// Initializes a new instance of the <see cref="LinLogLayoutAlgorithm{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public LinLogLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
-            [CanBeNull] LinLogLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, oldParameters)
+            [CanBeNull] LinLogLayoutParameters parameters = null)
+            : this(visitedGraph, null, parameters)
         {
         }
 
@@ -78,12 +78,12 @@ namespace GraphShape.Algorithms.Layout.Simple.FDP
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public LinLogLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
-            [CanBeNull] LinLogLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] LinLogLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
         }
 

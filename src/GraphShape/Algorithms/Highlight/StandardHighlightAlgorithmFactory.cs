@@ -46,7 +46,7 @@ namespace GraphShape.Algorithms.Highlight
         }
 
         /// <inheritdoc />
-        public IHighlightParameters CreateParameters(string highlightMode, IHighlightParameters oldParameters)
+        public IHighlightParameters CreateParameters(string highlightMode, IHighlightParameters parameters)
         {
             if (highlightMode is null)
                 throw new ArgumentNullException(nameof(highlightMode));

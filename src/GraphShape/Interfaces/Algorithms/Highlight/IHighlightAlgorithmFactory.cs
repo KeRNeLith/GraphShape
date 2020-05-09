@@ -38,13 +38,13 @@ namespace GraphShape.Algorithms.Highlight
 
         /// <summary>
         /// Creates algorithm parameters for an algorithm using given <paramref name="highlightMode"/>
-        /// and <paramref name="oldParameters"/>.
+        /// and <paramref name="parameters"/>.
         /// </summary>
         /// <param name="highlightMode">Highlight mode.</param>
-        /// <param name="oldParameters">Old parameters.</param>
-        /// <returns>New algorithm parameters.</returns>
+        /// <param name="parameters">Algorithm parameters.</param>
+        /// <returns>Parameters for the algorithm.</returns>
         [Pure]
-        IHighlightParameters CreateParameters([NotNull] string highlightMode, [CanBeNull] IHighlightParameters oldParameters);
+        IHighlightParameters CreateParameters([NotNull] string highlightMode, [CanBeNull] IHighlightParameters parameters);
 
         /// <summary>
         /// Checks if the given <paramref name="mode"/> is a valid one.

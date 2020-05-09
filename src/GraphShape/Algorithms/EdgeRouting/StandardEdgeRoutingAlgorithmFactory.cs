@@ -30,7 +30,7 @@ namespace GraphShape.Algorithms.EdgeRouting
         }
 
         /// <inheritdoc />
-        public IEdgeRoutingParameters CreateParameters(string algorithmType, IEdgeRoutingParameters oldParameters)
+        public IEdgeRoutingParameters CreateParameters(string algorithmType, IEdgeRoutingParameters parameters)
         {
             if (algorithmType is null)
                 throw new ArgumentNullException(nameof(algorithmType));

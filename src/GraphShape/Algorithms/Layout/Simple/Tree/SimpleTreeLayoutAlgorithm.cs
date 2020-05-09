@@ -38,12 +38,12 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public SimpleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] SimpleTreeLayoutParameters oldParameters = null)
-            : this(visitedGraph, null, verticesSizes, oldParameters)
+            [CanBeNull] SimpleTreeLayoutParameters parameters = null)
+            : this(visitedGraph, null, verticesSizes, parameters)
         {
         }
 
@@ -53,13 +53,13 @@ namespace GraphShape.Algorithms.Layout.Simple.Tree
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
-        /// <param name="oldParameters">Optional algorithm parameters.</param>
+        /// <param name="parameters">Optional algorithm parameters.</param>
         public SimpleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
-            [CanBeNull] SimpleTreeLayoutParameters oldParameters = null)
-            : base(visitedGraph, verticesPositions, oldParameters)
+            [CanBeNull] SimpleTreeLayoutParameters parameters = null)
+            : base(visitedGraph, verticesPositions, parameters)
         {
             _verticesSizes = new Dictionary<TVertex, Size>(verticesSizes);
         }

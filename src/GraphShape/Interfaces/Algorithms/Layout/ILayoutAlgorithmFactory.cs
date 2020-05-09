@@ -36,13 +36,13 @@ namespace GraphShape.Algorithms.Layout
 
         /// <summary>
         /// Creates algorithm parameters for an algorithm of given <paramref name="algorithmType"/>
-        /// and <paramref name="oldParameters"/>.
+        /// and <paramref name="parameters"/>.
         /// </summary>
         /// <param name="algorithmType">Algorithm type.</param>
-        /// <param name="oldParameters">Old parameters.</param>
-        /// <returns>New algorithm parameters.</returns>
+        /// <param name="parameters">Algorithm parameters.</param>
+        /// <returns>Parameters for the algorithm.</returns>
         [Pure]
-        ILayoutParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] ILayoutParameters oldParameters);
+        ILayoutParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] ILayoutParameters parameters);
 
         /// <summary>
         /// Checks if the given <paramref name="algorithmType"/> is a valid one.
