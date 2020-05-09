@@ -6,7 +6,7 @@ namespace GraphShape.Tests
 {
     internal class PositionsMetricCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
-        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         public PositionsMetricCalculator(
             [NotNull] TGraph graph,

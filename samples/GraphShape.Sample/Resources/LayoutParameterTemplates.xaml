@@ -700,6 +700,53 @@
         </Grid>
     </DataTemplate>
 
+    <!-- Random DataTemplate -->
+    <DataTemplate DataType="{x:Type layout:RandomLayoutParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock 
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Width" />
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Slider
+                    MinWidth="100"
+                    Minimum="100"
+                    Maximum="3000"
+                    Value="{Binding Path=Width, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=Width, Mode=TwoWay}" />
+            </StackPanel>
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Height" />
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Slider
+                    MinWidth="100"
+                    Minimum="100"
+                    Maximum="3000"
+                    Value="{Binding Path=Height, Mode=TwoWay}" />
+                <TextBox Margin="5 0 0 0" Text="{Binding Path=Height, Mode=TwoWay}" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
     <!-- Overlap Removal -->
     <DataTemplate DataType="{x:Type overlapRemoval:OverlapRemovalParameters}">
         <Grid>

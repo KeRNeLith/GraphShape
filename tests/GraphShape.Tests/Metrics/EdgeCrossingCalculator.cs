@@ -11,7 +11,7 @@ namespace GraphShape.Tests
     /// </summary>
     internal class EdgeCrossingCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
-        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         public EdgeCrossingCalculator(
             [NotNull] TGraph graph,

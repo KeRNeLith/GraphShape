@@ -9,7 +9,7 @@ namespace GraphShape.Tests
     /// </summary>
     public abstract class MetricCalculatorBase<TVertex, TEdge, TGraph> : IMetricCalculator
         where TEdge : IEdge<TVertex>
-        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         [NotNull]
         public TGraph Graph { get; }

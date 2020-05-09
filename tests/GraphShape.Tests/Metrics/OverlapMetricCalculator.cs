@@ -10,7 +10,7 @@ namespace GraphShape.Tests
     /// </summary>
     internal class OverlapMetricCalculator<TVertex, TEdge, TGraph> : MetricCalculatorBase<TVertex, TEdge, TGraph>
         where TEdge : IEdge<TVertex>
-        where TGraph : IBidirectionalGraph<TVertex, TEdge>
+        where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
         public OverlapMetricCalculator(
             [NotNull] TGraph graph,

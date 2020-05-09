@@ -42,6 +42,8 @@ namespace GraphShape.Algorithms.Layout
         private const string SugiyamaAlgorithm = "Sugiyama";
         [NotNull]
         private const string CompoundFDPAlgorithm = "CompoundFDP";
+        [NotNull]
+        private const string RandomAlgorithm = "Random";
         // ReSharper restore InconsistentNaming
 
         /// <inheritdoc />
@@ -49,7 +51,7 @@ namespace GraphShape.Algorithms.Layout
         {
             CircularAlgorithm, TreeAlgorithm, FRAlgorithm, BoundedFRAlgorithm,
             KKAlgorithm, ISOMAlgorithm, LinLogAlgorithm, SugiyamaAlgorithm,
-            CompoundFDPAlgorithm
+            CompoundFDPAlgorithm, RandomAlgorithm
         };
 
         /// <inheritdoc />
@@ -155,6 +157,16 @@ namespace GraphShape.Algorithms.Layout
                         parameters as CompoundFDPLayoutParameters);
                 }
 
+                if (string.Equals(algorithmType, RandomAlgorithm))
+                {
+                    return new RandomLayoutAlgorithm<TVertex, TEdge, TGraph>(
+                        context.Graph,
+                        context.Positions,
+                        context.Sizes,
+                        new Dictionary<TVertex, RandomVertexType>(),
+                        parameters as RandomLayoutParameters);
+                }
+
                 return null;
             }
 
@@ -200,6 +212,8 @@ namespace GraphShape.Algorithms.Layout
                     return oldParameters.CreateNewParameters<SugiyamaLayoutParameters>();
                 case CompoundFDPAlgorithm:
                     return oldParameters.CreateNewParameters<CompoundFDPLayoutParameters>();
+                case RandomAlgorithm:
+                    return oldParameters.CreateNewParameters<RandomLayoutParameters>();
             }
 
             return null;
@@ -237,6 +251,8 @@ namespace GraphShape.Algorithms.Layout
                 return SugiyamaAlgorithm;
             if (algorithm is CompoundFDPLayoutAlgorithm<TVertex, TEdge, TGraph>)
                 return CompoundFDPAlgorithm;
+            if (algorithm is RandomLayoutAlgorithm<TVertex, TEdge, TGraph>)
+                return RandomAlgorithm;
             return string.Empty;
         }
 

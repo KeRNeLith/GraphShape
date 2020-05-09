@@ -80,7 +80,8 @@ namespace GraphShape.Tests.Algorithms.Layout
                 new[]
                 {
                     "Circular", "Tree", "FR", "BoundedFR", "KK",
-                    "ISOM", "LinLog", "Sugiyama", "CompoundFDP"
+                    "ISOM", "LinLog", "Sugiyama", "CompoundFDP",
+                    "Random"
                 },
                 factory.AlgorithmTypes);
 
@@ -156,6 +157,12 @@ namespace GraphShape.Tests.Algorithms.Layout
                     "CompoundFDP",
                     simpleContext,
                     new CompoundFDPLayoutParameters()));
+
+            Assert.IsInstanceOf<RandomLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>>(
+                factory.CreateAlgorithm(
+                    "Random",
+                    simpleContext,
+                    new RandomLayoutParameters()));
 
             Assert.IsNull(
                 factory.CreateAlgorithm(
@@ -300,6 +307,19 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsInstanceOf<CompoundFDPLayoutParameters>(createdParameters);
             Assert.AreNotSame(compoundFDPParameters, createdParameters);
 
+            var randomParameters = new RandomLayoutParameters();
+            createdParameters = factory.CreateParameters("Random", null);
+            Assert.IsInstanceOf<RandomLayoutParameters>(createdParameters);
+            Assert.AreNotSame(randomParameters, createdParameters);
+
+            createdParameters = factory.CreateParameters("Random", testParameters);
+            Assert.IsInstanceOf<RandomLayoutParameters>(createdParameters);
+            Assert.AreNotSame(treeParameters, createdParameters);
+
+            createdParameters = factory.CreateParameters("Random", randomParameters);
+            Assert.IsInstanceOf<RandomLayoutParameters>(createdParameters);
+            Assert.AreNotSame(randomParameters, createdParameters);
+
 
             Assert.IsFalse(factory.IsValidAlgorithm(null));
             Assert.IsFalse(factory.IsValidAlgorithm(string.Empty));
@@ -313,6 +333,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.IsValidAlgorithm("LinLog"));
             Assert.IsTrue(factory.IsValidAlgorithm("Sugiyama"));
             Assert.IsTrue(factory.IsValidAlgorithm("CompoundFDP"));
+            Assert.IsTrue(factory.IsValidAlgorithm("Random"));
 
 
             var algorithm1 = new TestLayoutAlgorithm();
@@ -345,6 +366,9 @@ namespace GraphShape.Tests.Algorithms.Layout
             var algorithm10 = new CompoundFDPLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph, sizes, borders, layoutTypes);
             Assert.AreEqual("CompoundFDP", factory.GetAlgorithmType(algorithm10));
 
+            var algorithm11 = new RandomLayoutAlgorithm<TestVertex, Edge<TestVertex>, BidirectionalGraph<TestVertex, Edge<TestVertex>>>(graph, sizes, null, randomParameters);
+            Assert.AreEqual("Random", factory.GetAlgorithmType(algorithm11));
+
 
             Assert.IsFalse(factory.NeedEdgeRouting(string.Empty));
             Assert.IsTrue(factory.NeedEdgeRouting("Circular"));
@@ -356,6 +380,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.NeedEdgeRouting("LinLog"));
             Assert.IsFalse(factory.NeedEdgeRouting("Sugiyama"));
             Assert.IsTrue(factory.NeedEdgeRouting("CompoundFDP"));
+            Assert.IsTrue(factory.NeedEdgeRouting("Random"));
 
 
             Assert.IsFalse(factory.NeedOverlapRemoval(string.Empty));
@@ -368,6 +393,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             Assert.IsTrue(factory.NeedOverlapRemoval("LinLog"));
             Assert.IsFalse(factory.NeedOverlapRemoval("Sugiyama"));
             Assert.IsFalse(factory.NeedOverlapRemoval("CompoundFDP"));
+            Assert.IsTrue(factory.NeedOverlapRemoval("Random"));
         }
 
         [Test]

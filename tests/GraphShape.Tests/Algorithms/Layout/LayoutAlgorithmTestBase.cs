@@ -67,7 +67,7 @@ namespace GraphShape.Tests.Algorithms.Layout
         [Pure]
         [NotNull]
         protected static LayoutResults ExecuteLayoutAlgorithm<TVertex, TEdge>(
-            [NotNull] ILayoutAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> algorithm,
+            [NotNull] ILayoutAlgorithm<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>> algorithm,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
             bool requireOverlapRemoval = false)
             where TVertex : class
@@ -106,12 +106,12 @@ namespace GraphShape.Tests.Algorithms.Layout
             }
 
             IDictionary<TEdge, Point[]> edgeRoutes =
-                algorithm is IEdgeRoutingAlgorithm<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>> routingAlgorithm
+                algorithm is IEdgeRoutingAlgorithm<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>> routingAlgorithm
                     ? routingAlgorithm.EdgeRoutes
                     : new Dictionary<TEdge, Point[]>();
 
             // Compute metrics
-            var positionsMetric = new PositionsMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
+            var positionsMetric = new PositionsMetricCalculator<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
                 verticesPositions,
                 verticesSizes,
@@ -120,7 +120,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             results.PositionsSet = positionsMetric.PositionsSet;
 
 
-            var overlapMetric = new OverlapMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
+            var overlapMetric = new OverlapMetricCalculator<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
                 verticesPositions,
                 verticesSizes,
@@ -131,7 +131,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             results.OverlappedArea = overlapMetric.OverlappedArea;
 
 
-            var areaMetric = new LayoutAreaMetricCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
+            var areaMetric = new LayoutAreaMetricCalculator<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
                 verticesPositions,
                 verticesSizes,
@@ -142,7 +142,7 @@ namespace GraphShape.Tests.Algorithms.Layout
             results.Area = areaMetric.Area;
             results.Ratio = areaMetric.Ratio;
 
-            var edgeMetric = new EdgeCrossingCalculator<TVertex, TEdge, IBidirectionalGraph<TVertex, TEdge>>(
+            var edgeMetric = new EdgeCrossingCalculator<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>>(
                 algorithm.VisitedGraph,
                 verticesPositions,
                 verticesSizes,
