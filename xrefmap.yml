@@ -5326,6 +5326,165 @@ references:
   commentId: T:GraphShape.Algorithms.Layout.ProgressChangedEventHandler
   fullName: GraphShape.Algorithms.Layout.ProgressChangedEventHandler
   nameWithType: ProgressChangedEventHandler
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3
+  name: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html
+  commentId: T:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3
+  name.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph)
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph)
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph)
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.RandomVertexType},GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  name: RandomLayoutAlgorithm(TGraph, IDictionary<TVertex, Point>, IDictionary<TVertex, Size>, IDictionary<TVertex, RandomVertexType>, RandomLayoutParameters)
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_RandomVertexType__GraphShape_Algorithms_Layout_RandomLayoutParameters_
+  commentId: M:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.RandomVertexType},GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  name.vb: RandomLayoutAlgorithm(TGraph, IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size), IDictionary(Of TVertex, RandomVertexType), RandomLayoutParameters)
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm(TGraph, System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Algorithms.Layout.RandomVertexType>, GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm(TGraph, System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Algorithms.Layout.RandomVertexType), GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm(TGraph, IDictionary<TVertex, Point>, IDictionary<TVertex, Size>, IDictionary<TVertex, RandomVertexType>, RandomLayoutParameters)
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm(TGraph, IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size), IDictionary(Of TVertex, RandomVertexType), RandomLayoutParameters)
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.RandomVertexType},GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  name: RandomLayoutAlgorithm(TGraph, IDictionary<TVertex, Size>, IDictionary<TVertex, RandomVertexType>, RandomLayoutParameters)
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3__ctor__2_System_Collections_Generic_IDictionary__0_GraphShape_Size__System_Collections_Generic_IDictionary__0_GraphShape_Algorithms_Layout_RandomVertexType__GraphShape_Algorithms_Layout_RandomLayoutParameters_
+  commentId: M:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor(`2,System.Collections.Generic.IDictionary{`0,GraphShape.Size},System.Collections.Generic.IDictionary{`0,GraphShape.Algorithms.Layout.RandomVertexType},GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  name.vb: RandomLayoutAlgorithm(TGraph, IDictionary(Of TVertex, Size), IDictionary(Of TVertex, RandomVertexType), RandomLayoutParameters)
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm(TGraph, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Algorithms.Layout.RandomVertexType>, GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm(TGraph, System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Algorithms.Layout.RandomVertexType), GraphShape.Algorithms.Layout.RandomLayoutParameters)
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm(TGraph, IDictionary<TVertex, Size>, IDictionary<TVertex, RandomVertexType>, RandomLayoutParameters)
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm(TGraph, IDictionary(Of TVertex, Size), IDictionary(Of TVertex, RandomVertexType), RandomLayoutParameters)
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor*
+  name: RandomLayoutAlgorithm
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3__ctor_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.#ctor
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.RandomLayoutAlgorithm
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).RandomLayoutAlgorithm
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.Initialize
+  name: Initialize()
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3_Initialize
+  commentId: M:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.Initialize
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.Initialize()
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).Initialize()
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.Initialize()
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).Initialize()
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.Initialize*
+  name: Initialize
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3_Initialize_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.Initialize
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.Initialize
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).Initialize
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.Initialize
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).Initialize
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.InternalCompute
+  name: InternalCompute()
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3_InternalCompute
+  commentId: M:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.InternalCompute
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.InternalCompute()
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).InternalCompute()
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.InternalCompute()
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).InternalCompute()
+- uid: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.InternalCompute*
+  name: InternalCompute
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutAlgorithm-3.html#GraphShape_Algorithms_Layout_RandomLayoutAlgorithm_3_InternalCompute_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutAlgorithm`3.InternalCompute
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.InternalCompute
+  fullName.vb: GraphShape.Algorithms.Layout.RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).InternalCompute
+  nameWithType: RandomLayoutAlgorithm<TVertex, TEdge, TGraph>.InternalCompute
+  nameWithType.vb: RandomLayoutAlgorithm(Of TVertex, TEdge, TGraph).InternalCompute
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters
+  name: RandomLayoutParameters
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html
+  commentId: T:GraphShape.Algorithms.Layout.RandomLayoutParameters
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters
+  nameWithType: RandomLayoutParameters
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements
+  name: GetEqualityElements()
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_GetEqualityElements
+  commentId: M:GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements()
+  nameWithType: RandomLayoutParameters.GetEqualityElements()
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements*
+  name: GetEqualityElements
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_GetEqualityElements_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.GetEqualityElements
+  nameWithType: RandomLayoutParameters.GetEqualityElements
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.Height
+  name: Height
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_Height
+  commentId: P:GraphShape.Algorithms.Layout.RandomLayoutParameters.Height
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.Height
+  nameWithType: RandomLayoutParameters.Height
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.Height*
+  name: Height
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_Height_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutParameters.Height
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.Height
+  nameWithType: RandomLayoutParameters.Height
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.Width
+  name: Width
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_Width
+  commentId: P:GraphShape.Algorithms.Layout.RandomLayoutParameters.Width
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.Width
+  nameWithType: RandomLayoutParameters.Width
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.Width*
+  name: Width
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_Width_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutParameters.Width
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.Width
+  nameWithType: RandomLayoutParameters.Width
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset
+  name: XOffset
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_XOffset
+  commentId: P:GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset
+  nameWithType: RandomLayoutParameters.XOffset
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset*
+  name: XOffset
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_XOffset_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.XOffset
+  nameWithType: RandomLayoutParameters.XOffset
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset
+  name: YOffset
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_YOffset
+  commentId: P:GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset
+  nameWithType: RandomLayoutParameters.YOffset
+- uid: GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset*
+  name: YOffset
+  href: api/GraphShape.Algorithms.Layout.RandomLayoutParameters.html#GraphShape_Algorithms_Layout_RandomLayoutParameters_YOffset_
+  commentId: Overload:GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.Layout.RandomLayoutParameters.YOffset
+  nameWithType: RandomLayoutParameters.YOffset
+- uid: GraphShape.Algorithms.Layout.RandomVertexType
+  name: RandomVertexType
+  href: api/GraphShape.Algorithms.Layout.RandomVertexType.html
+  commentId: T:GraphShape.Algorithms.Layout.RandomVertexType
+  fullName: GraphShape.Algorithms.Layout.RandomVertexType
+  nameWithType: RandomVertexType
+- uid: GraphShape.Algorithms.Layout.RandomVertexType.Fixed
+  name: Fixed
+  href: api/GraphShape.Algorithms.Layout.RandomVertexType.html#GraphShape_Algorithms_Layout_RandomVertexType_Fixed
+  commentId: F:GraphShape.Algorithms.Layout.RandomVertexType.Fixed
+  fullName: GraphShape.Algorithms.Layout.RandomVertexType.Fixed
+  nameWithType: RandomVertexType.Fixed
+- uid: GraphShape.Algorithms.Layout.RandomVertexType.Free
+  name: Free
+  href: api/GraphShape.Algorithms.Layout.RandomVertexType.html#GraphShape_Algorithms_Layout_RandomVertexType_Free
+  commentId: F:GraphShape.Algorithms.Layout.RandomVertexType.Free
+  fullName: GraphShape.Algorithms.Layout.RandomVertexType.Free
+  nameWithType: RandomVertexType.Free
 - uid: GraphShape.Algorithms.Layout.Simple.Circular
   name: GraphShape.Algorithms.Layout.Simple.Circular
   href: api/GraphShape.Algorithms.Layout.Simple.Circular.html

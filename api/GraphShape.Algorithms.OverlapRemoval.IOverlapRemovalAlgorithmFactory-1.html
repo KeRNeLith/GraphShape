@@ -206,12 +206,12 @@
   <a id="GraphShape_Algorithms_OverlapRemoval_IOverlapRemovalAlgorithmFactory_1_CreateParameters_" data-uid="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithmFactory`1.CreateParameters*"></a>
   <h4 id="GraphShape_Algorithms_OverlapRemoval_IOverlapRemovalAlgorithmFactory_1_CreateParameters_System_String_GraphShape_Algorithms_OverlapRemoval_IOverlapRemovalParameters_" data-uid="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalAlgorithmFactory`1.CreateParameters(System.String,GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalParameters)">CreateParameters(String, IOverlapRemovalParameters)</h4>
   <div class="markdown level1 summary"><p>Creates algorithm parameters for an algorithm of given <code data-dev-comment-type="paramref" class="paramref">algorithmType</code>
-and <code data-dev-comment-type="paramref" class="paramref">oldParameters</code>.</p>
+and <code data-dev-comment-type="paramref" class="paramref">parameters</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IOverlapRemovalParameters CreateParameters(string algorithmType, IOverlapRemovalParameters oldParameters)</code></pre>
+    <pre><code class="lang-csharp hljs">IOverlapRemovalParameters CreateParameters(string algorithmType, IOverlapRemovalParameters parameters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -231,8 +231,8 @@ and <code data-dev-comment-type="paramref" class="paramref">oldParameters</code>
       </tr>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalParameters.html">IOverlapRemovalParameters</a></td>
-        <td><span class="parametername">oldParameters</span></td>
-        <td><p>Old parameters.</p>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>Algorithm parameters.</p>
 </td>
       </tr>
     </tbody>
@@ -248,7 +248,7 @@ and <code data-dev-comment-type="paramref" class="paramref">oldParameters</code>
     <tbody>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.OverlapRemoval.IOverlapRemovalParameters.html">IOverlapRemovalParameters</a></td>
-        <td><p>New algorithm parameters.</p>
+        <td><p>Parameters for the algorithm.</p>
 </td>
       </tr>
     </tbody>
