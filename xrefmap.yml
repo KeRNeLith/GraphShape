@@ -96,6 +96,19 @@ references:
   isSpec: "True"
   fullName: GraphShape.Algorithms.AlgorithmBase.InternalCompute
   nameWithType: AlgorithmBase.InternalCompute
+- uid: GraphShape.Algorithms.AlgorithmBase.IsCancelling
+  name: IsCancelling
+  href: api/GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsCancelling
+  commentId: P:GraphShape.Algorithms.AlgorithmBase.IsCancelling
+  fullName: GraphShape.Algorithms.AlgorithmBase.IsCancelling
+  nameWithType: AlgorithmBase.IsCancelling
+- uid: GraphShape.Algorithms.AlgorithmBase.IsCancelling*
+  name: IsCancelling
+  href: api/GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_IsCancelling_
+  commentId: Overload:GraphShape.Algorithms.AlgorithmBase.IsCancelling
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.AlgorithmBase.IsCancelling
+  nameWithType: AlgorithmBase.IsCancelling
 - uid: GraphShape.Algorithms.AlgorithmBase.OnAborted(System.EventArgs)
   name: OnAborted(EventArgs)
   href: api/GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_OnAborted_System_EventArgs_
@@ -186,6 +199,19 @@ references:
   isSpec: "True"
   fullName: GraphShape.Algorithms.AlgorithmBase.SyncRoot
   nameWithType: AlgorithmBase.SyncRoot
+- uid: GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested
+  name: ThrowIfCancellationRequested()
+  href: api/GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_ThrowIfCancellationRequested
+  commentId: M:GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested
+  fullName: GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested()
+  nameWithType: AlgorithmBase.ThrowIfCancellationRequested()
+- uid: GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested*
+  name: ThrowIfCancellationRequested
+  href: api/GraphShape.Algorithms.AlgorithmBase.html#GraphShape_Algorithms_AlgorithmBase_ThrowIfCancellationRequested_
+  commentId: Overload:GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested
+  isSpec: "True"
+  fullName: GraphShape.Algorithms.AlgorithmBase.ThrowIfCancellationRequested
+  nameWithType: AlgorithmBase.ThrowIfCancellationRequested
 - uid: GraphShape.Algorithms.EdgeRouting
   name: GraphShape.Algorithms.EdgeRouting
   href: api/GraphShape.Algorithms.EdgeRouting.html
@@ -9632,44 +9658,6 @@ references:
   commentId: N:GraphShape.Controls.Converters
   fullName: GraphShape.Controls.Converters
   nameWithType: GraphShape.Controls.Converters
-- uid: GraphShape.Controls.Converters.CoordinatesToPointConverter
-  name: CoordinatesToPointConverter
-  href: api/GraphShape.Controls.Converters.CoordinatesToPointConverter.html
-  commentId: T:GraphShape.Controls.Converters.CoordinatesToPointConverter
-  fullName: GraphShape.Controls.Converters.CoordinatesToPointConverter
-  nameWithType: CoordinatesToPointConverter
-- uid: GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)
-  name: Convert(Object[], Type, Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.CoordinatesToPointConverter.html#GraphShape_Controls_Converters_CoordinatesToPointConverter_Convert_System_Object___System_Type_System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)
-  name.vb: Convert(Object(), Type, Object, CultureInfo)
-  fullName: GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert(System.Object[], System.Type, System.Object, System.Globalization.CultureInfo)
-  fullName.vb: GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert(System.Object(), System.Type, System.Object, System.Globalization.CultureInfo)
-  nameWithType: CoordinatesToPointConverter.Convert(Object[], Type, Object, CultureInfo)
-  nameWithType.vb: CoordinatesToPointConverter.Convert(Object(), Type, Object, CultureInfo)
-- uid: GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert*
-  name: Convert
-  href: api/GraphShape.Controls.Converters.CoordinatesToPointConverter.html#GraphShape_Controls_Converters_CoordinatesToPointConverter_Convert_
-  commentId: Overload:GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert
-  isSpec: "True"
-  fullName: GraphShape.Controls.Converters.CoordinatesToPointConverter.Convert
-  nameWithType: CoordinatesToPointConverter.Convert
-- uid: GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)
-  name: ConvertBack(Object, Type[], Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.CoordinatesToPointConverter.html#GraphShape_Controls_Converters_CoordinatesToPointConverter_ConvertBack_System_Object_System_Type___System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)
-  name.vb: ConvertBack(Object, Type(), Object, CultureInfo)
-  fullName: GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack(System.Object, System.Type[], System.Object, System.Globalization.CultureInfo)
-  fullName.vb: GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack(System.Object, System.Type(), System.Object, System.Globalization.CultureInfo)
-  nameWithType: CoordinatesToPointConverter.ConvertBack(Object, Type[], Object, CultureInfo)
-  nameWithType.vb: CoordinatesToPointConverter.ConvertBack(Object, Type(), Object, CultureInfo)
-- uid: GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack*
-  name: ConvertBack
-  href: api/GraphShape.Controls.Converters.CoordinatesToPointConverter.html#GraphShape_Controls_Converters_CoordinatesToPointConverter_ConvertBack_
-  commentId: Overload:GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack
-  isSpec: "True"
-  fullName: GraphShape.Controls.Converters.CoordinatesToPointConverter.ConvertBack
-  nameWithType: CoordinatesToPointConverter.ConvertBack
 - uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter
   name: EdgeRouteToPathConverter
   href: api/GraphShape.Controls.Converters.EdgeRouteToPathConverter.html
@@ -9708,38 +9696,6 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack
   nameWithType: EdgeRouteToPathConverter.ConvertBack
-- uid: GraphShape.Controls.Converters.PointArrayToString
-  name: PointArrayToString
-  href: api/GraphShape.Controls.Converters.PointArrayToString.html
-  commentId: T:GraphShape.Controls.Converters.PointArrayToString
-  fullName: GraphShape.Controls.Converters.PointArrayToString
-  nameWithType: PointArrayToString
-- uid: GraphShape.Controls.Converters.PointArrayToString.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
-  name: Convert(Object, Type, Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.PointArrayToString.html#GraphShape_Controls_Converters_PointArrayToString_Convert_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.PointArrayToString.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
-  fullName: GraphShape.Controls.Converters.PointArrayToString.Convert(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
-  nameWithType: PointArrayToString.Convert(Object, Type, Object, CultureInfo)
-- uid: GraphShape.Controls.Converters.PointArrayToString.Convert*
-  name: Convert
-  href: api/GraphShape.Controls.Converters.PointArrayToString.html#GraphShape_Controls_Converters_PointArrayToString_Convert_
-  commentId: Overload:GraphShape.Controls.Converters.PointArrayToString.Convert
-  isSpec: "True"
-  fullName: GraphShape.Controls.Converters.PointArrayToString.Convert
-  nameWithType: PointArrayToString.Convert
-- uid: GraphShape.Controls.Converters.PointArrayToString.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
-  name: ConvertBack(Object, Type, Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.PointArrayToString.html#GraphShape_Controls_Converters_PointArrayToString_ConvertBack_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.PointArrayToString.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
-  fullName: GraphShape.Controls.Converters.PointArrayToString.ConvertBack(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
-  nameWithType: PointArrayToString.ConvertBack(Object, Type, Object, CultureInfo)
-- uid: GraphShape.Controls.Converters.PointArrayToString.ConvertBack*
-  name: ConvertBack
-  href: api/GraphShape.Controls.Converters.PointArrayToString.html#GraphShape_Controls_Converters_PointArrayToString_ConvertBack_
-  commentId: Overload:GraphShape.Controls.Converters.PointArrayToString.ConvertBack
-  isSpec: "True"
-  fullName: GraphShape.Controls.Converters.PointArrayToString.ConvertBack
-  nameWithType: PointArrayToString.ConvertBack
 - uid: GraphShape.Controls.DisposingHandler
   name: DisposingHandler
   href: api/GraphShape.Controls.DisposingHandler.html
@@ -9923,6 +9879,22 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint
   nameWithType: BasicStructuresExtensions.ToGraphShapePoint
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable{System.Windows.Point})
+  name: ToGraphShapePoints(IEnumerable<Point>)
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoints_System_Collections_Generic_IEnumerable_System_Windows_Point__
+  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable{System.Windows.Point})
+  name.vb: ToGraphShapePoints(IEnumerable(Of Point))
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable<System.Windows.Point>)
+  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable(Of System.Windows.Point))
+  nameWithType: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable<Point>)
+  nameWithType.vb: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable(Of Point))
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints*
+  name: ToGraphShapePoints
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoints_
+  commentId: Overload:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints
+  isSpec: "True"
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints
+  nameWithType: BasicStructuresExtensions.ToGraphShapePoints
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(GraphShape.Point)
   name: ToPoint(Point)
   href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoint_GraphShape_Point_
