@@ -1,7 +1,10 @@
-$initialFolder = $pwd;
+if ($env:PackageSamples -eq $true)
+{
+    $initialFolder = $pwd;
 
-cd samples\GraphShape.Sample\bin\*\;
+    cd samples\GraphShape.Sample\bin\*\;
 
-7z.exe a GraphShape.Sample.zip "*.*" -r -xr!"*.pdb" -x!"*.xml";
+    7z.exe a GraphShape.Sample.zip "*.*" -r -xr!"*.pdb" -x!"*.xml";
 
-cd $initialFolder;
+    cd $initialFolder;
+}

@@ -53,6 +53,7 @@ function UpdateAllPackagesGeneration()
 }
 
 # Update .props based on git tag status & setup build version
+$env:PackageSamples = $false;
 if ($env:APPVEYOR_REPO_TAG -eq "true")
 {
     $tagParts = $env:APPVEYOR_REPO_TAG_NAME.split("/", 2);
@@ -67,8 +68,9 @@ if ($env:APPVEYOR_REPO_TAG -eq "true")
     $projectName = $propertyName -replace "Generate_","";
     $projectName = $projectName -replace "_",".";
     $env:Release_Name = "$projectName $tagVersion";
-    
+
     $env:IsFullIntegrationBuild = $env:Configuration -eq "Release";
+    $env:PackageSamples = $true;
 }
 else
 {
