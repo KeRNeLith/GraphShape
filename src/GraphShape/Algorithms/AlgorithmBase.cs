@@ -63,6 +63,10 @@ namespace GraphShape.Algorithms
 
                 InternalCompute();
             }
+            catch (OperationCanceledException)
+            {
+                // Just catch it to clean and end computing.
+            }
             finally
             {
                 Clean();
