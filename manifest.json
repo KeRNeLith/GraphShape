@@ -317,11 +317,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundLayoutContext-3.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.BalloonTreeLayoutAlgorithm-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundLayoutContext-3.html",
-          "hash": "f5wkdCctnKwtGEaV9wyQNw=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.BalloonTreeLayoutAlgorithm-3.html",
+          "hash": "nSYJ2NZpGDUC0zpq8a7Odw=="
         }
       },
       "is_incremental": false,
@@ -329,11 +329,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundLayoutIterationEventArgs-2.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.BalloonTreeLayoutParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundLayoutIterationEventArgs-2.html",
-          "hash": "8bBnKTuCWqmdlEYbLMxByg=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.BalloonTreeLayoutParameters.html",
+          "hash": "eiPfMseJZC1wwyojdrBnSQ=="
         }
       },
       "is_incremental": false,
@@ -341,11 +341,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.BoundedFRLayoutParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.CompoundVertexInnerLayoutType.html",
-          "hash": "PJZjKrjRcSZJnA/1I2/7rw=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.BoundedFRLayoutParameters.html",
+          "hash": "R3bv4fw/byUY83tF/I2mbQ=="
         }
       },
       "is_incremental": false,
@@ -353,11 +353,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.CompoundVertexData.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CircularLayoutAlgorithm-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.CompoundVertexData.html",
-          "hash": "45iNFvDz+a9BTk90R8Hm4g=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CircularLayoutAlgorithm-3.html",
+          "hash": "PealxPp9Qj/etfkzgYfTeQ=="
         }
       },
       "is_incremental": false,
@@ -365,11 +365,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.VertexData.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CircularLayoutParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.VertexData.html",
-          "hash": "ESgxSjcDoR+zjNJzDSdJIQ=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CircularLayoutParameters.html",
+          "hash": "VKVkQQd1w9Bgk1u/qgdURA=="
         }
       },
       "is_incremental": false,
@@ -377,11 +377,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.CompoundVertexData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutAlgorithm-3.html",
-          "hash": "9qWmgNGtTVDsOtpFesYkVg=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.CompoundVertexData.html",
+          "hash": "lVXmzFgLKLwesb6Y67FeCg=="
         }
       },
       "is_incremental": false,
@@ -389,11 +389,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.VertexData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.CompoundFDPLayoutParameters.html",
-          "hash": "t1gdtAo3t/DtPpICytYhSA=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.VertexData.html",
+          "hash": "mO2LLOgiOT3mKLC5nOzZiw=="
         }
       },
       "is_incremental": false,
@@ -401,11 +401,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.FDP.html",
-          "hash": "c9+NGPb5vfNFM6sB/HRFBQ=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutAlgorithm-3.html",
+          "hash": "LXFeMqAlzgCyG+EqQ25tBQ=="
         }
       },
       "is_incremental": false,
@@ -413,11 +413,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutAlgorithm-3.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutAlgorithm-3.html",
-          "hash": "NQPNflzBeaEVMatqHJpSJw=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundFDPLayoutParameters.html",
+          "hash": "+dcf2lhy2e9oEr8ZXbbWAg=="
         }
       },
       "is_incremental": false,
@@ -425,11 +425,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutContext-3.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundLayoutContext-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutContext-3.html",
-          "hash": "vqQBTltbIiCghYo5OXtiXg=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundLayoutContext-3.html",
+          "hash": "iWr/r7isxCMEKUGZhCRZ+w=="
         }
       },
       "is_incremental": false,
@@ -437,11 +437,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutIterationEventArgs-1.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundLayoutIterationEventArgs-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.ICompoundLayoutIterationEventArgs-1.html",
-          "hash": "KVZJ30TUH2RPm3HGF/0ujg=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundLayoutIterationEventArgs-2.html",
+          "hash": "/HC2GxUqAb3CmPjMfVkKOw=="
         }
       },
       "is_incremental": false,
@@ -449,35 +449,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.TestingCompoundLayoutIterationEventArgs-4.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.CompoundVertexInnerLayoutType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.TestingCompoundLayoutIterationEventArgs-4.html",
-          "hash": "koFxZNzmTeqtK9pRO6cTrQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.TestingCompoundVertexInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.TestingCompoundVertexInfo.html",
-          "hash": "Q2a2puev19PLm9cGZ78b/w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Compound.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Compound.html",
-          "hash": "qGjp/L1eygfoOYTrdTtK7g=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.CompoundVertexInnerLayoutType.html",
+          "hash": "hzc25eETqFUdDDsp5KvInQ=="
         }
       },
       "is_incremental": false,
@@ -489,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Contextual.ContextualLayoutAlgorithmFactory-3.html",
-          "hash": "JHxTpoTJfu3h+wYdaJeNEg=="
+          "hash": "yCrOcBxpmAq++v/kHFVQsg=="
         }
       },
       "is_incremental": false,
@@ -513,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Contextual.DoubleTreeLayoutAlgorithm-3.html",
-          "hash": "bWdAhrQtSloEvZGPfrc7eA=="
+          "hash": "Xyxd6kTThpxxlesUDL8MYQ=="
         }
       },
       "is_incremental": false,
@@ -549,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.Contextual.DoubleTreeVertexType.html",
-          "hash": "+QyaQPrPMI0dEr1mscv+Rg=="
+          "hash": "jNi/0vfEopOqDF6GHb7VKQ=="
         }
       },
       "is_incremental": false,
@@ -585,7 +561,91 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.DefaultParameterizedLayoutAlgorithmBase-4.html",
-          "hash": "ldXTsS1P7m8/ZIKbF9dJAg=="
+          "hash": "M6/GyRA/888dad2m6J3hCw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.FRCoolingFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.FRCoolingFunction.html",
+          "hash": "wgzJZdz5N+pWgXMyOqoNJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.FRLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.FRLayoutAlgorithm-3.html",
+          "hash": "0veMx2QTchSKBaOU8sbTmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.FRLayoutParametersBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.FRLayoutParametersBase.html",
+          "hash": "q1UMMgTUUKhj9rOSJW81OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.FreeFRLayoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.FreeFRLayoutParameters.html",
+          "hash": "Phl+b9KIQYo/R8SnyYoc9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutAlgorithm-3.html",
+          "hash": "cJYLAAzU61mvwE0o1dgY+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutContext-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutContext-3.html",
+          "hash": "ShNVvSuTAFTd3XMCx6F+Pg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutIterationEventArgs-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.ICompoundLayoutIterationEventArgs-1.html",
+          "hash": "bGrgNgdp98K3I+021XgHLg=="
         }
       },
       "is_incremental": false,
@@ -713,6 +773,54 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.ISOMLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.ISOMLayoutAlgorithm-3.html",
+          "hash": "YWWlm/8jnkDPyRur+NZYxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.ISOMLayoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.ISOMLayoutParameters.html",
+          "hash": "dUOK8/y4dAj0xb0gkyGlQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.KKLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.KKLayoutAlgorithm-3.html",
+          "hash": "/N7tdhL0fy+GSm23+ev5iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.KKLayoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.KKLayoutParameters.html",
+          "hash": "wdoD/aqS8QryO6zAk+AX3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/GraphShape.Algorithms.Layout.LayoutAlgorithmBase-3.yml",
       "output": {
         ".html": {
@@ -741,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.LayoutContext-3.html",
-          "hash": "Vw6UuLKDi6fLyOkPQn+/ug=="
+          "hash": "IeK/j66hztgvhrXW9pcaJw=="
         }
       },
       "is_incremental": false,
@@ -789,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.LayoutIterationEventArgs-2.html",
-          "hash": "QU6mxIFdn1aCVWdAvcRPNw=="
+          "hash": "IFkygsgKP4nuiW7ZiXKbPg=="
         }
       },
       "is_incremental": false,
@@ -825,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.LayoutParametersBase.html",
-          "hash": "VH3r+xdiN2OZa/RQzNBKeg=="
+          "hash": "5CFGlCIaHek8m1iZuCAwGQ=="
         }
       },
       "is_incremental": false,
@@ -857,11 +965,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.LinLogLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.LinLogLayoutAlgorithm-3.html",
+          "hash": "KVFnV/Y8kFUTSJHQccvJrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.LinLogLayoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.LinLogLayoutParameters.html",
+          "hash": "jrIaixmXWeyhAt1RQyOHqw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.yml",
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.ParameterizedLayoutAlgorithmBase-4.html",
-          "hash": "9L2HMMjRxUQ74uJF7kFYEQ=="
+          "hash": "j66aYjaHjOKB0N+uIA6Xfw=="
         }
       },
       "is_incremental": false,
@@ -929,11 +1061,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.CircularLayoutAlgorithm-3.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SimpleTreeLayoutAlgorithm-3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.CircularLayoutAlgorithm-3.html",
-          "hash": "tBEWav2oW5XpgVHzwFrvQA=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.SimpleTreeLayoutAlgorithm-3.html",
+          "hash": "+rRe/ZWP0ke24/X0hCudjg=="
         }
       },
       "is_incremental": false,
@@ -941,11 +1073,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.CircularLayoutParameters.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SimpleTreeLayoutParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.CircularLayoutParameters.html",
-          "hash": "EFiikDbsIo4F+Q9D54ElDA=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.SimpleTreeLayoutParameters.html",
+          "hash": "p4jouwIGYpD7nryRxBgivw=="
         }
       },
       "is_incremental": false,
@@ -953,395 +1085,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.yml",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SpanningTreeGeneration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Circular.html",
-          "hash": "OefZejQCyegjs7fbIJJWIQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.BoundedFRLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.BoundedFRLayoutParameters.html",
-          "hash": "vzQxr84G8f5xieUxYccMLQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRCoolingFunction.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRCoolingFunction.html",
-          "hash": "hXRCO5COnvr3bTsew8zv0w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutAlgorithm-3.html",
-          "hash": "Gk2HoJH+IvArSdIKJZFPag=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FRLayoutParametersBase.html",
-          "hash": "1sb2Gq76934lBSNYZcND4w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FreeFRLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.FreeFRLayoutParameters.html",
-          "hash": "CQtkZMdaLMUudLviLKrUDg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.ISOMLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.ISOMLayoutAlgorithm-3.html",
-          "hash": "VTEUVreqNc0GT2jsjGp3iA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.ISOMLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.ISOMLayoutParameters.html",
-          "hash": "drVo74m1RMUz5b+08/nh4g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutAlgorithm-3.html",
-          "hash": "GgnzOMCs4O9ul1FvMk4SQw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.KKLayoutParameters.html",
-          "hash": "vpUOMD4O/drKECbk1PGEDg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.LinLogLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.LinLogLayoutAlgorithm-3.html",
-          "hash": "F6w5Ai8++7iTjnDVoVuhKg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.LinLogLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.LinLogLayoutParameters.html",
-          "hash": "LG+BrtNGkguQnzJxATX34Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.FDP.html",
-          "hash": "aTVvyJOagco2VT3OuTFxJQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaEdgeRouting.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaEdgeRouting.html",
-          "hash": "C5sLWCnXm15o37LXgMwpYg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.AlternatingLayer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.AlternatingLayer.html",
-          "hash": "Lu/OR4ax/aISVM15sbE3rw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.Data.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.Data.html",
-          "hash": "T25EtX9GzOujxlw4Vxs2AA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.EdgeTypes.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.EdgeTypes.html",
-          "hash": "rKe58RN6qAq+SUTSVoEPXg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.IData.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.IData.html",
-          "hash": "c5TAipHVemV6LD0EuNqVNw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.ISegmentContainer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.ISegmentContainer.html",
-          "hash": "Y9dMvbMc53Dv8QRLtSwlwg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.Segment.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.Segment.html",
-          "hash": "GdqY7psJgy+6UPXgedQAnA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SegmentContainer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SegmentContainer.html",
-          "hash": "adgTrRaLcknYRYZj1I84jw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SugiEdge.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SugiEdge.html",
-          "hash": "uDdhW5jutOw9aY2rGz3u9Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SugiVertex.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.SugiVertex.html",
-          "hash": "0X2gxbUzphcsjL7JSrQ0gg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.VertexTypes.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.VertexTypes.html",
-          "hash": "TjLCxSOWvb/PEQkdRIhb6g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutAlgorithm-3.html",
-          "hash": "OYW/dtjewstrMZXG/ctnPQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.SugiyamaLayoutParameters.html",
-          "hash": "fVaU0qG2WYs5sxRtF0Z8nA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Hierarchical.html",
-          "hash": "fvECSpTYuN8B18w9YlHvwQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.BalloonTreeLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.BalloonTreeLayoutAlgorithm-3.html",
-          "hash": "7CoeAvsx+1GbKsDBif+4Cg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.BalloonTreeLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.BalloonTreeLayoutParameters.html",
-          "hash": "bU89MStvXBaZZAwz09ksbw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutAlgorithm-3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutAlgorithm-3.html",
-          "hash": "4zjoA/PaAB63niHSeSfDkA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SimpleTreeLayoutParameters.html",
-          "hash": "AEq6jLqIJ9630u9heWzPGw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SpanningTreeGeneration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.SpanningTreeGeneration.html",
-          "hash": "/OwmE8yLzT3IhXIyVQLRjw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Algorithms.Layout.Simple.Tree.html",
-          "hash": "CowwFBCW9+U6yybnTQnFMA=="
+          "relative_path": "api/GraphShape.Algorithms.Layout.SpanningTreeGeneration.html",
+          "hash": "CC2XIaRcuL+bc+S0pNZtuw=="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1101,187 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.StandardLayoutAlgorithmFactory-3.html",
-          "hash": "+jVl5q2Ao9e2qu38dpASMA=="
+          "hash": "zNRudr4SzfsDGNdFj2V+rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaEdgeRouting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaEdgeRouting.html",
+          "hash": "/HjcyUC19pxVwKlD9IkWpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.AlternatingLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.AlternatingLayer.html",
+          "hash": "WZJrS64IT4PLLAX2cUB+tg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.Data.html",
+          "hash": "qAEXcEAK2oBbIvVWHTyRng=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.EdgeTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.EdgeTypes.html",
+          "hash": "oe22/p0lF/swgxMlY9m0zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.IData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.IData.html",
+          "hash": "dn2doHcBJZNcVSt3etRSaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.ISegmentContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.ISegmentContainer.html",
+          "hash": "9oC3IyBPcH+owigBjpFAHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.Segment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.Segment.html",
+          "hash": "zW8ZoPd7CBugcDsRJVdomA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SegmentContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SegmentContainer.html",
+          "hash": "P8MAFnN0FDelUD+wXXhrlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SugiEdge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SugiEdge.html",
+          "hash": "dHbqXvKt6CWat8MVU+Nc0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SugiVertex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.SugiVertex.html",
+          "hash": "/wSphdw6ESbJ/d3+88ag8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.VertexTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.VertexTypes.html",
+          "hash": "ZFWl6eB/9cMTFJI9BwrVXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutAlgorithm-3.html",
+          "hash": "Am7zFJFGS611IeGKX+JC8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.SugiyamaLayoutParameters.html",
+          "hash": "iN1qtVTIfZw9K0hG6+ixoA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.TestingCompoundLayoutIterationEventArgs-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.TestingCompoundLayoutIterationEventArgs-4.html",
+          "hash": "U3MT07RVh3f7QJDxjeXi5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Algorithms.Layout.TestingCompoundVertexInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Algorithms.Layout.TestingCompoundVertexInfo.html",
+          "hash": "y99Wt8c0hwSDB/d5EFr/ww=="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1293,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Algorithms.Layout.html",
-          "hash": "2kVLJe3gYfssbjVcBmS1dQ=="
+          "hash": "vM0D2QH+I0/K+N+QOj8BPg=="
         }
       },
       "is_incremental": false,
@@ -1593,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.CompoundGraph-2.html",
-          "hash": "zbugTs+v09lqkLcKBhW5XQ=="
+          "hash": "ISYrepAHmwiFRJX0D5V+JA=="
         }
       },
       "is_incremental": false,
@@ -1677,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.CompoundVertexControl.html",
-          "hash": "h5upDPPJ4wKJzvWRXDgZEQ=="
+          "hash": "YYkvWbvKDDOapgJkpZN9Zw=="
         }
       },
       "is_incremental": false,
@@ -1757,11 +1685,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Controls.Extensions.TransitionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Controls.Extensions.TransitionExtensions.html",
+          "hash": "RQLQG3ueMYP+hN1qytmOZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/GraphShape.Controls.Extensions.yml",
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.Extensions.html",
-          "hash": "H3C8ou7kJUAxQWxs0zfVng=="
+          "hash": "Ur1+6OjAOYfq64huYrLR1A=="
         }
       },
       "is_incremental": false,
@@ -1773,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.FadeInTransition.html",
-          "hash": "yZs7fs6G7vZfyr03m5z9CQ=="
+          "hash": "1WjQDLqG0dwSNksUYGdXAg=="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1725,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.FadeOutTransition.html",
-          "hash": "lEHMtoS1I5kBnwzhvwZAfg=="
+          "hash": "jSsiLtncqfO/I4hdJhv4CQ=="
         }
       },
       "is_incremental": false,
@@ -1797,7 +1737,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.FadeTransition.html",
-          "hash": "KsSeuJ8sCo5REJY8IPNgsw=="
+          "hash": "5fVVlb+3N5ljonCGaafOOg=="
         }
       },
       "is_incremental": false,
@@ -1809,7 +1749,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.GraphCanvas.html",
-          "hash": "HlnPcCBk4JeKG1+s8efGGg=="
+          "hash": "8KbZTmLhnUjKw4as8jkR6Q=="
         }
       },
       "is_incremental": false,
@@ -1833,7 +1773,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.GraphLayout-3.html",
-          "hash": "rWirdSKn7mrzvA84g/0cuQ=="
+          "hash": "zW3jldr5eJCuXSVuiFSj6g=="
         }
       },
       "is_incremental": false,
@@ -1845,7 +1785,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.GraphLayout.html",
-          "hash": "BzwQhxpzteVxqVi+/W8EIw=="
+          "hash": "OBCLEpsN5ug3RMuC3VC9ng=="
         }
       },
       "is_incremental": false,
@@ -1941,7 +1881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.ITransition.html",
-          "hash": "ZolH8G06PC231WDTQw3Piw=="
+          "hash": "MjVTzDKMg3Ww4UYnECsyAw=="
         }
       },
       "is_incremental": false,
@@ -1954,6 +1894,18 @@
         ".html": {
           "relative_path": "api/GraphShape.Controls.LayoutMode.html",
           "hash": "VP6+HE1IIkyybjgx/58jZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GraphShape.Controls.ObjectPool-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GraphShape.Controls.ObjectPool-1.html",
+          "hash": "avSm42OrqhtwAayDuh00lw=="
         }
       },
       "is_incremental": false,
@@ -1985,18 +1937,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Controls.TransitionExtensions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Controls.TransitionExtensions.html",
-          "hash": "0QyRSwb6Qj8Z1mTdCc2r4g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/GraphShape.Controls.VertexControl.yml",
       "output": {
         ".html": {
@@ -2013,7 +1953,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.Controls.html",
-          "hash": "vy+qQPKj3Yn1dn/tLLjGOw=="
+          "hash": "6VuBmWyEYYmAOM33+JOrAQ=="
         }
       },
       "is_incremental": false,
@@ -2033,35 +1973,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Helpers.ObjectPool-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Helpers.ObjectPool-1.html",
-          "hash": "I8En3HVv1sXTRhsmDWbAFA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/GraphShape.Helpers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GraphShape.Helpers.html",
-          "hash": "Pe4TfnR/7K/n6TvajW13eg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/GraphShape.HierarchicalGraph-2.yml",
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.HierarchicalGraph-2.html",
-          "hash": "Og0eRFIsmwlhVcvb4ZikTA=="
+          "hash": "vfLY9+bSQfGWRb8n1UdDjA=="
         }
       },
       "is_incremental": false,
@@ -2169,7 +2085,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.SoftMutableBidirectionalGraph-2.html",
-          "hash": "9BPvL0lHSoXHGYyfVYpKKA=="
+          "hash": "uqOohoKOy+r2X3bw3kHO9g=="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.SoftMutableHierarchicalGraph-2.html",
-          "hash": "WATA8AoUxsTmh8z533d11A=="
+          "hash": "9MoEx5XI7Dvu1nrTcPDwew=="
         }
       },
       "is_incremental": false,
@@ -2205,7 +2121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.TypedEdge-1.html",
-          "hash": "lzxL6Olm5M9Rk1DOvR1LlA=="
+          "hash": "PxfZ0nDm9LK6i39cW16yxg=="
         }
       },
       "is_incremental": false,
@@ -2277,7 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.WeightedEdge-1.html",
-          "hash": "9FxYFLplMJYRAhWzMlfEsA=="
+          "hash": "sRPRaAJ2i3UG5rwtOOkBAg=="
         }
       },
       "is_incremental": false,
@@ -2289,7 +2205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GraphShape.WrappedVertex-1.html",
-          "hash": "myWrfJXbIrRO33XjlYuJNw=="
+          "hash": "aFFCQkW//jaAFqQUgrzdWA=="
         }
       },
       "is_incremental": false,
@@ -2325,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "A6cp0jh+eDf4ix+BRMsU9g=="
+          "hash": "8DTG4hVJ4DTJWIhthJIchw=="
         }
       },
       "is_incremental": false,
@@ -2387,7 +2303,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 191,
+          "total_file_count": 184,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
