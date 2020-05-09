@@ -1,5 +1,8 @@
 using System;
 using System.Diagnostics;
+#if SUPPORTS_AGGRESSIVE_INLINING
+using System.Runtime.CompilerServices;
+#endif
 using JetBrains.Annotations;
 using QuikGraph.Algorithms;
 
@@ -23,6 +26,9 @@ namespace GraphShape.Algorithms
         /// Throws if a cancellation of the algorithm was requested.
         /// </summary>
         /// <exception cref="OperationCanceledException">If the algorithm <see cref="IsCancelling"/>.</exception>
+#if SUPPORTS_AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         protected void ThrowIfCancellationRequested()
         {
             if (IsCancelling)
