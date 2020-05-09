@@ -150,12 +150,17 @@ test_script:
           throw "Unit tests failed";
       }
 
+after_test:
+  - ps: ./build/packageSamples.ps1
+
 # Artifacts
 artifacts:
   - path: '**\bin\Release\*.nupkg'
     name: NuGet
   - path: '**\bin\Release\*.snupkg'
     name: NuGet symbols
+  - path: '**\bin\Release\*.zip'
+    name: Samples
 
 # Documentation
 before_deploy:
@@ -168,6 +173,7 @@ deploy:
   - provider: NuGet
     server: https://www.myget.org/F/kernelith-ci/api/v2/package
     symbol_server: https://www.myget.org/F/kernelith-ci/symbols/api/v2/package
+    artifact: NuGet, NuGet symbols
     api_key:
       secure: ANF+joC2B+NahxCFbLPOjNvEAo36F2F4QJu6zLwoIf2I9KwkxKyCSuNxDpLmJmtU
     on:
@@ -185,6 +191,7 @@ deploy:
       APPVEYOR_REPO_TAG: true
 # NuGet
   - provider: NuGet
+    artifact: NuGet, NuGet symbols
     api_key:
       secure: a/0jxqKB5mP/ED1AIQ6YxAoiYZP93M5NQpyZbq40Tkzg+ye0MhFHlDQFBUefrseY
     on:
@@ -196,6 +203,7 @@ deploy:
       secure: fLTTmcGOM55kigJC4vErpObFmybCtzQtwb4QN55BTNq3GDGaOCoHDoIPxexzO59d
     release: '${APPVEYOR_REPO_TAG_NAME}'
     description: 'Version ${Release_Name}'
+    artifact: NuGet, NuGet symbols, Samples
     draft: false
     prerelease: false
     force_update: true
