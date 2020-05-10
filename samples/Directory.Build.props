@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
-
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -11,4 +10,9 @@
     <!-- Exclude the project from analysis -->
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
+
+  <!-- JetBrains annotations -->
+  <ItemGroup>
+    <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />
+  </ItemGroup>
 </Project>

@@ -18,6 +18,11 @@
     <LangVersion>7</LangVersion>
   </PropertyGroup>
 
+  <!-- JetBrains annotations -->
+  <ItemGroup>
+    <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="..\..\docs\images\graphshape_logo.png" Pack="true" Visible="false" PackagePath=""/>
