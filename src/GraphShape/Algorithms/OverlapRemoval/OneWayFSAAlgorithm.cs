@@ -6,7 +6,7 @@ using static GraphShape.Utils.MathUtils;
 namespace GraphShape.Algorithms.OverlapRemoval
 {
     /// <summary>
-    /// One way Fast Statistical Alignment algorithm (FSA).
+    /// One way Force-Scan Algorithm (FSA).
     /// </summary>
     /// <typeparam name="TObject">Object type.</typeparam>
     public class OneWayFSAAlgorithm<TObject> : FSAAlgorithm<TObject, OneWayFSAParameters>

@@ -17,7 +17,7 @@
 
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#.
-It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP).
+It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 
 It also provide overlap removal algorithms such as FSA (or One Way FSA) algorithms.
 
@@ -30,14 +30,19 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 0.1.0
-This package is a version of the original GraphSharp renamed GraphShape and using NET Core csproj.
+    <PackageReleaseNotes>➟ Release 1.0.0
+General:
+- Fully clean the library code.
+- Extend support of the library to .NET Framework 3.5+.
+- Remove dependency to WPFExtensions package.
 
-Remove references to embedded assemblies and use NuGet packages as replacement (QuikGraph and WPFExtensions).
+Fixes:
+- Fix async compute mode on GraphLayout control.
+- Fix handlers registrations/unregistrations.
+- Various fixes across the library.
 
-It has been split in multiple packages (GraphShape and GraphShape.Controls).
-
-This package should be seen as an alternative one to the old frozen GraphSharp from CodePlex.</PackageReleaseNotes>
+Misc:
+- Use JetBrains annotations all over the library as much as possible.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
   </PropertyGroup>
 

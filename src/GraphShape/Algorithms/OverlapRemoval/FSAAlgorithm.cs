@@ -9,7 +9,7 @@ using static GraphShape.Utils.MathUtils;
 namespace GraphShape.Algorithms.OverlapRemoval
 {
     /// <summary>
-    /// Fast Statistical Alignment algorithm (FSA).
+    /// Force-Scan Algorithm (FSA).
     /// </summary>
     /// <typeparam name="TObject">Object type.</typeparam>
     /// <typeparam name="TParameters">Algorithm parameters type.</typeparam>

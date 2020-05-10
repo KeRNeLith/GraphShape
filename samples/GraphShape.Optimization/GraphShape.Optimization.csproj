@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <UseWpf>true</UseWpf>
 
     <Title>GraphShape.Optimization</Title>
     <RootNamespace>GraphShape.Optimization</RootNamespace>
@@ -19,6 +18,7 @@
 
     <ApplicationIcon>..\..\docs\images\graphshape.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
+    <UseWpf>true</UseWpf>
   </PropertyGroup>
 
   <!-- Targets defines -->

@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net472</TargetFrameworks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <UseWpf>true</UseWpf>
 
     <Title>GraphShape.Sample</Title>
     <RootNamespace>GraphShape.Sample</RootNamespace>
@@ -19,6 +18,7 @@
 
     <ApplicationIcon>..\..\docs\images\graphshape.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
+    <UseWpf>true</UseWpf>
   </PropertyGroup>
 
   <!-- Targets defines -->

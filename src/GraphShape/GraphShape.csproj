@@ -16,7 +16,7 @@
 
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#.
-It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP).
+It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 
 It also provide overlap removal algorithms such as FSA (or One Way FSA) algorithms.
 
@@ -29,14 +29,33 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 0.1.0
-This package is a version of the original GraphSharp renamed GraphShape and using NET Core csproj.
+    <PackageReleaseNotes>➟ Release 1.0.0
+General:
+- Fully clean the library code.
+- Extend support of the library to .NET Framework 3.5+.
+- Extend support of the library to .NET Standard 2.0+.
+- Uniformize APIs and behaviors of algorithms implementations.
 
-Remove references to embedded assemblies and use NuGet packages as replacement (QuikGraph).
+Fixes:
+- Various fixes for layout algorithms implementations.
+- Various fixes across the library.
 
-It has been split in multiple packages (GraphShape and GraphShape.Controls).
+Update:
+- Algorithm parameters classes are equatable.
+- Algorithm cancellation will stop run earlier if possible.
 
-This package should be seen as an alternative one to the old frozen GraphSharp from CodePlex.</PackageReleaseNotes>
+New:
+- Add a Random layout algorithm implementation.
+
+API Breaks
+- Some public API breaks (but should remain simple to do a migration).
+- Replace .NET framework base structs (Point, Vector, Size, Rect and Thickness) by equivalent ones to support .NET Standard.
+- Some algorithm were not working well and has been removed (Sugiyama).
+- Rename EfficientSugiyama to Sugiyama.
+- Namespaces simplifications.
+
+Misc:
+- Use JetBrains annotations all over the library as much as possible.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
   </PropertyGroup>
 

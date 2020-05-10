@@ -17,7 +17,7 @@ It contains several overlap removal and layout algorithms that allow various kin
 Based on the [GraphSharp](https://archive.codeplex.com/?p=graphsharp) library, it has be reworked add some improvements to it.
 
 Main features:
-- Several layout algorithms (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP).
+- Several layout algorithms (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 - Overlap removal algorithms (FSA or One Way FSA).
 - Customizable WPF controls for visualization.
 
