@@ -4,7 +4,6 @@
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWpf>true</UseWpf>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 
     <Title>GraphShape.Optimization</Title>
     <RootNamespace>GraphShape.Optimization</RootNamespace>

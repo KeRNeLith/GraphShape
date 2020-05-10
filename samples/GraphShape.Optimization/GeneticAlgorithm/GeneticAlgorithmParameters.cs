@@ -1,23 +1,75 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
 
 namespace GraphShape.Optimization.GeneticAlgorithm
 {
-    public class GeneticAlgorithmParameters
+    /// <summary>
+    /// Genetic algorithm parameters.
+    /// </summary>
+    internal class GeneticAlgorithmParameters
     {
-        [ContractInvariantMethod]
-        public void Invariants()
+        private int _generations;
+
+        public int Generations
         {
-            Contract.Invariant(Generations > 0);
-            Contract.Invariant(PopulationSize > 0);
-            Contract.Invariant(0 <= MutationRate && MutationRate <= 1.0);
-            Contract.Invariant(0 <= CrossoverRate && CrossoverRate <= 1.0);
-            Contract.Invariant(0 <= ElitismRate && ElitismRate <= 1.0);
+            get => _generations;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(Generations)} must be positive or 0.");
+                _generations = value;
+            }
         }
 
-        public int Generations { get; set; }
-        public int PopulationSize { get; set; }
-        public double MutationRate { get; set; }
-        public double CrossoverRate { get; set; }
-        public double ElitismRate { get; set; }
+        private int _populationSize;
+        
+        public int PopulationSize
+        {
+            get => _populationSize;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(PopulationSize)} must be positive or 0.");
+                _populationSize = value;
+            }
+        }
+
+        private double _mutationRate;
+
+        public double MutationRate
+        {
+            get => _mutationRate;
+            set
+            {
+                if (value < 0 || value > 1)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(MutationRate)} must be in [0, 1].");
+                _mutationRate = value;
+            }
+        }
+
+        private double _crossoverRate;
+
+        public double CrossoverRate
+        {
+            get => _crossoverRate;
+            set
+            {
+                if (value < 0 || value > 1)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(CrossoverRate)} must be in [0, 1].");
+                _crossoverRate = value;
+            }
+        }
+
+        private double _elitismRate;
+
+        public double ElitismRate
+        {
+            get => _elitismRate;
+            set
+            {
+                if (value < 0 || value > 1)
+                    throw new ArgumentOutOfRangeException(nameof(value), $"{nameof(ElitismRate)} must be in [0, 1].");
+                _elitismRate = value;
+            }
+        }
     }
 }

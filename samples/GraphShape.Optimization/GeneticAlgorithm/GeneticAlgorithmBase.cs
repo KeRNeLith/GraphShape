@@ -1,73 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
+using QuikGraph.Utils;
 
 namespace GraphShape.Optimization.GeneticAlgorithm
 {
-    public abstract class GeneticAlgorithmBase<TChromosome, TParam>
+    /// <summary>
+    /// Base class for genetic algorithm.
+    /// </summary>
+    /// <typeparam name="TChromosome">Chromosome type.</typeparam>
+    /// <typeparam name="TParameters">Algorithm parameters type.</typeparam>
+    internal abstract class GeneticAlgorithmBase<TChromosome, TParameters>
         where TChromosome : class
-        where TParam : GeneticAlgorithmParameters
+        where TParameters : GeneticAlgorithmParameters
     {
-        protected static readonly Random rnd = new Random(DateTime.Now.Millisecond);
-        private TParam _parameters;
+        [NotNull]
+        protected readonly Random Rand = new CryptoRandom();
 
-        protected List<Solution> _population;
+        [NotNull]
+        public TParameters Parameters { get; }
 
-        protected GeneticAlgorithmBase(TParam parameters)
+        [ItemNotNull]
+        protected List<Solution> PopulationInternal;
+
+        [NotNull, ItemNotNull]
+        public TChromosome[] Population => PopulationInternal?.Select(sol => sol.Chromosome).ToArray() ?? Array.Empty<TChromosome>();
+
+        [NotNull]
+        public double[] Fitnesses => PopulationInternal?.Select(sol => sol.Fitness).ToArray() ?? Array.Empty<double>();
+
+        protected GeneticAlgorithmBase([NotNull] TParameters parameters)
         {
-            Parameters = parameters;
+            Parameters = parameters ?? throw new ArgumentNullException(nameof(parameters));
         }
 
-        public IList<TChromosome> Population
-        {
-            get { return _population.Select(sol => sol.Chromosome).ToList(); }
-        }
-
-        public IList<double> Fitnesses
-        {
-            get { return _population.Select(sol => sol.Fitness).ToList(); }
-        }
-
+        /// <summary>
+        /// Fired when a generation is extincted.
+        /// </summary>
         public event Action<int> GenerationExtincts;
-
-        public TParam Parameters
-        {
-            get { return _parameters; }
-            private set { _parameters = value; }
-        }
 
         protected void InitPopulation()
         {
-            _population = new List<Solution>(Parameters.PopulationSize);
-            for (int i = 0; i < Parameters.PopulationSize; i++)
+            PopulationInternal = new List<Solution>(Parameters.PopulationSize);
+            for (int i = 0; i < Parameters.PopulationSize; ++i)
             {
-                _population.Add(
+                PopulationInternal.Add(
                     new Solution
-                        {
-                            Chromosome = CreateIndividual()
-                        }
-                    );
+                    {
+                        Chromosome = CreateIndividual()
+                    });
             }
         }
 
         protected void EvaluateFitnesses()
         {
-            int i = 0;
-            foreach (var solution in _population)
+            foreach (Solution solution in PopulationInternal)
             {
-                //we do not have to recalculate the fitness of the elite
+                // We do not have to recalculate the fitness of the elite
                 if (double.IsNaN(solution.Fitness))
                 {
-                    Console.WriteLine("Evaluating Fitness on Solution {0}", i);
                     solution.Fitness = EvaluateFitness(solution.Chromosome);
                 }
-                i++;
             }
         }
 
         protected void SortByFitness()
         {
-            _population.Sort(delegate(Solution s1, Solution s2) { return s1.Fitness.CompareTo(s2.Fitness); });
+            PopulationInternal.Sort((s1, s2) => s1.Fitness.CompareTo(s2.Fitness));
         }
 
         protected void CreateNewPopulation()
@@ -75,20 +75,23 @@ namespace GraphShape.Optimization.GeneticAlgorithm
             var newPopulation = new List<Solution>(Parameters.PopulationSize);
             CopyElite(newPopulation);
             GeneratePopulation(newPopulation);
-            _population = newPopulation;
+            PopulationInternal = newPopulation;
         }
 
-        protected void GeneratePopulation(IList<Solution> newPopulation)
+        protected void GeneratePopulation([NotNull] IList<Solution> newPopulation)
         {
             var generatedPopulationSize = Parameters.PopulationSize - newPopulation.Count;
-            for (int i = 0; i < generatedPopulationSize; i++)
+            for (int i = 0; i < generatedPopulationSize; ++i)
             {
-                TChromosome parent1 = null, parent2 = null;
-                SelectParents(out parent1, out parent2);
+                SelectParents(out TChromosome parent1, out TChromosome parent2);
                 TChromosome offspring = Crossover(parent1, parent2);
                 offspring = Mutate(offspring);
 
-                newPopulation.Add(new Solution {Chromosome = offspring});
+                newPopulation.Add(
+                    new Solution
+                    {
+                        Chromosome = offspring
+                    });
             }
         }
 
@@ -96,56 +99,59 @@ namespace GraphShape.Optimization.GeneticAlgorithm
         {
             InitPopulation();
 
-            for (int i = 0; i < Parameters.Generations; i++)
+            for (int i = 0; i < Parameters.Generations; ++i)
             {
-                Console.WriteLine("Starting generation {0}", i);
                 EvaluateFitnesses();
                 SortByFitness();
 
-                if (GenerationExtincts != null)
-                    GenerationExtincts(i);
+                GenerationExtincts?.Invoke(i);
                 CreateNewPopulation();
             }
         }
 
-        protected abstract TChromosome Mutate(TChromosome chromosome);
+        [Pure]
+        [NotNull]
+        protected abstract TChromosome Mutate([NotNull] TChromosome chromosome);
 
-        protected abstract TChromosome Crossover(TChromosome parent1, TChromosome parent2);
+        [Pure]
+        [NotNull]
+        protected abstract TChromosome Crossover([NotNull] TChromosome parent1, [NotNull] TChromosome parent2);
 
-        protected virtual void SelectParents(out TChromosome parent1, out TChromosome parent2)
+        protected virtual void SelectParents([NotNull] out TChromosome parent1, [NotNull] out TChromosome parent2)
         {
-            var parent1Index = rnd.Next(_population.Count);
-            parent1 = _population[parent1Index].Chromosome;
+            var parent1Index = Rand.Next(PopulationInternal.Count);
+            parent1 = PopulationInternal[parent1Index].Chromosome;
 
             int parent2Index;
             do
             {
-                parent2Index = rnd.Next(_population.Count);
+                parent2Index = Rand.Next(PopulationInternal.Count);
             } while (parent1Index == parent2Index);
-            parent2 = _population[parent2Index].Chromosome;
+            parent2 = PopulationInternal[parent2Index].Chromosome;
         }
 
-        protected void CopyElite(IList<Solution> newPopulation)
+        protected void CopyElite([NotNull, ItemNotNull] IList<Solution> newPopulation)
         {
-            var eliteSize = Math.Floor(Parameters.PopulationSize*Parameters.ElitismRate);
-            for (int i = 0; i < eliteSize; i++)
-                newPopulation.Add(_population[i]);
+            double eliteSize = Math.Floor(Parameters.PopulationSize * Parameters.ElitismRate);
+            for (int i = 0; i < eliteSize; ++i)
+            {
+                newPopulation.Add(PopulationInternal[i]);
+            }
         }
 
-        protected abstract double EvaluateFitness(TChromosome individual);
+        [Pure]
+        protected abstract double EvaluateFitness([NotNull] TChromosome individual);
+
+        [Pure]
+        [NotNull]
         protected abstract TChromosome CreateIndividual();
 
         #region Nested type: Solution
 
-        protected class Solution<TChromo>
-            where TChromo : class
+        protected class Solution
         {
-            public TChromo Chromosome;
+            public TChromosome Chromosome;
             public double Fitness = double.NaN;
-        }
-
-        protected class Solution : Solution<TChromosome>
-        {
         }
 
         #endregion
