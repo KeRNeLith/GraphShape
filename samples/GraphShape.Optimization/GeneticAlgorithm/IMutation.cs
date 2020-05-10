@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GraphSharp.Optimization.GeneticAlgorithm
+namespace GraphShape.Optimization.GeneticAlgorithm
 {
     public interface IMutation<TGene> 
         where TGene : class

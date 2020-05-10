@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GraphSharp.Optimization.GeneticAlgorithm
+namespace GraphShape.Optimization.GeneticAlgorithm
 {
     public abstract class GeneticAlgorithmBase<TChromosome, TParam>
         where TChromosome : class

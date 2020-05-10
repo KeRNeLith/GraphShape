@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 
-namespace GraphSharp.Optimization.GeneticAlgorithm
+namespace GraphShape.Optimization.GeneticAlgorithm
 {
     public class GeneticAlgorithmParameters
     {

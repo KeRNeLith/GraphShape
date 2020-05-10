@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Controls.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Sample", "samples\GraphShape.Sample\GraphShape.Sample.csproj", "{C32CDAAA-E963-4638-BD38-A621B2078083}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphShape.Optimization", "samples\GraphShape.Optimization\GraphShape.Optimization.csproj", "{F255833A-8391-4B7B-9CC3-E8E4059BF219}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C32CDAAA-E963-4638-BD38-A621B2078083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C32CDAAA-E963-4638-BD38-A621B2078083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C32CDAAA-E963-4638-BD38-A621B2078083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F255833A-8391-4B7B-9CC3-E8E4059BF219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F255833A-8391-4B7B-9CC3-E8E4059BF219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F255833A-8391-4B7B-9CC3-E8E4059BF219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F255833A-8391-4B7B-9CC3-E8E4059BF219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{8F34D487-2FAA-4B4B-9099-D027579A74E1} = {22937B93-4129-4F68-AB14-F7AFE020BA8F}
 		{AAE7148E-48CC-4051-B413-CF0EAA86546B} = {22937B93-4129-4F68-AB14-F7AFE020BA8F}
 		{C32CDAAA-E963-4638-BD38-A621B2078083} = {12337AA3-1429-4AD8-FBC5-CCAFDA20B38F}
+		{F255833A-8391-4B7B-9CC3-E8E4059BF219} = {12337AA3-1429-4AD8-FBC5-CCAFDA20B38F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D51F43F6-C27F-40EE-A4F2-CA21506D9B97}

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using GraphSharp.Algorithms.Layout;
-using GraphSharp.Optimization.GeneticAlgorithm;
-using QuickGraph;
-using GraphSharp.Algorithms;
-using GraphSharp.Algorithms.Layout.Compound.FDP;
-using GraphSharp.Algorithms.Layout.Compound;
+using GraphShape.Algorithms.Layout;
+using GraphShape.Optimization.GeneticAlgorithm;
+using QuikGraph;
+using GraphShape.Algorithms;
+using GraphShape.Algorithms.Layout;
 
-namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
+namespace GraphShape.Optimization.Algorithms.Layout.CompoundFDP
 {
     public class GeneticCompoundFDPOptimizer : GeneticAlgorithmBase<CompoundFDPLayoutParameters, GeneticAlgorithmParameters>
     {
@@ -207,11 +206,6 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             if (mutate)
                 chromosome.TemperatureDecreasing *= lowering ? rnd.NextDouble() : Math.Max(1.0, rnd.NextDouble() * 2);
 
-            mutate = rnd.NextDouble() < Parameters.MutationRate;
-            lowering = rnd.NextDouble() < 0.5;
-            if (mutate)
-                chromosome.TemperatureFactor *= lowering ? rnd.NextDouble() : Math.Max(1.0, rnd.NextDouble() * 2);
-
             return CoalesceParameters(chromosome);
         }
 
@@ -232,7 +226,6 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
                 offspring.DisplacementLimitMultiplier = crossoverIndex >= 8 ? parent1.DisplacementLimitMultiplier : parent2.DisplacementLimitMultiplier;
                 offspring.SeparationMultiplier = crossoverIndex >= 9 ? parent1.SeparationMultiplier : parent2.SeparationMultiplier;
                 offspring.TemperatureDecreasing = crossoverIndex >= 10 ? parent1.TemperatureDecreasing : parent2.TemperatureDecreasing;
-                offspring.TemperatureFactor = crossoverIndex >= 11 ? parent1.TemperatureFactor : parent2.TemperatureFactor;
 
 
                 offspring = CoalesceParameters(offspring);
@@ -252,7 +245,6 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             offspring.DisplacementLimitMultiplier = Math.Max(0, offspring.DisplacementLimitMultiplier);
             offspring.SeparationMultiplier = Math.Max(0, offspring.SeparationMultiplier);
             offspring.TemperatureDecreasing = Math.Min(1.0, Math.Max(0.0, offspring.TemperatureDecreasing));
-            offspring.TemperatureFactor = Math.Min(0.999, Math.Max(0.1, offspring.TemperatureFactor));
 
             return offspring;
         }
@@ -315,7 +307,7 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             //run the compound FDP algorithm
             var algorithm =
                 new CompoundFDPLayoutAlgorithm<object, IEdge<object>, CompoundGraph<object, IEdge<object>>>(
-                    compoundGraph, sizes, borders, layoutType, null, chromosome);
+                    compoundGraph, sizes, borders, layoutType, chromosome);
             algorithm.Compute();
 
             double fitness = 0.0;
@@ -379,25 +371,25 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             int crossings = 0;
             foreach (var edge in compoundGraph.Edges)
             {
-                var uPos1 = algorithm.VertexPositions[edge.Source];
-                var vPos1 = algorithm.VertexPositions[edge.Target];
+                var uPos1 = algorithm.VerticesPositions[edge.Source];
+                var vPos1 = algorithm.VerticesPositions[edge.Target];
                 var uSize1 = sizes[edge.Source];
                 var vSize1 = sizes[edge.Target];
 
-                var uPoint1 = LayoutUtil.GetClippingPoint(uSize1, uPos1, vPos1);
-                var vPoint1 = LayoutUtil.GetClippingPoint(vSize1, vPos1, uPos1);
+                var uPoint1 = LayoutUtils.GetClippingPoint(uSize1, uPos1, vPos1);
+                var vPoint1 = LayoutUtils.GetClippingPoint(vSize1, vPos1, uPos1);
                 foreach (var edge2 in compoundGraph.Edges)
                 {
                     if (edge == edge2)
                         continue;
 
-                    var uPos2 = algorithm.VertexPositions[edge.Source];
-                    var vPos2 = algorithm.VertexPositions[edge.Target];
+                    var uPos2 = algorithm.VerticesPositions[edge.Source];
+                    var vPos2 = algorithm.VerticesPositions[edge.Target];
                     var uSize2 = sizes[edge.Source];
                     var vSize2 = sizes[edge.Target];
 
-                    var uPoint2 = LayoutUtil.GetClippingPoint(uSize2, uPos2, vPos2);
-                    var vPoint2 = LayoutUtil.GetClippingPoint(vSize2, vPos2, uPos2);
+                    var uPoint2 = LayoutUtils.GetClippingPoint(uSize2, uPos2, vPos2);
+                    var vPoint2 = LayoutUtils.GetClippingPoint(vSize2, vPos2, uPos2);
 
                     Vector v1 = (vPoint1 - uPoint1);
                     Vector v2 = (vPoint2 - uPoint2);
@@ -429,13 +421,13 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             double edgeLengthError = 0.0;
             foreach (var edge in compoundGraph.Edges)
             {
-                var uPos = algorithm.VertexPositions[edge.Source];
-                var vPos = algorithm.VertexPositions[edge.Target];
+                var uPos = algorithm.VerticesPositions[edge.Source];
+                var vPos = algorithm.VerticesPositions[edge.Target];
                 var uSize = sizes[edge.Source];
                 var vSize = sizes[edge.Target];
 
-                var uPoint = LayoutUtil.GetClippingPoint(uSize, uPos, vPos);
-                var vPoint = LayoutUtil.GetClippingPoint(vSize, vPos, uPos);
+                var uPoint = LayoutUtils.GetClippingPoint(uSize, uPos, vPos);
+                var vPoint = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
                 double length = (uPoint - vPoint).Length;
                 bool isInterEdge = compoundGraph.GetParent(edge.Source) != compoundGraph.GetParent(edge.Target);
@@ -467,8 +459,8 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
 
                         var uSize = vertexSizes[u];
                         var vSize = vertexSizes[v];
-                        var uPosition = algorithm.VertexPositions[u];
-                        var vPosition = algorithm.VertexPositions[v];
+                        var uPosition = algorithm.VerticesPositions[u];
+                        var vPosition = algorithm.VerticesPositions[v];
 
                         var uRect = new Rect(uPosition, uSize);
                         var vRect = new Rect(vPosition, vSize);
@@ -495,7 +487,7 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
             Point bottomRight = new Point(double.NegativeInfinity, double.NegativeInfinity);
             foreach (var v in compoundGraph.Vertices)
             {
-                var pos = algorithm.VertexPositions[v];
+                var pos = algorithm.VerticesPositions[v];
                 var size = sizes[v];
 
                 topLeft.X = Math.Min(topLeft.X, pos.X - size.Width / 2.0);
@@ -531,10 +523,10 @@ namespace GraphSharp.Optimization.Algorithms.Layout.CompoundFDP
                         if (u == v || compoundGraph.GetParent(u) != compoundGraph.GetParent(v))
                             continue;
 
-                        var uPoint = LayoutUtil.GetClippingPoint(sizes[u], algorithm.VertexPositions[u],
-                                                                   algorithm.VertexPositions[v]);
-                        var vPoint = LayoutUtil.GetClippingPoint(sizes[v], algorithm.VertexPositions[v],
-                                                                   algorithm.VertexPositions[u]);
+                        var uPoint = LayoutUtils.GetClippingPoint(sizes[u], algorithm.VerticesPositions[u],
+                                                                   algorithm.VerticesPositions[v]);
+                        var vPoint = LayoutUtils.GetClippingPoint(sizes[v], algorithm.VerticesPositions[v],
+                                                                   algorithm.VerticesPositions[u]);
                         double distance = (uPoint - vPoint).Length;
                         m = Math.Min(m, distance);
                     }

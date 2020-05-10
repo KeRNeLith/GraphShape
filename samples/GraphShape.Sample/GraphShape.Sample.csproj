@@ -17,13 +17,13 @@
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape sample application.</Description>
 
-    <ApplicationIcon>icons\graphshape.ico</ApplicationIcon>
+    <ApplicationIcon>..\..\docs\images\graphshape.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <!-- Targets defines -->
-  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
-    <AssemblyTitle>GraphShape.Sample .NET Core App 3.1</AssemblyTitle>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
+    <AssemblyTitle>GraphShape.Sample .NET 4.7.2</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>

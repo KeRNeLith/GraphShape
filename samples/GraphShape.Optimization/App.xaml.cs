@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace GraphSharp.Optimization
+namespace GraphShape.Optimization
 {
     /// <summary>
     /// Interaction logic for App.xaml

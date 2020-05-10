@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using GraphSharp.Optimization.Algorithms.Layout.CompoundFDP;
+using GraphShape.Optimization.Algorithms.Layout.CompoundFDP;
 
-namespace GraphSharp.Optimization
+namespace GraphShape.Optimization
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -51,7 +51,6 @@ namespace GraphSharp.Optimization
                 Console.WriteLine(chromosome.DisplacementLimitMultiplier);
                 Console.WriteLine(chromosome.SeparationMultiplier);
                 Console.WriteLine(chromosome.TemperatureDecreasing);
-                Console.WriteLine(chromosome.TemperatureFactor);
                 Console.WriteLine("Fitness: {0}", optimizer.Fitnesses[i]);
                 Console.WriteLine(
                     "---------------------------------------------");
