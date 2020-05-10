@@ -49,6 +49,7 @@
 
   <!-- Projects -->
   <ItemGroup>
+    <ProjectReference Include="..\..\common\GraphShape.Factory\GraphShape.Factory.csproj" />
     <ProjectReference Include="..\..\src\GraphShape.Controls\GraphShape.Controls.csproj" />
   </ItemGroup>
 </Project>

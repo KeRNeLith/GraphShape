@@ -18,7 +18,7 @@
     Title="Graph layout PoC"
     Background="White"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
+    WindowState="Normal"
     commands:CommandSinkBinding.CommandSink="{Binding}"
     d:DataContext="{d:DesignInstance viewModels:LayoutAnalyzerViewModel}">
     <ribbonControls:RibbonWindow.Resources>
@@ -251,7 +251,7 @@
 
             <!-- Graph Selector -->
             <ListBox
-                Width="150"
+                Width="170"
                 MinWidth="150"
                 MaxWidth="300"
                 ItemsSource="{Binding Path=GraphModels, Mode=OneWay}"
