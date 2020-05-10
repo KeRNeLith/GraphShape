@@ -4,7 +4,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using QuikGraph;
 
-namespace GraphShape.Tests
+namespace GraphShape.Factory
 {
     /// <summary>
     /// Graph Factory.

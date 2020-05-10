@@ -55,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\common\GraphShape.Factory\GraphShape.Factory.csproj" />
     <ProjectReference Include="..\..\src\GraphShape\GraphShape.csproj" />
   </ItemGroup>
 </Project>

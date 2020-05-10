@@ -32,4 +32,9 @@
     <Optimize>true</Optimize>
     <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
+
+  <!-- C# configuration -->
+  <PropertyGroup>
+    <LangVersion>7</LangVersion>
+  </PropertyGroup>
 </Project>

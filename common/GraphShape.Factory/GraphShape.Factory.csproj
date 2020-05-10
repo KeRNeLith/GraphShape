@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+    <Title>GraphShape.Factory</Title>
+    <RootNamespace>GraphShape.Factory</RootNamespace>
+    <AssemblyName>GraphShape.Factory</AssemblyName>
+
+    <!-- Overridden by CI -->
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+
+    <Copyright>Copyright © 2020</Copyright>
+    <Description>Graph factory library.</Description>
+
+    <IsPackable>false</IsPackable>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <!-- Targets defines -->
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <AssemblyTitle>GraphShape.Factory .NET 3.5</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET35;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <AssemblyTitle>GraphShape.Factory .NET Standard 2.0</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NETSTANDARD2_0;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Dependencies -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\GraphShape\GraphShape.csproj" />
+  </ItemGroup>
+</Project>

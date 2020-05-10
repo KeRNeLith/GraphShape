@@ -13,11 +13,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <!-- C# configuration -->
-  <PropertyGroup>
-    <LangVersion>7</LangVersion>
-  </PropertyGroup>
-
   <!-- JetBrains annotations -->
   <ItemGroup>
     <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />

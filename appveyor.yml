@@ -127,7 +127,7 @@ test_script:
           $opencover = (Resolve-Path "tools\OpenCover.*\tools\OpenCover.Console.exe").ToString();
           $coveralls = (Resolve-Path "tools\csmacnz.Coveralls.exe").ToString();
           
-          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -excludebyfile:"*\GraphShape.Controls\Behaviors\*;*\GraphShape.Controls\Controls\*;*\GraphShape.Controls\*\TransitionExtensions.cs" -hideskipped:File -target:"$nunitConsole" -targetargs:"$testAssemblies --result=\`"TestResult.xml\`"" -returntargetcode -log:Warn -output:coverage.xml;
+          & $opencover -register:Path64 -filter:"+[*]* -[*.Test*]* -[*]JetBrains.Annotations*" -excludebyfile:"*\GraphShape.Factory\*;*\GraphShape.Controls\Behaviors\*;*\GraphShape.Controls\Controls\*;*\GraphShape.Controls\*\TransitionExtensions.cs" -hideskipped:File -target:"$nunitConsole" -targetargs:"$testAssemblies --result=\`"TestResult.xml\`"" -returntargetcode -log:Warn -output:coverage.xml;
           $testsPassed = $?;
           
           & $sonarScanner end /d:"sonar.login=$env:SONARQUBE_TOKEN"
