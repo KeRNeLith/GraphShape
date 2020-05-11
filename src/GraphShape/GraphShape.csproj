@@ -63,6 +63,6 @@ This package should be seen as an alternative one to the old frozen GraphSharp f
 
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="QuikGraph" Version="2.0.0" />
+    <PackageReference Include="QuikGraph" Version="2.1.0" />
   </ItemGroup>
 </Project>
