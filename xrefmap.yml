@@ -9396,12 +9396,12 @@ references:
   commentId: T:GraphShape.Controls.Animations.SimpleMoveAnimation
   fullName: GraphShape.Controls.Animations.SimpleMoveAnimation
   nameWithType: SimpleMoveAnimation
-- uid: GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,System.TimeSpan)
-  name: Animate(IAnimationContext, Control, Double, Double, TimeSpan)
-  href: api/GraphShape.Controls.Animations.SimpleMoveAnimation.html#GraphShape_Controls_Animations_SimpleMoveAnimation_Animate_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_Double_System_Double_System_TimeSpan_
-  commentId: M:GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,System.TimeSpan)
-  fullName: GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.Double, System.Double, System.TimeSpan)
-  nameWithType: SimpleMoveAnimation.Animate(IAnimationContext, Control, Double, Double, TimeSpan)
+- uid: GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,TimeSpan)
+  name: Animate(IAnimationContext, System.Windows.Controls.Control, Double, Double, TimeSpan)
+  href: api/GraphShape.Controls.Animations.SimpleMoveAnimation.html#GraphShape_Controls_Animations_SimpleMoveAnimation_Animate_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_Double_System_Double_TimeSpan_
+  commentId: M:GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,TimeSpan)
+  fullName: GraphShape.Controls.Animations.SimpleMoveAnimation.Animate(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.Double, System.Double, TimeSpan)
+  nameWithType: SimpleMoveAnimation.Animate(IAnimationContext, System.Windows.Controls.Control, Double, Double, TimeSpan)
 - uid: GraphShape.Controls.Animations.SimpleMoveAnimation.Animate*
   name: Animate
   href: api/GraphShape.Controls.Animations.SimpleMoveAnimation.html#GraphShape_Controls_Animations_SimpleMoveAnimation_Animate_
@@ -9421,11 +9421,11 @@ references:
   commentId: T:GraphShape.Controls.Behaviors.DragBehavior
   fullName: GraphShape.Controls.Behaviors.DragBehavior
   nameWithType: DragBehavior
-- uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(DependencyObject)
   name: GetIsDragEnabled(DependencyObject)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetIsDragEnabled_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetIsDragEnabled_DependencyObject_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(DependencyObject)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled(DependencyObject)
   nameWithType: DragBehavior.GetIsDragEnabled(DependencyObject)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled*
   name: GetIsDragEnabled
@@ -9434,11 +9434,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragEnabled
   nameWithType: DragBehavior.GetIsDragEnabled
-- uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(DependencyObject)
   name: GetIsDragging(DependencyObject)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetIsDragging_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetIsDragging_DependencyObject_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(DependencyObject)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging(DependencyObject)
   nameWithType: DragBehavior.GetIsDragging(DependencyObject)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging*
   name: GetIsDragging
@@ -9447,11 +9447,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.GetIsDragging
   nameWithType: DragBehavior.GetIsDragging
-- uid: GraphShape.Controls.Behaviors.DragBehavior.GetX(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.GetX(DependencyObject)
   name: GetX(DependencyObject)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetX_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetX(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetX(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetX_DependencyObject_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetX(DependencyObject)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetX(DependencyObject)
   nameWithType: DragBehavior.GetX(DependencyObject)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.GetX*
   name: GetX
@@ -9460,11 +9460,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.GetX
   nameWithType: DragBehavior.GetX
-- uid: GraphShape.Controls.Behaviors.DragBehavior.GetY(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.GetY(DependencyObject)
   name: GetY(DependencyObject)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetY_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetY(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetY(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_GetY_DependencyObject_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.GetY(DependencyObject)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.GetY(DependencyObject)
   nameWithType: DragBehavior.GetY(DependencyObject)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.GetY*
   name: GetY
@@ -9485,11 +9485,11 @@ references:
   commentId: F:GraphShape.Controls.Behaviors.DragBehavior.IsDraggingProperty
   fullName: GraphShape.Controls.Behaviors.DragBehavior.IsDraggingProperty
   nameWithType: DragBehavior.IsDraggingProperty
-- uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(System.Windows.DependencyObject,System.Boolean)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(DependencyObject,System.Boolean)
   name: SetIsDragEnabled(DependencyObject, Boolean)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetIsDragEnabled_System_Windows_DependencyObject_System_Boolean_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(System.Windows.DependencyObject,System.Boolean)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(System.Windows.DependencyObject, System.Boolean)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetIsDragEnabled_DependencyObject_System_Boolean_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(DependencyObject,System.Boolean)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled(DependencyObject, System.Boolean)
   nameWithType: DragBehavior.SetIsDragEnabled(DependencyObject, Boolean)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled*
   name: SetIsDragEnabled
@@ -9498,11 +9498,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragEnabled
   nameWithType: DragBehavior.SetIsDragEnabled
-- uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(System.Windows.DependencyObject,System.Boolean)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(DependencyObject,System.Boolean)
   name: SetIsDragging(DependencyObject, Boolean)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetIsDragging_System_Windows_DependencyObject_System_Boolean_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(System.Windows.DependencyObject,System.Boolean)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(System.Windows.DependencyObject, System.Boolean)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetIsDragging_DependencyObject_System_Boolean_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(DependencyObject,System.Boolean)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging(DependencyObject, System.Boolean)
   nameWithType: DragBehavior.SetIsDragging(DependencyObject, Boolean)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging*
   name: SetIsDragging
@@ -9511,11 +9511,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.SetIsDragging
   nameWithType: DragBehavior.SetIsDragging
-- uid: GraphShape.Controls.Behaviors.DragBehavior.SetX(System.Windows.DependencyObject,System.Double)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.SetX(DependencyObject,System.Double)
   name: SetX(DependencyObject, Double)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetX_System_Windows_DependencyObject_System_Double_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetX(System.Windows.DependencyObject,System.Double)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetX(System.Windows.DependencyObject, System.Double)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetX_DependencyObject_System_Double_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetX(DependencyObject,System.Double)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetX(DependencyObject, System.Double)
   nameWithType: DragBehavior.SetX(DependencyObject, Double)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.SetX*
   name: SetX
@@ -9524,11 +9524,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Behaviors.DragBehavior.SetX
   nameWithType: DragBehavior.SetX
-- uid: GraphShape.Controls.Behaviors.DragBehavior.SetY(System.Windows.DependencyObject,System.Double)
+- uid: GraphShape.Controls.Behaviors.DragBehavior.SetY(DependencyObject,System.Double)
   name: SetY(DependencyObject, Double)
-  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetY_System_Windows_DependencyObject_System_Double_
-  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetY(System.Windows.DependencyObject,System.Double)
-  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetY(System.Windows.DependencyObject, System.Double)
+  href: api/GraphShape.Controls.Behaviors.DragBehavior.html#GraphShape_Controls_Behaviors_DragBehavior_SetY_DependencyObject_System_Double_
+  commentId: M:GraphShape.Controls.Behaviors.DragBehavior.SetY(DependencyObject,System.Double)
+  fullName: GraphShape.Controls.Behaviors.DragBehavior.SetY(DependencyObject, System.Double)
   nameWithType: DragBehavior.SetY(DependencyObject, Double)
 - uid: GraphShape.Controls.Behaviors.DragBehavior.SetY*
   name: SetY
@@ -9732,13 +9732,13 @@ references:
   fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CanLayout
   nameWithType: ContextualGraphLayout<TVertex, TEdge, TGraph>.CanLayout
   nameWithType.vb: ContextualGraphLayout(Of TVertex, TEdge, TGraph).CanLayout
-- uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name: CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.ContextualGraphLayout-3.html#GraphShape_Controls_ContextualGraphLayout_3_CreateLayoutContext_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.ContextualGraphLayout-3.html#GraphShape_Controls_ContextualGraphLayout_3_CreateLayoutContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
+  commentId: M:GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name.vb: CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
+  fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
   nameWithType: ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext*
@@ -9787,13 +9787,13 @@ references:
   commentId: T:GraphShape.Controls.Converters.EdgeRouteToPathConverter
   fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter
   nameWithType: EdgeRouteToPathConverter
-- uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)
+- uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[],Type,System.Object,CultureInfo)
   name: Convert(Object[], Type, Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.EdgeRouteToPathConverter.html#GraphShape_Controls_Converters_EdgeRouteToPathConverter_Convert_System_Object___System_Type_System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)
+  href: api/GraphShape.Controls.Converters.EdgeRouteToPathConverter.html#GraphShape_Controls_Converters_EdgeRouteToPathConverter_Convert_System_Object___Type_System_Object_CultureInfo_
+  commentId: M:GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[],Type,System.Object,CultureInfo)
   name.vb: Convert(Object(), Type, Object, CultureInfo)
-  fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[], System.Type, System.Object, System.Globalization.CultureInfo)
-  fullName.vb: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object(), System.Type, System.Object, System.Globalization.CultureInfo)
+  fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[], Type, System.Object, CultureInfo)
+  fullName.vb: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object(), Type, System.Object, CultureInfo)
   nameWithType: EdgeRouteToPathConverter.Convert(Object[], Type, Object, CultureInfo)
   nameWithType.vb: EdgeRouteToPathConverter.Convert(Object(), Type, Object, CultureInfo)
 - uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert*
@@ -9803,13 +9803,13 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert
   nameWithType: EdgeRouteToPathConverter.Convert
-- uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)
+- uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object,Type[],System.Object,CultureInfo)
   name: ConvertBack(Object, Type[], Object, CultureInfo)
-  href: api/GraphShape.Controls.Converters.EdgeRouteToPathConverter.html#GraphShape_Controls_Converters_EdgeRouteToPathConverter_ConvertBack_System_Object_System_Type___System_Object_System_Globalization_CultureInfo_
-  commentId: M:GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)
+  href: api/GraphShape.Controls.Converters.EdgeRouteToPathConverter.html#GraphShape_Controls_Converters_EdgeRouteToPathConverter_ConvertBack_System_Object_Type___System_Object_CultureInfo_
+  commentId: M:GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object,Type[],System.Object,CultureInfo)
   name.vb: ConvertBack(Object, Type(), Object, CultureInfo)
-  fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object, System.Type[], System.Object, System.Globalization.CultureInfo)
-  fullName.vb: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object, System.Type(), System.Object, System.Globalization.CultureInfo)
+  fullName: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object, Type[], System.Object, CultureInfo)
+  fullName.vb: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object, Type(), System.Object, CultureInfo)
   nameWithType: EdgeRouteToPathConverter.ConvertBack(Object, Type[], Object, CultureInfo)
   nameWithType.vb: EdgeRouteToPathConverter.ConvertBack(Object, Type(), Object, CultureInfo)
 - uid: GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack*
@@ -9990,11 +9990,11 @@ references:
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions
   nameWithType: BasicStructuresExtensions
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint(System.Windows.Point)
-  name: ToGraphShapePoint(Point)
+  name: ToGraphShapePoint(System.Windows.Point)
   href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoint_System_Windows_Point_
   commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint(System.Windows.Point)
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint(System.Windows.Point)
-  nameWithType: BasicStructuresExtensions.ToGraphShapePoint(Point)
+  nameWithType: BasicStructuresExtensions.ToGraphShapePoint(System.Windows.Point)
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint*
   name: ToGraphShapePoint
   href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoint_
@@ -10002,15 +10002,15 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoint
   nameWithType: BasicStructuresExtensions.ToGraphShapePoint
-- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable{System.Windows.Point})
-  name: ToGraphShapePoints(IEnumerable<Point>)
-  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoints_System_Collections_Generic_IEnumerable_System_Windows_Point__
-  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable{System.Windows.Point})
-  name.vb: ToGraphShapePoints(IEnumerable(Of Point))
-  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable<System.Windows.Point>)
-  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(System.Collections.Generic.IEnumerable(Of System.Windows.Point))
-  nameWithType: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable<Point>)
-  nameWithType.vb: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable(Of Point))
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(IEnumerable{System.Windows.Point})
+  name: ToGraphShapePoints(IEnumerable<System.Windows.Point>)
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoints_IEnumerable_System_Windows_Point__
+  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(IEnumerable{System.Windows.Point})
+  name.vb: ToGraphShapePoints(IEnumerable(Of System.Windows.Point))
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(IEnumerable<System.Windows.Point>)
+  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints(IEnumerable(Of System.Windows.Point))
+  nameWithType: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable<System.Windows.Point>)
+  nameWithType.vb: BasicStructuresExtensions.ToGraphShapePoints(IEnumerable(Of System.Windows.Point))
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints*
   name: ToGraphShapePoints
   href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToGraphShapePoints_
@@ -10031,13 +10031,13 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint
   nameWithType: BasicStructuresExtensions.ToPoint
-- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(System.Collections.Generic.IEnumerable{GraphShape.Point})
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{GraphShape.Point})
   name: ToPoints(IEnumerable<Point>)
-  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoints_System_Collections_Generic_IEnumerable_GraphShape_Point__
-  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(System.Collections.Generic.IEnumerable{GraphShape.Point})
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoints_IEnumerable_GraphShape_Point__
+  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{GraphShape.Point})
   name.vb: ToPoints(IEnumerable(Of Point))
-  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(System.Collections.Generic.IEnumerable<GraphShape.Point>)
-  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(System.Collections.Generic.IEnumerable(Of GraphShape.Point))
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable<GraphShape.Point>)
+  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable(Of GraphShape.Point))
   nameWithType: BasicStructuresExtensions.ToPoints(IEnumerable<Point>)
   nameWithType.vb: BasicStructuresExtensions.ToPoints(IEnumerable(Of Point))
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints*
@@ -10053,11 +10053,11 @@ references:
   commentId: T:GraphShape.Controls.Extensions.TransitionExtensions
   fullName: GraphShape.Controls.Extensions.TransitionExtensions
   nameWithType: TransitionExtensions
-- uid: GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition,GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan)
+- uid: GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition,GraphShape.Controls.IAnimationContext,Control,TimeSpan)
   name: Run(ITransition, IAnimationContext, Control, TimeSpan)
-  href: api/GraphShape.Controls.Extensions.TransitionExtensions.html#GraphShape_Controls_Extensions_TransitionExtensions_Run_GraphShape_Controls_ITransition_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_
-  commentId: M:GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition,GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan)
-  fullName: GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition, GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.TimeSpan)
+  href: api/GraphShape.Controls.Extensions.TransitionExtensions.html#GraphShape_Controls_Extensions_TransitionExtensions_Run_GraphShape_Controls_ITransition_GraphShape_Controls_IAnimationContext_Control_TimeSpan_
+  commentId: M:GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition,GraphShape.Controls.IAnimationContext,Control,TimeSpan)
+  fullName: GraphShape.Controls.Extensions.TransitionExtensions.Run(GraphShape.Controls.ITransition, GraphShape.Controls.IAnimationContext, Control, TimeSpan)
   nameWithType: TransitionExtensions.Run(ITransition, IAnimationContext, Control, TimeSpan)
 - uid: GraphShape.Controls.Extensions.TransitionExtensions.Run*
   name: Run
@@ -10129,13 +10129,13 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.FadeTransition.FadeTransition
   nameWithType: FadeTransition.FadeTransition
-- uid: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})
+- uid: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,Control,TimeSpan,Action{Control})
   name: Run(IAnimationContext, Control, TimeSpan, Action<Control>)
-  href: api/GraphShape.Controls.FadeTransition.html#GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__
-  commentId: M:GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})
+  href: api/GraphShape.Controls.FadeTransition.html#GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_Control_TimeSpan_Action_Control__
+  commentId: M:GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,Control,TimeSpan,Action{Control})
   name.vb: Run(IAnimationContext, Control, TimeSpan, Action(Of Control))
-  fullName: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.TimeSpan, System.Action<System.Windows.Controls.Control>)
-  fullName.vb: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.TimeSpan, System.Action(Of System.Windows.Controls.Control))
+  fullName: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext, Control, TimeSpan, Action<Control>)
+  fullName.vb: GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext, Control, TimeSpan, Action(Of Control))
   nameWithType: FadeTransition.Run(IAnimationContext, Control, TimeSpan, Action<Control>)
   nameWithType.vb: FadeTransition.Run(IAnimationContext, Control, TimeSpan, Action(Of Control))
 - uid: GraphShape.Controls.FadeTransition.Run*
@@ -10151,11 +10151,11 @@ references:
   commentId: T:GraphShape.Controls.GraphCanvas
   fullName: GraphShape.Controls.GraphCanvas
   nameWithType: GraphCanvas
-- uid: GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(DependencyObject,RoutedEventHandler)
   name: AddPositionChangedHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_AddPositionChangedHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_AddPositionChangedHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphCanvas.AddPositionChangedHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphCanvas.AddPositionChangedHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphCanvas.AddPositionChangedHandler*
   name: AddPositionChangedHandler
@@ -10197,11 +10197,11 @@ references:
   fullName: GraphShape.Controls.GraphCanvas.AnimationLengthProperty
   nameWithType: GraphCanvas.AnimationLengthProperty
 - uid: GraphShape.Controls.GraphCanvas.ArrangeOverride(System.Windows.Size)
-  name: ArrangeOverride(Size)
+  name: ArrangeOverride(System.Windows.Size)
   href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_ArrangeOverride_System_Windows_Size_
   commentId: M:GraphShape.Controls.GraphCanvas.ArrangeOverride(System.Windows.Size)
   fullName: GraphShape.Controls.GraphCanvas.ArrangeOverride(System.Windows.Size)
-  nameWithType: GraphCanvas.ArrangeOverride(Size)
+  nameWithType: GraphCanvas.ArrangeOverride(System.Windows.Size)
 - uid: GraphShape.Controls.GraphCanvas.ArrangeOverride*
   name: ArrangeOverride
   href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_ArrangeOverride_
@@ -10273,11 +10273,11 @@ references:
   commentId: F:GraphShape.Controls.GraphCanvas.DestructionTransitionProperty
   fullName: GraphShape.Controls.GraphCanvas.DestructionTransitionProperty
   nameWithType: GraphCanvas.DestructionTransitionProperty
-- uid: GraphShape.Controls.GraphCanvas.GetX(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphCanvas.GetX(DependencyObject)
   name: GetX(DependencyObject)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_GetX_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphCanvas.GetX(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphCanvas.GetX(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_GetX_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphCanvas.GetX(DependencyObject)
+  fullName: GraphShape.Controls.GraphCanvas.GetX(DependencyObject)
   nameWithType: GraphCanvas.GetX(DependencyObject)
 - uid: GraphShape.Controls.GraphCanvas.GetX*
   name: GetX
@@ -10286,11 +10286,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.GetX
   nameWithType: GraphCanvas.GetX
-- uid: GraphShape.Controls.GraphCanvas.GetY(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphCanvas.GetY(DependencyObject)
   name: GetY(DependencyObject)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_GetY_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphCanvas.GetY(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphCanvas.GetY(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_GetY_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphCanvas.GetY(DependencyObject)
+  fullName: GraphShape.Controls.GraphCanvas.GetY(DependencyObject)
   nameWithType: GraphCanvas.GetY(DependencyObject)
 - uid: GraphShape.Controls.GraphCanvas.GetY*
   name: GetY
@@ -10319,11 +10319,11 @@ references:
   fullName: GraphShape.Controls.GraphCanvas.IsAnimationEnabledProperty
   nameWithType: GraphCanvas.IsAnimationEnabledProperty
 - uid: GraphShape.Controls.GraphCanvas.MeasureOverride(System.Windows.Size)
-  name: MeasureOverride(Size)
+  name: MeasureOverride(System.Windows.Size)
   href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_MeasureOverride_System_Windows_Size_
   commentId: M:GraphShape.Controls.GraphCanvas.MeasureOverride(System.Windows.Size)
   fullName: GraphShape.Controls.GraphCanvas.MeasureOverride(System.Windows.Size)
-  nameWithType: GraphCanvas.MeasureOverride(Size)
+  nameWithType: GraphCanvas.MeasureOverride(System.Windows.Size)
 - uid: GraphShape.Controls.GraphCanvas.MeasureOverride*
   name: MeasureOverride
   href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_MeasureOverride_
@@ -10388,11 +10388,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.Relayout
   nameWithType: GraphCanvas.Relayout
-- uid: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(DependencyObject,RoutedEventHandler)
   name: RemovePositionChangedHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RemovePositionChangedHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RemovePositionChangedHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphCanvas.RemovePositionChangedHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler*
   name: RemovePositionChangedHandler
@@ -10401,11 +10401,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.RemovePositionChangedHandler
   nameWithType: GraphCanvas.RemovePositionChangedHandler
-- uid: GraphShape.Controls.GraphCanvas.RunCreationTransition(System.Windows.Controls.Control)
+- uid: GraphShape.Controls.GraphCanvas.RunCreationTransition(Control)
   name: RunCreationTransition(Control)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunCreationTransition_System_Windows_Controls_Control_
-  commentId: M:GraphShape.Controls.GraphCanvas.RunCreationTransition(System.Windows.Controls.Control)
-  fullName: GraphShape.Controls.GraphCanvas.RunCreationTransition(System.Windows.Controls.Control)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunCreationTransition_Control_
+  commentId: M:GraphShape.Controls.GraphCanvas.RunCreationTransition(Control)
+  fullName: GraphShape.Controls.GraphCanvas.RunCreationTransition(Control)
   nameWithType: GraphCanvas.RunCreationTransition(Control)
 - uid: GraphShape.Controls.GraphCanvas.RunCreationTransition*
   name: RunCreationTransition
@@ -10414,11 +10414,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.RunCreationTransition
   nameWithType: GraphCanvas.RunCreationTransition
-- uid: GraphShape.Controls.GraphCanvas.RunDestructionTransition(System.Windows.Controls.Control,System.Boolean)
+- uid: GraphShape.Controls.GraphCanvas.RunDestructionTransition(Control,System.Boolean)
   name: RunDestructionTransition(Control, Boolean)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunDestructionTransition_System_Windows_Controls_Control_System_Boolean_
-  commentId: M:GraphShape.Controls.GraphCanvas.RunDestructionTransition(System.Windows.Controls.Control,System.Boolean)
-  fullName: GraphShape.Controls.GraphCanvas.RunDestructionTransition(System.Windows.Controls.Control, System.Boolean)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunDestructionTransition_Control_System_Boolean_
+  commentId: M:GraphShape.Controls.GraphCanvas.RunDestructionTransition(Control,System.Boolean)
+  fullName: GraphShape.Controls.GraphCanvas.RunDestructionTransition(Control, System.Boolean)
   nameWithType: GraphCanvas.RunDestructionTransition(Control, Boolean)
 - uid: GraphShape.Controls.GraphCanvas.RunDestructionTransition*
   name: RunDestructionTransition
@@ -10427,11 +10427,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.RunDestructionTransition
   nameWithType: GraphCanvas.RunDestructionTransition
-- uid: GraphShape.Controls.GraphCanvas.RunMoveAnimation(System.Windows.Controls.Control,System.Double,System.Double)
+- uid: GraphShape.Controls.GraphCanvas.RunMoveAnimation(Control,System.Double,System.Double)
   name: RunMoveAnimation(Control, Double, Double)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunMoveAnimation_System_Windows_Controls_Control_System_Double_System_Double_
-  commentId: M:GraphShape.Controls.GraphCanvas.RunMoveAnimation(System.Windows.Controls.Control,System.Double,System.Double)
-  fullName: GraphShape.Controls.GraphCanvas.RunMoveAnimation(System.Windows.Controls.Control, System.Double, System.Double)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_RunMoveAnimation_Control_System_Double_System_Double_
+  commentId: M:GraphShape.Controls.GraphCanvas.RunMoveAnimation(Control,System.Double,System.Double)
+  fullName: GraphShape.Controls.GraphCanvas.RunMoveAnimation(Control, System.Double, System.Double)
   nameWithType: GraphCanvas.RunMoveAnimation(Control, Double, Double)
 - uid: GraphShape.Controls.GraphCanvas.RunMoveAnimation*
   name: RunMoveAnimation
@@ -10440,11 +10440,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.RunMoveAnimation
   nameWithType: GraphCanvas.RunMoveAnimation
-- uid: GraphShape.Controls.GraphCanvas.SetX(System.Windows.DependencyObject,System.Double)
+- uid: GraphShape.Controls.GraphCanvas.SetX(DependencyObject,System.Double)
   name: SetX(DependencyObject, Double)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_SetX_System_Windows_DependencyObject_System_Double_
-  commentId: M:GraphShape.Controls.GraphCanvas.SetX(System.Windows.DependencyObject,System.Double)
-  fullName: GraphShape.Controls.GraphCanvas.SetX(System.Windows.DependencyObject, System.Double)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_SetX_DependencyObject_System_Double_
+  commentId: M:GraphShape.Controls.GraphCanvas.SetX(DependencyObject,System.Double)
+  fullName: GraphShape.Controls.GraphCanvas.SetX(DependencyObject, System.Double)
   nameWithType: GraphCanvas.SetX(DependencyObject, Double)
 - uid: GraphShape.Controls.GraphCanvas.SetX*
   name: SetX
@@ -10453,11 +10453,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphCanvas.SetX
   nameWithType: GraphCanvas.SetX
-- uid: GraphShape.Controls.GraphCanvas.SetY(System.Windows.DependencyObject,System.Double)
+- uid: GraphShape.Controls.GraphCanvas.SetY(DependencyObject,System.Double)
   name: SetY(DependencyObject, Double)
-  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_SetY_System_Windows_DependencyObject_System_Double_
-  commentId: M:GraphShape.Controls.GraphCanvas.SetY(System.Windows.DependencyObject,System.Double)
-  fullName: GraphShape.Controls.GraphCanvas.SetY(System.Windows.DependencyObject, System.Double)
+  href: api/GraphShape.Controls.GraphCanvas.html#GraphShape_Controls_GraphCanvas_SetY_DependencyObject_System_Double_
+  commentId: M:GraphShape.Controls.GraphCanvas.SetY(DependencyObject,System.Double)
+  fullName: GraphShape.Controls.GraphCanvas.SetY(DependencyObject, System.Double)
   nameWithType: GraphCanvas.SetY(DependencyObject, Double)
 - uid: GraphShape.Controls.GraphCanvas.SetY*
   name: SetY
@@ -10509,11 +10509,11 @@ references:
   commentId: T:GraphShape.Controls.GraphElementBehaviour
   fullName: GraphShape.Controls.GraphElementBehaviour
   nameWithType: GraphElementBehaviour
-- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(DependencyObject,RoutedEventHandler)
   name: AddHighlightHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.AddHighlightHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler*
   name: AddHighlightHandler
@@ -10522,11 +10522,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightHandler
   nameWithType: GraphElementBehaviour.AddHighlightHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(DependencyObject,RoutedEventHandler)
   name: AddHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightInfoChangedHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightInfoChangedHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.AddHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler*
   name: AddHighlightInfoChangedHandler
@@ -10535,11 +10535,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightInfoChangedHandler
   nameWithType: GraphElementBehaviour.AddHighlightInfoChangedHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(DependencyObject,RoutedEventHandler)
   name: AddHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightTriggeredHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddHighlightTriggeredHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.AddHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler*
   name: AddHighlightTriggeredHandler
@@ -10548,11 +10548,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.AddHighlightTriggeredHandler
   nameWithType: GraphElementBehaviour.AddHighlightTriggeredHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(DependencyObject,RoutedEventHandler)
   name: AddUnhighlightHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddUnhighlightHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_AddUnhighlightHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.AddUnhighlightHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler*
   name: AddUnhighlightHandler
@@ -10561,11 +10561,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.AddUnhighlightHandler
   nameWithType: GraphElementBehaviour.AddUnhighlightHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(DependencyObject)
   name: GetHighlightInfo(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetHighlightInfo_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetHighlightInfo_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo(DependencyObject)
   nameWithType: GraphElementBehaviour.GetHighlightInfo(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo*
   name: GetHighlightInfo
@@ -10574,11 +10574,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightInfo
   nameWithType: GraphElementBehaviour.GetHighlightInfo
-- uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(DependencyObject)
   name: GetHighlightTrigger(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetHighlightTrigger_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetHighlightTrigger_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger(DependencyObject)
   nameWithType: GraphElementBehaviour.GetHighlightTrigger(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger*
   name: GetHighlightTrigger
@@ -10587,11 +10587,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.GetHighlightTrigger
   nameWithType: GraphElementBehaviour.GetHighlightTrigger
-- uid: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(DependencyObject)
   name: GetIsHighlighted(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetIsHighlighted_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetIsHighlighted_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted(DependencyObject)
   nameWithType: GraphElementBehaviour.GetIsHighlighted(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted*
   name: GetIsHighlighted
@@ -10600,11 +10600,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.GetIsHighlighted
   nameWithType: GraphElementBehaviour.GetIsHighlighted
-- uid: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(DependencyObject)
   name: GetIsSemiHighlighted(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetIsSemiHighlighted_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetIsSemiHighlighted_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted(DependencyObject)
   nameWithType: GraphElementBehaviour.GetIsSemiHighlighted(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted*
   name: GetIsSemiHighlighted
@@ -10613,11 +10613,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.GetIsSemiHighlighted
   nameWithType: GraphElementBehaviour.GetIsSemiHighlighted
-- uid: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(DependencyObject)
   name: GetLayoutInfo(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetLayoutInfo_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetLayoutInfo_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo(DependencyObject)
   nameWithType: GraphElementBehaviour.GetLayoutInfo(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo*
   name: GetLayoutInfo
@@ -10626,11 +10626,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.GetLayoutInfo
   nameWithType: GraphElementBehaviour.GetLayoutInfo
-- uid: GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(System.Windows.DependencyObject)
+- uid: GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(DependencyObject)
   name: GetSemiHighlightInfo(DependencyObject)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetSemiHighlightInfo_System_Windows_DependencyObject_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(System.Windows.DependencyObject)
-  fullName: GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(System.Windows.DependencyObject)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_GetSemiHighlightInfo_DependencyObject_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(DependencyObject)
+  fullName: GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo(DependencyObject)
   nameWithType: GraphElementBehaviour.GetSemiHighlightInfo(DependencyObject)
 - uid: GraphShape.Controls.GraphElementBehaviour.GetSemiHighlightInfo*
   name: GetSemiHighlightInfo
@@ -10681,11 +10681,11 @@ references:
   commentId: F:GraphShape.Controls.GraphElementBehaviour.LayoutInfoProperty
   fullName: GraphShape.Controls.GraphElementBehaviour.LayoutInfoProperty
   nameWithType: GraphElementBehaviour.LayoutInfoProperty
-- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(DependencyObject,RoutedEventHandler)
   name: RemoveHighlightHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.RemoveHighlightHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler*
   name: RemoveHighlightHandler
@@ -10694,11 +10694,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightHandler
   nameWithType: GraphElementBehaviour.RemoveHighlightHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(DependencyObject,RoutedEventHandler)
   name: RemoveHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightInfoChangedHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightInfoChangedHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.RemoveHighlightInfoChangedHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler*
   name: RemoveHighlightInfoChangedHandler
@@ -10707,11 +10707,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightInfoChangedHandler
   nameWithType: GraphElementBehaviour.RemoveHighlightInfoChangedHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(DependencyObject,RoutedEventHandler)
   name: RemoveHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightTriggeredHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveHighlightTriggeredHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.RemoveHighlightTriggeredHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler*
   name: RemoveHighlightTriggeredHandler
@@ -10720,11 +10720,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.RemoveHighlightTriggeredHandler
   nameWithType: GraphElementBehaviour.RemoveHighlightTriggeredHandler
-- uid: GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
+- uid: GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(DependencyObject,RoutedEventHandler)
   name: RemoveUnhighlightHandler(DependencyObject, RoutedEventHandler)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveUnhighlightHandler_System_Windows_DependencyObject_System_Windows_RoutedEventHandler_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(System.Windows.DependencyObject, System.Windows.RoutedEventHandler)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_RemoveUnhighlightHandler_DependencyObject_RoutedEventHandler_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(DependencyObject,RoutedEventHandler)
+  fullName: GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler(DependencyObject, RoutedEventHandler)
   nameWithType: GraphElementBehaviour.RemoveUnhighlightHandler(DependencyObject, RoutedEventHandler)
 - uid: GraphShape.Controls.GraphElementBehaviour.RemoveUnhighlightHandler*
   name: RemoveUnhighlightHandler
@@ -10739,11 +10739,11 @@ references:
   commentId: F:GraphShape.Controls.GraphElementBehaviour.SemiHighlightInfoProperty
   fullName: GraphShape.Controls.GraphElementBehaviour.SemiHighlightInfoProperty
   nameWithType: GraphElementBehaviour.SemiHighlightInfoProperty
-- uid: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(System.Windows.DependencyObject,System.Boolean)
+- uid: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(DependencyObject,System.Boolean)
   name: SetHighlightTrigger(DependencyObject, Boolean)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_SetHighlightTrigger_System_Windows_DependencyObject_System_Boolean_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(System.Windows.DependencyObject,System.Boolean)
-  fullName: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(System.Windows.DependencyObject, System.Boolean)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_SetHighlightTrigger_DependencyObject_System_Boolean_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(DependencyObject,System.Boolean)
+  fullName: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger(DependencyObject, System.Boolean)
   nameWithType: GraphElementBehaviour.SetHighlightTrigger(DependencyObject, Boolean)
 - uid: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger*
   name: SetHighlightTrigger
@@ -10752,11 +10752,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.GraphElementBehaviour.SetHighlightTrigger
   nameWithType: GraphElementBehaviour.SetHighlightTrigger
-- uid: GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(DependencyObject,System.Object)
   name: SetLayoutInfo(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_SetLayoutInfo_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphElementBehaviour.html#GraphShape_Controls_GraphElementBehaviour_SetLayoutInfo_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo(DependencyObject, System.Object)
   nameWithType: GraphElementBehaviour.SetLayoutInfo(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphElementBehaviour.SetLayoutInfo*
   name: SetLayoutInfo
@@ -10976,12 +10976,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).ChangeState
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.ChangeState
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).ChangeState
-- uid: GraphShape.Controls.GraphLayout`3.CoerceEdgeRoutingAlgorithmFactory(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceEdgeRoutingAlgorithmFactory(DependencyObject,System.Object)
   name: CoerceEdgeRoutingAlgorithmFactory(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceEdgeRoutingAlgorithmFactory_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceEdgeRoutingAlgorithmFactory(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceEdgeRoutingAlgorithmFactory(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceEdgeRoutingAlgorithmFactory(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceEdgeRoutingAlgorithmFactory_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceEdgeRoutingAlgorithmFactory(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceEdgeRoutingAlgorithmFactory(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceEdgeRoutingAlgorithmFactory(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceEdgeRoutingAlgorithmFactory(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceEdgeRoutingAlgorithmFactory(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceEdgeRoutingAlgorithmFactory*
@@ -10993,12 +10993,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceEdgeRoutingAlgorithmFactory
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceEdgeRoutingAlgorithmFactory
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceEdgeRoutingAlgorithmFactory
-- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmFactory(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmFactory(DependencyObject,System.Object)
   name: CoerceHighlightAlgorithmFactory(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightAlgorithmFactory_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmFactory(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmFactory(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmFactory(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightAlgorithmFactory_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmFactory(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmFactory(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmFactory(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmFactory(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmFactory(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmFactory*
@@ -11010,12 +11010,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmFactory
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmFactory
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmFactory
-- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmType(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmType(DependencyObject,System.Object)
   name: CoerceHighlightAlgorithmType(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightAlgorithmType_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmType(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmType(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmType(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightAlgorithmType_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmType(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmType(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmType(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmType(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmType(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightAlgorithmType*
@@ -11027,12 +11027,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmType
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightAlgorithmType
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightAlgorithmType
-- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightParameters(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightParameters(DependencyObject,System.Object)
   name: CoerceHighlightParameters(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightParameters_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightParameters(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightParameters(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightParameters(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceHighlightParameters_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceHighlightParameters(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightParameters(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightParameters(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightParameters(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightParameters(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceHighlightParameters*
@@ -11044,12 +11044,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightParameters
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceHighlightParameters
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceHighlightParameters
-- uid: GraphShape.Controls.GraphLayout`3.CoerceLayoutAlgorithmFactory(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceLayoutAlgorithmFactory(DependencyObject,System.Object)
   name: CoerceLayoutAlgorithmFactory(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceLayoutAlgorithmFactory_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceLayoutAlgorithmFactory(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceLayoutAlgorithmFactory(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceLayoutAlgorithmFactory(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceLayoutAlgorithmFactory_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceLayoutAlgorithmFactory(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceLayoutAlgorithmFactory(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceLayoutAlgorithmFactory(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceLayoutAlgorithmFactory(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceLayoutAlgorithmFactory(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceLayoutAlgorithmFactory*
@@ -11061,12 +11061,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceLayoutAlgorithmFactory
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceLayoutAlgorithmFactory
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceLayoutAlgorithmFactory
-- uid: GraphShape.Controls.GraphLayout`3.CoerceOnLayoutMode(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceOnLayoutMode(DependencyObject,System.Object)
   name: CoerceOnLayoutMode(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceOnLayoutMode_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceOnLayoutMode(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceOnLayoutMode(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOnLayoutMode(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceOnLayoutMode_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceOnLayoutMode(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceOnLayoutMode(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOnLayoutMode(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceOnLayoutMode(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceOnLayoutMode(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceOnLayoutMode*
@@ -11078,12 +11078,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOnLayoutMode
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceOnLayoutMode
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceOnLayoutMode
-- uid: GraphShape.Controls.GraphLayout`3.CoerceOverlapRemovalAlgorithmFactory(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceOverlapRemovalAlgorithmFactory(DependencyObject,System.Object)
   name: CoerceOverlapRemovalAlgorithmFactory(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceOverlapRemovalAlgorithmFactory_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceOverlapRemovalAlgorithmFactory(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceOverlapRemovalAlgorithmFactory(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOverlapRemovalAlgorithmFactory(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceOverlapRemovalAlgorithmFactory_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceOverlapRemovalAlgorithmFactory(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceOverlapRemovalAlgorithmFactory(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOverlapRemovalAlgorithmFactory(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceOverlapRemovalAlgorithmFactory(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceOverlapRemovalAlgorithmFactory(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceOverlapRemovalAlgorithmFactory*
@@ -11095,12 +11095,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceOverlapRemovalAlgorithmFactory
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceOverlapRemovalAlgorithmFactory
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceOverlapRemovalAlgorithmFactory
-- uid: GraphShape.Controls.GraphLayout`3.CoerceStateIndex(System.Windows.DependencyObject,System.Object)
+- uid: GraphShape.Controls.GraphLayout`3.CoerceStateIndex(DependencyObject,System.Object)
   name: CoerceStateIndex(DependencyObject, Object)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceStateIndex_System_Windows_DependencyObject_System_Object_
-  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceStateIndex(System.Windows.DependencyObject,System.Object)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceStateIndex(System.Windows.DependencyObject, System.Object)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceStateIndex(System.Windows.DependencyObject, System.Object)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CoerceStateIndex_DependencyObject_System_Object_
+  commentId: M:GraphShape.Controls.GraphLayout`3.CoerceStateIndex(DependencyObject,System.Object)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CoerceStateIndex(DependencyObject, System.Object)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CoerceStateIndex(DependencyObject, System.Object)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CoerceStateIndex(DependencyObject, Object)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CoerceStateIndex(DependencyObject, Object)
 - uid: GraphShape.Controls.GraphLayout`3.CoerceStateIndex*
@@ -11163,13 +11163,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateHighlightContext
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateHighlightContext
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateHighlightContext
-- uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name: CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateLayoutContext_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.CreateLayoutContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateLayoutContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name.vb: CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext*
@@ -11181,13 +11181,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext
-- uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name: CreateOverlapRemovalContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateOverlapRemovalContext_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateOverlapRemovalContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name.vb: CreateOverlapRemovalContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext*
@@ -11980,12 +11980,12 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).LayoutStatusPercentPropertyKey
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.LayoutStatusPercentPropertyKey
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).LayoutStatusPercentPropertyKey
-- uid: GraphShape.Controls.GraphLayout`3.OnGraphPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)
+- uid: GraphShape.Controls.GraphLayout`3.OnGraphPropertyChanged(DependencyObject,DependencyPropertyChangedEventArgs)
   name: OnGraphPropertyChanged(DependencyObject, DependencyPropertyChangedEventArgs)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnGraphPropertyChanged_System_Windows_DependencyObject_System_Windows_DependencyPropertyChangedEventArgs_
-  commentId: M:GraphShape.Controls.GraphLayout`3.OnGraphPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnGraphPropertyChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnGraphPropertyChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnGraphPropertyChanged_DependencyObject_DependencyPropertyChangedEventArgs_
+  commentId: M:GraphShape.Controls.GraphLayout`3.OnGraphPropertyChanged(DependencyObject,DependencyPropertyChangedEventArgs)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnGraphPropertyChanged(DependencyObject, DependencyPropertyChangedEventArgs)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnGraphPropertyChanged(DependencyObject, DependencyPropertyChangedEventArgs)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnGraphPropertyChanged(DependencyObject, DependencyPropertyChangedEventArgs)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnGraphPropertyChanged(DependencyObject, DependencyPropertyChangedEventArgs)
 - uid: GraphShape.Controls.GraphLayout`3.OnGraphPropertyChanged*
@@ -12023,13 +12023,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(GraphShape.Algorithms.Layout.ILayoutIterationEventArgs(Of TVertex))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
-- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.String)
+- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,GraphShape.Point},System.String)
   name: OnLayoutIterationFinished(IDictionary<TVertex, Point>, String)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_String_
-  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.String)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_IDictionary__0_GraphShape_Point__System_String_
+  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,GraphShape.Point},System.String)
   name.vb: OnLayoutIterationFinished(IDictionary(Of TVertex, Point), String)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.String)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.String)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(IDictionary<TVertex, GraphShape.Point>, System.String)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(IDictionary(Of TVertex, GraphShape.Point), System.String)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(IDictionary<TVertex, Point>, String)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(IDictionary(Of TVertex, Point), String)
 - uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished*
@@ -12058,13 +12058,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutStarted
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutStarted
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutStarted
-- uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name: OverlapRemoval(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OverlapRemoval_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.OverlapRemoval(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OverlapRemoval_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name.vb: OverlapRemoval(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval*
@@ -12396,13 +12396,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveVertexControl
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveVertexControl
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveVertexControl
-- uid: GraphShape.Controls.GraphLayout`3.RouteEdges(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name: RouteEdges(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RouteEdges_System_Collections_Generic_IDictionary__0_GraphShape_Point__System_Collections_Generic_IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.RouteEdges(System.Collections.Generic.IDictionary{`0,GraphShape.Point},System.Collections.Generic.IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RouteEdges_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
   name.vb: RouteEdges(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(System.Collections.Generic.IDictionary<TVertex, GraphShape.Point>, System.Collections.Generic.IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Point), System.Collections.Generic.IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.RouteEdges*
@@ -12612,11 +12612,11 @@ references:
   commentId: T:GraphShape.Controls.HighlightInfoChangedEventArgs
   fullName: GraphShape.Controls.HighlightInfoChangedEventArgs
   nameWithType: HighlightInfoChangedEventArgs
-- uid: GraphShape.Controls.HighlightInfoChangedEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Object,System.Object)
+- uid: GraphShape.Controls.HighlightInfoChangedEventArgs.#ctor(RoutedEvent,System.Object,System.Object,System.Object)
   name: HighlightInfoChangedEventArgs(RoutedEvent, Object, Object, Object)
-  href: api/GraphShape.Controls.HighlightInfoChangedEventArgs.html#GraphShape_Controls_HighlightInfoChangedEventArgs__ctor_System_Windows_RoutedEvent_System_Object_System_Object_System_Object_
-  commentId: M:GraphShape.Controls.HighlightInfoChangedEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Object,System.Object)
-  fullName: GraphShape.Controls.HighlightInfoChangedEventArgs.HighlightInfoChangedEventArgs(System.Windows.RoutedEvent, System.Object, System.Object, System.Object)
+  href: api/GraphShape.Controls.HighlightInfoChangedEventArgs.html#GraphShape_Controls_HighlightInfoChangedEventArgs__ctor_RoutedEvent_System_Object_System_Object_System_Object_
+  commentId: M:GraphShape.Controls.HighlightInfoChangedEventArgs.#ctor(RoutedEvent,System.Object,System.Object,System.Object)
+  fullName: GraphShape.Controls.HighlightInfoChangedEventArgs.HighlightInfoChangedEventArgs(RoutedEvent, System.Object, System.Object, System.Object)
   nameWithType: HighlightInfoChangedEventArgs.HighlightInfoChangedEventArgs(RoutedEvent, Object, Object, Object)
 - uid: GraphShape.Controls.HighlightInfoChangedEventArgs.#ctor*
   name: HighlightInfoChangedEventArgs
@@ -12663,11 +12663,11 @@ references:
   commentId: T:GraphShape.Controls.HighlightTriggeredEventArgs
   fullName: GraphShape.Controls.HighlightTriggeredEventArgs
   nameWithType: HighlightTriggeredEventArgs
-- uid: GraphShape.Controls.HighlightTriggeredEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Boolean)
+- uid: GraphShape.Controls.HighlightTriggeredEventArgs.#ctor(RoutedEvent,System.Object,System.Boolean)
   name: HighlightTriggeredEventArgs(RoutedEvent, Object, Boolean)
-  href: api/GraphShape.Controls.HighlightTriggeredEventArgs.html#GraphShape_Controls_HighlightTriggeredEventArgs__ctor_System_Windows_RoutedEvent_System_Object_System_Boolean_
-  commentId: M:GraphShape.Controls.HighlightTriggeredEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Boolean)
-  fullName: GraphShape.Controls.HighlightTriggeredEventArgs.HighlightTriggeredEventArgs(System.Windows.RoutedEvent, System.Object, System.Boolean)
+  href: api/GraphShape.Controls.HighlightTriggeredEventArgs.html#GraphShape_Controls_HighlightTriggeredEventArgs__ctor_RoutedEvent_System_Object_System_Boolean_
+  commentId: M:GraphShape.Controls.HighlightTriggeredEventArgs.#ctor(RoutedEvent,System.Object,System.Boolean)
+  fullName: GraphShape.Controls.HighlightTriggeredEventArgs.HighlightTriggeredEventArgs(RoutedEvent, System.Object, System.Boolean)
   nameWithType: HighlightTriggeredEventArgs.HighlightTriggeredEventArgs(RoutedEvent, Object, Boolean)
 - uid: GraphShape.Controls.HighlightTriggeredEventArgs.#ctor*
   name: HighlightTriggeredEventArgs
@@ -12714,11 +12714,11 @@ references:
   commentId: T:GraphShape.Controls.IAnimation
   fullName: GraphShape.Controls.IAnimation
   nameWithType: IAnimation
-- uid: GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,System.TimeSpan)
+- uid: GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext,Control,System.Double,System.Double,TimeSpan)
   name: Animate(IAnimationContext, Control, Double, Double, TimeSpan)
-  href: api/GraphShape.Controls.IAnimation.html#GraphShape_Controls_IAnimation_Animate_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_Double_System_Double_System_TimeSpan_
-  commentId: M:GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.Double,System.Double,System.TimeSpan)
-  fullName: GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.Double, System.Double, System.TimeSpan)
+  href: api/GraphShape.Controls.IAnimation.html#GraphShape_Controls_IAnimation_Animate_GraphShape_Controls_IAnimationContext_Control_System_Double_System_Double_TimeSpan_
+  commentId: M:GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext,Control,System.Double,System.Double,TimeSpan)
+  fullName: GraphShape.Controls.IAnimation.Animate(GraphShape.Controls.IAnimationContext, Control, System.Double, System.Double, TimeSpan)
   nameWithType: IAnimation.Animate(IAnimationContext, Control, Double, Double, TimeSpan)
 - uid: GraphShape.Controls.IAnimation.Animate*
   name: Animate
@@ -12790,13 +12790,13 @@ references:
   commentId: T:GraphShape.Controls.ITransition
   fullName: GraphShape.Controls.ITransition
   nameWithType: ITransition
-- uid: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})
+- uid: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,Control,TimeSpan,Action{Control})
   name: Run(IAnimationContext, Control, TimeSpan, Action<Control>)
-  href: api/GraphShape.Controls.ITransition.html#GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__
-  commentId: M:GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})
+  href: api/GraphShape.Controls.ITransition.html#GraphShape_Controls_ITransition_Run_GraphShape_Controls_IAnimationContext_Control_TimeSpan_Action_Control__
+  commentId: M:GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext,Control,TimeSpan,Action{Control})
   name.vb: Run(IAnimationContext, Control, TimeSpan, Action(Of Control))
-  fullName: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.TimeSpan, System.Action<System.Windows.Controls.Control>)
-  fullName.vb: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext, System.Windows.Controls.Control, System.TimeSpan, System.Action(Of System.Windows.Controls.Control))
+  fullName: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext, Control, TimeSpan, Action<Control>)
+  fullName.vb: GraphShape.Controls.ITransition.Run(GraphShape.Controls.IAnimationContext, Control, TimeSpan, Action(Of Control))
   nameWithType: ITransition.Run(IAnimationContext, Control, TimeSpan, Action<Control>)
   nameWithType.vb: ITransition.Run(IAnimationContext, Control, TimeSpan, Action(Of Control))
 - uid: GraphShape.Controls.ITransition.Run*
@@ -12887,11 +12887,11 @@ references:
   commentId: T:GraphShape.Controls.PositionChangedEventArgs
   fullName: GraphShape.Controls.PositionChangedEventArgs
   nameWithType: PositionChangedEventArgs
-- uid: GraphShape.Controls.PositionChangedEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Double,System.Double)
+- uid: GraphShape.Controls.PositionChangedEventArgs.#ctor(RoutedEvent,System.Object,System.Double,System.Double)
   name: PositionChangedEventArgs(RoutedEvent, Object, Double, Double)
-  href: api/GraphShape.Controls.PositionChangedEventArgs.html#GraphShape_Controls_PositionChangedEventArgs__ctor_System_Windows_RoutedEvent_System_Object_System_Double_System_Double_
-  commentId: M:GraphShape.Controls.PositionChangedEventArgs.#ctor(System.Windows.RoutedEvent,System.Object,System.Double,System.Double)
-  fullName: GraphShape.Controls.PositionChangedEventArgs.PositionChangedEventArgs(System.Windows.RoutedEvent, System.Object, System.Double, System.Double)
+  href: api/GraphShape.Controls.PositionChangedEventArgs.html#GraphShape_Controls_PositionChangedEventArgs__ctor_RoutedEvent_System_Object_System_Double_System_Double_
+  commentId: M:GraphShape.Controls.PositionChangedEventArgs.#ctor(RoutedEvent,System.Object,System.Double,System.Double)
+  fullName: GraphShape.Controls.PositionChangedEventArgs.PositionChangedEventArgs(RoutedEvent, System.Object, System.Double, System.Double)
   nameWithType: PositionChangedEventArgs.PositionChangedEventArgs(RoutedEvent, Object, Double, Double)
 - uid: GraphShape.Controls.PositionChangedEventArgs.#ctor*
   name: PositionChangedEventArgs

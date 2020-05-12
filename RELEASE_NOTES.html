@@ -62,22 +62,75 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="release-notes">Release notes</h1>
 
+<h2 id="whats-new-in-100-may-12-2020">What's new in 1.0.0 May 12 2020</h2>
+<h3 id="graphshape">GraphShape</h3>
+<h4 id="general">General:</h4>
+<ul>
+<li>Fully clean the library code.</li>
+<li>Extend support of the library to .NET Framework 3.5+.</li>
+<li>Extend support of the library to .NET Standard 2.0+.</li>
+<li>Uniformize APIs and behaviors of algorithms implementations.</li>
+</ul>
+<h4 id="fixes">Fixes:</h4>
+<ul>
+<li>Various fixes for layout algorithms implementations.</li>
+<li>Various fixes across the library.</li>
+</ul>
+<h4 id="update">Update:</h4>
+<ul>
+<li>Algorithm parameters classes are equatable.</li>
+<li>Algorithm cancellation will stop run earlier if possible.</li>
+</ul>
+<h4 id="new">New:</h4>
+<ul>
+<li>Add a Random layout algorithm implementation.</li>
+</ul>
+<h4 id="api-breaks">API Breaks</h4>
+<ul>
+<li>Some public API breaks (but should remain simple to do a migration).</li>
+<li>Replace .NET framework base structs (Point, Vector, Size, Rect and Thickness) by equivalent ones to support .NET Standard.</li>
+<li>Some algorithm were not working well and has been removed (Sugiyama).</li>
+<li>Rename EfficientSugiyama to Sugiyama.</li>
+<li>Namespaces simplifications.</li>
+</ul>
+<h4 id="misc">Misc:</h4>
+<ul>
+<li>Use JetBrains annotations all over the library as much as possible.</li>
+</ul>
+<h3 id="graphshapecontrols">GraphShape.Controls</h3>
+<h4 id="general-1">General:</h4>
+<ul>
+<li>Fully clean the library code.</li>
+<li>Extend support of the library to .NET Framework 3.5+.</li>
+<li>Remove dependency to WPFExtensions package.</li>
+</ul>
+<h4 id="fixes-1">Fixes:</h4>
+<ul>
+<li>Fix async compute mode on GraphLayout control.</li>
+<li>Fix handlers registrations/unregistrations.</li>
+<li>Various fixes across the library.</li>
+</ul>
+<h4 id="misc-1">Misc:</h4>
+<ul>
+<li>Use JetBrains annotations all over the library as much as possible.</li>
+</ul>
+<hr>
 <h2 id="whats-new-in-010-march-9-2020">What's new in 0.1.0 March 9 2020</h2>
 <p>This release is based on GraphSharp from CodePlex.</p>
-<h3 id="graphshape">GraphShape</h3>
+<h3 id="graphshape-1">GraphShape</h3>
 <p>Graph layout algorithms implementations.</p>
 <p>Split GraphSharp package into 2 packages:</p>
 <ul>
 <li>GraphShape</li>
 <li>GraphShape.Controls</li>
 </ul>
-<h3 id="graphshapecontrols">GraphShape.Controls</h3>
+<h3 id="graphshapecontrols-1">GraphShape.Controls</h3>
 <p>WPF Controls to display graph using layout algorithms.</p>
-<h3 id="api-breaks">API Breaks</h3>
+<h3 id="api-breaks-1">API Breaks</h3>
 <ul>
 <li>Namespace renamed to GraphShape (but should be easy to migrate).</li>
 </ul>
-<h3 id="misc">Misc:</h3>
+<h3 id="misc-2">Misc:</h3>
 <ul>
 <li>Generate a documentation for the library via DocFX.</li>
 </ul>

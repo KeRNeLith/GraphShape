@@ -87,35 +87,11 @@
     <h5>Implements</h5>
     <div><a class="xref" href="GraphShape.Controls.ITransition.html">ITransition</a></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GraphShape.Controls.html">GraphShape.Controls</a></h6>
   <h6><strong>Assembly</strong>: GraphShape.Controls.dll</h6>
   <h5 id="GraphShape_Controls_FadeTransition_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FadeTransition : ITransition</code></pre>
+    <pre><code class="lang-csharp hljs">public class FadeTransition : object, ITransition</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -209,13 +185,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__.md&amp;value=---%0Auid%3A%20GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext%2CSystem.Windows.Controls.Control%2CSystem.TimeSpan%2CSystem.Action%7BSystem.Windows.Controls.Control%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_Control_TimeSpan_Action_Control__.md&amp;value=---%0Auid%3A%20GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext%2CControl%2CTimeSpan%2CAction%7BControl%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Controls/Transitions/FadeTransition.cs/#L41">View Source</a>
   </span>
   <a id="GraphShape_Controls_FadeTransition_Run_" data-uid="GraphShape.Controls.FadeTransition.Run*"></a>
-  <h4 id="GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_System_Action_System_Windows_Controls_Control__" data-uid="GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,System.Windows.Controls.Control,System.TimeSpan,System.Action{System.Windows.Controls.Control})">Run(IAnimationContext, Control, TimeSpan, Action&lt;Control&gt;)</h4>
+  <h4 id="GraphShape_Controls_FadeTransition_Run_GraphShape_Controls_IAnimationContext_Control_TimeSpan_Action_Control__" data-uid="GraphShape.Controls.FadeTransition.Run(GraphShape.Controls.IAnimationContext,Control,TimeSpan,Action{Control})">Run(IAnimationContext, Control, TimeSpan, Action&lt;Control&gt;)</h4>
   <div class="markdown level1 summary"><p>Runs the transition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -240,19 +216,19 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Windows.Controls.Control</span></td>
+        <td><span class="xref">Control</span></td>
         <td><span class="parametername">control</span></td>
         <td><p>The control which the transition should be run on.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="xref">TimeSpan</span></td>
         <td><span class="parametername">duration</span></td>
         <td><p>The duration of the transition.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Windows.Controls.Control</span>&gt;</td>
+        <td><span class="xref">Action</span>&lt;<span class="xref">Control</span>&gt;</td>
         <td><span class="parametername">endAction</span></td>
         <td><p>The method that should be called when the transition finished.</p>
 </td>
@@ -272,9 +248,6 @@
   </div>
   <div>
       <a class="xref" href="GraphShape.Utils.GraphHelpers.html#GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____">GraphHelpers.GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</a>
-  </div>
-  <div>
-      <a class="xref" href="GraphShape.Controls.Extensions.TransitionExtensions.html#GraphShape_Controls_Extensions_TransitionExtensions_Run_GraphShape_Controls_ITransition_GraphShape_Controls_IAnimationContext_System_Windows_Controls_Control_System_TimeSpan_">TransitionExtensions.Run(ITransition, IAnimationContext, Control, TimeSpan)</a>
   </div>
 </article>
           </div>
