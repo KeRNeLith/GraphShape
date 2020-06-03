@@ -65,6 +65,12 @@ GraphShape is available on [NuGet](https://www.nuget.org) in several modules.
 
 ## Maintainer(s)
 
-* [@KeRNeLith](https://github.com/KeRNeLith)
+[![](https://github.com/KeRNeLith.png?size=50)](https://github.com/KeRNeLith)
+
+## Contributor(s)
+
+This project exists thanks to all the people who have contributed to the code base.
+
+<a href="https://github.com/Moka42"><img src="https://avatars2.githubusercontent.com/u/33061894" width="50px;" alt=""/>
 
 ---
