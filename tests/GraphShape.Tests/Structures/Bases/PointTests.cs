@@ -5,6 +5,7 @@ namespace GraphShape.Tests
     /// <summary>
     /// Tests for <see cref="Point"/>.
     /// </summary>
+    [TestFixture]
     internal class PointTests
     {
         [Test]

@@ -6,6 +6,7 @@ namespace GraphShape.Tests
     /// <summary>
     /// Tests for <see cref="Size"/>.
     /// </summary>
+    [TestFixture]
     internal class SizeTests
     {
         [Test]

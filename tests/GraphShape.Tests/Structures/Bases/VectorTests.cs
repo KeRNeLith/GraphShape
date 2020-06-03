@@ -8,6 +8,7 @@ namespace GraphShape.Tests
     /// <summary>
     /// Tests for <see cref="Vector"/>.
     /// </summary>
+    [TestFixture]
     internal class VectorTests
     {
         [Test]

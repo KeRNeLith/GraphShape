@@ -6,6 +6,7 @@ namespace GraphShape.Tests
     /// <summary>
     /// Tests for <see cref="Rect"/>.
     /// </summary>
+    [TestFixture]
     internal class RectTests
     {
         [Test]
