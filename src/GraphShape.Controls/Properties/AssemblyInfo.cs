@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
+using GraphShape;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -10,4 +11,4 @@ using System.Windows;
     // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: InternalsVisibleTo("GraphShape.Controls.Tests")]
+[assembly: InternalsVisibleTo("GraphShape.Controls.Tests" + PublicKey.Key)]

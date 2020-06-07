@@ -13,15 +13,19 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <!-- JetBrains annotations -->
-  <ItemGroup>
-    <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />
-  </ItemGroup>
+  <PropertyGroup Condition="$(DeployBuild)">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\GraphShape.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="..\..\docs\images\graphshape_logo.png" Pack="true" Visible="false" PackagePath=""/>
   </ItemGroup>
+
+  <!-- Dependencies -->
+  <!-- Shared Projects -->
+  <Import Project="GraphShape.CommonInternals\GraphShape.CommonInternals.projitems" Label="Shared" />
 
   <!-- Source Link -->
   <ItemGroup>

@@ -39,4 +39,8 @@
   <PropertyGroup>
     <LangVersion>7</LangVersion>
   </PropertyGroup>
+
+  <PropertyGroup Condition="$(DeployBuild)">
+    <DefineConstants>$(DefineConstants);DEPLOY_BUILD;</DefineConstants>
+  </PropertyGroup>
 </Project>

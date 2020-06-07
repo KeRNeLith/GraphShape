@@ -1,0 +1,12 @@
+namespace GraphShape
+{
+    internal static class PublicKey
+    {
+        public const string Key =
+#if DEPLOY_BUILD
+            ", PublicKey=00240000048000009400000006020000002400005253413100040000010001008587e068556ed1944fc74791b2a475e30b35a60626c1fadf4fe58be3018722c4eba7d7cb925c671c5e44267fff985a96ad41cc61bb3fd7aa50631201846607e4c1129387dff8438f4d3fc11f0fc6f33c87e901a76ead41dd51bdcb99750a0401b8ea68281e2bf0ca2b537e9fa58e47cd584d8ffc35854ec223056151399d7eb9";
+#else
+            "";
+#endif
+    }
+}

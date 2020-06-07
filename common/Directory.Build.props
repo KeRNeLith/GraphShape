@@ -2,8 +2,12 @@
 <Project>
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
-  <!-- JetBrains annotations -->
-  <ItemGroup>
-    <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />
-  </ItemGroup>
+  <PropertyGroup Condition="$(DeployBuild)">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\GraphShape.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <!-- Dependencies -->
+  <!-- Shared Projects -->
+  <Import Project="..\src\GraphShape.CommonInternals\GraphShape.CommonInternals.projitems" Label="Shared" />
 </Project>

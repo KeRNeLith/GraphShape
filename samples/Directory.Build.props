@@ -16,8 +16,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
-  <!-- JetBrains annotations -->
-  <ItemGroup>
-    <Compile Include="..\..\externs\JetBrains.Annotations.cs" Link="Externs\JetBrains.Annotations.cs" />
-  </ItemGroup>
+  <!-- Dependencies -->
+  <!-- Shared Projects -->
+  <Import Project="..\src\GraphShape.CommonInternals\GraphShape.CommonInternals.projitems" Label="Shared" />
 </Project>
