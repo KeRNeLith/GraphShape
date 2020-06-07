@@ -6,7 +6,7 @@
     <SharedGUID>ce984360-54f0-406f-b8a9-e75897daed3b</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>QuikGraph.CommonInternals</Import_RootNamespace>
+    <Import_RootNamespace>GraphShape.CommonInternals</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Externs\JetBrains.Annotations.cs" />
