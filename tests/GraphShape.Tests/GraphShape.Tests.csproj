@@ -62,7 +62,7 @@
 
   <!-- GraphShape reference -->
   <ItemGroup Condition="$(UseGraphShapeCoreNuget)">
-    <PackageReference Include="GraphShape" Version="1.0.0" />
+    <PackageReference Include="GraphShape" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup Condition="!$(UseGraphShapeCoreNuget)">
     <ProjectReference Include="..\..\src\GraphShape\GraphShape.csproj" />
