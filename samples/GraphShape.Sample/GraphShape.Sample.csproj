@@ -36,7 +36,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
-  <!-- External -->
+  <!-- Externals -->
   <ItemGroup>
     <PackageReference Include="QuikGraph.Serialization" Version="2.1.0" />
     <Reference Include="RibbonControlsLibrary, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -50,6 +50,13 @@
   <!-- Projects -->
   <ItemGroup>
     <ProjectReference Include="..\..\common\GraphShape.Factory\GraphShape.Factory.csproj" />
+  </ItemGroup>
+
+    <!-- GraphShape.Controls reference -->
+  <ItemGroup Condition="$(UseGraphShapeControlsNuget)">
+    <PackageReference Include="GraphShape.Controls" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(UseGraphShapeControlsNuget)">
     <ProjectReference Include="..\..\src\GraphShape.Controls\GraphShape.Controls.csproj" />
   </ItemGroup>
 </Project>

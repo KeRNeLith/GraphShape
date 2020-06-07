@@ -46,6 +46,7 @@
   </PropertyGroup>
 
   <!-- Dependencies -->
+  <!-- System -->
   <ItemGroup>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -54,8 +55,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
 
+  <!-- Projects  -->
   <ItemGroup>
     <ProjectReference Include="..\..\common\GraphShape.Factory\GraphShape.Factory.csproj" />
+  </ItemGroup>
+
+  <!-- GraphShape reference -->
+  <ItemGroup Condition="$(UseGraphShapeCoreNuget)">
+    <PackageReference Include="GraphShape" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(UseGraphShapeCoreNuget)">
     <ProjectReference Include="..\..\src\GraphShape\GraphShape.csproj" />
   </ItemGroup>
 </Project>

@@ -43,12 +43,17 @@
   </PropertyGroup>
 
   <!-- Dependencies -->
+  <!-- System -->
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- GraphShape.Controls reference -->
+  <ItemGroup Condition="$(UseGraphShapeControlsNuget)">
+    <PackageReference Include="GraphShape.Controls" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(UseGraphShapeControlsNuget)">
     <ProjectReference Include="..\..\src\GraphShape.Controls\GraphShape.Controls.csproj" />
   </ItemGroup>
 </Project>

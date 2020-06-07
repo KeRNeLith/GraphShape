@@ -61,7 +61,11 @@ Misc:
   </PropertyGroup>
 
   <!-- Dependencies -->
-  <ItemGroup>
+  <!-- GraphShape reference -->
+  <ItemGroup Condition="$(UseGraphShapeCoreNuget)">
+    <PackageReference Include="GraphShape" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(UseGraphShapeCoreNuget)">
     <ProjectReference Include="..\GraphShape\GraphShape.csproj" />
   </ItemGroup>
 </Project>

@@ -52,10 +52,25 @@ function UpdateAllPackagesGeneration()
     $newGenPackagesContent | Set-Content $genPackagesFilePath;
 }
 
+<#
+.Synopsis
+    Update the DeployDuild.props to make the build a deploy build.
+#>
+function UpdateDeployBuild()
+{
+    # Update the package generation props to enable package generation of the right package
+    $genPackagesFilePath = "./build/DeployBuild.props";
+    $genPackagesContent = Get-Content $genPackagesFilePath;
+    $newGenPackagesContent = $genPackagesContent -replace "false","true";
+    $newGenPackagesContent | Set-Content $genPackagesFilePath;
+}
+
+
 # Update .props based on git tag status & setup build version
 $env:PackageSamples = $false;
 if ($env:APPVEYOR_REPO_TAG -eq "true")
 {
+    UpdateDeployBuild;
     $tagParts = $env:APPVEYOR_REPO_TAG_NAME.split("/", 2);
 
     # Full release

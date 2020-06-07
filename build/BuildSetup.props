@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Import Project="./DeployBuild.props" />
+  <Import Project="./PackagesGeneration.props" />
+
+  <!-- Build variables -->
+  <PropertyGroup>
+    <UseGraphShapeCoreNuget>false</UseGraphShapeCoreNuget>
+    <UseGraphShapeCoreNuget Condition="$(DeployBuild) AND !$(Generate_GraphShape_Core)">true</UseGraphShapeCoreNuget>
+  
+    <UseGraphShapeControlsNuget>false</UseGraphShapeControlsNuget>
+    <UseGraphShapeControlsNuget Condition="$(DeployBuild) AND !$(Generate_GraphShape_Controls)">true</UseGraphShapeControlsNuget>
+  </PropertyGroup>
+</Project>
