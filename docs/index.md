@@ -43,7 +43,7 @@ GraphShape is available on [NuGet](https://www.nuget.org) in several modules.
 
     PM> Install-Package GraphShape
 
-[![Nuget Status](https://img.shields.io/nuget/v/graphshape.svg)](https://www.nuget.org/packages/GraphShape.Controls) [GraphShape.Controls](https://www.nuget.org/packages/GraphShape.Controls)
+[![Nuget Status](https://img.shields.io/nuget/v/graphshape.controls.svg)](https://www.nuget.org/packages/GraphShape.Controls) [GraphShape.Controls](https://www.nuget.org/packages/GraphShape.Controls)
 
     PM> Install-Package GraphShape.Controls
 
