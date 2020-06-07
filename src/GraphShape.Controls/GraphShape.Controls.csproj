@@ -30,19 +30,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 1.0.0
-General:
-- Fully clean the library code.
-- Extend support of the library to .NET Framework 3.5+.
-- Remove dependency to WPFExtensions package.
-
-Fixes:
-- Fix async compute mode on GraphLayout control.
-- Fix handlers registrations/unregistrations.
-- Various fixes across the library.
-
-Misc:
-- Use JetBrains annotations all over the library as much as possible.</PackageReleaseNotes>
+    <PackageReleaseNotes>➟ Release 1.1.0
+New:
+- Use signing key to strong name library assemby.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
   </PropertyGroup>
 

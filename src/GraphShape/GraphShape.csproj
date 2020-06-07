@@ -29,33 +29,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 1.0.0
-General:
-- Fully clean the library code.
-- Extend support of the library to .NET Framework 3.5+.
-- Extend support of the library to .NET Standard 2.0+.
-- Uniformize APIs and behaviors of algorithms implementations.
-
-Fixes:
-- Various fixes for layout algorithms implementations.
-- Various fixes across the library.
-
-Update:
-- Algorithm parameters classes are equatable.
-- Algorithm cancellation will stop run earlier if possible.
-
+    <PackageReleaseNotes>➟ Release 1.1.0
 New:
-- Add a Random layout algorithm implementation.
-
-API Breaks
-- Some public API breaks (but should remain simple to do a migration).
-- Replace .NET framework base structs (Point, Vector, Size, Rect and Thickness) by equivalent ones to support .NET Standard.
-- Some algorithm were not working well and has been removed (Sugiyama).
-- Rename EfficientSugiyama to Sugiyama.
-- Namespaces simplifications.
-
-Misc:
-- Use JetBrains annotations all over the library as much as possible.</PackageReleaseNotes>
+- Use signing key to strong name library assemby.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
   </PropertyGroup>
 

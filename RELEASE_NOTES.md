@@ -1,5 +1,19 @@
 # Release notes
 
+## What's new in 1.1.0 June 7 2020
+
+### GraphShape
+
+#### New:
+* Use signing key to strong name library assemby.
+
+### GraphShape.Controls
+
+#### New:
+* Use signing key to strong name library assemby.
+
+---
+
 ## What's new in 1.0.0 May 12 2020
 
 ### GraphShape
