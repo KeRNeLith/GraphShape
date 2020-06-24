@@ -95,7 +95,7 @@ if ($env:APPVEYOR_REPO_TAG -eq "true")
         $env:Release_Name = "$projectName $tagVersion";
     }
 
-    $env:IsFullIntegrationBuild = $env:Configuration -eq "Release";
+    $env:IsFullIntegrationBuild = $false;   # Run only tests on deploy builds (not coverage, etc.)
     $env:PackageSamples = $true;
 }
 else
