@@ -193,7 +193,7 @@ deploy:
   - provider: NuGet
     artifact: NuGet, NuGet symbols
     api_key:
-      secure: a/0jxqKB5mP/ED1AIQ6YxAoiYZP93M5NQpyZbq40Tkzg+ye0MhFHlDQFBUefrseY
+      secure: QZmft3MtBUFBdw5iPCm/P2qvbSxuCoI18Rhzp619NMWGvAQbf5C3rX78ecu8qHcm
     on:
       configuration: Release
       APPVEYOR_REPO_TAG: true
