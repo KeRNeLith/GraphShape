@@ -39,7 +39,7 @@ namespace GraphShape.Sample.ViewModels
         {
             AnalyzedLayout = new GraphLayoutViewModel
             {
-                LayoutAlgorithmType = "FR"
+                LayoutAlgorithmType = "Sugiyama"
             };
 
             RegisterCommand(
