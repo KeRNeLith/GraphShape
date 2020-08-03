@@ -1,5 +1,17 @@
 # Release notes
 
+## What's new in 0.1.1 August 3 2020
+
+### GraphShape
+
+#### Fixes
+
+* Fix the orthogonal edge routing of Efficient Sugiyama algorithm (in horizontal layout).
+
+### GraphShape.Controls
+
+No relevant changes.
+
 ## What's new in 0.1.0 March 9 2020
 
 This release is based on GraphSharp from CodePlex.
