@@ -81,23 +81,41 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 Point[] orthoRoutePoints = new Point[2];
                 var sourceVertex = _vertexMap[edge.Source];
                 var targetVertex = _vertexMap[edge.Target];
-                bool notSwitched = (sourceVertex.LayerIndex < targetVertex.LayerIndex);
+                bool notSwitched = sourceVertex.LayerIndex < targetVertex.LayerIndex;
                 int sourceIndex = notSwitched ? 0 : 1;
                 int targetIndex = notSwitched ? 1 : 0;
-                orthoRoutePoints[sourceIndex] = new Point()
+
+                if (IsVerticalLayout())
                 {
-                    X = sourceVertex.HorizontalPosition,
-                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0
-                };
-                orthoRoutePoints[targetIndex] = new Point()
+                    orthoRoutePoints[sourceIndex] = new Point
+                    {
+                        X = sourceVertex.HorizontalPosition,
+                        Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0
+                    };
+                    orthoRoutePoints[targetIndex] = new Point
+                    {
+                        X = targetVertex.HorizontalPosition,
+                        Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerDistance / 2.0
+                    };
+                }
+                else
                 {
-                    X = targetVertex.HorizontalPosition,
-                    Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerDistance / 2.0
-                };
+                    orthoRoutePoints[sourceIndex] = new Point
+                    {
+                        X = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerDistance / 2.0,
+                        Y = sourceVertex.HorizontalPosition,
+                    };
+                    orthoRoutePoints[targetIndex] = new Point
+                    {
+                        X = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerDistance / 2.0,
+                        Y = targetVertex.HorizontalPosition,
+                    };
+                }
+
                 _edgeRoutingPoints[edge] = orthoRoutePoints;
             }
 
-            foreach (var kvp in _dummyVerticesOfEdges)
+           foreach (var kvp in _dummyVerticesOfEdges)
             {
                 Point[] orthoRoutePoints = _edgeRoutingPoints[kvp.Key];
 
@@ -107,9 +125,14 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
                 for (int i = 0; i < kvp.Value.Count; i++)
                 {
                     var vertex = kvp.Value[i];
-                    routePoints[i + 2] = new Point(vertex.HorizontalPosition, vertex.LayerPosition);
+                    routePoints[i + 2] = IsVerticalLayout()
+                        ? new Point(vertex.HorizontalPosition, vertex.LayerPosition)
+                        : new Point(vertex.LayerPosition, vertex.HorizontalPosition);
                 }
-                routePoints[1] = new Point(routePoints[2].X, routePoints[0].Y);
+
+                routePoints[1] = IsVerticalLayout()
+                ? new Point(routePoints[2].X, routePoints[0].Y)
+                    : new Point(routePoints[0].X, routePoints[2].Y);
                 routePoints[kvp.Value.Count + 2] = new Point(routePoints[kvp.Value.Count + 1].X, routePoints[kvp.Value.Count + 3].Y);
                 _edgeRoutingPoints[kvp.Key] = routePoints;
             }

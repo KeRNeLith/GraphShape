@@ -239,7 +239,7 @@
             <ComboBox ItemsSource="{Binding Source={StaticResource layoutDirectionEnum}}"
                       SelectedValue="{Binding Path=Direction}"
                       Grid.Column="1"
-                      Grid.Row="4" />
+                      Grid.Row="6" />
         </Grid>
     </DataTemplate>
 
