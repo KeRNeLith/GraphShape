@@ -22,7 +22,6 @@
 
     <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
-GraphShape is a .NET graph layout framework based on Graph#. It contains some layout algorithms and a GraphLayout control for WPF applications.
 
 Supported platforms:
 - .NET Framework 4.0
@@ -34,9 +33,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 0.1.1
+    <PackageReleaseNotes>➟ Release 0.1.2
 Fixes:
-- Fix the orthogonal edge routing of Efficient Sugiyama algorithm (in horizontal layout).</PackageReleaseNotes>
+- Fix a crash in the Efficient Sugiyama algorithm when having less thatn 2 layers.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>

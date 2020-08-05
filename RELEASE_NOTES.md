@@ -1,5 +1,17 @@
 # Release notes
 
+## What's new in 0.1.2 August 5 2020
+
+### GraphShape
+
+#### Fixes
+
+* Fix a crash in the Efficient Sugiyama algorithm when having less thatn 2 layers.
+
+### GraphShape.Controls
+
+No relevant changes.
+
 ## What's new in 0.1.1 August 3 2020
 
 ### GraphShape

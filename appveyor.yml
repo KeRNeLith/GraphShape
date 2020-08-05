@@ -158,22 +158,22 @@ before_deploy:
 # Deploy
 deploy:
 # MyGet
-  # - provider: NuGet
-    # server: https://www.myget.org/F/kernelith-ci/api/v2/package
-    # api_key:
-      # secure: ANF+joC2B+NahxCFbLPOjNvEAo36F2F4QJu6zLwoIf2I9KwkxKyCSuNxDpLmJmtU
-    # skip_symbols: true
-    # on:
-      # configuration: Release
+  - provider: NuGet
+    server: https://www.myget.org/F/kernelith-ci/api/v2/package
+    api_key:
+      secure: ANF+joC2B+NahxCFbLPOjNvEAo36F2F4QJu6zLwoIf2I9KwkxKyCSuNxDpLmJmtU
+    skip_symbols: true
+    on:
+      configuration: Release
 # GitHub packages
-  # - provider: NuGet
-    # server: https://nuget.pkg.github.com/KeRNeLith/index.json
-    # username: KeRNeLith
-    # api_key:
-      # secure: 6N37NtnuKSzKQXlPOCtPSFJGOvJUdJjPK8LcuWx2PjHs2WVdngenZvYixk6br72b
-    # on:
-      # configuration: Release
-      # APPVEYOR_REPO_TAG: true
+  - provider: NuGet
+    server: https://nuget.pkg.github.com/KeRNeLith/index.json
+    username: KeRNeLith
+    api_key:
+      secure: 6N37NtnuKSzKQXlPOCtPSFJGOvJUdJjPK8LcuWx2PjHs2WVdngenZvYixk6br72b
+    on:
+      configuration: Release
+      APPVEYOR_REPO_TAG: true
 # NuGet
   - provider: NuGet
     api_key:

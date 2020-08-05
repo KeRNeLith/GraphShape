@@ -34,7 +34,7 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 0.1.1</PackageReleaseNotes>
+    <PackageReleaseNotes>➟ Release 0.1.2</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
