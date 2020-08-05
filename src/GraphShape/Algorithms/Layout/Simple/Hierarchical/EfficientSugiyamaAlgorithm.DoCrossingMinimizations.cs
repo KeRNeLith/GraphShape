@@ -29,6 +29,9 @@ namespace GraphShape.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         private void DoCrossingMinimizations()
         {
+            if (_layers.Count < 2)
+                return;
+
             int prevCrossings = int.MaxValue;
             int crossings = int.MaxValue;
             int phase = 1;
