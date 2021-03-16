@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;net45;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netstandard2.0;net5.0</TargetFrameworks>
 
     <GeneratePackageOnBuild>$(Generate_GraphShape_Core)</GeneratePackageOnBuild>
 
@@ -14,7 +14,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2019</Copyright>
+    <Copyright>Copyright © 2021</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#.
 It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 
@@ -24,6 +24,7 @@ Supported platforms:
 - .NET Standard 2.0+
 - .NET Core 2.0+
 - .NET Framework 3.5+
+- .NET 5+
 
 Supports Source Link</Description>
 
@@ -55,9 +56,13 @@ New:
     <AssemblyTitle>GraphShape .NET Standard 2.0</AssemblyTitle>
     <DefineConstants>$(DefineConstants);NETSTANDARD2_0;SUPPORTS_ENUMERABLE_COVARIANT;SUPPORTS_CALLER_NAME;SUPPORTS_AGGRESSIVE_INLINING;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0'">
+    <AssemblyTitle>GraphShape .NET 5</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET50;SUPPORTS_ENUMERABLE_COVARIANT;SUPPORTS_CALLER_NAME;SUPPORTS_AGGRESSIVE_INLINING;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
 
   <!-- Dependencies -->
   <ItemGroup>
-    <PackageReference Include="QuikGraph" Version="2.2.0" />
+    <PackageReference Include="QuikGraph" Version="2.3.0" />
   </ItemGroup>
 </Project>

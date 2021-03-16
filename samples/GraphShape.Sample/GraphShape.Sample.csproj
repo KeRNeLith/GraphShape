@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net472</TargetFrameworks>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <TargetFrameworks>net472;net5.0-windows10.0.17763.0</TargetFrameworks>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
 
     <Title>GraphShape.Sample</Title>
     <RootNamespace>GraphShape.Sample</RootNamespace>
@@ -13,7 +13,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2019</Copyright>
+    <Copyright>Copyright © 2021</Copyright>
     <Description>GraphShape sample application.</Description>
 
     <ApplicationIcon>..\..\docs\images\graphshape.ico</ApplicationIcon>
@@ -25,6 +25,9 @@
   <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
     <AssemblyTitle>GraphShape.Sample .NET 4.7.2</AssemblyTitle>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows10.0.17763.0'">
+    <AssemblyTitle>GraphShape.Sample .NET 5</AssemblyTitle>
+  </PropertyGroup>
 
   <ItemGroup>
     <SplashScreen Include="..\..\docs\images\graphshape_logo.png" />
@@ -33,7 +36,8 @@
   <!-- Dependencies -->
   <!-- System -->
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
+    <Reference Condition="'$(TargetFramework)'!='net5.0-windows10.0.17763.0'" Include="System.Windows.Forms" />
+    <FrameworkReference Condition="'$(TargetFramework)'=='net5.0-windows10.0.17763.0'" Include="Microsoft.WindowsDesktop.App" />
   </ItemGroup>
 
   <!-- Externals -->

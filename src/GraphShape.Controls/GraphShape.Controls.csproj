@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;net45</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <UseWpf>true</UseWpf>
 
     <GeneratePackageOnBuild>$(Generate_GraphShape_Controls)</GeneratePackageOnBuild>
@@ -15,7 +15,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2019</Copyright>
+    <Copyright>Copyright © 2021</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#.
 It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 
@@ -25,6 +25,8 @@ This library contains customizable controls for the visualization of graph in WP
 
 Supported platforms:
 - .NET Framework 3.5+
+- .NET Core 3.1+
+- .NET 5+
 
 Supports Source Link</Description>
 
@@ -48,6 +50,14 @@ New:
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>GraphShape.Controls .NET 4.5</AssemblyTitle>
     <DefineConstants>$(DefineConstants);NET45;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
+    <AssemblyTitle>GraphShape.Controls .NET Core 3.1</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NETCOREAPP31;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
+    <AssemblyTitle>GraphShape.Controls .NET 5</AssemblyTitle>
+    <DefineConstants>$(DefineConstants);NET50;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->
