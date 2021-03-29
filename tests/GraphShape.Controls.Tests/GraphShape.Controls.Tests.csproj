@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net5.0-windows</TargetFrameworks>
 
@@ -9,9 +9,8 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2021</Copyright>
+    <Copyright>Copyright © 2020</Copyright>
     <Description>Tests for GraphShape.Controls library.</Description>
-    <UseWpf>true</UseWpf>
   </PropertyGroup>
 
   <!-- Targets defines -->
@@ -43,16 +42,14 @@
     <DefineConstants>$(DefineConstants);NET472;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
-    <DefineConstants>$(DefineConstants);NET50;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET5_0;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
+
   <!-- Dependencies -->
   <!-- System -->
   <ItemGroup Condition="'$(TargetFramework)'!='net5.0-windows'">
     <Reference Include="PresentationCore" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
-    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
   </ItemGroup>
 
   <!-- GraphShape.Controls reference -->

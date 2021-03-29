@@ -132,9 +132,7 @@ namespace GraphShape.Utils
                 int j = 0;
                 foreach (TVertex vertex in undirected.Vertices)
                 {
-#pragma warning disable CS0618 // Type or member is obsolete
-                    double distance = dijkstra.Distances[vertex];
-#pragma warning restore CS0618 // Type or member is obsolete
+                    double distance = dijkstra.GetDistance(vertex);
                     distances[i, j] = Math.Min(distances[i, j], distance);
                     distances[i, j] = Math.Min(distances[i, j], distances[j, i]);
                     distances[j, i] = Math.Min(distances[i, j], distances[j, i]);

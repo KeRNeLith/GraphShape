@@ -15,7 +15,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2021</Copyright>
+    <Copyright>Copyright © 2019</Copyright>
     <Description>GraphShape is a .NET graph layout framework based on Graph#.
 It contains several layout algorithms that allow various kind of layouts (FR, KK, ISOM, LinLog, Simple Tree, Circular, Sugiyama, Compound FDP, Random).
 
@@ -53,11 +53,11 @@ New:
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
     <AssemblyTitle>GraphShape.Controls .NET Core 3.1</AssemblyTitle>
-    <DefineConstants>$(DefineConstants);NETCOREAPP31;$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NETCOREAPP3_1;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
     <AssemblyTitle>GraphShape.Controls .NET 5</AssemblyTitle>
-    <DefineConstants>$(DefineConstants);NET50;$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET5_0;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;netcoreapp3.1;net5.0-windows10.0.17763.0</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;netcoreapp3.1;net5.0-windows</TargetFrameworks>
 
     <Title>GraphShape.Tests</Title>
 
@@ -9,7 +9,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
 
-    <Copyright>Copyright © 2021</Copyright>
+    <Copyright>Copyright © 2019</Copyright>
     <Description>Tests for GraphShape library.</Description>
   </PropertyGroup>
 
@@ -42,19 +42,13 @@
     <DefineConstants>$(DefineConstants);NET472;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);NETCOREAPP31;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NETCOREAPP3_1;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
-    <DefineConstants>$(DefineConstants);NET50;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET5_0;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
+
   <!-- Dependencies -->
-  <!-- System -->
-
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netcore')) And '$(TargetFramework)'!='net5.0-windows10.0.17763.0'">
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-
   <!-- Projects  -->
   <ItemGroup>
     <ProjectReference Include="..\..\common\GraphShape.Factory\GraphShape.Factory.csproj" />
