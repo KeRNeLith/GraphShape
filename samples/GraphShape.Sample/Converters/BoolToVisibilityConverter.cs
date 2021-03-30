@@ -8,7 +8,7 @@ namespace GraphShape.Sample.Converters
     /// <summary>
     /// Converter from <see cref="bool"/> to <see cref="Visibility"/>.
     /// </summary>
-    internal class BoolToVisibilityConverter : IValueConverter
+    internal sealed class BoolToVisibilityConverter : IValueConverter
     {
         #region IValueConverter
 

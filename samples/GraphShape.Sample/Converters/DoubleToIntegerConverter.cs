@@ -7,7 +7,7 @@ namespace GraphShape.Sample.Converters
     /// <summary>
     /// Converter from <see cref="int"/> to <see cref="double"/> and vice versa.
     /// </summary>
-    internal class IntegerToDoubleConverter : IValueConverter
+    internal sealed class IntegerToDoubleConverter : IValueConverter
     {
         #region IValueConverter
 

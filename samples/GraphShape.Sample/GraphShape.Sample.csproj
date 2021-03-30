@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net472</TargetFrameworks>
@@ -43,8 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\RibbonControlsLibrary.dll</HintPath>
     </Reference>
-    <PackageReference Include="WPFExtensions" Version="1.0.0" />
-    <PackageReference Include="WPFToolkit" Version="3.5.50211.1" />
   </ItemGroup>
 
   <!-- Projects -->

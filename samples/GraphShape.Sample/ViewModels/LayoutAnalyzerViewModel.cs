@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
+using GraphShape.Sample.MVVM;
 using GraphShape.Sample.Properties;
 using GraphShape.Sample.Utils;
 using JetBrains.Annotations;
-using WPFExtensions.ViewModel.Commanding;
 
 namespace GraphShape.Sample.ViewModels
 {

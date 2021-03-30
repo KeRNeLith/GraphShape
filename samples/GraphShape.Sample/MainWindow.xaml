@@ -9,17 +9,16 @@
     mc:Ignorable="d"
     xmlns:local="clr-namespace:GraphShape.Sample"
     xmlns:localControls="clr-namespace:GraphShape.Sample.Controls"
-    xmlns:commands="clr-namespace:WPFExtensions.ViewModel.Commanding;assembly=WPFExtensions"
     xmlns:controls="clr-namespace:GraphShape.Controls;assembly=GraphShape.Controls"
     xmlns:converters="clr-namespace:GraphShape.Sample.Converters"
+    xmlns:mvvm="clr-namespace:GraphShape.Sample.MVVM"
     xmlns:ribbonControls="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
     xmlns:viewModels="clr-namespace:GraphShape.Sample.ViewModels"
-    xmlns:wpfControls="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
     Title="Graph layout PoC"
     Background="White"
     WindowStartupLocation="CenterScreen"
     WindowState="Normal"
-    commands:CommandSinkBinding.CommandSink="{Binding}"
+    mvvm:CommandSinkBinding.CommandSink="{Binding}"
     d:DataContext="{d:DesignInstance viewModels:LayoutAnalyzerViewModel}">
     <ribbonControls:RibbonWindow.Resources>
 
@@ -88,28 +87,28 @@
 
     </ribbonControls:RibbonWindow.Resources>
     <ribbonControls:RibbonWindow.CommandBindings>
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.RemoveLayoutCommand}" />
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.AddLayoutCommand}" />
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.ContinueLayoutCommand}" />
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.RelayoutCommand}" />
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.OpenGraphCommand}" />
-        <commands:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.SaveGraphsCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.RemoveLayoutCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.AddLayoutCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.ContinueLayoutCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.RelayoutCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.OpenGraphCommand}" />
+        <mvvm:CommandSinkBinding Command="{x:Static viewModels:LayoutAnalyzerViewModel.SaveGraphsCommand}" />
 
         <CommandBinding Command="{StaticResource ExitRCmd}" Executed="OnExitExecuted" />
 
-        <commands:MapperCommandBinding
+        <mvvm:MapperCommandBinding
             Command="{StaticResource NewLayoutRCmd}"
             MappedToCommand="{x:Static viewModels:LayoutAnalyzerViewModel.AddLayoutCommand}" />
-        <commands:MapperCommandBinding
+        <mvvm:MapperCommandBinding
             Command="{StaticResource ContinueLayoutRCmd}"
             MappedToCommand="{x:Static viewModels:LayoutAnalyzerViewModel.ContinueLayoutCommand}" />
-        <commands:MapperCommandBinding
+        <mvvm:MapperCommandBinding
             Command="{StaticResource RelayoutRCmd}"
             MappedToCommand="{x:Static viewModels:LayoutAnalyzerViewModel.RelayoutCommand}" />
-        <commands:MapperCommandBinding
+        <mvvm:MapperCommandBinding
             Command="{StaticResource OpenGraphFileRCmd}"
             MappedToCommand="{x:Static viewModels:LayoutAnalyzerViewModel.OpenGraphCommand}" />
-        <commands:MapperCommandBinding
+        <mvvm:MapperCommandBinding
             Command="{StaticResource SaveGraphFileRCmd}"
             MappedToCommand="{x:Static viewModels:LayoutAnalyzerViewModel.SaveGraphsCommand}" />
     </ribbonControls:RibbonWindow.CommandBindings>
@@ -248,7 +247,6 @@
         </ribbonControls:Ribbon>
 
         <DockPanel>
-
             <!-- Graph Selector -->
             <ListBox
                 Width="170"
@@ -450,7 +448,7 @@
 
                 </Grid>
 
-                <wpfControls:ZoomControl>
+                <localControls:ZoomControl>
                     <localControls:PocGraphLayout
                         x:Name="GraphLayout"
                         Graph="{Binding Path=Graph, Mode=OneWay}"
@@ -458,7 +456,7 @@
                         local:LayoutManager.ManagedLayout="True"
                         OverlapRemovalAlgorithmType="FSA"
                         HighlightAlgorithmType="Simple" />
-                </wpfControls:ZoomControl>
+                </localControls:ZoomControl>
             </DockPanel>
         </DockPanel>
     </DockPanel>

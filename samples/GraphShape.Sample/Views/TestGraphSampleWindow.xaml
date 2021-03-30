@@ -5,12 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:localControls="clr-namespace:GraphShape.Sample.Controls"
     xmlns:layout="clr-namespace:GraphShape.Algorithms.Layout;assembly=GraphShape"
-    xmlns:zoom="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions"
     Title="Sample Graph"
     Height="600"
     Width="600">
     <DockPanel>
-
         <WrapPanel
             DockPanel.Dock="Top"
             Orientation="Horizontal">
@@ -34,7 +32,7 @@
             Value="{Binding Path=LayoutStatusPercent, ElementName=Layout, Mode=OneWay}" 
             Height="30" />
 
-        <zoom:ZoomControl>
+        <localControls:ZoomControl>
             <localControls:SampleGraphLayout
                 x:Name="Layout"
                 LayoutAlgorithmType="ISOM"
@@ -49,6 +47,6 @@
                         Height="1200" />
                 </localControls:SampleGraphLayout.LayoutParameters>
             </localControls:SampleGraphLayout>
-        </zoom:ZoomControl>
+        </localControls:ZoomControl>
     </DockPanel>
 </Window>
