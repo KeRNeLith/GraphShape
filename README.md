@@ -30,6 +30,7 @@ See the library [documentation](https://kernelith.github.io/GraphShape/).
 - [![.NET Standard](https://img.shields.io/badge/.NET%20Standard-%3E%3D%202.0-blue.svg)](#)
 - [![.NET Core](https://img.shields.io/badge/.NET%20Core-%3E%3D%202.0-blue.svg)](#)
 - [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%203.5-blue.svg)](#)
+- [![.NET](https://img.shields.io/badge/.NET%20-%3E%3D%205-blue.svg)](#)
 
 Supports Source Link (use dedicated symbol package)
 
@@ -72,5 +73,6 @@ GraphShape is available on [NuGet](https://www.nuget.org) in several modules.
 This project exists thanks to all the people who have contributed to the code base.
 
 <a href="https://github.com/Moka42"><img src="https://avatars2.githubusercontent.com/u/33061894" width="50px;" alt=""/>
+<a href="https://github.com/eriove"><img src="https://avatars2.githubusercontent.com/u/9482927" width="50px;" alt=""/>
 
 ---
