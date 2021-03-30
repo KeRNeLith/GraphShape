@@ -1,0 +1,5 @@
+- name: Coding Guidelines
+  href: guidelines/toc.yml
+  topicHref: general-coding-guidelines.md
+- name: Release Notes
+  href: ~/../RELEASE_NOTES.md

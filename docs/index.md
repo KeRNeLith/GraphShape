@@ -26,6 +26,7 @@ Main features:
 - .NET Standard 2.0+
 - .NET Core 2.0+
 - .NET Framework 3.5+
+- .NET 5+
 
 Supports Source Link
 
