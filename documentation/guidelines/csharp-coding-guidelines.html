@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>C# Coding guidelines </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="C# Coding guidelines ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="c-coding-guidelines">C# Coding guidelines</h1>
+
+<p>This page will describe some guidelines, note also that you can refer to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">MSDN guidelines</a> for reference.
+If the MSDN page describes a not matching point, consider this page as reference for the concerned point.</p>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<ol>
+<li>Use Pascal casing for type, method names, and constants:</li>
+</ol>
+<pre><code class="lang-csharp">public class SomeClass
+{
+    private const int DefaultSize = 100;
+
+    public void SomeMethod()
+    {
+    }
+}
+</code></pre>
+<ol start="2">
+<li>Use camel casing for local variable names and method arguments:</li>
+</ol>
+<pre><code class="lang-csharp">public void SomeMethod(int someNumber)
+{
+    int number;
+    // ...
+}
+</code></pre>
+<ol start="3">
+<li>Prefix interfaces with <code>I</code>:</li>
+</ol>
+<pre><code class="lang-csharp">public interface ISomething
+{
+}
+</code></pre>
+<ol start="4">
+<li>Suffix interface implementations classes with the non-prefixed interface name:</li>
+</ol>
+<pre><code class="lang-csharp">public class ThisSomething : ISomething
+{
+}
+</code></pre>
+<ol start="5">
+<li>Prefix all fields with an underscore <code>_</code>. If a file happens to differ in style from these guidelines, the existing style in that file takes precedence:</li>
+</ol>
+<pre><code class="lang-csharp">public class SomeClass
+{
+    private ISomething _thisSomething;
+}
+</code></pre>
+<ol start="6">
+<li><p>Name methods using a verb or verb-object pair.</p>
+</li>
+<li><p>You may use single-character or mnemonic variable names in the following scenarios:</p>
+<p>a. In for loops where it is a common convention to use variables like <code>i</code> , <code>j</code> , and <code>k</code> .</p>
+<p>b. In LINQ expressions where it is a common convention to use variables like <code>x</code> or a mnemonic for the item being represented (for example <code>stt</code> for an object of type <code>SomeTestType</code>).</p>
+</li>
+<li><p>Do not abbreviate terms or use acronyms. Some exceptions are allowed for very well-known terms such as API, Id, msg, max, min, etc.</p>
+</li>
+<li><p>Name abstract classes using a suffix of Base (e.g., <code>SomeClassBase</code>).</p>
+</li>
+<li><p>Name extension classes and files by the type being extended, and remove <code>I</code> prefix for extensions of interfaces:</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">// SomeClassExtensions.cs
+public static class SomeClassExtensions
+{
+    public static int ToInt(this SomeClass input)
+    {
+        // ...
+    }
+}
+
+// Or
+
+public interface ISomething
+{
+}
+
+public static class SomethingExtensions
+{
+}
+</code></pre>
+<h2 id="code-formatting">Code Formatting</h2>
+<ol>
+<li>Use <a href="https://en.wikipedia.org/wiki/Indentation_style#Allman_style">Allman style</a> braces where each brace begins on a new line and use consistent style.
+Only exceptions to braces are for single <code>return</code> or <code>throw</code> statements.</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+if (a == b)
+{
+    c = d;
+}
+
+// Acceptable
+if (a == b)
+    return;
+
+// Bad
+if (a == b) {
+    c = d;
+}
+
+// Bad - inconsistent style
+if (a == b)
+    c = d;
+else
+{
+    c = e;
+}
+</code></pre>
+<ol start="2">
+<li>Do not add blank lines between sets of closing braces:</li>
+</ol>
+<pre><code class="lang-csharp">if (a == b)
+{
+    if (c == d)
+    {
+        if (e == f)
+        {
+            DoSomething();
+        }
+    }
+
+} // The blank line above this brace should be removed.
+</code></pre>
+<ol start="3">
+<li>Include blank lines after closing braces as long as the next statement isn't part of a continuing language construct (e.g., if / else, try / catch / finally):</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public static string ToCamelCase(string text)
+{
+    if (string.IsNullOrWhiteSpace(text))
+    {
+        return text;
+    }
+
+    return char.ToLower(text[0]) + text.Substring(1);
+}
+
+// Acceptable
+public static string ToCamelCase(string text)
+{
+    if (string.IsNullOrWhiteSpace(text))
+        return text;
+
+    return char.ToLower(text[0]) + text.Substring(1);
+}
+
+// Bad
+public static string ToCamelCase(string text)
+{
+    if (string.IsNullOrWhiteSpace(text))
+    {
+        return text;
+    }
+    return char.ToLower(text[0]) + text.Substring(1);
+}
+</code></pre>
+<ol start="4">
+<li><p>Avoid unnecessary parentheses in expressions.</p>
+</li>
+<li><p>When writing a method and your line will exceed line length limit, consider adding a line break for each parameter (first one included).</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">public void SomeMethodWithLongSignature(
+    SomeObject parameter1,
+    SomeOtherObject parameter2,
+    SomeTestObject parameter3,
+    SomeFinalObject parameter4)
+{
+}
+</code></pre>
+<ol start="6">
+<li>When building multi-line conditional statements, put the conditional operator at the beginning of each line:</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public bool SomeMethod()
+{
+    return !(myVar || myOtherVar
+        || something || somethingElse)
+        &amp;&amp; string.IsNullOrWhiteSpace(myStr)
+        &amp;&amp; !string.IsNullOrWhiteSpace(myOtherStr);
+}
+  
+// Bad
+public bool SomeMethod()
+{
+    return !(myVar || myOtherVar ||
+        something || somethingElse) &amp;&amp;
+        string.IsNullOrWhiteSpace(myStr) &amp;&amp;
+        !string.IsNullOrWhiteSpace(myOtherStr);
+}
+</code></pre>
+<ol start="7">
+<li>Put auto-properties on a single line:</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public int Property { get; set; }
+
+// Bad
+public int Property
+{
+    get;
+    set;
+}
+</code></pre>
+<ol start="8">
+<li>Put calls to <code>base</code> or <code>this</code> constructors onto an indented separate line:</li>
+</ol>
+<pre><code class="lang-csharp">public SomeClass(string parameter)
+    : base(parameter)
+{
+}
+</code></pre>
+<ol start="9">
+<li>Constructors with no bodies are not shortened:</li>
+</ol>
+<pre><code class="lang-csharp">public SomeClass()
+{
+}
+
+public SomeClass(string parameter)
+    : base(parameter)
+{
+}
+</code></pre>
+<ol start="10">
+<li>Bring constraints for generic types onto separate lines (indented).</li>
+</ol>
+<pre><code class="lang-csharp">public abstract class SomeBase&lt;TArg1, TArg2&gt; : SomeClass
+    where TArg1 : ISomething, new()
+    where TArg2 : class
+{
+}
+</code></pre>
+<ol start="11">
+<li><p>Namespace imports should be specified at the top of the file, outside of namespace declarations and should be sorted alphabetically, with System. namespaces at the top.</p>
+</li>
+<li><p>Class artifacts should be organized as follows (in some cases you can pack things that goes together rather than splitting to respect the following order):</p>
+<p>a. Fields</p>
+<p>b. Constructor(s)</p>
+<p>c. Public members (properties and methods)</p>
+<p>d. Define property-backing fields immediately before the property:</p>
+<pre><code class="lang-csharp">private string _name;
+
+public string Name
+{
+    get =&gt; _name;
+    set =&gt; _name = value;
+}
+</code></pre>
+<p>e. Define non-shared supporting methods immediately following the method they were introduced to support, or use a local method.
+For local function prefer declaring them at the end of the method in a region named &quot;Local function&quot; or &quot;Local functions&quot;.</p>
+<pre><code class="lang-csharp">public void DoSomethingInteresting()
+{
+    // ...
+    int something = GetSomething();
+    // ...
+    int anotherThing = GetAnotherThing();
+}
+
+private int GetSomething()
+{
+   // ...
+}
+
+private int GetAnotherThing()
+{
+   // ...
+}
+
+// Local method variant
+public void DoSomethingCompletelyDifferent()
+{
+    int something = GetSomething();
+    // ...
+
+    #region Local function
+
+    int GetSomething()
+    {
+        // ...
+    }
+
+    #endregion
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="data-types">Data Types</h2>
+<ol>
+<li>Use idiomatic C# types rather than .NET Framework types.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Idiomatic <img src="../../images/check.svg" width="20" height="20"></th>
+<th>Framework <img src="../../images/cross.svg" width="20" height="20"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>String</td>
+</tr>
+<tr>
+<td>object</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Int32</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li><p>String Data Type</p>
+<p>a. Use string <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated">interpolation</a> to concatenate short strings, as shown in the following code:</p>
+<pre><code class="lang-csharp">string displayName = $&quot;{person.LastName}, {person.FirstName}&quot;;
+</code></pre>
+<p>b. To append strings in loops, especially with a large amount of text, use a <code>StringBuilder</code> object.</p>
+<pre><code class="lang-csharp">string phrase = &quot;A long sentence&quot;;
+var manyPhrases = new StringBuilder();
+for (int i = 0; i &lt; 10000; ++i)
+{
+    manyPhrases.Append(phrase);
+}
+</code></pre>
+<p>c. Use case-insensitive checks rather than converting the casing of strings for case-sensitive comparison and generally consider specifing <code>StringComparison</code> explicitly.</p>
+<pre><code class="lang-csharp">string str1 = &quot;Some string value&quot;;
+string str2 = &quot;SoMe STRing ValuE&quot;;
+
+// Ok
+if (str1.Equals(str2, StringComparison.InvariantCultureIgnoreCase))
+{
+   return true;
+}
+
+// Ok
+if (string.Equals(str1, str2, StringComparison.InvariantCultureIgnoreCase))
+{
+   return true;
+}
+
+// Bad
+if (value1.ToLower() == value2.ToLower())
+{
+   return true;
+}
+</code></pre>
+</li>
+<li><p>Always specify type of local variables for idiomatic types (int, string, etc.). But consider using <code>var</code> to avoid type duplication when variable type is visible in the statement:</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">// When the type of a variable is clear from the context, use var otherwise explicit it
+string var1 = &quot;A string&quot;;
+int var2 = 27;
+int var3 = Convert.ToInt32(Console.ReadLine());
+int var4 = SomeFunction();
+var var5 = new SomeClass();
+SomeClass var6 = SomeOtherFunction();
+</code></pre>
+<h2 id="initialization">Initialization</h2>
+<ol>
+<li>Use the concise syntax for arrays when you initialize them on the declaration line:</li>
+</ol>
+<pre><code class="lang-csharp">string[] vowels1 = { &quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot; };
+ 
+// If you use explicit instantiation, you can use var.
+var vowels2 = new string[] { &quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot; };
+ 
+// If you specify an array size, you must initialize the elements one at a time.
+var vowels3 = new string[5];
+vowels3[0] = &quot;a&quot;;
+vowels3[1] = &quot;e&quot;;
+// Etc
+</code></pre>
+<ol start="2">
+<li>Use object initializers to simplify object creation:</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+var myObjects = new List&lt;SomeObject&gt;
+{
+    new SomeObject(&quot;value1&quot;),
+    new SomeObject(&quot;value2&quot;),
+};
+
+var studentById = new Dictionary&lt;int, Student&gt;
+{
+    [123456] = new Student { Name = &quot;John Doe&quot;, Age = 17} },
+    [456789] = new Student { Name = &quot;Dany Doe&quot;, Age = 16} },
+};
+</code></pre>
+<h2 id="exception-handling">Exception Handling</h2>
+<ol>
+<li><p>Use a try-catch statement for most exception handling.</p>
+</li>
+<li><p>Simplify code with <code>IDisposable</code> object by using the C# <code>using</code> statement. If you have a try-finally statement in which the only code in the finally block is a call to the <code>Dispose</code> method.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">// This try-finally statement only calls Dispose in the finally block
+var someDisposableObject = new DisposableObject();
+try
+{
+    // ...
+}
+finally
+{
+    someDisposableObject.Dispose();
+}
+ 
+// You can do the same thing with a using statement
+using (var someDisposableObject = new DisposableObject())
+{
+    // ...
+}
+</code></pre>
+<ol start="3">
+<li>Define custom exception classes when you expect the exception to be explicitly handled. It's a lot more reliable to match an exception based on its type than by extracting information from the message.</li>
+</ol>
+<h2 id="null-detection--check">Null Detection &amp; Check</h2>
+<p>It is a good advice to avoid null reference exceptions by checking for null values before using an object that may be null.
+Also it is good to make checks early in public API to avoid broadcasting bad value to internal systems.</p>
+<ol>
+<li>On public, protected, and internal method arguments consider doing check:</li>
+</ol>
+<pre><code class="lang-csharp">public void Something(object obj)
+{
+    if (obj is null)
+        throw new ArgumentNullException(nameof(obj));
+}
+</code></pre>
+<ol start="2">
+<li>On constructor arguments:</li>
+</ol>
+<pre><code class="lang-csharp">public class A
+{
+    private readonly B _b;
+
+    public A(B b)
+    {
+        _b = b ?? throw new ArgumentNullException(nameof(b));
+    }
+}
+</code></pre>
+<ol start="3">
+<li>When doing null check prefer using <code>is null</code> rather than <code>== null</code> when possible.</li>
+</ol>
+<h2 id="linq-queries">LINQ Queries</h2>
+<ol>
+<li><p>When using LINQ prefer using <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq">Method Syntax over the Query Syntax for LINQ</a>.</p>
+</li>
+<li><p>Use meaningful names for query variables. The following example uses <code>tolkienBooks</code> for books written by Tolkien.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">var tolkienBooks = books.Where(x =&gt; x.Author == &quot;Tolkien&quot;)
+                        .Select(x =&gt; x.Name);
+</code></pre>
+<ol start="3">
+<li>Use aliases to make sure that property names of anonymous types are correctly capitalized, using Pascal casing.</li>
+</ol>
+<pre><code class="lang-csharp">var booksInfo = books.Join(
+    authors,
+    book =&gt; book.Author,
+    author =&gt; author.Name,
+    (book, author) =&gt; new
+    {
+        Book = book,
+        Author = author
+    });
+</code></pre>
+<ol start="4">
+<li>Rename properties when the property names in the result can be ambiguous. For example, if your query returns a book name and an author ID, instead of leaving them as Name and Id in the result, rename them to clarify that Name is the name of a book, and ID is the ID of an author.</li>
+</ol>
+<pre><code class="lang-csharp">var books = books.Join(
+    authors,
+    book =&gt; book.Author,
+    author =&gt; author.Name,
+    (book, author) =&gt; new
+    {
+        BookName = book.Name,
+        AuthorId = author.Id
+    });
+</code></pre>
+<ol start="5">
+<li><p>Except when too long, prefer using explicit typing in the declaration of query variables and range variables.</p>
+</li>
+<li><p>Use <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/where-clause">Where</a> clauses before other query clauses to ensure that later query clauses operate on the reduced, filtered set of data.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">var tolkienBooks = books.Where(x =&gt; x.Author == &quot;Tolkien&quot;)
+                        .OrderBy(x =&gt; x.PublicationYear)
+                        .Select(x);
+</code></pre>
+<h2 id="other-rules">Other Rules</h2>
+<ol>
+<li>Always use explicit scope/visibility.</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public class Something
+{
+    private const int MaximumAge = 100;
+
+    public int Age { get; set; }
+
+    public void SayHello()
+    {
+        Console.WriteLine(&quot;Hello&quot;);
+    }
+}
+
+// Bad
+class Something
+{
+    const int MaximumAge = 100;
+
+    int Age { get; set; }
+
+    void SayHello()
+    {
+        Console.WriteLine(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+<ol start="2">
+<li><p>As much as possible, try to have only one class per file. It is not a problem if you end up with several files containing only a few lines. Of course, this does not apply to inner classes.</p>
+</li>
+<li><p>Use <code>string.Empty</code> rather than empty quotes (<code>&quot;&quot;</code>) for empty strings when possible.</p>
+</li>
+<li><p>Avoid methods that exceed 20-30 lines of code. After that, consider refactoring the method into smaller well-named methods.</p>
+</li>
+<li><p>When using local functions:</p>
+<p>a. Try to limit the usage of captured variables from the enclosing method, as they can make it difficult to read and understand the overall method.</p>
+<p>b. Limit local methods to only a few lines of code, to make overall method easier to understand.</p>
+</li>
+<li><p>Prefer adopting a coding style of &quot;fail fast&quot; and &quot;exit fast&quot;. If there is an exception to be thrown or a value to be returned with no further logic, perform that logic immediately rather than leaving it for an <code>else</code> clause.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public void SomeMethod(ISomething something)
+{
+    // Check for known failure condition and exit quickly
+    if (something is null)
+        throw new ArgumentNullException(nameof(something));
+
+    var things = _somethingElse.GetThoseThings();
+    // ...
+}
+
+// Bad
+public void SomeMethod(ISomething something)
+{
+    if (something != null)
+    {
+        var things = _somethingElse.GetThoseThings();
+        // Lots of logic here that a maintainer has to scroll through.
+    }
+    else
+    {
+        // This should be moved to the top of the method
+        throw new ArgumentNullException(nameof(something));
+    }
+}
+</code></pre>
+<ol start="7">
+<li><p>Avoid the use of the <code>dynamic</code> keyword, particularly in code that executes frequently. Dynamic dispatch is very expensive and is rarely needed.</p>
+</li>
+<li><p>Avoid passing values around using <code>KeyValuePair&lt;TKey, TValue&gt;</code>, but if you do, use a name format like <code>{keyName}And{valueName}</code> to ease maintenance (for example use <code>studentIdAndName</code> for an entry from a dictionary named <code>studentNameById</code>).</p>
+</li>
+<li><p>Use explicit property name on anonymous types, and prefer placing each property on a separate line.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">var anonymousObj =
+{
+    Property1 = sourceA.Property1,
+    Property2 = sourceB.Property2
+};
+</code></pre>
+<ol start="10">
+<li><p>If you are using ReSharper consider keeping files warning free. Follow its guidelines, and suppress warning if relevant with a justification.</p>
+</li>
+<li><p>Consider putting the maximum number of ReSharper annotations. This add usefull suggestions for developers using ReSharper and also allow to quickly determine contracts.
+Annotations that are the most used are the following, others are not mandatory:</p>
+<ul>
+<li>NotNull</li>
+<li>CanBeNull</li>
+<li>ItemNotNull</li>
+<li>ItemCanBeNull</li>
+<li>Pure</li>
+<li>InstantHandle</li>
+<li>ContractAnnotation</li>
+<li>UsedImplicitly (more rarely)</li>
+</ul>
+</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/docs/documentation/guidelines/csharp-coding-guidelines.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

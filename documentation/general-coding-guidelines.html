@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>General Coding Guidelines </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="General Coding Guidelines ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="general-coding-guidelines">General Coding Guidelines</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>The coding guidelines serve the following purposes:</p>
+<ul>
+<li>They create a consistent look to the code, so that readers can focus on content, not layout.</li>
+<li>They enable readers to understand the code more quickly by making assumptions based on previous experience.</li>
+<li>They facilitate copying, changing, and maintaining the code.</li>
+</ul>
+<h2 id="general-principles">General Principles</h2>
+<ul>
+<li>The guidelines should be used as a guide, they are not absolute, and exceptions are allowed when justified.</li>
+<li>The readability is essential:
+<ol>
+<li>Be consistent in style</li>
+<li>Use empty lines and spaces appropriately</li>
+<li>Use descriptive names and naming conventions at all times</li>
+<li>Follow existing patterns unless there is a good reason</li>
+<li>Keep methods and classes short and simple (Single Responsibility Principle (SRP))</li>
+</ol>
+</li>
+<li>Consider making small commits is order to keep changes easily understandable.</li>
+</ul>
+<h2 id="layout-conventions">Layout Conventions</h2>
+<p>Code formatted the same way everywhere makes the code easier to read.
+Below are prefered layout settings to be used for QuikGraph.</p>
+<ol>
+<li>Setup code editors to use four-character indents and save tab characters as spaces.</li>
+<li>Write only one statement per line.</li>
+<li>Write only one declaration per line.</li>
+<li>Avoid more than one empty line at a time.</li>
+<li>Limit the length of a line of code to about 120-140 characters to reduce unnecessary horizontal scrolling.</li>
+</ol>
+<h2 id="commenting-conventions">Commenting Conventions</h2>
+<p>Use comments liberally to provide useful context with proper English sentences.</p>
+<p>Insert one space between the comment delimiter and the comment text, as shown in the following example:</p>
+<pre><code class="lang-csharp">// This is a example comment. It showcases
+// the way comment must be written.
+</code></pre>
+<p>Comments generally have a blank line before and, at the very least, after the segment of code to which the comment applies (in the example it is before the <code>Console.WriteLine</code>).</p>
+<pre><code class="lang-csharp">int[] scores = GetScores();
+
+// Calculate the average
+int count = scores.Count;
+double sum = scores.Sum();
+double average = sum / count;
+
+Console.WriteLine(x.Average);
+</code></pre>
+<p>All public API must be documented using the <a href="https://docs.microsoft.com/en-US/dotnet/csharp/language-reference/language-specification/documentation-comments">standard C# comments</a>, and must be written at third person.
+Note that public API is not limited to public members/methods but also applies to inheritable structure having protected members/methods for example.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/docs/documentation/general-coding-guidelines.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

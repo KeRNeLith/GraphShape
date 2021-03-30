@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "RELEASE_NOTES.html",
-          "hash": "WWHXDVcXbE0e5Qbn9ThCOA=="
+          "hash": "9xq5y19902HmkgHzx0bPJA=="
         }
       },
       "is_incremental": false,
@@ -2248,6 +2248,76 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/general-coding-guidelines.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/general-coding-guidelines.html",
+          "hash": "KSTnYo4zRK7yMQb3wsXIwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/guidelines/csharp-best-practices.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/guidelines/csharp-best-practices.html",
+          "hash": "kHc0zUe3YGPZvQusGWX8ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation/guidelines/csharp-coding-guidelines.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/guidelines/csharp-coding-guidelines.html",
+          "hash": "5XaLOYqLtTjx0Ttvr9B1gA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "documentation/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation/toc.html",
+          "hash": "qO52AD2188e5Z5S3Dz7OVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/check.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/check.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/cross.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/cross.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "images/graphshape.ico",
       "output": {
@@ -2275,7 +2345,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "mzhIXfkqoXIrYb4x1Ek9YQ=="
+          "hash": "zPNrc+kVoOonNay3L2Wi9g=="
         }
       },
       "is_incremental": false,
@@ -2287,7 +2357,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "3VjsrbBIcBPUMlxlLNm9AQ=="
+          "hash": "8g0VPZwzcvOEFSBSZNmq4g=="
         }
       },
       "is_incremental": false,
@@ -2308,7 +2378,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 3,
+          "total_file_count": 6,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {

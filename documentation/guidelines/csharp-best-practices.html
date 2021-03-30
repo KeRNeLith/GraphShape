@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>C# Best Practices </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="C# Best Practices ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="c-best-practices">C# Best Practices</h1>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p>Naming things, and furthermore well naming them is very important.
+You have to use clear and descriptive names for classes, methods, fields and variables for easy understanding and maintenance.</p>
+<ol>
+<li>Generally make sure that after refactoring code that the names are still appropriate.</li>
+</ol>
+<p>For example here is a method that does not reflect its real behavior, which is bad.</p>
+<pre><code class="lang-csharp">// The method name includes the text &quot;Not&quot; and returns a boolean value.
+// This could create scenarios where callers are performing double
+// negatives, which are hard to read.
+private static bool IsNotConnected(SocketWrapper socket, string serverName)
+{
+    // The behavior of the method currently checks if socket is connected to the provided
+    // server. If not it tries to connect to it. But this is not reflected in the method name
+    // at all and is only discoverable by a developer inspecting the code.
+    if (socket.Server != serverName)
+    {
+        socket.Disconnect();
+    }
+
+    if (socket.IsConnected())
+        return false;
+
+    return !socket.Connect(serverName);
+}
+</code></pre>
+<p>Here is an improved name and signature:</p>
+<pre><code class="lang-csharp">private static bool TryConnect(SocketWrapper socket, string serverName)
+{
+    // ...
+}
+</code></pre>
+<ol start="2">
+<li><p>Use the following guidelines when defining generic types:</p>
+<p>a. For types with a single generic type, prefer the use of <code>T</code>, except if a more precise name is adapted (e.g. <code>TEdge</code>, etc.).</p>
+<pre><code class="lang-csharp">public interface ISomething&lt;T&gt;
+</code></pre>
+<p>b. For types with multiple generic types, use a capital <code>T</code> followed by a secondary name for clarity. In all cases, start the type with a capital letter.</p>
+<pre><code class="lang-csharp">public interface IService&lt;TRequest, TResponse&gt;
+</code></pre>
+</li>
+<li><p>Name custom attribute and exception classes respectively using suffixes <code>Attribute</code> and <code>Exception</code>.</p>
+</li>
+<li><p>Name enumerations in the singular (e.g., <code>FileMode</code>) unless the enumeration is representing a bit flag value with <code>[Flags]</code> attribute (e.g., <code>FileAttributes</code>).</p>
+</li>
+</ol>
+<h2 id="exception-handling">Exception Handling</h2>
+<ol>
+<li><p>Express exception messages as grammatically correct sentences.</p>
+</li>
+<li><p>Before throwing Exception, consider whether a custom exception or one of the following .NET exceptions would provide semantic value:</p>
+<p>a. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception">ArgumentException</a></p>
+<p>b. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></p>
+<p>c. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception">ArgumentNullException</a></p>
+<p>d. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception">IndexOutOfRangeException</a></p>
+<p>e. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.invalidoperationexception">InvalidOperationException</a> (According to Microsoft .NET documentation, &quot;Typically, it is thrown when the state of an object cannot support the method call&quot; such as when an instance variable is null and therefore you can't reference a property on that variable)</p>
+<p>f. <a href="https://docs.microsoft.com/en-us/dotnet/api/system.notsupportedexception">NotSupportedException</a> / <a href="https://docs.microsoft.com/en-us/dotnet/api/system.notimplementedexception">NotImplementedException</a></p>
+</li>
+<li><p>Do not reuse .NET exceptions outside of their semantic context.</p>
+</li>
+</ol>
+<h2 id="using-static-structures">Using Static Structures</h2>
+<ol>
+<li><p>Call static members by using the class name: <code>ClassName.StaticMember</code>.
+This practice makes code more readable by making static access clear.</p>
+</li>
+<li><p>Do not qualify a static member defined in a base class with the name of a derived class. While that code compiles, the code readability is misleading, and the code may break in the future if you add a static member with the same name to the derived class.</p>
+</li>
+<li><p>Avoid taking dependencies on static .NET Framework classes whose results are not idempotent or require access to infrastructure (e.g., <code>System.DateTime</code>, <code>System.IO.File</code>, <code>System.IO.Path</code>, etc.).
+Instead, define an interface using a naming convention of <code>I</code>{<em>StaticClassName</em>} and build a minimal facade with an implementation named as {<em>StaticClassName</em>}<code>Wrapper</code>.
+This will enable the behavior to be controlled for testing purposes.</p>
+</li>
+</ol>
+<p>As an example for <code>System.IO.File</code>, this would look like:</p>
+<pre><code class="lang-csharp">public interface IFile
+{
+    bool Exists(string path);
+}
+
+public class FileWrapper : IFile
+{
+    public bool Exists(string path)
+    {
+        return File.Exists(path);
+    }
+}
+</code></pre>
+<h2 id="design-guidance">Design Guidance</h2>
+<h3 id="solid-principles">SOLID Principles</h3>
+<p>Apply SOLID principles everywhere!</p>
+<ol>
+<li><em>Single Responsibility Principle</em>: There should only be one reason for a class to change. If you're having to change an existing class, ask yourself, &quot;Is there an abstraction (interface) missing here?&quot;</li>
+<li><em>Open/Closed Principle</em>: The system should be open for extension, but closed to modification. You should be able to change the behavior of the system by adding a new implementation of an existing interface.</li>
+<li><em>Liskov Substitution Principle</em>: A derived class should be substitutable for its base class, and should not change the fundamental nature of the abstraction.</li>
+<li><em>Interface Segregation Principle</em>: An interface should be highly focused. Interfaces may just have one or two methods. If you implement some methods of an interface using <code>new NotImplementedException()</code>, the interface probably needs to be decomposed.</li>
+<li><em>Dependency Inversion Principle</em>: External dependencies are injected into classes, preferably via their constructors.</li>
+</ol>
+<h3 id="class-design">Class Design</h3>
+<ol>
+<li><p>Avoid deep class hierarchies (more than 2 total levels). Prefer composition over inheritance.</p>
+</li>
+<li><p>Keep logic in constructors simple, primarily focused on capturing dependencies to the field values.</p>
+</li>
+<li><p>Do not use properties to modify class state outside of the property being set. If other state must be changed, prefer the use of a read-only property in combination with a well-named method.</p>
+</li>
+<li><p>Prefer the use of return types that are abstractions rather than concrete types from public members. In other words, prefer <code>IList&lt;T&gt;</code> to <code>List&lt;T&gt;</code> and <code>IDictionary&lt;TKey, TValue&gt;</code> over <code>Dictionary&lt;TKey, TValue&gt;</code>.</p>
+</li>
+<li><p>Make sure the return types from public members match the intended semantics. In other words, prefer <code>IEnumerable&lt;T&gt;</code> over <code>IList&lt;T&gt;</code> and <code>IReadOnlyDictionary&lt;TKey, TValue&gt;</code> over <code>IDictionary&lt;TKey, TValue&gt;</code>, unless modifications by the caller are intended.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">// Ok
+public interface IStudentDataProvider
+{
+    IEnumerable&lt;Student&gt; GetAll();
+    IReadOnlyDictionary&lt;string, Student&gt; GetStudentByNameDictionary();
+}
+
+// Potentially problematic for maintenance, due to semantics of returned values
+public interface IStudentDataProvider
+{
+    IList&lt;Student&gt; GetAll();
+    IDictionary&lt;string, Student&gt; GetStudentByNameDictionary();
+}
+</code></pre>
+<ol start="6">
+<li><p>Do not use the <code>new</code> inheritance qualifier. Instead, reevaluate the design of the class.</p>
+</li>
+<li><p>Do not make members of a class <code>public</code> for the sake of unit testing. Find a better way to test the functionality.
+Otherwise consider making things <code>internal</code> if there is really no other solutions.</p>
+</li>
+<li><p>When providing an implementation of an interface that does nothing, use the <a href="https://en.wikipedia.org/wiki/Null_object_pattern">Null Object Pattern</a>.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">public interface ISomething
+{
+    DateTime GetDateTime(string parameter);
+}
+
+public class NullSomething : ISomething
+{
+    public DateTime GetDateTime(string parameter)
+    {
+        return default(DateTime);
+    }
+}
+</code></pre>
+<ol start="9">
+<li><p>The Provider Pattern (also known as <a href="https://en.wikipedia.org/wiki/Strategy_pattern">Strategy Pattern</a>) is used heavily in the code base.</p>
+<p>a. If the contract being defined basically allows the caller to <em>get</em> something, the <code>Provider</code> suffix is preferred.</p>
+<p>b. If the contract allows the caller to <em>get</em> and <em>set</em> something, consider splitting the methods into <code>Reader</code> and <code>Writer</code> interfaces (which could still be implemented by the same class). The intent here is to provide more clearly stated intent when a caller intends to modify the underlying data exposed by the provider.</p>
+<pre><code class="lang-csharp">// Instead of doing this...
+public interface ICacheProvider
+{
+    void RemoveObjects(string keys);
+    void RemoveObject(string key);
+    bool TryGetObject(string key, out object value);
+    void SetObject(string key, object obj);
+    void InsertObject(string key, object value, DateTime absoluteExpiration, TimeSpan slidingExpiration);
+}
+
+// Consider decomposing the interfaces like this
+public interface ICacheReader
+{
+    bool TryGetObject(string key, out object value);
+}
+
+public interface ICacheWriter
+{
+    void RemoveObjects(string keys);
+    void RemoveObject(string key);
+    void SetObject(string key, object obj);
+    void InsertObject(string key, object value, DateTime absoluteExpiration, TimeSpan slidingExpiration);
+}
+</code></pre>
+</li>
+<li><p>Use creational patterns for creating objects that involve significant logic.</p>
+<p>a. When the logic required to create something doesn't fit well into a class constructor, use a creational pattern like the <a href="https://en.wikipedia.org/wiki/Factory_%28object-oriented_programming%29">Factory Pattern</a>.</p>
+<p>b. When an item can built in one step, use &quot;Create&quot; semantics (see the <a href="https://en.wikipedia.org/wiki/Factory_method_pattern">Factory Method Pattern</a>).</p>
+<p>c. When an item is built up over multiple steps, using &quot;Build&quot; semantics (see the <a href="https://en.wikipedia.org/wiki/Builder_pattern">Builder Pattern</a>).</p>
+</li>
+<li><p>When a class has the concept of an empty instance, implement a static read-only <code>Empty</code> property.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp">public class SomeObject
+{
+    public static readonly SomeObject Empty = new SomeObject();
+    // ...
+}
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/docs/documentation/guidelines/csharp-best-practices.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
