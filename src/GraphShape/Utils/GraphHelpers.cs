@@ -132,7 +132,7 @@ namespace GraphShape.Utils
                 int j = 0;
                 foreach (TVertex vertex in undirected.Vertices)
                 {
-                    double distance = dijkstra.Distances[vertex];
+                    double distance = dijkstra.GetDistance(vertex);
                     distances[i, j] = Math.Min(distances[i, j], distance);
                     distances[i, j] = Math.Min(distances[i, j], distances[j, i]);
                     distances[j, i] = Math.Min(distances[i, j], distances[j, i]);
