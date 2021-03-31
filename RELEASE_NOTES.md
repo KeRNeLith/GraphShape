@@ -1,5 +1,24 @@
 # Release notes
 
+## What's new in 1.2.0 March 31 2021
+
+### GraphShape
+
+#### New:
+* Add support of .NET Core 3.1+.
+* Add support of .NET 5+.
+
+#### Updates:
+* Update package dependencies.
+
+### GraphShape.Controls
+
+#### New:
+* Add support of .NET Core 3.1+.
+* Add support of .NET 5+.
+
+---
+
 ## What's new in 1.1.0 June 7 2020
 
 ### GraphShape
@@ -59,6 +78,32 @@
 
 #### Misc:
 * Use JetBrains annotations all over the library as much as possible.
+
+---
+
+## What's new in 0.1.2 August 5 2020
+
+### GraphShape
+
+#### Fixes:
+* Fix a crash when using Efficient Sugiyama algorithm (with a graph having less than 2 layers).
+
+### GraphShape.Controls
+
+* Update package dependencies.
+
+---
+
+## What's new in 0.1.1 August 3 2020
+
+### GraphShape
+
+#### Fixes:
+* Fix the orthogonal edge routing of Efficient Sugiyama algorithm (in horizontal layout).
+
+### GraphShape.Controls
+
+* Update package dependencies.
 
 ---
 

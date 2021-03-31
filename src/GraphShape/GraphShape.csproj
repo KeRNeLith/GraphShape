@@ -30,9 +30,13 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 1.1.0
+    <PackageReleaseNotes>➟ Release 1.2.0
 New:
-- Use signing key to strong name library assemby.</PackageReleaseNotes>
+- Add support of .NET Core 3.1+.
+- Add support of .NET 5+.
+
+Updates:
+- Update package dependencies.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
   </PropertyGroup>
 
