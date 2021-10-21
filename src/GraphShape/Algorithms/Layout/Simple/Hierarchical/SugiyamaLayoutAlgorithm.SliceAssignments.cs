@@ -202,16 +202,32 @@ namespace GraphShape.Algorithms.Layout
                 int sourceIndex = notSwitched ? 0 : 1;
                 int targetIndex = notSwitched ? 1 : 0;
 
-                orthogonalRoutePoints[sourceIndex] = new Point
+                if (IsVerticalLayout())
                 {
-                    X = sourceVertex.SlicePosition,
-                    Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerGap / 2.0
-                };
-                orthogonalRoutePoints[targetIndex] = new Point
+                    orthogonalRoutePoints[sourceIndex] = new Point
+                    {
+                        X = sourceVertex.SlicePosition,
+                        Y = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerGap / 2.0
+                    };
+                    orthogonalRoutePoints[targetIndex] = new Point
+                    {
+                        X = targetVertex.SlicePosition,
+                        Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerGap / 2.0
+                    };
+                }
+                else
                 {
-                    X = targetVertex.SlicePosition,
-                    Y = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerGap / 2.0
-                };
+                    orthogonalRoutePoints[sourceIndex] = new Point
+                    {
+                        X = _layerPositions[sourceVertex.LayerIndex] + _layerSizes[sourceVertex.LayerIndex] + Parameters.LayerGap / 2.0,
+                        Y = sourceVertex.SlicePosition,
+                    };
+                    orthogonalRoutePoints[targetIndex] = new Point
+                    {
+                        X = _layerPositions[targetVertex.LayerIndex] - Parameters.LayerGap / 2.0,
+                        Y = targetVertex.SlicePosition,
+                    };
+                }
 
                 EdgeRoutes[edge] = orthogonalRoutePoints;
             }
@@ -226,10 +242,14 @@ namespace GraphShape.Algorithms.Layout
                 for (int i = 0; i < pair.Value.Count; ++i)
                 {
                     SugiVertex vertex = pair.Value[i];
-                    routePoints[i + 2] = new Point(vertex.SlicePosition, vertex.LayerPosition);
+                    routePoints[i + 2] = IsVerticalLayout()
+                        ? new Point(vertex.SlicePosition, vertex.LayerPosition)
+                        : new Point(vertex.LayerPosition, vertex.SlicePosition);
                 }
 
-                routePoints[1] = new Point(routePoints[2].X, routePoints[0].Y);
+                routePoints[1] = IsVerticalLayout()
+                    ? new Point(routePoints[2].X, routePoints[0].Y)
+                    : new Point(routePoints[0].X, routePoints[2].Y);
                 routePoints[pair.Value.Count + 2] = new Point(
                     routePoints[pair.Value.Count + 1].X,
                     routePoints[pair.Value.Count + 3].Y);
