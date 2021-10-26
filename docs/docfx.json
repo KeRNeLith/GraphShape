@@ -65,6 +65,11 @@
       }
     ],
     "dest": "_site",
+    "globalMetadata": {
+      "_appFaviconPath": "images/graphshape.ico",
+      "_appLogoPath": "images/logo.svg",
+      "_appFooter": "GraphShape"
+    },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [ "default", "templates/material" ],
