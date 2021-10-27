@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net35;net40;net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
@@ -32,10 +32,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 1.2.0
-New:
-- Add support of .NET Core 3.1+.
-- Add support of .NET 5+.</PackageReleaseNotes>
+    <PackageReleaseNotes>➟ Release 1.2.1
+Updates:
+- Update package dependencies.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
   </PropertyGroup>
 

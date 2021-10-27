@@ -1,5 +1,18 @@
 # Release notes
 
+## What's new in 1.2.1 October 28 2021
+
+### GraphShape
+
+#### Fixes:
+* Fix Sugiyama orthogonal edge routing on horizontal layout.
+
+### GraphShape.Controls
+
+* Update package dependencies.
+
+---
+
 ## What's new in 1.2.0 March 31 2021
 
 ### GraphShape

@@ -30,13 +30,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape</PackageId>
-    <PackageReleaseNotes>➟ Release 1.2.0
-New:
-- Add support of .NET Core 3.1+.
-- Add support of .NET 5+.
-
-Updates:
-- Update package dependencies.</PackageReleaseNotes>
+    <PackageReleaseNotes>➟ Release 1.2.1
+Fixes:
+- Fix Sugiyama orthogonal edge routing on horizontal layout.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C#</PackageTags>
   </PropertyGroup>
 
