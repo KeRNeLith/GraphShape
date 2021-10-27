@@ -54,7 +54,7 @@
 
   <!-- GraphShape.Controls reference -->
   <ItemGroup Condition="$(UseGraphShapeControlsNuget)">
-    <PackageReference Include="GraphShape.Controls" Version="1.1.0" />
+    <PackageReference Include="GraphShape.Controls" Version="1.2.1" />
   </ItemGroup>
   <ItemGroup Condition="!$(UseGraphShapeControlsNuget)">
     <ProjectReference Include="..\..\src\GraphShape.Controls\GraphShape.Controls.csproj" />

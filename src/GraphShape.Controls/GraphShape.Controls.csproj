@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net35;net40;net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
@@ -63,7 +63,7 @@ Updates:
   <!-- Dependencies -->
   <!-- GraphShape reference -->
   <ItemGroup Condition="$(UseGraphShapeCoreNuget)">
-    <PackageReference Include="GraphShape" Version="1.1.0" />
+    <PackageReference Include="GraphShape" Version="1.2.1" />
   </ItemGroup>
   <ItemGroup Condition="!$(UseGraphShapeCoreNuget)">
     <ProjectReference Include="..\GraphShape\GraphShape.csproj" />
