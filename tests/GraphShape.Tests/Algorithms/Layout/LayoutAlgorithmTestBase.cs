@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Layout;
@@ -64,7 +64,6 @@ namespace GraphShape.Tests.Algorithms.Layout
                 vertex => new Size(20, 20));
         }
 
-        [Pure]
         [NotNull]
         protected static LayoutResults ExecuteLayoutAlgorithm<TVertex, TEdge>(
             [NotNull] ILayoutAlgorithm<TVertex, TEdge, IVertexAndEdgeListGraph<TVertex, TEdge>> algorithm,

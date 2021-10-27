@@ -80,7 +80,7 @@ namespace GraphShape.Tests.Algorithms.Layout
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> SugiyamaLayoutTestCases
+        private static IEnumerable<TestCaseData> SugiyamaTraditionalLayoutTestCases
         {
             [UsedImplicitly]
             get
@@ -247,15 +247,15 @@ namespace GraphShape.Tests.Algorithms.Layout
             }
         }
 
-        [TestCaseSource(nameof(SugiyamaLayoutTestCases))]
-        public void SugiyamaLayoutAlgorithm(
+        [TestCaseSource(nameof(SugiyamaTraditionalLayoutTestCases))]
+        public void SugiyamaLayoutAlgorithm_Traditional(
             [NotNull] IBidirectionalGraph<string, Edge<string>> graph,
             int maxCrossCount,
             int maxOverlapped)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
 
-            var parameters = new SugiyamaLayoutParameters();
+            var parameters = new SugiyamaLayoutParameters { EdgeRouting = SugiyamaEdgeRouting.Traditional };
 
             foreach (LayoutDirection direction in Enum.GetValues(typeof(LayoutDirection)))
             {
@@ -290,42 +290,42 @@ namespace GraphShape.Tests.Algorithms.Layout
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<TestCaseData> SugiyamaLayoutEdgeRoutingTestCases
+        private static IEnumerable<TestCaseData> SugiyamaOrthogonalLayoutTestCases
         {
             [UsedImplicitly]
             get
             {
                 yield return new TestCaseData(new BidirectionalGraph<string, Edge<string>>())
                 {
-                    TestName = "Empty graph (edge routing)"
+                    TestName = "Empty graph (orthogonal)"
                 };
 
                 var graph = new BidirectionalGraph<string, Edge<string>>();
                 graph.AddVertex("0");
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Single vertex graph (edge routing)"
+                    TestName = "Single vertex graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
                 graph.AddVerticesAndEdge(new Edge<string>("0", "0"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Single vertex self loop graph (edge routing)"
+                    TestName = "Single vertex self loop graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
                 graph.AddVertexRange(new[] { "0", "1" });
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Two vertices graph (edge routing)"
+                    TestName = "Two vertices graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
                 graph.AddVerticesAndEdge(new Edge<string>("0", "1"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Two linked vertices graph (edge routing)"
+                    TestName = "Two linked vertices graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -333,7 +333,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVertex("2");
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Three vertices graph (edge routing)"
+                    TestName = "Three vertices graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -341,7 +341,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVerticesAndEdge(new Edge<string>("2", "3"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Four vertices graph (edge routing)"
+                    TestName = "Four vertices graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -351,7 +351,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVerticesAndEdge(new Edge<string>("3", "1"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Multiple vertices self loop graph (edge routing)"
+                    TestName = "Multiple vertices self loop graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -362,7 +362,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVerticesAndEdge(new Edge<string>("4", "5"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Line graph (edge routing)"
+                    TestName = "Line graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -374,7 +374,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVerticesAndEdge(new Edge<string>("5", "1"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Cycle line graph (edge routing)"
+                    TestName = "Cycle line graph (orthogonal)"
                 };
 
                 graph = new BidirectionalGraph<string, Edge<string>>();
@@ -386,7 +386,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                 graph.AddVerticesAndEdge(new Edge<string>("4", "5"));
                 yield return new TestCaseData(graph)
                 {
-                    TestName = "Cycle graph (edge routing)"
+                    TestName = "Cycle graph (orthogonal)"
                 };
 
                 IBidirectionalGraph<string, Edge<string>> completeGraph = GraphFactory.CreateCompleteGraph(
@@ -395,7 +395,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     (s, t) => new Edge<string>(s, t));
                 yield return new TestCaseData(completeGraph)
                 {
-                    TestName = "Complete graph (edge routing)"
+                    TestName = "Complete graph (orthogonal)"
                 };
 
                 IBidirectionalGraph<string, Edge<string>> tree = GraphFactory.CreateTree(
@@ -406,7 +406,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     new Random(123));
                 yield return new TestCaseData(tree)
                 {
-                    TestName = "Tree graph 20 vertices/2 branches (edge routing)"
+                    TestName = "Tree graph 20 vertices/2 branches (orthogonal)"
                 };
 
                 tree = GraphFactory.CreateTree(
@@ -417,7 +417,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     new Random(123));
                 yield return new TestCaseData(tree)
                 {
-                    TestName = "Tree graph 25 vertices/5 branches (edge routing)"
+                    TestName = "Tree graph 25 vertices/5 branches (orthogonal)"
                 };
 
                 IBidirectionalGraph<string, Edge<string>> dag = GraphFactory.CreateDAG(
@@ -431,7 +431,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     new Random(123));
                 yield return new TestCaseData(dag)
                 {
-                    TestName = "DAG graph 25 vertices/25 edges (Parallel edge) (edge routing)"
+                    TestName = "DAG graph 25 vertices/25 edges (Parallel edge) (orthogonal)"
                 };
 
                 IBidirectionalGraph<string, Edge<string>> generalGraph = GraphFactory.CreateGeneralGraph(
@@ -444,7 +444,7 @@ namespace GraphShape.Tests.Algorithms.Layout
                     new Random(123));
                 yield return new TestCaseData(generalGraph)
                 {
-                    TestName = "Generic graph 30 vertices/15 edges (Parallel edge) (edge routing)"
+                    TestName = "Generic graph 30 vertices/15 edges (Parallel edge) (orthogonal)"
                 };
 
                 IBidirectionalGraph<string, Edge<string>> isolatedVerticesGraph = GraphFactory.CreateIsolatedVerticesGraph<string, Edge<string>>(
@@ -452,31 +452,46 @@ namespace GraphShape.Tests.Algorithms.Layout
                     i => i.ToString());
                 yield return new TestCaseData(isolatedVerticesGraph)
                 {
-                    TestName = "Isolated vertices graph (15 vertices) (edge routing)"
+                    TestName = "Isolated vertices graph (15 vertices) (orthogonal)"
                 };
             }
         }
 
-        [TestCaseSource(nameof(SugiyamaLayoutEdgeRoutingTestCases))]
-        public void SugiyamaLayoutAlgorithmEdgeRouting([NotNull] IBidirectionalGraph<string, Edge<string>> graph)
+        [TestCaseSource(nameof(SugiyamaOrthogonalLayoutTestCases))]
+        public void SugiyamaLayoutAlgorithm_Orthogonal([NotNull] IBidirectionalGraph<string, Edge<string>> graph)
         {
             IDictionary<string, Size> verticesSizes = GetVerticesSizes(graph.Vertices);
 
-            var parameters = new SugiyamaLayoutParameters();
+            var parameters = new SugiyamaLayoutParameters { EdgeRouting = SugiyamaEdgeRouting.Orthogonal };
 
-            foreach (SugiyamaEdgeRouting routing in Enum.GetValues(typeof(SugiyamaEdgeRouting)))
+            foreach (LayoutDirection direction in Enum.GetValues(typeof(LayoutDirection)))
             {
-                parameters.EdgeRouting = routing;
-                var algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
-                    graph,
-                    verticesSizes,
-                    parameters)
-                {
-                    Rand = new Random(12345)
-                };
+                parameters.Direction = direction;
 
-                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                Assert.DoesNotThrow(() => ExecuteLayoutAlgorithm(algorithm, verticesSizes));
+                foreach (int mode in new[] { -1, 0, 1, 2, 3 })
+                {
+                    parameters.PositionMode = mode;
+
+                    foreach (bool optimizeWidth in new[] { false, true })
+                    {
+                        parameters.OptimizeWidth = optimizeWidth;
+
+                        foreach (bool minimizeEdgeLength in new[] { false, true })
+                        {
+                            parameters.MinimizeEdgeLength = minimizeEdgeLength;
+
+                            var algorithm = new SugiyamaLayoutAlgorithm<string, Edge<string>, IBidirectionalGraph<string, Edge<string>>>(
+                                graph,
+                                verticesSizes,
+                                parameters)
+                            {
+                                Rand = new Random(12345)
+                            };
+
+                            Assert.DoesNotThrow(() => ExecuteLayoutAlgorithm(algorithm, verticesSizes));
+                        }
+                    }
+                }
             }
         }
     }
