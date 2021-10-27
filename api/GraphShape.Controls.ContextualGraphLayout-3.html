@@ -756,13 +756,29 @@
     <tbody>
       <tr>
         <td><a class="xref" href="GraphShape.Algorithms.Layout.ILayoutContext-3.html">ILayoutContext</a>&lt;TVertex, TEdge, TGraph&gt;</td>
-        <td><p>Created <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutContext-3.html">ILayoutContext&lt;TVertex, TEdge, TGraph&gt;</a>, null if <a class="xref" href="GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CanLayout">CanLayout</a> is false.</p>
+        <td><p>Created <a class="xref" href="GraphShape.Algorithms.Layout.ILayoutContext-3.html">ILayoutContext&lt;TVertex, TEdge, TGraph&gt;</a>, <span class="xref">null</span> if <a class="xref" href="GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CanLayout">CanLayout</a> is false.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">GraphShape.Controls.GraphLayout&lt;TVertex, TEdge, TGraph&gt;.CreateLayoutContext(IDictionary&lt;TVertex, GraphShape.Point&gt;, IDictionary&lt;TVertex, GraphShape.Size&gt;)</span></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">sizes</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="GraphShape.Algorithms.Highlight.IHighlightController-3.html">IHighlightController&lt;TVertex, TEdge, TGraph&gt;</a>

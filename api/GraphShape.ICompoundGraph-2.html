@@ -249,7 +249,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_AddChildVertex__0__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.AddChildVertex(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L34">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L38">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_AddChildVertex_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_AddChildVertex__0__0_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertex(`0,`0)">AddChildVertex(TVertex, TVertex)</h4>
@@ -301,12 +301,43 @@ it as child vertex of <code data-dev-comment-type="paramref" class="paramref">pa
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">parent</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">child</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">child</code> already has a parent vertex.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">parent</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_AddChildVertexRange__0_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.AddChildVertexRange(%600%2CSystem.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L43">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L53">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_AddChildVertexRange_" data-uid="GraphShape.ICompoundGraph`2.AddChildVertexRange*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_AddChildVertexRange__0_System_Collections_Generic_IEnumerable__0__" data-uid="GraphShape.ICompoundGraph`2.AddChildVertexRange(`0,System.Collections.Generic.IEnumerable{`0})">AddChildVertexRange(TVertex, IEnumerable&lt;TVertex&gt;)</h4>
@@ -358,12 +389,43 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">parent</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">children</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>At least on of <code data-dev-comment-type="paramref" class="paramref">children</code> already has a parent vertex.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">parent</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetChildrenCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetChildrenCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L76">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L94">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetChildrenCount_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenCount*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetChildrenCount__0_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenCount(`0)">GetChildrenCount(TVertex)</h4>
@@ -408,12 +470,33 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetChildrenVertices__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetChildrenVertices(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L67">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L83">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetChildrenVertices_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenVertices*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetChildrenVertices__0_" data-uid="GraphShape.ICompoundGraph`2.GetChildrenVertices(`0)">GetChildrenVertices(TVertex)</h4>
@@ -458,12 +541,33 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_GetParent__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.GetParent(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L50">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L62">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_GetParent_" data-uid="GraphShape.ICompoundGraph`2.GetParent*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_GetParent__0_" data-uid="GraphShape.ICompoundGraph`2.GetParent(`0)">GetParent(TVertex)</h4>
@@ -503,7 +607,28 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
     <tbody>
       <tr>
         <td><span class="xref">TVertex</span></td>
-        <td><p>Parent vertex if there is one, null otherwise.</p>
+        <td><p>Parent vertex if there is one, <span class="xref">null</span> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
 </td>
       </tr>
     </tbody>
@@ -513,7 +638,7 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_IsChildVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.IsChildVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L59">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L73">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_IsChildVertex_" data-uid="GraphShape.ICompoundGraph`2.IsChildVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_IsChildVertex__0_" data-uid="GraphShape.ICompoundGraph`2.IsChildVertex(`0)">IsChildVertex(TVertex)</h4>
@@ -558,12 +683,33 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ICompoundGraph_2_IsCompoundVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ICompoundGraph%602.IsCompoundVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L84">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ICompoundGraph.cs/#L104">View Source</a>
   </span>
   <a id="GraphShape_ICompoundGraph_2_IsCompoundVertex_" data-uid="GraphShape.ICompoundGraph`2.IsCompoundVertex*"></a>
   <h4 id="GraphShape_ICompoundGraph_2_IsCompoundVertex__0_" data-uid="GraphShape.ICompoundGraph`2.IsCompoundVertex(`0)">IsCompoundVertex(TVertex)</h4>
@@ -604,6 +750,27 @@ them as children vertices of <code data-dev-comment-type="paramref" class="param
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><p>True if the vertex is a compound one, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
 </td>
       </tr>
     </tbody>

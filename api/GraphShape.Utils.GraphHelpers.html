@@ -118,7 +118,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%603(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L409">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L443">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1____2_" data-uid="GraphShape.Utils.GraphHelpers.Convert``3(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``2)">Convert&lt;TVertex, TEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TNewGraph)</h4>
@@ -196,16 +196,37 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">oldGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">newGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%603(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2CSystem.Func%7B%60%601%2C%60%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L463">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L499">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_Convert__3_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___1___2__" data-uid="GraphShape.Utils.GraphHelpers.Convert``3(QuikGraph.IVertexAndEdgeListGraph{``0,``1},System.Func{``1,``2})">Convert&lt;TVertex, TOldEdge, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
-  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span>.
 Uses <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to convert edges if provided. Performs a direct cast otherwise.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -280,12 +301,28 @@ Uses <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">oldGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%604(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%603%2CSystem.Func%7B%60%601%2C%60%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L384">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L416">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1____3_System_Func___1___2__" data-uid="GraphShape.Utils.GraphHelpers.Convert``4(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``3,System.Func{``1,``2})">Convert&lt;TVertex, TOldEdge, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
@@ -375,16 +412,37 @@ Uses <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">oldGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">newGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%604(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2CSystem.Func%7B%60%600%2C%60%602%7D%2CSystem.Func%7B%60%601%2C%60%603%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L436">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L471">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_Convert__4_QuikGraph_IVertexAndEdgeListGraph___0___1__System_Func___0___2__System_Func___1___3__" data-uid="GraphShape.Utils.GraphHelpers.Convert``4(QuikGraph.IVertexAndEdgeListGraph{``0,``1},System.Func{``0,``2},System.Func{``1,``3})">Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
-  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.
+  <div class="markdown level1 summary"><p>Converts the <code data-dev-comment-type="paramref" class="paramref">oldGraph</code> into a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span>.
 Uses <code data-dev-comment-type="paramref" class="paramref">vertexConverter</code> and <code data-dev-comment-type="paramref" class="paramref">edgeConverter</code> to
 convert vertices and edges if provided. Performs a direct cast otherwise.</p>
 </div>
@@ -471,12 +529,28 @@ convert vertices and edges if provided. Performs a direct cast otherwise.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">oldGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.Convert%60%605(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%604%2CSystem.Func%7B%60%600%2C%60%602%7D%2CSystem.Func%7B%60%601%2C%60%603%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L343">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L373">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_Convert_" data-uid="GraphShape.Utils.GraphHelpers.Convert*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_Convert__5_QuikGraph_IVertexAndEdgeListGraph___0___1____4_System_Func___0___2__System_Func___1___3__" data-uid="GraphShape.Utils.GraphHelpers.Convert``5(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``4,System.Func{``0,``2},System.Func{``1,``3})">Convert&lt;TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph&gt;(IVertexAndEdgeListGraph&lt;TOldVertex, TOldEdge&gt;, TNewGraph, Func&lt;TOldVertex, TNewVertex&gt;, Func&lt;TOldEdge, TNewEdge&gt;)</h4>
@@ -578,16 +652,37 @@ convert vertices and edges if provided. Performs a direct cast otherwise.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">oldGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">newGraph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L483">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L520">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph_" data-uid="GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_CopyToBidirectionalGraph__2_QuikGraph_IVertexAndEdgeListGraph___0___1__" data-uid="GraphShape.Utils.GraphHelpers.CopyToBidirectionalGraph``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1})">CopyToBidirectionalGraph&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;)</h4>
-  <div class="markdown level1 summary"><p>Copies this graph into a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> one.</p>
+  <div class="markdown level1 summary"><p>Copies this graph into a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span> one.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -624,7 +719,7 @@ convert vertices and edges if provided. Performs a direct cast otherwise.</p>
     <tbody>
       <tr>
         <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
-        <td><p><span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> initialized from <code data-dev-comment-type="paramref" class="paramref">graph</code>.</p>
+        <td><p><span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span> initialized from <code data-dev-comment-type="paramref" class="paramref">graph</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -650,16 +745,32 @@ convert vertices and edges if provided. Performs a direct cast otherwise.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__2_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___1__System_String_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%602(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%601%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L217">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L239">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__2_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___1__System_String_System_String_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.String,System.String)">CreateGraph&lt;TVertex, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, String, String)</h4>
-  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
 and edges constructed by getting values of properties <code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code>
 and <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> on type <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code>.</p>
 </div>
@@ -715,7 +826,7 @@ and <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</
     <tbody>
       <tr>
         <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, <span class="xref">QuikGraph.Edge</span>&lt;TVertex&gt;&gt;</td>
-        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -741,16 +852,67 @@ and <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertices</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edgesData</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Edge property <code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code> and/or <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> has <span class="xref">null</span> value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code> is not the name of a property of type <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> is not the name of a property of type <code data-dev-comment-type="typeparamref" class="typeparamref">TEdgeData</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Edge property <code data-dev-comment-type="paramref" class="paramref">sourcePropertyName</code> and/or <code data-dev-comment-type="paramref" class="paramref">targetPropertyName</code> has a type that is not assignable to <code data-dev-comment-type="typeparamref" class="typeparamref">TVertex</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%603(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%602%7D%2CSystem.Func%7B%60%602%2C%60%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L317">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L345">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``2},System.Func{``2,``1})">CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, Func&lt;TEdgeData, TEdge&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdgeTo}</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
 and edges constructed using <code data-dev-comment-type="paramref" class="paramref">edgeFactory</code>.
 Note: The graph will allow parallel edges.</p>
 </div>
@@ -801,7 +963,7 @@ Note: The graph will allow parallel edges.</p>
     <tbody>
       <tr>
         <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
-        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -832,16 +994,42 @@ Note: The graph will allow parallel edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertices</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edgesData</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edgeFactory</code> is <span class="xref">null</span> or creates <span class="xref">null</span> edge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__System_Boolean_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.CreateGraph%60%603(System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%602%7D%2CSystem.Func%7B%60%602%2C%60%601%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L278">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L303">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_CreateGraph_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_CreateGraph__3_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___2__System_Func___2___1__System_Boolean_" data-uid="GraphShape.Utils.GraphHelpers.CreateGraph``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``2},System.Func{``2,``1},System.Boolean)">CreateGraph&lt;TVertex, TEdge, TEdgeData&gt;(IEnumerable&lt;TVertex&gt;, IEnumerable&lt;TEdgeData&gt;, Func&lt;TEdgeData, TEdge&gt;, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
+  <div class="markdown level1 summary"><p>Creates a <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdgeTo}</span> with the given <code data-dev-comment-type="paramref" class="paramref">vertices</code>
 and edges constructed using <code data-dev-comment-type="paramref" class="paramref">edgeFactory</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -897,7 +1085,7 @@ and edges constructed using <code data-dev-comment-type="paramref" class="paramr
     <tbody>
       <tr>
         <td><span class="xref">QuikGraph.BidirectionalGraph</span>&lt;TVertex, TEdge&gt;</td>
-        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph&lt;TVertex, TEdge&gt;</span>.</p>
+        <td><p>A <span class="xref">QuikGraph.BidirectionalGraph{TVertex,TEdge}</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -928,12 +1116,38 @@ and edges constructed using <code data-dev-comment-type="paramref" class="paramr
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertices</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edgesData</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edgeFactory</code> is <span class="xref">null</span> or creates <span class="xref">null</span> edge.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDiameter__3___2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDiameter%60%603(%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L155">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L164">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetDiameter_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetDiameter__3___2_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter``3(``2)">GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph)</h4>
@@ -1006,12 +1220,28 @@ Note: The diameter is the greatest distance between two vertices.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDiameter%60%603(%60%602%2CSystem.Double%5B0%3A%2C0%3A%5D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L174">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L184">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetDiameter_" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetDiameter__3___2_System_Double_0__0____" data-uid="GraphShape.Utils.GraphHelpers.GetDiameter``3(``2,System.Double[0:,0:]@)">GetDiameter&lt;TVertex, TEdge, TGraph&gt;(TGraph, out Double[,])</h4>
@@ -1090,12 +1320,28 @@ Note: The diameter is the greatest distance between two vertices.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetDistances__3___2_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetDistances%60%603(%60%602)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L99">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L107">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetDistances_" data-uid="GraphShape.Utils.GraphHelpers.GetDistances*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetDistances__3___2_" data-uid="GraphShape.Utils.GraphHelpers.GetDistances``3(``2)">GetDistances&lt;TVertex, TEdge, TGraph&gt;(TGraph)</h4>
@@ -1168,12 +1414,28 @@ Note: The distance is the number of edges between 2 vertices.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetEdgesBetween%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%600%5B%5D%2C%60%600%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L66">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L73">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetEdgesBetween_" data-uid="GraphShape.Utils.GraphHelpers.GetEdgesBetween*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetEdgesBetween__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_____0___" data-uid="GraphShape.Utils.GraphHelpers.GetEdgesBetween``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``0[],``0[])">GetEdgesBetween&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex[], TVertex[])</h4>
@@ -1253,12 +1515,38 @@ and the target is one of the vertices in the <code data-dev-comment-type="paramr
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">set1</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">set2</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetNeighbors%60%602(QuikGraph.IBidirectionalGraph%7B%60%600%2C%60%601%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L26">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L28">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetNeighbors_" data-uid="GraphShape.Utils.GraphHelpers.GetNeighbors*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetNeighbors__2_QuikGraph_IBidirectionalGraph___0___1____0_" data-uid="GraphShape.Utils.GraphHelpers.GetNeighbors``2(QuikGraph.IBidirectionalGraph{``0,``1},``0)">GetNeighbors&lt;TVertex, TEdge&gt;(IBidirectionalGraph&lt;TVertex, TEdge&gt;, TVertex)</h4>
@@ -1331,12 +1619,33 @@ and the target is one of the vertices in the <code data-dev-comment-type="paramr
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_.md&amp;value=---%0Auid%3A%20GraphShape.Utils.GraphHelpers.GetOutNeighbors%60%602(QuikGraph.IVertexAndEdgeListGraph%7B%60%600%2C%60%601%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L46">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Utils/GraphHelpers.cs/#L50">View Source</a>
   </span>
   <a id="GraphShape_Utils_GraphHelpers_GetOutNeighbors_" data-uid="GraphShape.Utils.GraphHelpers.GetOutNeighbors*"></a>
   <h4 id="GraphShape_Utils_GraphHelpers_GetOutNeighbors__2_QuikGraph_IVertexAndEdgeListGraph___0___1____0_" data-uid="GraphShape.Utils.GraphHelpers.GetOutNeighbors``2(QuikGraph.IVertexAndEdgeListGraph{``0,``1},``0)">GetOutNeighbors&lt;TVertex, TEdge&gt;(IVertexAndEdgeListGraph&lt;TVertex, TEdge&gt;, TVertex)</h4>
@@ -1405,6 +1714,27 @@ and the target is one of the vertices in the <code data-dev-comment-type="paramr
       <tr>
         <td><span class="parametername">TEdge</span></td>
         <td><p>Edge type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">graph</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
 </td>
       </tr>
     </tbody>

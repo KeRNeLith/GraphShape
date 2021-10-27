@@ -106,7 +106,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size__ctor_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20GraphShape.Size.%23ctor(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L63">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L68">View Source</a>
   </span>
   <a id="GraphShape_Size__ctor_" data-uid="GraphShape.Size.#ctor*"></a>
   <h4 id="GraphShape_Size__ctor_System_Double_System_Double_" data-uid="GraphShape.Size.#ctor(System.Double,System.Double)">Size(Double, Double)</h4>
@@ -137,6 +137,22 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
         <td><span class="xref">System.Double</span></td>
         <td><span class="parametername">height</span></td>
         <td><p>Height.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">width</code> or <code data-dev-comment-type="paramref" class="paramref">height</code> is negative.</p>
 </td>
       </tr>
     </tbody>
@@ -180,7 +196,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_Height.md&amp;value=---%0Auid%3A%20GraphShape.Size.Height%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L45">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L49">View Source</a>
   </span>
   <a id="GraphShape_Size_Height_" data-uid="GraphShape.Size.Height*"></a>
   <h4 id="GraphShape_Size_Height" data-uid="GraphShape.Size.Height">Height</h4>
@@ -206,12 +222,33 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If trying to update an empty <a class="xref" href="GraphShape.Size.html">Size</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Value is negative.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_IsEmpty.md&amp;value=---%0Auid%3A%20GraphShape.Size.IsEmpty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L74">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L79">View Source</a>
   </span>
   <a id="GraphShape_Size_IsEmpty_" data-uid="GraphShape.Size.IsEmpty*"></a>
   <h4 id="GraphShape_Size_IsEmpty" data-uid="GraphShape.Size.IsEmpty">IsEmpty</h4>
@@ -242,7 +279,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_Width.md&amp;value=---%0Auid%3A%20GraphShape.Size.Width%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L29">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L31">View Source</a>
   </span>
   <a id="GraphShape_Size_Width_" data-uid="GraphShape.Size.Width*"></a>
   <h4 id="GraphShape_Size_Width" data-uid="GraphShape.Size.Width">Width</h4>
@@ -268,6 +305,27 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>If trying to update an empty <a class="xref" href="GraphShape.Size.html">Size</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Value is negative.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -275,7 +333,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_Equals_GraphShape_Size_.md&amp;value=---%0Auid%3A%20GraphShape.Size.Equals(GraphShape.Size)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L121">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L126">View Source</a>
   </span>
   <a id="GraphShape_Size_Equals_" data-uid="GraphShape.Size.Equals*"></a>
   <h4 id="GraphShape_Size_Equals_GraphShape_Size_" data-uid="GraphShape.Size.Equals(GraphShape.Size)">Equals(Size)</h4>
@@ -322,7 +380,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_Equals_GraphShape_Size_GraphShape_Size_.md&amp;value=---%0Auid%3A%20GraphShape.Size.Equals(GraphShape.Size%2CGraphShape.Size)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L104">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L109">View Source</a>
   </span>
   <a id="GraphShape_Size_Equals_" data-uid="GraphShape.Size.Equals*"></a>
   <h4 id="GraphShape_Size_Equals_GraphShape_Size_GraphShape_Size_" data-uid="GraphShape.Size.Equals(GraphShape.Size,GraphShape.Size)">Equals(Size, Size)</h4>
@@ -378,7 +436,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_Equals_System_Object_.md&amp;value=---%0Auid%3A%20GraphShape.Size.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L113">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L118">View Source</a>
   </span>
   <a id="GraphShape_Size_Equals_" data-uid="GraphShape.Size.Equals*"></a>
   <h4 id="GraphShape_Size_Equals_System_Object_" data-uid="GraphShape.Size.Equals(System.Object)">Equals(Object)</h4>
@@ -427,7 +485,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_GetHashCode.md&amp;value=---%0Auid%3A%20GraphShape.Size.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L127">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L132">View Source</a>
   </span>
   <a id="GraphShape_Size_GetHashCode_" data-uid="GraphShape.Size.GetHashCode*"></a>
   <h4 id="GraphShape_Size_GetHashCode" data-uid="GraphShape.Size.GetHashCode">GetHashCode()</h4>
@@ -459,7 +517,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_ToString.md&amp;value=---%0Auid%3A%20GraphShape.Size.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L133">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L138">View Source</a>
   </span>
   <a id="GraphShape_Size_ToString_" data-uid="GraphShape.Size.ToString*"></a>
   <h4 id="GraphShape_Size_ToString" data-uid="GraphShape.Size.ToString">ToString()</h4>
@@ -493,7 +551,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_op_Equality_GraphShape_Size_GraphShape_Size_.md&amp;value=---%0Auid%3A%20GraphShape.Size.op_Equality(GraphShape.Size%2CGraphShape.Size)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L82">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L87">View Source</a>
   </span>
   <a id="GraphShape_Size_op_Equality_" data-uid="GraphShape.Size.op_Equality*"></a>
   <h4 id="GraphShape_Size_op_Equality_GraphShape_Size_GraphShape_Size_" data-uid="GraphShape.Size.op_Equality(GraphShape.Size,GraphShape.Size)">Equality(Size, Size)</h4>
@@ -549,7 +607,7 @@ public struct Size : IEquatable&lt;Size&gt;</code></pre>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Size_op_Inequality_GraphShape_Size_GraphShape_Size_.md&amp;value=---%0Auid%3A%20GraphShape.Size.op_Inequality(GraphShape.Size%2CGraphShape.Size)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L93">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Structures/Bases/Size.cs/#L98">View Source</a>
   </span>
   <a id="GraphShape_Size_op_Inequality_" data-uid="GraphShape.Size.op_Inequality*"></a>
   <h4 id="GraphShape_Size_op_Inequality_GraphShape_Size_GraphShape_Size_" data-uid="GraphShape.Size.op_Inequality(GraphShape.Size,GraphShape.Size)">Inequality(Size, Size)</h4>

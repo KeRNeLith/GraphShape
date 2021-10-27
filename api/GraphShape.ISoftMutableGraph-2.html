@@ -186,7 +186,7 @@ Soft mutation means that we can hide some vertices or edges.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HiddenEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HiddenEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L92">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L118">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HiddenEdgeCount_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgeCount*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HiddenEdgeCount" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgeCount">HiddenEdgeCount</h4>
@@ -217,7 +217,7 @@ Soft mutation means that we can hide some vertices or edges.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HiddenEdges.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HiddenEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L86">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L112">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HiddenEdges_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdges*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HiddenEdges" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdges">HiddenEdges</h4>
@@ -312,7 +312,7 @@ Soft mutation means that we can hide some vertices or edges.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HiddenEdgeCountOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HiddenEdgeCountOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L170">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L218">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HiddenEdgeCountOf_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgeCountOf*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HiddenEdgeCountOf__0_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgeCountOf(`0)">HiddenEdgeCountOf(TVertex)</h4>
@@ -357,12 +357,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HiddenEdgesOf__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HiddenEdgesOf(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L161">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L207">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HiddenEdgesOf_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgesOf*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HiddenEdgesOf__0_" data-uid="GraphShape.ISoftMutableGraph`2.HiddenEdgesOf(`0)">HiddenEdgesOf(TVertex)</h4>
@@ -407,12 +428,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L99">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L126">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideEdge_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdge*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideEdge__1_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdge(`1)">HideEdge(TEdge)</h4>
@@ -457,12 +499,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edge</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideEdge__1_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideEdge(%601%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L107">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L136">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideEdge_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdge*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideEdge__1_System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdge(`1,System.String)">HideEdge(TEdge, String)</h4>
@@ -513,12 +571,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edge</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L113">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L145">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideEdges_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdges*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.ISoftMutableGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1})">HideEdges(IEnumerable&lt;TEdge&gt;)</h4>
@@ -547,12 +626,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edges</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideEdges(System.Collections.Generic.IEnumerable%7B%601%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L120">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L156">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideEdges_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdges*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideEdges_System_Collections_Generic_IEnumerable__1__System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdges(System.Collections.Generic.IEnumerable{`1},System.String)">HideEdges(IEnumerable&lt;TEdge&gt;, String)</h4>
@@ -587,12 +682,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edges</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideEdgesIf_System_Predicate__1__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideEdgesIf(System.Predicate%7B%601%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L127">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L165">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideEdgesIf_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdgesIf*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideEdgesIf_System_Predicate__1__System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideEdgesIf(System.Predicate{`1},System.String)">HideEdgesIf(Predicate&lt;TEdge&gt;, String)</h4>
@@ -627,12 +743,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">predicate</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L32">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L34">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideVertex_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertex*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideVertex__0_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertex(`0)">HideVertex(TVertex)</h4>
@@ -677,12 +814,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideVertex__0_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideVertex(%600%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L40">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L45">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideVertex_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertex*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideVertex__0_System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertex(`0,System.String)">HideVertex(TVertex, String)</h4>
@@ -733,12 +891,38 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L46">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L57">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideVertices_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertices*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__" data-uid="GraphShape.ISoftMutableGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0})">HideVertices(IEnumerable&lt;TVertex&gt;)</h4>
@@ -767,12 +951,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertices</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p>At least one of <code data-dev-comment-type="paramref" class="paramref">vertices</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideVertices(System.Collections.Generic.IEnumerable%7B%600%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L53">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L71">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideVertices_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertices*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideVertices_System_Collections_Generic_IEnumerable__0__System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideVertices(System.Collections.Generic.IEnumerable{`0},System.String)">HideVertices(IEnumerable&lt;TVertex&gt;, String)</h4>
@@ -807,12 +1012,38 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertices</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p>At least one of <code data-dev-comment-type="paramref" class="paramref">vertices</code> is not part of the graph.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_HideVerticesIf_System_Predicate__0__System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.HideVerticesIf(System.Predicate%7B%600%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L60">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L80">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_HideVerticesIf_" data-uid="GraphShape.ISoftMutableGraph`2.HideVerticesIf*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_HideVerticesIf_System_Predicate__0__System_String_" data-uid="GraphShape.ISoftMutableGraph`2.HideVerticesIf(System.Predicate{`0},System.String)">HideVerticesIf(Predicate&lt;TVertex&gt;, String)</h4>
@@ -847,12 +1078,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">predicate</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_IsHiddenEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.IsHiddenEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L134">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L173">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_IsHiddenEdge_" data-uid="GraphShape.ISoftMutableGraph`2.IsHiddenEdge*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_IsHiddenEdge__1_" data-uid="GraphShape.ISoftMutableGraph`2.IsHiddenEdge(`1)">IsHiddenEdge(TEdge)</h4>
@@ -897,12 +1149,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edge</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_IsHiddenVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.IsHiddenVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L67">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L89">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_IsHiddenVertex_" data-uid="GraphShape.ISoftMutableGraph`2.IsHiddenVertex*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_IsHiddenVertex__0_" data-uid="GraphShape.ISoftMutableGraph`2.IsHiddenVertex(`0)">IsHiddenVertex(TVertex)</h4>
@@ -947,12 +1215,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_Unhide_System_String_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.Unhide(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L178">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L227">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_Unhide_" data-uid="GraphShape.ISoftMutableGraph`2.Unhide*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_Unhide_System_String_" data-uid="GraphShape.ISoftMutableGraph`2.Unhide(System.String)">Unhide(String)</h4>
@@ -997,12 +1286,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">tag</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideAll.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L184">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L233">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideAll_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideAll*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideAll" data-uid="GraphShape.ISoftMutableGraph`2.UnhideAll">UnhideAll()</h4>
@@ -1034,7 +1339,7 @@ Soft mutation means that we can hide some vertices or edges.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideEdge__1_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideEdge(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L142">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L182">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideEdge_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdge*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideEdge__1_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdge(`1)">UnhideEdge(TEdge)</h4>
@@ -1079,12 +1384,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edge</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideEdges(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L148">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L191">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideEdges_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdges*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideEdges_System_Collections_Generic_IEnumerable__1__" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdges(System.Collections.Generic.IEnumerable{`1})">UnhideEdges(IEnumerable&lt;TEdge&gt;)</h4>
@@ -1113,12 +1434,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">edges</code> is <span class="xref">null</span> or at least one of them is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideEdgesIf_System_Predicate__1__.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideEdgesIf(System.Predicate%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L154">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L198">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideEdgesIf_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdgesIf*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideEdgesIf_System_Predicate__1__" data-uid="GraphShape.ISoftMutableGraph`2.UnhideEdgesIf(System.Predicate{`1})">UnhideEdgesIf(Predicate&lt;TEdge&gt;)</h4>
@@ -1147,12 +1484,28 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">predicate</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideVertex__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideVertex(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L75">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L99">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideVertex_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideVertex*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideVertex__0_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideVertex(`0)">UnhideVertex(TVertex)</h4>
@@ -1197,12 +1550,33 @@ Soft mutation means that we can hide some vertices or edges.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_ISoftMutableGraph_2_UnhideVertexAndEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.ISoftMutableGraph%602.UnhideVertexAndEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L81">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/ISoftMutableGraph.cs/#L107">View Source</a>
   </span>
   <a id="GraphShape_ISoftMutableGraph_2_UnhideVertexAndEdges_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideVertexAndEdges*"></a>
   <h4 id="GraphShape_ISoftMutableGraph_2_UnhideVertexAndEdges__0_" data-uid="GraphShape.ISoftMutableGraph`2.UnhideVertexAndEdges(`0)">UnhideVertexAndEdges(TVertex)</h4>
@@ -1227,6 +1601,27 @@ Soft mutation means that we can hide some vertices or edges.</p>
         <td><span class="xref">TVertex</span></td>
         <td><span class="parametername">vertex</span></td>
         <td><p>Vertex to un-hide.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
 </td>
       </tr>
     </tbody>

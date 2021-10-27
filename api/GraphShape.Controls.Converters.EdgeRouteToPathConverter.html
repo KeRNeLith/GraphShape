@@ -98,7 +98,7 @@ and the route information of an edge to a path.</p>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_Converters_EdgeRouteToPathConverter_Convert_System_Object___Type_System_Object_CultureInfo_.md&amp;value=---%0Auid%3A%20GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object%5B%5D%2CType%2CSystem.Object%2CCultureInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Converters/EdgeRouteToPathConverter.cs/#L22">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Converters/EdgeRouteToPathConverter.cs/#L26">View Source</a>
   </span>
   <a id="GraphShape_Controls_Converters_EdgeRouteToPathConverter_Convert_" data-uid="GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert*"></a>
   <h4 id="GraphShape_Controls_Converters_EdgeRouteToPathConverter_Convert_System_Object___Type_System_Object_CultureInfo_" data-uid="GraphShape.Controls.Converters.EdgeRouteToPathConverter.Convert(System.Object[],Type,System.Object,CultureInfo)">Convert(Object[], Type, Object, CultureInfo)</h4>
@@ -155,12 +155,29 @@ and the route information of an edge to a path.</p>
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>At least one of 9 arguments is missing.
+pos (1,2), size (3,4) of source; pos (5,6), size (7,8) of target; routeInformation (9)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_Controls_Converters_EdgeRouteToPathConverter_ConvertBack_System_Object_Type___System_Object_CultureInfo_.md&amp;value=---%0Auid%3A%20GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object%2CType%5B%5D%2CSystem.Object%2CCultureInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Converters/EdgeRouteToPathConverter.cs/#L122">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape.Controls/Converters/EdgeRouteToPathConverter.cs/#L127">View Source</a>
   </span>
   <a id="GraphShape_Controls_Converters_EdgeRouteToPathConverter_ConvertBack_" data-uid="GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack*"></a>
   <h4 id="GraphShape_Controls_Converters_EdgeRouteToPathConverter_ConvertBack_System_Object_Type___System_Object_CultureInfo_" data-uid="GraphShape.Controls.Converters.EdgeRouteToPathConverter.ConvertBack(System.Object,Type[],System.Object,CultureInfo)">ConvertBack(Object, Type[], Object, CultureInfo)</h4>
@@ -214,6 +231,22 @@ and the route information of an edge to a path.</p>
       <tr>
         <td><span class="xref">System.Object</span>[]</td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>This method is not supported.</p>
+</td>
       </tr>
     </tbody>
   </table>

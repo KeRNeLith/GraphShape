@@ -185,7 +185,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCount.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.GeneralEdgeCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L86">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L98">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCount_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgeCount*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCount" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgeCount">GeneralEdgeCount</h4>
@@ -216,7 +216,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdges.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.GeneralEdges%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L80">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L92">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdges_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdges*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdges" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdges">GeneralEdges</h4>
@@ -311,7 +311,7 @@
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCountFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.GeneralEdgeCountFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L102">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L118">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCountFor_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgeCountFor*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgeCountFor__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgeCountFor(`0)">GeneralEdgeCountFor(TVertex)</h4>
@@ -356,12 +356,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgesFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.GeneralEdgesFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L93">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L107">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgesFor_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgesFor*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_GeneralEdgesFor__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.GeneralEdgesFor(`0)">GeneralEdgesFor(TVertex)</h4>
@@ -406,12 +427,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgeCountFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.HierarchicalEdgeCountFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L40">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L44">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgeCountFor_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.HierarchicalEdgeCountFor*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgeCountFor__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.HierarchicalEdgeCountFor(`0)">HierarchicalEdgeCountFor(TVertex)</h4>
@@ -456,12 +498,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgesFor__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.HierarchicalEdgesFor(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L31">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L33">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgesFor_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.HierarchicalEdgesFor*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_HierarchicalEdgesFor__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.HierarchicalEdgesFor(`0)">HierarchicalEdgesFor(TVertex)</h4>
@@ -506,12 +569,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.InGeneralEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L119">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L139">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdgeCount_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InGeneralEdgeCount*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdgeCount__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InGeneralEdgeCount(`0)">InGeneralEdgeCount(TVertex)</h4>
@@ -556,12 +640,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.InGeneralEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L110">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L128">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdges_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InGeneralEdges*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_InGeneralEdges__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InGeneralEdges(`0)">InGeneralEdges(TVertex)</h4>
@@ -606,12 +711,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.InHierarchicalEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L57">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L65">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdgeCount_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InHierarchicalEdgeCount*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdgeCount__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InHierarchicalEdgeCount(`0)">InHierarchicalEdgeCount(TVertex)</h4>
@@ -656,12 +782,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.InHierarchicalEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L48">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L54">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdges_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InHierarchicalEdges*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_InHierarchicalEdges__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.InHierarchicalEdges(`0)">InHierarchicalEdges(TVertex)</h4>
@@ -706,12 +853,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.OutGeneralEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L136">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L160">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdgeCount_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutGeneralEdgeCount*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdgeCount__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutGeneralEdgeCount(`0)">OutGeneralEdgeCount(TVertex)</h4>
@@ -756,12 +924,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.OutGeneralEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L127">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L149">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdges_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutGeneralEdges*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_OutGeneralEdges__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutGeneralEdges(`0)">OutGeneralEdges(TVertex)</h4>
@@ -806,12 +995,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdgeCount__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.OutHierarchicalEdgeCount(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L74">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L86">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdgeCount_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutHierarchicalEdgeCount*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdgeCount__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutHierarchicalEdgeCount(`0)">OutHierarchicalEdgeCount(TVertex)</h4>
@@ -856,12 +1066,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/KeRNeLith/GraphShape/new/master/apiSpec/new?filename=GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdges__0_.md&amp;value=---%0Auid%3A%20GraphShape.IHierarchicalBidirectionalGraph%602.OutHierarchicalEdges(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L65">View Source</a>
+    <a href="https://github.com/KeRNeLith/GraphShape/blob/master/src/GraphShape/Interfaces/Graphs/IHierarchicalBidirectionalGraph.cs/#L75">View Source</a>
   </span>
   <a id="GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdges_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutHierarchicalEdges*"></a>
   <h4 id="GraphShape_IHierarchicalBidirectionalGraph_2_OutHierarchicalEdges__0_" data-uid="GraphShape.IHierarchicalBidirectionalGraph`2.OutHierarchicalEdges(`0)">OutHierarchicalEdges(TVertex)</h4>
@@ -902,6 +1133,27 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEdge&gt;</td>
         <td><p>Hierarchical out-edges.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">QuikGraph.VertexNotFoundException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">vertex</code> is not part of the graph.</p>
 </td>
       </tr>
     </tbody>
