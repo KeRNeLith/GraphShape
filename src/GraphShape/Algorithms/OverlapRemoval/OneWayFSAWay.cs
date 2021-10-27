@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.OverlapRemoval
+namespace GraphShape.Algorithms.OverlapRemoval
 {
     /// <summary>
     /// Enumeration of possible FSA algorithm orientations (way).

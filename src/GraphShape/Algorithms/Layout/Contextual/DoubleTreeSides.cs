@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
     /// <summary>
     /// Enumeration of possible side in <see cref="DoubleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> algorithm.

@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Enumeration of possible cooling functions for <see cref="FRLayoutAlgorithm{TVertex,TEdge,TGraph}"/> algorithm.

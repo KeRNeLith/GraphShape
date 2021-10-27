@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Controls
+namespace GraphShape.Controls
 {
     /// <summary>
     /// Fade Out transition.

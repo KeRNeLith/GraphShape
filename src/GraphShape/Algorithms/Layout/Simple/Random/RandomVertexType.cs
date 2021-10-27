@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Enumeration of vertex types for <see cref="RandomLayoutAlgorithm{TVertex,TEdge,TGraph}"/>.

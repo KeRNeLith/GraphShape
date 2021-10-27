@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout.Contextual
+namespace GraphShape.Algorithms.Layout.Contextual
 {
     /// <summary>
     /// ENumeration of possible vertex type for <see cref="DoubleTreeLayoutAlgorithm{TVertex,TEdge,TGraph}"/> algorithm.

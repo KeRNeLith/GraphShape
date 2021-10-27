@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Algorithms.Layout
+namespace GraphShape.Algorithms.Layout
 {
     /// <summary>
     /// Compound vertex extra information.

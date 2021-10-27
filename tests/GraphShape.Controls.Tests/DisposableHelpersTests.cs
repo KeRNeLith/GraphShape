@@ -1,4 +1,4 @@
-﻿using GraphShape.Controls.Utils;
+using GraphShape.Controls.Utils;
 using NUnit.Framework;
 
 namespace GraphShape.Controls.Tests

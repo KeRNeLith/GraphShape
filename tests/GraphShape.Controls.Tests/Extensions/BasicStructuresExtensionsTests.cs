@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using GraphShape.Controls.Extensions;
 using NUnit.Framework;
 

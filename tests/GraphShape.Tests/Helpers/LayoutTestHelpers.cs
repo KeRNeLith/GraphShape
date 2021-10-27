@@ -1,4 +1,4 @@
-﻿using GraphShape.Algorithms.Layout;
+using GraphShape.Algorithms.Layout;
 using JetBrains.Annotations;
 
 namespace GraphShape.Tests

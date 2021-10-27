@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Controls
+namespace GraphShape.Controls
 {
     /// <summary>
     /// Enumeration of possible algorithm constraints regarding overlap and edge routing.

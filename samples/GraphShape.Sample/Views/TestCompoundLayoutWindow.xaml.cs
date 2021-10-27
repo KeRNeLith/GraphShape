@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using GraphShape.Controls;
 using QuikGraph;
 

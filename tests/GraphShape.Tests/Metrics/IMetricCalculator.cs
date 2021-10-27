@@ -1,4 +1,4 @@
-﻿namespace GraphShape.Tests
+namespace GraphShape.Tests
 {
     /// <summary>
     /// Represents an entity able to produce some metrics.

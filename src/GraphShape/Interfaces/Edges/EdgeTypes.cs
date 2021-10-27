@@ -1,4 +1,4 @@
-﻿namespace GraphShape
+namespace GraphShape
 {
     /// <summary>
     /// Enumeration of possible edge types.
