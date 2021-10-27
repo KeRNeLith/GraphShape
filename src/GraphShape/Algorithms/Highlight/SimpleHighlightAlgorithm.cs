@@ -20,6 +20,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="controller">Highlight controller.</param>
         /// <param name="parameters">Highlight algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="controller"/> is <see langword="null"/>.</exception>
         public SimpleHighlightAlgorithm(
             [NotNull] IHighlightController<TVertex, TEdge, TGraph> controller,
             [CanBeNull] IHighlightParameters parameters)
@@ -30,10 +31,14 @@ namespace GraphShape.Algorithms.Highlight
         private void ClearSemiHighlights()
         {
             foreach (TVertex vertex in Controller.SemiHighlightedVertices.ToArray())
+            {
                 Controller.RemoveSemiHighlightFromVertex(vertex);
+            }
 
             foreach (TEdge edge in Controller.SemiHighlightedEdges.ToArray())
+            {
                 Controller.RemoveSemiHighlightFromEdge(edge);
+            }
         }
 
         private void ClearAllHighlights()
@@ -41,10 +46,14 @@ namespace GraphShape.Algorithms.Highlight
             ClearSemiHighlights();
 
             foreach (TVertex vertex in Controller.HighlightedVertices.ToArray())
+            {
                 Controller.RemoveHighlightFromVertex(vertex);
+            }
 
             foreach (TEdge edge in Controller.HighlightedEdges.ToArray())
+            {
                 Controller.RemoveHighlightFromEdge(edge);
+            }
         }
 
         /// <summary>

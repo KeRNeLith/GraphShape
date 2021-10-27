@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 using JetBrains.Annotations;
@@ -204,7 +204,7 @@ namespace GraphShape.Controls.Behaviors
 
         #region Handlers
 
-        private static void OnDragStarted(object sender, MouseButtonEventArgs args)
+        private static void OnDragStarted([NotNull] object sender, [NotNull] MouseButtonEventArgs args)
         {
             var obj = sender as DependencyObject;
             // We are starting the drag
@@ -245,9 +245,14 @@ namespace GraphShape.Controls.Behaviors
             double verticalChange = position.Y - GetOriginalY(obj);
 
             if (double.IsNaN(GetX(obj)))
+            {
                 SetX(obj, 0);
+            }
+
             if (double.IsNaN(GetY(obj)))
+            {
                 SetY(obj, 0);
+            }
 
             // Move the object
             SetX(obj, GetX(obj) + horizontalChange);

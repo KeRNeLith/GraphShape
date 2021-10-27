@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using GraphShape.Utils;
 using JetBrains.Annotations;
@@ -38,6 +38,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public KKLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] KKLayoutParameters parameters = null)
             : this(visitedGraph, null, parameters)
         {
@@ -49,6 +50,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public KKLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -101,9 +103,13 @@ namespace GraphShape.Algorithms.Layout
 
                     // Calculate the minimal distance between the vertices
                     if (!NearEqual(distances[i, j], double.MaxValue))
+                    {
                         dist = Math.Min(distances[i, j], dist);
+                    }
                     if (!NearEqual(distances[j, i], double.MaxValue))
+                    {
                         dist = Math.Min(distances[j, i], dist);
+                    }
                     distances[i, j] = distances[j, i] = dist;
                     _edgeLengths[i, j] = _edgeLengths[j, i] = idealEdgeLength * dist;
                     _springConstants[i, j] = _springConstants[j, i] = Parameters.K / Math.Pow(dist, 2);
@@ -126,7 +132,9 @@ namespace GraphShape.Algorithms.Layout
                     return;
 
                 if (ReportOnIterationEndNeeded)
+                {
                     Report(iteration);
+                }
             }
 
             Report(Parameters.MaxIterations);
@@ -199,7 +207,9 @@ namespace GraphShape.Algorithms.Layout
         {
             // Copy positions to VerticesPositions
             for (int i = 0; i < _vertices.Length; ++i)
+            {
                 VerticesPositions[_vertices[i]] = _positions[i];
+            }
 
             OnIterationEnded(
                 iteration,

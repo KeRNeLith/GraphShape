@@ -93,7 +93,7 @@ namespace GraphShape.Algorithms.Layout
             if (VisitedGraph.VertexCount == 0)
                 return;
 
-            var temperatureMultipliers = new[]
+            double[] temperatureMultipliers =
             {
                 1.0,
                 Parameters.Phase2TemperatureInitialMultiplier,
@@ -134,12 +134,16 @@ namespace GraphShape.Algorithms.Layout
                     }
 
                     if (ReportOnIterationEndNeeded)
+                    {
                         SavePositions();
+                    }
 
                     CalculateNodePositionsAndSizes();
 
                     if (_phase == 2 && !AllTreesGrown && _step % TreeGrowingStep == 0)
+                    {
                         GrowTreesOneLevel();
+                    }
 
                     _temperature *= TemperatureLambda;
                     _temperature = Math.Max(_temperature, minimalTemperature);
@@ -227,15 +231,23 @@ namespace GraphShape.Algorithms.Layout
             bool isSameDirection = LayoutUtils.IsSameDirection(positionVector, force);
             double length;
             if (isSameDirection)
+            {
                 length = force.Length - idealLength;
+            }
             else
+            {
                 length = force.Length + idealLength;
+            }
 
             if (IsZero(force.Length))
+            {
                 force = -positionVector;
+            }
             force.Normalize();
             if (length > 0)
+            {
                 force *= -1;
+            }
 
             Vector springForce = Math.Pow(length / idealLength, 2) / Parameters.ElasticConstant * force;
             return springForce;
@@ -257,7 +269,7 @@ namespace GraphShape.Algorithms.Layout
             Point clippingPointV = LayoutUtils.GetClippingPoint(vSize, vPos, uPos);
 
             Vector force = clippingPointU - clippingPointV;
-            var isSameDirection = LayoutUtils.IsSameDirection(positionVector, force);
+            bool isSameDirection = LayoutUtils.IsSameDirection(positionVector, force);
 
             if (isSameDirection && force.Length > repulsionRange)
                 return new Vector();
@@ -297,7 +309,9 @@ namespace GraphShape.Algorithms.Layout
         {
             // Aggregate the forces
             if ((u.IsFixedToParent && u.MovableParent is null) ^ (v.IsFixedToParent && v.MovableParent is null))
+            {
                 springForce *= 2;
+            }
 
             if (!u.IsFixedToParent)
             {
@@ -356,11 +370,19 @@ namespace GraphShape.Algorithms.Layout
         private static void ApplyRepulsionForce([NotNull] VertexData u, [NotNull] VertexData v, Vector repulsionForce)
         {
             if (u.IsFixedToParent ^ v.IsFixedToParent)
+            {
                 repulsionForce *= 2;
+            }
+
             if (!u.IsFixedToParent)
+            {
                 u.RepulsionForce += repulsionForce;
+            }
+
             if (!v.IsFixedToParent)
+            {
                 v.RepulsionForce -= repulsionForce;
+            }
         }
 
         /// <summary>

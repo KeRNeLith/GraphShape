@@ -34,6 +34,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="positions">Vertices positions.</param>
         /// <param name="sizes">Vertices sizes.</param>
         /// <param name="mode">Layout mode.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
         public LayoutContext(
             [CanBeNull] TGraph graph,
             [CanBeNull] IDictionary<TVertex, Point> positions,

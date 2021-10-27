@@ -29,6 +29,9 @@ namespace GraphShape.Algorithms.Highlight
         /// <param name="controller">Highlight controller.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Created algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="highlightMode"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="context"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="controller"/> is <see langword="null"/>.</exception>
         [Pure]
         IHighlightAlgorithm<TVertex, TEdge> CreateAlgorithm(
             [NotNull] string highlightMode,
@@ -43,6 +46,7 @@ namespace GraphShape.Algorithms.Highlight
         /// <param name="highlightMode">Highlight mode.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Parameters for the algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="highlightMode"/> is <see langword="null"/>.</exception>
         [Pure]
         IHighlightParameters CreateParameters([NotNull] string highlightMode, [CanBeNull] IHighlightParameters parameters);
 
@@ -59,6 +63,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="algorithm">Algorithm from which getting highlight mode.</param>
         /// <returns>Highlight mode.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithm"/> is <see langword="null"/>.</exception>
         [Pure]
         string GetHighlightMode([NotNull] IHighlightAlgorithm<TVertex, TEdge> algorithm);
     }

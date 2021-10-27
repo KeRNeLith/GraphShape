@@ -20,6 +20,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         public IEnumerable<string> AlgorithmTypes { get; } = new[] { FSAAlgorithm, OneWayFSAAlgorithm };
 
         /// <inheritdoc />
+        /// <exception cref="T:System.ArgumentException">Trying to create One Way FSA with other parameters than <see cref="OneWayFSAParameters"/>.</exception>
         public IOverlapRemovalAlgorithm<TVertex> CreateAlgorithm(
             string algorithmType,
             IOverlapRemovalContext<TVertex> context,

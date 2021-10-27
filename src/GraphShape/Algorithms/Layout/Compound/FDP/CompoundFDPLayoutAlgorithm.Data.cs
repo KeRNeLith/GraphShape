@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -104,6 +104,10 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesBorders"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="layoutTypes"/> is <see langword="null"/>.</exception>
         public CompoundFDPLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
@@ -123,6 +127,10 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types per vertex.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesBorders"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="layoutTypes"/> is <see langword="null"/>.</exception>
         public CompoundFDPLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -148,6 +156,10 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="vertex">Vertex to get its level.</param>
         /// <returns>Vertex level.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException">
+        /// <paramref name="vertex"/> is not part of the <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph}.VisitedGraph"/>.
+        /// </exception>
         [Pure]
         public int LevelOfVertex([NotNull] TVertex vertex)
         {
@@ -175,7 +187,7 @@ namespace GraphShape.Algorithms.Layout
         {
             /// <summary>
             /// Gets the vertex which is wrapped by this object.
-            /// Can be null for the root vertex.
+            /// Can be <see langword="null"/> for the root vertex.
             /// </summary>
             [CanBeNull]
             public TVertex Vertex { get; }
@@ -184,7 +196,7 @@ namespace GraphShape.Algorithms.Layout
             /// Parent compound vertex.
             /// </summary>
             /// <remarks>
-            /// Should be not null except for root compound vertex
+            /// Should be not <see langword="null"/> except for root compound vertex
             /// (<see cref="CompoundFDPLayoutAlgorithm{TVertex,TEdge,TGraph}._rootCompoundVertex"/>.
             /// </remarks>
             public CompoundVertexData Parent { get; set; }
@@ -303,10 +315,14 @@ namespace GraphShape.Algorithms.Layout
                 Parent._childrenForce += force;
 
                 if (force.Length > limit)
+                {
                     force *= limit / force.Length;
+                }
                 force += 0.7 * _previousForce;
                 if (force.Length > limit)
+                {
                     force *= limit / force.Length;
+                }
 
                 ApplyForce(force);
                 _springForce = default(Vector);

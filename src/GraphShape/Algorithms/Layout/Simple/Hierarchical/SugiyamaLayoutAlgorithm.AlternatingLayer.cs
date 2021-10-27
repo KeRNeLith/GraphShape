@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -101,14 +101,12 @@ namespace GraphShape.Algorithms.Layout
                 int nextPosition = 0;
                 for (int i = 0; i < Count; ++i)
                 {
-                    var segmentContainer = this[i] as SegmentContainer;
-                    var vertex = this[i] as SugiVertex;
-                    if (segmentContainer != null)
+                    if (this[i] is SegmentContainer segmentContainer)
                     {
                         segmentContainer.Position = nextPosition;
                         nextPosition += segmentContainer.Count;
                     }
-                    else if (vertex != null)
+                    else if (this[i] is SugiVertex vertex)
                     {
                         vertex.Position = nextPosition;
                         nextPosition += 1;
@@ -125,9 +123,13 @@ namespace GraphShape.Algorithms.Layout
                 foreach (IData item in this)
                 {
                     if (item is ICloneable cloneable)
+                    {
                         clonedLayer.Add(cloneable.Clone() as IData);
+                    }
                     else
+                    {
                         clonedLayer.Add(item);
+                    }
                 }
                 return clonedLayer;
             }

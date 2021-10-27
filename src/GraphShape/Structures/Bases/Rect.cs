@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using GraphShape.Utils;
 using JetBrains.Annotations;
 
@@ -31,6 +31,7 @@ namespace GraphShape
         /// <summary>
         /// X-axis value of the left side of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
         public double X
         {
             get => _x;
@@ -45,6 +46,7 @@ namespace GraphShape
         /// <summary>
         /// Y-axis value of the top side of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
         public double Y
         {
             get => _y;
@@ -59,6 +61,8 @@ namespace GraphShape
         /// <summary>
         /// Width of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Width
         {
             get => _width;
@@ -75,6 +79,8 @@ namespace GraphShape
         /// <summary>
         /// Height of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Height
         {
             get => _height;
@@ -115,6 +121,7 @@ namespace GraphShape
         /// <param name="y">The y-coordinate of the top-left corner of the rectangle.</param>
         /// <param name="width">The width of the rectangle.</param>
         /// <param name="height">The height of the rectangle.</param>
+        /// <exception cref="T:System.ArgumentException"><paramref name="width"/> or <paramref name="height"/> is negative.</exception>
         public Rect(double x, double y, double width, double height)
         {
             if (width < 0.0 || height < 0.0)
@@ -199,6 +206,7 @@ namespace GraphShape
         /// <summary>
         /// The position of the top-left corner of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
         public Point Location
         {
             get => new Point(_x, _y);
@@ -214,6 +222,7 @@ namespace GraphShape
         /// <summary>
         /// The width and height of the rectangle.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
         public Size Size
         {
             get => IsEmpty ? Size.Empty : new Size(_width, _height);
@@ -318,6 +327,7 @@ namespace GraphShape
         /// </summary>
         /// <param name="offsetX">The amount to move the rectangle horizontally.</param>
         /// <param name="offsetY">The amount to move the rectangle vertically.</param>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Rect"/>.</exception>
         public void Offset(double offsetX, double offsetY)
         {
             if (IsEmpty)

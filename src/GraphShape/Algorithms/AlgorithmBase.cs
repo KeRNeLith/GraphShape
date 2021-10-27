@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 #if SUPPORTS_AGGRESSIVE_INLINING
 using System.Runtime.CompilerServices;
@@ -25,7 +25,7 @@ namespace GraphShape.Algorithms
         /// <summary>
         /// Throws if a cancellation of the algorithm was requested.
         /// </summary>
-        /// <exception cref="OperationCanceledException">If the algorithm <see cref="IsCancelling"/>.</exception>
+        /// <exception cref="T:System.OperationCanceledException">If the algorithm <see cref="IsCancelling"/>.</exception>
 #if SUPPORTS_AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
@@ -90,7 +90,9 @@ namespace GraphShape.Algorithms
             }
 
             if (raise)
+            {
                 OnStateChanged(EventArgs.Empty);
+            }
         }
 
         /// <inheritdoc />
@@ -99,7 +101,7 @@ namespace GraphShape.Algorithms
         /// <summary>
         /// Called on algorithm state changed.
         /// </summary>
-        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        /// <param name="args"><see cref="F:EventArgs.Empty"/>.</param>
         protected virtual void OnStateChanged([NotNull] EventArgs args)
         {
             Debug.Assert(args != null);
@@ -113,7 +115,7 @@ namespace GraphShape.Algorithms
         /// <summary>
         /// Called on algorithm start.
         /// </summary>
-        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        /// <param name="args"><see cref="F:EventArgs.Empty"/>.</param>
         protected virtual void OnStarted([NotNull] EventArgs args)
         {
             Debug.Assert(args != null);
@@ -127,7 +129,7 @@ namespace GraphShape.Algorithms
         /// <summary>
         /// Called on algorithm finished.
         /// </summary>
-        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        /// <param name="args"><see cref="F:EventArgs.Empty"/>.</param>
         protected virtual void OnFinished([NotNull] EventArgs args)
         {
             Debug.Assert(args != null);
@@ -141,7 +143,7 @@ namespace GraphShape.Algorithms
         /// <summary>
         /// Called on algorithm abort.
         /// </summary>
-        /// <param name="args"><see cref="EventArgs.Empty"/>.</param>
+        /// <param name="args"><see cref="F:EventArgs.Empty"/>.</param>
         protected virtual void OnAborted([NotNull] EventArgs args)
         {
             Debug.Assert(args != null);

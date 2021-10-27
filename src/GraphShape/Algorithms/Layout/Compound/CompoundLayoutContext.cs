@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -26,6 +26,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="mode">Layout mode.</param>
         /// <param name="verticesBorders">Vertices borders.</param>
         /// <param name="layoutTypes">Layout types.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesBorders"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="layoutTypes"/> is <see langword="null"/>.</exception>
         public CompoundLayoutContext(
             [CanBeNull] TGraph graph,
             [CanBeNull] IDictionary<TVertex, Point> positions,
@@ -33,7 +36,7 @@ namespace GraphShape.Algorithms.Layout
             LayoutMode mode,
             [NotNull] IDictionary<TVertex, Thickness> verticesBorders,
             [NotNull] IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes)
-            : base( graph, positions, sizes, mode )
+            : base(graph, positions, sizes, mode)
         {
             VerticesBorders = verticesBorders ?? throw new ArgumentNullException(nameof(verticesBorders));
             LayoutTypes = layoutTypes ?? throw new ArgumentNullException(nameof(layoutTypes));

@@ -34,6 +34,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Distance between layers.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double LayerGap
         {
             get => _layerGap;
@@ -55,6 +56,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Distance between slices.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double SliceGap
         {
             get => _sliceGap;
@@ -76,6 +78,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Position mode (can be negative or in [0, 3]).
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is higher or equal to 3.</exception>
         public int PositionMode
         {
             get => _positionMode;
@@ -115,6 +118,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Width per height ratio.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double WidthPerHeight
         {
             get => _widthPerHeight;

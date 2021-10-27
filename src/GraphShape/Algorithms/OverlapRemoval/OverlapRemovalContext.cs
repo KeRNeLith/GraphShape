@@ -17,6 +17,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// Initializes a new instance of the <see cref="OverlapRemovalContext{TVertex}"/> class.
         /// </summary>
         /// <param name="rectangles">Overlap rectangles.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="rectangles"/> is <see langword="null"/>.</exception>
         public OverlapRemovalContext([NotNull] IDictionary<TVertex, Rect> rectangles)
         {
             Rectangles = rectangles ?? throw new ArgumentNullException(nameof(rectangles));

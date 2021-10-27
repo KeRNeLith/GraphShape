@@ -1,6 +1,5 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
 using GraphShape.Algorithms.EdgeRouting;
 using GraphShape.Algorithms.Highlight;
@@ -98,7 +97,7 @@ namespace GraphShape.Controls
         #region AsyncCompute
 
         /// <summary>
-        /// If this property is true the algorithm will be executed on a separate <see cref="Thread"/>.
+        /// If this property is true the algorithm will be executed on a separate <see cref="T:System.Threading.Thread"/>.
         /// </summary>
         public bool AsyncCompute
         {
@@ -252,7 +251,9 @@ namespace GraphShape.Controls
 
             // Regenerate parameters
             if (graphLayout.Graph != null)
+            {
                 graphLayout.RecalculateEdgeRouting();
+            }
         }
 
         #endregion
@@ -355,7 +356,9 @@ namespace GraphShape.Controls
         private static void OnHighlightAlgorithmPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
             if (args.NewValue is IHighlightAlgorithm<TVertex, TEdge> algorithm)
+            {
                 algorithm.ResetHighlight();
+            }
         }
 
         #endregion
@@ -585,7 +588,9 @@ namespace GraphShape.Controls
 
             // Regenerate parameters
             if (graphLayout.Graph != null)
+            {
                 graphLayout.RecalculateOverlapRemoval();
+            }
         }
 
         #endregion
@@ -1075,9 +1080,13 @@ namespace GraphShape.Controls
                 return;
 
             if (args.IsPositiveTrigger)
+            {
                 HighlightAlgorithm.OnVertexHighlighting(vertex);
+            }
             else
+            {
                 HighlightAlgorithm.OnVertexHighlightRemoving(vertex);
+            }
         }
 
         private void OnEdgeHighlightTriggered([NotNull] EdgeControl edgeControl, [NotNull] HighlightTriggeredEventArgs args)
@@ -1097,9 +1106,13 @@ namespace GraphShape.Controls
                 return;
 
             if (args.IsPositiveTrigger)
+            {
                 HighlightAlgorithm.OnEdgeHighlighting(edge);
+            }
             else
+            {
                 HighlightAlgorithm.OnEdgeHighlightRemoving(edge);
+            }
         }
 
         private void OnRelayoutInduction(bool tryKeepControls)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -41,6 +41,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="selectedVertex">Root vertex.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="selectedVertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="selectedVertex"/> is not part of <paramref name="visitedGraph"/>.</exception>
         public BalloonTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] TVertex selectedVertex,
@@ -56,6 +59,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="selectedVertex">Root vertex.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="selectedVertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="selectedVertex"/> is not part of <paramref name="visitedGraph"/>.</exception>
         public BalloonTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,

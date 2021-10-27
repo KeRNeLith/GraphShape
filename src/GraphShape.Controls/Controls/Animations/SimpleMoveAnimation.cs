@@ -40,7 +40,7 @@ namespace GraphShape.Controls.Animations
             if (!double.IsNaN(y))
             {
                 double from = GraphCanvas.GetY(control);
-                from = (double.IsNaN(from) ? 0.0 : from);
+                from = double.IsNaN(from) ? 0.0 : from;
 
                 // Create an animation for the vertical position
                 var animationY = new DoubleAnimation(

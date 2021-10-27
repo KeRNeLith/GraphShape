@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
 using QuikGraph.Algorithms;
@@ -50,7 +50,9 @@ namespace GraphShape.Algorithms.Layout
         {
             _isolatedVertices = _graph.IsolatedVertices().ToArray();
             foreach (SugiVertex isolatedVertex in _isolatedVertices)
+            {
                 _graph.RemoveVertex(isolatedVertex);
+            }
         }
     }
 }

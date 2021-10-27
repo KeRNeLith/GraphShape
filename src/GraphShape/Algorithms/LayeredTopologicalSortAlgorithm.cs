@@ -61,6 +61,7 @@ namespace GraphShape.Algorithms
         /// Initializes a new instance of the <see cref="LayeredTopologicalSortAlgorithm{TVertex,TEdge}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to visit.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public LayeredTopologicalSortAlgorithm(
             [NotNull] IVertexAndEdgeListGraph<TVertex, TEdge> visitedGraph)
             : base(visitedGraph)
@@ -142,6 +143,8 @@ namespace GraphShape.Algorithms
                 int layerIndex,
                 [NotNull, ItemNotNull] IEnumerable<TVertex> vertices)
             {
+                Debug.Assert(vertices != null);
+
                 LayerIndex = layerIndex;
                 Vertices = vertices.ToArray();
             }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using GraphShape.Utils;
 
 namespace GraphShape
@@ -26,6 +26,8 @@ namespace GraphShape
         /// <summary>
         /// Width.
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Size"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Width
         {
             get => _width;
@@ -42,6 +44,8 @@ namespace GraphShape
         /// <summary>
         /// Height
         /// </summary>
+        /// <exception cref="T:System.InvalidOperationException">If trying to update an empty <see cref="Size"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Height
         {
             get => _height;
@@ -60,6 +64,7 @@ namespace GraphShape
         /// </summary>
         /// <param name="width">Width.</param>
         /// <param name="height">Height.</param>
+        /// <exception cref="T:System.ArgumentException"><paramref name="width"/> or <paramref name="height"/> is negative.</exception>
         public Size(double width, double height)
         {
             if (width < 0.0 || height < 0.0)

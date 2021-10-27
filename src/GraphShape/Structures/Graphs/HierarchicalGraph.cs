@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if SUPPORTS_AGGRESSIVE_INLINING
+using System.Runtime.CompilerServices;
+#endif
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -90,14 +93,22 @@ namespace GraphShape
                 // Remove the edges from the _typedEdgeCollections
                 TypedEdgeCollectionWrapper edgeCollection = _typedEdgeCollections[vertex];
                 foreach (TEdge edge in edgeCollection.InGeneralEdges)
+                {
                     _typedEdgeCollections[edge.Source].OutGeneralEdges.Remove(edge);
+                }
                 foreach (TEdge edge in edgeCollection.OutGeneralEdges)
+                {
                     _typedEdgeCollections[edge.Target].InGeneralEdges.Remove(edge);
+                }
 
                 foreach (TEdge edge in edgeCollection.InHierarchicalEdges)
+                {
                     _typedEdgeCollections[edge.Source].OutHierarchicalEdges.Remove(edge);
+                }
                 foreach (TEdge edge in edgeCollection.OutHierarchicalEdges)
+                {
                     _typedEdgeCollections[edge.Target].InHierarchicalEdges.Remove(edge);
+                }
 
                 _typedEdgeCollections.Remove(vertex);
                 return true;
@@ -216,6 +227,9 @@ namespace GraphShape
 
         [Pure]
         [NotNull]
+#if SUPPORTS_AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private TypedEdgeCollectionWrapper GetCollectionsAndAssertFor([NotNull] TVertex vertex)
         {
             if (vertex == null)

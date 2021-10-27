@@ -32,6 +32,10 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
         /// <param name="selectedVertex">Root vertex.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="selectedVertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="selectedVertex"/> is not part of <paramref name="visitedGraph"/>.</exception>
         public DoubleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
@@ -49,6 +53,10 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
         /// <param name="selectedVertex">Root vertex.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="selectedVertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="selectedVertex"/> is not part of <paramref name="visitedGraph"/>.</exception>
         public DoubleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -121,10 +129,14 @@ namespace GraphShape.Algorithms.Layout.Contextual
             // Merge the layouts
             Vector side2Translate = side1LayoutAlgorithm.VerticesPositions[_root] - side2LayoutAlgorithm.VerticesPositions[_root];
             foreach (TVertex vertex in side1)
+            {
                 VerticesPositions[vertex] = side1LayoutAlgorithm.VerticesPositions[vertex];
+            }
 
             foreach (TVertex vertex in side2)
+            {
                 VerticesPositions[vertex] = side2LayoutAlgorithm.VerticesPositions[vertex] + side2Translate;
+            }
 
             NormalizePositions();
         }

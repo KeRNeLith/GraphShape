@@ -12,6 +12,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         private float _verticalGap = 10;
 
         /// <inheritdoc />
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public float VerticalGap
         {
             get => _verticalGap;
@@ -31,6 +32,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         private float _horizontalGap = 10;
 
         /// <inheritdoc />
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public float HorizontalGap
         {
             get => _horizontalGap;

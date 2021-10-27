@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
@@ -55,6 +55,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="computationTime">Iteration computation time.</param>
         /// <param name="iteration">Iteration number.</param>
         /// <param name="message">Iteration message.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="positions"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
         public LayoutState(
             [NotNull] IDictionary<TVertex, Point> positions,
             [CanBeNull] IDictionary<TVertex, Point> overlapRemovedPositions,

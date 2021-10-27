@@ -34,6 +34,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="controller">Highlight controller.</param>
         /// <param name="parameters">Highlight algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="controller"/> is <see langword="null"/>.</exception>
         protected HighlightAlgorithmBase(
             [NotNull] IHighlightController<TVertex, TEdge, TGraph> controller,
             [CanBeNull] IHighlightParameters parameters)
@@ -69,10 +70,14 @@ namespace GraphShape.Algorithms.Highlight
             if (IsParametersSettable(parameters))
             {
                 if (Parameters != null)
+                {
                     Parameters.PropertyChanged -= OnParameterPropertyChanged;
+                }
                 Parameters = (TParameters)parameters;
                 if (Parameters != null)
+                {
                     Parameters.PropertyChanged += OnParameterPropertyChanged;
+                }
                 return true;
             }
             return false;

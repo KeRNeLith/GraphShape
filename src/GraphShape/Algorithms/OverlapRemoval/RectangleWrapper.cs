@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using JetBrains.Annotations;
 
 namespace GraphShape.Algorithms.OverlapRemoval
@@ -27,6 +27,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// Rectangle id (at the end of the overlap removal, we must know which rectangle
         /// is associated to which object. The id will be resolved at that time.
         /// </param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="id"/> is <see langword="null"/>.</exception>
         public RectangleWrapper([NotNull] TObject id, Rect rectangle)
         {
             if (id == null)

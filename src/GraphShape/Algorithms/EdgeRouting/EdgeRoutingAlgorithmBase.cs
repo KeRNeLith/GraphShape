@@ -32,6 +32,8 @@ namespace GraphShape.Algorithms.EdgeRouting
         /// </summary>
         /// <param name="visitedGraph">Graph to visit.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesPositions"/> is <see langword="null"/>.</exception>
         protected EdgeRoutingAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Point> verticesPositions)

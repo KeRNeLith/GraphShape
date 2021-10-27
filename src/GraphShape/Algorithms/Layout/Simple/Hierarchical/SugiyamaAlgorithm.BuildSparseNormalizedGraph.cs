@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -72,7 +72,9 @@ namespace GraphShape.Algorithms.Layout
         {
             CreateInitialLayering();
             if (Parameters.OptimizeWidth)
+            {
                 DoWidthAndHeightOptimization();
+            }
             CreateDummyVerticesAndSegments();
         }
 
@@ -254,7 +256,7 @@ namespace GraphShape.Algorithms.Layout
             double desiredWidth = _actualHeight * Parameters.WidthPerHeight;
 
             int maxWidthLayerIndex = 0;
-            var maxWidthLayer = _whOptLayerInfos[0];
+            WHOptimizationLayerInfo maxWidthLayer = _whOptLayerInfos[0];
             for (int i = 0; i < _whOptLayerInfos.Count; ++i)
             {
                 if (_whOptLayerInfos[i].LayerWidth > maxWidthLayer.LayerWidth

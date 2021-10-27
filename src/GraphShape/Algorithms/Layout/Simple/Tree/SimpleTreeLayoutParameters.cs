@@ -32,6 +32,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Minimum gap between vertices.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double VertexGap
         {
             get => _vertexGap;
@@ -53,6 +54,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Minimum gap between layers.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double LayerGap
         {
             get => _layerGap;

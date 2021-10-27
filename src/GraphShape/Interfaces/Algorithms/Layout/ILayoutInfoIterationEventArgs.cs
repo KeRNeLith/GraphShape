@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -14,15 +14,17 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
     {
         /// <summary>
-        /// Returns the extra layout information of the <paramref name="vertex"/> (or null).
+        /// Returns the extra layout information of the <paramref name="vertex"/> (or <see langword="null"/>).
         /// </summary>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [Pure]
         [CanBeNull]
         object GetVertexInfo([NotNull] TVertex vertex);
 
         /// <summary>
-        /// Returns the extra layout information of the <paramref name="edge"/> (or null).
+        /// Returns the extra layout information of the <paramref name="edge"/> (or <see langword="null"/>).
         /// </summary>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         [Pure]
         [CanBeNull]
         object GetEdgeInfo([NotNull] TEdge edge);

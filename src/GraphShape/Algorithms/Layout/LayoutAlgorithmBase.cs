@@ -42,6 +42,7 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes a new instance of the <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected LayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : this(visitedGraph, null)
         {
@@ -52,6 +53,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected LayoutAlgorithmBase([NotNull] TGraph visitedGraph, [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
         {
             if (visitedGraph == null)
@@ -105,7 +107,9 @@ namespace GraphShape.Algorithms.Layout
 
             // If the layout should be aborted
             if (args.Abort)
+            {
                 Abort();
+            }
         }
     }
 
@@ -135,6 +139,7 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes a new instance of the <see cref="LayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected LayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : base(visitedGraph)
         {
@@ -145,6 +150,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected LayoutAlgorithmBase([NotNull] TGraph visitedGraph, [CanBeNull] IDictionary<TVertex, Point> verticesPositions)
             : base(visitedGraph, verticesPositions)
         {

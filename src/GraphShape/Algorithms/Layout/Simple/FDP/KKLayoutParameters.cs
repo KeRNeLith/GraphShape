@@ -14,6 +14,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Width of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Width
         {
             get => _width;
@@ -35,6 +36,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Height of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Height
         {
             get => _height;
@@ -56,6 +58,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Maximum number of the iterations.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MaxIterations
         {
             get => _maxIterations;
@@ -113,6 +116,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Multiplier of the ideal edge length. (With this parameter the user can modify the ideal edge length).
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double LengthFactor
         {
             get => _lengthFactor;

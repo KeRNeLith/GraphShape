@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
@@ -14,6 +14,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Count of the vertices (used to calculate the constants)
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         internal int VertexCount
         {
             get => _vertexCount;
@@ -120,6 +121,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Maximum number of the iterations.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MaxIterations
         {
             get => _maxIterations;

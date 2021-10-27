@@ -53,6 +53,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] SugiyamaLayoutParameters parameters = null)
@@ -66,6 +67,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Size> verticesSizes,
@@ -81,6 +83,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public SugiyamaLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,

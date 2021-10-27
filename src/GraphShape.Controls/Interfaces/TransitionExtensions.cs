@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Controls;
 using JetBrains.Annotations;
 
@@ -16,6 +16,7 @@ namespace GraphShape.Controls.Extensions
         /// <param name="context">The context of the transition.</param>
         /// <param name="control">The control which the transition should be run on.</param>
         /// <param name="duration">The duration of the transition.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="transition"/> is <see langword="null"/>.</exception>
         public static void Run(
             [NotNull] this ITransition transition,
             [NotNull] IAnimationContext context,

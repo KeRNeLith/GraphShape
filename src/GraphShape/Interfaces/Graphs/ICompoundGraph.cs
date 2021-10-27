@@ -31,6 +31,10 @@ namespace GraphShape
         /// <param name="parent">Parent vertex.</param>
         /// <param name="child">Vertex to add as child.</param>
         /// <returns>True if vertex is added as child with success, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="parent"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="child"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.InvalidOperationException"><paramref name="child"/> already has a parent vertex.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="parent"/> is not part of the graph.</exception>
         bool AddChildVertex([NotNull] TVertex parent, [NotNull] TVertex child);
 
         /// <summary>
@@ -40,13 +44,21 @@ namespace GraphShape
         /// <param name="parent">Parent vertex.</param>
         /// <param name="children">Vertices to add as children.</param>
         /// <returns>The number of vertices added to the graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="parent"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="children"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="T:System.InvalidOperationException">At least on of <paramref name="children"/> already has a parent vertex.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="parent"/> is not part of the graph.</exception>
         int AddChildVertexRange([NotNull] TVertex parent, [NotNull, ItemNotNull] IEnumerable<TVertex> children);
 
         /// <summary>
         /// Gets the parent vertex of the given <paramref name="vertex"/>.
         /// </summary>
         /// <param name="vertex">Vertex to get the parent.</param>
-        /// <returns>Parent vertex if there is one, null otherwise.</returns>
+        /// <returns>Parent vertex if there is one, <see langword="null"/> otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [CanBeNull]
         TVertex GetParent([NotNull] TVertex vertex);
@@ -56,6 +68,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to check.</param>
         /// <returns>True if the vertex is a child one, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         bool IsChildVertex([NotNull] TVertex vertex);
 
@@ -64,6 +78,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get its children.</param>
         /// <returns>Children vertices.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TVertex> GetChildrenVertices([NotNull] TVertex vertex);
@@ -73,6 +89,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get its children count.</param>
         /// <returns>Number of children vertices.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int GetChildrenCount([NotNull] TVertex vertex);
 
@@ -81,6 +99,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to check.</param>
         /// <returns>True if the vertex is a compound one, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         bool IsCompoundVertex([NotNull] TVertex vertex);
     }

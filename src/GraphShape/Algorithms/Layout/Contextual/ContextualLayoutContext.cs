@@ -28,6 +28,8 @@ namespace GraphShape.Algorithms.Layout.Contextual
         /// <param name="selectedVertex">THe selected vertex.</param>
         /// <param name="positions">Vertices positions.</param>
         /// <param name="sizes">Vertices sizes.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="selectedVertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
         public ContextualLayoutContext(
             [CanBeNull] TGraph graph,
             [NotNull] TVertex selectedVertex,

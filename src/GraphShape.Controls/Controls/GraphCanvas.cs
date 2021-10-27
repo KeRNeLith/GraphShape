@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using GraphShape.Controls.Animations;
@@ -126,7 +126,9 @@ namespace GraphShape.Controls
         public static void AddPositionChangedHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.AddHandler(PositionChangedEvent, handler);
+            }
         }
 
         /// <summary>
@@ -135,7 +137,9 @@ namespace GraphShape.Controls
         public static void RemovePositionChangedHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.RemoveHandler(PositionChangedEvent, handler);
+            }
         }
         
         #endregion
@@ -490,7 +494,7 @@ namespace GraphShape.Controls
         /// <param name="control">The control which will be removed.</param>
         /// <param name="dontRemoveAfter">
         /// If it's true, the control won't be removed automatically
-        /// from this container's <see cref="Panel.Children"/>.
+        /// from this container's <see cref="P:System.Windows.Controls.Panel.Children"/>.
         /// </param>
         protected virtual void RunDestructionTransition([NotNull] Control control, bool dontRemoveAfter)
         {
@@ -504,9 +508,13 @@ namespace GraphShape.Controls
             else
             {
                 if (dontRemoveAfter)
+                {
                     DestructionTransition.Run(AnimationContext, control, AnimationLength);
+                }
                 else
+                {
                     DestructionTransition.Run(AnimationContext, control, AnimationLength, Children.Remove);
+                }
             }
         }
     }

@@ -39,6 +39,8 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
         public SimpleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [NotNull] IDictionary<TVertex, Size> verticesSizes,
@@ -54,6 +56,8 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="verticesSizes">Vertices sizes.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="verticesSizes"/> is <see langword="null"/>.</exception>
         public SimpleTreeLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -181,9 +185,13 @@ namespace GraphShape.Algorithms.Layout
                 }
 
                 if (NearEqual(minPos, double.MaxValue))
+                {
                     d.Position = layer.NextPosition;
+                }
                 else
+                {
                     d.Position = (minPos + maxPos) / 2.0;
+                }
                 
                 d.Translate = Math.Max(layer.NextPosition - d.Position, 0);
 

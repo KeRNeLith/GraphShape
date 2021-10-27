@@ -68,6 +68,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Maximum number of the iterations.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MaxIterations
         {
             get => _maxIterations;

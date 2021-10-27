@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 
 namespace GraphShape.Controls.Extensions
@@ -9,7 +9,7 @@ namespace GraphShape.Controls.Extensions
     public static class BasicStructuresExtensions
     {
         /// <summary>
-        /// Converts a <see cref="Point"/> into a <see cref="System.Windows.Point"/>.
+        /// Converts a <see cref="Point"/> into a <see cref="T:System.Windows.Point"/>.
         /// </summary>
         [Pure]
         public static System.Windows.Point ToPoint(this Point point)
@@ -18,7 +18,7 @@ namespace GraphShape.Controls.Extensions
         }
 
         /// <summary>
-        /// Converts a set of <see cref="Point"/>s into a set of <see cref="System.Windows.Point"/>s.
+        /// Converts a set of <see cref="Point"/>s into a set of <see cref="T:System.Windows.Point"/>s.
         /// </summary>
         [Pure]
         [NotNull]
@@ -31,7 +31,7 @@ namespace GraphShape.Controls.Extensions
         }
 
         /// <summary>
-        /// Converts a <see cref="System.Windows.Point"/> into a <see cref="Point"/>.
+        /// Converts a <see cref="T:System.Windows.Point"/> into a <see cref="Point"/>.
         /// </summary>
         [Pure]
         public static Point ToGraphShapePoint(this System.Windows.Point point)
@@ -40,7 +40,7 @@ namespace GraphShape.Controls.Extensions
         }
 
         /// <summary>
-        /// Converts a set of <see cref="System.Windows.Point"/>s into a set of <see cref="Point"/>s.
+        /// Converts a set of <see cref="T:System.Windows.Point"/>s into a set of <see cref="Point"/>s.
         /// </summary>
         [Pure]
         [NotNull]

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -157,7 +157,7 @@ namespace GraphShape.Controls
 
         #region Layout
 
-        private class AsyncThreadArgument
+        private sealed class AsyncThreadArgument
         {
             [NotNull]
             public ILayoutAlgorithm<TVertex, TEdge, TGraph> Algorithm { get; }
@@ -206,7 +206,7 @@ namespace GraphShape.Controls
         /// <summary>
         /// Indicates if layout can be done.
         /// </summary>
-        protected virtual bool CanLayout { get; } = true;
+        protected virtual bool CanLayout => true;
 
         /// <inheritdoc />
         public override void ContinueLayout()
@@ -228,7 +228,9 @@ namespace GraphShape.Controls
         public void CancelLayout()
         {
             if (Worker != null && Worker.IsBusy && Worker.WorkerSupportsCancellation)
+            {
                 Worker.CancelAsync();
+            }
         }
 
         /// <summary>
@@ -274,6 +276,8 @@ namespace GraphShape.Controls
         /// <param name="positions">Vertices positions.</param>
         /// <param name="sizes">Vertices sizes.</param>
         /// <returns>Created <see cref="IOverlapRemovalContext{TVertex}"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="positions"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         protected virtual IOverlapRemovalContext<TVertex> CreateOverlapRemovalContext(
@@ -306,7 +310,8 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="positions">Vertices positions.</param>
         /// <param name="sizes">Vertices sizes.</param>
-        /// <returns>Created <see cref="ILayoutContext{TVertex,TEdge,TGraph}"/>, null if <see cref="CanLayout"/> is false.</returns>
+        /// <returns>Created <see cref="ILayoutContext{TVertex,TEdge,TGraph}"/>, <see langword="null"/> if <see cref="CanLayout"/> is false.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
         [Pure]
         protected virtual ILayoutContext<TVertex, TEdge, TGraph> CreateLayoutContext(
             [CanBeNull] IDictionary<TVertex, Point> positions,
@@ -419,9 +424,13 @@ namespace GraphShape.Controls
                     argument.Algorithm.Started += OnLayoutAlgorithmStarted;
 
                     if (argument.ShowAllStates)
+                    {
                         argument.Algorithm.IterationEnded += OnLayoutAlgorithmIterationEnded;
+                    }
                     else
+                    {
                         argument.Algorithm.ProgressChanged += OnLayoutAlgorithmProgress;
+                    }
 
                     argument.Algorithm.Finished += OnLayoutAlgorithmFinished;
 
@@ -430,9 +439,13 @@ namespace GraphShape.Controls
                         argument.Algorithm.Finished -= OnLayoutAlgorithmFinished;
 
                         if (argument.ShowAllStates)
+                        {
                             argument.Algorithm.IterationEnded -= OnLayoutAlgorithmIterationEnded;
+                        }
                         else
+                        {
                             argument.Algorithm.ProgressChanged -= OnLayoutAlgorithmProgress;
+                        }
 
                         argument.Algorithm.Started -= OnLayoutAlgorithmStarted;
                     });
@@ -469,9 +482,13 @@ namespace GraphShape.Controls
             Worker.ProgressChanged += (sender, args) =>
             {
                 if (args.UserState is null)
+                {
                     LayoutStatusPercent = args.ProgressPercentage;
+                }
                 else
+                {
                     OnLayoutIterationFinished(args.UserState as ILayoutIterationEventArgs<TVertex>);
+                }
             };
 
             // Background thread finished if the iteration ended
@@ -498,14 +515,18 @@ namespace GraphShape.Controls
                 algorithm.Started += OnLayoutAlgorithmStarted;
                 bool showAllStates = ShowAllStates;
                 if (showAllStates)
+                {
                     algorithm.IterationEnded += OnLayoutAlgorithmIterationEnded;
+                }
                 algorithm.Finished += OnLayoutAlgorithmFinished;
 
                 return DisposableHelpers.Finally(() =>
                 {
                     LayoutAlgorithm.Finished -= OnLayoutAlgorithmFinished;
                     if (showAllStates)
+                    {
                         LayoutAlgorithm.IterationEnded -= OnLayoutAlgorithmIterationEnded;
+                    }
                     LayoutAlgorithm.Started -= OnLayoutAlgorithmStarted;
                 });
             }
@@ -624,13 +645,17 @@ namespace GraphShape.Controls
         private IDictionary<TVertex, Size> GetLatestVerticesSizes()
         {
             if (!IsMeasureValid)
+            {
                 Measure(new System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
+            }
 
             IDictionary<TVertex, Size> verticesSizes = new Dictionary<TVertex, Size>(VerticesControls.Count);
 
             // Go through the vertices presenters and get the actual layout positions
             foreach (KeyValuePair<TVertex, VertexControl> pair in VerticesControls)
+            {
                 verticesSizes[pair.Key] = new Size(pair.Value.ActualWidth, pair.Value.ActualHeight);
+            }
 
             return verticesSizes;
         }
@@ -669,6 +694,7 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="positions">Vertices positions.</param>
         /// <param name="message">Iteration information message.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="positions"/> is <see langword="null"/>.</exception>
         protected virtual void OnLayoutIterationFinished(
             [NotNull] IDictionary<TVertex, Point> positions,
             [CanBeNull] string message)
@@ -703,7 +729,9 @@ namespace GraphShape.Controls
 
             // Animating to the finish state
             if (StateIndex == 0)
+            {
                 ChangeState(StateIndex);
+            }
 
             LayoutStatusPercent = 100;
         }
@@ -818,6 +846,7 @@ namespace GraphShape.Controls
         /// <param name="positions">The vertices positions.</param>
         /// <param name="sizes">The vertices sizes.</param>
         /// <returns>The routes of the edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sizes"/> is <see langword="null"/>.</exception>
         [CanBeNull]
         protected IDictionary<TEdge, Point[]> RouteEdges(
             [CanBeNull] IDictionary<TVertex, Point> positions,
@@ -905,7 +934,9 @@ namespace GraphShape.Controls
                     continue;
 
                 if (positions.TryGetValue(vertex, out Point pos))
+                {
                     RunMoveAnimation(control, pos.X, pos.Y);
+                }
             }
         }
 

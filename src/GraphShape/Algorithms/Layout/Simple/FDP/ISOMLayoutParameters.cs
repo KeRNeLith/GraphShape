@@ -14,6 +14,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Width of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Width
         {
             get => _width;
@@ -35,6 +36,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Height of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Height
         {
             get => _height;
@@ -56,6 +58,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Maximum number of iterations.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MaxEpochs
         {
             get => _maxEpochs;
@@ -77,6 +80,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Radius constant time.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int RadiusConstantTime
         {
             get => _radiusConstantTime;
@@ -98,6 +102,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Initial radius.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int InitialRadius
         {
             get => _initialRadius;
@@ -119,6 +124,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Minimal radius.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MinRadius
         {
             get => _minRadius;
@@ -140,6 +146,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Initial adaption.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double InitialAdaptation
         {
             get => _initialAdaptation;
@@ -161,6 +168,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Minimal adaption.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double MinAdaptation
         {
             get => _minAdaptation;

@@ -61,10 +61,14 @@ namespace GraphShape.Algorithms.Layout
                 double middleY = (_minPos.Y + _maxPos.Y) / 2;
 
                 if (nodePos.X > middleX)
+                {
                     childIndex += 1;
+                }
 
                 if (nodePos.Y > middleY)
+                {
                     childIndex += 2;
+                }
 
                 if (Children[childIndex] is null)
                 {
@@ -112,12 +116,19 @@ namespace GraphShape.Algorithms.Layout
                 double middleY = (_minPos.Y + _maxPos.Y) / 2;
 
                 if (oldPos.X > middleX)
+                {
                     childIndex += 1;
+                }
+
                 if (oldPos.Y > middleY)
+                {
                     childIndex += 2;
+                }
 
                 if (Children[childIndex] != null)
+                {
                     Children[childIndex].MoveNode(oldPos, newPos, nodeWeight);
+                }
             }
         }
     }

@@ -26,6 +26,7 @@ namespace GraphShape.Algorithms.Layout.Contextual
         public IEnumerable<string> AlgorithmTypes { get; } = new[] { DoubleTreeAlgorithm, BalloonTreeAlgorithm };
 
         /// <inheritdoc />
+        /// <exception cref="T:System.ArgumentException"><paramref name="context"/> is not a <see cref="ContextualLayoutContext{TVertex,TEdge,TGraph}"/>.</exception>
         public ILayoutAlgorithm<TVertex, TEdge, TGraph> CreateAlgorithm(
             string algorithmType,
             ILayoutContext<TVertex, TEdge, TGraph> context,

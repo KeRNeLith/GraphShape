@@ -19,6 +19,10 @@ namespace GraphShape.Controls.Converters
         #region IMultiValueConverter
 
         /// <inheritdoc />
+        /// <exception cref="T:System.ArgumentException">
+        /// At least one of 9 arguments is missing.
+        /// pos (1,2), size (3,4) of source; pos (5,6), size (7,8) of target; routeInformation (9)
+        /// </exception>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values is null)
@@ -119,6 +123,7 @@ namespace GraphShape.Controls.Converters
         }
 
         /// <inheritdoc />
+        /// <exception cref="T:System.NotSupportedException">This method is not supported.</exception>
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotSupportedException("Path to edge route conversion not supported.");

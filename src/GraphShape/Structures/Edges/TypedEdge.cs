@@ -20,6 +20,8 @@ namespace GraphShape
         /// <param name="source">Source vertex.</param>
         /// <param name="target">Target vertex.</param>
         /// <param name="type">Edge type.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
         public TypedEdge([NotNull] TVertex source, [NotNull] TVertex target, EdgeTypes type)
             : base(source, target)
         {

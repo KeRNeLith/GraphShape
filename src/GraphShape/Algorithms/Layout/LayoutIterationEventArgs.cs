@@ -28,6 +28,8 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(int iteration, double statusInPercent)
             : this(iteration, statusInPercent, string.Empty, null)
         {
@@ -39,6 +41,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(int iteration, double statusInPercent, [NotNull] string message)
             : this(iteration, statusInPercent, message, null)
         {
@@ -50,6 +55,8 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(
             int iteration,
             double statusInPercent,
@@ -65,6 +72,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="message">Message representing the status of the algorithm.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(
             int iteration,
             double statusInPercent,
@@ -140,6 +150,8 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(int iteration, double statusInPercent)
             : this(iteration, statusInPercent, string.Empty, null, null, null)
         {
@@ -151,6 +163,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="message">Message representing the status of the algorithm.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(int iteration, double statusInPercent, [NotNull] string message)
             : this(iteration, statusInPercent, message, null, null, null)
         {
@@ -162,6 +177,8 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="iteration">Number of the current iteration.</param>
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(
             int iteration,
             double statusInPercent,
@@ -179,6 +196,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="verticesPositions">Vertices positions associations.</param>
         /// <param name="verticesInfos">Extra vertices information.</param>
         /// <param name="edgeInfos">Extra edges information.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public LayoutIterationEventArgs(
             int iteration,
             double statusInPercent,

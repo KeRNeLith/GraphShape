@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using static GraphShape.Utils.MathUtils;
@@ -39,6 +39,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Represents the ideal length of the edges.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double IdealEdgeLength
         {
             get => _idealEdgeLength;

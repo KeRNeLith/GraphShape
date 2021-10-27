@@ -23,6 +23,9 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// <param name="context">Creation context.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Created algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="context"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="parameters"/> is <see langword="null"/>.</exception>
         [Pure]
         IOverlapRemovalAlgorithm<TVertex> CreateAlgorithm(
             [NotNull] string algorithmType,
@@ -36,6 +39,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// <param name="algorithmType">Algorithm type.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Parameters for the algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
         [Pure]
         IOverlapRemovalParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] IOverlapRemovalParameters parameters);
 
@@ -52,6 +56,7 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// </summary>
         /// <param name="algorithm">Algorithm to get its type.</param>
         /// <returns>Algorithm type.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithm"/> is <see langword="null"/>.</exception>
         [Pure]
         string GetAlgorithmType([NotNull] IOverlapRemovalAlgorithm<TVertex> algorithm);
     }

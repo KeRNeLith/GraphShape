@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -25,6 +25,8 @@ namespace GraphShape.Algorithms.Layout
             /// <param name="originalEdge">Original edge (tag).</param>
             /// <param name="source">The source vertex.</param>
             /// <param name="target">The target vertex.</param>
+            /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <see langword="null"/>.</exception>
+            /// <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
             public SugiEdge([CanBeNull] TEdge originalEdge, [NotNull] SugiVertex source, [NotNull] SugiVertex target)
                 : base(source, target, originalEdge)
             {

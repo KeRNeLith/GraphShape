@@ -29,6 +29,8 @@ namespace GraphShape.Algorithms.EdgeRouting
         /// <param name="context">Creation context.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Created algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="context"/> is <see langword="null"/>.</exception>
         [Pure]
         IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph> CreateAlgorithm(
             [NotNull] string algorithmType,
@@ -42,6 +44,7 @@ namespace GraphShape.Algorithms.EdgeRouting
         /// <param name="algorithmType">Algorithm type.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Parameters for the algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
         [Pure]
         IEdgeRoutingParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] IEdgeRoutingParameters parameters);
 
@@ -58,6 +61,7 @@ namespace GraphShape.Algorithms.EdgeRouting
         /// </summary>
         /// <param name="algorithm">Algorithm to get its type.</param>
         /// <returns>Algorithm type.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithm"/> is <see langword="null"/>.</exception>
         [Pure]
         string GetAlgorithmType([NotNull] IEdgeRoutingAlgorithm<TVertex, TEdge, TGraph> algorithm);
     }

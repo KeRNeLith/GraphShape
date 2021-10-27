@@ -28,15 +28,19 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical edges.</param>
         /// <returns>Hierarchical edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> HierarchicalEdgesFor([NotNull] TVertex vertex);
-        
+
         /// <summary>
         /// Gets the number of hierarchical edges for the given <paramref name="vertex"/>.
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical edges.</param>
         /// <returns>Hierarchical edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int HierarchicalEdgeCountFor([NotNull] TVertex vertex);
 
@@ -45,6 +49,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical in-edges.</param>
         /// <returns>Hierarchical in-edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> InHierarchicalEdges([NotNull] TVertex vertex);
@@ -54,6 +60,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical in-edges.</param>
         /// <returns>Hierarchical in-edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int InHierarchicalEdgeCount([NotNull] TVertex vertex);
 
@@ -62,6 +70,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical out-edges.</param>
         /// <returns>Hierarchical out-edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> OutHierarchicalEdges([NotNull] TVertex vertex);
@@ -71,6 +81,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get hierarchical out-edges.</param>
         /// <returns>Hierarchical out-edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int OutHierarchicalEdgeCount([NotNull] TVertex vertex);
 
@@ -90,6 +102,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general edges.</param>
         /// <returns>General edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> GeneralEdgesFor([NotNull] TVertex vertex);
@@ -99,6 +113,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general edges.</param>
         /// <returns>General edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int GeneralEdgeCountFor([NotNull] TVertex vertex);
 
@@ -107,6 +123,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general in-edges.</param>
         /// <returns>General in-edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> InGeneralEdges([NotNull] TVertex vertex);
@@ -116,6 +134,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general in-edges.</param>
         /// <returns>General in-edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int InGeneralEdgeCount([NotNull] TVertex vertex);
 
@@ -124,6 +144,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general out-edges.</param>
         /// <returns>General out-edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> OutGeneralEdges([NotNull] TVertex vertex);
@@ -133,6 +155,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to get general out-edges.</param>
         /// <returns>General out-edges count.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int OutGeneralEdgeCount([NotNull] TVertex vertex);
     }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using GraphShape.Utils;
 using JetBrains.Annotations;
 
@@ -199,12 +199,12 @@ namespace GraphShape
         }
 
         /// <summary>
-        /// Calculates the dot product of the two specified vector structures and returns the result as a <see cref="double" />.
+        /// Calculates the dot product of the two specified vector structures and returns the result as a <see cref="T:System.Double" />.
         /// </summary>
         /// <param name="vector1">The first vector to multiply.</param>
         /// <param name="vector2">The second vector to multiply.</param>
         /// <returns>
-        /// Returns a <see cref="double" /> containing the scalar dot product of <paramref name="vector1" />
+        /// Returns a <see cref="T:System.Double" /> containing the scalar dot product of <paramref name="vector1" />
         /// and <paramref name="vector2" />, which is calculated using the following formula:
         ///   vector1.X * vector2.X + vector1.Y * vector2.Y
         /// </returns>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using static GraphShape.Utils.MathUtils;
 
@@ -14,6 +14,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Minimum radius.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public int MinRadius
         {
             get => _minRadius;
@@ -35,6 +36,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Border.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public float Border
         {
             get => _border;

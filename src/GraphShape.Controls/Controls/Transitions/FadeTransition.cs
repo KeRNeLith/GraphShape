@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -71,7 +71,9 @@ namespace GraphShape.Controls
             Storyboard.SetTargetProperty(fadeAnimation, new PropertyPath(UIElement.OpacityProperty));
 
             if (endAction != null)
+            {
                 storyboard.Completed += (s, a) => endAction(control);
+            }
             storyboard.Begin(control);
         }
     }

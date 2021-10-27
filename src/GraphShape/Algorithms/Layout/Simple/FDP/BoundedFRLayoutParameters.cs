@@ -15,6 +15,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Width of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Width
         {
             get => _width;
@@ -37,6 +38,7 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Height of the bounding box.
         /// </summary>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Value is negative.</exception>
         public double Height
         {
             get => _height;

@@ -22,14 +22,14 @@ namespace GraphShape.Algorithms.Layout
         IDictionary<TVertex, Point> VerticesPositions { get; }
 
         /// <summary>
-        /// Returns the extra layout information of the <paramref name="vertex"/> (or null).
+        /// Returns the extra layout information of the <paramref name="vertex"/> (or <see langword="null"/>).
         /// </summary>
         [Pure]
         [CanBeNull]
         object GetVertexInfo([NotNull] TVertex vertex);
 
         /// <summary>
-        /// Returns the extra layout information of the <paramref name="edge"/> (or null).
+        /// Returns the extra layout information of the <paramref name="edge"/> (or <see langword="null"/>).
         /// </summary>
         [Pure]
         [CanBeNull]

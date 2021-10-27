@@ -41,6 +41,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public ISOMLayoutAlgorithm([NotNull] TGraph visitedGraph, [CanBeNull] ISOMLayoutParameters parameters = null)
             : this(visitedGraph, null, parameters)
         {
@@ -52,6 +53,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public ISOMLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -202,7 +204,7 @@ namespace GraphShape.Algorithms.Layout
         [NotNull]
         private TVertex GetClosest(Point tempPos)
         {
-            TVertex closest = default(TVertex);
+            var closest = default(TVertex);
             double distance = double.MaxValue;
 
             // Find the closest vertex

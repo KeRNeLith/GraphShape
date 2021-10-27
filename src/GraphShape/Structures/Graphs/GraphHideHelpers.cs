@@ -7,7 +7,7 @@ using QuikGraph;
 
 namespace GraphShape
 {
-    internal class GraphHideHelpers<TVertex, TEdge> : ISoftMutableGraph<TVertex, TEdge>
+    internal sealed class GraphHideHelpers<TVertex, TEdge> : ISoftMutableGraph<TVertex, TEdge>
         where TEdge : IEdge<TVertex>
     {
         #region Helper Types
@@ -226,7 +226,9 @@ namespace GraphShape
             UnhideVertex(vertex);
             _hiddenEdgesOf.TryGetValue(vertex, out List<TEdge> hiddenEdges);
             if (hiddenEdges != null)
+            {
                 UnhideEdges(hiddenEdges);
+            }
         }
 
         [CanBeNull, ItemNotNull]
@@ -259,7 +261,9 @@ namespace GraphShape
 
                 GetHiddenEdgeListOf(edge.Source, true).Add(edge);
                 if (!edge.IsSelfEdge())
+                {
                     GetHiddenEdgeListOf(edge.Target, true).Add(edge);
+                }
 
                 OnEdgeHidden(edge);
                 return true;

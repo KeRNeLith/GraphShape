@@ -15,8 +15,8 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
         /// It does NOT modify the position of the other vertices.
         /// Bounding box:
-        /// x coordinates: <see cref="double.Epsilon"/> - <paramref name="width"/>
-        /// y coordinates: <see cref="double.Epsilon"/> - <paramref name="height"/>
+        /// x coordinates: <see cref="F:double.Epsilon"/> - <paramref name="width"/>
+        /// y coordinates: <see cref="F:double.Epsilon"/> - <paramref name="height"/>
         /// </summary>
         /// <typeparam name="TVertex">Vertex type.</typeparam>
         /// <param name="width">Width of the bounding box.</param>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -21,6 +21,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="source">The source vertex.</param>
         /// <param name="target">The target vertex.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
         public WeightedEdge([NotNull] TVertex source, [NotNull] TVertex target)
             : this(source, target, 1.0)
         {
@@ -32,6 +34,8 @@ namespace GraphShape
         /// <param name="source">The source vertex.</param>
         /// <param name="target">The target vertex.</param>
         /// <param name="weight">Edge weight.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="target"/> is <see langword="null"/>.</exception>
         public WeightedEdge([NotNull] TVertex source, [NotNull] TVertex target, double weight)
             : base(source, target)
         {

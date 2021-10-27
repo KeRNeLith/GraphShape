@@ -28,6 +28,8 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="context">Creation context.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Created algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="context"/> is <see langword="null"/>.</exception>
         [Pure]
         ILayoutAlgorithm<TVertex, TEdge, TGraph> CreateAlgorithm(
             [NotNull] string algorithmType,
@@ -41,6 +43,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="algorithmType">Algorithm type.</param>
         /// <param name="parameters">Algorithm parameters.</param>
         /// <returns>Parameters for the algorithm.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
         [Pure]
         ILayoutParameters CreateParameters([NotNull] string algorithmType, [CanBeNull] ILayoutParameters parameters);
 
@@ -57,6 +60,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="algorithm">Algorithm to get its type.</param>
         /// <returns>Algorithm type.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithm"/> is <see langword="null"/>.</exception>
         [Pure]
         string GetAlgorithmType([NotNull] ILayoutAlgorithm<TVertex, TEdge, TGraph> algorithm);
 
@@ -65,6 +69,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="algorithmType">Algorithm type.</param>
         /// <returns>True if the algorithm require edge routing, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
         [Pure]
         bool NeedEdgeRouting([NotNull] string algorithmType);
 
@@ -73,6 +78,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="algorithmType">Algorithm type.</param>
         /// <returns>True if the algorithm require overlap removal, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="algorithmType"/> is <see langword="null"/>.</exception>
         [Pure]
         bool NeedOverlapRemoval([NotNull] string algorithmType);
     }

@@ -23,6 +23,8 @@ namespace GraphShape.Utils
         /// <param name="graph">The graph.</param>
         /// <param name="vertex">The vertex of which we want to get neighbors.</param>
         /// <returns>Adjacent vertices of the <paramref name="vertex"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         public static IEnumerable<TVertex> GetNeighbors<TVertex, TEdge>(
@@ -43,6 +45,8 @@ namespace GraphShape.Utils
         /// <param name="graph">The graph.</param>
         /// <param name="vertex">The vertex of which we want to get neighbors.</param>
         /// <returns>Adjacent vertices of the <paramref name="vertex"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         public static IEnumerable<TVertex> GetOutNeighbors<TVertex, TEdge>(
@@ -63,6 +67,9 @@ namespace GraphShape.Utils
         /// <param name="set1">Source vertices set.</param>
         /// <param name="set2">Target vertices set</param>
         /// <returns>Edges with a source in <paramref name="set1"/> and a target in <paramref name="set2"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="set1"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="set2"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         public static IEnumerable<TEdge> GetEdgesBetween<TVertex, TEdge>(
@@ -96,6 +103,7 @@ namespace GraphShape.Utils
         /// <typeparam name="TGraph">Graph type.</typeparam>
         /// <param name="graph">The graph.</param>
         /// <returns>The distances between every vertex-pair.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static double[,] GetDistances<TVertex, TEdge, TGraph>(
@@ -152,6 +160,7 @@ namespace GraphShape.Utils
         /// <typeparam name="TGraph">Graph type.</typeparam>
         /// <param name="graph">The graph.</param>
         /// <returns>The diameter of the <paramref name="graph"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         [Pure]
         public static double GetDiameter<TVertex, TEdge, TGraph>(
             [NotNull] this TGraph graph)
@@ -171,6 +180,7 @@ namespace GraphShape.Utils
         /// <param name="graph">The graph.</param>
         /// <param name="distances">Will give distances between every vertex-pair.</param>
         /// <returns>The diameter of the <paramref name="graph"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         [Pure]
         public static double GetDiameter<TVertex, TEdge, TGraph>(
             [NotNull] this TGraph graph,
@@ -199,7 +209,7 @@ namespace GraphShape.Utils
         #region Graph manipulations
 
         /// <summary>
-        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdge}"/> with the given <paramref name="vertices"/>
+        /// Creates a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/> with the given <paramref name="vertices"/>
         /// and edges constructed by getting values of properties <paramref name="sourcePropertyName"/>
         /// and <paramref name="targetPropertyName"/> on type <typeparamref name="TEdgeData"/>.
         /// </summary>
@@ -213,7 +223,19 @@ namespace GraphShape.Utils
         /// <param name="targetPropertyName">
         /// Name of the property to get value from <typeparamref name="TEdgeData"/> to construct edge target.
         /// </param>
-        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <returns>A <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertices"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edgesData"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="sourcePropertyName"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="targetPropertyName"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// Edge property <paramref name="sourcePropertyName"/> and/or <paramref name="targetPropertyName"/> has <see langword="null"/> value.
+        /// </exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="sourcePropertyName"/> is not the name of a property of type <typeparamref name="TEdgeData"/>.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="targetPropertyName"/> is not the name of a property of type <typeparamref name="TEdgeData"/>.</exception>
+        /// <exception cref="T:System.ArgumentException">
+        /// Edge property <paramref name="sourcePropertyName"/> and/or <paramref name="targetPropertyName"/> has a type that is not assignable to <typeparamref name="TVertex"/>.
+        /// </exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TVertex, Edge<TVertex>> CreateGraph<TVertex, TEdgeData>(
@@ -264,7 +286,7 @@ namespace GraphShape.Utils
         }
 
         /// <summary>
-        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
+        /// Creates a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
         /// and edges constructed using <paramref name="edgeFactory"/>.
         /// </summary>
         /// <typeparam name="TVertex">Vertex type.</typeparam>
@@ -274,7 +296,10 @@ namespace GraphShape.Utils
         /// <param name="edgesData">The set of data used to construct graph edges.</param>
         /// <param name="edgeFactory">Factory method to convert an edge data into an edge.</param>
         /// <param name="allowParallelEdges">Indicates if parallel edges are allowed.</param>
-        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <returns>A <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertices"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edgesData"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edgeFactory"/> is <see langword="null"/> or creates <see langword="null"/> edge.</exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TEdgeData>(
@@ -303,7 +328,7 @@ namespace GraphShape.Utils
         }
 
         /// <summary>
-        /// Creates a <see cref="BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
+        /// Creates a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdgeTo}"/> with the given <paramref name="vertices"/>
         /// and edges constructed using <paramref name="edgeFactory"/>.
         /// Note: The graph will allow parallel edges.
         /// </summary>
@@ -313,7 +338,10 @@ namespace GraphShape.Utils
         /// <param name="vertices">The set of the vertices.</param>
         /// <param name="edgesData">The set of data used to construct graph edges.</param>
         /// <param name="edgeFactory">Factory method to convert an edge data into an edge.</param>
-        /// <returns>A <see cref="BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <returns>A <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertices"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edgesData"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edgeFactory"/> is <see langword="null"/> or creates <see langword="null"/> edge.</exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TVertex, TEdge> CreateGraph<TVertex, TEdge, TEdgeData>(
@@ -340,6 +368,8 @@ namespace GraphShape.Utils
         /// <param name="vertexConverter">Function to convert vertices from <typeparamref name="TOldVertex"/> to <typeparamref name="TNewVertex"/>.</param>
         /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
         /// <returns>The converted graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="oldGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="newGraph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static TNewGraph Convert<TOldVertex, TOldEdge, TNewVertex, TNewEdge, TNewGraph>(
@@ -381,6 +411,8 @@ namespace GraphShape.Utils
         /// <param name="newGraph">Graph that will be filled with converted content.</param>
         /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
         /// <returns>The converted graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="oldGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="newGraph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static TNewGraph Convert<TVertex, TOldEdge, TNewEdge, TNewGraph>(
@@ -406,6 +438,8 @@ namespace GraphShape.Utils
         /// <param name="oldGraph">Graph to convert.</param>
         /// <param name="newGraph">Graph that will be filled with converted content.</param>
         /// <returns>The converted graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="oldGraph"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="newGraph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static TNewGraph Convert<TVertex, TEdge, TNewGraph>(
@@ -421,7 +455,7 @@ namespace GraphShape.Utils
         }
 
         /// <summary>
-        /// Converts the <paramref name="oldGraph"/> into a <see cref="BidirectionalGraph{TVertex,TEdge}"/>.
+        /// Converts the <paramref name="oldGraph"/> into a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/>.
         /// Uses <paramref name="vertexConverter"/> and <paramref name="edgeConverter"/> to
         /// convert vertices and edges if provided. Performs a direct cast otherwise.
         /// </summary>
@@ -433,6 +467,7 @@ namespace GraphShape.Utils
         /// <param name="vertexConverter">Function to convert vertices from <typeparamref name="TOldVertex"/> to <typeparamref name="TNewVertex"/>.</param>
         /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
         /// <returns>The converted graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="oldGraph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TNewVertex, TNewEdge> Convert<TOldVertex, TOldEdge, TNewVertex, TNewEdge>(
@@ -451,7 +486,7 @@ namespace GraphShape.Utils
         }
 
         /// <summary>
-        /// Converts the <paramref name="oldGraph"/> into a <see cref="BidirectionalGraph{TVertex,TEdge}"/>.
+        /// Converts the <paramref name="oldGraph"/> into a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/>.
         /// Uses <paramref name="edgeConverter"/> to convert edges if provided. Performs a direct cast otherwise.
         /// </summary>
         /// <typeparam name="TVertex">Old vertex type.</typeparam>
@@ -460,6 +495,7 @@ namespace GraphShape.Utils
         /// <param name="oldGraph">Graph to convert.</param>
         /// <param name="edgeConverter">Function to convert edges from <typeparamref name="TOldEdge"/> to <typeparamref name="TNewEdge"/>.</param>
         /// <returns>The converted graph.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="oldGraph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TVertex, TNewEdge> Convert<TVertex, TOldEdge, TNewEdge>(
@@ -474,12 +510,13 @@ namespace GraphShape.Utils
         }
 
         /// <summary>
-        /// Copies this graph into a <see cref="BidirectionalGraph{TVertex,TEdge}"/> one.
+        /// Copies this graph into a <see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/> one.
         /// </summary>
         /// <typeparam name="TVertex">Vertex type.</typeparam>
         /// <typeparam name="TEdge">Edge type.</typeparam>
         /// <param name="graph">Graph to copy.</param>
-        /// <returns><see cref="BidirectionalGraph{TVertex,TEdge}"/> initialized from <paramref name="graph"/>.</returns>
+        /// <returns><see cref="T:QuikGraph.BidirectionalGraph{TVertex,TEdge}"/> initialized from <paramref name="graph"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         [Pure]
         [NotNull]
         public static BidirectionalGraph<TVertex, TEdge> CopyToBidirectionalGraph<TVertex, TEdge>(

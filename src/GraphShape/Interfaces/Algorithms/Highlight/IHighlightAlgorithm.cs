@@ -26,6 +26,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="vertex">Vertex to highlight.</param>
         /// <returns>True if the <paramref name="vertex"/> was highlighted, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         bool OnVertexHighlighting([NotNull] TVertex vertex);
 
         /// <summary>
@@ -33,6 +34,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="vertex">Vertex to remove its highlighting.</param>
         /// <returns>True if the <paramref name="vertex"/> highlight was removed, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         bool OnVertexHighlightRemoving([NotNull] TVertex vertex);
 
         /// <summary>
@@ -40,6 +42,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="edge">Edge to highlight.</param>
         /// <returns>True if the <paramref name="edge"/> was highlighted, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         bool OnEdgeHighlighting([NotNull] TEdge edge);
 
         /// <summary>
@@ -47,6 +50,7 @@ namespace GraphShape.Algorithms.Highlight
         /// </summary>
         /// <param name="edge">Edge to remove its highlighting.</param>
         /// <returns>True if the <paramref name="edge"/> highlight was removed, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         bool OnEdgeHighlightRemoving([NotNull] TEdge edge);
 
         /// <summary>

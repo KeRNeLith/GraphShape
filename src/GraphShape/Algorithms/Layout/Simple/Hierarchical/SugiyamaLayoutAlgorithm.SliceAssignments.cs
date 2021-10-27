@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 #if SUPPORTS_AGGRESSIVE_INLINING
@@ -68,13 +68,24 @@ namespace GraphShape.Algorithms.Layout
             CalculateLayerPositions();
 
             if (Parameters.PositionMode < 0 || Parameters.PositionMode == 0)
+            {
                 CalculateSlicePositions(LeftRightMode.Left, UpperLowerEdges.Upper);
+            }
+
             if (Parameters.PositionMode < 0 || Parameters.PositionMode == 1)
+            {
                 CalculateSlicePositions(LeftRightMode.Right, UpperLowerEdges.Upper);
+            }
+
             if (Parameters.PositionMode < 0 || Parameters.PositionMode == 2)
+            {
                 CalculateSlicePositions(LeftRightMode.Left, UpperLowerEdges.Lower);
+            }
+
             if (Parameters.PositionMode < 0 || Parameters.PositionMode == 3)
+            {
                 CalculateSlicePositions(LeftRightMode.Right, UpperLowerEdges.Lower);
+            }
 
             CalculateRealPositions();
             DoEdgeRouting();

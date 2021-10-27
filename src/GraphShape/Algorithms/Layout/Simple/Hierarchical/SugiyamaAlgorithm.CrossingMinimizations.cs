@@ -36,7 +36,9 @@ namespace GraphShape.Algorithms.Layout
             _sparseCompactionByLayerBackup = new IList<Edge<Data>>[_layers.Count];
             _alternatingLayers = new AlternatingLayer[_layers.Count];
             for (int i = 0; i < _layers.Count; ++i)
+            {
                 _crossCounts[i] = int.MaxValue;
+            }
 
             int phase1IterationLeft = 100;
             int phase2IterationLeft = _layers.Count;
@@ -49,9 +51,13 @@ namespace GraphShape.Algorithms.Layout
 
                 prevCrossings = crossings;
                 if (phase == 1)
+                {
                     --phase1IterationLeft;
+                }
                 else if (phase == 2)
+                {
                     --phase2IterationLeft;
+                }
                 wasPhase2 = phase == 2;
 
                 crossings = Sweeping(0, _layers.Count - 1, 1, enableSameMeasureOptimization, out bool c, ref phase);
@@ -62,9 +68,13 @@ namespace GraphShape.Algorithms.Layout
                 crossings = Sweeping(_layers.Count - 1, 0, -1, enableSameMeasureOptimization, out c, ref phase);
                 changed = changed || c;
                 if (phase == 1 && (!changed || crossings >= prevCrossings) && phase2IterationLeft > 0)
+                {
                     phase = 2;
+                }
                 else if (phase == 2)
+                {
                     phase = 1;
+                }
             } while (crossings > 0
                      && (phase2IterationLeft > 0
                          || wasPhase2
@@ -526,7 +536,9 @@ namespace GraphShape.Algorithms.Layout
             if (sparseCompactionGraphEdgesOfLayer != null)
             {
                 foreach (Edge<Data> edge in sparseCompactionGraphEdgesOfLayer)
+                {
                     _sparseCompactionGraph.RemoveEdge(edge);
+                }
             }
 
             sparseCompactionGraphEdgesOfLayer = new List<Edge<Data>>();
@@ -637,11 +649,15 @@ namespace GraphShape.Algorithms.Layout
 
                 // Initialize permutation indices
                 for (int i = 0; i < verticesWithSameMeasure.Count; ++i)
+                {
                     verticesWithSameMeasure[i].PermutationIndex = i;
+                }
 
                 int bestCrossCount = prevCrossCount;
                 foreach (SugiEdge realEdge in realEdges)
+                {
                     realEdge.SaveMarkedToTemp();
+                }
 
                 List<SugiVertex> sortedVertexList = ComputeSortedVertexList(
                     verticesWithSameMeasure,
@@ -682,10 +698,14 @@ namespace GraphShape.Algorithms.Layout
                     if (crossCount < bestCrossCount)
                     {
                         foreach (SugiVertex vertex in verticesWithSameMeasure)
+                        {
                             vertex.SavePositionToTemp();
+                        }
 
                         foreach (SugiEdge edge in realEdges)
+                        {
                             edge.SaveMarkedToTemp();
+                        }
 
                         bestCrossCount = crossCount;
                     }
@@ -696,10 +716,14 @@ namespace GraphShape.Algorithms.Layout
 
                 // Reload the best solution
                 foreach (SugiVertex vertex in verticesWithSameMeasure)
+                {
                     vertex.LoadPositionFromTemp();
+                }
 
                 foreach (SugiEdge edge in realEdges)
+                {
                     edge.LoadMarkedFromTemp();
+                }
 
                 // Sort by permutation index and measure
                 sortedVertexList.Sort((v1, v2) => v1.Position - v2.Position);
@@ -835,9 +859,14 @@ namespace GraphShape.Algorithms.Layout
             while (firstLayerQueue.Count > 0 || secondLayerQueue.Count > 0)
             {
                 if (group1.Size == 0)
+                {
                     group1 = firstLayerQueue.Dequeue();
+                }
+
                 if (group2.Size == 0)
+                {
                     group2 = secondLayerQueue.Dequeue();
+                }
 
                 if (group1.Size <= group2.Size)
                 {
@@ -1006,12 +1035,16 @@ namespace GraphShape.Algorithms.Layout
             // Build the accumulator tree
             int firstIndex = 1;
             while (firstIndex < pairCount)
+            {
                 firstIndex *= 2;
+            }
             int treeSize = 2 * firstIndex - 1;
             --firstIndex;
             var tree = new CrossCounterTreeNode[treeSize];
             for (int i = 0; i < treeSize; ++i)
+            {
                 tree[i] = new CrossCounterTreeNode();
+            }
 
             // Count the crossings
             int crossCount = 0;
@@ -1097,7 +1130,9 @@ namespace GraphShape.Algorithms.Layout
                 {
                     var container = (ISegmentContainer)item;
                     if (container.Count > 0)
+                    {
                         queue.Enqueue(new VertexGroup(container.Position) { Size = container.Count });
+                    }
                 }
             }
 

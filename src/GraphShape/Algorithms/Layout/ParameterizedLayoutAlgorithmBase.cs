@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -33,6 +33,7 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         // ReSharper disable once NotNullMemberIsNotInitialized, Justification: Initialized in InitParameters
         protected ParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : this(visitedGraph, null, null)
@@ -45,6 +46,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         // ReSharper disable once NotNullMemberIsNotInitialized, Justification: Initialized in InitParameters
         protected ParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
@@ -67,7 +69,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="parameters">
         /// Parameters from a previous layout.
-        /// If it is null, the <see cref="Parameters"/> will be set to the default ones.
+        /// If it is <see langword="null"/>, the <see cref="Parameters"/> will be set to the default ones.
         /// </param>
         protected void InitParameters([CanBeNull] TParameters parameters)
         {
@@ -87,19 +89,20 @@ namespace GraphShape.Algorithms.Layout
         /// <summary>
         /// Gets or sets the random number generator used to initialize positions randomly (and eventually during algorithm computation).
         /// </summary>
+        /// <exception cref="T:System.ArgumentNullException">Value is <see langword="null"/>.</exception>
         [NotNull]
         public Random Rand
         {
             get => _rand ?? (_rand = new CryptoRandom((int)DateTime.Now.Ticks));
-            set => _rand = value;
+            set => _rand = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         /// <summary>
         /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
         /// It does NOT modify the position of the other vertices.
         /// Bounding box:
-        /// x coordinates: <see cref="double.Epsilon"/> - <paramref name="width"/>
-        /// y coordinates: <see cref="double.Epsilon"/> - <paramref name="height"/>
+        /// x coordinates: <see cref="F:double.Epsilon"/> - <paramref name="width"/>
+        /// y coordinates: <see cref="F:double.Epsilon"/> - <paramref name="height"/>
         /// </summary>
         /// <param name="width">Width of the bounding box.</param>
         /// <param name="height">Height of the bounding box.</param>
@@ -112,8 +115,8 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes the positions of the vertices. Assigns a random position inside the 'bounding box' to the vertices without positions.
         /// It does NOT modify the position of the other vertices.
         /// Bounding box:
-        /// x coordinates: <see cref="double.Epsilon"/> - <paramref name="width"/>
-        /// y coordinates: <see cref="double.Epsilon"/> - <paramref name="height"/>
+        /// x coordinates: <see cref="F:double.Epsilon"/> - <paramref name="width"/>
+        /// y coordinates: <see cref="F:double.Epsilon"/> - <paramref name="height"/>
         /// </summary>
         /// <param name="width">Width of the bounding box.</param>
         /// <param name="height">Height of the bounding box.</param>
@@ -152,6 +155,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="message">Message representing the status of the algorithm.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
         /// <returns>A new instance of <see cref="ILayoutIterationEventArgs{TVertex}"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         [Pure]
         [NotNull]
         protected virtual ILayoutIterationEventArgs<TVertex> CreateLayoutIterationEventArgs(
@@ -170,6 +176,9 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="statusInPercent">Status of the layout algorithm in percent.</param>
         /// <param name="message">Message representing the status of the algorithm.</param>
         /// <param name="normalizePositions">Indicates if given positions must be normalized.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         protected void OnIterationEnded(
             int iteration,
             double statusInPercent,
@@ -184,7 +193,9 @@ namespace GraphShape.Algorithms.Layout
             }
 
             if (normalizePositions)
+            {
                 LayoutUtils.NormalizePositions(verticesPositions);
+            }
 
             ILayoutIterationEventArgs<TVertex> args = CreateLayoutIterationEventArgs(
                 iteration,
@@ -212,6 +223,7 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes a new instance of the <see cref="DefaultParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TParameters}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected DefaultParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : base(visitedGraph)
         {
@@ -223,6 +235,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected DefaultParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -255,6 +268,7 @@ namespace GraphShape.Algorithms.Layout
         /// Initializes a new instance of the <see cref="ParameterizedLayoutAlgorithmBase{TVertex,TEdge,TGraph,TVertexInfo,TEdgeInfo,TParameters}"/> class.
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected ParameterizedLayoutAlgorithmBase([NotNull] TGraph visitedGraph)
             : base(visitedGraph, null, null)
         {
@@ -266,6 +280,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         protected ParameterizedLayoutAlgorithmBase(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,

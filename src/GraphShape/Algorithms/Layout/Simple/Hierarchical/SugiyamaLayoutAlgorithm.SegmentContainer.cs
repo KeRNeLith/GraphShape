@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using JetBrains.Annotations;
@@ -147,10 +147,14 @@ namespace GraphShape.Algorithms.Layout
                 container2 = new SegmentContainer(container2Count);
 
                 for (int i = 0; i < container1Count; ++i)
+                {
                     container1.Append(this[i]);
+                }
 
                 for (int i = k + 1; i < Count; ++i)
+                {
                     container2.Append(this[i]);
+                }
             }
 
             #endregion

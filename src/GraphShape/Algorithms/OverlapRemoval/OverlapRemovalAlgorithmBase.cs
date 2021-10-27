@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
@@ -25,6 +25,8 @@ namespace GraphShape.Algorithms.OverlapRemoval
         /// </summary>
         /// <param name="rectangles">Overlap rectangles.</param>
         /// <param name="parameters">Algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="rectangles"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="parameters"/> is <see langword="null"/>.</exception>
         protected OverlapRemovalAlgorithmBase(
             [NotNull] IDictionary<TObject, Rect> rectangles,
             [NotNull] TParameters parameters)
@@ -80,7 +82,9 @@ namespace GraphShape.Algorithms.OverlapRemoval
             RemoveGaps();
 
             foreach (RectangleWrapper<TObject> rectangle in WrappedRectangles)
+            {
                 Rectangles[rectangle.Id] = rectangle.Rectangle;
+            }
         }
 
         #endregion

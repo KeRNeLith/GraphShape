@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using JetBrains.Annotations;
 
@@ -59,7 +59,7 @@ namespace GraphShape.Controls
         /// or allow growth and adds it to the pool.
         /// </summary>
         /// <returns>
-        /// Returns with the newly created object or null if the pool is full.
+        /// Returns with the newly created object or <see langword="null"/> if the pool is full.
         /// </returns>
         [CanBeNull]
         private T CreateObject()
@@ -117,7 +117,7 @@ namespace GraphShape.Controls
         /// Gets an object from the pool.
         /// </summary>
         /// <returns>
-        /// Returns with the object or null if there isn't any free objects
+        /// Returns with the object or <see langword="null"/> if there isn't any free objects
         /// and the pool does not allow growth.
         /// </returns>
         [Pure]

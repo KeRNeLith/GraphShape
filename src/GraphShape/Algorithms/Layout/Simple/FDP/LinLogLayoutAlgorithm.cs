@@ -66,6 +66,7 @@ namespace GraphShape.Algorithms.Layout
         /// </summary>
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public LinLogLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] LinLogLayoutParameters parameters = null)
@@ -79,6 +80,7 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="visitedGraph">Graph to layout.</param>
         /// <param name="verticesPositions">Vertices positions.</param>
         /// <param name="parameters">Optional algorithm parameters.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="visitedGraph"/> is <see langword="null"/>.</exception>
         public LinLogLayoutAlgorithm(
             [NotNull] TGraph visitedGraph,
             [CanBeNull] IDictionary<TVertex, Point> verticesPositions,
@@ -122,7 +124,9 @@ namespace GraphShape.Algorithms.Layout
                 MoveNodes(quadTree);
 
                 if (ReportOnIterationEndNeeded)
+                {
                     Report(step);
+                }
             }
 
             CopyPositions();
@@ -278,7 +282,9 @@ namespace GraphShape.Algorithms.Layout
         {
             // Copy positions
             foreach (LinLogVertex vertex in _vertices)
+            {
                 VerticesPositions[vertex.OriginalVertex] = vertex.Position;
+            }
         }
 
         /// <summary>
@@ -340,7 +346,9 @@ namespace GraphShape.Algorithms.Layout
             {
                 double direction2 = 0.0;
                 foreach (QuadTree childTree in quadTree.Children)
+                {
                     direction2 += AddRepulsionDirection(index, childTree, ref direction);
+                }
                 return direction2;
             }
 
@@ -418,7 +426,9 @@ namespace GraphShape.Algorithms.Layout
             {
                 double energy = 0.0;
                 foreach (QuadTree childTree in quadTree.Children)
+                {
                     energy += GetRepulsionEnergy(index, childTree);
+                }
                 return energy;
             }
 
@@ -508,9 +518,13 @@ namespace GraphShape.Algorithms.Layout
                     continue;
 
                 if (result is null)
+                {
                     result = new QuadTree(vertex.Index, vertex.Position, vertex.RepulsionWeight, minPos, maxPos);
+                }
                 else
+                {
                     result.AddNode(vertex.Index, vertex.Position, vertex.RepulsionWeight, 0);
+                }
             }
 
             // ReSharper disable once AssignNullToNotNullAttribute

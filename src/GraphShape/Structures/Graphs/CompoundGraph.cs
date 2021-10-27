@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using QuikGraph;
 using System.Linq;
 using JetBrains.Annotations;
+using QuikGraph;
 
 namespace GraphShape
 {
@@ -54,6 +54,7 @@ namespace GraphShape
         /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
         /// </summary>
         /// <param name="graph">Graph from which initializing this graph.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         public CompoundGraph([NotNull] IEdgeListGraph<TVertex, TEdge> graph)
             // ReSharper disable once ConstantConditionalAccessQualifier
             : base(graph?.AllowParallelEdges ?? throw new ArgumentNullException(nameof(graph)), graph.VertexCount)
@@ -70,6 +71,7 @@ namespace GraphShape
         /// Initializes a new instance of the <see cref="CompoundGraph{TVertex,TEdge}"/> class.
         /// </summary>
         /// <param name="graph">Graph from which initializing this graph.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="graph"/> is <see langword="null"/>.</exception>
         public CompoundGraph([NotNull] ICompoundGraph<TVertex, TEdge> graph)
             // ReSharper disable once ConstantConditionalAccessQualifier
             : base(graph?.AllowParallelEdges ?? throw new ArgumentNullException(nameof(graph)), graph.VertexCount)
@@ -130,7 +132,9 @@ namespace GraphShape
             if (!ContainsVertex(parent))
                 throw new VertexNotFoundException("Parent vertex must already be part of the graph.");
             if (!ContainsVertex(child))
+            {
                 AddVertex(child);
+            }
             return AddChildVertexInternal(parent, child, GetChildrenList(parent, true));
         }
 
@@ -209,7 +213,9 @@ namespace GraphShape
                     if (pair.Value.Count == 0)
                     {
                         if (verticesToClean is null)
+                        {
                             verticesToClean = new List<TVertex>();
+                        }
                         verticesToClean.Add(pair.Key);
                     }
                 }

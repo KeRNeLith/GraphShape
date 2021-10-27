@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using QuikGraph;
@@ -23,6 +23,10 @@ namespace GraphShape.Algorithms.Layout
         /// <param name="message">Message representing the status of the algorithm.</param>
         /// <param name="verticesPositions">Vertices positions associations.</param>
         /// <param name="innerCanvasSizes">Inner canvas vertices sizes associations.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="message"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="innerCanvasSizes"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="iteration"/> is negative.</exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="statusInPercent"/> is negative.</exception>
         public CompoundLayoutIterationEventArgs(
             int iteration,
             double statusInPercent,

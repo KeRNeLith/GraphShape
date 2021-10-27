@@ -29,6 +29,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to hide.</param>
         /// <returns>True if the vertex is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         bool HideVertex([NotNull] TVertex vertex);
 
         /// <summary>
@@ -37,12 +39,21 @@ namespace GraphShape
         /// <param name="vertex">Vertex to hide.</param>
         /// <param name="tag">Tag associated to the hidden vertex.</param>
         /// <returns>True if the vertex is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         bool HideVertex([NotNull] TVertex vertex, [NotNull] string tag);
 
         /// <summary>
         /// Hides the given set of <paramref name="vertices"/>.
         /// </summary>
         /// <param name="vertices">Vertices to hide.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="vertices"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException">
+        /// At least one of <paramref name="vertices"/> is not part of the graph.
+        /// </exception>
         void HideVertices([NotNull, ItemNotNull] IEnumerable<TVertex> vertices);
 
         /// <summary>
@@ -50,13 +61,22 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertices">Vertices to hide.</param>
         /// <param name="tag">Tag associated to the hidden vertices.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="vertices"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException">
+        /// At least one of <paramref name="vertices"/> is not part of the graph.
+        /// </exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         void HideVertices([NotNull, ItemNotNull] IEnumerable<TVertex> vertices, [NotNull] string tag);
-        
+
         /// <summary>
         /// Hides vertices matching the given <paramref name="predicate"/>, and gives a <paramref name="tag"/> associated to these hidden vertices.
         /// </summary>
         /// <param name="predicate">Hide predicate.</param>
         /// <param name="tag">Tag associated to the hidden vertices.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="predicate"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         void HideVerticesIf([NotNull, InstantHandle] Predicate<TVertex> predicate, [NotNull] string tag);
 
         /// <summary>
@@ -64,6 +84,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to check.</param>
         /// <returns>True if the vertex is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         bool IsHiddenVertex([NotNull] TVertex vertex);
 
@@ -72,12 +94,16 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to un-hide.</param>
         /// <returns>True if the vertex has been un-hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         bool UnhideVertex([NotNull] TVertex vertex);
 
         /// <summary>
         /// Un-hides the given <paramref name="vertex"/> and its connected edges if they are hidden.
         /// </summary>
         /// <param name="vertex">Vertex to un-hide.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         void UnhideVertexAndEdges([NotNull] TVertex vertex);
 
         /// <summary>
@@ -96,6 +122,7 @@ namespace GraphShape
         /// </summary>
         /// <param name="edge">Edge to hide.</param>
         /// <returns>True if the edge is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         bool HideEdge([NotNull] TEdge edge);
 
         /// <summary>
@@ -104,12 +131,17 @@ namespace GraphShape
         /// <param name="edge">Edge to hide.</param>
         /// <param name="tag">Tag associated to the hidden edge.</param>
         /// <returns>True if the edge is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         bool HideEdge([NotNull] TEdge edge, [NotNull] string tag);
 
         /// <summary>
         /// Hides the given set of <paramref name="edges"/>.
         /// </summary>
         /// <param name="edges">Edges to hide.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="edges"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
         void HideEdges([NotNull, ItemNotNull] IEnumerable<TEdge> edges);
 
         /// <summary>
@@ -117,6 +149,10 @@ namespace GraphShape
         /// </summary>
         /// <param name="edges">Edges to hide.</param>
         /// <param name="tag">Tag associated to the hidden edges.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="edges"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         void HideEdges([NotNull, ItemNotNull] IEnumerable<TEdge> edges, [NotNull] string tag);
 
         /// <summary>
@@ -124,6 +160,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="predicate">Hide predicate.</param>
         /// <param name="tag">Tag associated to the hidden edges.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="predicate"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         void HideEdgesIf([NotNull, InstantHandle] Predicate<TEdge> predicate, [NotNull] string tag);
 
         /// <summary>
@@ -131,6 +169,7 @@ namespace GraphShape
         /// </summary>
         /// <param name="edge">Edge to check.</param>
         /// <returns>True if the edge is hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         [Pure]
         bool IsHiddenEdge([NotNull] TEdge edge);
 
@@ -139,18 +178,23 @@ namespace GraphShape
         /// </summary>
         /// <param name="edge">Edge to un-hide.</param>
         /// <returns>True if the edge has been un-hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         bool UnhideEdge([NotNull] TEdge edge);
 
         /// <summary>
         /// Un-hides the given <paramref name="edges"/> if they are hidden.
         /// </summary>
         /// <param name="edges">Edges to un-hide.</param>
+        /// <exception cref="T:System.ArgumentNullException">
+        /// <paramref name="edges"/> is <see langword="null"/> or at least one of them is <see langword="null"/>.
+        /// </exception>
         void UnhideEdges([NotNull, ItemNotNull] IEnumerable<TEdge> edges);
 
         /// <summary>
         /// Un-hides edges matching the given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">Un-hide predicate.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="predicate"/> is <see langword="null"/>.</exception>
         void UnhideEdgesIf([NotNull, InstantHandle] Predicate<TEdge> predicate);
 
         /// <summary>
@@ -158,6 +202,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to check.</param>
         /// <returns>Hidden edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         [NotNull, ItemNotNull]
         IEnumerable<TEdge> HiddenEdgesOf([NotNull] TVertex vertex);
@@ -167,6 +213,8 @@ namespace GraphShape
         /// </summary>
         /// <param name="vertex">Vertex to check.</param>
         /// <returns>Number of hidden edges.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:QuikGraph.VertexNotFoundException"><paramref name="vertex"/> is not part of the graph.</exception>
         [Pure]
         int HiddenEdgeCountOf([NotNull] TVertex vertex);
 
@@ -175,6 +223,7 @@ namespace GraphShape
         /// </summary>
         /// <param name="tag">Tag to un-hide.</param>
         /// <returns>True if the tag has been un-hidden, false otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="tag"/> is <see langword="null"/>.</exception>
         bool Unhide([NotNull] string tag);
 
         /// <summary>

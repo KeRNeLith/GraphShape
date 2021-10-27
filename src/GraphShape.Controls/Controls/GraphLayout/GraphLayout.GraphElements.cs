@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -41,10 +41,14 @@ namespace GraphShape.Controls
         protected void RemoveAllGraphElements()
         {
             foreach (TVertex vertex in VerticesControls.Keys.ToArray())
+            {
                 RemoveVertexControl(vertex);
+            }
 
             foreach (TEdge edge in EdgesControls.Keys.ToArray())
+            {
                 RemoveEdgeControl(edge);
+            }
 
             VerticesControls.Clear();
             EdgesControls.Clear();
@@ -113,14 +117,18 @@ namespace GraphShape.Controls
             foreach (TVertex vertex in Graph.Vertices)
             {
                 if (!VerticesControls.ContainsKey(vertex))
+                {
                     CreateVertexControl(vertex);
+                }
             }
 
             // Edges controls
             foreach (TEdge edge in Graph.Edges)
             {
                 if (!EdgesControls.ContainsKey(edge))
+                {
                     CreateEdgeControl(edge);
+                }
             }
         }
 
@@ -227,7 +235,8 @@ namespace GraphShape.Controls
         /// Gets the <see cref="VertexControl"/> corresponding to the given <paramref name="vertex"/>.
         /// </summary>
         /// <param name="vertex">Graph vertex.</param>
-        /// <returns>The corresponding <see cref="VertexControl"/>, null otherwise.</returns>
+        /// <returns>The corresponding <see cref="VertexControl"/>, <see langword="null"/> otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [Pure]
         [CanBeNull]
         public VertexControl GetVertexControl([NotNull] TVertex vertex)
@@ -242,6 +251,7 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="vertex">Graph vertex.</param>
         /// <returns>A <see cref="VertexControl"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [NotNull]
         protected VertexControl GetOrCreateVertexControl([NotNull] TVertex vertex)
         {
@@ -256,6 +266,7 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="vertex">Graph vertex.</param>
         /// <returns>A <see cref="VertexControl"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         [NotNull]
         protected virtual VertexControl CreateVertexControl([NotNull] TVertex vertex)
         {
@@ -314,6 +325,7 @@ namespace GraphShape.Controls
         /// Initializes the position of the given <paramref name="vertex"/>.
         /// </summary>
         /// <param name="vertex">Graph vertex.</param>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="vertex"/> is <see langword="null"/>.</exception>
         protected virtual void InitializePosition([NotNull] TVertex vertex)
         {
             VertexControl vertexControl = VerticesControls[vertex];
@@ -328,7 +340,7 @@ namespace GraphShape.Controls
         }
 
         [Pure]
-        private bool TryComputePosition(TVertex vertex, out Point position)
+        private bool TryComputePosition([NotNull] TVertex vertex, out Point position)
         {
             position = default(Point);
             
@@ -359,7 +371,8 @@ namespace GraphShape.Controls
         /// Gets the <see cref="EdgeControl"/> corresponding to the given <paramref name="edge"/>.
         /// </summary>
         /// <param name="edge">Graph edge.</param>
-        /// <returns>The corresponding <see cref="EdgeControl"/>, null otherwise.</returns>
+        /// <returns>The corresponding <see cref="EdgeControl"/>, <see langword="null"/> otherwise.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         [Pure]
         [CanBeNull]
         public EdgeControl GetEdgeControl([NotNull] TEdge edge)
@@ -374,6 +387,7 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="edge">Graph edge.</param>
         /// <returns>A <see cref="EdgeControl"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         [NotNull]
         protected EdgeControl GetOrCreateEdgeControl([NotNull] TEdge edge)
         {
@@ -388,6 +402,7 @@ namespace GraphShape.Controls
         /// </summary>
         /// <param name="edge">Graph edge.</param>
         /// <returns>A <see cref="EdgeControl"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="edge"/> is <see langword="null"/>.</exception>
         [NotNull]
         protected virtual EdgeControl CreateEdgeControl([NotNull] TEdge edge)
         {
@@ -404,9 +419,13 @@ namespace GraphShape.Controls
             edgeControl.Target = VerticesControls[edge.Target];
 
             if (ActualLayoutMode == Algorithms.Layout.LayoutMode.Simple)
+            {
                 Children.Insert(0, edgeControl);
+            }
             else
+            {
                 Children.Add(edgeControl);
+            }
             SetHighlightProperties(edge, edgeControl);
             RunCreationTransition(edgeControl);
 

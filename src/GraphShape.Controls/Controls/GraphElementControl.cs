@@ -25,7 +25,9 @@ namespace GraphShape.Controls
         public static void AddHighlightHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.AddHandler(HighlightEvent, handler);
+            }
         }
 
         /// <summary>
@@ -34,7 +36,9 @@ namespace GraphShape.Controls
         public static void RemoveHighlightHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.RemoveHandler(HighlightEvent, handler);
+            }
         }
 
         #endregion
@@ -54,7 +58,9 @@ namespace GraphShape.Controls
         public static void AddUnhighlightHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.AddHandler(UnhighlightEvent, handler);
+            }
         }
 
         /// <summary>
@@ -63,7 +69,9 @@ namespace GraphShape.Controls
         public static void RemoveUnhighlightHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.RemoveHandler(UnhighlightEvent, handler);
+            }
         }
 
         #endregion
@@ -83,7 +91,9 @@ namespace GraphShape.Controls
         public static void AddHighlightTriggeredHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.AddHandler(HighlightTriggeredEvent, handler);
+            }
         }
 
         /// <summary>
@@ -92,7 +102,9 @@ namespace GraphShape.Controls
         public static void RemoveHighlightTriggeredHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.RemoveHandler(HighlightTriggeredEvent, handler);
+            }
         }
 
         #endregion
@@ -112,7 +124,9 @@ namespace GraphShape.Controls
         public static void AddHighlightInfoChangedHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.AddHandler(HighlightInfoChangedEvent, handler);
+            }
         }
 
         /// <summary>
@@ -121,7 +135,9 @@ namespace GraphShape.Controls
         public static void RemoveHighlightInfoChangedHandler(DependencyObject d, RoutedEventHandler handler)
         {
             if (d is UIElement uiElement)
+            {
                 uiElement.RemoveHandler(HighlightInfoChangedEvent, handler);
+            }
         }
 
         #endregion
@@ -215,9 +231,13 @@ namespace GraphShape.Controls
                 return;
 
             if ((bool)args.NewValue)
+            {
                 control.RaiseEvent(new RoutedEventArgs(HighlightEvent, d));
+            }
             else
+            {
                 control.RaiseEvent(new RoutedEventArgs(UnhighlightEvent, d));
+            }
         }
 
         #endregion
