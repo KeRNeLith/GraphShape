@@ -17,7 +17,7 @@ namespace GraphShape
         , IHierarchicalBidirectionalGraph<TVertex, TEdge>
         where TEdge : TypedEdge<TVertex>
     {
-        private class TypedEdgeCollectionWrapper
+        private sealed class TypedEdgeCollectionWrapper
         {
             [NotNull, ItemNotNull]
             public readonly List<TEdge> SelfHierarchicalEdges = new List<TEdge>();

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -18,7 +18,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private class LinLogVertex
+        private sealed class LinLogVertex
         {
             public int Index { get; }
 
@@ -43,7 +43,7 @@ namespace GraphShape.Algorithms.Layout
             }
         }
 
-        private class LinLogEdge
+        private sealed class LinLogEdge
         {
             [NotNull]
             public LinLogVertex Target { get; }

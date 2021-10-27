@@ -566,7 +566,7 @@ namespace GraphShape.Algorithms.Layout
             _sparseCompactionByLayerBackup[layerIndex] = sparseCompactionGraphEdgesOfLayer;
         }
 
-        private class VertexGroup
+        private sealed class VertexGroup
         {
             public int Position { get; }
             public int Size { get; set; }
@@ -581,7 +581,7 @@ namespace GraphShape.Algorithms.Layout
             }
         }
 
-        private class CrossCounterPair : Pair
+        private sealed class CrossCounterPair : Pair
         {
             public EdgeTypes Type { get; }
 
@@ -598,7 +598,7 @@ namespace GraphShape.Algorithms.Layout
             }
         }
 
-        private class CrossCounterTreeNode
+        private sealed class CrossCounterTreeNode
         {
             public int Accumulator { get; set; }
             public bool InnerSegmentMarker { get; set; }

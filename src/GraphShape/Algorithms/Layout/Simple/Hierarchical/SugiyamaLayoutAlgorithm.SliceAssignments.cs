@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if SUPPORTS_AGGRESSIVE_INLINING
+using System.Runtime.CompilerServices;
+#endif
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -49,6 +52,9 @@ namespace GraphShape.Algorithms.Layout
         }
 
         [Pure]
+#if SUPPORTS_AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private bool IsVerticalLayout()
         {
             return Parameters.Direction == LayoutDirection.TopToBottom
@@ -193,6 +199,13 @@ namespace GraphShape.Algorithms.Layout
 
         private void DoOrthogonalEdgeRouting()
         {
+            bool isVerticalLayout = IsVerticalLayout();
+            AssignEdgesRoutes(isVerticalLayout);
+            AssignDummyVerticesEdgesRoutes(isVerticalLayout);
+        }
+
+        private void AssignEdgesRoutes(bool isVerticalLayout)
+        {
             foreach (TEdge edge in VisitedGraph.Edges)
             {
                 var orthogonalRoutePoints = new Point[2];
@@ -202,7 +215,7 @@ namespace GraphShape.Algorithms.Layout
                 int sourceIndex = notSwitched ? 0 : 1;
                 int targetIndex = notSwitched ? 1 : 0;
 
-                if (IsVerticalLayout())
+                if (isVerticalLayout)
                 {
                     orthogonalRoutePoints[sourceIndex] = new Point
                     {
@@ -231,7 +244,10 @@ namespace GraphShape.Algorithms.Layout
 
                 EdgeRoutes[edge] = orthogonalRoutePoints;
             }
+        }
 
+        private void AssignDummyVerticesEdgesRoutes(bool isVerticalLayout)
+        {
             foreach (KeyValuePair<TEdge, IList<SugiVertex>> pair in _dummyVerticesOfEdges)
             {
                 Point[] orthogonalRoutePoints = EdgeRoutes[pair.Key];
@@ -242,12 +258,12 @@ namespace GraphShape.Algorithms.Layout
                 for (int i = 0; i < pair.Value.Count; ++i)
                 {
                     SugiVertex vertex = pair.Value[i];
-                    routePoints[i + 2] = IsVerticalLayout()
+                    routePoints[i + 2] = isVerticalLayout
                         ? new Point(vertex.SlicePosition, vertex.LayerPosition)
                         : new Point(vertex.LayerPosition, vertex.SlicePosition);
                 }
 
-                routePoints[1] = IsVerticalLayout()
+                routePoints[1] = isVerticalLayout
                     ? new Point(routePoints[2].X, routePoints[0].Y)
                     : new Point(routePoints[0].X, routePoints[2].Y);
                 routePoints[pair.Value.Count + 2] = new Point(

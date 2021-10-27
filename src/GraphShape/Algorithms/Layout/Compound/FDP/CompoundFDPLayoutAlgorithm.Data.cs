@@ -31,7 +31,7 @@ namespace GraphShape.Algorithms.Layout
         [NotNull, ItemNotNull]
         public IList<HashSet<TVertex>> Levels { get; } = new List<HashSet<TVertex>>();
 
-        private class RemovedTreeNodeData
+        private sealed class RemovedTreeNodeData
         {
             [NotNull]
             public readonly TVertex Vertex;
@@ -324,7 +324,7 @@ namespace GraphShape.Algorithms.Layout
 
         #region Nested type: SimpleVertexData
 
-        private class SimpleVertexData : VertexData
+        private sealed class SimpleVertexData : VertexData
         {
             public SimpleVertexData(
                 [NotNull] TVertex vertex,

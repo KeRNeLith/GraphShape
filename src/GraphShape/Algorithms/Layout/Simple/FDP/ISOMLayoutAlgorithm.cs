@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using GraphShape.Utils;
@@ -18,7 +18,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private class ISOMData
+        private sealed class ISOMData
         {
             public bool Visited { get; set; }
             public double Distance { get; set; }

@@ -12,7 +12,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
-        private class WHOptimizationLayerInfo
+        private sealed class WHOptimizationLayerInfo
         {
             public double LayerWidth { get; set; }
             public double LayerHeight { get; set; }
@@ -21,7 +21,7 @@ namespace GraphShape.Algorithms.Layout
             public readonly Queue<WHOptimizationVertexInfo> Vertices = new Queue<WHOptimizationVertexInfo>();
         }
 
-        private class WHOptimizationVertexInfo
+        private sealed class WHOptimizationVertexInfo
         {
             [NotNull]
             public readonly SugiVertex Vertex;

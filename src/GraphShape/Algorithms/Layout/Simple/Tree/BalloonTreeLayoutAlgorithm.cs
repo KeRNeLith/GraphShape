@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using JetBrains.Annotations;
 using QuikGraph;
 
@@ -25,7 +26,7 @@ namespace GraphShape.Algorithms.Layout
         [NotNull, ItemNotNull]
         private readonly HashSet<TVertex> _visitedVertices = new HashSet<TVertex>();
 
-        private class BalloonData
+        private sealed class BalloonData
         {
             public int D;
             public int R;
@@ -112,14 +113,12 @@ namespace GraphShape.Algorithms.Layout
 
             float s = 0;
 
-            foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
+            foreach (TVertex target in VisitedGraph.OutEdges(vertex).Select(outEdge => outEdge.Target))
             {
-                TVertex otherVertex = edge.Target;
-                BalloonData otherData = _data[otherVertex];
-
-                if (!_visitedVertices.Contains(otherVertex))
+                BalloonData otherData = _data[target];
+                if (!_visitedVertices.Contains(target))
                 {
-                    FirstWalk(otherVertex);
+                    FirstWalk(target);
                     data.D = Math.Max(data.D, otherData.R);
                     otherData.A = (float)Math.Atan((float)otherData.R / (data.D + otherData.R));
                     s += otherData.A;
@@ -145,13 +144,12 @@ namespace GraphShape.Algorithms.Layout
             float fs = degree == 0 ? 0 : data.F / degree;
             float pr = 0;
 
-            foreach (TEdge edge in VisitedGraph.OutEdges(vertex))
+            foreach (TVertex target in VisitedGraph.OutEdges(vertex).Select(outEdge => outEdge.Target))
             {
-                TVertex otherVertex = edge.Target;
-                if (_visitedVertices.Contains(otherVertex))
+                if (_visitedVertices.Contains(target))
                     continue;
 
-                BalloonData otherData = _data[otherVertex];
+                BalloonData otherData = _data[target];
                 float aa = data.C * otherData.A;
                 float rr = (float)(data.D * Math.Tan(aa) / (1 - Math.Tan(aa)));
                 p += pr + aa + fs;
@@ -159,7 +157,7 @@ namespace GraphShape.Algorithms.Layout
                 float xx = (float)((l * rr + dd) * Math.Cos(p));
                 float yy = (l * rr + dd) * Math.Sign(p);
                 pr = aa;
-                SecondWalk(otherVertex, x + xx, y + yy, l * data.C, p);
+                SecondWalk(target, x + xx, y + yy, l * data.C, p);
             }
         }
 

@@ -229,13 +229,13 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 for (int i = 0, n = queue1.Count; i < n; ++i)
                 {
                     TVertex vertex = queue1.Dequeue();
-                    foreach (TEdge edge in graph.InEdges(vertex).Where(e => !e.IsSelfEdge()))
+                    foreach (TVertex source in graph.InEdges(vertex).Where(e => !e.IsSelfEdge()).Select(e => e.Source))
                     {
-                        if ((graph.ContainsVertex(edge.Source) && visitedVertices.Add(edge.Source))
+                        if ((graph.ContainsVertex(source) && visitedVertices.Add(source))
                             || EqualityComparer<TVertex>.Default.Equals(vertex, splitVertex))
                         {
-                            queue1.Enqueue(edge.Source);
-                            side1.Add(edge.Source);
+                            queue1.Enqueue(source);
+                            side1.Add(source);
                         }
                     }
                 }
@@ -244,13 +244,13 @@ namespace GraphShape.Algorithms.Layout.Contextual
                 for (int i = 0, n = queue2.Count; i < n; ++i)
                 {
                     TVertex vertex = queue2.Dequeue();
-                    foreach (TEdge edge in graph.OutEdges(vertex).Where(e => !e.IsSelfEdge()))
+                    foreach (TVertex target in graph.OutEdges(vertex).Where(e => !e.IsSelfEdge()).Select(e => e.Target))
                     {
-                        if ((graph.ContainsVertex(edge.Target) && visitedVertices.Add(edge.Target))
+                        if ((graph.ContainsVertex(target) && visitedVertices.Add(target))
                             || EqualityComparer<TVertex>.Default.Equals(vertex, splitVertex))
                         {
-                            queue2.Enqueue(edge.Target);
-                            side2.Add(edge.Target);
+                            queue2.Enqueue(target);
+                            side2.Add(target);
                         }
                     }
                 }

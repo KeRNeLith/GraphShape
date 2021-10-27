@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -80,10 +80,9 @@ namespace GraphShape.Utils
 
             foreach (TVertex vertex in set1)
             {
-                foreach (TEdge edge in graph.OutEdges(vertex))
+                foreach (TEdge edge in graph.OutEdges(vertex).Where(outEdge => set2.Contains(outEdge.Target)))
                 {
-                    if (set2.Contains(edge.Target))
-                        yield return edge;
+                    yield return edge;
                 }
             }
         }

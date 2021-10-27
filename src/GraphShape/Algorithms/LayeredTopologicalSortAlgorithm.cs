@@ -100,12 +100,9 @@ namespace GraphShape.Algorithms
                     _tmpGraph.RemoveVertex(source);
 
                     // Check if any of the neighbors became a source
-                    foreach (TVertex neighbor in outNeighbors)
+                    foreach (TVertex neighbor in outNeighbors.Where(neighbor => _tmpGraph.IsInEdgesEmpty(neighbor)))
                     {
-                        if (_tmpGraph.IsInEdgesEmpty(neighbor))
-                        {
-                            newSources.Add(neighbor);
-                        }
+                        newSources.Add(neighbor);
                     }
                 }
 

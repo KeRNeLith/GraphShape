@@ -12,7 +12,7 @@ namespace GraphShape
     {
         #region Helper Types
 
-        private class HiddenCollection
+        private sealed class HiddenCollection
         {
             [NotNull, ItemNotNull]
             public List<TVertex> HiddenVertices { get; } = new List<TVertex>();
@@ -188,14 +188,7 @@ namespace GraphShape
             if (tag is null)
                 throw new ArgumentNullException(nameof(tag));
 
-            var verticesToHide = new List<TVertex>();
-            foreach (TVertex vertex in _graph.Vertices)
-            {
-                if (predicate(vertex))
-                    verticesToHide.Add(vertex);
-            }
-
-            HideVertices(verticesToHide, tag);
+            HideVertices(_graph.Vertices.Where(vertex => predicate(vertex)), tag);
         }
 
         /// <inheritdoc />
@@ -312,14 +305,7 @@ namespace GraphShape
             if (tag is null)
                 throw new ArgumentNullException(nameof(tag));
 
-            var edgesToHide = new List<TEdge>();
-            foreach (TEdge edge in _graph.Edges)
-            {
-                if (predicate(edge))
-                    edgesToHide.Add(edge);
-            }
-
-            HideEdges(edgesToHide, tag);
+            HideEdges(_graph.Edges.Where(edge => predicate(edge)), tag);
         }
 
         /// <inheritdoc />
@@ -365,14 +351,7 @@ namespace GraphShape
             if (predicate is null)
                 throw new ArgumentNullException(nameof(predicate));
 
-            var edgesToUnhide = new List<TEdge>();
-            foreach (TEdge edge in _hiddenEdges)
-            {
-                if (predicate(edge))
-                    edgesToUnhide.Add(edge);
-            }
-
-            UnhideEdges(edgesToUnhide);
+            UnhideEdges(_hiddenEdges.Where(edge => predicate(edge)));
         }
 
         /// <inheritdoc />

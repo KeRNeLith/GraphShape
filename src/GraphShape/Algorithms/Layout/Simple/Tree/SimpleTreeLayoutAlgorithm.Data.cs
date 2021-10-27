@@ -9,7 +9,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private class Layer
+        private sealed class Layer
         {
             public double Size { get; set; }
 
@@ -29,7 +29,7 @@ namespace GraphShape.Algorithms.Layout
 
         }
 
-        private class VertexData
+        private sealed class VertexData
         {
             [CanBeNull]
             public TVertex Parent { get; set; }

@@ -8,7 +8,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private class QuadTree
+        private sealed class QuadTree
         {
             public int Index { get; private set; }
 
