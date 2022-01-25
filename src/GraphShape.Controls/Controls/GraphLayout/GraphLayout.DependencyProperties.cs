@@ -37,12 +37,18 @@ namespace GraphShape.Controls
                 new HighlightTriggerEventHandler(OnHighlightTriggered));
         }
 
+        /// <summary>
+        /// When true, it temporarily disables all animations.
+        /// </summary>
+        private bool FreezeAnimations = false;
+
         /// <inheritdoc />
         public override bool CanAnimate
         {
             get
             {
                 return base.CanAnimate
+                       && !FreezeAnimations
                        && AnimationLength > new TimeSpan(0, 0, 0, 0, 0)
                        && Graph != null
                        && (AnimationDisablerVertexCount < 0 || Graph.VertexCount < AnimationDisablerVertexCount)
@@ -1033,7 +1039,16 @@ namespace GraphShape.Controls
                 graphLayout.RegisterMutableGraphHandlers(newMutableGraph);
             }
 
-            graphLayout.OnRelayoutInduction(true);
+            // Freeze animations to prevent registering them while destroying the old graph and building the new one
+            try
+            {
+                graphLayout.FreezeAnimations = true;
+                graphLayout.OnRelayoutInduction(true);
+            }
+            finally
+            {
+                graphLayout.FreezeAnimations = false;
+            }
         }
 
         private void RegisterMutableGraphHandlers([NotNull] IMutableBidirectionalGraph<TVertex, TEdge> graph)
