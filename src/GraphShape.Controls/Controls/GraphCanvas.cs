@@ -465,7 +465,9 @@ namespace GraphShape.Controls
         protected virtual void RunCreationTransition([NotNull] Control control)
         {
             if (CanAnimate)
+            {
                 CreationTransition?.Run(AnimationContext, control, AnimationLength);
+            }
         }
 
         /// <summary>

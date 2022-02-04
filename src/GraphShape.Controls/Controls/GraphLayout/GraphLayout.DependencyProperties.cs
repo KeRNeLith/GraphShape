@@ -38,9 +38,9 @@ namespace GraphShape.Controls
         }
 
         /// <summary>
-        /// When true, it temporarily disables all animations.
+        /// When true, it disables all animations.
         /// </summary>
-        private bool FreezeAnimations = false;
+        private bool _freezeAnimations;
 
         /// <inheritdoc />
         public override bool CanAnimate
@@ -48,7 +48,7 @@ namespace GraphShape.Controls
             get
             {
                 return base.CanAnimate
-                       && !FreezeAnimations
+                       && !_freezeAnimations
                        && AnimationLength > new TimeSpan(0, 0, 0, 0, 0)
                        && Graph != null
                        && (AnimationDisablerVertexCount < 0 || Graph.VertexCount < AnimationDisablerVertexCount)
@@ -757,7 +757,7 @@ namespace GraphShape.Controls
             // Check if we need to register or unregister watches on graph changes events
             if (graphLayout.Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
             {
-                var oldMode = (LayoutMode)args.OldValue; 
+                var oldMode = (LayoutMode)args.OldValue;
                 var newMode = (LayoutMode)args.NewValue;
 
                 bool wasCompoundMode = IsCompoundModeInternal(oldMode, graphLayout.Graph);
@@ -1042,12 +1042,12 @@ namespace GraphShape.Controls
             // Freeze animations to prevent registering them while destroying the old graph and building the new one
             try
             {
-                graphLayout.FreezeAnimations = true;
+                graphLayout._freezeAnimations = true;
                 graphLayout.OnRelayoutInduction(true);
             }
             finally
             {
-                graphLayout.FreezeAnimations = false;
+                graphLayout._freezeAnimations = false;
             }
         }
 
