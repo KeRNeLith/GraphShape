@@ -18,7 +18,9 @@ namespace GraphShape.Sample.Converters
         /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            if (value is true)
+                return parameter;
+            throw new NotSupportedException($"{nameof(EqualityToBooleanConverter)}: Can't bind back.");
         }
     }
 }

@@ -74,7 +74,7 @@
                                         Height="150"
                                         Minimum="{TemplateBinding MinZoom, Converter={StaticResource Log10Converter}}"
                                         Maximum="{TemplateBinding MaxZoom, Converter={StaticResource Log10Converter}}"
-                                        Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Zoom,Mode=TwoWay, Converter={StaticResource Log10Converter}}"
+                                        Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Zoom, Mode=TwoWay, Converter={StaticResource Log10Converter}}"
                                         HorizontalAlignment="Center"
                                         Ticks="0.1, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2"
                                         AutoToolTipPlacement="BottomRight"
@@ -85,17 +85,17 @@
                                         SmallChange="0.1"
                                         Orientation="Vertical" />
                                     <TextBlock
-                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Zoom,StringFormat='{}{0:F2}x'}"
+                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Zoom, StringFormat='{}{0:F2}x'}"
                                         HorizontalAlignment="Center"
                                         FontWeight="Bold" />
                                     <RadioButton
                                         Content="1:1"
                                         GroupName="rbgZoomMode"
-                                        IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Mode, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static controls:ZoomControlModes.Original}}" />
+                                        IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Mode, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static controls:ZoomControlModes.Original}}" />
                                     <RadioButton
                                         Content="Fill"
                                         GroupName="rbgZoomMode"
-                                        IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Mode, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static controls:ZoomControlModes.Fill}}" />
+                                        IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Mode, Mode=TwoWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static controls:ZoomControlModes.Fill}}" />
                                 </StackPanel>
                             </Border>
 
