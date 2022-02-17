@@ -20,7 +20,7 @@ namespace GraphShape.Controls
         /// <param name="startOpacity">Starting opacity value.</param>
         /// <param name="endOpacity">Ending opacity value.</param>
         public FadeTransition(double startOpacity, double endOpacity)
-            : this(startOpacity, endOpacity, 2)
+            : this(startOpacity, endOpacity, 1)
         {
         }
 
