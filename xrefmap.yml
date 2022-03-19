@@ -9732,13 +9732,13 @@ references:
   fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CanLayout
   nameWithType: ContextualGraphLayout<TVertex, TEdge, TGraph>.CanLayout
   nameWithType.vb: ContextualGraphLayout(Of TVertex, TEdge, TGraph).CanLayout
-- uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name: CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.ContextualGraphLayout-3.html#GraphShape_Controls_ContextualGraphLayout_3_CreateLayoutContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.ContextualGraphLayout-3.html#GraphShape_Controls_ContextualGraphLayout_3_CreateLayoutContext_IDictionary__0_Point__IDictionary__0_Size__
+  commentId: M:GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name.vb: CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
+  fullName.vb: GraphShape.Controls.ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
   nameWithType: ContextualGraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: ContextualGraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.ContextualGraphLayout`3.CreateLayoutContext*
@@ -10018,11 +10018,11 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToGraphShapePoints
   nameWithType: BasicStructuresExtensions.ToGraphShapePoints
-- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(GraphShape.Point)
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(Point)
   name: ToPoint(Point)
-  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoint_GraphShape_Point_
-  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(GraphShape.Point)
-  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(GraphShape.Point)
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoint_Point_
+  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(Point)
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint(Point)
   nameWithType: BasicStructuresExtensions.ToPoint(Point)
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint*
   name: ToPoint
@@ -10031,13 +10031,13 @@ references:
   isSpec: "True"
   fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoint
   nameWithType: BasicStructuresExtensions.ToPoint
-- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{GraphShape.Point})
+- uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{Point})
   name: ToPoints(IEnumerable<Point>)
-  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoints_IEnumerable_GraphShape_Point__
-  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{GraphShape.Point})
+  href: api/GraphShape.Controls.Extensions.BasicStructuresExtensions.html#GraphShape_Controls_Extensions_BasicStructuresExtensions_ToPoints_IEnumerable_Point__
+  commentId: M:GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable{Point})
   name.vb: ToPoints(IEnumerable(Of Point))
-  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable<GraphShape.Point>)
-  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable(Of GraphShape.Point))
+  fullName: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable<Point>)
+  fullName.vb: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints(IEnumerable(Of Point))
   nameWithType: BasicStructuresExtensions.ToPoints(IEnumerable<Point>)
   nameWithType.vb: BasicStructuresExtensions.ToPoints(IEnumerable(Of Point))
 - uid: GraphShape.Controls.Extensions.BasicStructuresExtensions.ToPoints*
@@ -11163,13 +11163,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateHighlightContext
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateHighlightContext
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateHighlightContext
-- uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name: CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateLayoutContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateLayoutContext_IDictionary__0_Point__IDictionary__0_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.CreateLayoutContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name.vb: CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.CreateLayoutContext*
@@ -11181,13 +11181,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateLayoutContext
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateLayoutContext
-- uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name: CreateOverlapRemovalContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateOverlapRemovalContext_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_CreateOverlapRemovalContext_IDictionary__0_Point__IDictionary__0_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext(IDictionary{`0,Point},IDictionary{`0,Size})
   name.vb: CreateOverlapRemovalContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.CreateOverlapRemovalContext(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).CreateOverlapRemovalContext(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.CreateOverlapRemovalContext*
@@ -12014,24 +12014,24 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutFinished
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutFinished
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutFinished
-- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(GraphShape.Algorithms.Layout.ILayoutIterationEventArgs{`0})
-  name: OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_GraphShape_Algorithms_Layout_ILayoutIterationEventArgs__0__
-  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(GraphShape.Algorithms.Layout.ILayoutIterationEventArgs{`0})
-  name.vb: OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(GraphShape.Algorithms.Layout.ILayoutIterationEventArgs<TVertex>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(GraphShape.Algorithms.Layout.ILayoutIterationEventArgs(Of TVertex))
-  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
-  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
-- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,GraphShape.Point},System.String)
+- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,Point},System.String)
   name: OnLayoutIterationFinished(IDictionary<TVertex, Point>, String)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_IDictionary__0_GraphShape_Point__System_String_
-  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,GraphShape.Point},System.String)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_IDictionary__0_Point__System_String_
+  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(IDictionary{`0,Point},System.String)
   name.vb: OnLayoutIterationFinished(IDictionary(Of TVertex, Point), String)
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(IDictionary<TVertex, GraphShape.Point>, System.String)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(IDictionary(Of TVertex, GraphShape.Point), System.String)
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(IDictionary<TVertex, Point>, System.String)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(IDictionary(Of TVertex, Point), System.String)
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(IDictionary<TVertex, Point>, String)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(IDictionary(Of TVertex, Point), String)
+- uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(ILayoutIterationEventArgs{`0})
+  name: OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_ILayoutIterationEventArgs__0__
+  commentId: M:GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished(ILayoutIterationEventArgs{`0})
+  name.vb: OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
+  nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutIterationFinished(ILayoutIterationEventArgs<TVertex>)
+  nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutIterationFinished(ILayoutIterationEventArgs(Of TVertex))
 - uid: GraphShape.Controls.GraphLayout`3.OnLayoutIterationFinished*
   name: OnLayoutIterationFinished
   href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OnLayoutIterationFinished_
@@ -12058,13 +12058,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutStarted
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OnLayoutStarted
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OnLayoutStarted
-- uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,Point},IDictionary{`0,Size})
   name: OverlapRemoval(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OverlapRemoval_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_OverlapRemoval_IDictionary__0_Point__IDictionary__0_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.OverlapRemoval(IDictionary{`0,Point},IDictionary{`0,Size})
   name.vb: OverlapRemoval(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.OverlapRemoval(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).OverlapRemoval(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.OverlapRemoval*
@@ -12396,13 +12396,13 @@ references:
   fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RemoveVertexControl
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RemoveVertexControl
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RemoveVertexControl
-- uid: GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+- uid: GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,Point},IDictionary{`0,Size})
   name: RouteEdges(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
-  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RouteEdges_IDictionary__0_GraphShape_Point__IDictionary__0_GraphShape_Size__
-  commentId: M:GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,GraphShape.Point},IDictionary{`0,GraphShape.Size})
+  href: api/GraphShape.Controls.GraphLayout-3.html#GraphShape_Controls_GraphLayout_3_RouteEdges_IDictionary__0_Point__IDictionary__0_Size__
+  commentId: M:GraphShape.Controls.GraphLayout`3.RouteEdges(IDictionary{`0,Point},IDictionary{`0,Size})
   name.vb: RouteEdges(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
-  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(IDictionary<TVertex, GraphShape.Point>, IDictionary<TVertex, GraphShape.Size>)
-  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(IDictionary(Of TVertex, GraphShape.Point), IDictionary(Of TVertex, GraphShape.Size))
+  fullName: GraphShape.Controls.GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
+  fullName.vb: GraphShape.Controls.GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
   nameWithType: GraphLayout<TVertex, TEdge, TGraph>.RouteEdges(IDictionary<TVertex, Point>, IDictionary<TVertex, Size>)
   nameWithType.vb: GraphLayout(Of TVertex, TEdge, TGraph).RouteEdges(IDictionary(Of TVertex, Point), IDictionary(Of TVertex, Size))
 - uid: GraphShape.Controls.GraphLayout`3.RouteEdges*
