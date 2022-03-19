@@ -119,7 +119,7 @@ namespace GraphShape.Controls
         [NotNull]
         public static readonly RoutedEvent PositionChangedEvent = EventManager.RegisterRoutedEvent(
             "PositionChanged", RoutingStrategy.Bubble, typeof(PositionChangedEventHandler), typeof(GraphCanvas));
-        
+
         /// <summary>
         /// Adds a new <see cref="PositionChangedEvent"/> handler.
         /// </summary>
@@ -141,7 +141,7 @@ namespace GraphShape.Controls
                 uiElement.RemoveHandler(PositionChangedEvent, handler);
             }
         }
-        
+
         #endregion
 
         #region Animation length
@@ -165,7 +165,7 @@ namespace GraphShape.Controls
             typeof(TimeSpan),
             typeof(GraphCanvas),
             new UIPropertyMetadata(new TimeSpan(0, 0, 0, 0, 500)));
-        
+
         #endregion
 
         #region CreationAnimation
@@ -464,7 +464,10 @@ namespace GraphShape.Controls
         /// <param name="control">The control which has been added.</param>
         protected virtual void RunCreationTransition([NotNull] Control control)
         {
-            CreationTransition?.Run(AnimationContext, control, AnimationLength);
+            if (CanAnimate)
+            {
+                CreationTransition?.Run(AnimationContext, control, AnimationLength);
+            }
         }
 
         /// <summary>
@@ -498,7 +501,7 @@ namespace GraphShape.Controls
         /// </param>
         protected virtual void RunDestructionTransition([NotNull] Control control, bool dontRemoveAfter)
         {
-            if (DestructionTransition is null)
+            if (DestructionTransition is null || !CanAnimate)
             {
                 if (!dontRemoveAfter)
                 {

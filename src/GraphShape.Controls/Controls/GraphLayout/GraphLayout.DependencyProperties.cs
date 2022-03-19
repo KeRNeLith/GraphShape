@@ -751,7 +751,7 @@ namespace GraphShape.Controls
             // Check if we need to register or unregister watches on graph changes events
             if (graphLayout.Graph is IMutableBidirectionalGraph<TVertex, TEdge> mutableGraph)
             {
-                var oldMode = (LayoutMode)args.OldValue; 
+                var oldMode = (LayoutMode)args.OldValue;
                 var newMode = (LayoutMode)args.NewValue;
 
                 bool wasCompoundMode = IsCompoundModeInternal(oldMode, graphLayout.Graph);
