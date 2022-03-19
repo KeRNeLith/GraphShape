@@ -32,9 +32,9 @@ Supports Source Link</Description>
 
     <IsPackable>true</IsPackable>
     <PackageId>GraphShape.Controls</PackageId>
-    <PackageReleaseNotes>➟ Release 1.2.1
-Updates:
-- Update package dependencies.</PackageReleaseNotes>
+    <PackageReleaseNotes>➟ Release 1.2.2
+Fixes:
+- Fix the control flickering when changing the bound graph.</PackageReleaseNotes>
     <PackageTags>GraphSharp GraphShape Graph Layout Algorithm C# WPF Controls</PackageTags>
   </PropertyGroup>
 

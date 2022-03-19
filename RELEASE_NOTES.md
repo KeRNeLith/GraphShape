@@ -1,5 +1,14 @@
 # Release notes
 
+## What's new in 1.2.2 March 19 2022
+
+### GraphShape.Controls
+
+#### Fixes:
+* Fix the control flickering when changing the bound graph.
+
+---
+
 ## What's new in 1.2.1 October 28 2021
 
 ### GraphShape
