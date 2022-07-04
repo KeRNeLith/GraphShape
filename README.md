@@ -72,7 +72,8 @@ GraphShape is available on [NuGet](https://www.nuget.org) in several modules.
 
 This project exists thanks to all the people who have contributed to the code base.
 
-<a href="https://github.com/Moka42"><img src="https://avatars2.githubusercontent.com/u/33061894" width="50px;" alt=""/>
-<a href="https://github.com/eriove"><img src="https://avatars2.githubusercontent.com/u/9482927" width="50px;" alt=""/>
+[<img src="https://github.com/Moka42.png?size=50" width="50px;" alt=""/>](https://github.com/Moka42)
+[<img src="https://github.com/eriove.png?size=50" width="50px;" alt=""/>](https://github.com/eriove)
+[<img src="https://github.com/Shprrr.png?size=50" width="50px;" alt=""/>](https://github.com/Shprrr)
 
 ---
