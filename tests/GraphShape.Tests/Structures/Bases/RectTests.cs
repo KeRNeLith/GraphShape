@@ -336,8 +336,8 @@ namespace GraphShape.Tests
             Assert.IsTrue(rect4 != rect8);
             Assert.AreNotEqual(rect4, rect8);
 
-            Assert.AreNotEqual(rect4, null);
-            Assert.AreNotEqual(rect4, new TestVertex());
+            Assert.AreNotEqual(null, rect4);
+            Assert.AreNotEqual(new TestVertex(), rect4);
         }
 
         [Test]

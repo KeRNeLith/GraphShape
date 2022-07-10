@@ -51,8 +51,8 @@ namespace GraphShape.Tests
             Assert.IsTrue(thickness1 != thickness3);
             Assert.AreNotEqual(thickness1, thickness3);
 
-            Assert.AreNotEqual(thickness1, null);
-            Assert.AreNotEqual(thickness1, new TestVertex());
+            Assert.AreNotEqual(null, thickness1);
+            Assert.AreNotEqual(new TestVertex(), thickness1);
         }
 
         [Test]

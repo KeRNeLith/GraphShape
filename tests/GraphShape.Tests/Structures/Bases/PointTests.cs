@@ -103,8 +103,8 @@ namespace GraphShape.Tests
             Assert.IsTrue(point1 != point3);
             Assert.AreNotEqual(point1, point3);
 
-            Assert.AreNotEqual(point1, null);
-            Assert.AreNotEqual(point1, new TestVertex());
+            Assert.AreNotEqual(null, point1);
+            Assert.AreNotEqual(new TestVertex(), point1);
         }
 
         [Test]

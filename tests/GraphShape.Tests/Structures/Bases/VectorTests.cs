@@ -165,8 +165,8 @@ namespace GraphShape.Tests
             Assert.IsTrue(vector1 != vector3);
             Assert.AreNotEqual(vector1, vector3);
 
-            Assert.AreNotEqual(vector1, null);
-            Assert.AreNotEqual(vector1, new TestVertex());
+            Assert.AreNotEqual(null, vector1);
+            Assert.AreNotEqual(new TestVertex(), vector1);
         }
 
         [Test]
