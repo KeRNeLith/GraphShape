@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;netcoreapp3.1;net5.0-windows</TargetFrameworks>
 
     <Title>GraphShape.Tests</Title>
 
@@ -21,31 +21,34 @@
     <DefineConstants>$(DefineConstants);NET40;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
-    <DefineConstants>$(DefineConstants);NET45;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET45;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
-    <DefineConstants>$(DefineConstants);NET46;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET46;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net461'">
-    <DefineConstants>$(DefineConstants);NET461;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET461;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net462'">
-    <DefineConstants>$(DefineConstants);NET462;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET462;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net47'">
-    <DefineConstants>$(DefineConstants);NET47;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET47;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net471'">
-    <DefineConstants>$(DefineConstants);NET471;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET471;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net472'">
-    <DefineConstants>$(DefineConstants);NET472;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET472;$(AdditionalConstants)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net48'">
+    <DefineConstants>$(DefineConstants);NET48;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);NETCOREAPP3_1;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NETCOREAPP3_1;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='net5.0-windows'">
-    <DefineConstants>$(DefineConstants);NET5_0;SUPPORTS_TASKS$(AdditionalConstants)</DefineConstants>
+    <DefineConstants>$(DefineConstants);NET5_0;$(AdditionalConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- Dependencies -->
