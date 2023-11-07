@@ -307,7 +307,6 @@ namespace GraphShape.Algorithms.Layout
 
             double layerDistance = Parameters.LayerGap;
             _layerPositions = new double[_layers.Count];
-            _layerPositions[0] = 0;
             for (int i = 1; i < _layers.Count; ++i)
             {
                 _layerPositions[i] = _layerPositions[i - 1] + _layerSizes[i - 1] + layerDistance;
