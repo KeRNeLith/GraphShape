@@ -68,12 +68,13 @@
     "globalMetadata": {
       "_appFaviconPath": "images/graphshape.ico",
       "_appLogoPath": "images/logo.svg",
-      "_appFooter": "GraphShape"
+      "_appFooter": "GraphShape",
+      "_enableSearch": "true"
     },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [ "default", "templates/material" ],
-    "postProcessors": [],
+    "postProcessors": [ "ExtractSearchIndex" ],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,
     "keepFileLink": false,
