@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using GraphShape.Utils;
 
 namespace GraphShape
@@ -7,7 +8,7 @@ namespace GraphShape
     /// Represents the size of an object.
     /// </summary>
     [Serializable]
-    public struct Size : IEquatable<Size>
+    public struct Size : IEquatable<Size>, IDeserializationCallback
     {
         /// <summary>
         /// Empty size.
@@ -139,5 +140,16 @@ namespace GraphShape
         {
             return IsEmpty ? "Empty" : $"{_width};{_height}";
         }
+
+        #region IDeserializationCallback
+
+        /// <inheritdoc />
+        void IDeserializationCallback.OnDeserialization(object sender)
+        {
+            if (_width < 0.0 || _height < 0.0)
+                throw new ArgumentException("Width and height must be positive or 0.");
+        }
+
+        #endregion
     }
 }

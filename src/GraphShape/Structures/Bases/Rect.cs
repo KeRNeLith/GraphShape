@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using GraphShape.Utils;
 using JetBrains.Annotations;
 
@@ -8,7 +9,7 @@ namespace GraphShape
     /// Represents a rectangle.
     /// </summary>
     [Serializable]
-    public struct Rect : IEquatable<Rect>
+    public struct Rect : IEquatable<Rect>, IDeserializationCallback
     {
         /// <summary>
         /// Empty rectangle.
@@ -107,8 +108,8 @@ namespace GraphShape
             }
             else
             {
-                _x = location._x;
-                _y = location._y;
+                _x = location.X;
+                _y = location.Y;
                 _width = size._width;
                 _height = size._height;
             }
@@ -214,8 +215,8 @@ namespace GraphShape
             {
                 if (IsEmpty)
                     throw new InvalidOperationException("Cannot modify an empty rectangle.");
-                _x = value._x;
-                _y = value._y;
+                _x = value.X;
+                _y = value.Y;
             }
         }
 
@@ -335,5 +336,16 @@ namespace GraphShape
             _x += offsetX;
             _y += offsetY;
         }
+
+        #region IDeserializationCallback
+
+        /// <inheritdoc />
+        void IDeserializationCallback.OnDeserialization(object sender)
+        {
+            if (_width < 0.0 || _height < 0.0)
+                throw new ArgumentException("Width and height must be positive or 0.");
+        }
+
+        #endregion
     }
 }

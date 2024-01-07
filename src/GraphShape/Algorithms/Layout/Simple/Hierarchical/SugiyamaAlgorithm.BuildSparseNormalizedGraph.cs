@@ -251,6 +251,64 @@ namespace GraphShape.Algorithms.Layout
             }
         }
 
+        private bool TryInsertLayer(int maxWidthLayerIndex, double desiredWidth)
+        {
+            int insertedLayerIndex = maxWidthLayerIndex + 1;
+            double width = 0;
+            double c = 0;
+            if (insertedLayerIndex > 0)
+            {
+                foreach (SugiVertex vertex in _layers[insertedLayerIndex - 1])
+                {
+                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
+                }
+
+                ++c;
+            }
+
+            if (insertedLayerIndex < _layers.Count - 1)
+            {
+                foreach (SugiVertex vertex in _layers[insertedLayerIndex])
+                {
+                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
+                }
+
+                ++c;
+            }
+
+            if (c > 0)
+            {
+                width /= c;
+            }
+
+            if (width >= desiredWidth - _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Peek().Cost)
+                return false;
+
+            var insertedLayerInfo = new WHOptimizationLayerInfo();
+            var insertedLayer = new List<SugiVertex>();
+            _whOptLayerInfos.Insert(insertedLayerIndex, insertedLayerInfo);
+            _layers.Insert(insertedLayerIndex, insertedLayer);
+
+            double height = 0.0;
+            while (insertedLayerInfo.LayerWidth < _whOptLayerInfos[insertedLayerIndex - 1].LayerWidth
+                   && _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Count > 0
+                   && insertedLayerInfo.LayerWidth <=
+                   desiredWidth - _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Peek().Cost)
+            {
+                WHOptimizationVertexInfo repositionedVertex = _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Dequeue();
+                insertedLayerInfo.LayerWidth += repositionedVertex.Cost;
+                _whOptLayerInfos[insertedLayerIndex - 1].LayerWidth -= repositionedVertex.Value;
+                _layers[insertedLayerIndex - 1].Remove(repositionedVertex.Vertex);
+                insertedLayer.Add(repositionedVertex.Vertex);
+                height = Math.Max(height, repositionedVertex.Vertex.Size.Height);
+            }
+
+            _actualHeight += height + Parameters.LayerGap;
+            _actualWidth = _whOptLayerInfos.Max(li => li.LayerWidth);
+
+            return true;
+        }
+
         private bool DoWHOptimizationStep()
         {
             double desiredWidth = _actualHeight * Parameters.WidthPerHeight;
@@ -271,57 +329,8 @@ namespace GraphShape.Algorithms.Layout
             if (maxWidthLayer.LayerWidth <= desiredWidth || maxWidthLayer.Vertices.Count <= 0)
                 return false;
 
-            // Insert a new layer
-            int insertedLayerIndex = maxWidthLayerIndex + 1;
-            double width = 0;
-            double c = 0;
-            if (insertedLayerIndex > 0)
-            {
-                foreach (SugiVertex vertex in _layers[insertedLayerIndex - 1])
-                {
-                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
-                }
-
-                ++c;
-            }
-            if (insertedLayerIndex < _layers.Count - 1)
-            {
-                foreach (SugiVertex vertex in _layers[insertedLayerIndex])
-                {
-                    width += Math.Max(0, _graph.OutDegree(vertex) - 1) * Parameters.LayerGap;
-                }
-
-                ++c;
-            }
-
-            if (c > 0)
-                width /= c;
-
-            if (width >= desiredWidth - _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Peek().Cost)
-                return false;
-
-            var insertedLayerInfo = new WHOptimizationLayerInfo();
-            var insertedLayer = new List<SugiVertex>();
-            _whOptLayerInfos.Insert(insertedLayerIndex, insertedLayerInfo);
-            _layers.Insert(insertedLayerIndex, insertedLayer);
-
-            double height = 0.0;
-            while (insertedLayerInfo.LayerWidth < _whOptLayerInfos[insertedLayerIndex - 1].LayerWidth
-                   && _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Count > 0
-                   && insertedLayerInfo.LayerWidth <= desiredWidth - _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Peek().Cost)
-            {
-                WHOptimizationVertexInfo repositionedVertex = _whOptLayerInfos[insertedLayerIndex - 1].Vertices.Dequeue();
-                insertedLayerInfo.LayerWidth += repositionedVertex.Cost;
-                _whOptLayerInfos[insertedLayerIndex - 1].LayerWidth -= repositionedVertex.Value;
-                _layers[insertedLayerIndex - 1].Remove(repositionedVertex.Vertex);
-                insertedLayer.Add(repositionedVertex.Vertex);
-                height = Math.Max(height, repositionedVertex.Vertex.Size.Height);
-            }
-
-            _actualHeight += height + Parameters.LayerGap;
-            _actualWidth = _whOptLayerInfos.Max(li => li.LayerWidth);
-
-            return true;
+            // Try to insert a new layer
+            return TryInsertLayer(maxWidthLayerIndex, desiredWidth);
         }
 
         private void CreateLayerWHOptimizationInfos()

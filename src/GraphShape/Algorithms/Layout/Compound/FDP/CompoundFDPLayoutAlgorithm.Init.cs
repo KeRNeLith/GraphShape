@@ -90,7 +90,7 @@ namespace GraphShape.Algorithms.Layout
                     _removedRootTreeEdges.Add(edge);
                 }
 
-                if (removed && _removedRootTreeNodeLevels.Count > 0)
+                if (removed)
                 {
                     // Remove from the level
                     foreach (RemovedTreeNodeData data in _removedRootTreeNodeLevels.Peek())

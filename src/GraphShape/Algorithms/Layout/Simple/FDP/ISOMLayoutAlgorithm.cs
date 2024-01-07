@@ -18,7 +18,7 @@ namespace GraphShape.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private sealed class ISOMData
+        private sealed class IsomData
         {
             public bool Visited { get; set; }
             public double Distance { get; set; }
@@ -26,12 +26,12 @@ namespace GraphShape.Algorithms.Layout
 
         [NotNull, ItemNotNull]
         private readonly Queue<TVertex> _queue;
-        
+
         [NotNull]
-        private readonly Dictionary<TVertex, ISOMData> _isomDataDict;
-        
+        private readonly Dictionary<TVertex, IsomData> _isomDataDict;
+
         private Point _tempPos;
-        
+
         private double _adaptation;
 
         private int _radius;
@@ -61,7 +61,7 @@ namespace GraphShape.Algorithms.Layout
             : base(visitedGraph, verticesPositions, parameters)
         {
             _queue = new Queue<TVertex>();
-            _isomDataDict = new Dictionary<TVertex, ISOMData>();
+            _isomDataDict = new Dictionary<TVertex, IsomData>();
             _adaptation = Parameters.InitialAdaptation;
         }
 
@@ -80,7 +80,7 @@ namespace GraphShape.Algorithms.Layout
             {
                 if (!_isomDataDict.ContainsKey(vertex))
                 {
-                    _isomDataDict[vertex] = new ISOMData();
+                    _isomDataDict[vertex] = new IsomData();
                 }
             }
 
@@ -143,7 +143,7 @@ namespace GraphShape.Algorithms.Layout
             // Adjust the vertices to the selected vertex
             foreach (TVertex vertex in VisitedGraph.Vertices)
             {
-                ISOMData data = _isomDataDict[vertex];
+                IsomData data = _isomDataDict[vertex];
                 data.Distance = 0;
                 data.Visited = false;
             }
@@ -156,7 +156,7 @@ namespace GraphShape.Algorithms.Layout
             Debug.Assert(closest != null);
 
             _queue.Clear();
-            ISOMData vid = _isomDataDict[closest];
+            IsomData vid = _isomDataDict[closest];
             vid.Distance = 0;
             vid.Visited = true;
             _queue.Enqueue(closest);
@@ -166,7 +166,7 @@ namespace GraphShape.Algorithms.Layout
                 ThrowIfCancellationRequested();
 
                 TVertex current = _queue.Dequeue();
-                ISOMData currentData = _isomDataDict[current];
+                IsomData currentData = _isomDataDict[current];
                 Point position = VerticesPositions[current];
 
                 Vector force = _tempPos - position;
@@ -183,7 +183,7 @@ namespace GraphShape.Algorithms.Layout
                     {
                         ThrowIfCancellationRequested();
 
-                        ISOMData neighborData = _isomDataDict[neighbor];
+                        IsomData neighborData = _isomDataDict[neighbor];
                         if (!neighborData.Visited)
                         {
                             neighborData.Visited = true;

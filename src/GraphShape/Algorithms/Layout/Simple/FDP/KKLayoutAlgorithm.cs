@@ -120,15 +120,15 @@ namespace GraphShape.Algorithms.Layout
         /// <inheritdoc />
         protected override void InternalCompute()
         {
-            int n = VisitedGraph.VertexCount;
-            if (n == 0)
+            int vertexCount = VisitedGraph.VertexCount;
+            if (vertexCount == 0)
                 return;
 
             for (int iteration = 0; iteration < Parameters.MaxIterations; ++iteration)
             {
                 ThrowIfCancellationRequested();
 
-                if (!RunIteration(n))
+                if (!RunIteration(vertexCount))
                     return;
 
                 if (ReportOnIterationEndNeeded)
@@ -140,21 +140,52 @@ namespace GraphShape.Algorithms.Layout
             Report(Parameters.MaxIterations);
         }
 
-        private bool RunIteration(int n)
+        /// <summary>
+        /// Tries to do an exchange to check if any can reduce global energy.
+        /// </summary>
+        /// <returns>True if an exchange has improved result, false otherwise.</returns>
+        private bool TryExchange(int vertexCount)
+        {
+            double energy = CalculateEnergy();
+            for (int i = 0; i < vertexCount - 1; ++i)
+            {
+                for (int j = i + 1; j < vertexCount; ++j)
+                {
+                    ThrowIfCancellationRequested();
+
+                    double exchangedEnergy = CalculateEnergyIfExchanged(i, j);
+                    if (energy > exchangedEnergy)
+                    {
+                        Point p = _positions[i];
+                        _positions[i] = _positions[j];
+                        _positions[j] = p;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Runs an iteration of the algorithm.
+        /// </summary>
+        /// <returns>True if iteration has been run and require another one, false otherwise.</returns>
+        private bool RunIteration(int vertexCount)
         {
             double maxDeltaM = double.NegativeInfinity;
             int pm = -1;
 
-            // Get the 'p' with the max delta_m
-            for (int i = 0; i < n; ++i)
+            // Get the 'p' vertex with the max delta_m
+            for (int p = 0; p < vertexCount; ++p)
             {
                 ThrowIfCancellationRequested();
 
-                double deltaM = CalculateEnergyGradient(i);
+                double deltaM = CalculateEnergyGradient(p);
                 if (maxDeltaM < deltaM)
                 {
                     maxDeltaM = deltaM;
-                    pm = i;
+                    pm = p;
                 }
             }
 
@@ -174,26 +205,8 @@ namespace GraphShape.Algorithms.Layout
             }
 
             // What if some of the vertices would be exchanged?
-            if (Parameters.ExchangeVertices && maxDeltaM < double.Epsilon)
-            {
-                double energy = CalculateEnergy();
-                for (int i = 0; i < n - 1; ++i)
-                {
-                    for (int j = i + 1; j < n; ++j)
-                    {
-                        ThrowIfCancellationRequested();
-
-                        double exchangedEnergy = CalculateEnergyIfExchanged(i, j);
-                        if (energy > exchangedEnergy)
-                        {
-                            Point p = _positions[i];
-                            _positions[i] = _positions[j];
-                            _positions[j] = p;
-                            return false;
-                        }
-                    }
-                }
-            }
+            if (Parameters.ExchangeVertices && maxDeltaM < double.Epsilon && TryExchange(vertexCount))
+                return false;
 
             return true;
         }

@@ -42,6 +42,16 @@ namespace GraphShape.Tests.Algorithms.Layout
                     return false;
                 return _value == other._value;
             }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as TestLayoutParameters);
+            }
+
+            public override int GetHashCode()
+            {
+                return _value.GetHashCode();
+            }
         }
 
         private class TestSimpleParameterizedLayoutAlgorithm : ParameterizedLayoutAlgorithmBase<TestVertex, Edge<TestVertex>, AdjacencyGraph<TestVertex, Edge<TestVertex>>, TestLayoutParameters>

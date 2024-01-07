@@ -10,28 +10,15 @@ namespace GraphShape
     [Serializable]
     public struct Vector : IEquatable<Vector>
     {
-        // ReSharper disable InconsistentNaming
-        internal double _x;
-        internal double _y;
-        // ReSharper restore InconsistentNaming
-
         /// <summary>
         /// X component value.
         /// </summary>
-        public double X
-        {
-            get => _x;
-            set => _x = value;
-        }
+        public double X { get; set; }
 
         /// <summary>
         /// Y component value.
         /// </summary>
-        public double Y
-        {
-            get => _y;
-            set => _y = value;
-        }
+        public double Y { get; set; }
 
         /// <summary>
         /// Constructor.
@@ -40,8 +27,8 @@ namespace GraphShape
         /// <param name="y">Y component value.</param>
         public Vector(double x, double y)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
         }
 
         /// <summary>
@@ -74,8 +61,8 @@ namespace GraphShape
         /// <returns>True if both <see cref="Vector"/> are equal, otherwise false.</returns>
         public static bool Equals(Vector vector1, Vector vector2)
         {
-            return MathUtils.NearEqual(vector1._x, vector2._x)
-                   && MathUtils.NearEqual(vector1._y, vector2._y);
+            return MathUtils.NearEqual(vector1.X, vector2.X)
+                   && MathUtils.NearEqual(vector1.Y, vector2.Y);
         }
 
         /// <inheritdoc />
@@ -101,27 +88,27 @@ namespace GraphShape
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"{_x};{_y}";
+            return $"{X};{Y}";
         }
 
         /// <summary>
         /// Gets the length of this vector.
         /// </summary>
         /// <returns>The length of this vector.</returns>
-        public double Length => Math.Sqrt(_x * _x + _y * _y);
+        public double Length => Math.Sqrt(X * X + Y * Y);
 
         /// <summary>
         /// Gets the squared length of this vector.
         /// </summary>
         /// <returns>The squared length of this vector.</returns>
-        public double LengthSquared => _x * _x + _y * _y;
+        public double LengthSquared => X * X + Y * Y;
 
         /// <summary>
         /// Normalizes this vector.
         /// </summary>
         public void Normalize()
         {
-            this /= Math.Max(Math.Abs(_x), Math.Abs(_y));
+            this /= Math.Max(Math.Abs(X), Math.Abs(Y));
             this /= Length;
         }
 
@@ -135,7 +122,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator -(Vector vector)
         {
-            return new Vector(-vector._x, -vector._y);
+            return new Vector(-vector.X, -vector.Y);
         }
 
         /// <summary>
@@ -147,7 +134,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator +(Vector vector1, Vector vector2)
         {
-            return new Vector(vector1._x + vector2._x, vector1._y + vector2._y);
+            return new Vector(vector1.X + vector2.X, vector1.Y + vector2.Y);
         }
 
         /// <summary>
@@ -159,7 +146,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator -(Vector vector1, Vector vector2)
         {
-            return new Vector(vector1._x - vector2._x, vector1._y - vector2._y);
+            return new Vector(vector1.X - vector2.X, vector1.Y - vector2.Y);
         }
 
         /// <summary>
@@ -171,7 +158,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator *(Vector vector, double scalar)
         {
-            return new Vector(vector._x * scalar, vector._y * scalar);
+            return new Vector(vector.X * scalar, vector.Y * scalar);
         }
 
         /// <summary>
@@ -183,7 +170,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator *(double scalar, Vector vector)
         {
-            return new Vector(vector._x * scalar, vector._y * scalar);
+            return new Vector(vector.X * scalar, vector.Y * scalar);
         }
 
         /// <summary>
@@ -211,7 +198,7 @@ namespace GraphShape
         [Pure]
         public static double operator *(Vector vector1, Vector vector2)
         {
-            return vector1._x * vector2._x + vector1._y * vector2._y;
+            return vector1.X * vector2.X + vector1.Y * vector2.Y;
         }
     }
 }

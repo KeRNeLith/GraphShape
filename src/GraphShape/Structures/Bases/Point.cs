@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using GraphShape.Utils;
 using JetBrains.Annotations;
 
@@ -10,28 +10,15 @@ namespace GraphShape
     [Serializable]
     public struct Point : IEquatable<Point>
     {
-        // ReSharper disable InconsistentNaming
-        internal double _x;
-        internal double _y;
-        // ReSharper restore InconsistentNaming
-
         /// <summary>
         /// X.
         /// </summary>
-        public double X
-        {
-            get => _x;
-            set => _x = value;
-        }
+        public double X { get; set; }
 
         /// <summary>
         /// Y.
         /// </summary>
-        public double Y
-        {
-            get => _y;
-            set => _y = value;
-        }
+        public double Y { get; set; }
 
         /// <summary>
         /// Constructor.
@@ -40,8 +27,8 @@ namespace GraphShape
         /// <param name="y">Y value.</param>
         public Point(double x, double y)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
         }
 
         /// <summary>
@@ -74,8 +61,8 @@ namespace GraphShape
         /// <returns>True if both <see cref="Point"/> are equal, otherwise false.</returns>
         public static bool Equals(Point point1, Point point2)
         {
-            return MathUtils.NearEqual(point1._x, point2._x)
-                   && MathUtils.NearEqual(point1._y, point2._y);
+            return MathUtils.NearEqual(point1.X, point2.X)
+                   && MathUtils.NearEqual(point1.Y, point2.Y);
         }
 
         /// <inheritdoc />
@@ -101,7 +88,7 @@ namespace GraphShape
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"{_x};{_y}";
+            return $"{X};{Y}";
         }
 
         /// <summary>
@@ -113,7 +100,7 @@ namespace GraphShape
         [Pure]
         public static Point operator +(Point point, Vector vector)
         {
-            return new Point(point._x + vector._x, point._y + vector._y);
+            return new Point(point.X + vector.X, point.Y + vector.Y);
         }
 
         /// <summary>
@@ -125,7 +112,7 @@ namespace GraphShape
         [Pure]
         public static Point operator -(Point point, Vector vector)
         {
-            return new Point(point._x - vector._x, point._y - vector._y);
+            return new Point(point.X - vector.X, point.Y - vector.Y);
         }
 
         /// <summary>
@@ -137,7 +124,7 @@ namespace GraphShape
         [Pure]
         public static Vector operator -(Point point1, Point point2)
         {
-            return new Vector(point1._x - point2._x, point1._y - point2._y);
+            return new Vector(point1.X - point2.X, point1.Y - point2.Y);
         }
     }
 }
